@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="cy-en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rheoli Dosbarth / Classroom Management — PGCE Dyniaethau Uwchradd / Secondary Humanities</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --dark: #2D3B2D; --accent: #B85042; --mid: #84B59F;
+    --light: #F7F2ED; --cream: #F2EDE8; --muted: #6B7F6B;
+    --white: #FFFFFF; --text: #1E2A1E; --border: #D4C9C0;
+    --success: #2D6A4F; --success-bg: #EBF5F0;
+    --warn-bg: #FBF0EE;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; }
+
+  /* ── LANG TOGGLE ── */
+  .lang-bar {
+    background: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 1rem;
+    gap: 0.5rem;
+    min-height: 34px;
+  }
+  .lang-bar span { font-size: 11px; color: rgba(255,255,255,0.7); }
+  .lang-btn {
+    font-size: 11.5px;
+    font-weight: 500;
+    padding: 3px 12px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255,255,255,0.5);
+    background: transparent;
+    color: rgba(255,255,255,0.75);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .lang-btn.active { background: white; color: var(--accent); border-color: white; }
+  .lang-btn:hover:not(.active) { background: rgba(255,255,255,0.15); color: white; }
+
+  /* ── NAV ── */
+  nav { background: var(--dark); display: flex; align-items: stretch; overflow-x: auto; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,0.18); }
+  .nav-brand { padding: 0 1.2rem; display: flex; align-items: center; gap: 8px; color: var(--light); font-size: 12.5px; font-weight: 500; white-space: nowrap; border-right: 1px solid rgba(255,255,255,0.1); min-height: 50px; }
+  .nav-brand span { color: var(--mid); font-size: 15px; }
+  .nav-tabs { display: flex; }
+  .nav-tab { padding: 0 1rem; min-height: 50px; display: flex; align-items: center; color: rgba(255,255,255,0.5); font-size: 12px; cursor: pointer; white-space: nowrap; border-bottom: 3px solid transparent; transition: all 0.15s; user-select: none; }
+  .nav-tab:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.05); }
+  .nav-tab.active { color: var(--white); border-bottom-color: var(--accent); }
+  .nav-tab .cy { display: block; font-size: 10.5px; opacity: 0.75; }
+  .nav-tab .en { display: block; font-size: 12px; }
+
+  /* ── SECTIONS ── */
+  .section { display: none; padding: 2rem 1.5rem 4rem; max-width: 900px; margin: 0 auto; }
+  .section.active { display: block; }
+
+  /* ── HERO ── */
+  .hero { background: var(--dark); padding: 2.5rem 2rem; margin: -2rem -1.5rem 2.5rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; right: -60px; top: -60px; width: 260px; height: 260px; border-radius: 50%; background: var(--accent); opacity: 0.1; }
+  .hero-label { font-size: 10.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); font-weight: 500; margin-bottom: 0.4rem; }
+  .hero h1 { font-family: 'Lora', serif; font-size: clamp(18px, 3.2vw, 30px); color: var(--white); font-weight: 500; line-height: 1.2; margin-bottom: 0.35rem; }
+  .hero h1 .cy-h { display: block; font-size: 0.72em; color: var(--mid); font-style: italic; font-weight: 400; margin-bottom: 0.15rem; }
+  .hero p { color: rgba(255,255,255,0.6); font-size: 13px; line-height: 1.65; font-style: italic; font-family: 'Lora', serif; }
+  .hero p .cy-sub { display: block; margin-top: 2px; }
+  .badges { display: flex; gap: 8px; margin-top: 1.1rem; flex-wrap: wrap; }
+  .badge { font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 999px; }
+  .badge-cp1 { background: var(--accent); color: white; }
+  .badge-cp2 { background: var(--mid); color: white; }
+  /* Wrapper that keeps all hero text within the left column, away from the illustration */
+  .hero-content { position: relative; z-index: 1; max-width: 56%; }
+  @media(max-width: 640px) { .hero-content { max-width: 100%; } }
+
+  /* ── BILINGUAL LABELS ── */
+  .bi { display: flex; flex-direction: column; gap: 1px; }
+  .bi .cy { font-size: 0.85em; color: var(--mid); display: block; }
+  .bi .en { display: block; }
+
+  /* ── SECTION HEADER ── */
+  .section-title { font-family: 'Lora', serif; font-size: 20px; font-weight: 500; color: var(--text); margin-bottom: 0.25rem; }
+  .section-title .cy { display: block; font-size: 0.8em; color: var(--mid); }
+  .section-intro { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; font-family: 'Lora', serif; }
+  .section-intro .cy { display: block; color: var(--mid); opacity: 0.85; margin-top: 2px; font-size: 0.92em; }
+  .section-num-pill { display: inline-block; font-size: 11px; font-weight: 500; background: var(--accent); color: white; padding: 2px 10px; border-radius: 999px; margin-bottom: 0.55rem; }
+  .section-num-pill.mid { background: var(--mid); }
+
+  /* ── CARDS ── */
+  .card { background: var(--white); border-radius: 10px; border: 1px solid var(--border); padding: 1.1rem; margin-bottom: 1rem; }
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+  .card-title { font-size: 12px; font-weight: 500; color: var(--accent); margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .card-title .cy { display: block; color: var(--mid); font-size: 0.9em; }
+  .card-body { font-size: 13px; color: #444; line-height: 1.6; }
+  .card-body .cy { display: block; color: var(--mid); font-size: 0.9em; margin-top: 3px; opacity: 0.85; }
+
+  /* ── STEPS ── */
+  .steps { display: flex; flex-direction: column; gap: 0.75rem; }
+  .step { display: flex; gap: 1rem; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1rem; }
+  .step-num { width: 32px; height: 32px; min-width: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; color: white; background: var(--accent); }
+  .step-num.mid { background: var(--mid); }
+  .step-content { flex: 1; }
+  .step-title { font-size: 14px; font-weight: 500; margin-bottom: 2px; }
+  .step-title .cy { display: block; font-size: 0.82em; color: var(--mid); font-weight: 400; }
+  .step-desc { font-size: 13px; color: #555; line-height: 1.55; }
+  .step-desc .cy { display: block; color: var(--mid); font-size: 0.9em; margin-top: 3px; opacity: 0.85; }
+
+  /* ── DO/DON'T ── */
+  .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  @media(max-width:600px) { .do-dont { grid-template-columns: 1fr; } }
+  .do-card { background: var(--success-bg); border: 1px solid #a8d5bb; border-radius: 8px; padding: 1rem; }
+  .dont-card { background: var(--warn-bg); border: 1px solid #e8b8b0; border-radius: 8px; padding: 1rem; }
+  .do-card h3 { color: var(--success); font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .do-card h3 .cy { display: block; opacity: 0.75; font-size: 0.9em; }
+  .dont-card h3 { color: var(--accent); font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .dont-card h3 .cy { display: block; opacity: 0.75; font-size: 0.9em; }
+  .do-item, .dont-item { font-size: 13px; line-height: 1.5; margin-bottom: 0.4rem; padding-left: 1rem; position: relative; }
+  .do-item .cy, .dont-item .cy { display: block; font-size: 0.88em; opacity: 0.8; margin-top: 1px; }
+  .do-item::before { content: '✓'; position: absolute; left: 0; color: var(--success); font-weight: 500; }
+  .dont-item::before { content: '✗'; position: absolute; left: 0; color: var(--accent); font-weight: 500; }
+
+  /* ── TIP BOX ── */
+  .tip-box { background: rgba(45,59,45,0.06); border-left: 4px solid var(--dark); border-radius: 0 8px 8px 0; padding: 0.85rem 1.1rem; margin-top: 1rem; }
+  .tip-label { font-size: 10.5px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin-bottom: 4px; }
+  .tip-label .cy { display: inline; }
+  .tip-box p { font-size: 13px; color: var(--text); line-height: 1.6; }
+  .tip-box p .cy { display: block; color: var(--mid); font-size: 0.9em; margin-top: 3px; opacity: 0.85; }
+
+  /* ── CP GRID ── */
+  .cp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+  @media(max-width:600px) { .cp-grid { grid-template-columns: 1fr; } }
+  .cp-card { background: var(--white); border-radius: 10px; border: 1px solid var(--border); overflow: hidden; }
+  .cp-header { padding: 0.8rem 1rem; }
+  .cp1-header { background: var(--accent); }
+  .cp2-header { background: var(--mid); }
+  .cp-header h3 { color: white; font-size: 13px; font-weight: 500; }
+  .cp-header h3 .cy { display: block; font-size: 0.88em; opacity: 0.85; }
+  .cp-header p { color: rgba(255,255,255,0.75); font-size: 11.5px; margin-top: 2px; }
+  .cp-header p .cy { display: block; font-size: 0.9em; }
+  .cp-body { padding: 0.9rem 1rem; }
+  .cp-item { font-size: 12.5px; color: #444; line-height: 1.5; margin-bottom: 0.45rem; padding-left: 1rem; position: relative; }
+  .cp-item::before { content: '→'; position: absolute; left: 0; color: var(--muted); }
+  .cp-item .cy { display: block; font-size: 0.88em; color: var(--mid); opacity: 0.85; }
+
+  /* ── ILLUSTRATION ── */
+  .section-illustration { width: 100%; border-radius: 12px; overflow: hidden; margin-bottom: 1.5rem; border: 1px solid var(--border); }
+  .section-illustration svg { display: block; width: 100%; height: auto; }
+  .hero-illustration { position: absolute; right: 0; top: 0; bottom: 0; width: 44%; opacity: 0.9; display: flex; align-items: center; }
+  .hero-illustration svg { width: 100%; height: 100%; }
+  @media(max-width: 640px) { .hero-illustration { display: none; } }
+
+  /* ── CHECKLIST ── */
+  .checklist { display: flex; flex-direction: column; gap: 0.5rem; }
+  .check-item { display: flex; align-items: flex-start; gap: 10px; padding: 0.65rem 1rem; background: var(--white); border: 1px solid var(--border); border-radius: 8px; font-size: 13px; line-height: 1.5; cursor: pointer; }
+  .check-item .cy { display: block; font-size: 0.88em; color: var(--mid); opacity: 0.85; margin-top: 2px; }
+  .check-box { width: 18px; height: 18px; min-width: 18px; border: 1.5px solid var(--border); border-radius: 4px; margin-top: 2px; display: flex; align-items: center; justify-content: center; font-size: 11px; }
+  .check-box.checked { background: var(--success); border-color: var(--success); color: white; }
+
+  /* ── SCENARIOS ── */
+  .scenario-container { margin-bottom: 2rem; }
+  .scenario-header { background: var(--dark); color: white; padding: 0.9rem 1.1rem; border-radius: 10px 10px 0 0; display: flex; align-items: flex-start; gap: 0.75rem; }
+  .scenario-num { background: var(--accent); color: white; font-size: 11px; font-weight: 500; padding: 2px 8px; border-radius: 999px; white-space: nowrap; margin-top: 2px; }
+  .scenario-text { font-size: 13.5px; line-height: 1.6; }
+  .scenario-text .cy { display: block; font-size: 0.9em; color: var(--mid); margin-top: 4px; opacity: 0.9; }
+  .scenario-context { font-size: 11px; color: var(--mid); margin-top: 5px; font-style: italic; }
+  .scenario-body { background: var(--white); border: 1px solid var(--border); border-top: none; border-radius: 0 0 10px 10px; padding: 1.1rem; }
+  .options-label { font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.7rem; }
+  .options-label .cy { display: inline; }
+  .options { display: flex; flex-direction: column; gap: 0.5rem; }
+  .option { border: 1.5px solid var(--border); border-radius: 8px; padding: 0.8rem 1rem; cursor: pointer; font-size: 13px; line-height: 1.5; color: var(--text); transition: all 0.15s; background: var(--white); text-align: left; width: 100%; }
+  .option .cy { display: block; font-size: 0.88em; color: var(--mid); margin-top: 3px; opacity: 0.85; }
+  .option:hover:not(:disabled) { border-color: var(--accent); background: #fdf8f7; }
+  .option.correct { border-color: var(--success); background: var(--success-bg); color: var(--success); }
+  .option.incorrect { border-color: #e8b8b0; background: var(--warn-bg); color: var(--accent); }
+  .option:disabled { cursor: default; }
+  .feedback { margin-top: 1rem; padding: 0.9rem 1.1rem; border-radius: 8px; font-size: 13px; line-height: 1.6; display: none; }
+  .feedback.correct-fb { background: var(--success-bg); border-left: 4px solid var(--success); color: #1a4a35; }
+  .feedback.incorrect-fb { background: var(--warn-bg); border-left: 4px solid var(--accent); color: #7a2e22; }
+  .feedback.show { display: block; }
+  .feedback strong { display: block; margin-bottom: 4px; }
+  .feedback .cy { display: block; font-size: 0.9em; opacity: 0.85; margin-top: 4px; }
+  .try-again { margin-top: 0.75rem; font-size: 12px; color: var(--muted); background: none; border: 1px solid var(--border); border-radius: 6px; padding: 5px 14px; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .try-again:hover { background: var(--cream); }
+
+  /* ── SCORE ── */
+  .score-card { background: var(--dark); color: white; border-radius: 10px; padding: 1.5rem; margin-top: 1.5rem; text-align: center; display: none; }
+  .score-card.show { display: block; }
+  .score-big { font-size: 48px; font-weight: 500; font-family: 'Lora', serif; color: var(--mid); }
+  .score-label { font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 1rem; }
+  .score-label .cy { display: block; font-size: 0.9em; opacity: 0.85; }
+  .score-msg { font-size: 13.5px; color: var(--light); line-height: 1.6; font-style: italic; font-family: 'Lora', serif; }
+  .score-msg .cy { display: block; font-size: 0.88em; opacity: 0.8; margin-top: 4px; }
+  .reset-btn { margin-top: 1rem; background: var(--accent); color: white; border: none; border-radius: 8px; padding: 10px 24px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .reset-btn:hover { opacity: 0.88; }
+
+  /* ── MISC ── */
+  blockquote { font-family: 'Lora', serif; font-style: italic; font-size: 14.5px; color: var(--muted); line-height: 1.7; border-left: 3px solid var(--border); padding: 0.5rem 0 0.5rem 1rem; margin: 1.25rem 0; }
+  blockquote .cy { display: block; font-size: 0.88em; color: var(--mid); opacity: 0.85; margin-top: 4px; }
+  hr { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
+  .sub-head { font-size: 14.5px; font-weight: 500; margin-bottom: 0.7rem; color: var(--text); }
+  .sub-head .cy { display: block; font-size: 0.82em; color: var(--mid); font-weight: 400; }
+
+  /* ── CERTIFICATE MODAL ── */
+  .cert-trigger-box {
+    background: linear-gradient(135deg, #2D3B2D 0%, #3a4a3a 100%);
+    border: 2px solid #B85042;
+    border-radius: 10px;
+    padding: 1.8rem;
+    margin: 1.5rem 0 0;
+    text-align: center;
+    display: none;
+  }
+  .cert-trigger-box.show { display: block; }
+  .cert-trigger-box h3 { font-family: 'Lora', serif; color: #F7F2ED; font-size: 1.15rem; margin-bottom: 0.3rem; }
+  .cert-trigger-box h3 .cy { display: block; font-size: 0.78em; color: #84B59F; font-style: italic; }
+  .cert-trigger-box p { color: rgba(255,255,255,0.65); font-size: 0.88rem; margin-bottom: 1.1rem; line-height: 1.6; }
+  .cert-name-row { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; align-items: center; }
+  .cert-name-input { padding: 0.6rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; border: 2px solid rgba(255,255,255,0.2); border-radius: 6px; background: rgba(255,255,255,0.08); color: white; width: 250px; transition: border-color 0.2s; }
+  .cert-name-input::placeholder { color: rgba(255,255,255,0.35); }
+  .cert-name-input:focus { outline: none; border-color: #B85042; }
+  .btn-cert { background: #B85042; color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 0.88rem; font-weight: 600; cursor: pointer; }
+  .btn-cert:hover { background: #a03835; }
+  .cert-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 9999; align-items: center; justify-content: center; padding: 1rem; }
+  .cert-overlay.show { display: flex; }
+  .cert-modal { background: white; border-radius: 4px; width: 100%; max-width: 780px; max-height: 95vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .certificate { width: 100%; background: white; }
+  .cert-frame { margin: 16px; border: 3px solid #2D3B2D; position: relative; }
+  .cert-frame::before { content: ''; position: absolute; inset: 5px; border: 1px solid #B85042; pointer-events: none; z-index: 1; }
+  .cert-stripe { height: 5px; background: linear-gradient(90deg, #B85042 0%, #84B59F 50%, #2D3B2D 100%); }
+  .cert-header { background: #2D3B2D; padding: 1.3rem 2rem 1.1rem; text-align: center; }
+  .cert-logo-row { display: flex; align-items: center; justify-content: center; gap: 0.8rem; }
+  .cert-inst-name { font-family: 'Lora', serif; color: white; font-size: 1rem; text-align: left; line-height: 1.2; }
+  .cert-inst-cy { color: #84B59F; font-size: 0.76rem; font-style: italic; display: block; }
+  .cert-body { padding: 1.6rem 2rem; text-align: center; }
+  .cert-presents { font-size: 0.73rem; text-transform: uppercase; letter-spacing: 0.15em; color: #6B7F6B; margin-bottom: 0.4rem; }
+  .cert-main-title { font-family: 'Lora', serif; font-size: 1.4rem; color: #2D3B2D; line-height: 1.2; margin-bottom: 0.2rem; }
+  .cert-main-cy { font-family: 'Lora', serif; font-size: 0.85rem; color: #84B59F; font-style: italic; margin-bottom: 1.2rem; }
+  .cert-awarded-to { font-size: 0.73rem; text-transform: uppercase; letter-spacing: 0.1em; color: #6B7F6B; margin-bottom: 0.2rem; }
+  .cert-name { font-family: 'Lora', serif; font-size: 1.9rem; font-style: italic; color: #B85042; border-bottom: 2px solid #D4C9C0; display: inline-block; padding: 0 1rem 0.1rem; min-width: 260px; margin-bottom: 0.3rem; line-height: 1.3; }
+  .cert-divider { height: 1px; background: linear-gradient(90deg, transparent, #B85042, transparent); margin: 0.9rem auto; width: 55%; }
+  .cert-text { font-size: 0.86rem; color: #2D3B2D; line-height: 1.65; max-width: 440px; margin: 0 auto 0.7rem; }
+  .cert-course { font-family: 'Lora', serif; font-size: 0.95rem; color: #2D3B2D; background: #F7F2ED; border: 1px solid #D4C9C0; border-left: 4px solid #B85042; padding: 0.45rem 0.9rem; display: inline-block; margin-bottom: 0.35rem; text-align: left; }
+  .cert-course-cy { font-size: 0.76rem; color: #84B59F; font-style: italic; display: block; font-family: 'DM Sans', sans-serif; }
+  .cert-competencies { font-size: 0.76rem; color: #6B7F6B; margin: 0.7rem auto 1rem; max-width: 400px; line-height: 1.55; }
+  .cert-footer-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: end; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #D4C9C0; }
+  .cert-sig-block { text-align: center; }
+  .cert-sig-line { height: 1px; background: #2D3B2D; width: 140px; margin: 0 auto 0.25rem; }
+  .cert-sig-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: #6B7F6B; }
+  .cert-seal { width: 64px; height: 64px; border-radius: 50%; background: #2D3B2D; border: 3px solid #B85042; display: flex; align-items: center; justify-content: center; flex-direction: column; color: white; font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.04em; text-align: center; line-height: 1.3; margin: 0 auto; }
+  .cert-seal-icon { font-size: 1.2rem; display: block; margin-bottom: 1px; }
+  .cert-date-val { font-family: 'Lora', serif; font-size: 0.9rem; color: #2D3B2D; }
+  .cert-date-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: #6B7F6B; margin-top: 0.2rem; }
+  .cert-close-row { display: flex; justify-content: center; gap: 1rem; padding: 0.9rem 1.5rem 1.2rem; background: #f5f5f5; flex-wrap: wrap; }
+  .btn-cert-print { background: #2D3B2D; color: white; border: none; padding: 0.55rem 1.2rem; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 0.86rem; font-weight: 600; cursor: pointer; }
+  .btn-cert-close { background: #6B7F6B; color: white; border: none; padding: 0.55rem 1.2rem; border-radius: 6px; font-family: 'DM Sans', sans-serif; font-size: 0.86rem; cursor: pointer; }
+
+</style>
+</head>
+<body>
+
+<!-- Language bar -->
+<div class="lang-bar">
+  <span>Iaith / Language:</span>
+  <button class="lang-btn active" onclick="setLang('both')" id="btn-both">Cymraeg &amp; English</button>
+  <button class="lang-btn" onclick="setLang('cy')" id="btn-cy">Cymraeg yn unig</button>
+  <button class="lang-btn" onclick="setLang('en')" id="btn-en">English only</button>
+</div>
+
+<nav>
+  <div class="nav-brand"><span>📚</span> PGCE Dyniaethau / Humanities</div>
+  <div class="nav-tabs">
+    <div class="nav-tab active" onclick="showTab('overview', this)"><span class="cy">Trosolwg</span><span class="en">Overview</span></div>
+    <div class="nav-tab" onclick="showTab('authority', this)"><span class="cy">Awdurdod</span><span class="en">Authority</span></div>
+    <div class="nav-tab" onclick="showTab('routines', this)"><span class="cy">Trefniadau</span><span class="en">Routines</span></div>
+    <div class="nav-tab" onclick="showTab('behaviour', this)"><span class="cy">Ymddygiad</span><span class="en">Behaviour</span></div>
+    <div class="nav-tab" onclick="showTab('relationships', this)"><span class="cy">Perthnasoedd</span><span class="en">Relationships</span></div>
+    <div class="nav-tab" onclick="showTab('difficult', this)"><span class="cy">Eiliadau Anodd</span><span class="en">Difficult Moments</span></div>
+    <div class="nav-tab" onclick="showTab('scenarios', this)"><span class="cy">Senarios</span><span class="en">Scenarios</span></div>
+  </div>
+</nav>
+
+<!-- ══ OVERVIEW ══ -->
+<div class="section active" id="tab-overview">
+  <div class="hero">
+    <div class="hero-content">
+    <p class="hero-label">PGCE Dyniaethau Uwchradd / Secondary Humanities</p>
+    <h1><span class="cy-h">Rheoli Dosbarth yn Effeithiol</span>Effective Classroom Management</h1>
+    <p><span class="cy-sub">Canllaw ymarferol ar gyfer Ymarfer Clinigol 1 a 2.</span>A practical guide for Clinical Practice 1 &amp; 2 — from first steps through to independent professional practice.</p>
+    <div class="badges">
+      <span class="badge badge-cp1">YC1 / CP1</span>
+      <span class="badge badge-cp2">YC2 / CP2</span>
+    </div>
+    </div>
+    <!-- British classroom hero illustration -->
+    <div class="hero-illustration">
+      <svg viewBox="0 0 420 280" xmlns="http://www.w3.org/2000/svg">
+        <rect width="420" height="280" fill="#1a2e1a"/>
+        <rect x="0" y="208" width="420" height="72" fill="#243624"/>
+        <rect x="0" y="0" width="420" height="18" fill="#162816"/>
+        <!-- Strip lighting -->
+        <rect x="60" y="0" width="55" height="11" rx="2" fill="#d4e8d0" opacity="0.55"/>
+        <rect x="250" y="0" width="55" height="11" rx="2" fill="#d4e8d0" opacity="0.55"/>
+        <!-- IWB -->
+        <rect x="22" y="22" width="210" height="145" rx="4" fill="#f0f4f8"/>
+        <rect x="22" y="22" width="210" height="8" rx="3" fill="#84B59F"/>
+        <rect x="22" y="22" width="210" height="145" rx="4" fill="none" stroke="#6B7F6B" stroke-width="2.5"/>
+        <rect x="38" y="40" width="100" height="8" rx="2" fill="#2D3B2D" opacity="0.7"/>
+        <rect x="38" y="56" width="65" height="5" rx="2" fill="#B85042" opacity="0.8"/>
+        <rect x="38" y="66" width="120" height="4" rx="2" fill="#84B59F" opacity="0.5"/>
+        <rect x="38" y="74" width="100" height="4" rx="2" fill="#84B59F" opacity="0.45"/>
+        <rect x="38" y="82" width="110" height="4" rx="2" fill="#84B59F" opacity="0.45"/>
+        <!-- IWB projector -->
+        <rect x="102" y="13" width="30" height="10" rx="2" fill="#5a5a5a"/>
+        <circle cx="117" cy="18" r="3" fill="#3a3a3a"/>
+        <!-- Map on board -->
+        <rect x="148" y="32" width="75" height="125" rx="2" fill="#c8dfe8" opacity="0.4"/>
+        <path d="M162,68 Q175,50 192,62 Q205,74 208,88 Q200,105 185,110 Q168,115 160,98 Q155,82 162,68Z" fill="#84B59F" opacity="0.5"/>
+        <!-- Wales highlight -->
+        <path d="M162,96 Q172,88 182,95 Q186,106 176,112 Q166,117 160,108 Q157,100 162,96Z" fill="#B85042" opacity="0.55"/>
+        <!-- Board tray -->
+        <rect x="22" y="164" width="210" height="5" rx="1" fill="#6B7F6B"/>
+        <!-- Teacher - lanyard, smart-casual -->
+        <circle cx="288" cy="95" r="18" fill="#f0c8a0"/>
+        <path d="M270,88 Q288,68 306,88" fill="#3a2010"/>
+        <rect x="276" y="115" width="24" height="42" rx="5" fill="#2D3B2D"/>
+        <!-- Lanyard -->
+        <rect x="286" y="115" width="4" height="22" rx="2" fill="#B85042" opacity="0.85"/>
+        <rect x="283" y="135" width="8" height="6" rx="2" fill="#e8f4f0" opacity="0.7"/>
+        <polygon points="281,115 288,132 281,150" fill="#1a2a1a"/>
+        <polygon points="295,115 288,132 295,150" fill="#1a2a1a"/>
+        <rect x="250" y="122" width="30" height="9" rx="4" fill="#2D3B2D" transform="rotate(22,265,126)"/>
+        <ellipse cx="246" cy="134" rx="9" ry="7" fill="#f0c8a0"/>
+        <rect x="300" y="122" width="30" height="9" rx="4" fill="#2D3B2D" transform="rotate(-18,315,126)"/>
+        <ellipse cx="328" cy="131" rx="9" ry="7" fill="#f0c8a0"/>
+        <rect x="279" y="157" width="12" height="28" rx="4" fill="#1a2a1a"/>
+        <rect x="291" y="157" width="12" height="28" rx="4" fill="#1a2a1a"/>
+        <path d="M281,107 Q288,115 295,107" stroke="#c0805a" stroke-width="2" fill="none"/>
+        <circle cx="282" cy="100" r="2.5" fill="#2a1508"/>
+        <circle cx="294" cy="100" r="2.5" fill="#2a1508"/>
+        <!-- Classroom displays: Welsh dragon + house points -->
+        <rect x="245" y="22" width="60" height="80" rx="3" fill="#B85042" opacity="0.7"/>
+        <rect x="250" y="28" width="50" height="7" rx="2" fill="white" opacity="0.6"/>
+        <rect x="250" y="39" width="40" height="4" rx="1" fill="white" opacity="0.4"/>
+        <rect x="250" y="47" width="45" height="4" rx="1" fill="white" opacity="0.4"/>
+        <!-- Dragon shape -->
+        <rect x="250" y="56" width="50" height="38" rx="2" fill="#8a1a0a" opacity="0.45"/>
+        <path d="M264,82 Q273,65 284,74 Q291,65 295,76 Q298,88 286,93 Q274,97 266,90 Q260,84 264,82Z" fill="#cc2200" opacity="0.7"/>
+        <!-- Sash window -->
+        <rect x="350" y="22" width="62" height="100" rx="2" fill="#c8dfe8" opacity="0.35"/>
+        <rect x="350" y="22" width="62" height="4" fill="#5a7a5a" opacity="0.4"/>
+        <rect x="350" y="70" width="62" height="4" fill="#5a7a5a" opacity="0.4"/>
+        <line x1="381" y1="22" x2="381" y2="122" stroke="#5a7a5a" stroke-width="1.5" opacity="0.35"/>
+        <!-- Students - school uniform (navy jumper, tie) -->
+        <rect x="22" y="188" width="58" height="38" rx="3" fill="#3a5c3a"/>
+        <rect x="90" y="188" width="58" height="38" rx="3" fill="#3a5c3a"/>
+        <rect x="158" y="188" width="58" height="38" rx="3" fill="#3a5c3a"/>
+        <rect x="226" y="188" width="58" height="38" rx="3" fill="#3a5c3a"/>
+        <rect x="294" y="188" width="58" height="38" rx="3" fill="#3a5c3a"/>
+        <rect x="362" y="188" width="52" height="38" rx="3" fill="#3a5c3a"/>
+        <!-- Students row 1 -->
+        <circle cx="51" cy="176" r="12" fill="#f0c8a0"/>
+        <rect x="43" y="188" width="16" height="10" rx="2" fill="#1a3a6a"/>
+        <circle cx="119" cy="176" r="12" fill="#d4956a"/>
+        <rect x="111" y="188" width="16" height="10" rx="2" fill="#1a3a6a"/>
+        <circle cx="187" cy="176" r="12" fill="#e8b090"/>
+        <rect x="179" y="188" width="16" height="10" rx="2" fill="#1a3a6a"/>
+        <circle cx="255" cy="176" r="12" fill="#c8805a"/>
+        <rect x="247" y="188" width="16" height="10" rx="2" fill="#1a3a6a"/>
+        <circle cx="323" cy="176" r="12" fill="#f0d4b0"/>
+        <rect x="315" y="188" width="16" height="10" rx="2" fill="#1a3a6a"/>
+        <circle cx="388" cy="176" r="12" fill="#d08060"/>
+        <rect x="380" y="188" width="16" height="10" rx="2" fill="#1a3a6a"/>
+        <!-- Exercise books on desks -->
+        <rect x="26" y="194" width="38" height="26" rx="2" fill="#e8f0e8" opacity="0.75"/>
+        <rect x="94" y="194" width="38" height="26" rx="2" fill="#e8f0e8" opacity="0.75"/>
+        <rect x="162" y="194" width="38" height="26" rx="2" fill="#e8f0e8" opacity="0.75"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="section-num-pill">Eich taith / Your journey</div>
+  <h2 class="section-title"><span class="cy">Dau Leoliad, Un Dilyniant</span>Two Placements, One Progression</h2>
+  <p class="section-intro"><span class="cy">Mae pob ymarfer clinigol yn adeiladu ar yr un diwethaf.</span>Each clinical practice builds on the last. What you learn in CP1 becomes the foundation you refine in CP2.</p>
+
+  <div class="cp-grid">
+    <div class="cp-card">
+      <div class="cp-header cp1-header">
+        <h3><span class="cy">Ymarfer Clinigol 1</span>Clinical Practice 1</h3>
+        <p><span class="cy">Sylfeini ac arbrofi</span>Foundations &amp; experimentation</p>
+      </div>
+      <div class="cp-body">
+        <p class="cp-item"><span class="cy">Arsylwi cyn cymryd drosodd — dysgwch ddiwylliant yr ysgol</span>Observe before you take over — learn the culture of the school</p>
+        <p class="cp-item"><span class="cy">Cyddysgu a gwaith grŵp bach</span>Begin with co-teaching and small group work</p>
+        <p class="cp-item"><span class="cy">Sefydlu eich trefniadau cyntaf</span>Establish your first routines and procedures</p>
+        <p class="cp-item"><span class="cy">Disgwyliwch gamgymeriadau — dyma'r cam dysgu</span>Expect mistakes — this is the learning phase</p>
+        <p class="cp-item"><span class="cy">Defnyddiwch ddosbarth eich mentor i arbrofi</span>Use your mentor's class as a safe space to experiment</p>
+      </div>
+    </div>
+    <div class="cp-card">
+      <div class="cp-header cp2-header">
+        <h3><span class="cy">Ymarfer Clinigol 2</span>Clinical Practice 2</h3>
+        <p><span class="cy">Cyfuno ac annibyniaeth</span>Consolidation &amp; independence</p>
+      </div>
+      <div class="cp-body">
+        <p class="cp-item"><span class="cy">Cymryd cyfrifoldeb llawn am eich amserlen</span>Take full ownership of your timetable and classes</p>
+        <p class="cp-item"><span class="cy">Mireinio trefniadau o YC1</span>Refine and build on routines from CP1</p>
+        <p class="cp-item"><span class="cy">Gwahaniaethu ar gyfer dysgwyr Dyniaethau amrywiol</span>Differentiate for diverse humanities learners</p>
+        <p class="cp-item"><span class="cy">Ymdrin ag ymddygiad cymhleth yn hyderus</span>Navigate more complex behaviour with more confidence</p>
+        <p class="cp-item"><span class="cy">Datblygu hunaniaeth broffesiynol</span>Develop your professional teacher identity</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-num-pill mid">Beth mae'r canllaw hwn yn ei gwmpasu / What this guide covers</div>
+  <div class="card-grid" style="margin-top:0.75rem;">
+    <div class="card"><div class="card-title"><span class="cy">01 Awdurdod</span>01 Authority</div><div class="card-body"><span class="cy">Ennill hygrededd drwy bresenoldeb, llais a chysondeb.</span>Earning credibility through presence, voice, and consistency.</div></div>
+    <div class="card"><div class="card-title"><span class="cy">02 Trefniadau</span>02 Routines</div><div class="card-body"><span class="cy">Trefniadau mynediad a gadael, trosglwyddiadau, a strwythur gwers.</span>Entry and exit routines, transitions, and lesson structure.</div></div>
+    <div class="card"><div class="card-title"><span class="cy">03 Ymddygiad</span>03 Behaviour</div><div class="card-body"><span class="cy">Strategaethau rhagweithiol a phryd i uwchgyfeirio.</span>Proactive strategies and when to escalate.</div></div>
+    <div class="card"><div class="card-title"><span class="cy">04 Perthnasoedd</span>04 Relationships</div><div class="card-body"><span class="cy">Yr offeryn rheoli dosbarth mwyaf pwerus sydd gennych.</span>The most powerful classroom management tool you have.</div></div>
+    <div class="card"><div class="card-title"><span class="cy">05 Eiliadau Anodd</span>05 Difficult Moments</div><div class="card-body"><span class="cy">Beth i'w wneud pan nad yw pethau'n mynd yn ôl y cynllun.</span>What to do when things don't go to plan.</div></div>
+    <div class="card"><div class="card-title"><span class="cy">06 Senarios</span>06 Scenarios</div><div class="card-body"><span class="cy">Ymarfer sefyllfaoedd go iawn — dewiswch eich ymateb.</span>Practice real situations — choose your response.</div></div>
+  </div>
+
+  <div class="tip-box">
+    <p class="tip-label"><span class="cy">Ar gyfer athrawon Dyniaethau /</span> For Humanities teachers</p>
+    <p><span class="cy">Mae ystafelloedd Daearyddiaeth, Hanes ac RhGBh yn rhannu heriau cyffredin. Mae'r canllaw hwn wedi'i adeiladu gyda'r cyd-destunau penodol hynny mewn golwg.</span>Geography, History, and RVE classrooms share common challenges — discussion-heavy lessons, primary source debates, and map/atlas work all create moments where attention can drift. This guide is built with those specific contexts in mind.</p>
+  </div>
+</div>
+
+<!-- ══ AUTHORITY ══ -->
+<div class="section" id="tab-authority">
+  <div class="section-illustration">
+    <svg viewBox="0 0 860 220" xmlns="http://www.w3.org/2000/svg">
+      <rect width="860" height="220" fill="#1e311e"/>
+      <rect x="0" y="168" width="860" height="52" fill="#243624"/>
+      <rect x="0" y="0" width="860" height="18" fill="#162816"/>
+      <rect x="140" y="0" width="65" height="11" rx="2" fill="#d4e8d0" opacity="0.55"/>
+      <rect x="410" y="0" width="65" height="11" rx="2" fill="#d4e8d0" opacity="0.55"/>
+      <rect x="680" y="0" width="65" height="11" rx="2" fill="#d4e8d0" opacity="0.55"/>
+      <!-- UK corridor wall colour - blue/grey institutional paint -->
+      <rect x="0" y="18" width="860" height="150" fill="#1e311e"/>
+      <!-- Corridor display board "Croeso / Welcome" -->
+      <rect x="0" y="18" width="24" height="202" fill="#B85042" opacity="0.55"/>
+      <!-- UK UPVC classroom door -->
+      <rect x="28" y="20" width="128" height="200" rx="3" fill="#2D3B2D"/>
+      <rect x="32" y="23" width="120" height="195" rx="2" fill="#3d5c3d"/>
+      <rect x="40" y="34" width="48" height="82" rx="2" fill="#2a4a2a" opacity="0.55"/>
+      <rect x="94" y="34" width="48" height="82" rx="2" fill="#2a4a2a" opacity="0.55"/>
+      <rect x="40" y="126" width="48" height="82" rx="2" fill="#2a4a2a" opacity="0.55"/>
+      <rect x="94" y="126" width="48" height="82" rx="2" fill="#2a4a2a" opacity="0.55"/>
+      <rect x="128" y="108" width="16" height="5" rx="2" fill="#84B59F"/>
+      <rect x="132" y="105" width="5" height="14" rx="2" fill="#84B59F"/>
+      <!-- Bilingual room sign -->
+      <rect x="54" y="11" width="68" height="18" rx="3" fill="#B85042"/>
+      <text x="88" y="20" font-size="6.5" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="bold">Ystafell / Room 12</text>
+      <!-- Teacher -->
+      <circle cx="196" cy="88" r="22" fill="#f0c8a0"/>
+      <path d="M174,80 Q196,56 218,80" fill="#3a2010"/>
+      <rect x="181" y="112" width="30" height="55" rx="5" fill="#2D3B2D"/>
+      <rect x="193" y="112" width="4" height="26" rx="2" fill="#B85042" opacity="0.85"/>
+      <rect x="190" y="136" width="10" height="7" rx="2" fill="#e8f4f0" opacity="0.7"/>
+      <polygon points="188,112 196,130 188,158" fill="#1a2a1a"/>
+      <polygon points="204,112 196,130 204,158" fill="#1a2a1a"/>
+      <rect x="150" y="120" width="36" height="12" rx="5" fill="#2D3B2D" transform="rotate(26,168,126)"/>
+      <ellipse cx="144" cy="138" rx="11" ry="9" fill="#f0c8a0"/>
+      <rect x="214" y="120" width="36" height="12" rx="5" fill="#2D3B2D" transform="rotate(-18,232,126)"/>
+      <ellipse cx="249" cy="130" rx="11" ry="9" fill="#f0c8a0"/>
+      <rect x="184" y="167" width="13" height="34" rx="4" fill="#1a2a1a"/>
+      <rect x="197" y="167" width="13" height="34" rx="4" fill="#1a2a1a"/>
+      <path d="M186,100 Q196,110 206,100" stroke="#c0805a" stroke-width="2.5" fill="none"/>
+      <circle cx="187" cy="93" r="3" fill="#3a2010"/>
+      <circle cx="205" cy="93" r="3" fill="#3a2010"/>
+      <!-- Bilingual speech bubble -->
+      <rect x="260" y="55" width="175" height="48" rx="10" fill="#84B59F" opacity="0.92"/>
+      <polygon points="260,78 243,86 262,90" fill="#84B59F" opacity="0.92"/>
+      <text x="348" y="74" font-size="12" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="bold">Bore da! / Good morning!</text>
+      <text x="348" y="91" font-size="10" fill="white" text-anchor="middle" font-family="sans-serif" opacity="0.88">Dewch i mewn. / Come on in.</text>
+      <!-- Students in SCHOOL UNIFORM (navy jumper, tie) -->
+      <circle cx="460" cy="95" r="18" fill="#d4956a"/>
+      <path d="M442,87 Q460,66 478,87" fill="#3a1a0a"/>
+      <rect x="448" y="115" width="24" height="40" rx="5" fill="#1a3a6a"/>
+      <rect x="458" y="115" width="6" height="18" rx="2" fill="#B85042" opacity="0.8"/>
+      <rect x="474" y="112" width="18" height="28" rx="4" fill="#5a4a2a" opacity="0.85"/>
+      <rect x="451" y="155" width="11" height="30" rx="3" fill="#1a2a4a"/>
+      <rect x="462" y="155" width="11" height="30" rx="3" fill="#1a2a4a"/>
+      <circle cx="620" cy="98" r="18" fill="#e8b090"/>
+      <path d="M602,88 Q620,67 638,88" fill="#5a3010"/>
+      <rect x="608" y="118" width="24" height="40" rx="5" fill="#1a3a6a"/>
+      <rect x="618" y="118" width="6" height="18" rx="2" fill="#84B59F" opacity="0.8"/>
+      <rect x="634" y="114" width="18" height="28" rx="4" fill="#3a5a8a" opacity="0.85"/>
+      <rect x="611" y="158" width="11" height="28" rx="3" fill="#1a2a4a"/>
+      <rect x="622" y="158" width="11" height="28" rx="3" fill="#1a2a4a"/>
+      <circle cx="762" cy="100" r="18" fill="#c8805a"/>
+      <path d="M744,90 Q762,69 780,90" fill="#2a1a08"/>
+      <rect x="750" y="120" width="24" height="40" rx="5" fill="#1a3a6a"/>
+      <rect x="760" y="120" width="6" height="18" rx="2" fill="#B85042" opacity="0.7"/>
+      <rect x="776" y="116" width="18" height="26" rx="4" fill="#6a4a3a" opacity="0.85"/>
+      <rect x="753" y="160" width="11" height="28" rx="3" fill="#1a2a4a"/>
+      <rect x="764" y="160" width="11" height="28" rx="3" fill="#1a2a4a"/>
+      <!-- Caption -->
+      <rect x="0" y="196" width="860" height="24" fill="#2D3B2D" opacity="0.88"/>
+      <text x="430" y="212" font-size="11" fill="#84B59F" text-anchor="middle" font-family="sans-serif" letter-spacing="0.8">Cyfarchiad wrth y drws — mae eich presenoldeb yn gosod y naws / Greet at the door — your presence sets the tone</text>
+    </svg>
+  </div>
+
+  <div class="section-num-pill">Adran 01 / Section 01</div>
+  <h2 class="section-title"><span class="cy">Sefydlu Awdurdod</span>Establishing Authority</h2>
+  <p class="section-intro"><span class="cy">Enillir awdurdod drwy gysondeb — nid ei fynnu. Mae disgyblion uwchradd yn sylwi ar bopeth.</span>Authority is earned and maintained through consistency — not demanded. Secondary students are acutely alert to fairness and authenticity.</p>
+
+  <div class="card-grid">
+    <div class="card"><div class="card-title"><span class="cy">Presenoldeb</span>Presence</div><div class="card-body"><span class="cy">Safwch wrth y drws. Byddwch yn dawel ac yn bwrpasol. Mae'ch presenoldeb yn gosod y naws.</span>Stand at the door as students arrive. Be calm, upright, and purposeful. Your physical presence sets the tone before a word is spoken.</div></div>
+    <div class="card"><div class="card-title"><span class="cy">Llais</span>Voice</div><div class="card-body"><span class="cy">Siaradwch yn glir ar gyflymder cymedrol. Iselwch eich tôn — peidiwch â chodi eich llais.</span>Speak clearly at a moderate pace. Lower your pitch when asserting — don't raise your volume. A quieter voice often commands more attention than a loud one.</div></div>
+    <div class="card"><div class="card-title"><span class="cy">Cysondeb</span>Consistency</div><div class="card-body"><span class="cy">Cymhwyswch yr un rheolau i bob disgybl, pob gwers. Mae anghysondeb yn tanseilio hygrededd.</span>Apply the same rules to every student, every lesson. Inconsistency is the fastest way to lose credibility with a secondary class.</div></div>
+  </div>
+  <hr>
+  <div class="section-num-pill mid">Strategaethau ymarferol / Practical strategies</div>
+  <div class="steps" style="margin-top:0.75rem;">
+    <div class="step"><div class="step-num">→</div><div class="step-content"><div class="step-title"><span class="cy">Peidiwch byth â gwneud bygythiad na fyddwch yn ei gyflawni</span>Never make a threat you won't follow through</div><div class="step-desc"><span class="cy">Os dywedwch "Mi gadwaf chi ar ôl", byddwch yn barod i wneud hynny. Mae rhybuddion gwag yn dysgu disgyblion na fwriedir cymryd gweithrediad.</span>If you say "I'll keep you behind," be ready to do it. Empty warnings teach students that your words don't mean anything.</div></div></div>
+    <div class="step"><div class="step-num mid">→</div><div class="step-content"><div class="step-title"><span class="cy">Defnyddiwch 'amser cymryd'</span>Use 'take-up time'</div><div class="step-desc"><span class="cy">Ar ôl rhoi cyfarwyddyd, peidiwch â sefyll dros y disgybl yn aros. Trowch i ffwrdd a rhowch eiliad iddynt gydymffurfio heb gynulleidfa.</span>After giving a direction, don't stand over the student waiting. Turn away and give them a moment to comply without an audience. Most students will.</div></div></div>
+    <div class="step"><div class="step-num">→</div><div class="step-content"><div class="step-title"><span class="cy">Gwahanu'r ymddygiad rhag hunaniaeth y disgybl</span>Separate the behaviour from the student</div><div class="step-desc"><span class="cy">"Nid yw'r ymddygiad hwnnw'n dderbyniol yn yr ystafell hon" — nid "Rwyt ti'n ddisgybl aflonyddus."</span>"That behaviour isn't acceptable in this room" is very different from "You're a disruptive student." Always target the action, not the identity.</div></div></div>
+  </div>
+  <blockquote><span class="cy">"Y safle awdurdod cryfaf yw'r un nad yw'r dosbarth yn teimlo'r angen i'w brofi — oherwydd ei fod eisoes yn amlwg."</span>"The strongest position of authority is one the class doesn't feel the need to test — because it is already evident."</blockquote>
+  <div class="tip-box">
+    <p class="tip-label"><span class="cy">Ffocws YC1 /</span> CP1 focus</p>
+    <p><span class="cy">Yn eich lleoliad cyntaf, blaenoriaethwch adeiladu presenoldeb a thôn gyson cyn unrhyw beth arall. Bydd disgyblion yn penderfynu o fewn y ddwy wers gyntaf sut maent yn eich ystyried chi.</span>In your first placement, prioritise building presence and a consistent tone before anything else. Students will decide within the first two lessons how they regard you — make those count.</p>
+  </div>
+</div>
+
+<!-- ══ ROUTINES ══ -->
+<div class="section" id="tab-routines">
+  <div class="section-illustration">
+    <svg viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="860" height="200" fill="#1e311e"/>
+      <rect x="0" y="152" width="860" height="48" fill="#243624"/>
+      <rect x="0" y="0" width="860" height="16" fill="#162816"/>
+      <rect x="95" y="0" width="65" height="10" rx="2" fill="#d4e8d0" opacity="0.55"/>
+      <rect x="395" y="0" width="65" height="10" rx="2" fill="#d4e8d0" opacity="0.55"/>
+      <rect x="695" y="0" width="65" height="10" rx="2" fill="#d4e8d0" opacity="0.55"/>
+      <!-- IWB large and prominent -->
+      <rect x="18" y="14" width="510" height="130" rx="4" fill="#f0f4f8"/>
+      <rect x="18" y="14" width="510" height="8" rx="3" fill="#84B59F"/>
+      <rect x="18" y="14" width="510" height="130" rx="4" fill="none" stroke="#6B7F6B" stroke-width="2.5"/>
+      <!-- IWB projector -->
+      <rect x="238" y="6" width="50" height="10" rx="3" fill="#5a5a5a"/>
+      <circle cx="263" cy="11" r="3.5" fill="#3a3a3a"/>
+      <!-- Board content: bilingual lesson objectives -->
+      <rect x="32" y="28" width="185" height="10" rx="3" fill="#2D3B2D" opacity="0.75"/>
+      <rect x="32" y="46" width="90" height="7" rx="2" fill="#B85042" opacity="0.85"/>
+      <rect x="32" y="57" width="235" height="5" rx="2" fill="#84B59F" opacity="0.5"/>
+      <rect x="32" y="66" width="200" height="5" rx="2" fill="#84B59F" opacity="0.45"/>
+      <rect x="32" y="75" width="220" height="5" rx="2" fill="#84B59F" opacity="0.45"/>
+      <rect x="32" y="84" width="180" height="5" rx="2" fill="#84B59F" opacity="0.4"/>
+      <line x1="260" y1="22" x2="260" y2="134" stroke="#84B59F" stroke-width="1.5" opacity="0.35"/>
+      <!-- Lesson stages - numbered -->
+      <rect x="268" y="24" width="85" height="7" rx="2" fill="#B85042" opacity="0.8"/>
+      <circle cx="280" cy="48" r="9" fill="#B85042" opacity="0.8"/>
+      <text x="280" y="52" font-size="9" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="bold">1</text>
+      <rect x="294" y="44" width="105" height="5" rx="2" fill="#2D3B2D" opacity="0.5"/>
+      <circle cx="280" cy="70" r="9" fill="#84B59F" opacity="0.8"/>
+      <text x="280" y="74" font-size="9" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="bold">2</text>
+      <rect x="294" y="66" width="120" height="5" rx="2" fill="#2D3B2D" opacity="0.5"/>
+      <circle cx="280" cy="92" r="9" fill="#84B59F" opacity="0.8"/>
+      <text x="280" y="96" font-size="9" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="bold">3</text>
+      <rect x="294" y="88" width="110" height="5" rx="2" fill="#2D3B2D" opacity="0.5"/>
+      <circle cx="280" cy="114" r="9" fill="#2D3B2D" opacity="0.6"/>
+      <text x="280" y="118" font-size="9" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="bold">4</text>
+      <rect x="294" y="110" width="90" height="5" rx="2" fill="#2D3B2D" opacity="0.5"/>
+      <!-- Digital timer - common on UK IWBs -->
+      <rect x="402" y="22" width="115" height="105" rx="5" fill="#2D3B2D" opacity="0.1"/>
+      <circle cx="459" cy="74" r="38" fill="none" stroke="#84B59F" stroke-width="3" opacity="0.65"/>
+      <text x="459" y="80" font-size="22" fill="#2D3B2D" text-anchor="middle" font-family="sans-serif" font-weight="bold" opacity="0.68">08:32</text>
+      <text x="459" y="95" font-size="7.5" fill="#6B7F6B" text-anchor="middle" font-family="sans-serif">AMSERYDD / TIMER</text>
+      <!-- Students in uniform at desks -->
+      <rect x="548" y="68" width="72" height="46" rx="3" fill="#3a5c3a"/>
+      <circle cx="584" cy="55" r="15" fill="#f0c8a0"/>
+      <rect x="571" y="68" width="26" height="10" rx="2" fill="#1a3a6a"/>
+      <rect x="554" y="75" width="46" height="32" rx="2" fill="#e8f0e8" opacity="0.75"/>
+      <rect x="558" y="81" width="30" height="4" rx="1" fill="#84B59F" opacity="0.55"/>
+      <rect x="636" y="68" width="72" height="46" rx="3" fill="#3a5c3a"/>
+      <circle cx="672" cy="55" r="15" fill="#d4956a"/>
+      <rect x="659" y="68" width="26" height="10" rx="2" fill="#1a3a6a"/>
+      <rect x="642" y="75" width="46" height="32" rx="2" fill="#e8f0e8" opacity="0.75"/>
+      <rect x="724" y="68" width="72" height="46" rx="3" fill="#3a5c3a"/>
+      <circle cx="760" cy="55" r="15" fill="#e8b090"/>
+      <rect x="747" y="68" width="26" height="10" rx="2" fill="#1a3a6a"/>
+      <rect x="730" y="75" width="46" height="32" rx="2" fill="#e8f0e8" opacity="0.75"/>
+      <rect x="812" y="68" width="45" height="46" rx="3" fill="#3a5c3a"/>
+      <circle cx="835" cy="55" r="14" fill="#c8805a"/>
+      <rect x="548" y="128" width="72" height="44" rx="3" fill="#3a5c3a"/>
+      <circle cx="584" cy="118" r="14" fill="#f0d4b0"/>
+      <rect x="636" y="128" width="72" height="44" rx="3" fill="#3a5c3a"/>
+      <circle cx="672" cy="118" r="14" fill="#d08060"/>
+      <rect x="724" y="128" width="72" height="44" rx="3" fill="#3a5c3a"/>
+      <circle cx="760" cy="118" r="14" fill="#e0a080"/>
+      <rect x="812" y="128" width="45" height="44" rx="3" fill="#3a5c3a"/>
+      <circle cx="835" cy="118" r="13" fill="#f0c090"/>
+      <!-- Caption -->
+      <rect x="0" y="178" width="860" height="22" fill="#2D3B2D" opacity="0.88"/>
+      <text x="430" y="193" font-size="11" fill="#84B59F" text-anchor="middle" font-family="sans-serif" letter-spacing="0.8">Amcanion clir a strwythur gweladwy yn lleihau pryder / Clear objectives and visible structure reduce anxiety</text>
+    </svg>
+  </div>
+
+  <div class="section-num-pill">Adran 02 / Section 02</div>
+  <h2 class="section-title"><span class="cy">Trefniadau a Strwythur</span>Routines &amp; Structure</h2>
+  <p class="section-intro"><span class="cy">Mae disgyblion — hyd yn oed y rhai mwyaf gwrthwynebus — yn teimlo'n fwy diogel mewn amgylchedd strwythuredig.</span>Students — even the most resistant — feel safer in a structured environment. Predictable routines reduce anxiety and lower the likelihood of disruptive behaviour.</p>
+
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-title"><span class="cy">Y drefn mynediad</span>The entry routine</div><div class="step-desc"><span class="cy">Cyfarchiad wrth y drws. Tasg 'ar unwaith' ar y bwrdd. Mae hyn yn cau'r ffenestr aflonyddu.</span>Greet students at the door. Have a 'do now' task on the board so students begin immediately on arrival.<br><br><em style="color:var(--muted)"><span class="cy">Awgrym Dyniaethau: Mae ffynhonnell, cyfran map neu gwestiwn arholiad yn gweithio'n dda.</span>Humanities tip: A source image, map extract, or exam question works well as a do now.</em></div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-title"><span class="cy">Amcanion dysgu clir</span>Clear lesson objectives</div><div class="step-desc"><span class="cy">Rhannwch strwythur y wers ar y dechrau. Pan fydd disgyblion yn gwybod beth sy'n dod, maent yn llai tebygol o grwydro.</span>Share the lesson structure at the outset. When students know what's coming, they are less likely to drift. Use a visible timer for timed tasks.</div></div></div>
+    <div class="step"><div class="step-num mid">3</div><div class="step-content"><div class="step-title"><span class="cy">Trosglwyddiadau</span>Transitions</div><div class="step-desc"><span class="cy">Cynlluniwch pob trosglwyddiad yn benodol. Rhybuddion cyfrif i lawr, yna cyfarwyddyd clir. Mae amwysedd yn meithrin aflonyddwch.</span>Plan explicitly for every transition. Give a countdown: "You have two minutes to finish your notes." Then issue a clear instruction.</div></div></div>
+    <div class="step"><div class="step-num mid">4</div><div class="step-content"><div class="step-title"><span class="cy">Y drefn ymadael</span>The exit routine</div><div class="step-desc"><span class="cy">Terfynwch wersi'n fwriadol — peidiwch â gadael i ddisgyblion bacio'n gynnar. Diswyddwch res wrth res.</span>End lessons deliberately — never let students pack away early. Dismiss row by row or table by table. A calm, controlled exit signals a well-managed lesson.</div></div></div>
+  </div>
+  <div class="tip-box" style="margin-top:1.25rem;">
+    <p class="tip-label"><span class="cy">Mireinio YC2 /</span> CP2 refinement</p>
+    <p><span class="cy">Yn YC2, anelwch at drosglwyddo perchnogaeth trefniadau i ddisgyblion. Dylent wybod y drefn heb i chi egluro bob tro.</span>In CP2, aim to hand ownership of routines to students. They should know the procedure without you having to explain it every time — that's when routines have truly landed.</p>
+  </div>
+  <hr>
+  <h3 class="sub-head"><span class="cy">Yr amgylchedd ystafell ddosbarth</span>Classroom environment</h3>
+  <div class="card-grid">
+    <div class="card"><div class="card-title"><span class="cy">Cynllun eistedd</span>Seating plan</div><div class="card-body"><span class="cy">Defnyddiwch gynllun o'r diwrnod cyntaf. Glynwch wrtho am hanner tymor o leiaf.</span>Use one from day one. Stick to it for at least half a term. Separate problematic pairings early.</div></div>
+    <div class="card"><div class="card-title"><span class="cy">Gwelededd</span>Visibility</div><div class="card-body"><span class="cy">Dylech allu gweld pob disgybl. Symudwch ddesgiau os oes angen.</span>You should be able to see every student from every part of the room. Move desks if needed.</div></div>
+    <div class="card"><div class="card-title"><span class="cy">Arddangosion</span>Displays</div><div class="card-body"><span class="cy">Cadwch y bwrdd yn glir. Mewn Dyniaethau, defnyddiwch linell amser, geirfa neu fanc ffynonellau.</span>Keep the board clear. In humanities, use a timeline, key vocab, or a source bank as an active reference.</div></div>
+  </div>
+</div>
+
+<!-- ══ BEHAVIOUR ══ -->
+<div class="section" id="tab-behaviour">
+  <div class="section-illustration">
+    <svg viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="860" height="200" fill="#1e311e"/>
+      <rect x="0" y="152" width="860" height="48" fill="#243624"/>
+      <rect x="0" y="0" width="860" height="16" fill="#162816"/>
+      <rect x="100" y="0" width="60" height="10" rx="2" fill="#d4e8d0" opacity="0.5"/>
+      <rect x="400" y="0" width="60" height="10" rx="2" fill="#d4e8d0" opacity="0.5"/>
+      <rect x="700" y="0" width="60" height="10" rx="2" fill="#d4e8d0" opacity="0.5"/>
+      <!-- Wall display: "Disgwyliadau Dosbarth / Classroom Expectations" -->
+      <rect x="18" y="18" width="95" height="128" rx="3" fill="#B85042" opacity="0.72"/>
+      <rect x="24" y="26" width="82" height="10" rx="2" fill="white" opacity="0.65"/>
+      <text x="65" y="35" font-size="6" fill="#2D3B2D" text-anchor="middle" font-family="sans-serif" font-weight="bold">DISGWYLIADAU</text>
+      <rect x="24" y="42" width="75" height="4" rx="2" fill="white" opacity="0.42"/>
+      <rect x="24" y="50" width="82" height="4" rx="2" fill="white" opacity="0.38"/>
+      <rect x="24" y="58" width="68" height="4" rx="2" fill="white" opacity="0.38"/>
+      <rect x="24" y="66" width="78" height="4" rx="2" fill="white" opacity="0.35"/>
+      <!-- Welsh dragon -->
+      <rect x="24" y="76" width="82" height="62" rx="2" fill="#8a1a0a" opacity="0.38"/>
+      <path d="M48,122 Q60,100 76,112 Q86,100 92,116 Q97,132 80,138 Q62,143 52,133 Q44,124 48,122Z" fill="#cc2200" opacity="0.65"/>
+      <!-- Desks with students in uniform -->
+      <rect x="270" y="78" width="72" height="46" rx="3" fill="#3a5c3a"/>
+      <circle cx="306" cy="64" r="15" fill="#f0c8a0"/>
+      <rect x="292" y="78" width="28" height="10" rx="2" fill="#1a3a6a"/>
+      <rect x="276" y="85" width="46" height="30" rx="2" fill="#e8f0e8" opacity="0.7"/>
+      <rect x="356" y="78" width="72" height="46" rx="3" fill="#3a5c3a"/>
+      <circle cx="392" cy="64" r="15" fill="#d4956a"/>
+      <rect x="378" y="78" width="28" height="10" rx="2" fill="#1a3a6a"/>
+      <rect x="362" y="85" width="46" height="30" rx="2" fill="#e8f0e8" opacity="0.7"/>
+      <!-- Two off-task students (chatting) - highlighted -->
+      <rect x="440" y="72" width="86" height="52" rx="3" fill="#4a6c4a"/>
+      <rect x="435" y="67" width="96" height="62" rx="3" fill="none" stroke="#B85042" stroke-width="2" stroke-dasharray="5,3" opacity="0.6"/>
+      <circle cx="468" cy="58" r="15" fill="#e8b090"/>
+      <rect x="455" y="72" width="26" height="10" rx="2" fill="#7a5a8a"/>
+      <rect x="442" y="79" width="42" height="30" rx="2" fill="#e8f0e8" opacity="0.6"/>
+      <!-- Speech bubble showing chat -->
+      <rect x="436" y="34" width="65" height="22" rx="7" fill="#B85042" opacity="0.85"/>
+      <polygon points="455,56 462,65 467,56" fill="#B85042" opacity="0.85"/>
+      <text x="469" y="48" font-size="9" fill="white" text-anchor="middle" font-family="sans-serif">psst...</text>
+      <circle cx="518" cy="58" r="15" fill="#c8805a"/>
+      <rect x="505" y="72" width="26" height="10" rx="2" fill="#4a6a8a"/>
+      <!-- Teacher walking calmly towards disruption - lanyard, smart attire -->
+      <circle cx="614" cy="72" r="20" fill="#f0c8a0"/>
+      <path d="M594,64 Q614,44 634,64" fill="#3a2010"/>
+      <rect x="602" y="94" width="24" height="52" rx="5" fill="#2D3B2D"/>
+      <rect x="612" y="94" width="4" height="22" rx="2" fill="#B85042" opacity="0.85"/>
+      <rect x="609" y="114" width="8" height="6" rx="2" fill="#e8f4f0" opacity="0.7"/>
+      <polygon points="608,94 614,110 608,138" fill="#1a2a1a"/>
+      <polygon points="620,94 614,110 620,138" fill="#1a2a1a"/>
+      <!-- Arm pointing towards students -->
+      <rect x="570" y="100" width="38" height="11" rx="5" fill="#2D3B2D" transform="rotate(15,589,105)"/>
+      <ellipse cx="566" cy="110" rx="11" ry="8" fill="#f0c8a0"/>
+      <rect x="628" y="100" width="32" height="11" rx="5" fill="#2D3B2D" transform="rotate(-20,644,105)"/>
+      <ellipse cx="656" cy="112" rx="11" ry="8" fill="#f0c8a0"/>
+      <rect x="606" y="146" width="13" height="28" rx="4" fill="#1a2a1a" transform="rotate(5,612,160)"/>
+      <rect x="618" y="148" width="13" height="28" rx="4" fill="#1a2a1a" transform="rotate(-7,624,162)"/>
+      <path d="M606,83 Q614,92 622,83" stroke="#c0805a" stroke-width="2" fill="none"/>
+      <circle cx="607" cy="76" r="2.5" fill="#3a2010"/>
+      <circle cx="621" cy="76" r="2.5" fill="#3a2010"/>
+      <!-- Motion arrow -->
+      <line x1="558" y1="115" x2="538" y2="115" stroke="#B85042" stroke-width="2" stroke-dasharray="4,3" opacity="0.6"/>
+      <polygon points="538,110 528,115 538,120" fill="#B85042" opacity="0.6"/>
+      <!-- More students right -->
+      <rect x="684" y="78" width="72" height="46" rx="3" fill="#3a5c3a"/>
+      <circle cx="720" cy="64" r="15" fill="#f0d4b0"/>
+      <rect x="706" y="78" width="28" height="10" rx="2" fill="#1a3a6a"/>
+      <rect x="690" y="85" width="46" height="30" rx="2" fill="#e8f0e8" opacity="0.7"/>
+      <rect x="770" y="78" width="80" height="46" rx="3" fill="#3a5c3a"/>
+      <circle cx="810" cy="64" r="15" fill="#d08060"/>
+      <rect x="796" y="78" width="28" height="10" rx="2" fill="#1a3a6a"/>
+      <!-- Caption -->
+      <rect x="0" y="178" width="860" height="22" fill="#2D3B2D" opacity="0.88"/>
+      <text x="430" y="193" font-size="11" fill="#84B59F" text-anchor="middle" font-family="sans-serif" letter-spacing="0.8">Defnyddiwch agosrwydd a signalau di-eiriau gyntaf / Use proximity and non-verbal signals first</text>
+    </svg>
+  </div>
+
+  <div class="section-num-pill">Adran 03 / Section 03</div>
+  <h2 class="section-title"><span class="cy">Rheoli Ymddygiad</span>Behaviour Management</h2>
+  <p class="section-intro"><span class="cy">Mae rheoli ymddygiad effeithiol yn rhagweithiol, nid adweithiol. Mae'r rhan fwyaf o aflonyddwch yn isel-lefel ac yn rheolwy.</span>Effective behaviour management is proactive, not reactive. Most disruption is low-level and can be addressed without escalation.</p>
+
+  <div class="do-dont">
+    <div class="do-card">
+      <h3><span class="cy">GWNEWCH</span>DO</h3>
+      <p class="do-item"><span class="cy">Defnyddiwch signalau di-eiriau yn gyntaf (agosrwydd, edrychiad)</span>Use non-verbal signals first (look, proximity)</p>
+      <p class="do-item"><span class="cy">Rhowch atgoffa dawel, preifat cyn ymyrryd yn gyhoeddus</span>Give a private, quiet reminder before public intervention</p>
+      <p class="do-item"><span class="cy">Defnyddiwch 'amser cymryd' ar ôl cyfarwyddyd</span>Use 'take-up time' after a direction</p>
+      <p class="do-item"><span class="cy">Gwahanu'r ymddygiad rhag hunaniaeth y disgybl</span>Separate behaviour from the student's identity</p>
+      <p class="do-item"><span class="cy">Dilynwch i fyny ar ôl y wers ar faterion difrifol</span>Follow up after the lesson for serious issues</p>
+    </div>
+    <div class="dont-card">
+      <h3><span class="cy">OSGOWCH</span>AVOID</h3>
+      <p class="dont-item"><span class="cy">Dadlau o flaen y dosbarth</span>Arguing or debating in front of the class</p>
+      <p class="dont-item"><span class="cy">Cosbi'r dosbarth cyfan am unigolion</span>Whole-class punishments for individual behaviour</p>
+      <p class="dont-item"><span class="cy">Coegni neu gywilyddio'n gyhoeddus</span>Sarcasm or public humiliation</p>
+      <p class="dont-item"><span class="cy">Uwchgyfeirio digwyddiad isel-lefel yn ddiangen</span>Escalating a low-level incident unnecessarily</p>
+      <p class="dont-item"><span class="cy">Rhoi eich hun mewn sefyllfa amhosib</span>Backing yourself into a corner with ultimatums</p>
+    </div>
+  </div>
+  <div class="tip-box">
+    <p class="tip-label"><span class="cy">Yr sgwrs 30 eiliad /</span> The 30-second conversation</p>
+    <p><span class="cy">Pan fo disgybl yn parhau i fod oddi ar y dasg, plygwch i lawr at ei lefel, siaradwch yn dawel, a gofynnwch: "Beth ddylech chi fod yn ei wneud?" a "Beth sydd ei angen arnoch oddi wrthyf i?"</span>When a student is persistently off-task, crouch to their level, speak quietly, and ask: <strong>"What are you supposed to be doing?"</strong> and <strong>"What do you need from me to do it?"</strong> This depersonalises conflict and shifts agency back to the student.</p>
+  </div>
+  <hr>
+  <div class="section-num-pill mid">Llwybr uwchgyfeirio / Escalation pathway</div>
+  <p style="font-size:13px;color:var(--muted);margin:0.75rem 0 1rem;line-height:1.6;"><span style="display:block;color:var(--mid);font-size:0.9em;">Ceisiwch yr ymyriad ar y lefel isaf bob amser. Mae gan bob ysgol ei system ei hun — dysgwch hon yn yr wythnos gyntaf.</span>Always try the lowest level of intervention first. Every school has its own escalation system — learn yours in week one.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num" style="font-size:11px;background:var(--muted)">L1</div><div class="step-content"><div class="step-title"><span class="cy">Di-eiriau</span>Non-verbal</div><div class="step-desc"><span class="cy">Agosrwydd, edrychiad, oedi. Mae hyn yn datrys y rhan fwyaf o aflonyddwch isel-lefel.</span>Proximity, look, pause. This resolves most low-level disruption without a word spoken.</div></div></div>
+    <div class="step"><div class="step-num" style="font-size:11px;background:var(--mid)">L2</div><div class="step-content"><div class="step-title"><span class="cy">Atgoffa preifat dawel</span>Quiet private reminder</div><div class="step-desc"><span class="cy">Plygwch i lawr. Siaradwch fel mai dim ond y disgybl sy'n clywed. Enwch yr ymddygiad a'r disgwyliad.</span>Crouch down. Speak so only the student hears. Name the behaviour and the expectation.</div></div></div>
+    <div class="step"><div class="step-num" style="font-size:11px;">L3</div><div class="step-content"><div class="step-title"><span class="cy">Dewis clir a chanlyniad</span>Clear choice + consequence</div><div class="step-desc"><span class="cy">"Mae angen i chi [wneud X]. Os nad yw hynny'n digwydd, bydd [canlyniad] yn dilyn." Yna rhowch amser cymryd.</span>"I need you to [do X]. If that doesn't happen, [consequence] will follow." Then give take-up time.</div></div></div>
+    <div class="step"><div class="step-num" style="font-size:11px;background:#7a1b10">L4</div><div class="step-content"><div class="step-title"><span class="cy">Dilynwch bolisi'r ysgol</span>Follow school policy</div><div class="step-desc"><span class="cy">Defnyddiwch system uwchgyfeirio'r ysgol. Cysylltwch â'ch mentor neu bennaeth adran. Barn broffesiynol yw hyn, nid methiant.</span>Use the school's escalation system. Contact your mentor or head of department. This is professional judgment, not failure.</div></div></div>
+  </div>
+</div>
+
+<!-- ══ RELATIONSHIPS ══ -->
+<div class="section" id="tab-relationships">
+  <div class="section-illustration">
+    <svg viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="860" height="200" fill="#1e311e"/>
+      <rect x="0" y="152" width="860" height="48" fill="#243624"/>
+      <rect x="0" y="0" width="860" height="16" fill="#162816"/>
+      <rect x="280" y="0" width="65" height="10" rx="2" fill="#d4e8d0" opacity="0.5"/>
+      <rect x="580" y="0" width="65" height="10" rx="2" fill="#d4e8d0" opacity="0.5"/>
+      <!-- Sash window right -->
+      <rect x="726" y="18" width="114" height="135" rx="2" fill="#c8dfe8" opacity="0.3"/>
+      <line x1="783" y1="18" x2="783" y2="153" stroke="#5a7a5a" stroke-width="2" opacity="0.35"/>
+      <rect x="726" y="18" width="114" height="4" fill="#5a7a5a" opacity="0.4"/>
+      <rect x="726" y="85" width="114" height="4" fill="#5a7a5a" opacity="0.4"/>
+      <polygon points="726,18 840,18 870,153 696,153" fill="#c8dfe8" opacity="0.04"/>
+      <!-- Wall display: "Nod Dysgu / Learning Objective" -->
+      <rect x="18" y="18" width="125" height="130" rx="3" fill="#B85042" opacity="0.7"/>
+      <rect x="26" y="27" width="110" height="10" rx="2" fill="white" opacity="0.65"/>
+      <text x="81" y="36" font-size="6.5" fill="#2D3B2D" text-anchor="middle" font-family="sans-serif" font-weight="bold">NOD DYSGU / OBJECTIVE</text>
+      <rect x="26" y="44" width="92" height="4" rx="2" fill="white" opacity="0.4"/>
+      <rect x="26" y="52" width="105" height="4" rx="2" fill="white" opacity="0.38"/>
+      <rect x="26" y="60" width="88" height="4" rx="2" fill="white" opacity="0.38"/>
+      <rect x="26" y="68" width="96" height="4" rx="2" fill="white" opacity="0.35"/>
+      <rect x="26" y="80" width="110" height="62" rx="2" fill="#8a1a0a" opacity="0.35"/>
+      <path d="M50,130 Q62,108 78,120 Q88,108 95,122 Q100,138 82,144 Q62,150 52,140 Q44,131 50,130Z" fill="#cc2200" opacity="0.65"/>
+      <!-- Teacher crouched - lanyard, British attire -->
+      <circle cx="195" cy="90" r="22" fill="#f0c8a0"/>
+      <path d="M173,82 Q195,58 217,82" fill="#5a3825"/>
+      <rect x="182" y="114" width="26" height="52" rx="5" fill="#B85042"/>
+      <rect x="192" y="114" width="4" height="24" rx="2" fill="#2D3B2D" opacity="0.8"/>
+      <rect x="189" y="136" width="10" height="6" rx="2" fill="#e8f4f0" opacity="0.7"/>
+      <polygon points="188,114 195,132 188,158" fill="#8a2a1a"/>
+      <polygon points="202,114 195,132 202,158" fill="#8a2a1a"/>
+      <rect x="138" y="124" width="48" height="12" rx="6" fill="#B85042" transform="rotate(-10,162,130)"/>
+      <ellipse cx="132" cy="132" rx="12" ry="9" fill="#f0c8a0"/>
+      <rect x="210" y="130" width="52" height="12" rx="6" fill="#B85042" transform="rotate(-12,236,136)"/>
+      <ellipse cx="260" cy="138" rx="12" ry="9" fill="#f0c8a0"/>
+      <rect x="186" y="166" width="13" height="22" rx="4" fill="#1a2a1a" transform="rotate(10,192,177)"/>
+      <rect x="199" y="168" width="13" height="20" rx="4" fill="#1a2a1a" transform="rotate(-8,205,178)"/>
+      <path d="M185,103 Q195,113 205,103" stroke="#c0805a" stroke-width="2.5" fill="none"/>
+      <circle cx="186" cy="95" r="3" fill="#2a1508"/>
+      <circle cx="204" cy="95" r="3" fill="#2a1508"/>
+      <!-- Bilingual speech bubble -->
+      <rect x="18" y="42" width="196" height="46" rx="10" fill="#84B59F" opacity="0.92"/>
+      <polygon points="130,88 138,110 146,88" fill="#84B59F" opacity="0.92"/>
+      <text x="116" y="62" font-size="11" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="bold">Sut wyt ti'n dod ymlaen?</text>
+      <text x="116" y="78" font-size="10" fill="white" text-anchor="middle" font-family="sans-serif" opacity="0.9">How are you getting on?</text>
+      <!-- Student at desk - school uniform -->
+      <rect x="310" y="112" width="105" height="75" rx="4" fill="#3a5c3a"/>
+      <circle cx="362" cy="92" r="22" fill="#d4956a"/>
+      <path d="M340,82 Q362,58 384,82" fill="#3a1a0a"/>
+      <rect x="349" y="114" width="26" height="12" rx="3" fill="#1a3a6a"/>
+      <rect x="358" y="114" width="6" height="10" rx="2" fill="#B85042" opacity="0.7"/>
+      <!-- Exercise book (A4, UK) -->
+      <rect x="316" y="120" width="86" height="58" rx="2" fill="#e8f0e8" opacity="0.85"/>
+      <rect x="316" y="120" width="86" height="7" rx="2" fill="#B85042" opacity="0.35"/>
+      <rect x="322" y="133" width="56" height="4" rx="2" fill="#84B59F" opacity="0.55"/>
+      <rect x="322" y="141" width="45" height="4" rx="2" fill="#84B59F" opacity="0.45"/>
+      <rect x="322" y="149" width="50" height="4" rx="2" fill="#84B59F" opacity="0.45"/>
+      <rect x="322" y="157" width="38" height="4" rx="2" fill="#84B59F" opacity="0.4"/>
+      <rect x="356" y="168" width="30" height="9" rx="3" fill="#5a7a4a" opacity="0.7"/>
+      <path d="M350,106 Q362,116 374,106" stroke="#a06040" stroke-width="2.5" fill="none"/>
+      <circle cx="351" cy="97" r="3.5" fill="#3a1a0a"/>
+      <circle cx="373" cy="97" r="3.5" fill="#3a1a0a"/>
+      <!-- Background students - uniform -->
+      <rect x="450" y="112" width="95" height="75" rx="3" fill="#3a5c3a"/>
+      <circle cx="497" cy="92" r="20" fill="#e8b090"/>
+      <rect x="483" y="114" width="26" height="10" rx="3" fill="#1a3a6a"/>
+      <rect x="456" y="120" width="78" height="58" rx="2" fill="#e8f0e8" opacity="0.75"/>
+      <rect x="580" y="112" width="95" height="75" rx="3" fill="#3a5c3a"/>
+      <circle cx="627" cy="92" r="20" fill="#f0c8a0"/>
+      <rect x="613" y="114" width="26" height="10" rx="3" fill="#1a3a6a"/>
+      <rect x="586" y="120" width="78" height="58" rx="2" fill="#e8f0e8" opacity="0.75"/>
+      <!-- Caption -->
+      <rect x="0" y="178" width="860" height="22" fill="#2D3B2D" opacity="0.88"/>
+      <text x="430" y="193" font-size="11" fill="#84B59F" text-anchor="middle" font-family="sans-serif" letter-spacing="0.8">Perthnasoedd yw'ch offeryn mwyaf pwerus / Relationships are your most powerful tool</text>
+    </svg>
+  </div>
+
+  <div class="section-num-pill">Adran 04 / Section 04</div>
+  <h2 class="section-title"><span class="cy">Adeiladu Perthnasoedd</span>Building Relationships</h2>
+  <p class="section-intro"><span class="cy">Mae disgyblion uwchradd yn arbennig o sensitif i a yw oedolion yn eu gweld nhw go iawn.</span>Secondary students are especially sensitive to whether adults genuinely see them. The relationship you build is your most powerful classroom management tool.</p>
+
+  <blockquote><span class="cy">"Nid yw disgyblion yn poeni faint rydych chi'n ei wybod nes eu bod nhw'n gwybod faint rydych chi'n poeni."</span>"Students don't care how much you know until they know how much you care."</blockquote>
+
+  <h3 class="sub-head"><span class="cy">Rhestr wirio perthnasoedd</span>Relationship checklist</h3>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:0.75rem;"><span style="display:block;color:var(--mid);font-size:0.9em;">Cliciwch bob eitem wrth i chi weithio tuag ati yn ystod eich lleoliad.</span>Click each item as you work towards it during your placement:</p>
+  <div class="checklist" id="checklist">
+    <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span><span class="cy">Dysgwch bob enw mor gyflym â phosib — defnyddiwch gynllun eistedd.</span>Learn every name as fast as possible — use a seating plan from day one</span></div>
+    <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span><span class="cy">Canfyddwch un peth dilys i siarad amdano gyda phob disgybl.</span>Find one genuine thing to talk to each student about beyond the subject</span></div>
+    <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span><span class="cy">Dangoswch ddiddordeb mewn ymdrech, nid dim ond cyrhaeddiad.</span>Show interest in effort and process, not just attainment and grades</span></div>
+    <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span><span class="cy">Atgyweiriwch ar ôl digwyddiadau — peidiwch â chario gwers ddoe i mewn i heddiw.</span>Repair after incidents — don't carry yesterday's lesson into today's</span></div>
+    <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span><span class="cy">Byddwch yn onest pan nad ydych chi'n gwybod rhywbeth.</span>Be honest when you don't know something — credibility survives honesty</span></div>
+    <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span><span class="cy">Cadwch addewidion bychain: darllen eu gwaith, ymateb iddynt.</span>Follow through on small promises: reading their work, getting back to them</span></div>
+    <div class="check-item" onclick="toggleCheck(this)"><div class="check-box"></div><span><span class="cy">Cydnabyddwch gynnydd — mae gair tawel ar ddiwedd gwers yn mynd ymhell.</span>Acknowledge and celebrate progress — a quiet word at the end of a lesson goes a long way</span></div>
+  </div>
+  <div id="checklist-progress" style="margin-top:1rem;padding:1rem;background:var(--white);border:1px solid var(--border);border-radius:8px;display:none;">
+    <div style="font-size:12px;color:var(--muted);margin-bottom:0.4rem;"><span style="display:block;color:var(--mid);font-size:0.9em;">Eich cynnydd / Your progress:</span> <span id="progress-count">0</span>/7</div>
+    <div style="background:var(--border);border-radius:999px;height:6px;"><div id="progress-bar" style="width:0%;background:var(--mid);height:100%;border-radius:999px;transition:width 0.4s;"></div></div>
+  </div>
+  <hr>
+  <div class="tip-box">
+    <p class="tip-label"><span class="cy">Cyd-destun Dyniaethau /</span> Humanities context</p>
+    <p><span class="cy">Gall pynciau sy'n seiliedig ar drafodaeth fel Hanes ac RhGBh deimlo'n bersonol i ddisgyblion. Byddwch yn sylwgar i ddisgyblion sy'n mynd yn dawel pan fo pynciau sensitif yn codi.</span>Discussion-based subjects like History and RVE can feel personal for students. Be attentive to students who go quiet when sensitive topics arise — a discreet check-in after class can build significant trust.</p>
+  </div>
+</div>
+
+<!-- ══ DIFFICULT ══ -->
+<div class="section" id="tab-difficult">
+  <div class="section-illustration">
+    <svg viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg">
+      <rect width="860" height="200" fill="#1e311e"/>
+      <rect x="0" y="152" width="860" height="48" fill="#243624"/>
+      <rect x="0" y="0" width="860" height="16" fill="#162816"/>
+      <rect x="200" y="0" width="65" height="10" rx="2" fill="#d4e8d0" opacity="0.5"/>
+      <rect x="600" y="0" width="65" height="10" rx="2" fill="#d4e8d0" opacity="0.5"/>
+      <!-- IWB -->
+      <rect x="18" y="18" width="290" height="128" rx="4" fill="#f0f4f8"/>
+      <rect x="18" y="18" width="290" height="8" rx="3" fill="#84B59F"/>
+      <rect x="18" y="18" width="290" height="128" rx="4" fill="none" stroke="#6B7F6B" stroke-width="2.5"/>
+      <rect x="30" y="34" width="155" height="9" rx="3" fill="#2D3B2D" opacity="0.7"/>
+      <rect x="30" y="50" width="210" height="5" rx="2" fill="#84B59F" opacity="0.5"/>
+      <rect x="30" y="60" width="185" height="5" rx="2" fill="#84B59F" opacity="0.4"/>
+      <rect x="30" y="70" width="200" height="5" rx="2" fill="#84B59F" opacity="0.4"/>
+      <!-- TEACHER composed - lanyard, standing straight -->
+      <circle cx="400" cy="68" r="22" fill="#f0c8a0"/>
+      <path d="M378,60 Q400,38 422,60" fill="#2a1508"/>
+      <rect x="387" y="92" width="26" height="52" rx="6" fill="#2D3B2D"/>
+      <rect x="397" y="92" width="4" height="24" rx="2" fill="#B85042" opacity="0.85"/>
+      <rect x="394" y="114" width="8" height="6" rx="2" fill="#e8f4f0" opacity="0.7"/>
+      <polygon points="393,92 400,110 393,136" fill="#1a2a1a"/>
+      <polygon points="407,92 400,110 407,136" fill="#1a2a1a"/>
+      <rect x="362" y="100" width="30" height="11" rx="5" fill="#2D3B2D" transform="rotate(10,377,105)"/>
+      <ellipse cx="357" cy="111" rx="10" ry="8" fill="#f0c8a0"/>
+      <!-- Clipboard in hand - typical teacher prop -->
+      <rect x="416" y="92" width="28" height="38" rx="3" fill="#e8f4e8"/>
+      <rect x="418" y="97" width="22" height="4" rx="1" fill="#6B7F6B" opacity="0.6"/>
+      <rect x="418" y="105" width="18" height="4" rx="1" fill="#6B7F6B" opacity="0.5"/>
+      <rect x="418" y="113" width="20" height="4" rx="1" fill="#6B7F6B" opacity="0.5"/>
+      <ellipse cx="442" cy="130" rx="9" ry="7" fill="#f0c8a0"/>
+      <rect x="388" y="144" width="14" height="30" rx="4" fill="#1a2a1a"/>
+      <rect x="402" y="144" width="14" height="30" rx="4" fill="#1a2a1a"/>
+      <path d="M390,80 Q400,90 410,80" stroke="#c0805a" stroke-width="2.5" fill="none"/>
+      <circle cx="391" cy="72" r="3" fill="#2a1508"/>
+      <circle cx="409" cy="72" r="3" fill="#2a1508"/>
+      <!-- PAUSE thought indicator with Welsh text -->
+      <circle cx="344" cy="44" r="28" fill="#84B59F" opacity="0.14" stroke="#84B59F" stroke-width="1.5"/>
+      <circle cx="344" cy="44" r="18" fill="#84B59F" opacity="0.18"/>
+      <text x="344" y="39" font-size="8.5" fill="#84B59F" text-anchor="middle" font-family="sans-serif" font-weight="bold">OEDWCH</text>
+      <text x="344" y="51" font-size="7.5" fill="#84B59F" text-anchor="middle" font-family="sans-serif">PAUSE</text>
+      <circle cx="362" cy="65" r="3.5" fill="#84B59F" opacity="0.5"/>
+      <circle cx="370" cy="75" r="4.5" fill="#84B59F" opacity="0.35"/>
+      <!-- Students at desks - uniform -->
+      <rect x="490" y="72" width="72" height="48" rx="3" fill="#3a5c3a"/>
+      <circle cx="526" cy="58" r="15" fill="#e8b090"/>
+      <rect x="512" y="72" width="28" height="10" rx="2" fill="#1a3a6a"/>
+      <rect x="496" y="80" width="48" height="32" rx="2" fill="#e8f0e8" opacity="0.6"/>
+      <rect x="576" y="72" width="72" height="48" rx="3" fill="#3a5c3a"/>
+      <circle cx="612" cy="58" r="15" fill="#d4956a"/>
+      <rect x="598" y="72" width="28" height="10" rx="2" fill="#1a3a6a"/>
+      <rect x="662" y="72" width="72" height="48" rx="3" fill="#3a5c3a"/>
+      <circle cx="698" cy="58" r="15" fill="#f0c8a0"/>
+      <rect x="684" y="72" width="28" height="10" rx="2" fill="#1a3a6a"/>
+      <rect x="748" y="72" width="100" height="48" rx="3" fill="#3a5c3a"/>
+      <circle cx="798" cy="58" r="15" fill="#c8805a"/>
+      <rect x="490" y="132" width="72" height="42" rx="3" fill="#3a5c3a"/>
+      <circle cx="526" cy="122" r="13" fill="#f0d4b0"/>
+      <rect x="576" y="132" width="72" height="42" rx="3" fill="#3a5c3a"/>
+      <circle cx="612" cy="122" r="13" fill="#d08060"/>
+      <rect x="662" y="132" width="72" height="42" rx="3" fill="#3a5c3a"/>
+      <circle cx="698" cy="122" r="13" fill="#e0a070"/>
+      <rect x="748" y="132" width="100" height="42" rx="3" fill="#3a5c3a"/>
+      <circle cx="798" cy="122" r="13" fill="#f0c090"/>
+      <!-- Caption -->
+      <rect x="0" y="178" width="860" height="22" fill="#2D3B2D" opacity="0.88"/>
+      <text x="430" y="193" font-size="11" fill="#84B59F" text-anchor="middle" font-family="sans-serif" letter-spacing="0.8">Oedwch ddwy eiliad — mae disgyblion yn darllen eich cyflwr emosiynol / Two-second pause models calm</text>
+    </svg>
+  </div>
+
+  <div class="section-num-pill">Adran 05 / Section 05</div>
+  <h2 class="section-title"><span class="cy">Llywio Eiliadau Anodd</span>Navigating Difficult Moments</h2>
+  <p class="section-intro"><span class="cy">Mae pob athro yn wynebu eiliadau sy'n cynyddu'n annisgwyl. Sut rydych chi'n ymateb sy'n bwysig fwyaf.</span>Every teacher faces moments that escalate unexpectedly. How you respond matters more than whether it happened at all.</p>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-content"><div class="step-title"><span class="cy">Oedwch cyn ymateb</span>Pause before responding</div><div class="step-desc"><span class="cy">Cymerwch anadl. Mae oedi dwy eiliad yn modelu tawelwch. Mae disgyblion yn darllen eich cyflwr emosiynol yn syth.</span>Take a breath. A two-second pause models calm and buys you time to respond rather than react. Students read your emotional state immediately.</div></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-content"><div class="step-title"><span class="cy">Lleihau'r gynulleidfa</span>Reduce the audience</div><div class="step-desc"><span class="cy">Symuder gwrthdaro o'r gofod dosbarth cyfan lle bo'n bosib. Gofynnwch i'r disgybl fynd allan yn dawel, yna dilynwch.</span>Move confrontations out of the whole-class space where possible. Ask the student to step outside briefly, then follow. Public confrontations rarely end well.</div></div></div>
+    <div class="step"><div class="step-num mid">3</div><div class="step-content"><div class="step-title"><span class="cy">Ceisiwch gefnogaeth yn gynnar</span>Seek support early</div><div class="step-desc"><span class="cy">Dysgwch lwybr uwchgyfeirio'r ysgol. Mae ei ddefnyddio'n arwydd o farn broffesiynol, nid methiant. Cysylltwch â'ch mentor yr un diwrnod.</span>Know your school's escalation pathway. Using it is professional judgment, not failure. Loop in your mentor the same day.</div></div></div>
+    <div class="step"><div class="step-num mid">4</div><div class="step-content"><div class="step-title"><span class="cy">Adlewyrchwch, peidiwch â rhugl</span>Reflect, don't ruminate</div><div class="step-desc"><span class="cy">Ar ôl gwers anodd, ysgrifennwch beth ddigwyddodd yn ffeithiol, beth wnaethoch chi, a beth fyddech chi'n ei wneud yn wahanol. Yna caewch y llyfr.</span>After a difficult lesson, write down what happened factually, what you did, and what you'd try differently. Then close the notebook and move on.</div></div></div>
+  </div>
+  <hr>
+  <div class="section-num-pill mid">Cynnal eich hun / Sustaining yourself</div>
+  <div class="card-grid" style="margin-top:0.75rem;">
+    <div class="card"><div class="card-title"><span class="cy">Eich mentor</span>Your mentor</div><div class="card-body"><span class="cy">Defnyddiwch amser mentor ar gyfer y pethau go iawn — nid dim ond cynllunio gwers.</span>Use mentor time for the real stuff — not just lesson plans. They have navigated what you're facing.</div></div>
+    <div class="card"><div class="card-title"><span class="cy">Cymorth cyfoedion</span>Peer support</div><div class="card-body"><span class="cy">Mae myfyrwyr TGAU eraill yn cael profiadau cyfochrog. Mae normaleiddi anawsterau gyda'i gilydd yn amddiffynnol.</span>Other PGCE students are having parallel experiences. Normalising difficulty together is protective.</div></div>
+    <div class="card"><div class="card-title"><span class="cy">Persbectif</span>Perspective</div><div class="card-body"><span class="cy">Ni fyddwch yn rheoli pob dosbarth yn berffaith. Gwella'n raddol yw'r nod.</span>You will not manage every class perfectly. Steady improvement is the goal, not mastery by week four.</div></div>
+  </div>
+  <div class="tip-box" style="margin-top:1rem;">
+    <p class="tip-label"><span class="cy">Cofiwch /</span> Remember</p>
+    <p><span class="cy">Mae rheoli dosbarth yn sgil — mae'n cael ei ddysgu ac ei fireinio dros flynyddoedd. Mae'r ffaith eich bod yn meddwl yn ofalus amdano eisoes yn eich rhoi ar y blaen.</span>Classroom management is a skill — it is learned, practised, and refined over years. The fact that you are thinking carefully about it already puts you ahead of where many teachers begin.</p>
+  </div>
+</div>
+
+<!-- ══ SCENARIOS ══ -->
+<div class="section" id="tab-scenarios">
+  <div class="section-illustration">
+    <svg viewBox="0 0 860 175" xmlns="http://www.w3.org/2000/svg">
+      <rect width="860" height="175" fill="#1e311e"/>
+      <rect x="0" y="136" width="860" height="39" fill="#243624"/>
+      <rect x="0" y="0" width="860" height="16" fill="#162816"/>
+      <rect x="290" y="0" width="65" height="10" rx="2" fill="#d4e8d0" opacity="0.55"/>
+      <rect x="540" y="0" width="65" height="10" rx="2" fill="#d4e8d0" opacity="0.55"/>
+      <rect x="22" y="80" width="830" height="48" fill="#243624" opacity="0.35"/>
+      <rect x="28" y="82" width="60" height="42" rx="2" fill="#3a5c3a" opacity="0.7"/>
+      <rect x="100" y="82" width="60" height="42" rx="2" fill="#3a5c3a" opacity="0.7"/>
+      <rect x="172" y="82" width="60" height="42" rx="2" fill="#3a5c3a" opacity="0.7"/>
+      <rect x="540" y="82" width="60" height="42" rx="2" fill="#3a5c3a" opacity="0.7"/>
+      <rect x="612" y="82" width="60" height="42" rx="2" fill="#3a5c3a" opacity="0.7"/>
+      <rect x="684" y="82" width="60" height="42" rx="2" fill="#3a5c3a" opacity="0.7"/>
+      <rect x="756" y="82" width="60" height="42" rx="2" fill="#3a5c3a" opacity="0.7"/>
+      <!-- Student figures - uniform -->
+      <circle cx="58" cy="74" r="11" fill="#f0c8a0" opacity="0.5"/>
+      <rect cx="52" cy="82" rx="2" ry="2" fill="#1a3a6a" opacity="0.5"/>
+      <circle cx="130" cy="74" r="11" fill="#d4956a" opacity="0.5"/>
+      <circle cx="202" cy="74" r="11" fill="#e8b090" opacity="0.5"/>
+      <circle cx="570" cy="74" r="11" fill="#c8805a" opacity="0.5"/>
+      <circle cx="642" cy="74" r="11" fill="#f0d4b0" opacity="0.5"/>
+      <circle cx="714" cy="74" r="11" fill="#d08060" opacity="0.5"/>
+      <circle cx="786" cy="74" r="11" fill="#f0c090" opacity="0.5"/>
+      <!-- Teacher thinking figure - lanyard -->
+      <circle cx="430" cy="56" r="22" fill="#f0c8a0"/>
+      <path d="M408,48 Q430,24 452,48" fill="#5a3825"/>
+      <rect x="416" y="80" width="28" height="46" rx="5" fill="#B85042"/>
+      <rect x="426" y="80" width="4" height="20" rx="2" fill="#2D3B2D" opacity="0.7"/>
+      <rect x="423" y="98" width="8" height="6" rx="2" fill="#e8f4f0" opacity="0.6"/>
+      <rect x="386" y="90" width="34" height="11" rx="5" fill="#B85042" transform="rotate(20,403,95)"/>
+      <ellipse cx="381" cy="104" rx="10" ry="8" fill="#f0c8a0"/>
+      <!-- Option A (wrong - red) -->
+      <rect x="28" y="16" width="285" height="55" rx="10" fill="#B85042" opacity="0.18" stroke="#B85042" stroke-width="1.5"/>
+      <circle cx="53" cy="43" r="14" fill="#B85042" opacity="0.7"/>
+      <text x="53" y="48" font-size="11" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="bold">A</text>
+      <rect x="74" y="28" width="225" height="6" rx="2" fill="#B85042" opacity="0.38"/>
+      <rect x="74" y="39" width="185" height="5" rx="2" fill="#B85042" opacity="0.3"/>
+      <rect x="74" y="49" width="205" height="5" rx="2" fill="#B85042" opacity="0.3"/>
+      <!-- Option B (correct - green) -->
+      <rect x="548" y="16" width="285" height="55" rx="10" fill="#84B59F" opacity="0.18" stroke="#84B59F" stroke-width="1.5"/>
+      <circle cx="573" cy="43" r="14" fill="#84B59F" opacity="0.8"/>
+      <text x="573" y="48" font-size="11" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="bold">B</text>
+      <rect x="594" y="28" width="225" height="6" rx="2" fill="#84B59F" opacity="0.48"/>
+      <rect x="594" y="39" width="190" height="5" rx="2" fill="#84B59F" opacity="0.38"/>
+      <rect x="594" y="49" width="210" height="5" rx="2" fill="#84B59F" opacity="0.38"/>
+      <circle cx="818" cy="22" r="12" fill="#2D6A4F" opacity="0.85"/>
+      <text x="818" y="27" font-size="13" fill="white" text-anchor="middle" font-family="sans-serif" font-weight="bold">✓</text>
+      <!-- Arrows from teacher to options -->
+      <line x1="408" y1="68" x2="313" y2="43" stroke="#B85042" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.5"/>
+      <line x1="452" y1="68" x2="548" y2="43" stroke="#84B59F" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.6"/>
+      <!-- Caption -->
+      <rect x="0" y="153" width="860" height="22" fill="#2D3B2D" opacity="0.88"/>
+      <text x="430" y="168" font-size="11" fill="#84B59F" text-anchor="middle" font-family="sans-serif" letter-spacing="0.8">5 senario dosbarth go iawn — dewiswch eich ymateb / 5 real classroom scenarios — choose your response</text>
+    </svg>
+  </div>
+
+  <div class="section-num-pill">Adran 06 / Section 06</div>
+  <h2 class="section-title"><span class="cy">Ymarfer Senario</span>Scenario Practice</h2>
+  <p class="section-intro"><span class="cy">Darllenwch bob sefyllfa ddosbarth a dewiswch sut y byddech chi'n ymateb. Mae'r senarios hyn yn seiliedig ar eiliadau cyffredin mewn dosbarthiadau Dyniaethau uwchradd yn ystod lleoliad.</span>Read each classroom situation and choose how you would respond. These scenarios are based on common moments in secondary humanities classrooms during placement.</p>
+
+  <div id="scenario-list">
+
+    <!-- SCENARIO 1 -->
+    <div class="scenario-container" id="sc1">
+      <div class="scenario-header">
+        <span class="scenario-num">Senario 1</span>
+        <div>
+          <div class="scenario-text">
+            <span class="cy">Eich ail wers gyda Blwyddyn 9. Mae tri disgybl yn y cefn yn siarad yn uchel tra rydych chi'n rhoi cyfarwyddiadau. Mae un o'r tri yn gwneud cyswllt llygad â chi, yna'n troi'n ôl ac yn parhau i siarad.</span>
+            It's your second lesson with Year 9. Three students at the back are talking loudly while you're giving instructions. One of the three makes eye contact with you, then turns back and continues talking.
+          </div>
+          <div class="scenario-context">YC1 / CP1 — Daearyddiaeth / Geography, Blwyddyn / Year 9 — Aflonyddwch isel-lefel / Low-level disruption</div>
+        </div>
+      </div>
+      <div class="scenario-body">
+        <div class="options-label"><span class="cy">Beth wnewch chi? /</span> What do you do?</div>
+        <div class="options">
+          <button class="option" onclick="answer('sc1',this,'b')" data-val="a">A. <span class="cy">Stopiwch y wers a dweud yn uchel wrth y tri disgybl y byddant yn colli amser cinio.</span>Stop the lesson and loudly tell all three students that if they can't listen, they'll be kept back at lunch.</button>
+          <button class="option" onclick="answer('sc1',this,'b')" data-val="b">B. <span class="cy">Oedwch eich cyfarwyddiad, cerddwch yn dawel tuag at y grŵp, gwnewch gyswllt llygad heb siarad, yna parhewch.</span>Pause your instruction, walk calmly towards the group, make eye contact without speaking, and then continue from where you left off.</button>
+          <button class="option" onclick="answer('sc1',this,'b')" data-val="c">C. <span class="cy">Anwybyddwch — nid ydych am darfu ar lif y wers i bawb arall.</span>Ignore it — you don't want to disrupt the flow of the lesson for everyone else.</button>
+          <button class="option" onclick="answer('sc1',this,'b')" data-val="d">D. <span class="cy">Gofynnwch i'r disgybl mwyaf swnllyd yn uniongyrchol: "Beth ddywedais i nawr?" o flaen y dosbarth.</span>Ask the most vocal student directly: "What did I just say?" in front of the class.</button>
+        </div>
+        <div class="feedback correct-fb" id="sc1-fb-correct"><strong><span class="cy">Dewis da. /</span> Good choice.</strong><span class="cy">Mae cerdded tuag at y grŵp a defnyddio presenoldeb di-eiriau yn ymyriad lleiaf aflonyddus ac mwyaf effeithiol.</span>Walking towards the group and using non-verbal presence is the least disruptive and most effective first step. It signals awareness without escalating the situation or making a public scene.</div>
+        <div class="feedback incorrect-fb" id="sc1-fb-incorrect"><strong><span class="cy">Meddyliwch eto. /</span> Think again.</strong><span class="cy">Y dewis gorau yma yw B — defnyddio agosrwydd ffisegol a chyfathrebu di-eiriau cyn unrhyw ymyriad llafar.</span>The best response here is B — using physical proximity and non-verbal communication before any verbal intervention. Public confrontations (A, D) often escalate rather than resolve, and ignoring persistent disruption (C) signals it is acceptable.</div>
+        <div id="sc1-retry" style="display:none;"><button class="try-again" onclick="retry('sc1')"><span class="cy">Ceisiwch eto /</span> Try again</button></div>
+      </div>
+    </div>
+
+    <!-- SCENARIO 2 -->
+    <div class="scenario-container" id="sc2">
+      <div class="scenario-header">
+        <span class="scenario-num">Senario 2</span>
+        <div>
+          <div class="scenario-text">
+            <span class="cy">Yn ystod trafodaeth grŵp mewn gwers Hanes Blwyddyn 10 am yr Holocost, mae disgybl yn gwneud sylw sy'n diystyru difrifoldeb y digwyddiad. Mae disgyblion eraill yn edrych arnoch chi.</span>
+            During a group discussion in a Year 10 History lesson about the Holocaust, a student makes a comment that dismisses the severity of the event. Other students look at you, unsure how to react.
+          </div>
+          <div class="scenario-context">YC2 / CP2 — Hanes / History, Blwyddyn / Year 10 — Cynnwys sensitif / Sensitive content</div>
+        </div>
+      </div>
+      <div class="scenario-body">
+        <div class="options-label"><span class="cy">Beth wnewch chi? /</span> What do you do?</div>
+        <div class="options">
+          <button class="option" onclick="answer('sc2',this,'a')" data-val="a">A. <span class="cy">Oedwch y dosbarth yn dawel. Cydnabyddwch y sylw yn sensitif, eglurhau'r ffeithiau hanesyddol, a defnyddio hyn fel cyfle dysgu.</span>Pause the class calmly. Acknowledge the comment sensitively, clarify the historical facts, and use it as a teaching moment without singling the student out harshly.</button>
+          <button class="option" onclick="answer('sc2',this,'a')" data-val="b">B. <span class="cy">Anwybyddwch y sylw a symudwch ymlaen — nid ydych am godi cywilydd ar y disgybl.</span>Ignore the comment and move the discussion on — you don't want to make the student feel embarrassed.</button>
+          <button class="option" onclick="answer('sc2',this,'a')" data-val="c">C. <span class="cy">Gofynnwch i'r disgybl adael yr ystafell ar unwaith ac adroddwch wrth eich pennaeth adran.</span>Ask the student to leave the room immediately and report it to your HOD.</button>
+          <button class="option" onclick="answer('sc2',this,'a')" data-val="d">D. <span class="cy">Dywedwch wrth y dosbarth fod y drafodaeth ar ben a symudwch i waith ysgrifenedig.</span>Tell the class the discussion is over and move on to written work.</button>
+        </div>
+        <div class="feedback correct-fb" id="sc2-fb-correct"><strong><span class="cy">Yn union iawn. /</span> Exactly right.</strong><span class="cy">Mae sylwadau sensitif mewn Dyniaethau angen ymateb addysgol, tawel a chadarn. Drwy ddefnyddio'r eiliad fel cyfle dysgu, rydych chi'n modelu sut i ymgysylltu'n feirniadol â hanes anodd.</span>Sensitive comments in humanities need a calm, direct, educative response. Using it as a teaching moment models exactly the kind of critical engagement students need when studying difficult history.</div>
+        <div class="feedback incorrect-fb" id="sc2-fb-incorrect"><strong><span class="cy">Ailystyriwch. /</span> Reconsider.</strong><span class="cy">Y dewis gorau yw A. Mewn Dyniaethau, rhaid ymdrin â chynnwys sensitif yn ofalus ond yn uniongyrchol. Mae ei anwybyddu'n awgrymu derbyniad; gall uwchgyfeirio gormodol fod yn anghymesur.</span>The best response is A. In humanities, sensitive content must be handled carefully but directly. Ignoring it implies acceptance; over-escalating may be disproportionate. A calm, factual, educative response is needed.</div>
+        <div id="sc2-retry" style="display:none;"><button class="try-again" onclick="retry('sc2')"><span class="cy">Ceisiwch eto /</span> Try again</button></div>
+      </div>
+    </div>
+
+    <!-- SCENARIO 3 -->
+    <div class="scenario-container" id="sc3">
+      <div class="scenario-header">
+        <span class="scenario-num">Senario 3</span>
+        <div>
+          <div class="scenario-text">
+            <span class="cy">Rydych chi yn eich ail wythnos o YC1. Mae disgybl sy'n arfer bod yn iawn yn gwrthod gwneud y dasg ysgrifennu, yn rhoi eu pen ar y ddesg, ac yn dweud "Nid wyf yn gweld pwynt Daearyddiaeth."</span>
+            You're in week two of CP1. A student who has been fine so far refuses to do the written task, puts their head on the desk, and says "I don't see the point of Geography."
+          </div>
+          <div class="scenario-context">YC1 / CP1 — Daearyddiaeth / Geography, Blwyddyn / Year 8 — Gwrthod / Refusal behaviour</div>
+        </div>
+      </div>
+      <div class="scenario-body">
+        <div class="options-label"><span class="cy">Beth wnewch chi? /</span> What do you do?</div>
+        <div class="options">
+          <button class="option" onclick="answer('sc3',this,'b')" data-val="a">A. <span class="cy">Dywedwch wrth y disgybl nad oes ganddynt ddewis a rhaid iddynt wneud y gwaith neu byddant yn cael eu cadw ar ôl.</span>Tell the student they have no choice and must do the work or receive a detention.</button>
+          <button class="option" onclick="answer('sc3',this,'b')" data-val="b">B. <span class="cy">Plygwch i lawr wrth ymyl y disgybl, siaradwch yn dawel fel na all eraill glywed, a gofynnwch "Beth sy'n digwydd heddiw?" cyn mynd at y dasg.</span>Crouch down next to the student, speak quietly so others can't hear, and ask "What's going on today?" before addressing the task.</button>
+          <button class="option" onclick="answer('sc3',this,'b')" data-val="c">C. <span class="cy">Symudwch ymlaen a deliwch â'r disgybl ar ddiwedd y wers — nid ydych am achosi gwrthdaro.</span>Move on and deal with the student at the end of the lesson — you don't want to cause a scene.</button>
+          <button class="option" onclick="answer('sc3',this,'b')" data-val="d">D. <span class="cy">Gofynnwch i'r disgybl yn gyhoeddus pam nad oes ganddynt bwynt Daearyddiaeth a herio iddynt gyfiawnhau hynny.</span>Ask the student directly in front of the class why they think Geography has no point and challenge them to justify it.</button>
+        </div>
+        <div class="feedback correct-fb" id="sc3-fb-correct"><strong><span class="cy">Barn dda. /</span> Well judged.</strong><span class="cy">Mae ymddygiad gwrthod mewn Blwyddyn 8 yn aml yn arwydd bod rhywbeth arall yn digwydd. Mae ymgysylltu'n dawel ac yn chwilfrydig — yn hytrach na gwrthdaro — yn dad-ddwysáu'r sefyllfa.</span>Refusal behaviour in Year 8 is often a signal that something else is going on. Approaching quietly and leading with curiosity rather than confrontation de-escalates the situation and gives the student a way to engage.</div>
+        <div class="feedback incorrect-fb" id="sc3-fb-incorrect"><strong><span class="cy">Meddyliwch am hyn yn wahanol. /</span> Think about this differently.</strong><span class="cy">Y dewis gorau yw B. Mae ymgysylltiad tawel, preifat, chwilfrydig yn llawer mwy effeithiol gydag ymddygiad gwrthod na gwrthdaro cyhoeddus neu osgoi.</span>The best response is B. Quiet, private, curious engagement is far more effective with refusal behaviour than public confrontation (A, D) or deferral (C).</div>
+        <div id="sc3-retry" style="display:none;"><button class="try-again" onclick="retry('sc3')"><span class="cy">Ceisiwch eto /</span> Try again</button></div>
+      </div>
+    </div>
+
+    <!-- SCENARIO 4 -->
+    <div class="scenario-container" id="sc4">
+      <div class="scenario-header">
+        <span class="scenario-num">Senario 4</span>
+        <div>
+          <div class="scenario-text">
+            <span class="cy">Rydych chi bum munud o ddiwedd gwers RhGBh gyda Blwyddyn 11. Mae'r dosbarth wedi bod yn dda. Mae disgybl yn gofyn a allant ddechrau pacio. Cyn i chi ymateb, mae sawl un yn dechrau rhoi pethau yn eu bagiau.</span>
+            You're five minutes from the end of a Year 11 RVE lesson. The class has been good. A student asks if they can start packing away. Before you respond, several others start putting things in their bags.
+          </div>
+          <div class="scenario-context">YC1 / YC2 — RhGBh / RVE, Blwyddyn / Year 11 — Trefn ymadael / Exit routine</div>
+        </div>
+      </div>
+      <div class="scenario-body">
+        <div class="options-label"><span class="cy">Beth wnewch chi? /</span> What do you do?</div>
+        <div class="options">
+          <button class="option" onclick="answer('sc4',this,'c')" data-val="a">A. <span class="cy">Gadewch iddynt bacio — mae'r wers wedi mynd yn dda ac nid ydych am orffen ar nodyn drwg.</span>Let them pack away — the lesson has gone well and you don't want to end on a sour note.</button>
+          <button class="option" onclick="answer('sc4',this,'c')" data-val="b">B. <span class="cy">Dywedwch wrth y disgybl a ofynnodd yn unig am roi pethau yn ôl, ac anwybyddwch y gweddill.</span>Tell only the student who asked to put things back, and ignore the rest.</button>
+          <button class="option" onclick="answer('sc4',this,'c')" data-val="c">C. <span class="cy">Gofynnwch i'r dosbarth yn dawel roi bagiau i lawr, cydnabyddwch eu gwaith da, ac eglurwch y byddwch yn eu diswyddo'n briodol ymhen pum munud.</span>Calmly ask the class to put bags back down, acknowledge they've worked well, and explain you'll dismiss them properly in five minutes.</button>
+          <button class="option" onclick="answer('sc4',this,'c')" data-val="d">D. <span class="cy">Codwch eich llais a dweud wrth y dosbarth eu bod wedi colli eu hamser pacio rhydd o ganlyniad.</span>Raise your voice and tell the class they've now lost their free packing time as a result.</button>
+        </div>
+        <div class="feedback correct-fb" id="sc4-fb-correct"><strong><span class="cy">Ar y pwynt. /</span> Spot on.</strong><span class="cy">Mae diswyddo rheoledig, positif yn atgyfnerthu mai chi — nid y disgyblion — sy'n rheoli amser yn yr ystafell. Os ydych chi'n caniatáu pacio cynnar unwaith, daw'n ddisgwyliad.</span>A controlled, acknowledged dismissal reinforces that you manage time in the room. Recognising their good work is important, but so is the routine. Allowing early packing once sets a precedent.</div>
+        <div class="feedback incorrect-fb" id="sc4-fb-incorrect"><strong><span class="cy">Ailystyriwch. /</span> Reconsider.</strong><span class="cy">C yw'r alwad gywir. Mae caniatáu pacio cynnar yn gosod cynsail. Mae anghysondeb yn annheg. Mae ailosod tawel yn cynnal y drefn a'ch hygrededd.</span>C is the right call. Allowing early packing (A) sets a precedent. Inconsistency (B) is unfair. Escalating with raised voice or punishment (D) is disproportionate. A brief, calm reset preserves the routine and your credibility.</div>
+        <div id="sc4-retry" style="display:none;"><button class="try-again" onclick="retry('sc4')"><span class="cy">Ceisiwch eto /</span> Try again</button></div>
+      </div>
+    </div>
+
+    <!-- SCENARIO 5 -->
+    <div class="scenario-container" id="sc5">
+      <div class="scenario-header">
+        <span class="scenario-num">Senario 5</span>
+        <div>
+          <div class="scenario-text">
+            <span class="cy">Ar ôl gwers arbennig o anodd gyda Blwyddyn 9, lle bu disgybl yn aflonyddus dro ar ôl tro ac y bu'n rhaid i chi godi eich llais, rydych chi'n mynd adref yn teimlo fel methiant.</span>
+            After a particularly difficult lesson with Year 9, where a student was repeatedly disruptive and you ended up raising your voice, you go home feeling like a failure.
+          </div>
+          <div class="scenario-context">YC1 / CP1 — Adlewyrchu ar ôl gwers / Post-lesson reflection — Hunanreolaeth / Self-management</div>
+        </div>
+      </div>
+      <div class="scenario-body">
+        <div class="options-label"><span class="cy">Beth yw'r peth mwyaf defnyddiol i'w wneud nesaf? /</span> What is the most useful thing to do next?</div>
+        <div class="options">
+          <button class="option" onclick="answer('sc5',this,'b')" data-val="a">A. <span class="cy">Penderfynwch beidio â meddwl amdano — beth sydd wedi'i wneud sydd wedi'i wneud.</span>Decide not to think about it — what's done is done.</button>
+          <button class="option" onclick="answer('sc5',this,'b')" data-val="b">B. <span class="cy">Siaradwch yn onest â'ch mentor neu gyfoedion, ysgrifennwch adlewyrchiad byr a ffeithiol, a nodwch un peth y byddech yn ei wneud yn wahanol — yna symudwch ymlaen.</span>Talk honestly to your mentor or a peer, write a brief factual reflection, and identify one thing you'd do differently — then move on.</button>
+          <button class="option" onclick="answer('sc5',this,'b')" data-val="c">C. <span class="cy">Treuliwch y noson yn ailechwarae pob eiliad ac yn ysgrifennu nodiadau manwl am bopeth a aeth o'i le.</span>Spend the evening replaying every moment and writing detailed notes on everything that went wrong.</button>
+          <button class="option" onclick="answer('sc5',this,'b')" data-val="d">D. <span class="cy">Osgowch y dosbarth hwnnw am weddill yr wythnos tra byddwch chi'n adgryfhau.</span>Avoid that class for the rest of the week while you regroup.</button>
+        </div>
+        <div class="feedback correct-fb" id="sc5-fb-correct"><strong><span class="cy">Rhesymeg dda. /</span> Well reasoned.</strong><span class="cy">Mae ymarfer adlewyrchiol wrth galon datblygiad athrawon — ond mae rhugl yn niweidiol. Mae dadfriffiad byr a ffeithiol yn tynnu'r dysgu heb sbiralio. Mae siarad â'ch mentor yn normaleiddi anawsterau.</span>Reflective practice is at the heart of teacher development — but rumination is harmful. A brief, factual debrief extracts the learning without spiralling. Talking to your mentor or a peer normalises difficulty. Every experienced teacher has lessons like this.</div>
+        <div class="feedback incorrect-fb" id="sc5-fb-incorrect"><strong><span class="cy">Meddyliwch yn fwy gofalus. /</span> Think more carefully.</strong><span class="cy">B yw'r ymateb mwyaf adeiladol. Mae atal (A) yn atal dysgu; mae rhugl (C) yn niweidiol i les; mae osgoi (D) yn gwneud pethau'n waeth.</span>B is the most constructive response. Suppression (A) prevents learning; rumination (C) is harmful to wellbeing; avoidance (D) makes things worse and deprives you of the chance to repair the relationship.</div>
+        <div id="sc5-retry" style="display:none;"><button class="try-again" onclick="retry('sc5')"><span class="cy">Ceisiwch eto /</span> Try again</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="score-card" id="score-card">
+    <div class="score-big" id="score-num">0/5</div>
+    <div class="score-label"><span class="cy">cywir ar y ymgais gyntaf</span>correct on first attempt</div>
+    <div class="score-msg" id="score-msg"></div>
+    <button class="reset-btn" onclick="resetScenarios()"><span class="cy">Ceisiwch yr holl senarios eto /</span> Try all scenarios again</button>
+  </div>
+</div>
+
+<!-- Certificate trigger -->
+<div class="cert-trigger-box" id="certTrigger">
+  <h3><span class="cy">Llongyfarchiadau!</span>Congratulations!</h3>
+  <p>You have completed the Classroom Management session. Enter your full name to generate your personalised completion certificate.<br>
+  <em style="font-size:0.82rem;opacity:0.5;">Rhowch eich enw llawn i greu eich tystysgrif gwblhau bersonol.</em></p>
+  <div class="cert-name-row">
+    <input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name / Eich enw llawn…" maxlength="80">
+    <button class="btn-cert" onclick="generateCertificate()">🎓 Generate Certificate / Creu Tystysgrif</button>
+  </div>
+</div>
+
+<!-- Certificate overlay -->
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:2rem;">🏫</div>
+            <div class="cert-inst-name">PGCE Secondary — Humanities
+              <span class="cert-inst-cy">Cwricwlwm i Gymru / Curriculum for Wales</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that / Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher / yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:0.5rem 0 0.3rem;">
+            <div class="cert-name" id="certDisplayName">Your Name</div>
+          </div>
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the induction session on</div>
+          <div class="cert-course">
+            Classroom Management for Secondary Humanities
+            <span class="cert-course-cy">Rheoli Dosbarth ar gyfer Dyniaethau Uwchradd</span>
+          </div>
+          <div class="cert-competencies">
+            Demonstrating understanding of establishing authority, classroom routines, behaviour management,
+            building relationships, navigating difficult moments, and completing scenario-based assessments.<br>
+            <em style="color:#84B59F;">Gan ddangos dealltwriaeth o sefydlu awdurdod, trefniadau dosbarth, rheoli ymddygiad, adeiladu perthnasoedd, llywio eiliadau anodd, a chwblhau asesiadau senario.</em>
+          </div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <div class="cert-sig-label">Programme Director / Cyfarwyddwr y Rhaglen</div>
+            </div>
+            <div>
+              <div class="cert-seal">
+                <span class="cert-seal-icon">🎓</span>
+                PGCE<br>CYMRU
+              </div>
+            </div>
+            <div class="cert-sig-block">
+              <div class="cert-date-val" id="certDateDisplay"></div>
+              <div class="cert-date-label">Date Completed / Dyddiad Cwblhau</div>
+            </div>
+          </div>
+          <div class="cert-stripe" style="margin:1.2rem -2rem -1.6rem;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">🖨️ Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">✕ Close / Cau</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ── Language toggle ──
+  let currentLang = 'both';
+  function setLang(lang) {
+    currentLang = lang;
+    ['btn-both','btn-cy','btn-en'].forEach(id => document.getElementById(id).classList.remove('active'));
+    document.getElementById('btn-'+lang).classList.add('active');
+    document.querySelectorAll('.cy').forEach(el => {
+      el.style.display = lang === 'en' ? 'none' : '';
+    });
+    // In cy-only mode, hide English text nodes... for simplicity we show both but dim
+    // Actually we control via CSS: hide .cy when en-only, or show only .cy when cy-only
+    if (lang === 'cy') {
+      // Hide elements that are English-primary (harder without separate markup, so just toggle .cy visibility)
+      document.querySelectorAll('.cy').forEach(el => el.style.display = '');
+    }
+  }
+
+  // ── Tab navigation ──
+  function showTab(id, el) {
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-'+id).classList.add('active');
+    if (el) el.classList.add('active');
+    window.scrollTo(0,0);
+  }
+
+  // ── Checklist ──
+  function toggleCheck(item) {
+    const box = item.querySelector('.check-box');
+    box.classList.toggle('checked');
+    box.textContent = box.classList.contains('checked') ? '✓' : '';
+    const checked = document.querySelectorAll('.check-box.checked').length;
+    const total = document.querySelectorAll('.check-box').length;
+    const prog = document.getElementById('checklist-progress');
+    prog.style.display = checked > 0 ? 'block' : 'none';
+    document.getElementById('progress-count').textContent = checked;
+    document.getElementById('progress-bar').style.width = Math.round(checked/total*100)+'%';
+  }
+
+  // ── Scenarios ──
+  const state = {}, answered = {};
+  const correctAnswers = { sc1:'b', sc2:'a', sc3:'b', sc4:'c', sc5:'b' };
+  const scoreMsgs = [
+    { cy: "Mae pob ymateb yn gyfle dysgu — adolygwch yr adborth a thrafodwch gyda'ch mentor.", en: "Every response is a learning opportunity — review the feedback for each scenario and discuss with your mentor." },
+    { cy: "Rydych chi'n datblygu eich greddf. Ychydig o leoliadau a byddant yn teimlo'n reddfol.", en: "You're developing your instincts. A few more placements and these will feel instinctive — keep reflecting." },
+    { cy: "Sylfaen dda. Mae'r senarios mwy anodd yn ymwneud â chydbwysedd perthnasoedd a ffiniau.", en: "Good foundation. The trickier scenarios involve balancing relationships with boundaries — keep practising those." },
+    { cy: "Greddf gref. Rydych chi bron yno.", en: "Strong instincts. The nuance in scenarios 2 and 5 is where experienced teachers develop — you're close." },
+    { cy: "Ardderchog — mae gennych afael gref ar egwyddorion rheoli dosbarth effeithiol. Ymddiriedwch yn y greddfau hyn yn ystod eich lleoliad.", en: "Excellent — you have a strong grasp of effective classroom management principles. Trust these instincts on placement." },
+  ];
+
+  function answer(scId, btn, correct) {
+    if (answered[scId]) return;
+    const chosen = btn.getAttribute('data-val');
+    const isCorrect = chosen === correct;
+    const container = document.getElementById(scId);
+    container.querySelectorAll('.option').forEach(b => {
+      b.disabled = true;
+      if (b.getAttribute('data-val') === correct) b.classList.add('correct');
+    });
+    if (!isCorrect) {
+      btn.classList.add('incorrect');
+      document.getElementById(scId+'-retry').style.display = 'block';
+    }
+    document.getElementById(scId+'-fb-correct').classList.toggle('show', isCorrect);
+    document.getElementById(scId+'-fb-incorrect').classList.toggle('show', !isCorrect);
+    answered[scId] = { correct: isCorrect };
+    if (!state[scId]) state[scId] = { firstCorrect: isCorrect };
+    checkAllAnswered();
+  }
+
+  function retry(scId) {
+    const container = document.getElementById(scId);
+    container.querySelectorAll('.option').forEach(b => { b.disabled = false; b.classList.remove('correct','incorrect'); });
+    document.getElementById(scId+'-fb-correct').classList.remove('show');
+    document.getElementById(scId+'-fb-incorrect').classList.remove('show');
+    document.getElementById(scId+'-retry').style.display = 'none';
+    delete answered[scId];
+  }
+
+  function checkAllAnswered() {
+    const ids = ['sc1','sc2','sc3','sc4','sc5'];
+    if (!ids.every(id => answered[id])) return;
+    const n = ids.filter(id => state[id] && state[id].firstCorrect).length;
+    document.getElementById('score-card').classList.add('show');
+    document.getElementById('score-num').textContent = n+'/5';
+    const msg = scoreMsgs[Math.min(n,4)];
+    document.getElementById('score-msg').innerHTML = `<span class="cy">${msg.cy}</span>${msg.en}`;
+  }
+
+  function resetScenarios() {
+    ['sc1','sc2','sc3','sc4','sc5'].forEach(id => {
+      document.getElementById(id).querySelectorAll('.option').forEach(b => { b.disabled = false; b.classList.remove('correct','incorrect'); });
+      ['correct','incorrect'].forEach(t => document.getElementById(id+'-fb-'+t).classList.remove('show'));
+      document.getElementById(id+'-retry').style.display = 'none';
+      delete answered[id]; delete state[id];
+    });
+    document.getElementById('score-card').classList.remove('show');
+  }
+
+  // ── CERTIFICATE ──
+  function generateCertificate() {
+    var name = document.getElementById('certNameInput').value.trim();
+    if (!name) {
+      document.getElementById('certNameInput').focus();
+      document.getElementById('certNameInput').style.borderColor = '#B85042';
+      setTimeout(function(){ document.getElementById('certNameInput').style.borderColor = ''; }, 1500);
+      return;
+    }
+    document.getElementById('certDisplayName').textContent = name;
+    var now = new Date();
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    document.getElementById('certDateDisplay').textContent = now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+    document.getElementById('certOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCertificate() {
+    document.getElementById('certOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  function printCertificate() {
+    var cert = document.getElementById('certificateEl');
+    var printWin = window.open('', '_blank', 'width=900,height=700');
+    printWin.document.write('<html><head><title>Certificate of Completion</title>');
+    document.querySelectorAll('style, link[rel="stylesheet"]').forEach(function(s) {
+      printWin.document.write(s.outerHTML);
+    });
+    printWin.document.write('</head><body style="margin:0;padding:20px;background:white;">');
+    printWin.document.write(cert.outerHTML);
+    printWin.document.write('</body></html>');
+    printWin.document.close();
+    printWin.focus();
+    setTimeout(function(){ printWin.print(); }, 800);
+  }
+
+  document.addEventListener('click', function(e) {
+    if (e.target.id === 'certOverlay') closeCertificate();
+  });
+
+  // Show cert trigger when all scenarios answered
+  const _origCheckAllAnswered = checkAllAnswered;
+  function checkAllAnswered() {
+    const ids = ['sc1','sc2','sc3','sc4','sc5'];
+    if (!ids.every(function(id){ return answered[id]; })) return;
+    const n = ids.filter(function(id){ return state[id] && state[id].firstCorrect; }).length;
+    document.getElementById('score-card').classList.add('show');
+    document.getElementById('score-num').textContent = n+'/5';
+    const msg = scoreMsgs[Math.min(n,4)];
+    document.getElementById('score-msg').innerHTML = '<span class="cy">'+msg.cy+'</span>'+msg.en;
+    document.getElementById('certTrigger').classList.add('show');
+  }
+
+</script>
+</body>
+</html>
