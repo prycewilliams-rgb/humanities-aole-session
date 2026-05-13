@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Differentiation Training / Hyfforddiant Gwahaniaethu</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #00897B; --teal-dark: #00695C; --teal-light: #B2DFDB; --teal-pale: #E0F2F1;
+    --amber: #F59E0B; --amber-light: #FEF3C7;
+    --red: #EF4444; --red-light: #FEE2E2;
+    --green: #22C55E; --green-light: #DCFCE7;
+    --slate: #1E293B; --slate-mid: #475569;
+    --white: #FFFFFF; --off-white: #F8FAFC; --border: #E2E8F0;
+    --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Source Sans 3', sans-serif; background: var(--off-white); color: var(--slate); min-height: 100vh; }
+
+  header {
+    background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 60%, #26A69A 100%);
+    color: white; padding: 3rem 2rem 2.5rem; text-align: center; position: relative; overflow: hidden;
+  }
+  header::before {
+    content: ''; position: absolute; inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+  .lang-badge { display:inline-flex;align-items:center;gap:0.5rem;background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);border-radius:999px;padding:0.3rem 1rem;font-size:0.8rem;font-weight:600;letter-spacing:0.05em;margin-bottom:1.5rem; }
+  header h1 { font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.2;margin-bottom:0.4rem; }
+  header h1 span { display:block;font-size:0.55em;font-weight:700;opacity:0.75;letter-spacing:0.03em;margin-top:0.3rem; }
+  .header-sub { font-size:1rem;opacity:0.85;margin-top:0.8rem; }
+  .progress-bar-wrap { max-width:600px;margin:1.5rem auto 0;background:rgba(255,255,255,0.2);border-radius:999px;height:8px;overflow:hidden; }
+  #progress-bar { height:100%;background:var(--amber);border-radius:999px;transition:width 0.5s ease;width:0%; }
+  .progress-label { font-size:0.78rem;opacity:0.8;margin-top:0.4rem; }
+
+  main { max-width:880px;margin:0 auto;padding:2rem 1rem 4rem; }
+
+  .section-nav { display:flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem; }
+  .snav-btn { padding:0.4rem 0.9rem;border-radius:999px;border:2px solid var(--border);background:white;font-size:0.8rem;font-weight:600;cursor:pointer;color:var(--slate-mid);transition:all 0.2s; }
+  .snav-btn.done { border-color:var(--green);color:#14532D;background:var(--green-light); }
+  .snav-btn.active { border-color:var(--teal);color:var(--teal-dark);background:var(--teal-pale); }
+
+  .section-card { background:var(--white);border-radius:16px;box-shadow:var(--shadow);margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);display:none;animation:fadeIn 0.4s ease; }
+  .section-card.active { display:block; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+  .card-header { background:var(--teal-pale);border-bottom:2px solid var(--teal-light);padding:1.5rem 2rem;display:flex;align-items:center;gap:1rem; }
+  .card-header .icon { width:44px;height:44px;background:var(--teal);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0; }
+  .card-header h2 { font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--teal-dark);line-height:1.3; }
+  .card-header h2 em { display:block;font-family:'Source Sans 3',sans-serif;font-size:0.8rem;font-style:normal;font-weight:600;color:var(--slate-mid);margin-top:0.15rem;letter-spacing:0.03em; }
+  .card-body { padding:2rem; }
+  @media(max-width:600px){.card-body{padding:1.25rem;}}
+
+  .bilingual-block { display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem; }
+  @media(max-width:600px){.bilingual-block{grid-template-columns:1fr;}}
+  .lang-col { background:var(--teal-pale);border-radius:10px;padding:1.25rem;border-left:4px solid var(--teal); }
+  .lang-col.welsh { border-left-color:#D4A017;background:#FFFBEB; }
+  .lang-label { font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--slate-mid);margin-bottom:0.6rem; }
+  .lang-col p, .lang-col li { font-size:0.93rem;line-height:1.7;color:var(--slate); }
+  .lang-col ul { padding-left:1.2rem; }
+  .lang-col ul li { margin-bottom:0.35rem; }
+
+  .info-box { background:var(--teal-pale);border:1px solid var(--teal-light);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1.5rem; }
+  .info-box.amber { background:var(--amber-light);border-color:#FCD34D; }
+  .info-box.slate { background:#F1F5F9;border-color:#CBD5E1; }
+  .info-box h3 { font-size:0.85rem;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:0.8rem; }
+  .info-box.amber h3 { color:#92400E; }
+  .info-box.slate h3 { color:var(--slate-mid); }
+  .info-box p, .info-box li { font-size:0.93rem;line-height:1.7;color:var(--slate); }
+  .info-box ul { padding-left:1.3rem; }
+  .info-box ul li { margin-bottom:0.4rem; }
+
+  .scholar-box { border-left:4px solid var(--teal);background:white;border-radius:0 10px 10px 0;padding:1.1rem 1.4rem;margin-bottom:1.2rem;box-shadow:var(--shadow); }
+  .scholar-box .scholar-name { font-size:0.75rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--teal-dark);margin-bottom:0.4rem; }
+  .scholar-box p { font-size:0.92rem;line-height:1.65;color:var(--slate); }
+  .scholar-box p em { color:var(--slate-mid);font-style:italic;display:block;margin-top:0.4rem;font-size:0.88rem; }
+
+  .content-table { width:100%;border-collapse:collapse;margin-bottom:1.5rem;font-size:0.9rem; }
+  .content-table th { background:var(--teal);color:white;padding:0.75rem 1rem;text-align:left;font-weight:700; }
+  .content-table td { padding:0.75rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.6; }
+  .content-table tr:nth-child(even) td { background:var(--teal-pale); }
+  .content-table tr:last-child td { border-bottom:none; }
+
+  .traffic-light { display:flex;gap:1rem;margin:1.2rem 0;flex-wrap:wrap; }
+  .tl-item { flex:1;min-width:150px;border-radius:10px;padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:0.75rem; }
+  .tl-item.green { background:var(--green-light);border:1px solid #86EFAC; }
+  .tl-item.amber { background:var(--amber-light);border:1px solid #FCD34D; }
+  .tl-item.red { background:var(--red-light);border:1px solid #FCA5A5; }
+  .tl-dot { width:18px;height:18px;border-radius:50%;flex-shrink:0;margin-top:3px; }
+  .green .tl-dot { background:var(--green); }
+  .amber .tl-dot { background:var(--amber); }
+  .red .tl-dot { background:var(--red); }
+  .tl-item p { font-size:0.88rem;line-height:1.5;color:var(--slate); }
+
+  .quiz-section-label { font-weight:700;margin:2rem 0 1rem;color:var(--slate-mid);font-size:0.82rem;text-transform:uppercase;letter-spacing:0.06em;padding-top:1.5rem;border-top:2px dashed var(--teal-light); }
+  .quiz-question { margin-bottom:2rem; }
+  .quiz-question p.q-text { font-size:1rem;font-weight:600;line-height:1.5;margin-bottom:0.3rem;color:var(--slate); }
+  .quiz-question p.q-welsh { font-size:0.88rem;color:var(--slate-mid);font-style:italic;margin-bottom:1rem; }
+  .options { display:flex;flex-direction:column;gap:0.6rem; }
+  .option-btn { background:var(--off-white);border:2px solid var(--border);border-radius:10px;padding:0.9rem 1.2rem;text-align:left;font-family:'Source Sans 3',sans-serif;font-size:0.93rem;color:var(--slate);cursor:pointer;transition:all 0.2s;line-height:1.4; }
+  .option-btn:hover:not(:disabled) { border-color:var(--teal);background:var(--teal-pale);transform:translateX(4px); }
+  .option-btn.correct { background:var(--green-light);border-color:var(--green);color:#14532D;font-weight:600; }
+  .option-btn.wrong { background:var(--red-light);border-color:var(--red);color:#7F1D1D; }
+  .option-btn:disabled { cursor:default; }
+  .feedback { margin-top:0.8rem;padding:0.9rem 1.1rem;border-radius:8px;font-size:0.88rem;line-height:1.6;display:none; }
+  .feedback.show { display:block; }
+  .feedback.correct { background:var(--green-light);border-left:4px solid var(--green);color:#14532D; }
+  .feedback.wrong { background:var(--red-light);border-left:4px solid var(--red);color:#7F1D1D; }
+  .q-num { display:inline-flex;align-items:center;justify-content:center;background:var(--teal);color:white;width:26px;height:26px;border-radius:50%;font-size:0.8rem;font-weight:700;margin-right:0.5rem;flex-shrink:0;vertical-align:middle; }
+
+  .drag-pool-label { font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--slate-mid);margin-bottom:0.6rem; }
+  .drop-zone { min-height:80px;background:var(--teal-pale);border:2px dashed var(--teal-light);border-radius:10px;padding:0.75rem;display:flex;flex-direction:column;gap:0.5rem;transition:background 0.2s; }
+  .drop-zone.over { background:#B2DFDB;border-color:var(--teal); }
+  .draggable-item { background:white;border:1px solid var(--border);border-radius:8px;padding:0.65rem 0.9rem;font-size:0.87rem;cursor:grab;user-select:none;box-shadow:0 2px 6px rgba(0,0,0,0.07);transition:transform 0.15s,box-shadow 0.15s;color:var(--slate);line-height:1.4; }
+  .draggable-item:active { cursor:grabbing;transform:scale(1.02);box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+  .drag-targets { display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin-top:1rem; }
+  .drag-target-col h4 { font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--slate-mid);margin-bottom:0.5rem; }
+  .drag-feedback { margin-top:0.8rem;font-size:0.9rem;font-weight:600;display:none;padding:0.7rem 1rem;border-radius:8px; }
+  .drag-feedback.show { display:block; }
+  .drag-feedback.pass { background:var(--green-light);color:#14532D;border-left:4px solid var(--green); }
+  .drag-feedback.fail { background:var(--red-light);color:#7F1D1D;border-left:4px solid var(--red); }
+
+  .blooms-wrap { display:flex;flex-direction:column;align-items:center;gap:0.4rem;margin:1.5rem 0; }
+  .bloom-level { border-radius:8px;padding:0.65rem 1.5rem;text-align:center;cursor:pointer;transition:all 0.2s;width:100%;max-width:560px; }
+  .bloom-level:hover { filter:brightness(0.9);transform:scale(1.01); }
+  .bloom-level .b-title { font-weight:700;font-size:0.9rem;color:white; }
+  .bloom-level .b-welsh { font-size:0.73rem;color:rgba(255,255,255,0.85);margin-top:0.15rem; }
+  .bloom-detail { display:none;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:0.9rem 1.1rem;font-size:0.87rem;line-height:1.6;color:var(--slate);max-width:560px;width:100%;box-shadow:var(--shadow); }
+  .bloom-detail.open { display:block;animation:fadeIn 0.2s ease; }
+  .bloom-detail strong { color:var(--teal-dark); }
+  .bloom-tag { display:inline-block;border-radius:999px;padding:0.1rem 0.6rem;font-size:0.72rem;font-weight:700;margin-top:0.4rem; }
+
+  .scenario-box { background:linear-gradient(135deg,#F0FDF4,#DCFCE7);border:1px solid #86EFAC;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem; }
+  .scenario-box h3 { font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:#14532D;margin-bottom:0.6rem; }
+  .scenario-box p { font-size:0.93rem;line-height:1.7;color:var(--slate); }
+
+  .reflection-area { margin-bottom:1.5rem; }
+  .reflection-area label { display:block;font-size:0.88rem;font-weight:700;color:var(--teal-dark);margin-bottom:0.5rem;line-height:1.4; }
+  .reflection-area label em { font-style:italic;color:var(--slate-mid);font-weight:600; }
+  .reflection-area textarea { width:100%;min-height:90px;border:2px solid var(--border);border-radius:10px;padding:0.9rem 1.1rem;font-family:'Source Sans 3',sans-serif;font-size:0.93rem;color:var(--slate);resize:vertical;transition:border-color 0.2s;background:var(--off-white); }
+  .reflection-area textarea:focus { outline:none;border-color:var(--teal);background:white; }
+
+  .btn-row { display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;align-items:center; }
+  .btn { display:inline-flex;align-items:center;gap:0.5rem;padding:0.8rem 1.8rem;border-radius:10px;font-family:'Source Sans 3',sans-serif;font-size:0.95rem;font-weight:700;cursor:pointer;border:none;transition:all 0.2s; }
+  .btn-primary { background:var(--teal);color:white;box-shadow:0 4px 16px rgba(0,137,123,0.3); }
+  .btn-primary:hover { background:var(--teal-dark);transform:translateY(-2px); }
+  .btn-secondary { background:white;color:var(--teal-dark);border:2px solid var(--teal); }
+  .btn-secondary:hover { background:var(--teal-pale); }
+  .btn-amber { background:var(--amber);color:white;box-shadow:0 4px 16px rgba(245,158,11,0.3); }
+  .btn-amber:hover { background:#D97706;transform:translateY(-2px); }
+  .btn-check { background:#F1F5F9;color:var(--slate);border:2px solid var(--border); }
+  .btn-check:hover { background:var(--border); }
+
+  hr { border:none;border-top:1px solid var(--border);margin:1.8rem 0; }
+  .section-label { font-weight:700;margin-bottom:0.9rem;color:var(--slate-mid);font-size:0.82rem;text-transform:uppercase;letter-spacing:0.06em; }
+
+  .completion-card { background:linear-gradient(135deg,var(--teal-dark),var(--teal));color:white;border-radius:16px;padding:3rem 2rem;text-align:center;display:none; }
+  .completion-card.show { display:block;animation:fadeIn 0.5s ease; }
+  .completion-card h2 { font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:0.8rem; }
+  .completion-card p { opacity:0.9;font-size:1rem;line-height:1.7;max-width:520px;margin:0 auto 1rem; }
+  .badge-icon { font-size:4rem;display:block;margin-bottom:1rem; }
+  .score-pill { display:inline-block;background:rgba(255,255,255,0.25);border:2px solid rgba(255,255,255,0.4);border-radius:999px;padding:0.5rem 1.5rem;font-size:1.2rem;font-weight:700;margin:1rem 0; }
+
+  /* ── CERTIFICATE ── */
+  .cert-trigger-box {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 12px;
+    text-align: center;
+  }
+  .cert-trigger-box p { font-size: 0.88rem; opacity: 0.85; margin-bottom: 1rem; line-height: 1.6; }
+  .cert-name-row { display: flex; gap: 0.7rem; justify-content: center; flex-wrap: wrap; align-items: center; }
+  .cert-name-input {
+    padding: 0.6rem 1rem;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.15);
+    color: white;
+    width: 250px;
+  }
+  .cert-name-input::placeholder { color: rgba(255,255,255,0.45); }
+  .cert-name-input:focus { outline: none; border-color: var(--amber); background: rgba(255,255,255,0.2); }
+  .btn-cert {
+    background: var(--amber);
+    color: #1a1a1a;
+    border: none;
+    padding: 0.6rem 1.3rem;
+    border-radius: 8px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-cert:hover { background: #D97706; color: white; }
+  .cert-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); z-index: 9999; align-items: center; justify-content: center; padding: 1rem; }
+  .cert-overlay.show { display: flex; }
+  .cert-modal { background: white; border-radius: 8px; width: 100%; max-width: 780px; max-height: 95vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+  .certificate { width: 100%; background: white; }
+  .cert-frame { margin: 16px; border: 3px solid #00695C; position: relative; }
+  .cert-frame::before { content: ''; position: absolute; inset: 5px; border: 1px solid #F59E0B; pointer-events: none; z-index: 1; }
+  .cert-stripe { height: 5px; background: linear-gradient(90deg, #00695C 0%, #00897B 40%, #F59E0B 100%); }
+  .cert-header { background: linear-gradient(135deg, #00695C 0%, #00897B 100%); padding: 1.3rem 2rem 1.1rem; text-align: center; }
+  .cert-logo-row { display: flex; align-items: center; justify-content: center; gap: 0.8rem; }
+  .cert-inst-name { font-family: 'Playfair Display', serif; color: white; font-size: 1rem; text-align: left; line-height: 1.2; }
+  .cert-inst-cy { color: #B2DFDB; font-size: 0.75rem; font-style: italic; display: block; font-family: 'Source Sans 3', sans-serif; font-weight: 400; }
+  .cert-body { padding: 1.6rem 2rem; text-align: center; }
+  .cert-presents { font-size: 0.73rem; text-transform: uppercase; letter-spacing: 0.15em; color: #475569; margin-bottom: 0.4rem; }
+  .cert-main-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: #00695C; line-height: 1.2; margin-bottom: 0.2rem; }
+  .cert-main-cy { font-size: 0.85rem; color: #00897B; font-style: italic; margin-bottom: 1.2rem; font-family: 'Source Sans 3', sans-serif; }
+  .cert-awarded-to { font-size: 0.73rem; text-transform: uppercase; letter-spacing: 0.1em; color: #475569; margin-bottom: 0.2rem; }
+  .cert-name { font-family: 'Playfair Display', serif; font-size: 1.9rem; color: #00695C; border-bottom: 2px solid #E2E8F0; display: inline-block; padding: 0 1rem 0.1rem; min-width: 260px; margin-bottom: 0.3rem; line-height: 1.3; }
+  .cert-divider { height: 1px; background: linear-gradient(90deg, transparent, #F59E0B, transparent); margin: 0.9rem auto; width: 55%; }
+  .cert-text { font-size: 0.86rem; color: #1E293B; line-height: 1.65; max-width: 440px; margin: 0 auto 0.7rem; }
+  .cert-course { font-family: 'Playfair Display', serif; font-size: 0.95rem; color: #1E293B; background: #E0F2F1; border: 1px solid #B2DFDB; border-left: 4px solid #00695C; padding: 0.45rem 0.9rem; display: inline-block; margin-bottom: 0.35rem; text-align: left; }
+  .cert-course-cy { font-size: 0.76rem; color: #00897B; font-style: italic; display: block; font-family: 'Source Sans 3', sans-serif; font-weight: 400; }
+  .cert-score-pill { display: inline-block; background: #FEF3C7; border: 1px solid #FCD34D; border-radius: 999px; padding: 0.25rem 1rem; font-size: 0.8rem; font-weight: 700; color: #92400E; margin: 0.5rem 0 0.8rem; }
+  .cert-competencies { font-size: 0.76rem; color: #475569; margin: 0.2rem auto 1rem; max-width: 420px; line-height: 1.55; }
+  .cert-footer-row { display: grid; grid-template-columns: 1fr auto 1fr; gap: 1rem; align-items: end; margin-top: 1rem; padding-top: 1rem; border-top: 1px solid #E2E8F0; }
+  .cert-sig-block { text-align: center; }
+  .cert-sig-line { height: 1px; background: #1E293B; width: 140px; margin: 0 auto 0.25rem; }
+  .cert-sig-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: #475569; }
+  .cert-seal { width: 64px; height: 64px; border-radius: 50%; background: #00695C; border: 3px solid #F59E0B; display: flex; align-items: center; justify-content: center; flex-direction: column; color: white; font-size: 0.5rem; text-transform: uppercase; letter-spacing: 0.04em; text-align: center; line-height: 1.3; margin: 0 auto; }
+  .cert-seal-icon { font-size: 1.2rem; display: block; margin-bottom: 1px; }
+  .cert-date-val { font-family: 'Playfair Display', serif; font-size: 0.9rem; color: #1E293B; }
+  .cert-date-label { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.07em; color: #475569; margin-top: 0.2rem; }
+  .cert-close-row { display: flex; justify-content: center; gap: 1rem; padding: 0.9rem 1.5rem 1.2rem; background: #F8FAFC; flex-wrap: wrap; border-top: 1px solid #E2E8F0; }
+  .btn-cert-print { background: #00695C; color: white; border: none; padding: 0.55rem 1.2rem; border-radius: 8px; font-family: 'Source Sans 3', sans-serif; font-size: 0.86rem; font-weight: 700; cursor: pointer; }
+  .btn-cert-close { background: #475569; color: white; border: none; padding: 0.55rem 1.2rem; border-radius: 8px; font-family: 'Source Sans 3', sans-serif; font-size: 0.86rem; cursor: pointer; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="lang-badge">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg / English 🇬🇧</div>
+  <h1>Differentiation in Secondary Teaching
+    <span>Gwahaniaethu mewn Addysgu Uwchradd</span>
+  </h1>
+  <p class="header-sub">PGCE Training Activity · Gweithgaredd Hyfforddi PGCE · Standalone — no additional resources required</p>
+  <div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+  <p class="progress-label" id="progress-label">Section 1 of 5 · Adran 1 o 5</p>
+</header>
+
+<main>
+  <div class="section-nav" id="section-nav">
+    <button class="snav-btn active" onclick="goTo(0)">1 · What is Differentiation?</button>
+    <button class="snav-btn" onclick="goTo(1)">2 · What to Differentiate</button>
+    <button class="snav-btn" onclick="goTo(2)">3 · Methods &amp; Questioning</button>
+    <button class="snav-btn" onclick="goTo(3)">4 · Inclusive Practice</button>
+    <button class="snav-btn" onclick="goTo(4)">5 · Apply It</button>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 1 — WHAT IS DIFFERENTIATION?
+  ═══════════════════════════════════════ -->
+  <div class="section-card active" id="sec-0">
+    <div class="card-header">
+      <div class="icon">📖</div>
+      <h2>What is Differentiation? <em>Beth yw Gwahaniaethu?</em></h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 English</div>
+          <p>Differentiation is nothing new — it has been an integral part of good teaching for many years, mentioned as far back as 1931 in the Hadow Report. The Government White Paper (DES, 1985) confirmed its importance, defining it as matching <strong>what is taught</strong> and <strong>how it is taught</strong> to pupils' abilities and aptitudes.</p>
+          <p style="margin-top:0.7rem">Petty (2004) emphasises that differentiation should be seen as <strong>integral to learning</strong> — not a troubleshooting add-on when things go wrong. It is an inclusive concept that applies to <em>everyone</em> in the class.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg</div>
+          <p>Nid yw gwahaniaethu yn newydd — mae wedi bod yn rhan annatod o addysgu da ers blynyddoedd, a soniwyd amdano mor bell â 1931. Diffiniodd y Papur Gwyn (DES, 1985) ef fel cyfateb <strong>beth sy'n cael ei addysgu</strong> a <strong>sut mae'n cael ei addysgu</strong> i alluoedd disgyblion.</p>
+          <p style="margin-top:0.7rem">Mae Petty (2004) yn pwysleisio y dylid ystyried gwahaniaethu fel <strong>rhan annatod o ddysgu</strong> — nid ychwanegiad datrys problemau. Mae'n gysyniad cynhwysol sy'n berthnasol i <em>bawb</em>.</p>
+        </div>
+      </div>
+
+      <p class="section-label">Key Definitions · Diffiniadau Allweddol</p>
+
+      <div class="scholar-box">
+        <div class="scholar-name">Kerry (2002)</div>
+        <p>Differentiation is "the process whereby the levels of tasks set to students in class or for homework are matched to the known levels of performance and potential of the individual students involved."
+        <em>Y broses lle mae lefelau'r tasgau a osodir i fyfyrwyr yn cyfateb i lefelau perfformiad a photensial hysbys yr unigolion dan sylw.</em></p>
+      </div>
+
+      <div class="scholar-box">
+        <div class="scholar-name">Dixie (2011)</div>
+        <p>Differentiation is "teaching people differently according to their needs, their capabilities or even their preferred learning styles." The best approach is delivering the curriculum in different ways — varying both how skills and knowledge are taught <em>and</em> the range of tasks used to support learning.
+        <em>Addysgu pobl yn wahanol yn ôl eu hanghenion, eu galluoedd neu eu harddulliau dysgu ffafriedig.</em></p>
+      </div>
+
+      <div class="scholar-box">
+        <div class="scholar-name">Training &amp; Development Agency for Schools</div>
+        <p>Differentiation is "the process by which differences between pupils are accommodated so that all students have the best possible chance of learning."
+        <em>Y broses lle caiff gwahaniaethau rhwng disgyblion eu rheoli fel bod pob myfyriwr yn cael y cyfle gorau posibl i ddysgu.</em></p>
+      </div>
+
+      <div class="scholar-box">
+        <div class="scholar-name">Donaldson (2015) — Independent Review of Curriculum and Assessment in Wales</div>
+        <p>Emphasises the importance of setting tasks and selecting resources that build on previous knowledge and experience and engage pupils' interests. "Children and young people arrive at school with different aspirations, interests and experiences and so will approach learning in their own particular way."
+        <em>Pwysleisia bwysigrwydd gosod tasgau sy'n adeiladu ar brofiad blaenorol ac yn ennyn diddordeb. Mae plant yn cyrraedd yr ysgol â gwahanol uchelgeisiau, diddordebau a phrofiadau.</em></p>
+      </div>
+
+      <div class="info-box amber">
+        <h3>💡 The Core Principle · Yr Egwyddor Ganolog</h3>
+        <p><strong>English:</strong> Consider differentiation in light of three things: pupils' <strong>readiness to learn</strong>, their <strong>learning needs</strong>, and their <strong>interests</strong>. Research shows that <em>teaching to the average</em> does not allow all learners to reach their full potential. Differentiation is the teacher's responsibility, and it links directly to effective Assessment for Learning.</p>
+        <p style="margin-top:0.7rem"><strong>Cymraeg:</strong> Ystyriwch wahaniaethu yng ngoleuni tair peth: <strong>parodrwydd i ddysgu</strong>, <strong>anghenion dysgu</strong>, a <strong>diddordebau</strong> disgyblion. Mae addysgu i'r cyfartaledd yn atal rhai dysgwyr rhag cyrraedd eu llawn botensial.</p>
+      </div>
+
+      <div class="quiz-section-label">✏️ Check Your Understanding · Gwiriwch Eich Dealltwriaeth</div>
+
+      <div class="quiz-question" id="q1">
+        <p class="q-text"><span class="q-num">1</span>The Government White Paper (DES, 1985) defined differentiation as matching what two things to pupils' abilities and aptitudes?</p>
+        <p class="q-welsh">Diffiniodd y Papur Gwyn (DES, 1985) wahaniaethu fel cyfateb pa ddau beth i alluoedd a phriodoleddau disgyblion?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q1',this,false)">Resources and grouping · Adnoddau a grwpio</button>
+          <button class="option-btn" onclick="checkQ('q1',this,true)">What is taught and how it is taught · Beth sy'n cael ei addysgu a sut mae'n cael ei addysgu</button>
+          <button class="option-btn" onclick="checkQ('q1',this,false)">Assessment and feedback · Asesu ac adborth</button>
+          <button class="option-btn" onclick="checkQ('q1',this,false)">Tasks and outcomes · Tasgau a chanlyniadau</button>
+        </div>
+        <div class="feedback" id="q1-fb"></div>
+      </div>
+
+      <div class="quiz-question" id="q2">
+        <p class="q-text"><span class="q-num">2</span>According to Petty (2004), differentiation should be seen as which of the following?</p>
+        <p class="q-welsh">Yn ôl Petty (2004), sut ddylid ystyried gwahaniaethu?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q2',this,false)">A troubleshooting strategy used when a lesson is going wrong · Strategaeth datrys problemau pan fo gwers yn mynd o chwith</button>
+          <button class="option-btn" onclick="checkQ('q2',this,false)">An optional extra for student teachers to try once confident · Ychwanegiad dewisol ar gyfer myfyrwyr athrawon</button>
+          <button class="option-btn" onclick="checkQ('q2',this,true)">Integral to learning — an inclusive concept applying to everyone in the class · Yn rhan annatod o ddysgu — cysyniad cynhwysol sy'n berthnasol i bawb</button>
+          <button class="option-btn" onclick="checkQ('q2',this,false)">A set of additional tasks provided only for lower ability pupils · Set o dasgau ychwanegol ar gyfer disgyblion gallu is yn unig</button>
+        </div>
+        <div class="feedback" id="q2-fb"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="nextSection(0)">Next: What to Differentiate → <em style="font-weight:400;font-style:normal;opacity:0.85;font-size:0.85em;">Nesaf: Beth i'w Wahaniaethu</em></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 2 — TOMLINSON + BROAD CATEGORIES
+  ═══════════════════════════════════════ -->
+  <div class="section-card" id="sec-1">
+    <div class="card-header">
+      <div class="icon">🧩</div>
+      <h2>What Should Be Differentiated? <em>Beth Ddylid ei Wahaniaethu?</em></h2>
+    </div>
+    <div class="card-body">
+
+      <p class="section-label">Tomlinson's Three Components (1999) · Tri Chydran Tomlinson (1999)</p>
+
+      <div class="bilingual-block" style="margin-bottom:1rem">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 English</div>
+          <p>Tomlinson (1999) argues that to differentiate effectively, teachers must think about three distinct components of their teaching. These give structure to your planning and move you beyond vague intentions towards <em>purposeful, specific</em> differentiation.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg</div>
+          <p>Mae Tomlinson (1999) yn dadlau y dylai athrawon feddwl am dri chydran penodol o'u haddysgu. Mae'r rhain yn rhoi strwythur i'ch cynllunio ac yn eich helpu i symud tuag at wahaniaethu <em>bwriadol, penodol</em>.</p>
+        </div>
+      </div>
+
+      <table class="content-table">
+        <tr>
+          <th style="width:18%">Component · Cydran</th>
+          <th>English: What this means in practice</th>
+          <th>Cymraeg: Yr hyn y mae'n ei olygu mewn ymarfer</th>
+        </tr>
+        <tr>
+          <td><strong>Content</strong><br><em style="font-size:0.82rem;color:var(--slate-mid)">Cynnwys</em></td>
+          <td>The elements and materials used to teach concepts, principles and skills. This is <em>what</em> pupils will learn — you may vary the texts, resources or vocabulary used with different pupils to make the content accessible.</td>
+          <td>Y deunyddiau a'r elfennau a ddefnyddir i addysgu cysyniadau a sgiliau. Gallwch amrywio'r testunau, adnoddau neu eirfa a ddefnyddir gyda gwahanol ddisgyblion.</td>
+        </tr>
+        <tr>
+          <td><strong>Process</strong><br><em style="font-size:0.82rem;color:var(--slate-mid)">Proses</em></td>
+          <td><em>How</em> the content is taught — for example, whole-class discussion, followed by small-group work, paired activity, or individual tasks. The process can vary to suit different learning needs even when the content is the same.</td>
+          <td><em>Sut</em> y caiff y cynnwys ei addysgu — er enghraifft, trafodaeth dosbarth cyfan, yna gwaith grŵp bach, gweithgaredd parau, neu dasgau unigol.</td>
+        </tr>
+        <tr>
+          <td><strong>Product</strong><br><em style="font-size:0.82rem;color:var(--slate-mid)">Cynnyrch</em></td>
+          <td><em>What</em> pupils will produce to demonstrate their learning — will you allow choices in how they present their work? Written, verbal, visual? Giving pupils agency over the product can motivate and extend learning.</td>
+          <td><em>Beth</em> fydd disgyblion yn ei gynhyrchu i ddangos eu dysgu. A fyddwch chi'n caniatáu dewisiadau yn sut maent yn cyflwyno eu gwaith?</td>
+        </tr>
+      </table>
+
+      <div class="info-box amber">
+        <h3>⚠️ Tomlinson's Caution (2013) — The VAK Neuromyth · Rhybudd Tomlinson — Niwrofyth VAK</h3>
+        <p><strong>English:</strong> Tomlinson (2013) also warns against <strong>pigeon-holing pupils</strong> by labelling them as purely visual, auditory or kinaesthetic (VAK) learners. Research by Coffield et al. (2004) shows that children do <em>not</em> process information more effectively when taught in their so-called "preferred learning style." This is a <strong>neuromyth</strong> — a misconception generated by a misreading of genuine brain research (OECD, 2002). The same person will learn differently in different contexts. Instead, use differentiation to give pupils <em>options and choices</em>, helping them to know themselves as learners.</p>
+        <p style="margin-top:0.7rem"><strong>Cymraeg:</strong> Mae Tomlinson (2013) yn rhybuddio rhag labelu disgyblion fel dysgwyr gweledol, clywedol neu ginesthetig (VAK). Mae ymchwil Coffield et al. (2004) yn dangos nad yw plant yn prosesu gwybodaeth yn fwy effeithiol yn eu "harddull dysgu ffafriedig" honedig — mae hwn yn <strong>niwrofyth</strong>. Yn hytrach, defnyddiwch wahaniaethu i roi opsiynau a dewisiadau i ddisgyblion.</p>
+      </div>
+
+      <hr>
+      <p class="section-label">The Three Broad Categories of Differentiation · Tair Categori Eang</p>
+      <p style="font-size:0.93rem;margin-bottom:1rem;color:var(--slate)"><strong>English:</strong> All three categories should ideally be used together — do not rely on any single one.<br><em>Cymraeg: Dylid defnyddio'r tair categori gyda'i gilydd yn ddelfrydol.</em></p>
+
+      <div class="traffic-light">
+        <div class="tl-item green">
+          <div class="tl-dot"></div>
+          <p><strong>By Task</strong> — Setting different tasks for different ability levels, all relating to the same topic.<br><em>Trwy Dasg</em> — Gosod tasgau gwahanol i wahanol alluoedd ar yr un pwnc.</p>
+        </div>
+        <div class="tl-item amber">
+          <div class="tl-dot"></div>
+          <p><strong>By Support</strong> — Providing different levels of help and scaffolding to certain pupils within the group.<br><em>Trwy Gymorth</em> — Darparu gwahanol raddfeydd o help i rai disgyblion.</p>
+        </div>
+        <div class="tl-item red">
+          <div class="tl-dot"></div>
+          <p><strong>By Outcome</strong> — Same task for all; pupils respond at their own level. Use with care — not suitable for structured learning.<br><em>Trwy Ganlyniad</em> — Yr un dasg i bawb. Defnyddiwch yn ofalus — nid addas ar gyfer dysgu strwythuredig.</p>
+        </div>
+      </div>
+
+      <div class="info-box slate">
+        <h3>🔑 Three Planning Questions · Tair Cwestiwn Cynllunio</h3>
+        <p style="margin-bottom:0.5rem">Before each lesson, ask:</p>
+        <ul>
+          <li><strong>1.</strong> By the end of this lesson, what should pupils <strong>know</strong>? · Beth ddylai disgyblion ei <strong>wybod</strong>?</li>
+          <li><strong>2.</strong> What should pupils be able to <strong>understand</strong>? · Beth ddylai disgyblion allu ei <strong>ddeall</strong>?</li>
+          <li><strong>3.</strong> What should pupils be able to <strong>do</strong>? · Beth ddylai disgyblion allu ei <strong>wneud</strong>?</li>
+        </ul>
+      </div>
+
+      <div class="quiz-section-label">✏️ Check Your Understanding · Gwiriwch Eich Dealltwriaeth</div>
+
+      <div class="quiz-question" id="q3">
+        <p class="q-text"><span class="q-num">3</span>Tomlinson (1999) identifies three components of teaching that should be differentiated. Which is the correct list?</p>
+        <p class="q-welsh">Mae Tomlinson (1999) yn nodi tri chydran addysgu y dylid eu gwahaniaethu. Pa un yw'r rhestr gywir?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q3',this,false)">Task, Support, Outcome · Tasg, Cymorth, Canlyniad</button>
+          <button class="option-btn" onclick="checkQ('q3',this,false)">Ability, Interest, Learning Style · Gallu, Diddordeb, Arddull Dysgu</button>
+          <button class="option-btn" onclick="checkQ('q3',this,true)">Content, Process, Product · Cynnwys, Proses, Cynnyrch</button>
+          <button class="option-btn" onclick="checkQ('q3',this,false)">Planning, Delivery, Assessment · Cynllunio, Cyflwyno, Asesu</button>
+        </div>
+        <div class="feedback" id="q3-fb"></div>
+      </div>
+
+      <div class="quiz-question" id="q4">
+        <p class="q-text"><span class="q-num">4</span>According to Tomlinson (2013) and Coffield et al. (2004), why should teachers avoid labelling pupils as VAK learners?</p>
+        <p class="q-welsh">Yn ôl Tomlinson (2013) a Coffield et al. (2004), pam ddylai athrawon osgoi labelu disgyblion fel dysgwyr VAK?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q4',this,false)">Because it creates too much paperwork · Oherwydd ei fod yn creu gormod o waith papur</button>
+          <button class="option-btn" onclick="checkQ('q4',this,true)">Because it is a neuromyth — research shows pupils do not learn more effectively when taught in their 'preferred' style · Oherwydd mae'n niwrofyth — nid yw ymchwil yn dangos bod disgyblion yn dysgu'n well yn eu harddull 'ffafriedig'</button>
+          <button class="option-btn" onclick="checkQ('q4',this,false)">Because VAK is only valid for primary-age learners · Oherwydd mai dim ond ar gyfer dysgwyr cynradd y mae VAK yn ddilys</button>
+          <button class="option-btn" onclick="checkQ('q4',this,false)">Because learning styles change every academic year · Oherwydd bod arddulliau dysgu yn newid bob blwyddyn academaidd</button>
+        </div>
+        <div class="feedback" id="q4-fb"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(0)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(1)">Next: Methods &amp; Questioning → <em style="font-weight:400;font-style:normal;opacity:0.85;font-size:0.85em;">Nesaf: Dulliau a Chwestiynu</em></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 3 — METHODS + BLOOM'S
+  ═══════════════════════════════════════ -->
+  <div class="section-card" id="sec-2">
+    <div class="card-header">
+      <div class="icon">🛠️</div>
+      <h2>Methods, Strategies &amp; Questioning <em>Dulliau, Strategaethau a Chwestiynu</em></h2>
+    </div>
+    <div class="card-body">
+
+      <p class="section-label">Eight Key Differentiation Strategies · Wyth Strategaeth Allweddol</p>
+
+      <table class="content-table">
+        <tr><th style="width:22%">Strategy · Strategaeth</th><th>What it means / Yr hyn y mae'n ei olygu</th></tr>
+        <tr><td><strong>Resource · Adnoddau</strong></td><td>Provide different materials for different pupils — e.g. a word bank or sentence starters for lower attaining pupils, advanced texts or research materials for more able pupils. / Darparwch ddeunyddiau gwahanol — e.e. banc geiriau i ddisgyblion llai medrus, testunau cymhletach i'r rhai mwy abl.</td></tr>
+        <tr><td><strong>Intervention · Ymyrraeth</strong></td><td>Vary the level of support, supervision, and questioning for different pupils. Modify the task when non-achievement is anticipated. Note: additional adults (LSAs) need not only support lower ability groups — they can also challenge higher ability groups. / Amrywiwch y lefel o gymorth a goruchwyliaeth. Gall oedolion ychwanegol hefyd herio grwpiau gallu uwch.</td></tr>
+        <tr><td><strong>Progressive Questioning · Cwestiynu Cynyddol</strong></td><td>Direct lower-order questions (knowledge, comprehension) at lower attaining pupils first; move to higher-order questions (analysis, evaluation) for higher attaining pupils. Plan key differentiated questions within your lesson plan. / Cyfeiriwch gwestiynau is-raddol at ddisgyblion llai medrus yn gyntaf; symudwch i gwestiynau uwch-raddol ar gyfer rhai mwy abl. Cynlluniwch gwestiynau allweddol yn eich cynllun gwers.</td></tr>
+        <tr><td><strong>Grouping · Grwpio</strong></td><td>Group pupils by prior attainment, interest, or task requirements. Consider whether mixed-ability or same-ability grouping better serves the specific learning objective. Donaldson (2015) warns against superficial groupings. / Grwpiwch yn ôl cyrhaeddiad, diddordeb, neu ofynion y dasg. Ystyriwch pa fath o grŵp sy'n gweddu orau i'r amcan dysgu penodol.</td></tr>
+        <tr><td><strong>Task · Tasg</strong></td><td>Set different tasks for different pupils on the same topic — ensuring equality of opportunity and entitlement for all. Learners may also be asked to present work in their preferred format. / Gosodwch dasgau gwahanol i ddisgyblion gwahanol ar yr un pwnc — gan sicrhau cyfle cyfartal i bawb.</td></tr>
+        <tr><td><strong>A / B / C Planning · Cynllunio A/B/C</strong></td><td><strong>A = All must</strong> (foundation tasks every pupil completes) · <strong>Rhaid i bawb</strong><br><strong>B = Most should</strong> (core tasks the majority complete) · <strong>Dylai'r rhan fwyaf</strong><br><strong>C = Some could</strong> (extension tasks for the most able — enriching the topic or increasing complexity) · <strong>Gallai rhai</strong></td></tr>
+        <tr><td><strong>Optional Activities · Gweithgareddau Dewisol</strong></td><td>Meaningful extension tasks for pupils wishing to deepen learning in class or in their own time — building independence, thinking skills, and responsibility for their own learning. / Tasgau estyniad ystyrlon ar gyfer disgyblion sy'n dymuno dyfnhau eu dysgu — gan feithrin annibyniaeth.</td></tr>
+        <tr><td><strong>Product / Outcome · Cynnyrch / Canlyniad</strong></td><td>All pupils receive the same task and resources and respond at their own level, producing outcomes that reflect their ability. Suitable for open-ended, creative activities — but <strong>not</strong> helpful for structured learning requiring a specific approach. Do not rely on this as your primary strategy. / Yr un dasg a'r un adnoddau i bawb — addas ar gyfer gweithgareddau agored ond <strong>nid</strong> ar gyfer dysgu strwythuredig. Peidiwch â gordibynnu ar hyn.</td></tr>
+      </table>
+
+      <hr>
+      <p class="section-label">Bloom's Taxonomy &amp; Progressive Questioning · Tacsonomeg Bloom a Chwestiynu Cynyddol</p>
+
+      <div class="bilingual-block" style="margin-bottom:1.2rem">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 English</div>
+          <p>Bloom et al. (1956) identified a hierarchy of thinking skills from lower-order (knowledge, comprehension, application) to higher-order (analysis, synthesis, evaluation). Research shows teachers ask questions at the <strong>knowledge level 80–90% of the time</strong> — but higher-order questions require more thinking and lead to deeper learning.</p>
+          <p style="margin-top:0.6rem">Walsh and Sattes (2005) found that teachers typically wait <strong>less than one second</strong> after asking a question. Extended wait time — giving pupils more thinking time — leads to more pupils formulating and offering answers.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg</div>
+          <p>Nododd Bloom et al. (1956) hierarchaeth o sgiliau meddwl o is-raddol i uwch-raddol. Mae ymchwil yn dangos bod athrawon yn gofyn cwestiynau ar lefel <strong>gwybodaeth 80–90% o'r amser</strong> — ond mae cwestiynau uwch-raddol yn arwain at ddysgu dyfnach.</p>
+          <p style="margin-top:0.6rem">Canfu Walsh a Sattes (2005) bod athrawon fel arfer yn aros <strong>llai nag un eiliad</strong> ar ôl gofyn cwestiwn. Mae amser aros hirach yn arwain at fwy o ddisgyblion yn llunio atebion.</p>
+        </div>
+      </div>
+
+      <p style="font-size:0.85rem;color:var(--slate-mid);margin-bottom:0.8rem;font-style:italic;">👆 Click each level of the pyramid to explore verbs and secondary classroom examples · Cliciwch bob lefel i weld berfau ac enghreifftiau</p>
+
+      <div class="blooms-wrap">
+        <div class="bloom-level" style="background:#C0392B;max-width:95%" onclick="toggleBloom('b1')">
+          <div class="b-title">EVALUATION · GWERTHUSO — Highest order · Lefel uchaf</div>
+          <div class="b-welsh">appraise · assess · criticise · defend · evaluate · justify · support</div>
+        </div>
+        <div class="bloom-detail" id="b1">
+          <strong>Verbs / Berfau:</strong> appraise, assess, criticise, defend, evaluate, justify, support · amcangyfrif, gwerthuso, beirniadu, amddiffyn, cyfiawnhau<br><br>
+          <strong>Example secondary question:</strong> "Do you think heavy smoking is more dangerous than heavy drinking? Justify your answer with evidence."<br>
+          <em>Enghraifft: "A ydych chi'n credu bod ysmygu trwm yn fwy peryglus nag yfed trwm? Cyfiawnhewch eich ateb."</em><br>
+          <span class="bloom-tag" style="background:#FEE2E2;color:#7F1D1D;">Higher order · Uwch-raddol — direct at higher attaining pupils</span>
+        </div>
+
+        <div class="bloom-level" style="background:#E67E22;max-width:85%" onclick="toggleBloom('b2')">
+          <div class="b-title">SYNTHESIS · SYNTHESEIDDIO</div>
+          <div class="b-welsh">compile · create · develop · generalise · integrate · propose</div>
+        </div>
+        <div class="bloom-detail" id="b2">
+          <strong>Verbs / Berfau:</strong> compile, create, develop, generalise, integrate, propose · llunio, creu, datblygu, cyffredinoli, integreiddio, cynnig<br><br>
+          <strong>Example:</strong> "How would you design an experiment to test whether plants need sunlight to grow?"<br>
+          <em>Enghraifft: "Sut fyddech chi'n cynllunio arbrawf i brofi a oes angen golau'r haul ar blanhigion i dyfu?"</em><br>
+          <span class="bloom-tag" style="background:#FEE2E2;color:#7F1D1D;">Higher order · Uwch-raddol</span>
+        </div>
+
+        <div class="bloom-level" style="background:#F39C12;max-width:75%" onclick="toggleBloom('b3')">
+          <div class="b-title">ANALYSIS · DADANSODDI</div>
+          <div class="b-welsh">analyse · compare · contrast · differentiate</div>
+        </div>
+        <div class="bloom-detail" id="b3">
+          <strong>Verbs / Berfau:</strong> analyse, compare, contrast, differentiate · dadansoddi, cymharu, cyferbynnu, gwahaniaethu<br><br>
+          <strong>Example:</strong> "What are the main differences between the two poets' use of imagery?"<br>
+          <em>Enghraifft: "Beth yw'r prif wahaniaethau rhwng defnydd y ddau fardd o ddelweddiaeth?"</em><br>
+          <span class="bloom-tag" style="background:#FEF3C7;color:#92400E;">Transitional · Trosiannol</span>
+        </div>
+
+        <div class="bloom-level" style="background:#27AE60;max-width:65%" onclick="toggleBloom('b4')">
+          <div class="b-title">APPLICATION · CYMHWYSO</div>
+          <div class="b-welsh">apply · construct · demonstrate · use</div>
+        </div>
+        <div class="bloom-detail" id="b4">
+          <strong>Verbs / Berfau:</strong> apply, carry out, construct, demonstrate, operate, produce, use · cymhwyso, adeiladu, dangos, defnyddio<br><br>
+          <strong>Example:</strong> "Why is copper wire a good material to use when making an electrical circuit?"<br>
+          <em>Enghraifft: "Pam mae gwifren gopr yn ddeunydd da i'w ddefnyddio wrth wneud cylched drydanol?"</em><br>
+          <span class="bloom-tag" style="background:#DCFCE7;color:#14532D;">Lower order · Is-raddol</span>
+        </div>
+
+        <div class="bloom-level" style="background:#2980B9;max-width:55%" onclick="toggleBloom('b5')">
+          <div class="b-title">COMPREHENSION · DEALLTWRIAETH</div>
+          <div class="b-welsh">describe · discuss · explain · interpret</div>
+        </div>
+        <div class="bloom-detail" id="b5">
+          <strong>Verbs / Berfau:</strong> comprehend, condense, describe, discuss, distinguish, interpret, locate · deall, crynhoi, disgrifio, trafod, dehongli<br><br>
+          <strong>Example:</strong> "Can you describe in your own words what happens during the water cycle?"<br>
+          <em>Enghraifft: "Allwch chi ddisgrifio yn eich geiriau eich hun beth sy'n digwydd yn y gylchred ddŵr?"</em><br>
+          <span class="bloom-tag" style="background:#DCFCE7;color:#14532D;">Lower order · Is-raddol — direct at lower attaining pupils first</span>
+        </div>
+
+        <div class="bloom-level" style="background:#6C3483;max-width:45%" onclick="toggleBloom('b6')">
+          <div class="b-title">KNOWLEDGE · GWYBODAETH — Lowest order · Lefel isaf</div>
+          <div class="b-welsh">define · identify · list · name · recall</div>
+        </div>
+        <div class="bloom-detail" id="b6">
+          <strong>Verbs / Berfau:</strong> define, describe, identify, label, list, match, name, outline, recall, recognise, select, state · diffinio, nodi, adnabod, labelu, rhestru, cofio, dewis<br><br>
+          <strong>Example:</strong> "Who is the hero in the story?" / "What is the capital of China?" — closed, single-answer.<br>
+          <em>Enghraifft: "Pwy yw'r arwr yn y stori?" — caeëdig, un ateb yn unig.</em><br>
+          <span class="bloom-tag" style="background:#DCFCE7;color:#14532D;">Lower order · Is-raddol</span>
+        </div>
+      </div>
+
+      <hr>
+      <p class="section-label">Sorting Activity · Gweithgaredd Dosbarthu</p>
+      <p style="font-size:0.93rem;margin-bottom:1rem;color:var(--slate)"><strong>English:</strong> Drag each example card into the correct differentiation strategy column.<br><em>Cymraeg: Llusgwch bob cerdyn enghraifft i'r golofn strategaeth gywir.</em></p>
+
+      <div class="drag-pool-label">📦 Examples to sort · Enghreifftiau i'w dosbarthu</div>
+      <div class="drop-zone" id="pool" ondragover="dragOver(event)" ondrop="dropItem(event,'pool')" ondragleave="dragLeave(event)">
+        <div class="draggable-item" draggable="true" ondragstart="dragStart(event)" data-cat="resource">Providing a word bank and sentence starters to lower attaining pupils · Rhoi banc geiriau a dechreuadau brawddeg i ddisgyblion llai medrus</div>
+        <div class="draggable-item" draggable="true" ondragstart="dragStart(event)" data-cat="abc">Task A: all pupils identify three persuasive techniques. Task C: most able pupils write a full persuasive speech and evaluate its effectiveness · Tasg A: pawb yn nodi technegau; Tasg C: y rhai mwyaf abl yn ysgrifennu araith lawn</div>
+        <div class="draggable-item" draggable="true" ondragstart="dragStart(event)" data-cat="grouping">Mixed-ability pairs for a speaking and listening discussion task · Parau cymysg eu gallu ar gyfer gweithgaredd siarad a gwrando</div>
+        <div class="draggable-item" draggable="true" ondragstart="dragStart(event)" data-cat="outcome">An open-ended creative writing prompt — all pupils use the same stimulus and respond at their own level · Ysgogiad ysgrifennu creadigol agored — yr un ysgogiad i bawb, pawb yn ymateb ar eu lefel eu hunain</div>
+      </div>
+
+      <div class="drag-targets">
+        <div class="drag-target-col">
+          <h4>🔵 Resource · Adnoddau</h4>
+          <div class="drop-zone" id="resource" ondragover="dragOver(event)" ondrop="dropItem(event,'resource')" ondragleave="dragLeave(event)"></div>
+        </div>
+        <div class="drag-target-col">
+          <h4>🟡 A/B/C Planning · Cynllunio A/B/C</h4>
+          <div class="drop-zone" id="abc" ondragover="dragOver(event)" ondrop="dropItem(event,'abc')" ondragleave="dragLeave(event)"></div>
+        </div>
+        <div class="drag-target-col">
+          <h4>🟣 Grouping · Grwpio</h4>
+          <div class="drop-zone" id="grouping" ondragover="dragOver(event)" ondrop="dropItem(event,'grouping')" ondragleave="dragLeave(event)"></div>
+        </div>
+        <div class="drag-target-col">
+          <h4>🟢 Outcome · Canlyniad</h4>
+          <div class="drop-zone" id="outcome" ondragover="dragOver(event)" ondrop="dropItem(event,'outcome')" ondragleave="dragLeave(event)"></div>
+        </div>
+      </div>
+      <button class="btn btn-check" onclick="checkDrag()" style="margin-top:1rem">✅ Check · Gwirio</button>
+      <div class="drag-feedback" id="drag-fb"></div>
+
+      <div class="quiz-section-label">✏️ Check Your Understanding · Gwiriwch Eich Dealltwriaeth</div>
+
+      <div class="quiz-question" id="q5">
+        <p class="q-text"><span class="q-num">5</span>In the A/B/C planning framework, what does "C = Some could" refer to?</p>
+        <p class="q-welsh">Yn y fframwaith cynllunio A/B/C, at beth mae "C = Gallai rhai" yn cyfeirio?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q5',this,false)">Foundation tasks that the whole class must complete · Tasgau sylfaenol y mae'n rhaid i'r dosbarth cyfan eu cwblhau</button>
+          <button class="option-btn" onclick="checkQ('q5',this,false)">Core tasks that most pupils are expected to complete · Tasgau craidd y disgwylir i'r rhan fwyaf eu cwblhau</button>
+          <button class="option-btn" onclick="checkQ('q5',this,true)">Extension tasks for the most able — enriching the topic or increasing its complexity · Tasgau estyniad ar gyfer y mwyaf abl — cyfoethogi'r pwnc neu gynyddu cymhlethdod</button>
+          <button class="option-btn" onclick="checkQ('q5',this,false)">Optional homework tasks for any pupil who wants extra challenge · Tasgau gwaith cartref dewisol i unrhyw ddisgybl am her ychwanegol</button>
+        </div>
+        <div class="feedback" id="q5-fb"></div>
+      </div>
+
+      <div class="quiz-question" id="q6">
+        <p class="q-text"><span class="q-num">6</span>What do Bloom et al. (1956) and Walsh &amp; Sattes (2005) together tell us about teacher questioning in practice?</p>
+        <p class="q-welsh">Beth mae Bloom et al. (1956) a Walsh a Sattes (2005) gyda'i gilydd yn ei ddweud wrthym am gwestiynu athrawon mewn ymarfer?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q6',this,false)">Teachers ask higher-order questions most of the time and give pupils adequate thinking time · Mae athrawon yn gofyn cwestiynau uwch-raddol y rhan fwyaf o'r amser ac yn rhoi amser meddwl digonol</button>
+          <button class="option-btn" onclick="checkQ('q6',this,true)">Teachers ask knowledge-level questions 80–90% of the time AND typically wait less than one second — both suggesting that questioning practice needs improvement · Mae athrawon yn gofyn cwestiynau gwybodaeth 80–90% o'r amser AC yn aros llai nag un eiliad — y ddau yn awgrymu bod angen gwella arfer cwestiynu</button>
+          <button class="option-btn" onclick="checkQ('q6',this,false)">Teachers are skilled at asking higher-order questions but struggle with wait time · Mae athrawon yn fedrus am ofyn cwestiynau uwch-raddol ond yn cael anhawster gydag amser aros</button>
+          <button class="option-btn" onclick="checkQ('q6',this,false)">Pupils ask too many lower-order questions, which slows down the lesson · Mae disgyblion yn gofyn gormod o gwestiynau is-raddol, sy'n arafu'r wers</button>
+        </div>
+        <div class="feedback" id="q6-fb"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(1)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(2)">Next: Inclusive Practice → <em style="font-weight:400;font-style:normal;opacity:0.85;font-size:0.85em;">Nesaf: Ymarfer Cynhwysol</em></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 4 — INCLUSIVE
+  ═══════════════════════════════════════ -->
+  <div class="section-card" id="sec-3">
+    <div class="card-header">
+      <div class="icon">🌍</div>
+      <h2>Inclusive Differentiation <em>Gwahaniaethu Cynhwysol</em></h2>
+    </div>
+    <div class="card-body">
+
+      <p class="section-label">EAL Learners · Dysgwyr Saesneg fel Ail Iaith (SAY)</p>
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 Key Facts about EAL</div>
+          <ul>
+            <li>EAL learners will be affected by attitudes towards their culture, language, religion and ethnicity — classroom climate matters.</li>
+            <li>Children can become <strong>conversationally fluent</strong> in a new language in <strong>2–3 years</strong>, but it may take <strong>5 years or longer</strong> to match peers in cognitive and academic language.</li>
+            <li>Children benefit hugely from opportunities to continue developing their <strong>first language</strong> alongside English.</li>
+            <li>EAL learners need to learn English <em>and</em> curriculum content simultaneously. Language functions such as questioning, analysing, and hypothesising must be <strong>explicitly taught</strong> in each subject.</li>
+            <li>Children learning EAL are <strong>as able as any other children</strong>. Learning must be no less cognitively challenging — differentiation comes through contextual and linguistic support, not reduced difficulty.</li>
+          </ul>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymorth Cyd-destunol ar gyfer Dysgwyr SAY</div>
+          <ul>
+            <li>Cyfleoedd i adeiladu ar brofiad blaenorol · Opportunities to build on prior experience</li>
+            <li>Modelu gan yr athro neu ymarferwr · Teacher or practitioner modelling</li>
+            <li>Propiau gweledol a gwrthrychau bywyd go iawn · Visual props and real-life objects</li>
+            <li>Delweddau allweddol: diagramau a llinellau amser · Key visuals: diagrams and timelines</li>
+            <li>Grwpiau cymysg-allu cydweithredol · Opportunities to work in mixed-ability groups</li>
+            <li>Cyfleoedd i ddefnyddio'r iaith gyntaf · Opportunities to use the first language</li>
+          </ul>
+          <p style="margin-top:0.7rem;font-size:0.85rem;color:var(--slate-mid);font-style:italic;">High cognitive challenge must be maintained through contextual and linguistic support — not reduced difficulty.</p>
+        </div>
+      </div>
+
+      <hr>
+      <p class="section-label">SEN Learners · Disgyblion ag Anghenion Dysgu Ychwanegol (ADY)</p>
+
+      <div class="info-box amber">
+        <h3>♿ Key Principles for SEN / ADY</h3>
+        <ul>
+          <li>Ensure difficulty in one curriculum area does not hold pupils back in others — e.g. present material orally or pictorially for pupils with reading difficulties. / Sicrhewch nad yw anhawster mewn un maes yn atal cynnydd mewn meysydd eraill.</li>
+          <li>For pupils with cognition and learning difficulties, provide more examples, more practice, and more opportunities to generalise concepts across contexts. / Darparwch fwy o enghreifftiau, mwy o ymarfer, a mwy o gyfleoedd i gyffredinoli cysyniadau.</li>
+          <li>Building <strong>confidence and self-belief</strong> is a crucial priority for pupils with SEN. / Mae adeiladu <strong>hyder a hunangred</strong> yn flaenoriaeth hollbwysig.</li>
+          <li>Additional adults (LSAs) in the classroom should <em>not</em> always be directed only at lower ability groups — higher ability groups can sometimes be better challenged with the support of an enabling adult. / Ni ddylai oedolion ychwanegol gael eu targedu at grwpiau gallu is yn unig bob amser.</li>
+        </ul>
+      </div>
+
+      <hr>
+      <p class="section-label">More Able and Talented (MAT) Pupils · Disgyblion Mwy Abl a Thalentog (DAT)</p>
+
+      <div class="scholar-box">
+        <div class="scholar-name">Estyn (2012) — Supporting more able and talented pupils in secondary schools</div>
+        <p>In the few schools where MAT pupils achieve their full potential, good teaching and learning strategies for MAT pupils impact positively on examination results — and <em>all groups of pupils</em> are appropriately challenged across the curriculum. Effective schools identify strengths and talents through teacher assessment, standardised testing, observation, and parental input, sharing this with all staff.
+        <em>Yn yr ychydig ysgolion lle mae disgyblion DAT yn cyrraedd eu llawn botensial, mae pob grŵp o ddisgyblion hefyd yn cael eu herio'n briodol ar draws y cwricwlwm.</em></p>
+      </div>
+
+      <div class="info-box">
+        <h3>⭐ What MAT pupils benefit from · Yr hyn y mae disgyblion DAT yn elwa ohono</h3>
+        <ul>
+          <li>Individualised or personalised approaches to learning · Dulliau unigolaidd neu bersonol o ddysgu</li>
+          <li>Access to specialist teachers · Mynediad at athrawon arbenigol</li>
+          <li>Control over how and what they learn · Rheolaeth dros sut a beth maen nhw'n ei ddysgu</li>
+          <li>Discourse that develops techniques for expressing views, posing and interrogating questions · Trafodaeth sy'n datblygu technegau i fynegi barn a chwestiynu</li>
+          <li>Probing questions, peer discussion, and meaningful teacher–pupil interaction in individual lessons · Cwestiynau treiddiol, trafodaeth gyfoedion, a rhyngweithio ystyrlon rhwng athro a disgybl</li>
+          <li>Mentoring to support option and career choices · Mentora i gefnogi dewisiadau opsiynau a gyrfa</li>
+        </ul>
+        <p style="margin-top:0.8rem;font-size:0.88rem;color:var(--slate-mid)">As a student teacher, think about which of these you CAN influence within your lessons by planning differentiated challenges for MAT pupils. · Fel myfyriwr athro, meddyliwch am ba rai o'r rhain y gallwch chi ddylanwadu arnynt yn eich gwersi.</p>
+      </div>
+
+      <div class="quiz-section-label">✏️ Check Your Understanding · Gwiriwch Eich Dealltwriaeth</div>
+
+      <div class="quiz-question" id="q7">
+        <p class="q-text"><span class="q-num">7</span>A Year 8 pupil arrived from Poland 8 months ago and speaks conversational English confidently. Their teacher concludes their academic English is equally strong. What does the research say?</p>
+        <p class="q-welsh">Mae disgybl Blwyddyn 8 wedi cyrraedd o Wlad Pwyl 8 mis yn ôl ac yn siarad Saesneg mewn sgwrs yn hyderus. Mae eu hathro yn dod i'r casgliad bod eu Saesneg academaidd yr un mor gryf. Beth mae'r ymchwil yn ei ddweud?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q7',this,false)">The teacher is correct — conversational and academic language develop simultaneously · Mae'r athro yn gywir — mae iaith sgwrs ac iaith academaidd yn datblygu ar yr un pryd</button>
+          <button class="option-btn" onclick="checkQ('q7',this,true)">The teacher is incorrect — it can take 5+ years to reach peers' academic language level, even after achieving conversational fluency · Mae'r athro yn anghywir — gall gymryd 5+ mlynedd i gyrraedd lefel iaith academaidd cymheiriaid, hyd yn oed ar ôl cyrraedd rhugledd mewn sgwrs</button>
+          <button class="option-btn" onclick="checkQ('q7',this,false)">This only applies to pupils from countries with very different scripts · Dim ond i ddisgyblion o wledydd â sgriptiau gwahanol iawn y mae hyn yn berthnasol</button>
+          <button class="option-btn" onclick="checkQ('q7',this,false)">The research is inconclusive on this point · Nid yw'r ymchwil yn bendant ar y pwynt hwn</button>
+        </div>
+        <div class="feedback" id="q7-fb"></div>
+      </div>
+
+      <div class="quiz-question" id="q8">
+        <p class="q-text"><span class="q-num">8</span>According to Donaldson (2015), what is the risk associated with grouping pupils by perceived need?</p>
+        <p class="q-welsh">Yn ôl Donaldson (2015), beth yw'r risg sy'n gysylltiedig â grwpio disgyblion yn ôl angen tybiedig?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q8',this,false)">Pupils in lower groups will always make less progress · Bydd disgyblion mewn grwpiau is bob amser yn gwneud llai o gynnydd</button>
+          <button class="option-btn" onclick="checkQ('q8',this,false)">Grouping by need takes too much classroom time to organise · Mae grwpio yn ôl angen yn cymryd gormod o amser dosbarth i'w drefnu</button>
+          <button class="option-btn" onclick="checkQ('q8',this,true)">Teachers may assume too much about their ability to identify needs, resulting in potentially superficial and unhelpful groupings · Efallai y bydd athrawon yn cymryd yn ganiataol eu bod yn medru adnabod anghenion, gan arwain at grwpiau arwynebol a niweidiol</button>
+          <button class="option-btn" onclick="checkQ('q8',this,false)">MAT pupils may feel singled out if placed in a separate group · Gallai disgyblion DAT deimlo eu bod yn cael eu nodi os rhoddir nhw mewn grŵp ar wahân</button>
+        </div>
+        <div class="feedback" id="q8-fb"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(2)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(3)">Next: Apply It → <em style="font-weight:400;font-style:normal;opacity:0.85;font-size:0.85em;">Nesaf: Cymhwyso</em></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       SECTION 5 — APPLY IT
+  ═══════════════════════════════════════ -->
+  <div class="section-card" id="sec-4">
+    <div class="card-header">
+      <div class="icon">✏️</div>
+      <h2>Apply It: Plan Your Differentiation <em>Cymhwyso: Cynlluniwch Eich Gwahaniaethu</em></h2>
+    </div>
+    <div class="card-body">
+
+      <div class="scenario-box">
+        <h3>📋 Lesson Scenario · Senario Gwers</h3>
+        <p><strong>English:</strong> You are planning a Year 10 English lesson on persuasive writing. Your class of 28 includes: two MAT pupils working well above the expected level; three pupils with significant literacy difficulties; one pupil with ASD and fine motor difficulties who writes more easily on larger paper; one EAL learner who arrived 7 months ago and speaks conversational English confidently; and several pupils at the expected level. Draw on everything you have learned across Sections 1–4 to plan your differentiation.</p>
+        <p style="margin-top:0.7rem"><strong>Cymraeg:</strong> Rydych chi'n cynllunio gwers Saesneg Blwyddyn 10 ar ysgrifennu perswadiol. Mae eich dosbarth o 28 yn cynnwys: dau ddisgybl DAT; tri disgybl ag anawsterau llythrennedd sylweddol; un disgybl ag ASD ac anawsterau modur mân; un dysgwr SAY a gyrhaeddodd 7 mis yn ôl; a sawl disgybl ar y lefel ddisgwyliedig. Defnyddiwch bopeth a ddysgoch chi ar draws Adrannau 1–4.</p>
+      </div>
+
+      <div class="reflection-area">
+        <label>1. A/B/C Planning — What will ALL pupils do? (A = All must…) <em>· Cynllunio A/B/C — Beth wnaiff POB disgybl? (A = Rhaid i bawb…)</em></label>
+        <textarea placeholder="e.g. Read a sample persuasive text and identify at least two persuasive techniques using the vocabulary mat provided. · e.e. Darllen testun perswadiol ac adnabod o leiaf ddwy dechneg gan ddefnyddio'r mat geirfa..."></textarea>
+      </div>
+
+      <div class="reflection-area">
+        <label>2. A/B/C Planning — What will MOST pupils do? (B = Most should…) <em>· Beth wnaiff Y RHAN FWYAF? (B = Dylai'r rhan fwyaf…)</em></label>
+        <textarea placeholder="e.g. Write a persuasive paragraph using at least two techniques with a clear topic sentence. · e.e. Ysgrifennu paragraff perswadiol gan ddefnyddio o leiaf dwy dechneg gyda brawddeg bwnc glir..."></textarea>
+      </div>
+
+      <div class="reflection-area">
+        <label>3. A/B/C Planning — What will SOME pupils do? (C = Some could…) <em>· Beth wnaiff RHAI disgyblion? (C = Gallai rhai…)</em></label>
+        <textarea placeholder="e.g. Write a full persuasive speech then evaluate its effectiveness, using Bloom's evaluation-level verbs (assess, justify, critique). · e.e. Ysgrifennu araith berswadiol lawn yna gwerthuso ei heffeithiolrwydd..."></textarea>
+      </div>
+
+      <div class="reflection-area">
+        <label>4. Tomlinson's three components: identify one specific decision about CONTENT, one about PROCESS, and one about PRODUCT for this lesson. <em>· Tri chydran Tomlinson: nodwch un penderfyniad penodol am GYNNWYS, un am BROSES, ac un am GYNNYRCH ar gyfer y wers hon.</em></label>
+        <textarea placeholder="e.g. Content: provide a simplified text for pupils with literacy difficulties; Process: whole-class reading, then pairs discuss, then individual writing; Product: pupils with literacy difficulties may present their argument verbally rather than in writing... · e.e. Cynnwys: testun symlach; Proses: darllen dosbarth cyfan, yna parau'n trafod, yna ysgrifennu unigol..."></textarea>
+      </div>
+
+      <div class="reflection-area">
+        <label>5. How will you support the EAL learner WITHOUT reducing cognitive challenge? Name at least two EAL strategies from Section 4. <em>· Sut wnewch chi gefnogi'r dysgwr SAY HEB leihau'r her wybyddol? Enwch o leiaf ddwy strategaeth SAY o Adran 4.</em></label>
+        <textarea placeholder="e.g. Use visual examples of persuasive techniques (diagrams showing technique + effect on reader); allow them to discuss ideas in first language with a bilingual peer before writing; use teacher modelling... · e.e. Defnyddio enghreifftiau gweledol; caniatáu trafodaeth yn yr iaith gyntaf; modelu gan yr athro..."></textarea>
+      </div>
+
+      <div class="reflection-area">
+        <label>6. Write ONE higher-order question (Analysis, Synthesis or Evaluation level from Bloom's Taxonomy) to direct at your MAT pupils. State which Bloom's level it is and why. <em>· Ysgrifennwch UN cwestiwn uwch-raddol (lefel Dadansoddi, Syntheseiddio neu Werthuso o Dacsonomeg Bloom) ar gyfer eich disgyblion DAT. Nodwch pa lefel Bloom ydyw a pham.</em></label>
+        <textarea placeholder="e.g. 'To what extent is emotional appeal more effective than logical argument in persuading a hostile audience?' — Evaluation level, because pupils must appraise and justify a judgement about effectiveness... · e.e. 'I ba raddau mae apêl emosiynol yn fwy effeithiol na dadl resymegol?' — Lefel Gwerthuso..."></textarea>
+      </div>
+
+      <div class="reflection-area">
+        <label>7. How will you group pupils for the main writing task, and why? Reference Donaldson (2015)'s caution from Section 4 in your answer. <em>· Sut wnewch chi grwpio disgyblion ar gyfer y prif dasg ysgrifennu, a pham? Cyfeiriwch at rybudd Donaldson (2015) o Adran 4 yn eich ateb.</em></label>
+        <textarea placeholder="e.g. Mixed-ability pairs for the initial reading and discussion — this lets the EAL learner hear peer modelling. Individual work for the writing task. Mindful of Donaldson's warning not to assume we can accurately identify all needs... · e.e. Parau cymysg ar gyfer y gweithgaredd trafod..."></textarea>
+      </div>
+
+      <div class="quiz-section-label">✏️ Final Check · Gwiriad Terfynol</div>
+
+      <div class="quiz-question" id="q9">
+        <p class="q-text"><span class="q-num">9</span>Which differentiation method is most at risk of being over-relied upon by a student teacher with limited planning time — and what does the guide say about its limitations?</p>
+        <p class="q-welsh">Pa ddull gwahaniaethu sydd fwyaf mewn perygl o gael ei orddefnyddio gan fyfyriwr athro â chyfyngiad amser cynllunio — a beth mae'r canllaw hwn yn ei ddweud am ei gyfyngiadau?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q9',this,false)">Differentiation by resource — it is the hardest to prepare · Gwahaniaethu trwy adnoddau — dyma'r mwyaf anodd i'w baratoi</button>
+          <button class="option-btn" onclick="checkQ('q9',this,false)">Differentiation by task — it requires different planning for every group · Gwahaniaethu trwy dasg — mae angen cynllunio gwahanol ar gyfer pob grŵp</button>
+          <button class="option-btn" onclick="checkQ('q9',this,true)">Differentiation by outcome — it requires no extra planning, but the guide warns it is not suitable for structured learning and should not be a default approach · Gwahaniaethu trwy ganlyniad — nid oes angen cynllunio ychwanegol, ond nid yw'n addas ar gyfer dysgu strwythuredig</button>
+          <button class="option-btn" onclick="checkQ('q9',this,false)">Differentiation by grouping — it is too complex to manage in a large class · Gwahaniaethu trwy grwpio — mae'n rhy gymhleth i'w reoli mewn dosbarth mawr</button>
+        </div>
+        <div class="feedback" id="q9-fb"></div>
+      </div>
+
+      <div class="quiz-question" id="q10">
+        <p class="q-text"><span class="q-num">10</span>Drawing on all five sections of this activity, which statement BEST summarises how differentiation should be understood and used?</p>
+        <p class="q-welsh">Gan dynnu ar y pum adran o'r gweithgaredd hwn, pa ddatganiad sy'n crynhoi ORAU sut y dylid deall a defnyddio gwahaniaethu?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q10',this,false)">Differentiation means setting separate tasks for lower ability groups — other pupils work independently · Mae gwahaniaethu yn golygu gosod tasgau ar wahân i grwpiau gallu is — mae disgyblion eraill yn gweithio'n annibynnol</button>
+          <button class="option-btn" onclick="checkQ('q10',this,false)">Differentiation is a strategy used when a lesson is not going as planned · Mae gwahaniaethu yn strategaeth a ddefnyddir pan nad yw gwers yn mynd yn ôl y cynllun</button>
+          <button class="option-btn" onclick="checkQ('q10',this,false)">Differentiation is optional for student teachers until they are fully qualified · Mae gwahaniaethu yn ddewisiol i fyfyrwyr athrawon nes eu bod yn gymwys yn llawn</button>
+          <button class="option-btn" onclick="checkQ('q10',this,true)">Differentiation is a planned, ongoing, inclusive process — the teacher's responsibility — centred on pupils' readiness, needs and interests, using a range of strategies across content, process and product · Mae gwahaniaethu yn broses gynlluniedig, barhaus, gynhwysol — cyfrifoldeb yr athro — wedi'i chanoli ar barodrwydd, anghenion a diddordebau disgyblion</button>
+        </div>
+        <div class="feedback" id="q10-fb"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(3)">← Back · Yn ôl</button>
+        <button class="btn btn-amber" onclick="complete()">🎓 Complete Training · Cwblhau Hyfforddiant</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="completion-card" id="completion">
+    <span class="badge-icon">🎓</span>
+    <h2>Training Complete! · Hyfforddiant Wedi'i Gwblhau!</h2>
+    <div class="score-pill">Score / Sgôr: <span id="final-score">0</span> / 10</div>
+    <p><strong>Well done!</strong> You have worked through all five sections. Remember: effective differentiation is <em>planned, ongoing, contextually embedded</em>, and celebrates the diversity of all learners in your class.</p>
+    <p><strong>Da iawn!</strong> Rydych chi wedi gweithio drwy'r pum adran. Cofiwch: mae gwahaniaethu effeithiol yn <em>gynlluniedig, parhaol, wedi'i fewnosod yn y cyd-destun</em>, ac yn dathlu amrywiaeth pob dysgwr yn eich dosbarth.</p>
+    <div style="margin-top:1rem"><button class="btn" onclick="location.reload()" style="background:rgba(255,255,255,0.15);border:2px solid rgba(255,255,255,0.35);color:white;font-size:0.85rem;">↺ Start Again · Dechrau Eto</button></div>
+
+    <!-- Certificate trigger -->
+    <div class="cert-trigger-box">
+      <p>🏅 <strong>Generate your personalised completion certificate / Creu eich tystysgrif gwblhau bersonol</strong><br>
+      Enter your full name below to generate a printable certificate. / Rhowch eich enw llawn isod.</p>
+      <div class="cert-name-row">
+        <input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name / Eich enw llawn…" maxlength="80">
+        <button class="btn-cert" onclick="generateCertificate()">🎓 Generate Certificate / Creu Tystysgrif</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Certificate overlay -->
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:2rem;">📚</div>
+            <div class="cert-inst-name">PGCE Secondary — Humanities
+              <span class="cert-inst-cy">Cwricwlwm i Gymru / Curriculum for Wales</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that / Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher / yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:0.5rem 0 0.3rem;">
+            <div class="cert-name" id="certDisplayName">Your Name</div>
+          </div>
+          <div class="cert-score-pill">Score / Sgôr: <span id="certScoreDisplay">—</span> / 10</div>
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the induction training session on</div>
+          <div class="cert-course">
+            Differentiation in the Secondary Humanities Classroom
+            <span class="cert-course-cy">Gwahaniaethu yn Nosbarth Dyniaethau Uwchradd</span>
+          </div>
+          <div class="cert-competencies">
+            Demonstrating understanding of the principles of differentiation, methods across Content, Process and Product,
+            inclusive practice, questioning strategies, and Bloom's Taxonomy as applied to Humanities teaching.<br>
+            <em style="color:#00897B;display:block;margin-top:0.4rem;">Gan ddangos dealltwriaeth o egwyddorion gwahaniaethu, dulliau ar draws Cynnwys, Proses a Chynnyrch, ymarfer cynhwysol, strategaethau cwestiynu, a Thaxonomi Bloom wedi'i gymhwyso i addysgu Dyniaethau.</em>
+          </div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <div class="cert-sig-label">Programme Director / Cyfarwyddwr y Rhaglen</div>
+            </div>
+            <div>
+              <div class="cert-seal">
+                <span class="cert-seal-icon">🎓</span>
+                PGCE<br>CYMRU
+              </div>
+            </div>
+            <div class="cert-sig-block">
+              <div class="cert-date-val" id="certDateDisplay"></div>
+              <div class="cert-date-label">Date Completed / Dyddiad Cwblhau</div>
+            </div>
+          </div>
+          <div class="cert-stripe" style="margin:1.2rem -2rem -1.6rem;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">🖨️ Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">✕ Close / Cau</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let score = 0;
+  const answeredQs = new Set();
+  const completedSections = new Set();
+
+  const feedbacks = {
+    q1: "Correct! The 1985 White Paper defined differentiation as matching <strong>what is taught</strong> and <strong>how it is taught</strong> to pupils' abilities and aptitudes. · Cywir! Cyfateb beth sy'n cael ei addysgu a sut mae'n cael ei addysgu.",
+    q2: "Correct! Petty (2004) states differentiation is integral to learning — an inclusive concept applying to everyone, not a troubleshooting tool for when things go wrong. · Cywir! Mae Petty (2004) yn nodi bod gwahaniaethu yn rhan annatod o ddysgu — cysyniad cynhwysol sy'n berthnasol i bawb.",
+    q3: "Correct! Tomlinson (1999) identifies <strong>Content</strong> (what is taught), <strong>Process</strong> (how it is taught), and <strong>Product</strong> (what pupils produce/demonstrate) as the three components to differentiate. · Cywir! Mae Tomlinson (1999) yn nodi Cynnwys, Proses a Chynnyrch fel y tri chydran i'w gwahaniaethu.",
+    q4: "Correct! The VAK learning styles model is a neuromyth — a misconception based on misreading genuine brain research (OECD, 2002). Coffield et al. (2004) found pupils do not learn more effectively when taught in their 'preferred style'. · Cywir! Mae VAK yn niwrofyth yn seiliedig ar gamddealltwriaeth o ymchwil ymennydd.",
+    q5: "Correct! C = Some could refers to <strong>extension tasks for the most able</strong> — either enriching the topic or taking it to a higher level of complexity. A = All must (foundation), B = Most should (core). · Cywir! Mae C = Gallai rhai yn cyfeirio at dasgau estyniad ar gyfer y mwyaf abl.",
+    q6: "Correct! Both findings point to the same problem: teachers default to knowledge-level questions (Bloom, 1956 — 80–90% of the time) and don't give adequate thinking time (Walsh &amp; Sattes, 2005 — less than 1 second). Both suggest questioning practice needs deliberate improvement. · Cywir! Mae'r ddau ganfyddiad yn tynnu sylw at yr un broblem gydag arfer cwestiynu athrawon.",
+    q7: "Correct! Research shows that while conversational fluency can develop in 2–3 years, cognitive and academic language proficiency may take <strong>5 years or longer</strong> to match that of peers. The teacher's assumption is therefore incorrect. · Cywir! Gall rhugledd mewn sgwrs ddatblygu mewn 2–3 blynedd, ond gall iaith academaidd gymryd 5+ mlynedd.",
+    q8: "Correct! Donaldson (2015, p.67) warns teachers against 'assuming too much about our ability to identify such needs and wants' and separating children into 'potentially superficial groupings'. Grouping decisions must be driven by the learning task, not assumptions. · Cywir! Mae Donaldson (2015) yn rhybuddio rhag cymryd yn ganiataol ein bod yn medru adnabod anghenion disgyblion.",
+    q9: "Correct! Differentiation by outcome requires no additional planning, so it is easy to default to. However, this guide explicitly states it is <em>not</em> suitable for structured learning requiring a specific approach and should not be used as a primary strategy. · Cywir! Mae gwahaniaethu trwy ganlyniad yn hawdd dibynnu arno ond nid yw'n addas ar gyfer dysgu strwythuredig.",
+    q10: "Correct! This reflects the full picture from the guide: differentiation is a planned, ongoing, inclusive process — the teacher's responsibility — drawing on definitions from Kerry, Dixie, TDA and Donaldson, using a range of methods across Tomlinson's three components. · Cywir! Mae hwn yn adlewyrchu'r darlun llawn o'r canllaw hwn."
+  };
+
+  function checkQ(qId, btn, isCorrect) {
+    if (answeredQs.has(qId)) return;
+    answeredQs.add(qId);
+    document.getElementById(qId).querySelectorAll('.option-btn').forEach(b => b.disabled = true);
+    const fb = document.getElementById(qId + '-fb');
+    if (isCorrect) {
+      btn.classList.add('correct');
+      fb.className = 'feedback correct show';
+      fb.innerHTML = '✅ ' + feedbacks[qId];
+      score++;
+    } else {
+      btn.classList.add('wrong');
+      fb.className = 'feedback wrong show';
+      fb.innerHTML = '❌ Not quite — ' + feedbacks[qId];
+    }
+  }
+
+  function nextSection(idx) {
+    completedSections.add(idx);
+    updateNav();
+    goTo(idx + 1);
+  }
+
+  function goTo(idx) {
+    document.querySelectorAll('.section-card').forEach((el, i) => el.classList.toggle('active', i === idx));
+    document.querySelectorAll('.snav-btn').forEach((btn, i) => btn.classList.toggle('active', i === idx));
+    const pct = Math.round(((idx + 1) / 5) * 100);
+    document.getElementById('progress-bar').style.width = pct + '%';
+    document.getElementById('progress-label').textContent = `Section ${idx + 1} of 5 · Adran ${idx + 1} o 5`;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function updateNav() {
+    document.querySelectorAll('.snav-btn').forEach((btn, i) => btn.classList.toggle('done', completedSections.has(i)));
+  }
+
+  function complete() {
+    completedSections.add(4);
+    updateNav();
+    document.querySelectorAll('.section-card').forEach(el => el.classList.remove('active'));
+    document.getElementById('completion').classList.add('show');
+    document.getElementById('final-score').textContent = score;
+    document.getElementById('progress-bar').style.width = '100%';
+    document.getElementById('progress-label').textContent = 'Complete! · Wedi Cwblhau!';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  let draggedItem = null;
+  function dragStart(e) { draggedItem = e.target; setTimeout(() => { if (draggedItem) draggedItem.style.opacity = '0.4'; }, 0); }
+  function dragOver(e) { e.preventDefault(); e.currentTarget.classList.add('over'); }
+  function dragLeave(e) { e.currentTarget.classList.remove('over'); }
+  function dropItem(e, zoneId) {
+    e.preventDefault(); e.currentTarget.classList.remove('over');
+    if (draggedItem) { e.currentTarget.appendChild(draggedItem); draggedItem.style.opacity = '1'; draggedItem = null; }
+  }
+  document.addEventListener('dragend', () => { if (draggedItem) draggedItem.style.opacity = '1'; });
+
+  function checkDrag() {
+    const items = document.querySelectorAll('.draggable-item');
+    let correct = 0;
+    items.forEach(item => {
+      const inZone = item.parentElement.id;
+      const expected = item.dataset.cat;
+      if (inZone === expected) {
+        correct++; item.style.background = '#DCFCE7'; item.style.borderColor = '#22C55E'; item.style.color = '#14532D';
+      } else {
+        item.style.background = '#FEE2E2'; item.style.borderColor = '#EF4444'; item.style.color = '#7F1D1D';
+      }
+    });
+    const fb = document.getElementById('drag-fb');
+    fb.className = correct === 4 ? 'drag-feedback show pass' : 'drag-feedback show fail';
+    fb.textContent = correct === 4
+      ? '✅ All correct — excellent work! · Da iawn! Gwaith ardderchog.'
+      : `${correct}/4 correct — red items are in the wrong column, try again. · ${correct}/4 yn gywir — mae eitemau coch yn y golofn anghywir, rhowch gynnig arall.`;
+  }
+
+  function toggleBloom(id) { document.getElementById(id).classList.toggle('open'); }
+
+  // ── CERTIFICATE ──
+  function generateCertificate() {
+    var name = document.getElementById('certNameInput').value.trim();
+    if (!name) {
+      document.getElementById('certNameInput').focus();
+      document.getElementById('certNameInput').style.borderColor = '#F59E0B';
+      setTimeout(function(){ document.getElementById('certNameInput').style.borderColor = ''; }, 1500);
+      return;
+    }
+    document.getElementById('certDisplayName').textContent = name;
+    document.getElementById('certScoreDisplay').textContent = score;
+    var now = new Date();
+    var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+    document.getElementById('certDateDisplay').textContent = now.getDate() + ' ' + months[now.getMonth()] + ' ' + now.getFullYear();
+    document.getElementById('certOverlay').classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeCertificate() {
+    document.getElementById('certOverlay').classList.remove('show');
+    document.body.style.overflow = '';
+  }
+
+  function printCertificate() {
+    var cert = document.getElementById('certificateEl');
+    var printWin = window.open('', '_blank', 'width=900,height=700');
+    printWin.document.write('<html><head><title>Certificate of Completion</title>');
+    document.querySelectorAll('style, link[rel="stylesheet"]').forEach(function(s) {
+      printWin.document.write(s.outerHTML);
+    });
+    printWin.document.write('</head><body style="margin:0;padding:20px;background:white;">');
+    printWin.document.write(cert.outerHTML);
+    printWin.document.write('</body></html>');
+    printWin.document.close();
+    printWin.focus();
+    setTimeout(function(){ printWin.print(); }, 800);
+  }
+
+  document.addEventListener('click', function(e) {
+    if (e.target.id === 'certOverlay') closeCertificate();
+  });
+
+</script>
+</body>
+</html>
