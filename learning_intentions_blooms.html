@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="cy-en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Learning Intentions & Bloom's Taxonomy | Bwriadau Dysgu a Thacsonomeg Bloom — PGCE Humanities</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --indigo:#3730A3; --indigo-dark:#1E1B6A; --indigo-mid:#4F46E5; --indigo-pale:#EEF2FF; --indigo-light:#C7D2FE;
+  --amber:#F59E0B; --amber-light:#FEF3C7; --amber-dark:#92400E;
+  --red:#EF4444; --red-light:#FEE2E2;
+  --green:#16A34A; --green-light:#DCFCE7;
+  --teal:#0D9488; --teal-light:#CCFBF1;
+  --purple:#7C3AED; --purple-light:#EDE9FE;
+  --rose:#BE185D; --rose-light:#FCE7F3;
+  --slate:#1E293B; --slate-mid:#475569; --slate-light:#94A3B8;
+  --white:#fff; --off:#F8FAFC; --border:#E2E8F0;
+  --shadow:0 4px 24px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Sans 3',sans-serif;background:var(--off);color:var(--slate);min-height:100vh}
+
+header{background:linear-gradient(135deg,var(--indigo-dark) 0%,var(--indigo) 55%,var(--indigo-mid) 100%);color:#fff;padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.lang-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:.3rem 1rem;font-size:.8rem;font-weight:600;letter-spacing:.05em;margin-bottom:1.5rem}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin-bottom:.4rem}
+header h1 span{display:block;font-size:.55em;font-weight:700;opacity:.78;letter-spacing:.03em;margin-top:.3rem}
+.header-sub{font-size:.95rem;opacity:.85;margin-top:.8rem}
+.subject-pills{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
+.pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:.3rem .9rem;font-size:.78rem;font-weight:600}
+.progress-bar-wrap{max-width:600px;margin:1.5rem auto 0;background:rgba(255,255,255,.2);border-radius:999px;height:8px;overflow:hidden}
+#progress-bar{height:100%;background:var(--amber);border-radius:999px;transition:width .5s ease;width:0%}
+#progress-label{font-size:.78rem;opacity:.8;margin-top:.4rem}
+
+main{max-width:920px;margin:0 auto;padding:2rem 1rem 4rem}
+.section-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.snav-btn{padding:.4rem .9rem;border-radius:999px;border:2px solid var(--border);background:#fff;font-size:.78rem;font-weight:600;cursor:pointer;color:var(--slate-mid);transition:all .2s;white-space:nowrap}
+.snav-btn.done{border-color:var(--green);color:#14532D;background:var(--green-light)}
+.snav-btn.active{border-color:var(--indigo);color:var(--indigo-dark);background:var(--indigo-pale)}
+
+.section-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);display:none;animation:fadeIn .4s ease}
+.section-card.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.card-header{padding:1.5rem 2rem;display:flex;align-items:center;gap:1rem;border-bottom:2px solid}
+.card-header.indigo{background:var(--indigo-pale);border-color:var(--indigo-light)}
+.card-header.amber{background:var(--amber-light);border-color:#FCD34D}
+.card-header.teal{background:var(--teal-light);border-color:#99F6E4}
+.card-header.purple{background:var(--purple-light);border-color:#C4B5FD}
+.card-header.green{background:var(--green-light);border-color:#86EFAC}
+.card-header.rose{background:var(--rose-light);border-color:#FBCFE8}
+.card-header .icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.card-header.indigo .icon{background:var(--indigo)}
+.card-header.amber .icon{background:var(--amber)}
+.card-header.teal .icon{background:var(--teal)}
+.card-header.purple .icon{background:var(--purple)}
+.card-header.green .icon{background:var(--green)}
+.card-header.rose .icon{background:var(--rose)}
+.card-header h2{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--slate);line-height:1.3}
+.card-header h2 em{display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;font-style:normal;font-weight:600;color:var(--slate-mid);margin-top:.15rem;letter-spacing:.03em}
+.card-body{padding:2rem}
+@media(max-width:600px){.card-body{padding:1.25rem}}
+
+.bilingual-block{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+@media(max-width:600px){.bilingual-block{grid-template-columns:1fr}}
+.lang-col{background:var(--indigo-pale);border-radius:10px;padding:1.25rem;border-left:4px solid var(--indigo)}
+.lang-col.welsh{border-left-color:#D4A017;background:#FFFBEB}
+.lang-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-mid);margin-bottom:.6rem}
+.lang-col p,.lang-col li{font-size:.93rem;line-height:1.7;color:var(--slate)}
+.lang-col ul{padding-left:1.2rem}
+.lang-col ul li{margin-bottom:.35rem}
+
+.info-box{background:var(--indigo-pale);border:1px solid var(--indigo-light);border-radius:10px;padding:1.25rem 1.5rem;margin-bottom:1.5rem}
+.info-box.amber{background:var(--amber-light);border-color:#FCD34D}
+.info-box.teal{background:var(--teal-light);border-color:#99F6E4}
+.info-box.key{background:var(--slate);border-color:var(--slate-mid);color:white}
+.info-box h3{font-size:.85rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--indigo-dark);margin-bottom:.8rem}
+.info-box.amber h3{color:var(--amber-dark)}
+.info-box.teal h3{color:var(--teal)}
+.info-box.key h3{color:var(--amber)}
+.info-box p,.info-box li{font-size:.93rem;line-height:1.7;color:var(--slate)}
+.info-box.key p,.info-box.key li{color:rgba(255,255,255,.9)}
+.info-box ul{padding-left:1.3rem}
+.info-box ul li{margin-bottom:.4rem}
+
+/* BLOOM'S PYRAMID */
+.blooms-table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.88rem}
+.blooms-table th{padding:.6rem 1rem;text-align:left;font-weight:700;color:#fff;font-size:.78rem;letter-spacing:.04em}
+.blooms-table td{padding:.7rem 1rem;border-bottom:1px solid var(--border);line-height:1.55}
+.blooms-table tr:last-child td{border-bottom:none}
+.blooms-table .level-badge{display:inline-block;font-size:.7rem;font-weight:800;letter-spacing:.05em;padding:.15rem .6rem;border-radius:4px;text-transform:uppercase;margin-right:.4rem}
+.bl6{background:#7C3AED;color:white}
+.bl5{background:#2563EB;color:white}
+.bl4{background:#0D9488;color:white}
+.bl3{background:#16A34A;color:white}
+.bl2{background:#D97706;color:white}
+.bl1{background:#DC2626;color:white}
+
+/* SORTING ACTIVITY */
+.sort-bank{display:flex;flex-wrap:wrap;gap:.5rem;padding:1rem;background:var(--indigo-pale);border:2px dashed var(--indigo-light);border-radius:10px;min-height:60px;margin-bottom:1rem}
+.sort-chip{background:var(--indigo);color:white;padding:.35rem .9rem;border-radius:999px;font-size:.82rem;cursor:grab;user-select:none;font-weight:500;transition:opacity .2s,transform .1s}
+.sort-chip:active{cursor:grabbing;transform:scale(1.04)}
+.sort-zones{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin-bottom:1rem}
+@media(max-width:600px){.sort-zones{grid-template-columns:1fr}}
+.sort-zone{background:#fff;border:2px solid var(--border);border-radius:10px;padding:.8rem;min-height:80px;transition:border-color .2s,background .2s}
+.sort-zone.drag-over{border-color:var(--indigo);background:var(--indigo-pale)}
+.sort-zone-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;display:flex;align-items:center;gap:.4rem}
+.sort-zone-label .dot{width:10px;height:10px;border-radius:50%}
+.sort-zone-chips{display:flex;flex-wrap:wrap;gap:.4rem;min-height:32px}
+.placed-chip{padding:.3rem .8rem;border-radius:999px;font-size:.78rem;font-weight:600;cursor:pointer}
+.placed-chip:hover{opacity:.7}
+.placed-chip.li-cat{background:var(--green-light);color:#14532D;border:1px solid #86EFAC}
+.placed-chip.topic-cat{background:var(--amber-light);color:var(--amber-dark);border:1px solid #FCD34D}
+.placed-chip.task-cat{background:var(--rose-light);color:var(--rose);border:1px solid #FBCFE8}
+
+/* QUIZ */
+.quiz-question{background:var(--off);border-radius:10px;padding:1.2rem;margin-bottom:1rem;border:1px solid var(--border)}
+.q-text{font-weight:700;font-size:.97rem;margin-bottom:.25rem;line-height:1.5}
+.q-welsh{font-size:.85rem;color:var(--slate-mid);font-style:italic;margin-bottom:.9rem;line-height:1.5}
+.q-num{display:inline-flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;background:var(--indigo);color:white;border-radius:50%;font-size:.75rem;font-weight:700;margin-right:.4rem;flex-shrink:0}
+.options{display:flex;flex-direction:column;gap:.5rem}
+.option-btn{text-align:left;background:#fff;border:2px solid var(--border);border-radius:8px;padding:.7rem 1rem;font-family:'Source Sans 3',sans-serif;font-size:.9rem;cursor:pointer;transition:all .15s;line-height:1.5;color:var(--slate)}
+.option-btn:hover:not(:disabled){border-color:var(--indigo);background:var(--indigo-pale)}
+.option-btn.correct{border-color:var(--green);background:var(--green-light);color:#14532D}
+.option-btn.wrong{border-color:var(--red);background:var(--red-light);color:#7F1D1D}
+.feedback{display:none;padding:.8rem 1rem;border-radius:8px;font-size:.88rem;line-height:1.6;margin-top:.5rem}
+.feedback.correct.show{display:block;background:var(--green-light);border-left:3px solid var(--green);color:#14532D}
+.feedback.wrong.show{display:block;background:var(--red-light);border-left:3px solid var(--red);color:#7F1D1D}
+
+/* REWRITE TASKS */
+.rewrite-card{background:#fff;border:1px solid var(--border);border-radius:10px;margin-bottom:1rem;overflow:hidden}
+.rewrite-bad{background:var(--red-light);border-left:4px solid var(--red);padding:.9rem 1.1rem}
+.rewrite-bad .label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--red);margin-bottom:.3rem}
+.rewrite-bad p{font-size:.92rem;color:var(--slate);line-height:1.5}
+.rewrite-hint{background:var(--amber-light);padding:.7rem 1.1rem;font-size:.85rem;color:var(--amber-dark);line-height:1.5;font-style:italic}
+.rewrite-box{padding:1rem 1.1rem}
+.rewrite-box label{font-size:.8rem;font-weight:700;color:var(--indigo-dark);display:block;margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.05em}
+textarea{width:100%;padding:.7rem .9rem;font-family:'Source Sans 3',sans-serif;font-size:.9rem;border:2px solid var(--border);border-radius:8px;resize:vertical;min-height:70px;color:var(--slate);line-height:1.6;transition:border-color .2s}
+textarea:focus{outline:none;border-color:var(--indigo)}
+.bloom-sel-row{display:flex;gap:.8rem;align-items:center;flex-wrap:wrap;margin-top:.6rem}
+.bloom-sel-row label{font-size:.8rem;font-weight:600;color:var(--slate-mid);white-space:nowrap}
+select{padding:.4rem .7rem;border:2px solid var(--border);border-radius:6px;font-family:'Source Sans 3',sans-serif;font-size:.85rem;color:var(--slate);background:#fff;cursor:pointer}
+select:focus{outline:none;border-color:var(--indigo)}
+
+/* SC WRITING */
+.sc-card{background:#fff;border:1px solid var(--border);border-radius:10px;margin-bottom:1rem;overflow:hidden}
+.sc-li{background:var(--green-light);border-left:4px solid var(--green);padding:.9rem 1.1rem}
+.sc-li .label{font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:.25rem}
+.sc-li p{font-size:.92rem;font-weight:600;color:var(--slate);line-height:1.5}
+.sc-fields{padding:1rem 1.1rem;display:flex;flex-direction:column;gap:.5rem}
+.sc-field-label{font-size:.78rem;font-weight:700;color:var(--indigo-dark);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem}
+
+/* BTN ROW */
+.btn-row{display:flex;gap:.75rem;justify-content:space-between;flex-wrap:wrap;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border)}
+.btn{padding:.6rem 1.4rem;border-radius:8px;border:2px solid transparent;font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--indigo);color:#fff;border-color:var(--indigo)}
+.btn-primary:hover{background:var(--indigo-dark)}
+.btn-secondary{background:#fff;color:var(--slate-mid);border-color:var(--border)}
+.btn-secondary:hover{border-color:var(--slate-mid)}
+.btn-amber{background:var(--amber);color:var(--amber-dark);border-color:var(--amber)}
+.btn-amber:hover{background:#D97706;color:#fff}
+.btn-check{background:var(--teal);color:#fff;border-color:var(--teal)}
+.btn-check:hover{background:#0F766E}
+
+/* ANSWER GUIDE ACCORDION */
+.answer-row{display:flex;gap:.6rem;align-items:stretch;margin-bottom:.4rem;cursor:pointer}
+.ans-num{width:2rem;flex-shrink:0;background:var(--indigo);color:white;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700}
+.ans-stmt{flex:1;background:var(--off);border:1px solid var(--border);border-radius:6px;padding:.5rem .8rem;font-size:.85rem;color:var(--slate);line-height:1.45}
+.ans-verdict{display:none;background:var(--indigo-pale);border:1px solid var(--indigo-light);border-radius:6px;padding:.5rem .9rem;font-size:.83rem;line-height:1.6;margin-bottom:.4rem;margin-top:-.2rem;color:var(--slate)}
+.ans-verdict.show{display:block}
+.verdict-pill{display:inline-block;font-size:.7rem;font-weight:800;border-radius:4px;padding:.1rem .55rem;margin-right:.35rem;text-transform:uppercase}
+.vp-genuine{background:var(--green-light);color:#14532D}
+.vp-topic{background:var(--amber-light);color:var(--amber-dark)}
+.vp-task{background:var(--rose-light);color:var(--rose)}
+.vp-vague{background:var(--purple-light);color:var(--purple)}
+
+/* COMPLETION */
+.completion-card{display:none;background:linear-gradient(135deg,var(--indigo-dark),var(--indigo));color:white;border-radius:16px;padding:3rem 2rem;text-align:center;margin-top:2rem}
+.completion-card.show{display:block}
+.completion-card .badge-icon{font-size:4rem;display:block;margin-bottom:1rem}
+.completion-card h2{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.75rem}
+.score-pill{display:inline-block;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);border-radius:999px;padding:.4rem 1.5rem;font-size:1.1rem;font-weight:700;margin-bottom:1.2rem}
+.completion-card p{font-size:.95rem;opacity:.88;line-height:1.7;max-width:560px;margin:0 auto .8rem}
+
+/* CERT */
+.cert-trigger-box{margin-top:1.5rem;padding:1.5rem;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.4);border-radius:12px;text-align:center}
+.cert-trigger-box p{font-size:.88rem;opacity:.85;margin-bottom:1rem;line-height:1.6}
+.cert-name-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.cert-name-input{padding:.6rem 1rem;font-family:'Source Sans 3',sans-serif;font-size:.95rem;border:2px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(255,255,255,.15);color:white;width:250px}
+.cert-name-input::placeholder{color:rgba(255,255,255,.4)}
+.cert-name-input:focus{outline:none;border-color:var(--amber)}
+.btn-cert{background:var(--amber);color:#1a1a1a;border:none;padding:.6rem 1.3rem;border-radius:8px;font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer}
+.btn-cert:hover{background:#D97706;color:white}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:white;border-radius:8px;width:100%;max-width:780px;max-height:95vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.certificate{width:100%;background:white}
+.cert-frame{margin:16px;border:3px solid #1E1B6A;position:relative}
+.cert-frame::before{content:'';position:absolute;inset:5px;border:1px solid #F59E0B;pointer-events:none;z-index:1}
+.cert-stripe{height:5px;background:linear-gradient(90deg,#1E1B6A 0%,#4F46E5 40%,#F59E0B 100%)}
+.cert-header{background:linear-gradient(135deg,#1E1B6A 0%,#3730A3 100%);padding:1.3rem 2rem 1.1rem;text-align:center}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.cert-inst-name{font-family:'Playfair Display',serif;color:white;font-size:1rem;text-align:left;line-height:1.2}
+.cert-inst-cy{color:#C7D2FE;font-size:.75rem;font-style:italic;display:block;font-family:'Source Sans 3',sans-serif;font-weight:400}
+.cert-body{padding:1.6rem 2rem;text-align:center}
+.cert-presents{font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;margin-bottom:.4rem}
+.cert-main-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:#1E1B6A;line-height:1.2;margin-bottom:.2rem}
+.cert-main-cy{font-size:.85rem;color:#4F46E5;font-style:italic;margin-bottom:1.2rem;font-family:'Source Sans 3',sans-serif}
+.cert-awarded-to{font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;color:#475569;margin-bottom:.2rem}
+.cert-name{font-family:'Playfair Display',serif;font-size:1.9rem;color:#3730A3;border-bottom:2px solid #E2E8F0;display:inline-block;padding:0 1rem .1rem;min-width:260px;margin-bottom:.3rem;line-height:1.3}
+.cert-divider{height:1px;background:linear-gradient(90deg,transparent,#F59E0B,transparent);margin:.9rem auto;width:55%}
+.cert-text{font-size:.86rem;color:#1E293B;line-height:1.65;max-width:440px;margin:0 auto .7rem}
+.cert-course{font-family:'Playfair Display',serif;font-size:.95rem;color:#1E293B;background:#EEF2FF;border:1px solid #C7D2FE;border-left:4px solid #1E1B6A;padding:.45rem .9rem;display:inline-block;margin-bottom:.35rem;text-align:left}
+.cert-course-cy{font-size:.76rem;color:#4F46E5;font-style:italic;display:block;font-family:'Source Sans 3',sans-serif;font-weight:400}
+.cert-score-pill{display:inline-block;background:#FEF3C7;border:1px solid #FCD34D;border-radius:999px;padding:.25rem 1rem;font-size:.8rem;font-weight:700;color:#92400E;margin:.5rem 0 .8rem}
+.cert-competencies{font-size:.76rem;color:#475569;margin:.2rem auto 1rem;max-width:420px;line-height:1.55}
+.cert-footer-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:1rem;padding-top:1rem;border-top:1px solid #E2E8F0}
+.cert-sig-block{text-align:center}
+.cert-sig-line{height:1px;background:#1E293B;width:140px;margin:0 auto .25rem}
+.cert-sig-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569}
+.cert-seal{width:64px;height:64px;border-radius:50%;background:#1E1B6A;border:3px solid #F59E0B;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-size:.5rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;line-height:1.3;margin:0 auto}
+.cert-seal-icon{font-size:1.2rem;display:block;margin-bottom:1px}
+.cert-date-val{font-family:'Playfair Display',serif;font-size:.9rem;color:#1E293B}
+.cert-date-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569;margin-top:.2rem}
+.cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.9rem 1.5rem 1.2rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
+.btn-cert-print{background:#1E1B6A;color:white;border:none;padding:.55rem 1.2rem;border-radius:8px;font-family:'Source Sans 3',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer}
+.btn-cert-close{background:#475569;color:white;border:none;padding:.55rem 1.2rem;border-radius:8px;font-family:'Source Sans 3',sans-serif;font-size:.86rem;cursor:pointer}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="lang-badge">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg · English</div>
+  <h1>Learning Intentions &amp; Success Criteria
+    <span>Bwriadau Dysgu a Meini Prawf Llwyddiant</span>
+  </h1>
+  <p class="header-sub">Using Bloom's Taxonomy to write intentions that drive learning · Defnyddio Tacsonomeg Bloom i ysgrifennu bwriadau sy'n hybu dysgu</p>
+  <div class="subject-pills">
+    <span class="pill">📜 History · Hanes</span>
+    <span class="pill">🌏 Geography · Daearyddiaeth</span>
+    <span class="pill">🕊️ RVE · GAE</span>
+    <span class="pill">📋 Teaching Standard P13</span>
+  </div>
+  <div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+  <p id="progress-label" class="progress-label">Section 1 of 6 · Adran 1 o 6</p>
+</header>
+
+<main>
+  <div class="section-nav">
+    <button class="snav-btn active" onclick="goTo(0)">A · Key Concepts</button>
+    <button class="snav-btn" onclick="goTo(1)">B · Sort It</button>
+    <button class="snav-btn" onclick="goTo(2)">C · Rewrite It</button>
+    <button class="snav-btn" onclick="goTo(3)">D · Write the SC</button>
+    <button class="snav-btn" onclick="goTo(4)">E · Plan Your Own</button>
+    <button class="snav-btn" onclick="goTo(5)">F · Answer Guide</button>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION A — KEY CONCEPTS
+  ══════════════════════════════════════════ -->
+  <div class="section-card active" id="sec-0">
+    <div class="card-header indigo">
+      <div class="icon">🎯</div>
+      <h2>Rhan A · Part A: Key Concepts for Reference
+        <em>Cysyniadau Allweddol ar gyfer Cyfeirio</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 English</div>
+          <p>A <strong>learning intention</strong> describes what pupils will KNOW, UNDERSTAND or be able to DO as a result of the lesson. It must contain a Bloom's verb. <strong>Success criteria</strong> are the observable actions that show a learner has achieved it.</p>
+          <p style="margin-top:.6rem">The task is the <em>vehicle</em>. The learning intention is the <em>destination</em>. The success criteria are the <em>road signs</em>.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg</div>
+          <p>Mae <strong>bwriad dysgu</strong> yn disgrifio beth fydd disgyblion yn ei WYBOD, DDEALL neu allu ei WNEUD o ganlyniad i'r wers. Rhaid iddo gynnwys berf Bloom. Mae <strong>meini prawf llwyddiant</strong> yn weithredoedd gweladwy sy'n dangos bod dysgwr wedi ei gyflawni.</p>
+          <p style="margin-top:.6rem">Y dasg yw'r <em>cerbyd</em>. Y bwriad dysgu yw'r <em>cyrchfan</em>. Y meini prawf llwyddiant yw'r <em>arwyddion ffordd</em>.</p>
+        </div>
+      </div>
+
+      <div class="info-box amber">
+        <h3>⚠️ The Bloom's Rule · Rheol Bloom</h3>
+        <p style="font-size:1.05rem;font-weight:700;color:#92400E;">"Pupils will be able to [BLOOM'S VERB] + [CONTENT] + [CONTEXT / DEPTH]"</p>
+        <p style="margin-top:.5rem">If you cannot point to a Bloom's verb in your learning intention, <strong>it is not a learning intention yet.</strong> · Os na allwch chi nodi berf Bloom yn eich bwriad dysgu, <strong>nid yw'n fwriad dysgu eto.</strong></p>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin:1.2rem 0 .8rem;color:var(--indigo-dark)">Tacsonomeg Bloom | Bloom's Taxonomy — Six Levels of Cognitive Challenge</h3>
+
+      <table class="blooms-table">
+        <thead><tr style="background:var(--indigo-dark)"><th>Level · Lefel</th><th>Key Verbs · Berfau Allweddol</th><th>Best For · Gorau ar gyfer…</th></tr></thead>
+        <tbody>
+          <tr><td><span class="level-badge bl6">6 · CREATE</span><br><small>Creu</small></td><td>Design, construct, produce, devise, compose, plan, invent, develop</td><td>Extended independent work, creating arguments, original writing</td></tr>
+          <tr><td><span class="level-badge bl5">5 · EVALUATE</span><br><small>Gwerthuso</small></td><td>Judge, justify, critique, assess, argue, defend, appraise, recommend</td><td>Essays, debates, evaluative writing, forming supported opinions</td></tr>
+          <tr><td><span class="level-badge bl4">4 · ANALYSE</span><br><small>Dadansoddi</small></td><td>Compare, contrast, differentiate, examine, break down, organise</td><td>Comparing sources, examining causes, building structured argument</td></tr>
+          <tr><td><span class="level-badge bl3">3 · APPLY</span><br><small>Cymhwyso</small></td><td>Use, demonstrate, illustrate, solve, interpret, implement</td><td>Using knowledge in new contexts, case studies, practical tasks</td></tr>
+          <tr><td><span class="level-badge bl2">2 · UNDERSTAND</span><br><small>Deall</small></td><td>Explain, summarise, classify, describe, identify, discuss, predict</td><td>Consolidating new learning, comprehension, note-making</td></tr>
+          <tr><td><span class="level-badge bl1">1 · REMEMBER</span><br><small>Cofio</small></td><td>List, recall, name, define, recognise, state, match, locate</td><td>Introducing new content, retrieval practice, key vocabulary</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin:1.4rem 0 .8rem;color:var(--indigo-dark)">The Four Common Mistakes · Y Pedwar Camgymeriad Cyffredin</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+        <div style="background:var(--red-light);border-radius:8px;padding:1rem;border-left:3px solid var(--red)"><p style="font-size:.82rem;font-weight:700;color:var(--red);margin-bottom:.3rem">1. Describing the task, not the learning</p><p style="font-size:.85rem">❌ Pupils will draw a diagram of the water cycle<br>✅ Pupils will EXPLAIN how water moves through the hydrological cycle</p></div>
+        <div style="background:var(--red-light);border-radius:8px;padding:1rem;border-left:3px solid var(--red)"><p style="font-size:.82rem;font-weight:700;color:var(--red);margin-bottom:.3rem">2. Using vague non-Bloom's verbs</p><p style="font-size:.85rem">❌ Pupils will know about coastal erosion<br>✅ Pupils will ANALYSE how hydraulic action shapes a cliff face</p></div>
+        <div style="background:var(--red-light);border-radius:8px;padding:1rem;border-left:3px solid var(--red)"><p style="font-size:.82rem;font-weight:700;color:var(--red);margin-bottom:.3rem">3. Setting the ceiling too low</p><p style="font-size:.85rem">❌ Pupils will LIST features of a mosque (Year 9)<br>✅ Pupils will EVALUATE how mosque design expresses Islamic belief</p></div>
+        <div style="background:var(--red-light);border-radius:8px;padding:1rem;border-left:3px solid var(--red)"><p style="font-size:.82rem;font-weight:700;color:var(--red);margin-bottom:.3rem">4. Writing too many intentions</p><p style="font-size:.85rem">❌ Three or four LIs for one lesson<br>✅ One clear Bloom's LI per lesson — the SC break it down</p></div>
+      </div>
+
+      <div class="btn-row">
+        <span></span>
+        <button class="btn btn-primary" onclick="nextSection(0)">Next: Sort It → · Nesaf: Dosbarthu →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION B — SORT IT (Interactive)
+  ══════════════════════════════════════════ -->
+  <div class="section-card" id="sec-1">
+    <div class="card-header amber">
+      <div class="icon">🗂️</div>
+      <h2>Rhan B · Part B: Is It a Learning Intention?
+        <em>A yw'n Fwriad Dysgu?</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="info-box">
+        <h3>📋 Your task · Eich tasg</h3>
+        <p><strong>English:</strong> Drag each statement into the correct category: <em>Genuine LI</em> (has a Bloom's verb + describes learning), <em>Topic Only</em> (no verb — just a heading), or <em>Task Description</em> (describes what pupils DO, not what they LEARN). Click a placed chip to return it.</p>
+        <p style="margin-top:.5rem"><strong>Cymraeg:</strong> Llusgwch bob datganiad i'r categori cywir: <em>BD Dilys</em>, <em>Pennawd Pwnc yn Unig</em>, neu <em>Disgrifiad Tasg</em>. Cliciwch sglodyn wedi'i osod i'w ddychwelyd.</p>
+      </div>
+
+      <div class="sort-bank" id="sortBank">
+        <div class="sort-chip" draggable="true" data-id="s1">1. The causes of the First World War</div>
+        <div class="sort-chip" draggable="true" data-id="s2">2. Pupils will read pp.42–44 and fill in a table</div>
+        <div class="sort-chip" draggable="true" data-id="s3">3. Pupils will be able to LIST the main events leading to Hitler's consolidation of power</div>
+        <div class="sort-chip" draggable="true" data-id="s4">4. The Holocaust and its impact</div>
+        <div class="sort-chip" draggable="true" data-id="s5">5. Pupils will be able to ASSESS the significance of the Battle of the Somme</div>
+        <div class="sort-chip" draggable="true" data-id="s6">6. Pupils will make a poster about Welsh coal miners</div>
+        <div class="sort-chip" draggable="true" data-id="s7">7. Pupils will be able to COMPARE the experiences of women in Wales before and after WWII</div>
+        <div class="sort-chip" draggable="true" data-id="s8">8. Pupils will know about the slave trade</div>
+        <div class="sort-chip" draggable="true" data-id="s9">9. Pupils will be able to NAME the four nations of the UK</div>
+        <div class="sort-chip" draggable="true" data-id="s10">10. Pupils will be able to JUSTIFY why the Chartist Movement was more significant in Wales</div>
+        <div class="sort-chip" draggable="true" data-id="s11">11. Coastal erosion and its management</div>
+        <div class="sort-chip" draggable="true" data-id="s12">12. Pupils will be able to EXPLAIN the process of hydraulic action in cliff erosion</div>
+        <div class="sort-chip" draggable="true" data-id="s13">13. Pupils will draw a diagram of the water cycle and label the key stages</div>
+        <div class="sort-chip" draggable="true" data-id="s14">14. Pupils will be able to ASSESS whether the Cardiff Bay Barrage was the right decision</div>
+        <div class="sort-chip" draggable="true" data-id="s15">15. Pupils will learn about different types of settlement in Wales</div>
+        <div class="sort-chip" draggable="true" data-id="s16">16. Pupils will be able to EXAMINE how the landscape of Snowdonia has shaped settlement</div>
+        <div class="sort-chip" draggable="true" data-id="s17">17. Climate change and its effects</div>
+        <div class="sort-chip" draggable="true" data-id="s18">18. Pupils will complete a fieldwork data collection sheet on the River Wye</div>
+        <div class="sort-chip" draggable="true" data-id="s19">19. Pupils will be able to USE data from a river survey to IDENTIFY evidence of erosion</div>
+        <div class="sort-chip" draggable="true" data-id="s20">20. Pupils will be able to DESIGN a sustainable coastal management plan for the Welsh coastline</div>
+        <div class="sort-chip" draggable="true" data-id="s21">21. Buddhist beliefs about life and death</div>
+        <div class="sort-chip" draggable="true" data-id="s22">22. Pupils will watch a video about Welsh Nonconformism and answer questions</div>
+        <div class="sort-chip" draggable="true" data-id="s23">23. Pupils will be able to EVALUATE whether religious belief makes a person more likely to act ethically</div>
+        <div class="sort-chip" draggable="true" data-id="s24">24. Pupils will understand the importance of the mosque in Islamic community life</div>
+        <div class="sort-chip" draggable="true" data-id="s25">25. Pupils will be able to COMPARE St Teilo's Church and Pen-rhiw Chapel to explain how architecture expresses belief</div>
+        <div class="sort-chip" draggable="true" data-id="s26">26. Christianity and its influence on Welsh identity</div>
+        <div class="sort-chip" draggable="true" data-id="s27">27. Pupils will create an information leaflet about the Five Pillars of Islam</div>
+        <div class="sort-chip" draggable="true" data-id="s28">28. Pupils will be able to NAME the Five Pillars of Islam</div>
+        <div class="sort-chip" draggable="true" data-id="s29">29. Pupils will be able to JUSTIFY their own position on whether humans have the right to end life</div>
+        <div class="sort-chip" draggable="true" data-id="s30">30. Pupils will be able to CONSTRUCT an argument for or against: 'Religious communities do more harm than good in modern Wales'</div>
+      </div>
+
+      <div class="sort-zones">
+        <div class="sort-zone" id="li-zone" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropItem(event,'li-zone')">
+          <div class="sort-zone-label"><div class="dot" style="background:var(--green)"></div>✅ Genuine LI · BD Dilys</div>
+          <div class="sort-zone-chips" id="chips-li-zone"></div>
+        </div>
+        <div class="sort-zone" id="topic-zone" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropItem(event,'topic-zone')">
+          <div class="sort-zone-label"><div class="dot" style="background:var(--amber)"></div>📌 Topic Only · Pennawd yn Unig</div>
+          <div class="sort-zone-chips" id="chips-topic-zone"></div>
+        </div>
+        <div class="sort-zone" id="task-zone" ondragover="dragOver(event)" ondragleave="dragLeave(event)" ondrop="dropItem(event,'task-zone')">
+          <div class="sort-zone-label"><div class="dot" style="background:var(--rose)"></div>🔧 Task Desc · Disgrifiad Tasg</div>
+          <div class="sort-zone-chips" id="chips-task-zone"></div>
+        </div>
+      </div>
+
+      <div class="info-box teal">
+        <h3>💬 Reflection · Adlewyrchiad</h3>
+        <p>Which statements were hardest to judge, and why? What patterns did you notice across History, Geography and RVE? Check your answers in <strong>Section F: Answer Guide</strong>. · Pa ddatganiadau oedd anoddaf i'w barnu, a pham? Gwiriwch eich atebion yn <strong>Adran F</strong>.</p>
+        <textarea style="margin-top:.8rem" placeholder="Your reflections here · Eich myfyrdodau yma…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(0)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(1)">Next: Rewrite It → · Nesaf: Ailysgrif →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION C — REWRITE IT
+  ══════════════════════════════════════════ -->
+  <div class="section-card" id="sec-2">
+    <div class="card-header teal">
+      <div class="icon">✏️</div>
+      <h2>Rhan C · Part C: Rewrite It — Fix These Learning Intentions
+        <em>Ailysgrif — Cywirwch y Bwriadau Dysgu Hyn</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="info-box">
+        <h3>📋 Your task · Eich tasg</h3>
+        <p>Each statement below is NOT a genuine Bloom's-driven learning intention. Rewrite each one using the rule: <strong>'Pupils will be able to [BLOOM'S VERB] + [CONTENT] + [CONTEXT/DEPTH]'</strong></p>
+        <p style="margin-top:.4rem;font-style:italic;color:var(--slate-mid)">Nid yw'r datganiad isod yn fwriad dysgu dilys. Ailysgrifennwch gan ddefnyddio: <strong>'Bydd disgyblion yn gallu [BERF BLOOM] + [CYNNWYS] + [CYD-DESTUN]'</strong></p>
+      </div>
+
+      <h4 style="color:var(--indigo-dark);font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin:.8rem 0 .6rem">📜 History · Hanes</h4>
+      <div class="rewrite-card">
+        <div class="rewrite-bad">
+          <div class="label">❌ R1 · History · Hanes — As Written · Fel yr Ysgrifennwyd</div>
+          <p>The Industrial Revolution in Wales</p>
+        </div>
+        <div class="rewrite-hint">This is a topic heading — no Bloom's verb and no indication of what learners will DO. Choose a Bloom's level and rewrite it. · Pennawd pwnc yw hwn — dim berf Bloom ac dim arwydd o beth fydd dysgwyr yn ei WNEUD.</div>
+        <div class="rewrite-box">
+          <label>✅ Rewritten LI · BD Wedi'i Ailysgrif — Pupils will be able to…</label>
+          <textarea placeholder="Pupils will be able to [Bloom's verb] + [content] + [context/depth]…"></textarea>
+          <div class="bloom-sel-row">
+            <label>Bloom's level chosen · Lefel Bloom a ddewiswyd:</label>
+            <select><option value="">— Select · Dewiswch —</option><option>1 — Remember · Cofio</option><option>2 — Understand · Deall</option><option>3 — Apply · Cymhwyso</option><option>4 — Analyse · Dadansoddi</option><option>5 — Evaluate · Gwerthuso</option><option>6 — Create · Creu</option></select>
+            <label>Verb used · Berf a ddefnyddiwyd:</label>
+            <input type="text" style="border:2px solid var(--border);border-radius:6px;padding:.4rem .7rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem;width:120px" placeholder="e.g. JUSTIFY">
+          </div>
+        </div>
+      </div>
+      <div class="rewrite-card">
+        <div class="rewrite-bad">
+          <div class="label">❌ R2 · History · Hanes — As Written · Fel yr Ysgrifennwyd</div>
+          <p>Pupils will know about the suffragette movement and why women wanted the vote.</p>
+        </div>
+        <div class="rewrite-hint">'Know about' is not a Bloom's verb. Reframe this at Bloom's level 4 or 5 — what should learners DO with this knowledge? · Nid yw 'gwybod am' yn berf Bloom. Ailframiwch hwn ar lefel 4 neu 5.</div>
+        <div class="rewrite-box">
+          <label>✅ Rewritten LI · BD Wedi'i Ailysgrif — Pupils will be able to…</label>
+          <textarea placeholder="Pupils will be able to [Bloom's verb] + [content] + [context/depth]…"></textarea>
+          <div class="bloom-sel-row">
+            <label>Bloom's level chosen · Lefel Bloom a ddewiswyd:</label>
+            <select><option value="">— Select · Dewiswch —</option><option>1 — Remember · Cofio</option><option>2 — Understand · Deall</option><option>3 — Apply · Cymhwyso</option><option>4 — Analyse · Dadansoddi</option><option>5 — Evaluate · Gwerthuso</option><option>6 — Create · Creu</option></select>
+            <label>Verb used · Berf a ddefnyddiwyd:</label>
+            <input type="text" style="border:2px solid var(--border);border-radius:6px;padding:.4rem .7rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem;width:120px" placeholder="e.g. JUSTIFY">
+          </div>
+        </div>
+      </div>
+      <div class="rewrite-card">
+        <div class="rewrite-bad">
+          <div class="label">❌ R3 · History · Hanes — As Written · Fel yr Ysgrifennwyd</div>
+          <p>Pupils will complete a mind map of the causes of the First World War.</p>
+        </div>
+        <div class="rewrite-hint">This describes the task (a mind map), not the learning. What is the learning the mind map is MEANT to produce? Write the LI for that learning. · Mae hwn yn disgrifio'r dasg, nid y dysgu. Beth yw'r dysgu yr oedd y map meddwl i'w gynhyrchu?</div>
+        <div class="rewrite-box">
+          <label>✅ Rewritten LI · BD Wedi'i Ailysgrif — Pupils will be able to…</label>
+          <textarea placeholder="Pupils will be able to [Bloom's verb] + [content] + [context/depth]…"></textarea>
+          <div class="bloom-sel-row">
+            <label>Bloom's level chosen · Lefel Bloom a ddewiswyd:</label>
+            <select><option value="">— Select · Dewiswch —</option><option>1 — Remember · Cofio</option><option>2 — Understand · Deall</option><option>3 — Apply · Cymhwyso</option><option>4 — Analyse · Dadansoddi</option><option>5 — Evaluate · Gwerthuso</option><option>6 — Create · Creu</option></select>
+            <label>Verb used · Berf a ddefnyddiwyd:</label>
+            <input type="text" style="border:2px solid var(--border);border-radius:6px;padding:.4rem .7rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem;width:120px" placeholder="e.g. JUSTIFY">
+          </div>
+        </div>
+      </div>
+      <h4 style="color:var(--teal);font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin:1.2rem 0 .6rem">🌏 Geography · Daearyddiaeth</h4>
+      <div class="rewrite-card">
+        <div class="rewrite-bad">
+          <div class="label">❌ R4 · Geography · Daearyddiaeth — As Written · Fel yr Ysgrifennwyd</div>
+          <p>Climate change — causes and effects</p>
+        </div>
+        <div class="rewrite-hint">Topic heading with no verb. For Year 9, what Bloom's level (4, 5 or 6) is most appropriate? Rewrite as a full LI. · Pennawd pwnc heb ferf. Ar gyfer Blwyddyn 9, pa lefel Bloom sy'n fwyaf priodol?</div>
+        <div class="rewrite-box">
+          <label>✅ Rewritten LI · BD Wedi'i Ailysgrif — Pupils will be able to…</label>
+          <textarea placeholder="Pupils will be able to [Bloom's verb] + [content] + [context/depth]…"></textarea>
+          <div class="bloom-sel-row">
+            <label>Bloom's level chosen · Lefel Bloom a ddewiswyd:</label>
+            <select><option value="">— Select · Dewiswch —</option><option>1 — Remember · Cofio</option><option>2 — Understand · Deall</option><option>3 — Apply · Cymhwyso</option><option>4 — Analyse · Dadansoddi</option><option>5 — Evaluate · Gwerthuso</option><option>6 — Create · Creu</option></select>
+            <label>Verb used · Berf a ddefnyddiwyd:</label>
+            <input type="text" style="border:2px solid var(--border);border-radius:6px;padding:.4rem .7rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem;width:120px" placeholder="e.g. JUSTIFY">
+          </div>
+        </div>
+      </div>
+      <div class="rewrite-card">
+        <div class="rewrite-bad">
+          <div class="label">❌ R5 · Geography · Daearyddiaeth — As Written · Fel yr Ysgrifennwyd</div>
+          <p>Pupils will learn about urbanisation in Wales and what it means for communities.</p>
+        </div>
+        <div class="rewrite-hint">'Learn about' is not a Bloom's verb. Pick a more precise verb from level 3–5 and rewrite so the LI is specific and assessable. · Nid yw 'dysgu am' yn berf Bloom. Dewiswch ferf mwy manwl o lefel 3–5.</div>
+        <div class="rewrite-box">
+          <label>✅ Rewritten LI · BD Wedi'i Ailysgrif — Pupils will be able to…</label>
+          <textarea placeholder="Pupils will be able to [Bloom's verb] + [content] + [context/depth]…"></textarea>
+          <div class="bloom-sel-row">
+            <label>Bloom's level chosen · Lefel Bloom a ddewiswyd:</label>
+            <select><option value="">— Select · Dewiswch —</option><option>1 — Remember · Cofio</option><option>2 — Understand · Deall</option><option>3 — Apply · Cymhwyso</option><option>4 — Analyse · Dadansoddi</option><option>5 — Evaluate · Gwerthuso</option><option>6 — Create · Creu</option></select>
+            <label>Verb used · Berf a ddefnyddiwyd:</label>
+            <input type="text" style="border:2px solid var(--border);border-radius:6px;padding:.4rem .7rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem;width:120px" placeholder="e.g. JUSTIFY">
+          </div>
+        </div>
+      </div>
+      <div class="rewrite-card">
+        <div class="rewrite-bad">
+          <div class="label">❌ R6 · Geography · Daearyddiaeth — As Written · Fel yr Ysgrifennwyd</div>
+          <p>Pupils will look at maps of the Welsh coastline and identify areas at risk from flooding.</p>
+        </div>
+        <div class="rewrite-hint">Close, but describes a task. Push it to Bloom's level 5 — what should learners DO with the flood risk data? · Yn agos, ond yn disgrifio tasg. Gwthiwch i lefel 5 Bloom — beth ddylai dysgwyr ei WNEUD â'r data risg llifogydd?</div>
+        <div class="rewrite-box">
+          <label>✅ Rewritten LI · BD Wedi'i Ailysgrif — Pupils will be able to…</label>
+          <textarea placeholder="Pupils will be able to [Bloom's verb] + [content] + [context/depth]…"></textarea>
+          <div class="bloom-sel-row">
+            <label>Bloom's level chosen · Lefel Bloom a ddewiswyd:</label>
+            <select><option value="">— Select · Dewiswch —</option><option>1 — Remember · Cofio</option><option>2 — Understand · Deall</option><option>3 — Apply · Cymhwyso</option><option>4 — Analyse · Dadansoddi</option><option>5 — Evaluate · Gwerthuso</option><option>6 — Create · Creu</option></select>
+            <label>Verb used · Berf a ddefnyddiwyd:</label>
+            <input type="text" style="border:2px solid var(--border);border-radius:6px;padding:.4rem .7rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem;width:120px" placeholder="e.g. JUSTIFY">
+          </div>
+        </div>
+      </div>
+      <h4 style="color:var(--rose);font-size:.88rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin:1.2rem 0 .6rem">🕊️ RVE · Crefydd, Gwerthoedd ac Moeseg</h4>
+      <div class="rewrite-card">
+        <div class="rewrite-bad">
+          <div class="label">❌ R7 · RVE · Crefydd, Gwerthoedd ac Moeseg — As Written · Fel yr Ysgrifennwyd</div>
+          <p>Life after death — different religious views</p>
+        </div>
+        <div class="rewrite-hint">Topic heading. RVE at Year 9 should demand Bloom's level 5 or 6. Rewrite so learners must evaluate or justify, not just describe. · Pennawd pwnc. Dylai GAE ym Mlwyddyn 9 ofyn am lefel 5 neu 6 Bloom.</div>
+        <div class="rewrite-box">
+          <label>✅ Rewritten LI · BD Wedi'i Ailysgrif — Pupils will be able to…</label>
+          <textarea placeholder="Pupils will be able to [Bloom's verb] + [content] + [context/depth]…"></textarea>
+          <div class="bloom-sel-row">
+            <label>Bloom's level chosen · Lefel Bloom a ddewiswyd:</label>
+            <select><option value="">— Select · Dewiswch —</option><option>1 — Remember · Cofio</option><option>2 — Understand · Deall</option><option>3 — Apply · Cymhwyso</option><option>4 — Analyse · Dadansoddi</option><option>5 — Evaluate · Gwerthuso</option><option>6 — Create · Creu</option></select>
+            <label>Verb used · Berf a ddefnyddiwyd:</label>
+            <input type="text" style="border:2px solid var(--border);border-radius:6px;padding:.4rem .7rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem;width:120px" placeholder="e.g. JUSTIFY">
+          </div>
+        </div>
+      </div>
+      <div class="rewrite-card">
+        <div class="rewrite-bad">
+          <div class="label">❌ R8 · RVE · Crefydd, Gwerthoedd ac Moeseg — As Written · Fel yr Ysgrifennwyd</div>
+          <p>Pupils will understand how Christian beliefs affect the way people live.</p>
+        </div>
+        <div class="rewrite-hint">'Understand' is Bloom's level 2 but probably aimed too low for this content. What would level 4 or 5 look like? Rewrite it. · Mae 'deall' ar lefel 2 Bloom ond mae'n rhy isel ar gyfer y cynnwys hwn. Sut olwg fyddai ar lefel 4 neu 5?</div>
+        <div class="rewrite-box">
+          <label>✅ Rewritten LI · BD Wedi'i Ailysgrif — Pupils will be able to…</label>
+          <textarea placeholder="Pupils will be able to [Bloom's verb] + [content] + [context/depth]…"></textarea>
+          <div class="bloom-sel-row">
+            <label>Bloom's level chosen · Lefel Bloom a ddewiswyd:</label>
+            <select><option value="">— Select · Dewiswch —</option><option>1 — Remember · Cofio</option><option>2 — Understand · Deall</option><option>3 — Apply · Cymhwyso</option><option>4 — Analyse · Dadansoddi</option><option>5 — Evaluate · Gwerthuso</option><option>6 — Create · Creu</option></select>
+            <label>Verb used · Berf a ddefnyddiwyd:</label>
+            <input type="text" style="border:2px solid var(--border);border-radius:6px;padding:.4rem .7rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem;width:120px" placeholder="e.g. JUSTIFY">
+          </div>
+        </div>
+      </div>
+      <div class="rewrite-card">
+        <div class="rewrite-bad">
+          <div class="label">❌ R9 · RVE · Crefydd, Gwerthoedd ac Moeseg — As Written · Fel yr Ysgrifennwyd</div>
+          <p>Pupils will write a leaflet explaining what Sikhs believe about equality.</p>
+        </div>
+        <div class="rewrite-hint">The task (leaflet) is not the learning. What is the learning BEHIND this task? Write the LI the leaflet is meant to demonstrate. · Nid y dasg (taflen) yw'r dysgu. Beth yw'r dysgu y TU ÔL i'r dasg hon?</div>
+        <div class="rewrite-box">
+          <label>✅ Rewritten LI · BD Wedi'i Ailysgrif — Pupils will be able to…</label>
+          <textarea placeholder="Pupils will be able to [Bloom's verb] + [content] + [context/depth]…"></textarea>
+          <div class="bloom-sel-row">
+            <label>Bloom's level chosen · Lefel Bloom a ddewiswyd:</label>
+            <select><option value="">— Select · Dewiswch —</option><option>1 — Remember · Cofio</option><option>2 — Understand · Deall</option><option>3 — Apply · Cymhwyso</option><option>4 — Analyse · Dadansoddi</option><option>5 — Evaluate · Gwerthuso</option><option>6 — Create · Creu</option></select>
+            <label>Verb used · Berf a ddefnyddiwyd:</label>
+            <input type="text" style="border:2px solid var(--border);border-radius:6px;padding:.4rem .7rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem;width:120px" placeholder="e.g. JUSTIFY">
+          </div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(1)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(2)">Next: Write the SC → · Nesaf: Ysgrifennwch y MC →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION D — WRITE THE SC
+  ══════════════════════════════════════════ -->
+  <div class="section-card" id="sec-3">
+    <div class="card-header purple">
+      <div class="icon">📐</div>
+      <h2>Rhan D · Part D: Write the Success Criteria
+        <em>Ysgrifennwch y Meini Prawf Llwyddiant</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="info-box">
+        <h3>📋 Your task · Eich tasg</h3>
+        <p>Each LI below is well-written and Bloom's-driven. Write 2–3 success criteria that: are directly tied to the LI and its Bloom's level; are <strong>observable</strong>; break the LI into achievable steps; use the frame: <em>'Pupils will be successful if they can…'</em></p>
+        <p style="margin-top:.4rem;font-style:italic;color:var(--slate-mid)">Mae pob BD isod wedi'i ysgrifennu'n dda. Ysgrifennwch 2–3 maen prawf llwyddiant gan ddefnyddio'r fframwaith: <em>'Bydd disgyblion yn llwyddiannus os gallant…'</em></p>
+      </div>
+      <div class="sc-card">
+        <div class="sc-li">
+          <div class="label">SC1 · History · Hanes</div>
+          <p>Pupils will be able to JUSTIFY which cause of World War One was most significant in triggering the conflict.</p>
+          <p style="font-size:.78rem;margin-top:.3rem;color:var(--slate-mid);font-weight:600">Bloom's 5 — Evaluate · Gwerthuso</p>
+        </div>
+        <div class="sc-fields">
+          <div class="sc-field-label">Write 2–3 SC · Ysgrifennwch 2–3 MC — "Pupils will be successful if they can…"</div>
+          <textarea style="min-height:50px" placeholder="SC 1: Pupils will be successful if they can…"></textarea>
+          <textarea style="min-height:50px" placeholder="SC 2: Pupils will be successful if they can…"></textarea>
+          <textarea style="min-height:50px" placeholder="SC 3: Pupils will be successful if they can… (optional · dewisol)"></textarea>
+        </div>
+      </div>
+      <div class="sc-card">
+        <div class="sc-li">
+          <div class="label">SC2 · History · Hanes</div>
+          <p>Pupils will be able to EXAMINE the events of 1933 to explain how Hitler consolidated power in Germany.</p>
+          <p style="font-size:.78rem;margin-top:.3rem;color:var(--slate-mid);font-weight:600">Bloom's 4 — Analyse · Dadansoddi</p>
+        </div>
+        <div class="sc-fields">
+          <div class="sc-field-label">Write 2–3 SC · Ysgrifennwch 2–3 MC — "Pupils will be successful if they can…"</div>
+          <textarea style="min-height:50px" placeholder="SC 1: Pupils will be successful if they can…"></textarea>
+          <textarea style="min-height:50px" placeholder="SC 2: Pupils will be successful if they can…"></textarea>
+          <textarea style="min-height:50px" placeholder="SC 3: Pupils will be successful if they can… (optional · dewisol)"></textarea>
+        </div>
+      </div>
+      <div class="sc-card">
+        <div class="sc-li">
+          <div class="label">SC3 · Geography · Daearyddiaeth</div>
+          <p>Pupils will be able to ASSESS the effectiveness of hard engineering strategies used to manage coastal erosion along the Welsh coastline.</p>
+          <p style="font-size:.78rem;margin-top:.3rem;color:var(--slate-mid);font-weight:600">Bloom's 5 — Evaluate · Gwerthuso</p>
+        </div>
+        <div class="sc-fields">
+          <div class="sc-field-label">Write 2–3 SC · Ysgrifennwch 2–3 MC — "Pupils will be successful if they can…"</div>
+          <textarea style="min-height:50px" placeholder="SC 1: Pupils will be successful if they can…"></textarea>
+          <textarea style="min-height:50px" placeholder="SC 2: Pupils will be successful if they can…"></textarea>
+          <textarea style="min-height:50px" placeholder="SC 3: Pupils will be successful if they can… (optional · dewisol)"></textarea>
+        </div>
+      </div>
+      <div class="sc-card">
+        <div class="sc-li">
+          <div class="label">SC4 · Geography · Daearyddiaeth</div>
+          <p>Pupils will be able to DESIGN a land use management plan for a rural area of mid-Wales that balances economic, social and environmental needs.</p>
+          <p style="font-size:.78rem;margin-top:.3rem;color:var(--slate-mid);font-weight:600">Bloom's 6 — Create · Creu</p>
+        </div>
+        <div class="sc-fields">
+          <div class="sc-field-label">Write 2–3 SC · Ysgrifennwch 2–3 MC — "Pupils will be successful if they can…"</div>
+          <textarea style="min-height:50px" placeholder="SC 1: Pupils will be successful if they can…"></textarea>
+          <textarea style="min-height:50px" placeholder="SC 2: Pupils will be successful if they can…"></textarea>
+          <textarea style="min-height:50px" placeholder="SC 3: Pupils will be successful if they can… (optional · dewisol)"></textarea>
+        </div>
+      </div>
+      <div class="sc-card">
+        <div class="sc-li">
+          <div class="label">SC5 · RVE · Crefydd, Gwerthoedd ac Moeseg</div>
+          <p>Pupils will be able to EVALUATE whether the teachings of one religion provide a satisfactory response to the problem of suffering.</p>
+          <p style="font-size:.78rem;margin-top:.3rem;color:var(--slate-mid);font-weight:600">Bloom's 5 — Evaluate · Gwerthuso</p>
+        </div>
+        <div class="sc-fields">
+          <div class="sc-field-label">Write 2–3 SC · Ysgrifennwch 2–3 MC — "Pupils will be successful if they can…"</div>
+          <textarea style="min-height:50px" placeholder="SC 1: Pupils will be successful if they can…"></textarea>
+          <textarea style="min-height:50px" placeholder="SC 2: Pupils will be successful if they can…"></textarea>
+          <textarea style="min-height:50px" placeholder="SC 3: Pupils will be successful if they can… (optional · dewisol)"></textarea>
+        </div>
+      </div>
+      <div class="sc-card">
+        <div class="sc-li">
+          <div class="label">SC6 · RVE · Crefydd, Gwerthoedd ac Moeseg</div>
+          <p>Pupils will be able to CONSTRUCT an ethical argument for or against capital punishment using at least two different ethical frameworks.</p>
+          <p style="font-size:.78rem;margin-top:.3rem;color:var(--slate-mid);font-weight:600">Bloom's 6 — Create · Creu</p>
+        </div>
+        <div class="sc-fields">
+          <div class="sc-field-label">Write 2–3 SC · Ysgrifennwch 2–3 MC — "Pupils will be successful if they can…"</div>
+          <textarea style="min-height:50px" placeholder="SC 1: Pupils will be successful if they can…"></textarea>
+          <textarea style="min-height:50px" placeholder="SC 2: Pupils will be successful if they can…"></textarea>
+          <textarea style="min-height:50px" placeholder="SC 3: Pupils will be successful if they can… (optional · dewisol)"></textarea>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(2)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(3)">Next: Plan Your Own → · Nesaf: Cynlluniwch Eich Un Chi →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION E — PLAN YOUR OWN
+  ══════════════════════════════════════════ -->
+  <div class="section-card" id="sec-4">
+    <div class="card-header green">
+      <div class="icon">📝</div>
+      <h2>Rhan E · Part E: Plan Your Own
+        <em>Cynlluniwch Eich Un Chi</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="info-box amber">
+        <h3>🎯 The Complete Planning Sequence · Y Dilyniant Cynllunio Llawn</h3>
+        <p><strong>Task:</strong> 'Pupils will…' (what they do) &nbsp;|&nbsp; <strong>LI:</strong> 'Pupils will be able to [BLOOM'S VERB]…' (what they learn) &nbsp;|&nbsp; <strong>SC:</strong> 'Pupils will be successful if they can…' (how we know)</p>
+      </div>
+
+      <p style="font-size:.93rem;line-height:1.7;margin-bottom:1.2rem">Plan TWO complete learning sequences for your subject area. Choose topics relevant to your current or upcoming placement. · Cynlluniwch DDY ddilyniant dysgu cyflawn ar gyfer eich maes pwnc.</p>
+      <div style="background:#fff;border:2px solid var(--indigo-light);border-radius:12px;padding:1.4rem;margin-bottom:1.2rem">
+        <h3 style="font-family:'Playfair Display',serif;color:var(--indigo-dark);margin-bottom:1rem;font-size:1.05rem">Lesson Plan 1 · Cynllun Gwers 1</h3>
+        <label style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate-mid);display:block;margin-bottom:.3rem">Subject &amp; Topic · Pwnc a Thestun</label>
+        <textarea style="min-height:50px" placeholder="e.g. History — Year 9 — Causes of World War One / e.e. Hanes — Blwyddyn 9 — Achosion y Rhyfel Byd Cyntaf"></textarea>
+        <label style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate-mid);display:block;margin:.8rem 0 .3rem">Year Group &amp; Bloom's Level — and why · Grŵp Blwyddyn a Lefel Bloom — a pham</label>
+        <textarea style="min-height:60px" placeholder="e.g. Year 9 — Bloom's Level 5 (Evaluate/Justify) because learners have prior knowledge of events and need to develop evaluative argument…"></textarea>
+        <label style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--red);display:block;margin:.8rem 0 .3rem">TASK — What will pupils DO? · Beth fydd disgyblion yn ei WNEUD?</label>
+        <textarea style="min-height:60px;border-color:var(--red)" placeholder="Pupils will… (describe the activity — the vehicle, not the destination)"></textarea>
+        <label style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--indigo-dark);display:block;margin:.8rem 0 .3rem">LEARNING INTENTION — Pupils will be able to [Bloom's verb]… · BWRIAD DYSGU</label>
+        <textarea style="min-height:60px;border-color:var(--indigo)" placeholder="Pupils will be able to [BLOOM'S VERB] + [content] + [context/depth]…"></textarea>
+        <label style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green);display:block;margin:.8rem 0 .3rem">SUCCESS CRITERIA — Pupils will be successful if they can… · MEINI PRAWF LLWYDDIANT</label>
+        <textarea style="min-height:80px;border-color:var(--green)" placeholder="SC 1: ...&#10;SC 2: ...&#10;SC 3: ..."></textarea>
+        <label style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate-mid);display:block;margin:.8rem 0 .3rem">How will you know if this worked? · Sut fyddwch chi'n gwybod a wnaeth hyn weithio?</label>
+        <textarea style="min-height:60px" placeholder="How will you assess whether learners achieved the LI? What evidence will you look for?"></textarea>
+      </div>
+      <div style="background:#fff;border:2px solid var(--indigo-light);border-radius:12px;padding:1.4rem;margin-bottom:1.2rem">
+        <h3 style="font-family:'Playfair Display',serif;color:var(--indigo-dark);margin-bottom:1rem;font-size:1.05rem">Lesson Plan 2 · Cynllun Gwers 2</h3>
+        <label style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate-mid);display:block;margin-bottom:.3rem">Subject &amp; Topic · Pwnc a Thestun</label>
+        <textarea style="min-height:50px" placeholder="e.g. History — Year 9 — Causes of World War One / e.e. Hanes — Blwyddyn 9 — Achosion y Rhyfel Byd Cyntaf"></textarea>
+        <label style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate-mid);display:block;margin:.8rem 0 .3rem">Year Group &amp; Bloom's Level — and why · Grŵp Blwyddyn a Lefel Bloom — a pham</label>
+        <textarea style="min-height:60px" placeholder="e.g. Year 9 — Bloom's Level 5 (Evaluate/Justify) because learners have prior knowledge of events and need to develop evaluative argument…"></textarea>
+        <label style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--red);display:block;margin:.8rem 0 .3rem">TASK — What will pupils DO? · Beth fydd disgyblion yn ei WNEUD?</label>
+        <textarea style="min-height:60px;border-color:var(--red)" placeholder="Pupils will… (describe the activity — the vehicle, not the destination)"></textarea>
+        <label style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--indigo-dark);display:block;margin:.8rem 0 .3rem">LEARNING INTENTION — Pupils will be able to [Bloom's verb]… · BWRIAD DYSGU</label>
+        <textarea style="min-height:60px;border-color:var(--indigo)" placeholder="Pupils will be able to [BLOOM'S VERB] + [content] + [context/depth]…"></textarea>
+        <label style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green);display:block;margin:.8rem 0 .3rem">SUCCESS CRITERIA — Pupils will be successful if they can… · MEINI PRAWF LLWYDDIANT</label>
+        <textarea style="min-height:80px;border-color:var(--green)" placeholder="SC 1: ...&#10;SC 2: ...&#10;SC 3: ..."></textarea>
+        <label style="font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate-mid);display:block;margin:.8rem 0 .3rem">How will you know if this worked? · Sut fyddwch chi'n gwybod a wnaeth hyn weithio?</label>
+        <textarea style="min-height:60px" placeholder="How will you assess whether learners achieved the LI? What evidence will you look for?"></textarea>
+      </div>
+      <div class="info-box key">
+        <h3>📖 Final Reflection · Adlewyrchiad Terfynol</h3>
+        <p>In your own words, write your working definition of a Bloom's-driven learning intention. · Yn eich geiriau eich hun, ysgrifennwch eich diffiniad gweithio o fwriad dysgu sy'n cael ei yrru gan Bloom.</p>
+        <textarea style="margin-top:.8rem;background:rgba(255,255,255,.1);color:white;border-color:rgba(255,255,255,.3)" placeholder="A Bloom's-driven learning intention is… · Mae bwriad dysgu sy'n cael ei yrru gan Bloom yn…"></textarea>
+        <p style="margin-top:.8rem">What is the biggest mistake you think you are likely to make when writing LIs in your early planning, and how will you catch it? · Beth yw'r camgymeriad mwyaf tebygol y byddwch chi'n ei wneud?</p>
+        <textarea style="margin-top:.6rem;background:rgba(255,255,255,.1);color:white;border-color:rgba(255,255,255,.3)" placeholder="The biggest mistake I'm likely to make is… · Y camgymeriad mwyaf tebygol yw…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(3)">← Back · Yn ôl</button>
+        <button class="btn btn-amber" onclick="complete()">🎓 Complete Session · Cwblhau'r Sesiwn</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION F — ANSWER GUIDE
+  ══════════════════════════════════════════ -->
+  <div class="section-card" id="sec-5">
+    <div class="card-header rose">
+      <div class="icon">📖</div>
+      <h2>Rhan F · Part F: Answer Guide — Part B
+        <em>Canllaw Atebion — Rhan B</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="info-box teal">
+        <h3>💡 How to use this · Sut i'w ddefnyddio</h3>
+        <p>Click any statement to reveal the verdict and reasoning. Use this AFTER completing Part B. Discuss borderline cases with a partner or tutor. · Cliciwch ar unrhyw ddatganiad i ddatgelu'r dyfarniad a'r rhesymeg. Defnyddiwch hwn AR ÔL cwblhau Rhan B.</p>
+      </div>
+
+      <h4 style="color:var(--indigo-dark);font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin:.6rem 0 .5rem">📜 History · Hanes (1–10)</h4>
+      <div class="answer-row" onclick="toggleAnswer('ans1')">
+        <div class="ans-num">1</div>
+        <div class="ans-stmt">The causes of the First World War</div>
+      </div>
+      <div class="ans-verdict" id="ans1">
+        <span class="verdict-pill vp-topic">Topic heading · Pennawd Pwnc</span>
+        No verb, no cognitive level, no indication of what learners do with this content · Dim berf, dim lefel wybyddol
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans2')">
+        <div class="ans-num">2</div>
+        <div class="ans-stmt">Pupils will read pages 42–44 and fill in a table of key events</div>
+      </div>
+      <div class="ans-verdict" id="ans2">
+        <span class="verdict-pill vp-task">Task description · Disgrifiad Tasg</span>
+        Describes an activity (reading and filling a table), not what learning it produces · Yn disgrifio gweithgaredd, nid y dysgu
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans3')">
+        <div class="ans-num">3</div>
+        <div class="ans-stmt">Pupils will be able to LIST the main events leading to Hitler's consolidation of power</div>
+      </div>
+      <div class="ans-verdict" id="ans3">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 1: Remember · Cofio</span>
+        Has a Bloom's verb (LIST); specific and assessable. Consider: is Level 1 always appropriate? · Mae berf Bloom (RHESTR); penodol ac aseswladwy.
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans4')">
+        <div class="ans-num">4</div>
+        <div class="ans-stmt">The Holocaust and its impact</div>
+      </div>
+      <div class="ans-verdict" id="ans4">
+        <span class="verdict-pill vp-topic">Topic heading · Pennawd Pwnc</span>
+        No verb; this is a chapter title, not a learning intention · Dim berf; teitl pennod yw hwn, nid bwriad dysgu
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans5')">
+        <div class="ans-num">5</div>
+        <div class="ans-stmt">Pupils will be able to ASSESS the significance of the Battle of the Somme</div>
+      </div>
+      <div class="ans-verdict" id="ans5">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 5: Evaluate · Gwerthuso</span>
+        Has a Bloom's verb (ASSESS); requires higher-order thinking · Mae berf Bloom (ASSESS); yn gofyn am feddwl lefel uwch
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans6')">
+        <div class="ans-num">6</div>
+        <div class="ans-stmt">Pupils will make a poster about Welsh coal miners</div>
+      </div>
+      <div class="ans-verdict" id="ans6">
+        <span class="verdict-pill vp-task">Task description · Disgrifiad Tasg</span>
+        Making a poster is the task. The LI behind it is not stated · Gwneud poster yw'r dasg. Nid yw'r BD y tu ôl iddo wedi'i nodi
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans7')">
+        <div class="ans-num">7</div>
+        <div class="ans-stmt">Pupils will be able to COMPARE the experiences of women in Wales before and after WWII</div>
+      </div>
+      <div class="ans-verdict" id="ans7">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 4: Analyse · Dadansoddi</span>
+        COMPARE is a strong Bloom's level 4 verb; specific and assessable · Mae CYMHARU yn ferf lefel 4 gref; penodol ac aseswladwy
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans8')">
+        <div class="ans-num">8</div>
+        <div class="ans-stmt">Pupils will know about the slave trade and its impact</div>
+      </div>
+      <div class="ans-verdict" id="ans8">
+        <span class="verdict-pill vp-vague">Vague verb · Berf Amwys</span>
+        'Know about' is not a Bloom's verb; doesn't indicate cognitive level · Nid yw 'gwybod am' yn berf Bloom; nid yw'n nodi lefel wybyddol
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans9')">
+        <div class="ans-num">9</div>
+        <div class="ans-stmt">Pupils will be able to NAME the four nations of the United Kingdom</div>
+      </div>
+      <div class="ans-verdict" id="ans9">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 1: Remember · Cofio</span>
+        Has a Bloom's verb (NAME). Consider: is Level 1 appropriate for this class? · Mae berf Bloom (ENWI). Ystyriwch: a yw Lefel 1 yn briodol?
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans10')">
+        <div class="ans-num">10</div>
+        <div class="ans-stmt">Pupils will be able to JUSTIFY why the Chartist Movement was more significant in Wales</div>
+      </div>
+      <div class="ans-verdict" id="ans10">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 5: Evaluate · Gwerthuso</span>
+        JUSTIFY is Bloom's level 5; well-framed with Welsh context · Mae CYFIAWNHAU ar lefel 5 Bloom; wedi'i fframio'n dda â chyd-destun Cymreig
+      </div>
+      <h4 style="color:var(--teal);font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin:1rem 0 .5rem">🌏 Geography · Daearyddiaeth (11–20)</h4>
+      <div class="answer-row" onclick="toggleAnswer('ans11')">
+        <div class="ans-num">11</div>
+        <div class="ans-stmt">Coastal erosion and its management</div>
+      </div>
+      <div class="ans-verdict" id="ans11">
+        <span class="verdict-pill vp-topic">Topic heading · Pennawd Pwnc</span>
+        No verb; this is a unit title · Dim berf; teitl uned yw hwn
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans12')">
+        <div class="ans-num">12</div>
+        <div class="ans-stmt">Pupils will be able to EXPLAIN the process of hydraulic action in cliff erosion</div>
+      </div>
+      <div class="ans-verdict" id="ans12">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 2: Understand · Deall</span>
+        EXPLAIN is Bloom's level 2; specific and processual · Mae EGLURO ar lefel 2 Bloom; penodol a phrosesol
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans13')">
+        <div class="ans-num">13</div>
+        <div class="ans-stmt">Pupils will draw a diagram of the water cycle and label the key stages</div>
+      </div>
+      <div class="ans-verdict" id="ans13">
+        <span class="verdict-pill vp-task">Task description · Disgrifiad Tasg</span>
+        Drawing and labelling is the task; the LI behind it is unstated · Lluniadu a labelu yw'r dasg; nid yw'r BD wedi'i nodi
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans14')">
+        <div class="ans-num">14</div>
+        <div class="ans-stmt">Pupils will be able to ASSESS whether the Cardiff Bay Barrage was the right environmental decision</div>
+      </div>
+      <div class="ans-verdict" id="ans14">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 5: Evaluate · Gwerthuso</span>
+        ASSESS is level 5; well-contextualised in Wales (Cardiff Bay Barrage) · Mae ASESU ar lefel 5; wedi'i gyd-destunoli'n dda yng Nghymru
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans15')">
+        <div class="ans-num">15</div>
+        <div class="ans-stmt">Pupils will learn about different types of settlement in Wales</div>
+      </div>
+      <div class="ans-verdict" id="ans15">
+        <span class="verdict-pill vp-vague">Vague verb · Berf Amwys</span>
+        'Learn about' has no Bloom's level and is not assessable · Nid oes gan 'dysgu am' lefel Bloom ac nid yw'n aseswladwy
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans16')">
+        <div class="ans-num">16</div>
+        <div class="ans-stmt">Pupils will be able to EXAMINE how the landscape of Snowdonia has shaped patterns of settlement</div>
+      </div>
+      <div class="ans-verdict" id="ans16">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 4: Analyse · Dadansoddi</span>
+        EXAMINE is level 4; uses Welsh context (Snowdonia) · Mae ARCHWILIO ar lefel 4; yn defnyddio cyd-destun Cymreig (Eryri)
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans17')">
+        <div class="ans-num">17</div>
+        <div class="ans-stmt">Climate change and its effects</div>
+      </div>
+      <div class="ans-verdict" id="ans17">
+        <span class="verdict-pill vp-topic">Topic heading · Pennawd Pwnc</span>
+        No verb; curriculum or scheme-of-work heading · Dim berf; pennawd cwricwlwm
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans18')">
+        <div class="ans-num">18</div>
+        <div class="ans-stmt">Pupils will complete a fieldwork data collection sheet on the River Wye</div>
+      </div>
+      <div class="ans-verdict" id="ans18">
+        <span class="verdict-pill vp-task">Task description · Disgrifiad Tasg</span>
+        A fieldwork sheet is the task, not the learning intention · Taflen gwaith maes yw'r dasg, nid y bwriad dysgu
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans19')">
+        <div class="ans-num">19</div>
+        <div class="ans-stmt">Pupils will be able to USE data from a river survey to IDENTIFY evidence of erosion</div>
+      </div>
+      <div class="ans-verdict" id="ans19">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 3: Apply · Cymhwyso</span>
+        USE…to IDENTIFY: apply-level, specific and observable · DEFNYDDIO…i NODI: lefel cymhwyso, penodol a gweladwy
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans20')">
+        <div class="ans-num">20</div>
+        <div class="ans-stmt">Pupils will be able to DESIGN a sustainable coastal management plan for the Welsh coastline</div>
+      </div>
+      <div class="ans-verdict" id="ans20">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 6: Create · Creu</span>
+        DESIGN is the highest Bloom's level; ambitious and well-contextualised · Mae DYLUNIO ar y lefel Bloom uchaf; uchelgeisiol ac wedi'i gyd-destunoli'n dda
+      </div>
+      <h4 style="color:var(--rose);font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin:1rem 0 .5rem">🕊️ RVE · Crefydd, Gwerthoedd ac Moeseg (21–30)</h4>
+      <div class="answer-row" onclick="toggleAnswer('ans21')">
+        <div class="ans-num">21</div>
+        <div class="ans-stmt">Buddhist beliefs about life and death</div>
+      </div>
+      <div class="ans-verdict" id="ans21">
+        <span class="verdict-pill vp-topic">Topic heading · Pennawd Pwnc</span>
+        No verb; could be the title of a unit or chapter · Dim berf; gallai fod yn deitl uned
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans22')">
+        <div class="ans-num">22</div>
+        <div class="ans-stmt">Pupils will watch a video about Welsh Nonconformism and answer questions</div>
+      </div>
+      <div class="ans-verdict" id="ans22">
+        <span class="verdict-pill vp-task">Task description · Disgrifiad Tasg</span>
+        Watching a video and answering questions is the task · Gwylio fideo ac ateb cwestiynau yw'r dasg
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans23')">
+        <div class="ans-num">23</div>
+        <div class="ans-stmt">Pupils will be able to EVALUATE whether religious belief makes a person more likely to act ethically</div>
+      </div>
+      <div class="ans-verdict" id="ans23">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 5: Evaluate · Gwerthuso</span>
+        EVALUATE with a genuine philosophical question; well-placed at level 5 · GWERTHUSO gyda chwestiwn athronyddol dilys; wedi'i osod yn dda ar lefel 5
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans24')">
+        <div class="ans-num">24</div>
+        <div class="ans-stmt">Pupils will understand the importance of the mosque in Islamic community life</div>
+      </div>
+      <div class="ans-verdict" id="ans24">
+        <span class="verdict-pill vp-vague">Vague verb · Berf Amwys</span>
+        'Understand' can sit at Bloom's level 2 but is too vague here; not assessable as written · Gall 'deall' fod ar lefel 2 Bloom ond mae'n rhy amwys yma; nid yw'n aseswladwy
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans25')">
+        <div class="ans-num">25</div>
+        <div class="ans-stmt">Pupils will be able to COMPARE St Teilo's Church and Pen-rhiw Chapel to explain how architecture expresses belief</div>
+      </div>
+      <div class="ans-verdict" id="ans25">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 4: Analyse · Dadansoddi</span>
+        COMPARE is level 4; Welsh context (St Teilo's and Pen-rhiw) — excellent specificity · Mae CYMHARU ar lefel 4; cyd-destun Cymreig ardderchog
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans26')">
+        <div class="ans-num">26</div>
+        <div class="ans-stmt">Christianity and its influence on Welsh identity</div>
+      </div>
+      <div class="ans-verdict" id="ans26">
+        <span class="verdict-pill vp-topic">Topic heading · Pennawd Pwnc</span>
+        No verb; broad thematic heading · Dim berf; pennawd thematig eang
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans27')">
+        <div class="ans-num">27</div>
+        <div class="ans-stmt">Pupils will create an information leaflet about the Five Pillars of Islam</div>
+      </div>
+      <div class="ans-verdict" id="ans27">
+        <span class="verdict-pill vp-task">Task description · Disgrifiad Tasg</span>
+        Creating a leaflet is the task; the LI behind it is not stated · Creu taflen yw'r dasg; nid yw'r BD wedi'i nodi
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans28')">
+        <div class="ans-num">28</div>
+        <div class="ans-stmt">Pupils will be able to NAME the Five Pillars of Islam</div>
+      </div>
+      <div class="ans-verdict" id="ans28">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 1: Remember · Cofio</span>
+        Has a verb (NAME) — but is Level 1 appropriate for secondary RVE? · Mae berf (ENWI) — ond a yw Lefel 1 yn briodol ar gyfer GAE uwchradd?
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans29')">
+        <div class="ans-num">29</div>
+        <div class="ans-stmt">Pupils will be able to JUSTIFY their own position on whether humans have the right to end life</div>
+      </div>
+      <div class="ans-verdict" id="ans29">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 5: Evaluate · Gwerthuso</span>
+        JUSTIFY with ethical frameworks: strong level 5 LI · CYFIAWNHAU gyda fframweithiau moesegol: BD lefel 5 gryf
+      </div>
+      <div class="answer-row" onclick="toggleAnswer('ans30')">
+        <div class="ans-num">30</div>
+        <div class="ans-stmt">Pupils will be able to CONSTRUCT an argument for or against: 'Religious communities do more harm than good in modern Wales'</div>
+      </div>
+      <div class="ans-verdict" id="ans30">
+        <span class="verdict-pill vp-genuine">✅ Genuine LI · BD Dilys — Level 6: Create · Creu</span>
+        CONSTRUCT an argument: highest Bloom's level; ambitious and challenging · ADEILADU dadl: y lefel Bloom uchaf; uchelgeisiol a heriol
+      </div>
+      <div class="info-box amber" style="margin-top:1.2rem">
+        <h3>💬 Borderline Cases to Discuss · Achosion Ffin i'w Trafod</h3>
+        <p><strong>Statements 9, 24 and 28:</strong> NAME and UNDERSTAND are genuine Bloom's verbs — but are Level 1 and Level 2 ever appropriate as the main LI of a secondary lesson? When might they be, and when not? What would Level 4 or 5 look like for the same content? · <em>Pa bryd y gallai Lefelau 1 a 2 fod yn briodol? Sut olwg fyddai ar Lefel 4 neu 5 ar gyfer yr un cynnwys?</em></p>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(4)">← Back · Yn ôl</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="completion-card" id="completion">
+    <span class="badge-icon">🎓</span>
+    <h2>Session Complete! · Sesiwn Wedi'i Chwblhau!</h2>
+    <div class="score-pill">Quiz Score · Sgôr Cwis: <span id="final-score">0</span> / 5</div>
+    <p><strong>Well done!</strong> You have worked through all six parts of this Learning Intentions and Bloom's Taxonomy session. Remember: <em>a learning intention without a Bloom's verb is a topic heading — and a topic heading is not a learning intention.</em></p>
+    <p><strong>Da iawn!</strong> Rydych chi wedi gweithio drwy'r chwe rhan. Cofiwch: <em>mae bwriad dysgu heb ferf Bloom yn bennawd pwnc — ac nid yw pennawd pwnc yn fwriad dysgu.</em></p>
+    <div style="margin-top:1rem"><button class="btn btn-secondary" onclick="location.reload()" style="background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.35);color:#fff;font-size:.85rem;">↺ Start Again · Dechrau Eto</button></div>
+    <div class="cert-trigger-box">
+      <p>🏅 <strong>Generate your personalised completion certificate · Creu eich tystysgrif gwblhau bersonol</strong><br>
+      Enter your full name to generate a printable certificate. · Rhowch eich enw llawn i greu tystysgrif argraffdwy.</p>
+      <div class="cert-name-row">
+        <input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name · Eich enw llawn…" maxlength="80">
+        <button class="btn-cert" onclick="generateCertificate()">🎓 Generate Certificate · Creu Tystysgrif</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- CERTIFICATE OVERLAY -->
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:2rem;">🎯</div>
+            <div class="cert-inst-name">PGCE Secondary — Humanities
+              <span class="cert-inst-cy">Cwricwlwm i Gymru / Curriculum for Wales</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that · Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher · yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.5rem 0 .3rem"><div class="cert-name" id="certDisplayName">Your Name</div></div>
+          <div class="cert-score-pill">Quiz Score · Sgôr Cwis: <span id="certScoreDisplay">—</span> / 5</div>
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the induction training session on</div>
+          <div class="cert-course">Learning Intentions, Success Criteria &amp; Bloom's Taxonomy
+            <span class="cert-course-cy">Bwriadau Dysgu, Meini Prawf Llwyddiant a Thacsonomeg Bloom</span>
+          </div>
+          <div class="cert-competencies">Demonstrating the ability to distinguish genuine Bloom's-driven learning intentions from topic headings and task descriptions; to rewrite weak LIs using appropriate Bloom's verbs; to write observable success criteria; and to plan complete learning sequences for History, Geography and RVE within the Curriculum for Wales Humanities AoLE.<br>
+          <em style="color:#4F46E5;display:block;margin-top:.4rem">Gan ddangos y gallu i wahaniaethu bwriadau dysgu dilys sy'n cael eu gyrru gan Bloom rhag penawdau pwnc a disgrifiadau tasg, ac i gynllunio dilynianau dysgu cyflawn ar gyfer MDPH y Dyniaethau.</em></div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <div class="cert-sig-label">Programme Director · Cyfarwyddwr y Rhaglen</div>
+            </div>
+            <div><div class="cert-seal"><span class="cert-seal-icon">🎓</span>PGCE<br>CYMRU</div></div>
+            <div class="cert-sig-block">
+              <div class="cert-date-val" id="certDateDisplay"></div>
+              <div class="cert-date-label">Date Completed · Dyddiad Cwblhau</div>
+            </div>
+          </div>
+          <div class="cert-stripe" style="margin:1.2rem -2rem -1.6rem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">🖨️ Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">✕ Close · Cau</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let score=0; const completedSections=new Set();
+
+// ── MINI QUIZ (embedded in Part A via reflection Q check) ──
+const quizAnswers={};
+let quizScore=0;
+
+// ── NAV ──
+function goTo(idx){
+  document.querySelectorAll('.section-card').forEach((el,i)=>el.classList.toggle('active',i===idx));
+  document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('active',i===idx));
+  const pct=Math.round(((idx+1)/6)*100);
+  document.getElementById('progress-bar').style.width=pct+'%';
+  document.getElementById('progress-label').textContent='Section '+(idx+1)+' of 6 · Adran '+(idx+1)+' o 6';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function nextSection(idx){
+  completedSections.add(idx);
+  document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('done',completedSections.has(i)));
+  goTo(idx+1);
+}
+
+// ── COMPLETE ──
+function complete(){
+  completedSections.add(4);
+  document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('done',completedSections.has(i)));
+  document.querySelectorAll('.section-card').forEach(el=>el.classList.remove('active'));
+  document.getElementById('completion').classList.add('show');
+  document.getElementById('final-score').textContent=score;
+  document.getElementById('progress-bar').style.width='100%';
+  document.getElementById('progress-label').textContent='Complete! · Wedi Cwblhau!';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// ── ANSWER GUIDE ACCORDION ──
+function toggleAnswer(id){
+  const el=document.getElementById(id);
+  el.classList.toggle('show');
+}
+
+// ── DRAG AND DROP (Sort activity) ──
+let draggedChip=null;
+document.querySelectorAll('.sort-chip').forEach(chip=>{
+  chip.addEventListener('dragstart',e=>{
+    draggedChip=chip;
+    setTimeout(()=>{if(draggedChip)draggedChip.style.opacity='.4';},0);
+  });
+});
+function dragOver(e){e.preventDefault();e.currentTarget.classList.add('drag-over');}
+function dragLeave(e){e.currentTarget.classList.remove('drag-over');}
+function dropItem(e,zoneId){
+  e.preventDefault();e.currentTarget.classList.remove('drag-over');
+  if(!draggedChip)return;
+  const chipClass={'li-zone':'li-cat','topic-zone':'topic-cat','task-zone':'task-cat'}[zoneId];
+  const chipsArea=document.getElementById('chips-'+zoneId);
+  const placed=document.createElement('div');
+  placed.className='placed-chip '+chipClass;
+  placed.textContent=draggedChip.textContent;
+  placed.dataset.id=draggedChip.dataset.id;
+  placed.addEventListener('click',function(){
+    const orig=document.querySelector('.sort-chip[data-id="'+this.dataset.id+'"]');
+    if(orig)orig.style.display='';
+    this.remove();
+  });
+  chipsArea.appendChild(placed);
+  draggedChip.style.display='none';
+  draggedChip=null;
+}
+document.addEventListener('dragend',()=>{if(draggedChip)draggedChip.style.opacity='1';});
+
+// ── CERTIFICATE ──
+function generateCertificate(){
+  var name=document.getElementById('certNameInput').value.trim();
+  if(!name){document.getElementById('certNameInput').focus();document.getElementById('certNameInput').style.borderColor='#F59E0B';setTimeout(function(){document.getElementById('certNameInput').style.borderColor='';},1500);return;}
+  document.getElementById('certDisplayName').textContent=name;
+  document.getElementById('certScoreDisplay').textContent=score;
+  var now=new Date();
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('certDateDisplay').textContent=now.getDate()+' '+months[now.getMonth()]+' '+now.getFullYear();
+  document.getElementById('certOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeCertificate(){document.getElementById('certOverlay').classList.remove('show');document.body.style.overflow='';}
+function printCertificate(){
+  var cert=document.getElementById('certificateEl');
+  var w=window.open('','_blank','width=900,height=700');
+  w.document.write('<html><head><title>Certificate of Completion</title>');
+  document.querySelectorAll('style,link[rel="stylesheet"]').forEach(function(s){w.document.write(s.outerHTML);});
+  w.document.write('</head><body style="margin:0;padding:20px;background:white;">');
+  w.document.write(cert.outerHTML);
+  w.document.write('</body></html>');
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener('click',function(e){if(e.target.id==='certOverlay')closeCertificate();});
+</script>
+</body>
+</html>
