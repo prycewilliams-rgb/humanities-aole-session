@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assessment for Learning – Humanities AoLE PGCE</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#1565C0;--blue-dark:#0D47A1;--blue-mid:#1976D2;--blue-pale:#E3F2FD;--blue-light:#BBDEFB;
+  --amber:#F59E0B;--amber-light:#FEF3C7;
+  --red:#EF4444;--red-light:#FEE2E2;
+  --green:#22C55E;--green-light:#DCFCE7;
+  --purple:#7C3AED;--purple-light:#EDE9FE;
+  --teal:#00897B;--teal-light:#E0F2F1;--teal-pale:#B2DFDB;
+  --slate:#1E293B;--slate-mid:#475569;--slate-light:#94A3B8;
+  --white:#fff;--off:#F8FAFC;--border:#E2E8F0;
+  --shadow:0 4px 24px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Sans 3',sans-serif;background:var(--off);color:var(--slate);min-height:100vh}
+
+/* HEADER */
+header{background:linear-gradient(135deg,var(--blue-dark) 0%,var(--blue) 55%,#1976D2 100%);color:#fff;padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.lang-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:.3rem 1rem;font-size:.8rem;font-weight:600;letter-spacing:.05em;margin-bottom:1.5rem}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin-bottom:.4rem}
+header h1 span{display:block;font-size:.56em;font-weight:700;opacity:.78;letter-spacing:.03em;margin-top:.3rem}
+.header-sub{font-size:.95rem;opacity:.85;margin-top:.8rem}
+.progress-bar-wrap{max-width:600px;margin:1.5rem auto 0;background:rgba(255,255,255,.2);border-radius:999px;height:8px;overflow:hidden}
+#progress-bar{height:100%;background:var(--amber);border-radius:999px;transition:width .5s ease;width:0%}
+.progress-label{font-size:.78rem;opacity:.8;margin-top:.4rem}
+
+/* DECORATIVE SUBJECT PILLS */
+.subject-pills{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
+.pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:.3rem .9rem;font-size:.78rem;font-weight:600}
+
+main{max-width:880px;margin:0 auto;padding:2rem 1rem 4rem}
+
+/* NAV */
+.section-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.snav-btn{padding:.4rem .9rem;border-radius:999px;border:2px solid var(--border);background:#fff;font-size:.8rem;font-weight:600;cursor:pointer;color:var(--slate-mid);transition:all .2s}
+.snav-btn.done{border-color:var(--green);color:#14532D;background:var(--green-light)}
+.snav-btn.active{border-color:var(--blue);color:var(--blue-dark);background:var(--blue-pale)}
+
+/* SECTION CARDS */
+.section-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);display:none;animation:fadeIn .4s ease}
+.section-card.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.card-header{padding:1.5rem 2rem;display:flex;align-items:center;gap:1rem;border-bottom:2px solid}
+.card-header.blue{background:var(--blue-pale);border-color:var(--blue-light)}
+.card-header.amber{background:var(--amber-light);border-color:#FCD34D}
+.card-header.teal{background:var(--teal-light);border-color:var(--teal-pale)}
+.card-header.purple{background:var(--purple-light);border-color:#C4B5FD}
+.card-header.green{background:var(--green-light);border-color:#86EFAC}
+.card-header .icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.card-header.blue .icon{background:var(--blue)}
+.card-header.amber .icon{background:var(--amber)}
+.card-header.teal .icon{background:var(--teal)}
+.card-header.purple .icon{background:var(--purple)}
+.card-header.green .icon{background:var(--green)}
+.card-header h2{font-family:'Playfair Display',serif;font-size:1.25rem;line-height:1.3}
+.card-header.blue h2{color:var(--blue-dark)}
+.card-header.amber h2{color:#92400E}
+.card-header.teal h2{color:#00695C}
+.card-header.purple h2{color:#4C1D95}
+.card-header.green h2{color:#14532D}
+.card-header h2 em{display:block;font-family:'Source Sans 3',sans-serif;font-size:.78rem;font-style:normal;font-weight:600;color:var(--slate-mid);margin-top:.15rem}
+.card-body{padding:2rem}
+@media(max-width:600px){.card-body{padding:1.25rem}}
+
+/* BILINGUAL */
+.bilingual{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+@media(max-width:600px){.bilingual{grid-template-columns:1fr}}
+.lang-col{border-radius:10px;padding:1.2rem;border-left:4px solid}
+.lang-col.en{background:var(--blue-pale);border-color:var(--blue)}
+.lang-col.cy{background:var(--amber-light);border-color:#D4A017}
+.lang-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-mid);margin-bottom:.6rem}
+.lang-col p,.lang-col li{font-size:.93rem;line-height:1.7;color:var(--slate)}
+.lang-col ul{padding-left:1.2rem}
+.lang-col ul li{margin-bottom:.35rem}
+
+/* INFO BOXES */
+.info-box{border-radius:10px;padding:1.2rem 1.4rem;margin-bottom:1.5rem;border:1px solid}
+.info-box.blue{background:var(--blue-pale);border-color:var(--blue-light)}
+.info-box.amber{background:var(--amber-light);border-color:#FCD34D}
+.info-box.green{background:var(--green-light);border-color:#86EFAC}
+.info-box.purple{background:var(--purple-light);border-color:#C4B5FD}
+.info-box.teal{background:var(--teal-light);border-color:var(--teal-pale)}
+.info-box h3{font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:.7rem}
+.info-box.blue h3{color:var(--blue-dark)}
+.info-box.amber h3{color:#92400E}
+.info-box.green h3{color:#14532D}
+.info-box.purple h3{color:#4C1D95}
+.info-box.teal h3{color:#00695C}
+.info-box p,.info-box li{font-size:.92rem;line-height:1.7;color:var(--slate)}
+.info-box ul{padding-left:1.3rem}
+.info-box ul li{margin-bottom:.35rem}
+
+/* SCHOLAR BOX */
+.scholar-box{border-left:4px solid var(--blue);background:#fff;border-radius:0 10px 10px 0;padding:1.1rem 1.4rem;margin-bottom:1.2rem;box-shadow:var(--shadow)}
+.scholar-box.teal{border-left-color:var(--teal)}
+.scholar-box.purple{border-left-color:var(--purple)}
+.scholar-name{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--blue-dark);margin-bottom:.4rem}
+.scholar-box.teal .scholar-name{color:#00695C}
+.scholar-box.purple .scholar-name{color:#4C1D95}
+.scholar-box p{font-size:.92rem;line-height:1.65;color:var(--slate)}
+.scholar-box p em{color:var(--slate-mid);font-style:italic;display:block;margin-top:.4rem;font-size:.88rem}
+
+/* STATEMENT CARDS */
+.statements-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem}
+@media(max-width:600px){.statements-grid{grid-template-columns:1fr}}
+.stmt-card{border-radius:10px;padding:1rem 1.2rem;border:1px solid}
+.stmt-card h4{font-size:.82rem;font-weight:700;margin-bottom:.5rem;line-height:1.3}
+.stmt-card p{font-size:.82rem;line-height:1.55;color:var(--slate-mid)}
+.stmt-card:nth-child(1){background:#EFF6FF;border-color:#BFDBFE;} .stmt-card:nth-child(1) h4{color:#1D4ED8}
+.stmt-card:nth-child(2){background:#F0FDF4;border-color:#86EFAC;} .stmt-card:nth-child(2) h4{color:#15803D}
+.stmt-card:nth-child(3){background:#FFF7ED;border-color:#FED7AA;} .stmt-card:nth-child(3) h4{color:#C2410C}
+.stmt-card:nth-child(4){background:#FAF5FF;border-color:#DDD6FE;} .stmt-card:nth-child(4) h4{color:#7C3AED}
+.stmt-card:nth-child(5){background:#FFF1F2;border-color:#FECDD3;grid-column:1/-1;} .stmt-card:nth-child(5) h4{color:#BE123C}
+
+/* STRATEGY CARDS */
+.strategy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem}
+.strategy-card{border-radius:12px;padding:1.1rem 1.2rem;border:1px solid;cursor:pointer;transition:transform .2s,box-shadow .2s}
+.strategy-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.strategy-card .s-icon{font-size:1.6rem;margin-bottom:.5rem}
+.strategy-card h4{font-size:.9rem;font-weight:700;margin-bottom:.4rem}
+.strategy-card p{font-size:.8rem;line-height:1.5;color:var(--slate-mid)}
+.strategy-card em{font-style:italic;font-size:.78rem;display:block;margin-top:.3rem;color:var(--slate-mid)}
+.sc-blue{background:#EFF6FF;border-color:#BFDBFE} .sc-blue h4{color:#1D4ED8}
+.sc-green{background:#F0FDF4;border-color:#86EFAC} .sc-green h4{color:#15803D}
+.sc-amber{background:#FFFBEB;border-color:#FDE68A} .sc-amber h4{color:#B45309}
+.sc-purple{background:#FAF5FF;border-color:#DDD6FE} .sc-purple h4{color:#7C3AED}
+.sc-teal{background:#F0FDFA;border-color:#99F6E4} .sc-teal h4{color:#0F766E}
+.sc-red{background:#FFF1F2;border-color:#FECDD3} .sc-red h4{color:#BE123C}
+
+/* THREE ROLES VISUAL */
+.three-roles{display:flex;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+.role-box{flex:1;min-width:160px;border-radius:12px;padding:1.1rem;text-align:center;border:1px solid}
+.role-box .r-icon{font-size:2rem;margin-bottom:.5rem}
+.role-box h4{font-size:.88rem;font-weight:700;margin-bottom:.4rem}
+.role-box p{font-size:.8rem;line-height:1.5;color:var(--slate-mid)}
+.role-box.r1{background:#EFF6FF;border-color:#BFDBFE} .role-box.r1 h4{color:#1D4ED8}
+.role-box.r2{background:#F0FDF4;border-color:#86EFAC} .role-box.r2 h4{color:#15803D}
+.role-box.r3{background:#FFF7ED;border-color:#FED7AA} .role-box.r3 h4{color:#C2410C}
+
+/* CYCLE VISUAL */
+.cycle-wrap{display:flex;align-items:center;justify-content:center;gap:.5rem;flex-wrap:wrap;margin:1.2rem 0;padding:1rem;background:var(--blue-pale);border-radius:12px;border:1px solid var(--blue-light)}
+.cycle-step{background:var(--blue);color:#fff;border-radius:8px;padding:.5rem .9rem;font-size:.82rem;font-weight:700;text-align:center}
+.cycle-arrow{color:var(--blue);font-size:1.2rem;font-weight:700}
+
+/* QUIZ */
+.quiz-section-label{font-weight:700;margin:2rem 0 1rem;color:var(--slate-mid);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;padding-top:1.5rem;border-top:2px dashed var(--blue-light)}
+.quiz-question{margin-bottom:2rem}
+.quiz-question p.q-text{font-size:1rem;font-weight:600;line-height:1.5;margin-bottom:.3rem;color:var(--slate)}
+.quiz-question p.q-welsh{font-size:.88rem;color:var(--slate-mid);font-style:italic;margin-bottom:.9rem}
+.options{display:flex;flex-direction:column;gap:.6rem}
+.option-btn{background:var(--off);border:2px solid var(--border);border-radius:10px;padding:.9rem 1.2rem;text-align:left;font-family:'Source Sans 3',sans-serif;font-size:.92rem;color:var(--slate);cursor:pointer;transition:all .2s;line-height:1.4}
+.option-btn:hover:not(:disabled){border-color:var(--blue);background:var(--blue-pale);transform:translateX(4px)}
+.option-btn.correct{background:var(--green-light);border-color:var(--green);color:#14532D;font-weight:600}
+.option-btn.wrong{background:var(--red-light);border-color:var(--red);color:#7F1D1D}
+.option-btn:disabled{cursor:default}
+.feedback{margin-top:.8rem;padding:.9rem 1.1rem;border-radius:8px;font-size:.88rem;line-height:1.6;display:none}
+.feedback.show{display:block}
+.feedback.correct{background:var(--green-light);border-left:4px solid var(--green);color:#14532D}
+.feedback.wrong{background:var(--red-light);border-left:4px solid var(--red);color:#7F1D1D}
+.q-num{display:inline-flex;align-items:center;justify-content:center;background:var(--blue);color:#fff;width:26px;height:26px;border-radius:50%;font-size:.8rem;font-weight:700;margin-right:.5rem;flex-shrink:0;vertical-align:middle}
+
+/* DRAG DROP */
+.drag-pool-label{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--slate-mid);margin-bottom:.6rem}
+.drop-zone{min-height:80px;background:var(--blue-pale);border:2px dashed var(--blue-light);border-radius:10px;padding:.75rem;display:flex;flex-direction:column;gap:.5rem;transition:background .2s}
+.drop-zone.over{background:var(--blue-light);border-color:var(--blue)}
+.draggable-item{background:#fff;border:1px solid var(--border);border-radius:8px;padding:.65rem .9rem;font-size:.87rem;cursor:grab;user-select:none;box-shadow:0 2px 6px rgba(0,0,0,.06);transition:transform .15s,box-shadow .15s;color:var(--slate);line-height:1.4}
+.draggable-item:active{cursor:grabbing;transform:scale(1.02);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+.drag-targets{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1rem;margin-top:1rem}
+.drag-target-col h4{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--slate-mid);margin-bottom:.5rem}
+.drag-feedback{margin-top:.8rem;font-size:.9rem;font-weight:600;display:none;padding:.7rem 1rem;border-radius:8px}
+.drag-feedback.show{display:block}
+.drag-feedback.pass{background:var(--green-light);color:#14532D;border-left:4px solid var(--green)}
+.drag-feedback.fail{background:var(--red-light);color:#7F1D1D;border-left:4px solid var(--red)}
+
+/* SCENARIO */
+.scenario-box{background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border:1px solid #BFDBFE;border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.scenario-box h3{font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#1D4ED8;margin-bottom:.6rem}
+.scenario-box p{font-size:.93rem;line-height:1.7;color:var(--slate)}
+
+/* REFLECTION */
+.reflection-area{margin-bottom:1.5rem}
+.reflection-area label{display:block;font-size:.88rem;font-weight:700;color:var(--blue-dark);margin-bottom:.5rem;line-height:1.4}
+.reflection-area label em{font-style:italic;color:var(--slate-mid);font-weight:600}
+.reflection-area textarea{width:100%;min-height:90px;border:2px solid var(--border);border-radius:10px;padding:.9rem 1.1rem;font-family:'Source Sans 3',sans-serif;font-size:.93rem;color:var(--slate);resize:vertical;transition:border-color .2s;background:var(--off)}
+.reflection-area textarea:focus{outline:none;border-color:var(--blue);background:#fff}
+
+/* BUTTONS */
+.btn-row{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.8rem 1.8rem;border-radius:10px;font-family:'Source Sans 3',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;border:none;transition:all .2s}
+.btn-primary{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(21,101,192,.3)}
+.btn-primary:hover{background:var(--blue-dark);transform:translateY(-2px)}
+.btn-secondary{background:#fff;color:var(--blue-dark);border:2px solid var(--blue)}
+.btn-secondary:hover{background:var(--blue-pale)}
+.btn-amber{background:var(--amber);color:#fff;box-shadow:0 4px 16px rgba(245,158,11,.3)}
+.btn-amber:hover{background:#D97706;transform:translateY(-2px)}
+.btn-check{background:#F1F5F9;color:var(--slate);border:2px solid var(--border)}
+.btn-check:hover{background:var(--border)}
+
+hr{border:none;border-top:1px solid var(--border);margin:1.8rem 0}
+.section-label{font-weight:700;margin-bottom:.9rem;color:var(--slate-mid);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em}
+
+/* COMPLETION */
+.completion-card{background:linear-gradient(135deg,var(--blue-dark),var(--blue-mid));color:#fff;border-radius:16px;padding:3rem 2rem;text-align:center;display:none}
+.completion-card.show{display:block;animation:fadeIn .5s ease}
+.completion-card h2{font-family:'Playfair Display',serif;font-size:2rem;margin-bottom:.8rem}
+.completion-card p{opacity:.9;font-size:1rem;line-height:1.7;max-width:520px;margin:0 auto 1rem}
+.badge-icon{font-size:4rem;display:block;margin-bottom:1rem}
+.score-pill{display:inline-block;background:rgba(255,255,255,.25);border:2px solid rgba(255,255,255,.4);border-radius:999px;padding:.5rem 1.5rem;font-size:1.2rem;font-weight:700;margin:1rem 0}
+
+/* HIGHLIGHT TAG */
+.tag{display:inline-block;border-radius:999px;padding:.15rem .7rem;font-size:.75rem;font-weight:700;letter-spacing:.04em;margin:.2rem}
+.tag.blue{background:var(--blue-pale);color:var(--blue-dark)}
+.tag.green{background:var(--green-light);color:#14532D}
+.tag.amber{background:var(--amber-light);color:#92400E}
+.tag.purple{background:var(--purple-light);color:#4C1D95}
+
+  /* ── CERTIFICATE ── */
+  .cert-trigger-box {
+    margin-top: 1.5rem; padding: 1.5rem;
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.4);
+    border-radius: 12px; text-align: center;
+  }
+  .cert-trigger-box p { font-size:.88rem; opacity:.85; margin-bottom:1rem; line-height:1.6; }
+  .cert-name-row { display:flex; gap:.7rem; justify-content:center; flex-wrap:wrap; align-items:center; }
+  .cert-name-input { padding:.6rem 1rem; font-family:'Source Sans 3',sans-serif; font-size:.95rem; border:2px solid rgba(255,255,255,.3); border-radius:8px; background:rgba(255,255,255,.15); color:white; width:250px; }
+  .cert-name-input::placeholder { color:rgba(255,255,255,.4); }
+  .cert-name-input:focus { outline:none; border-color:var(--amber); }
+  .btn-cert { background:var(--amber); color:#1a1a1a; border:none; padding:.6rem 1.3rem; border-radius:8px; font-family:'Source Sans 3',sans-serif; font-size:.88rem; font-weight:700; cursor:pointer; }
+  .btn-cert:hover { background:#D97706; color:white; }
+  .cert-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.75); z-index:9999; align-items:center; justify-content:center; padding:1rem; }
+  .cert-overlay.show { display:flex; }
+  .cert-modal { background:white; border-radius:8px; width:100%; max-width:780px; max-height:95vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,.5); }
+  .certificate { width:100%; background:white; }
+  .cert-frame { margin:16px; border:3px solid #0D47A1; position:relative; }
+  .cert-frame::before { content:''; position:absolute; inset:5px; border:1px solid #F59E0B; pointer-events:none; z-index:1; }
+  .cert-stripe { height:5px; background:linear-gradient(90deg,#0D47A1 0%,#1565C0 40%,#F59E0B 100%); }
+  .cert-header { background:linear-gradient(135deg,#0D47A1 0%,#1565C0 100%); padding:1.3rem 2rem 1.1rem; text-align:center; }
+  .cert-logo-row { display:flex; align-items:center; justify-content:center; gap:.8rem; }
+  .cert-inst-name { font-family:'Playfair Display',serif; color:white; font-size:1rem; text-align:left; line-height:1.2; }
+  .cert-inst-cy { color:#BBDEFB; font-size:.75rem; font-style:italic; display:block; font-family:'Source Sans 3',sans-serif; font-weight:400; }
+  .cert-body { padding:1.6rem 2rem; text-align:center; }
+  .cert-presents { font-size:.73rem; text-transform:uppercase; letter-spacing:.15em; color:#475569; margin-bottom:.4rem; }
+  .cert-main-title { font-family:'Playfair Display',serif; font-size:1.4rem; color:#0D47A1; line-height:1.2; margin-bottom:.2rem; }
+  .cert-main-cy { font-size:.85rem; color:#1565C0; font-style:italic; margin-bottom:1.2rem; font-family:'Source Sans 3',sans-serif; }
+  .cert-awarded-to { font-size:.73rem; text-transform:uppercase; letter-spacing:.1em; color:#475569; margin-bottom:.2rem; }
+  .cert-name { font-family:'Playfair Display',serif; font-size:1.9rem; color:#0D47A1; border-bottom:2px solid #E2E8F0; display:inline-block; padding:0 1rem .1rem; min-width:260px; margin-bottom:.3rem; line-height:1.3; }
+  .cert-divider { height:1px; background:linear-gradient(90deg,transparent,#F59E0B,transparent); margin:.9rem auto; width:55%; }
+  .cert-text { font-size:.86rem; color:#1E293B; line-height:1.65; max-width:440px; margin:0 auto .7rem; }
+  .cert-course { font-family:'Playfair Display',serif; font-size:.95rem; color:#1E293B; background:#E3F2FD; border:1px solid #BBDEFB; border-left:4px solid #0D47A1; padding:.45rem .9rem; display:inline-block; margin-bottom:.35rem; text-align:left; }
+  .cert-course-cy { font-size:.76rem; color:#1565C0; font-style:italic; display:block; font-family:'Source Sans 3',sans-serif; font-weight:400; }
+  .cert-score-pill { display:inline-block; background:#FEF3C7; border:1px solid #FCD34D; border-radius:999px; padding:.25rem 1rem; font-size:.8rem; font-weight:700; color:#92400E; margin:.5rem 0 .8rem; }
+  .cert-competencies { font-size:.76rem; color:#475569; margin:.2rem auto 1rem; max-width:420px; line-height:1.55; }
+  .cert-footer-row { display:grid; grid-template-columns:1fr auto 1fr; gap:1rem; align-items:end; margin-top:1rem; padding-top:1rem; border-top:1px solid #E2E8F0; }
+  .cert-sig-block { text-align:center; }
+  .cert-sig-line { height:1px; background:#1E293B; width:140px; margin:0 auto .25rem; }
+  .cert-sig-label { font-size:.68rem; text-transform:uppercase; letter-spacing:.07em; color:#475569; }
+  .cert-seal { width:64px; height:64px; border-radius:50%; background:#0D47A1; border:3px solid #F59E0B; display:flex; align-items:center; justify-content:center; flex-direction:column; color:white; font-size:.5rem; text-transform:uppercase; letter-spacing:.04em; text-align:center; line-height:1.3; margin:0 auto; }
+  .cert-seal-icon { font-size:1.2rem; display:block; margin-bottom:1px; }
+  .cert-date-val { font-family:'Playfair Display',serif; font-size:.9rem; color:#1E293B; }
+  .cert-date-label { font-size:.68rem; text-transform:uppercase; letter-spacing:.07em; color:#475569; margin-top:.2rem; }
+  .cert-close-row { display:flex; justify-content:center; gap:1rem; padding:.9rem 1.5rem 1.2rem; background:#F8FAFC; flex-wrap:wrap; border-top:1px solid #E2E8F0; }
+  .btn-cert-print { background:#0D47A1; color:white; border:none; padding:.55rem 1.2rem; border-radius:8px; font-family:'Source Sans 3',sans-serif; font-size:.86rem; font-weight:700; cursor:pointer; }
+  .btn-cert-close { background:#475569; color:white; border:none; padding:.55rem 1.2rem; border-radius:8px; font-family:'Source Sans 3',sans-serif; font-size:.86rem; cursor:pointer; }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="lang-badge">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg / English 🇬🇧</div>
+  <h1>Assessment for Learning in the Humanities AoLE
+    <span>Asesu ar gyfer Dysgu yn Maes Dysgu a Phrofiad y Dyniaethau</span>
+  </h1>
+  <p class="header-sub">PGCE Secondary Training Activity · Gweithgaredd Hyfforddi PGCE Uwchradd · Curriculum for Wales 2022</p>
+  <div class="subject-pills">
+    <span class="pill">🗺️ Geography / Daearyddiaeth</span>
+    <span class="pill">📜 History / Hanes</span>
+    <span class="pill">🕊️ RVE</span>
+    <span class="pill">💼 Business / Busnes</span>
+  </div>
+  <div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+  <p class="progress-label" id="progress-label">Section 1 of 5 · Adran 1 o 5</p>
+</header>
+
+<main>
+  <div class="section-nav" id="section-nav">
+    <button class="snav-btn active" onclick="goTo(0)">1 · What is AfL in CfW?</button>
+    <button class="snav-btn" onclick="goTo(1)">2 · Questioning &amp; Oracy</button>
+    <button class="snav-btn" onclick="goTo(2)">3 · Feedback &amp; Progression</button>
+    <button class="snav-btn" onclick="goTo(3)">4 · Peer &amp; Self-Assessment</button>
+    <button class="snav-btn" onclick="goTo(4)">5 · Apply It</button>
+  </div>
+
+  <!-- ═══ SECTION 1 ═══ -->
+  <div class="section-card active" id="sec-0">
+    <div class="card-header blue">
+      <div class="icon">📚</div>
+      <h2>What is Assessment for Learning in Curriculum for Wales?
+        <em>Beth yw Asesu ar gyfer Dysgu yng Nghwricwlwm i Gymru?</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="info-box amber">
+        <h3>⚠️ Important Context · Cyd-destun Pwysig</h3>
+        <p><strong>English:</strong> The term "Assessment for Learning" (AfL) is not used explicitly in the Curriculum for Wales (2022). Instead, the same principles are embedded in the concept of <strong>supporting learner progression</strong> — which is the statutory framework for assessment in Wales. As a PGCE student in the Humanities AoLE, you must understand both the research roots of AfL <em>and</em> how these principles operate within the CfW statutory guidance.</p>
+        <p style="margin-top:.6rem"><strong>Cymraeg:</strong> Nid yw'r term "Asesu ar gyfer Dysgu" (AfL) yn cael ei ddefnyddio'n benodol yng Nghwricwlwm i Gymru (2022). Yn hytrach, mae'r egwyddorion yn ymwneud â <strong>chefnogi cynnydd dysgwyr</strong> — y fframwaith statudol ar gyfer asesu yng Nghymru.</p>
+      </div>
+
+      <p class="section-label">The Research Foundation · Sylfaen yr Ymchwil</p>
+
+      <div class="scholar-box">
+        <div class="scholar-name">Black &amp; Wiliam (1998) — Inside the Black Box</div>
+        <p>Landmark research showing that improving formative assessment raises standards of achievement across all abilities, but particularly for lower attaining pupils. They define formative assessment as becoming effective only when "the evidence is actually used to adapt the teaching and learning to meet the needs of individual pupils."
+        <em>Ymchwil arloesol yn dangos bod gwella asesu ffurfiannol yn codi safonau cyrhaeddiad ar draws pob gallu, yn enwedig ar gyfer disgyblion llai abl.</em></p>
+      </div>
+
+      <div class="scholar-box teal">
+        <div class="scholar-name">Assessment Reform Group (2002) — 10 Principles of AfL</div>
+        <p>"Assessment for Learning is the process of seeking and interpreting evidence for use by learners and their teachers to decide where the learners are in their learning, where they need to go next, and how best to get them there."
+        <em>"Asesu ar gyfer Dysgu yw'r broses o geisio a dehongli tystiolaeth i'w defnyddio gan ddysgwyr a'u hathrawon i benderfynu ble mae'r dysgwyr yn eu dysgu, i ble y mae angen iddynt fynd nesaf, a sut orau i'w cyrraedd yno."</em></p>
+      </div>
+
+      <div class="scholar-box purple">
+        <div class="scholar-name">Curriculum for Wales — Supporting Learner Progression: Assessment Guidance (Statutory, 2022)</div>
+        <p>Assessment in CfW has three main roles: (1) supporting individual learners on an ongoing, day-to-day basis; (2) identifying, capturing and reflecting on individual learner progress over time; (3) understanding group progress in order to reflect on practice. Assessment should be <strong>embedded into day-to-day practice</strong>, making it "indistinguishable from learning."
+        <em>Mae gan asesu yng Nghwricwlwm i Gymru dair rôl: (1) cefnogi dysgwyr unigol ar sail barhaus, ddyddiol; (2) nodi, dal a myfyrio ar gynnydd dysgwyr unigol dros amser; (3) deall cynnydd grŵp er mwyn myfyrio ar arfer.</em></p>
+      </div>
+
+      <p class="section-label">AfL in CfW: Three Roles of Assessment · Tair Rôl Asesu</p>
+      <div class="three-roles">
+        <div class="role-box r1">
+          <div class="r-icon">🎯</div>
+          <h4>Day-to-Day · Bob Dydd</h4>
+          <p>Identifying strengths, areas for improvement, and barriers to learning to inform immediate next steps. / Nodi cryfderau, meysydd i'w gwella, a rhwystrau i ddysgu.</p>
+        </div>
+        <div class="role-box r2">
+          <div class="r-icon">📈</div>
+          <h4>Over Time · Dros Amser</h4>
+          <p>Tracking individual learner progress across the 3–16 continuum, informing feedback and future planning. / Olrhain cynnydd dysgwyr unigol ar draws y continwwm 3–16.</p>
+        </div>
+        <div class="role-box r3">
+          <div class="r-icon">👥</div>
+          <h4>Group Reflection · Adlewyrchu Grŵp</h4>
+          <p>Understanding how groups of learners are progressing to improve curriculum design and teaching. / Deall sut mae grwpiau o ddysgwyr yn gwneud cynnydd i wella dyluniad y cwricwlwm.</p>
+        </div>
+      </div>
+
+      <p class="section-label">The Humanities AoLE: Five Statements of What Matters · Pum Datganiad o'r Hyn sy'n Bwysig</p>
+      <p style="font-size:.92rem;margin-bottom:1rem;color:var(--slate)"><strong>English:</strong> Assessment in Humanities must always be planned in relation to the five Statements of What Matters — these are mandatory. AfL approaches should help learners develop deeper understanding of these core concepts across History, Geography, RVE, Business Studies and Social Studies.<br><em>Cymraeg: Rhaid cynllunio asesu yn y Dyniaethau bob amser mewn perthynas â'r pum Datganiad o'r Hyn sy'n Bwysig — mae'r rhain yn orfodol.</em></p>
+
+      <div class="statements-grid">
+        <div class="stmt-card">
+          <h4>🔍 Enquiry &amp; Investigation · Ymholiad ac Ymchwiliad</h4>
+          <p>Enquiry, exploration and investigation inspire curiosity about the world, its past, present and future. / Mae ymholiad, archwilio ac ymchwiliad yn ysbrydoli chwilfrydedd am y byd.</p>
+          <span class="tag blue">All disciplines / Pob disgyblaeth</span>
+        </div>
+        <div class="stmt-card">
+          <h4>👁️ Perception &amp; Interpretation · Canfyddiad a Dehongliad</h4>
+          <p>Events and human experiences are complex, perceived, interpreted and represented in different ways. / Mae digwyddiadau a phrofiadau dynol yn gymhleth, yn cael eu canfod a'u dehongli mewn ffyrdd gwahanol.</p>
+          <span class="tag green">History / Hanes</span> <span class="tag green">RVE</span>
+        </div>
+        <div class="stmt-card">
+          <h4>🌍 The Natural World · Y Byd Naturiol</h4>
+          <p>Our natural world is diverse and dynamic, influenced by processes and human actions. / Mae ein byd naturiol yn amrywiol ac yn ddynamig, dan ddylanwad prosesau a gweithredoedd dynol.</p>
+          <span class="tag amber">Geography / Daearyddiaeth</span>
+        </div>
+        <div class="stmt-card">
+          <h4>🏛️ Human Societies · Cymdeithasau Dynol</h4>
+          <p>Human societies are complex and diverse, shaped by human actions, cynefin and beliefs. / Mae cymdeithasau dynol yn gymhleth ac amrywiol, wedi'u llunio gan weithredoedd dynol, cynefin a chredoau.</p>
+          <span class="tag purple">History / Hanes</span> <span class="tag purple">Social Studies</span>
+        </div>
+        <div class="stmt-card">
+          <h4>🌱 Ethical Citizenship · Dinasyddiaeth Foesegol</h4>
+          <p>Informed, self-aware citizens engage with the challenges facing humanity and can take considered, ethical action. / Mae dinasyddion gwybodus, hunymwybodol yn ymgysylltu â heriau dynoliaeth ac yn gallu cymryd camau moesegol.</p>
+          <span class="tag blue">All disciplines / Pob disgyblaeth</span>
+        </div>
+      </div>
+
+      <div class="info-box blue">
+        <h3>🔑 Key Principle · Egwyddor Allweddol</h3>
+        <p><strong>English:</strong> In CfW, assessment should <em>never</em> be used to make a one-off judgement on a learner's overall achievement at a set age against best-fit criteria. Assessment is about building a holistic picture of where learners are, where they need to go, and how to get there — across the full breadth of the Humanities AoLE.</p>
+        <p style="margin-top:.6rem"><strong>Cymraeg:</strong> Yng Nghwricwlwm i Gymru, ni ddylai asesu fyth gael ei ddefnyddio i wneud barn ar gyrhaeddiad cyffredinol dysgwr ar oedran penodol yn erbyn meini prawf "y ffit orau". Mae asesu am adeiladu darlun cyfannol o ble mae dysgwyr, i ble y mae angen iddynt fynd, a sut i gyrraedd yno.</p>
+      </div>
+
+      <div class="quiz-section-label">✏️ Check Your Understanding · Gwiriwch Eich Dealltwriaeth</div>
+
+      <div class="quiz-question" id="q1">
+        <p class="q-text"><span class="q-num">1</span>According to the CfW statutory assessment guidance (2022), what is the overarching purpose of assessment?</p>
+        <p class="q-welsh">Yn ôl canllawiau asesu statudol CfW (2022), beth yw prif bwrpas asesu?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q1',this,false)">To rank learners by ability and report grades to parents · Rhestru dysgwyr yn ôl gallu ac adrodd graddau i rieni</button>
+          <button class="option-btn" onclick="checkQ('q1',this,true)">To support every learner to make progress — embedded in day-to-day practice, indistinguishable from learning · Cefnogi pob dysgwr i wneud cynnydd — wedi'i ymgorffori mewn arfer beunyddiol</button>
+          <button class="option-btn" onclick="checkQ('q1',this,false)">To make a best-fit judgement on overall achievement at Progression Steps · Gwneud barn "y ffit orau" ar gyrhaeddiad cyffredinol yn y Camau Cynnydd</button>
+          <button class="option-btn" onclick="checkQ('q1',this,false)">To provide data for Estyn inspections and school accountability · Darparu data ar gyfer arolygiadau Estyn ac atebolrwydd ysgolion</button>
+        </div>
+        <div class="feedback" id="q1-fb"></div>
+      </div>
+
+      <div class="quiz-question" id="q2">
+        <p class="q-text"><span class="q-num">2</span>How many Statements of What Matters are there in the Humanities AoLE, and which disciplines does it encompass?</p>
+        <p class="q-welsh">Faint o Ddatganiadau o'r Hyn sy'n Bwysig sydd yn MDPH y Dyniaethau, a pha ddisgyblaethau mae'n eu cynnwys?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q2',this,false)">Three statements: History, Geography and RE · Tair datganiad: Hanes, Daearyddiaeth ac AD</button>
+          <button class="option-btn" onclick="checkQ('q2',this,false)">Four statements: History, Geography, RVE and Business · Pedair datganiad: Hanes, Daearyddiaeth, GAE a Busnes</button>
+          <button class="option-btn" onclick="checkQ('q2',this,true)">Five statements: History, Geography, RVE, Business Studies and Social Studies · Pum datganiad: Hanes, Daearyddiaeth, GAE, Astudiaethau Busnes ac Astudiaethau Cymdeithasol</button>
+          <button class="option-btn" onclick="checkQ('q2',this,false)">Six statements, one per AoLE discipline · Chwe datganiad, un yr un ar gyfer pob disgyblaeth</button>
+        </div>
+        <div class="feedback" id="q2-fb"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="nextSection(0)">Next: Questioning &amp; Oracy → <em style="font-weight:400;font-style:normal;opacity:.85;font-size:.85em">Nesaf: Cwestiynu a Llafar</em></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2 ═══ -->
+  <div class="section-card" id="sec-1">
+    <div class="card-header amber">
+      <div class="icon">💬</div>
+      <h2>Questioning &amp; Oracy in Humanities
+        <em>Cwestiynu a Llafar yn y Dyniaethau</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual">
+        <div class="lang-col en">
+          <div class="lang-label">🇬🇧 English</div>
+          <p>Questioning is one of the most powerful AfL tools available to a Humanities teacher. CfW assessment guidance emphasises that practitioners should <strong>evaluate learning through observation, questioning and discussion</strong> and use this evidence to plan next steps. Effective questioning in Humanities must promote the <em>enquiry and investigation</em> at the heart of the first Statement of What Matters.</p>
+          <p style="margin-top:.6rem">Black and Wiliam (1998) found teachers ask a question every <strong>72 seconds</strong>, yet 38% of those questions are answered by the teacher themselves. The goal is to draw maximum evidence from pupils to evaluate, plan and extend their learning.</p>
+        </div>
+        <div class="lang-col cy">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg</div>
+          <p>Mae cwestiynu yn un o'r offer AdD mwyaf pwerus sydd ar gael i athro'r Dyniaethau. Mae canllawiau asesu CfW yn pwysleisio y dylai ymarferwyr <strong>werthuso dysgu trwy arsylwi, cwestiynu a thrafodaeth</strong> a defnyddio'r dystiolaeth hon i gynllunio camau nesaf.</p>
+          <p style="margin-top:.6rem">Canfu Black a Wiliam (1998) fod athrawon yn gofyn cwestiwn bob <strong>72 eiliad</strong>, ond mae 38% o'r cwestiynau hynny yn cael eu hateb gan yr athro ei hun.</p>
+        </div>
+      </div>
+
+      <p class="section-label">Key Questioning Strategies for Humanities · Strategaethau Cwestiynu Allweddol ar gyfer y Dyniaethau</p>
+
+      <div class="strategy-grid">
+        <div class="strategy-card sc-blue">
+          <div class="s-icon">⏸️</div>
+          <h4>Pose · Pause · Pounce · Bounce</h4>
+          <p>Pose a challenging question; pause (at least 20 seconds — silence is thinking time); pounce on a named pupil; bounce the response to another. No hands up. All must think.</p>
+          <em>Gosod cwestiwn heriol; seibio; "pounce" ar ddisgybl; "bounce" yr ymateb i un arall. Dim dwylo i fyny.</em>
+        </div>
+        <div class="strategy-card sc-green">
+          <div class="s-icon">🎨</div>
+          <h4>Concept Cartoons · Cartwnau Cysyniad</h4>
+          <p>Give learners competing viewpoints to discuss — ideal for Geography fieldwork debates, History interpretations or RVE ethical dilemmas. Removes fear of failure.</p>
+          <em>Rhowch safbwyntiau cystadleuol i ddysgwyr eu trafod — delfrydol ar gyfer dadleuon Daearyddiaeth, dehongliadau Hanes neu ddilemâu moesegol GAE.</em>
+        </div>
+        <div class="strategy-card sc-amber">
+          <div class="s-icon">🔲</div>
+          <h4>KWHL Grid</h4>
+          <p><strong>K</strong>now · <strong>W</strong>ant to know · <strong>H</strong>ow I will find out · <strong>L</strong>earnt. Activates prior knowledge and motivates enquiry — connects directly to the Humanities enquiry Statement of What Matters.</p>
+          <em><strong>G</strong>wybod · <strong>E</strong>isiau gwybod · <strong>S</strong>ut y canfyddaf · <strong>D</strong>ysgais. Yn actifadu gwybodaeth flaenorol ac yn ysgogi ymholiad.</em>
+        </div>
+        <div class="strategy-card sc-purple">
+          <div class="s-icon">💭</div>
+          <h4>Think · Pair · Share · Rhannu</h4>
+          <p>Think individually; discuss with a partner; share with the class. Gives all learners — including EAL and lower confidence pupils — time to formulate sophisticated responses.</p>
+          <em>Meddwl yn unigol; trafod gyda phartner; rhannu â'r dosbarth. Yn rhoi amser i bob dysgwr lunio ymatebion.</em>
+        </div>
+        <div class="strategy-card sc-teal">
+          <div class="s-icon">🧱</div>
+          <h4>Question Wall · Wal Gwestiynau</h4>
+          <p>Pupils write their most burning question about a topic on a sticky note. Group by theme. Use as a lesson starter, mini-plenary, or basis for extended Humanities enquiry.</p>
+          <em>Disgyblion yn ysgrifennu eu cwestiwn mwyaf llosgi ar nodyn gludiog. Grwpio yn ôl thema. Defnyddio fel dechreuwr gwers neu ymholiad estynedig.</em>
+        </div>
+        <div class="strategy-card sc-red">
+          <div class="s-icon">🎲</div>
+          <h4>Random Name Generator · Generadur Enwau</h4>
+          <p>Removes opt-out culture. Every pupil knows they could be chosen — increasing individual accountability. Pair with wait time for maximum effect.</p>
+          <em>Yn dileu'r diwylliant optio allan. Mae pob disgybl yn gwybod y gallent gael eu dewis — yn cynyddu atebolrwydd unigol. Pâriwch ag amser aros.</em>
+        </div>
+      </div>
+
+      <div class="info-box teal">
+        <h3>🏴󠁧󠁢󠁷󠁬󠁳󠁿 Oracy &amp; the Welsh Language in Humanities · Llafar a'r Iaith Gymraeg yn y Dyniaethau</h3>
+        <p><strong>English:</strong> CfW places strong emphasis on developing oracy across all AoLEs. In Humanities, discussion and collaborative talk are essential for developing the <em>enquiry, interpretation and citizenship</em> skills described in the Statements of What Matters. Ensure questioning strategies provide opportunities for learners to develop both English and Welsh academic language — including discipline-specific vocabulary for History (e.g. <em>chronology, causation</em>), Geography (<em>sustainability, cynefin</em>) and RVE (<em>worldview, ethics</em>).</p>
+        <p style="margin-top:.6rem"><strong>Cymraeg:</strong> Mae CfW yn rhoi pwyslais cryf ar ddatblygu llafar ar draws pob MDPH. Yn y Dyniaethau, mae trafodaeth a siarad cydweithredol yn hanfodol ar gyfer datblygu sgiliau ymholiad, dehongli a dinasyddiaeth.</p>
+      </div>
+
+      <p class="section-label">Sorting Activity · Gweithgaredd Dosbarthu</p>
+      <p style="font-size:.92rem;margin-bottom:1rem;color:var(--slate)"><strong>English:</strong> Drag each questioning strategy to the Humanities discipline it best supports. Some strategies may suit multiple disciplines — choose the <em>primary</em> fit.<br><em>Cymraeg: Llusgwch bob strategaeth gwestiynu i'r ddisgybliaeth Dyniaethau y mae'n ei chefnogi orau.</em></p>
+
+      <div class="drag-pool-label">📦 Strategies to sort · Strategaethau i'w dosbarthu</div>
+      <div class="drop-zone" id="pool" ondragover="dragOver(event)" ondrop="dropItem(event,'pool')" ondragleave="dragLeave(event)">
+        <div class="draggable-item" draggable="true" ondragstart="dragStart(event)" data-cat="hist">"Was the Industrial Revolution good for Wales?" — pupils discuss competing perspectives using sources · "A oedd y Chwyldro Diwydiannol yn dda i Gymru?" — trafod safbwyntiau gwrthgyferbyniol</div>
+        <div class="draggable-item" draggable="true" ondragstart="dragStart(event)" data-cat="geog">KWHL grid at the start of a unit on climate change and its impact on Welsh landscapes · Grid KWHL ar ddechrau uned ar newid hinsawdd a'i effaith ar dirweddau Cymru</div>
+        <div class="draggable-item" draggable="true" ondragstart="dragStart(event)" data-cat="rve">Concept cartoon showing three characters debating whether religion influences people's attitudes to the environment · Cartŵn cysyniad yn dangos tri chymeriad yn dadlau</div>
+        <div class="draggable-item" draggable="true" ondragstart="dragStart(event)" data-cat="hist">Pose·Pause·Pounce·Bounce on "Why do historians disagree about the causes of World War One?" · "Pam mae haneswyr yn anghytuno am achosion Rhyfel Byd Un?"</div>
+      </div>
+
+      <div class="drag-targets">
+        <div class="drag-target-col">
+          <h4>📜 History / Hanes</h4>
+          <div class="drop-zone" id="hist" ondragover="dragOver(event)" ondrop="dropItem(event,'hist')" ondragleave="dragLeave(event)"></div>
+        </div>
+        <div class="drag-target-col">
+          <h4>🗺️ Geography / Daearyddiaeth</h4>
+          <div class="drop-zone" id="geog" ondragover="dragOver(event)" ondrop="dropItem(event,'geog')" ondragleave="dragLeave(event)"></div>
+        </div>
+        <div class="drag-target-col">
+          <h4>🕊️ RVE / GAE</h4>
+          <div class="drop-zone" id="rve" ondragover="dragOver(event)" ondrop="dropItem(event,'rve')" ondragleave="dragLeave(event)"></div>
+        </div>
+      </div>
+      <button class="btn btn-check" onclick="checkDrag()" style="margin-top:1rem">✅ Check · Gwirio</button>
+      <div class="drag-feedback" id="drag-fb"></div>
+
+      <div class="quiz-section-label">✏️ Check Your Understanding · Gwiriwch Eich Dealltwriaeth</div>
+
+      <div class="quiz-question" id="q3">
+        <p class="q-text"><span class="q-num">3</span>According to CfW assessment guidance, practitioners should evaluate learning through which three methods?</p>
+        <p class="q-welsh">Yn ôl canllawiau asesu CfW, trwy ba dair dull ddylai ymarferwyr werthuso dysgu?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q3',this,false)">Tests, exams and written reports · Profion, arholiadau ac adroddiadau ysgrifenedig</button>
+          <button class="option-btn" onclick="checkQ('q3',this,true)">Observation, questioning and discussion · Arsylwi, cwestiynu a thrafodaeth</button>
+          <button class="option-btn" onclick="checkQ('q3',this,false)">Marks, grades and levels · Marciau, graddau a lefelau</button>
+          <button class="option-btn" onclick="checkQ('q3',this,false)">Portfolios, presentations and projects · Portffolios, cyflwyniadau a phrosiectau</button>
+        </div>
+        <div class="feedback" id="q3-fb"></div>
+      </div>
+
+      <div class="quiz-question" id="q4">
+        <p class="q-text"><span class="q-num">4</span>In the Pose·Pause·Pounce·Bounce strategy, why is the "Pause" step critical to effective AfL?</p>
+        <p class="q-welsh">Yn y strategaeth Gosod·Seibio·Disgyn·Adlamu, pam mae'r cam "Seibio" yn hanfodol ar gyfer AdD effeithiol?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q4',this,false)">It allows the teacher time to decide which pupil to ask · Mae'n rhoi amser i'r athro benderfynu pa ddisgybl i'w ofyn</button>
+          <button class="option-btn" onclick="checkQ('q4',this,false)">It gives lower attaining pupils time to opt out · Mae'n rhoi amser i ddisgyblion llai abl optio allan</button>
+          <button class="option-btn" onclick="checkQ('q4',this,true)">It gives all learners thinking time to formulate higher-quality responses, increasing individual accountability · Mae'n rhoi amser meddwl i bob dysgwr lunio ymatebion o ansawdd uwch, gan gynyddu atebolrwydd unigol</button>
+          <button class="option-btn" onclick="checkQ('q4',this,false)">It allows the teacher to write the answer on the board · Mae'n caniatáu i'r athro ysgrifennu'r ateb ar y bwrdd</button>
+        </div>
+        <div class="feedback" id="q4-fb"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(0)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(1)">Next: Feedback &amp; Progression → <em style="font-weight:400;font-style:normal;opacity:.85;font-size:.85em">Nesaf: Adborth a Chynnydd</em></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3 ═══ -->
+  <div class="section-card" id="sec-2">
+    <div class="card-header teal">
+      <div class="icon">📝</div>
+      <h2>Feedback &amp; Supporting Learner Progression
+        <em>Adborth a Chefnogi Cynnydd Dysgwyr</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual">
+        <div class="lang-col en">
+          <div class="lang-label">🇬🇧 English — CfW Assessment Guidance</div>
+          <p>CfW requires practitioners to provide <strong>relevant and focused feedback that actively engages learners, encourages them to take responsibility for their learning, and moves their learning forward</strong>. Feedback must be used to identify the learner's <em>starting point</em>, their <em>next steps</em>, and any <em>interventions or support</em> required — building a holistic picture over time.</p>
+          <p style="margin-top:.6rem">Crucially, assessment should not be "end loaded" — it must be frequent and embedded throughout learning. Practitioners must give learners <strong>time to read and act upon feedback</strong> as part of day-to-day practice.</p>
+        </div>
+        <div class="lang-col cy">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁥 Cymraeg — Canllawiau Asesu CfW</div>
+          <p>Mae CfW yn ei gwneud yn ofynnol i ymarferwyr ddarparu <strong>adborth perthnasol a phwrpasol sy'n ymgysylltu â dysgwyr yn weithredol, yn eu hannog i gymryd cyfrifoldeb am eu dysgu, ac yn symud eu dysgu ymlaen</strong>.</p>
+          <p style="margin-top:.6rem">Yn hollbwysig, ni ddylai asesu fod wedi'i "lwytho ar y diwedd" — rhaid iddo fod yn aml ac wedi'i ymgorffori trwy gydol dysgu. Rhaid i ymarferwyr roi <strong>amser i ddysgwyr ddarllen ac ymateb i adborth</strong> fel rhan o arfer beunyddiol.</p>
+        </div>
+      </div>
+
+      <div class="cycle-wrap">
+        <div class="cycle-step">Where are they? · Ble maen nhw?</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-step">Where next? · I ble nesaf?</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-step">How to get there? · Sut i gyrraedd yno?</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-step">Act on feedback · Gweithredu ar adborth</div>
+        <div class="cycle-arrow">→</div>
+        <div class="cycle-step" style="background:var(--blue-dark)">Reflect · Adlewyrchu</div>
+      </div>
+
+      <p class="section-label">Feedback Strategies for Humanities · Strategaethau Adborth ar gyfer y Dyniaethau</p>
+
+      <div class="strategy-grid">
+        <div class="strategy-card sc-blue">
+          <div class="s-icon">⭐</div>
+          <h4>Two Stars &amp; a Wish · Dwy Seren a Dymuniad</h4>
+          <p>Identify two specific strengths (stars) and one targeted improvement (wish). Each star must name a specific skill being mastered — not vague praise. The pupil must <em>act</em> on the wish immediately.</p>
+          <em>Nodi dwy gryfder penodol a gwelliant wedi'i dargedu. Rhaid i'r disgybl weithredu ar y "dymuniad" ar unwaith.</em>
+        </div>
+        <div class="strategy-card sc-teal">
+          <div class="s-icon">🔒</div>
+          <h4>Closing the Gap · Cau'r Bwlch</h4>
+          <p>Focused comments that help pupils close the gap between current and potential performance. Use: <em>Reminder prompts, Scaffolded prompts, Example prompts</em>. Acting on feedback <em>is</em> closing the gap.</p>
+          <em>Sylwadau wedi'u canolbwyntio sy'n helpu disgyblion i gau'r bwlch rhwng perfformiad cyfredol a photensial. Gweithredu ar adborth yw cau'r bwlch.</em>
+        </div>
+        <div class="strategy-card sc-amber">
+          <div class="s-icon">📊</div>
+          <h4>RAG Rating · Sgorio CAG</h4>
+          <p><strong>R</strong>ed = struggled / <strong>A</strong>mber = some areas need revisiting / <strong>G</strong>reen = confident to progress. Pupils self-assess against success criteria. Gives teacher an immediate whole-class picture.</p>
+          <em><strong>C</strong>och = anawsterau / <strong>A</strong>mber = rhai meysydd i'w hadolygu / <strong>G</strong>wyrdd = hyderus i symud ymlaen.</em>
+        </div>
+        <div class="strategy-card sc-purple">
+          <div class="s-icon">🔍</div>
+          <h4>Mini Plenaries · Plenaryau Bach</h4>
+          <p>Regular whole-class "check-points" during the lesson — not just at the end. Review progress against learning intentions and success criteria. Allows pupils to correct misconceptions <em>within</em> the lesson.</p>
+          <em>Pwyntiau gwirio rheolaidd yn ystod y wers — nid ar y diwedd yn unig. Yn caniatáu i ddisgyblion gywiro camdybiaethau yn ystod y wers.</em>
+        </div>
+        <div class="strategy-card sc-green">
+          <div class="s-icon">🚪</div>
+          <h4>Exit Tickets · Tocynnau Ymadael</h4>
+          <p>Before leaving, pupils submit a response to a key question, problem, or reflection prompt. Gives the teacher direct evidence of what was understood — and what wasn't — to plan the next lesson.</p>
+          <em>Cyn gadael, mae disgyblion yn cyflwyno ymateb i gwestiwn allweddol. Yn rhoi tystiolaeth uniongyrchol i'r athro ar gyfer cynllunio'r wers nesaf.</em>
+        </div>
+        <div class="strategy-card sc-red">
+          <div class="s-icon">💬</div>
+          <h4>WWW · EBI</h4>
+          <p><strong>W</strong>hat <strong>W</strong>ent <strong>W</strong>ell — <strong>E</strong>ven <strong>B</strong>etter <strong>I</strong>f. Structured reflection that makes improvement specific and actionable. Pupils identify both success and a concrete next step.</p>
+          <em><strong>B</strong>eth Aeth yn <strong>D</strong>da — <strong>G</strong>allai fod yn <strong>W</strong>ell pe bai. Adlewyrchiad strwythuredig sy'n gwneud gwelliant yn benodol ac yn weithredadwy.</em>
+        </div>
+      </div>
+
+      <div class="info-box amber">
+        <h3>⚠️ Feedback in Humanities: Key CfW Requirements · Adborth yn y Dyniaethau: Gofynion Allweddol CfW</h3>
+        <p><strong>English:</strong> CfW guidance is explicit: feedback must not focus on marks or grades as these have a <em>negative</em> effect on learning. In Humanities, feedback should refer directly to the discipline-specific skills in the Statements of What Matters — for example, a History pupil's ability to <em>evaluate the validity of sources</em>, or a Geography pupil's ability to <em>analyse the interconnections between humans and the natural world</em>. Practitioners must build in <strong>dedicated response time</strong> for pupils to act on written or verbal feedback.</p>
+        <p style="margin-top:.6rem"><strong>Cymraeg:</strong> Mae canllawiau CfW yn glir: ni ddylai adborth ganolbwyntio ar farciau neu raddau gan fod y rhain yn cael effaith <em>negyddol</em> ar ddysgu. Yn y Dyniaethau, dylai adborth gyfeirio'n uniongyrchol at y sgiliau disgybliaeth-benodol yn y Datganiadau o'r Hyn sy'n Bwysig.</p>
+      </div>
+
+      <div class="quiz-section-label">✏️ Check Your Understanding · Gwiriwch Eich Dealltwriaeth</div>
+
+      <div class="quiz-question" id="q5">
+        <p class="q-text"><span class="q-num">5</span>A History teacher writes "Good work — 8/10" on a pupil's essay about the causes of the First World War. According to CfW assessment guidance and the research of Black &amp; Wiliam (1998), what is the key problem with this feedback?</p>
+        <p class="q-welsh">Mae athro Hanes yn ysgrifennu "Gwaith da — 8/10" ar draethawd disgybl am achosion y Rhyfel Byd Cyntaf. Yn ôl canllawiau asesu CfW ac ymchwil Black a Wiliam (1998), beth yw'r prif broblem gyda'r adborth hwn?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q5',this,false)">The mark should be out of 20, not 10 · Dylai'r marc fod allan o 20, nid 10</button>
+          <button class="option-btn" onclick="checkQ('q5',this,false)">The feedback is too long — it should be shorter · Mae'r adborth yn rhy hir — dylai fod yn fyrrach</button>
+          <button class="option-btn" onclick="checkQ('q5',this,true)">Marks and grades have a negative effect on learning — they do not tell the pupil what to do to improve or where they are in their progression · Mae marciau a graddau yn cael effaith negyddol ar ddysgu — nid ydynt yn dweud wrth y disgybl sut i wella</button>
+          <button class="option-btn" onclick="checkQ('q5',this,false)">The feedback should be written in Welsh as well as English · Dylai'r adborth gael ei ysgrifennu yn Gymraeg yn ogystal â Saesneg</button>
+        </div>
+        <div class="feedback" id="q5-fb"></div>
+      </div>
+
+      <div class="quiz-question" id="q6">
+        <p class="q-text"><span class="q-num">6</span>Which of the following is the BEST example of a "Closing the Gap" reminder prompt for a Geography pupil's essay on climate change?</p>
+        <p class="q-welsh">Pa un o'r canlynol yw'r enghraifft ORAU o brociad atgoffa "Cau'r Bwlch" ar gyfer traethawd disgybl Daearyddiaeth ar newid hinsawdd?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q6',this,false)">Well done — your answer shows good understanding · Da iawn — mae eich ateb yn dangos dealltwriaeth dda</button>
+          <button class="option-btn" onclick="checkQ('q6',this,false)">You need to write more about climate change · Mae angen i chi ysgrifennu mwy am newid hinsawdd</button>
+          <button class="option-btn" onclick="checkQ('q6',this,true)">You've explained the causes well — how could you now link these specifically to the impact on communities in your cynefin? · Rydych chi wedi egluro'r achosion yn dda — sut allech chi nawr gysylltu'r rhain yn benodol â'r effaith ar gymunedau yn eich cynefin?</button>
+          <button class="option-btn" onclick="checkQ('q6',this,false)">See me after class · Dewch ataf ar ôl y dosbarth</button>
+        </div>
+        <div class="feedback" id="q6-fb"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(1)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(2)">Next: Peer &amp; Self-Assessment → <em style="font-weight:400;font-style:normal;opacity:.85;font-size:.85em">Nesaf: Asesu Cymheiriaid ac Hunanasesu</em></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4 ═══ -->
+  <div class="section-card" id="sec-3">
+    <div class="card-header purple">
+      <div class="icon">🤝</div>
+      <h2>Peer &amp; Self-Assessment in Humanities
+        <em>Asesu Cymheiriaid a Hunanasesu yn y Dyniaethau</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual">
+        <div class="lang-col en">
+          <div class="lang-label">🇬🇧 English — CfW Statutory Requirement</div>
+          <p>CfW assessment guidance <em>requires</em> practitioners to "provide opportunities for learners to engage in assessing their own work and that of their peers, and supporting them to develop the relevant skills to do this effectively." This is not optional — it is a statutory expectation. As learners progress along the 3–16 continuum, they should engage <strong>more directly</strong> in the assessment process, developing increasing independence.</p>
+        </div>
+        <div class="lang-col cy">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg — Gofyniad Statudol CfW</div>
+          <p>Mae canllawiau asesu CfW yn <em>mynnu</em> bod ymarferwyr yn "darparu cyfleoedd i ddysgwyr ymgysylltu ag asesu eu gwaith eu hunain a gwaith eu cymheiriaid, a'u cefnogi i ddatblygu'r sgiliau perthnasol i wneud hyn yn effeithiol." Nid yw hwn yn ddewisol — mae'n ddisgwyliad statudol.</p>
+        </div>
+      </div>
+
+      <div class="info-box purple">
+        <h3>📋 The Value of Peer &amp; Self-Assessment · Gwerth Asesu Cymheiriaid a Hunanasesu</h3>
+        <p><strong>For learners · Ar gyfer dysgwyr:</strong></p>
+        <ul>
+          <li>Become responsible for their own learning · Dod yn gyfrifol am eu dysgu eu hunain</li>
+          <li>Can recognise next steps in their own learning with practice · Gallu adnabod camau nesaf yn eu dysgu eu hunain</li>
+          <li>Develop an "I can..." culture, raising self-esteem · Datblygu diwylliant "Gallaf...", gan godi hunan-barch</li>
+          <li>Become more independent and motivated · Dod yn fwy annibynnol ac wedi'u cymell</li>
+        </ul>
+        <p style="margin-top:.6rem"><strong>For teachers · Ar gyfer athrawon:</strong></p>
+        <ul>
+          <li>Responsibility shifts from teacher to pupil · Symuda cyfrifoldeb o'r athro i'r disgybl</li>
+          <li>Lessons become more effective as pupils become more independent · Mae gwersi'n dod yn fwy effeithiol</li>
+          <li>More efficient in identifying learners' next steps · Mwy effeithlon wrth nodi camau nesaf dysgwyr</li>
+        </ul>
+      </div>
+
+      <p class="section-label">Peer &amp; Self-Assessment Strategies · Strategaethau Asesu Cymheiriaid a Hunanasesu</p>
+
+      <div class="strategy-grid">
+        <div class="strategy-card sc-purple">
+          <div class="s-icon">🚦</div>
+          <h4>Traffic Lights · Goleuadau Traffig</h4>
+          <p>Pupils indicate understanding using Red / Amber / Green. Simple but powerful — gives the teacher an immediate visual of the whole class. Accessible for all learners, including those with SEN.</p>
+          <em>Disgyblion yn nodi dealltwriaeth trwy Goch / Ambr / Gwyrdd. Syml ond pwerus — yn rhoi golwg weledol o'r dosbarth cyfan i'r athro.</em>
+        </div>
+        <div class="strategy-card sc-blue">
+          <div class="s-icon">📋</div>
+          <h4>Placemats · Matiau Lle</h4>
+          <p>Pupils assess work against clear criteria by highlighting "achieved" sections. Unapplied criteria form future targets. Particularly effective in Humanities for structured essay or enquiry writing.</p>
+          <em>Disgyblion yn asesu gwaith yn erbyn meini prawf clir trwy amlygu adrannau "wedi'u cyflawni". Yn arbennig o effeithiol yn y Dyniaethau ar gyfer ysgrifennu traethawd neu ymholiad strwythuredig.</em>
+        </div>
+        <div class="strategy-card sc-green">
+          <div class="s-icon">💌</div>
+          <h4>Exit Tickets (Peer) · Tocynnau Cymheiriad</h4>
+          <p>Learners swap exit tickets with a partner and give one specific improvement suggestion before leaving. Promotes oracy and collaborative assessment — both key to the Humanities AoLE.</p>
+          <em>Mae dysgwyr yn cyfnewid tocynnau gyda phartner ac yn rhoi un awgrym gwella penodol. Yn hybu llafar ac asesu cydweithredol.</em>
+        </div>
+        <div class="strategy-card sc-teal">
+          <div class="s-icon">📱</div>
+          <h4>Mini-Tweet Reflection · Adlewyrchiad Mini-Drydariad</h4>
+          <p>Pupils summarise their learning in a limited number of words (e.g. 30 words). Forces crystallisation of key concepts — ideal for distilling historical arguments, geographical analysis or ethical standpoints.</p>
+          <em>Mae disgyblion yn crynhoi eu dysgu mewn nifer cyfyngedig o eiriau. Yn gorfodi crynhoad o gysyniadau allweddol — delfrydol yn y Dyniaethau.</em>
+        </div>
+        <div class="strategy-card sc-amber">
+          <div class="s-icon">👥</div>
+          <h4>Peer Marking with Success Criteria · Marcio Cymheiriaid</h4>
+          <p>Pupils mark a partner's work against co-constructed success criteria, then explain their evaluation and suggest one specific improvement. Must use agreed disciplinary vocabulary.</p>
+          <em>Disgyblion yn marcio gwaith partner yn erbyn meini prawf llwyddiant cyd-adeiladwyd, yna'n egluro eu gwerthusiad ac yn awgrymu un gwelliant penodol.</em>
+        </div>
+        <div class="strategy-card sc-red">
+          <div class="s-icon">🔁</div>
+          <h4>Talk Partners · Partneriaid Siarad</h4>
+          <p>Share three new things learned; what was easy; what was challenging; what to learn next. Prompt cards focus discussion. Connects to CfW's emphasis on developing learners' ability to <em>articulate their own progress</em>.</p>
+          <em>Rhannu tair peth newydd a ddysgwyd; beth oedd yn hawdd; beth oedd yn heriol; beth i'w ddysgu nesaf. Yn cysylltu â phwyslais CfW ar ddatblygu gallu dysgwyr i fynegi eu cynnydd eu hunain.</em>
+        </div>
+      </div>
+
+      <div class="info-box blue">
+        <h3>⚠️ Scaffolding Peer &amp; Self-Assessment · Sgaffaldio Asesu Cymheiriaid a Hunanasesu</h3>
+        <p><strong>English:</strong> Learners must be <em>taught</em> how to peer and self-assess effectively — it is a skill that develops over time. Initially pupils may give vague responses like "it's good because it's good." Start with <strong>co-constructed success criteria</strong>, concrete examples of high-quality work, and structured sentence stems. Over time, learners develop increasingly sophisticated and useful reflections — supporting the CfW principle that learners should develop <em>increasing independence</em> as they progress along the 3–16 continuum.</p>
+        <p style="margin-top:.6rem"><strong>Cymraeg:</strong> Rhaid <em>dysgu</em> sut i asesu cymheiriaid a hunanasesu yn effeithiol i ddysgwyr — mae'n sgil sy'n datblygu dros amser. Yn y pen draw, mae dysgwyr yn datblygu adlewyrchiadau fwyfwy soffistigedig — gan gefnogi egwyddor CfW o <em>annibyniaeth gynyddol</em>.</p>
+      </div>
+
+      <div class="quiz-section-label">✏️ Check Your Understanding · Gwiriwch Eich Dealltwriaeth</div>
+
+      <div class="quiz-question" id="q7">
+        <p class="q-text"><span class="q-num">7</span>Under CfW assessment guidance, is providing opportunities for peer and self-assessment optional for Humanities teachers?</p>
+        <p class="q-welsh">O dan ganllawiau asesu CfW, a yw darparu cyfleoedd ar gyfer asesu cymheiriaid a hunanasesu yn ddewisol i athrawon y Dyniaethau?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q7',this,false)">Yes — it is a useful strategy but not required · Ydy — mae'n strategaeth ddefnyddiol ond nid yw'n ofynnol</button>
+          <button class="option-btn" onclick="checkQ('q7',this,false)">Yes — it only applies to primary schools · Ydy — dim ond i ysgolion cynradd y mae'n berthnasol</button>
+          <button class="option-btn" onclick="checkQ('q7',this,true)">No — CfW statutory guidance explicitly requires practitioners to provide these opportunities and support learners to develop the skills to do so effectively · Na — mae canllawiau statudol CfW yn mynnu'n benodol bod ymarferwyr yn darparu'r cyfleoedd hyn</button>
+          <button class="option-btn" onclick="checkQ('q7',this,false)">No — but only for Year 10 and 11 pupils · Na — ond dim ond ar gyfer disgyblion Blwyddyn 10 ac 11</button>
+        </div>
+        <div class="feedback" id="q7-fb"></div>
+      </div>
+
+      <div class="quiz-question" id="q8">
+        <p class="q-text"><span class="q-num">8</span>A Year 9 Geography class is about to peer-assess each other's fieldwork write-ups on river processes in their local area (cynefin). What should the teacher do FIRST to ensure effective peer assessment?</p>
+        <p class="q-welsh">Mae dosbarth Daearyddiaeth Blwyddyn 9 ar fin asesu ysgrifeniadau maes ei gilydd ar brosesau afonol yn eu hardal leol (cynefin). Beth ddylai'r athro ei wneud YN GYNTAF i sicrhau asesu cymheiriaid effeithiol?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q8',this,false)">Ask pupils to read each other's work and give a mark out of 10 · Gofyn i ddisgyblion ddarllen gwaith ei gilydd a rhoi marc allan o 10</button>
+          <button class="option-btn" onclick="checkQ('q8',this,true)">Co-construct clear success criteria with the class that include Geography-specific vocabulary (e.g. erosion, deposition, meander) so pupils know exactly what to look for · Cyd-adeiladu meini prawf llwyddiant clir gyda'r dosbarth sy'n cynnwys geirfa Daearyddiaeth-benodol fel bod disgyblion yn gwybod yn union am beth i chwilio</button>
+          <button class="option-btn" onclick="checkQ('q8',this,false)">Tell pupils to focus on spelling and punctuation only · Dweud wrth ddisgyblion am ganolbwyntio ar sillafu a chysodi yn unig</button>
+          <button class="option-btn" onclick="checkQ('q8',this,false)">Give pupils a grade boundary table to compare work against · Rhoi tabl ffin radd i ddisgyblion gymharu gwaith yn ei erbyn</button>
+        </div>
+        <div class="feedback" id="q8-fb"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(2)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(3)">Next: Apply It → <em style="font-weight:400;font-style:normal;opacity:.85;font-size:.85em">Nesaf: Cymhwyso</em></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 5 ═══ -->
+  <div class="section-card" id="sec-4">
+    <div class="card-header green">
+      <div class="icon">✏️</div>
+      <h2>Apply It: Plan Your AfL Lesson
+        <em>Cymhwyso: Cynlluniwch Eich Gwers AdD</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="scenario-box">
+        <h3>📋 Lesson Scenario · Senario Gwers</h3>
+        <p><strong>English:</strong> You are planning a Year 8 History lesson as part of a Humanities AoLE unit exploring the statement "Human societies are complex and diverse, and shaped by human actions and beliefs." The topic is the impact of the transatlantic slave trade on communities in Wales and the wider world — connecting local cynefin to global history. Your class of 28 has a wide range of abilities, one EAL learner, and two pupils with literacy difficulties. Use everything from Sections 1–4 to plan an AfL-rich lesson grounded in CfW principles.</p>
+        <p style="margin-top:.7rem"><strong>Cymraeg:</strong> Rydych chi'n cynllunio gwers Hanes Blwyddyn 8 fel rhan o uned MDPH y Dyniaethau sy'n archwilio'r datganiad "Mae cymdeithasau dynol yn gymhleth ac amrywiol, wedi'u llunio gan weithredoedd dynol a chredoau." Y pwnc yw effaith y fasnach caethweision draws-Iwerydd ar gymunedau yng Nghymru a'r byd ehangach — yn cysylltu cynefin lleol â hanes byd-eang. Mae eich dosbarth o 28 â dysgwr SAY, dau ddisgybl ag anawsterau llythrennedd, ac ystod eang o alluoedd.</p>
+      </div>
+
+      <div class="reflection-area">
+        <label>1. Learning Intentions: Write ONE learning intention linked to the Humanities Statement of What Matters above. How will you <em>share</em> this with learners at the start of the lesson? <em>· Bwriadau Dysgu: Ysgrifennwch UN bwriad dysgu wedi'i gysylltu â'r Datganiad o'r Hyn sy'n Bwysig uchod. Sut wnewch chi rannu hwn â dysgwyr?</em></label>
+        <textarea placeholder="e.g. Learning intention: To be able to evaluate the significance of the transatlantic slave trade on Welsh port communities, using historical evidence. Shared via a 'big question' on the board at lesson start... · e.e. Bwriad dysgu: Gallu gwerthuso arwyddocâd y fasnach caethweision ar gymunedau porthladdoedd Cymru, gan ddefnyddio tystiolaeth hanesyddol..."></textarea>
+      </div>
+
+      <div class="reflection-area">
+        <label>2. Success Criteria: Write success criteria that are transparent to learners and include History-specific vocabulary from the Humanities AoLE (e.g. evidence, significance, interpretation, cynefin). <em>· Meini Prawf Llwyddiant: Ysgrifennwch feini prawf llwyddiant sy'n cynnwys geirfa Hanes-benodol o MDPH y Dyniaethau (e.e. tystiolaeth, arwyddocâd, dehongliad, cynefin).</em></label>
+        <textarea placeholder="e.g. ALL pupils can: Identify at least two impacts of the slave trade on Welsh port communities using given sources. MOST pupils can: Explain the significance of these impacts using historical evidence. SOME pupils can: Evaluate competing interpretations of the slave trade's legacy in Wales today... · e.e. Gall POB disgybl: Nodi o leiaf ddwy effaith..."></textarea>
+      </div>
+
+      <div class="reflection-area">
+        <label>3. Questioning Strategy: Choose ONE questioning strategy from Section 2 and explain exactly how you will use it in this lesson, including the specific question(s) you will ask, and how it connects to the Humanities enquiry Statement of What Matters. <em>· Strategaeth Gwestiynu: Dewiswch UN strategaeth gwestiynu o Adran 2 ac eglurwch sut yn union y byddwch yn ei defnyddio yn y wers hon, gan gynnwys y cwestiynau penodol y byddwch yn eu gofyn.</em></label>
+        <textarea placeholder="e.g. I will use Pose·Pause·Pounce·Bounce with the question: 'Why do you think the history of the slave trade was not taught in Welsh schools until recently? What does this tell us about how history is interpreted and represented?' I will pause for at least 20 seconds... · e.e. Byddaf yn defnyddio Gosod·Seibio·Disgyn·Adlamu gyda'r cwestiwn..."></textarea>
+      </div>
+
+      <div class="reflection-area">
+        <label>4. Mid-Lesson Feedback: Plan ONE AfL strategy from Section 3 to check understanding during the lesson (not just at the end). Explain what you will do with the evidence gathered. <em>· Adborth Canol Gwers: Cynlluniwch UN strategaeth AdD o Adran 3 i wirio dealltwriaeth yn ystod y wers. Eglurwch beth wnewch chi gyda'r dystiolaeth a gesglir.</em></label>
+        <textarea placeholder="e.g. Mini-plenary using Traffic Lights after pupils have analysed the sources. Pupils who show RED will be supported with a scaffolded prompt card giving sentence starters. Pupils showing GREEN will be challenged with a 'closing the gap' question requiring them to link local history to global significance... · e.e. Plenari bach gan ddefnyddio Goleuadau Traffig ar ôl i ddisgyblion ddadansoddi'r ffynonellau..."></textarea>
+      </div>
+
+      <div class="reflection-area">
+        <label>5. Peer/Self-Assessment: Choose ONE peer or self-assessment strategy from Section 4 and explain how you will scaffold it for your EAL learner and the two pupils with literacy difficulties, without reducing cognitive challenge. <em>· Asesu Cymheiriaid/Hunanasesu: Dewiswch UN strategaeth o Adran 4 ac eglurwch sut wnewch chi ei sgaffaldio ar gyfer eich dysgwr SAY a'r ddau ddisgybl ag anawsterau llythrennedd, heb leihau'r her wybyddol.</em></label>
+        <textarea placeholder="e.g. Two Stars and a Wish peer assessment against the co-constructed success criteria. For the EAL learner: provide a bilingual vocabulary mat of key History terms. For literacy difficulties: provide sentence stems for the feedback ('One strength of your interpretation is... because...', 'One thing that would improve this is...'). Cognitive challenge maintained — all assess against the same high-level criteria... · e.e. Asesu cymheiriaid Dwy Seren a Dymuniad yn erbyn y meini prawf llwyddiant cyd-adeiladwyd..."></textarea>
+      </div>
+
+      <div class="reflection-area">
+        <label>6. End of Lesson: Design an Exit Ticket question for this lesson that generates evidence of learner progression specifically linked to the Humanities AoLE Statement of What Matters. What will you do with the responses before next lesson? <em>· Diwedd Gwers: Dyluniwch gwestiwn Tocyn Ymadael ar gyfer y wers hon sy'n cysylltu'n benodol â Datganiad o'r Hyn sy'n Bwysig MDPH y Dyniaethau. Beth wnewch chi gyda'r ymatebion cyn y wers nesaf?</em></label>
+        <textarea placeholder="e.g. Exit Ticket: 'In one sentence, explain WHY the history of the slave trade is significant for understanding Welsh identity and cynefin today.' I will sort responses into three groups — those who have grasped significance, those who have described without evaluating, and those who need conceptual support — and use this to plan differentiated starter activities next lesson... · e.e. Tocyn Ymadael: 'Mewn un frawddeg, eglurwch PAM mae hanes y fasnach caethweision yn arwyddocaol...'"></textarea>
+      </div>
+
+      <div class="quiz-section-label">✏️ Final Check · Gwiriad Terfynol</div>
+
+      <div class="quiz-question" id="q9">
+        <p class="q-text"><span class="q-num">9</span>CfW assessment guidance states that assessment information should NOT be used for which of the following?</p>
+        <p class="q-welsh">Mae canllawiau asesu CfW yn datgan na ddylai gwybodaeth asesu gael ei defnyddio ar gyfer pa un o'r canlynol?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q9',this,false)">Informing next steps in learning for individual pupils · Hysbysu camau nesaf mewn dysgu ar gyfer disgyblion unigol</button>
+          <button class="option-btn" onclick="checkQ('q9',this,false)">Supporting the transition of learners between primary and secondary school · Cefnogi trawsnewid dysgwyr rhwng yr ysgol gynradd a'r ysgol uwchradd</button>
+          <button class="option-btn" onclick="checkQ('q9',this,true)">External accountability — ranking or comparing schools, or as a proxy for standards · Atebolrwydd allanol — rhestru neu gymharu ysgolion, neu fel dirprwy ar gyfer safonau</button>
+          <button class="option-btn" onclick="checkQ('q9',this,false)">Reviewing and revising the school's curriculum · Adolygu a diwygio cwricwlwm yr ysgol</button>
+        </div>
+        <div class="feedback" id="q9-fb"></div>
+      </div>
+
+      <div class="quiz-question" id="q10">
+        <p class="q-text"><span class="q-num">10</span>Which statement BEST describes effective Assessment for Learning in the Humanities AoLE within Curriculum for Wales?</p>
+        <p class="q-welsh">Pa ddatganiad sy'n disgrifio ORAU Asesu ar gyfer Dysgu effeithiol yn MDPH y Dyniaethau o fewn Cwricwlwm i Gymru?</p>
+        <div class="options">
+          <button class="option-btn" onclick="checkQ('q10',this,false)">A series of end-of-unit tests linked to the Progression Steps that generate grades for reporting · Cyfres o brofion diwedd uned wedi'u cysylltu â'r Camau Cynnydd sy'n cynhyrchu graddau ar gyfer adrodd</button>
+          <button class="option-btn" onclick="checkQ('q10',this,false)">Formative assessment used occasionally alongside summative testing for accountability purposes · Asesu ffurfiannol a ddefnyddir o bryd i'w gilydd ochr yn ochr â phrofi cyfaniadol at ddibenion atebolrwydd</button>
+          <button class="option-btn" onclick="checkQ('q10',this,false)">Assessment used only at transition points (Year 6 to 7) to inform secondary school planning · Asesu a ddefnyddir dim ond ar bwyntiau trawsnewid i hysbysu cynllunio'r ysgol uwchradd</button>
+          <button class="option-btn" onclick="checkQ('q10',this,true)">An ongoing, day-to-day process embedded in learning — using questioning, feedback and peer/self-assessment to support every learner's progression across the five Humanities Statements of What Matters, building holistic understanding over the 3–16 continuum · Proses barhaus, feunyddiol wedi'i hymgorffori mewn dysgu — gan ddefnyddio cwestiynu, adborth ac asesu cymheiriaid/hunain i gefnogi cynnydd pob dysgwr ar draws pum Datganiad o'r Hyn sy'n Bwysig y Dyniaethau</button>
+        </div>
+        <div class="feedback" id="q10-fb"></div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(3)">← Back · Yn ôl</button>
+        <button class="btn btn-amber" onclick="complete()">🎓 Complete Training · Cwblhau Hyfforddiant</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="completion-card" id="completion">
+    <span class="badge-icon">🎓</span>
+    <h2>Training Complete! · Hyfforddiant Wedi'i Gwblhau!</h2>
+    <div class="score-pill">Score / Sgôr: <span id="final-score">0</span> / 10</div>
+    <p><strong>Well done!</strong> You have worked through all five sections of this AfL guide for the Humanities AoLE. Remember: in Curriculum for Wales, assessment is <em>integral to learning</em> — embedded in every lesson, focused on progression, and centred on the learner.</p>
+    <p><strong>Da iawn!</strong> Rydych chi wedi gweithio drwy'r pum adran. Cofiwch: yng Nghwricwlwm i Gymru, mae asesu yn <em>rhan annatod o ddysgu</em> — wedi'i ymgorffori ym mhob gwers, wedi'i ganolbwyntio ar gynnydd, ac wedi'i ganoli ar y dysgwr.</p>
+    <div style="margin-top:1rem"><button class="btn" onclick="location.reload()" style="background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.35);color:#fff;font-size:.85rem;">↺ Start Again · Dechrau Eto</button></div>
+
+    <!-- Certificate trigger -->
+    <div class="cert-trigger-box">
+      <p>🏅 <strong>Generate your personalised completion certificate / Creu eich tystysgrif gwblhau bersonol</strong><br>
+      Enter your full name below to generate a printable certificate showing your score. / Rhowch eich enw llawn isod i greu tystysgrif sy'n dangos eich sgôr.</p>
+      <div class="cert-name-row">
+        <input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name / Eich enw llawn…" maxlength="80">
+        <button class="btn-cert" onclick="generateCertificate()">🎓 Generate Certificate / Creu Tystysgrif</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- Certificate overlay -->
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:2rem;">📋</div>
+            <div class="cert-inst-name">PGCE Secondary — Humanities
+              <span class="cert-inst-cy">Cwricwlwm i Gymru / Curriculum for Wales</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that / Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher / yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.5rem 0 .3rem;">
+            <div class="cert-name" id="certDisplayName">Your Name</div>
+          </div>
+          <div class="cert-score-pill">Score / Sgôr: <span id="certScoreDisplay">—</span> / 10</div>
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the induction training session on</div>
+          <div class="cert-course">
+            Assessment for Learning in the Humanities AoLE
+            <span class="cert-course-cy">Asesu ar gyfer Dysgu yn MDPH y Dyniaethau</span>
+          </div>
+          <div class="cert-competencies">
+            Demonstrating understanding of AfL principles within Curriculum for Wales, effective questioning and wait time,
+            high-quality written feedback, peer and self-assessment strategies, and statutory assessment requirements for
+            the Humanities Area of Learning and Experience.<br>
+            <em style="color:#1565C0;display:block;margin-top:.4rem;">Gan ddangos dealltwriaeth o egwyddorion AfL o fewn Cwricwlwm i Gymru, cwestiynu effeithiol, adborth ysgrifenedig o ansawdd uchel, strategaethau asesu cymheiriaid a hunanasesu, a gofynion asesu statudol MDPH y Dyniaethau.</em>
+          </div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <div class="cert-sig-label">Programme Director / Cyfarwyddwr y Rhaglen</div>
+            </div>
+            <div>
+              <div class="cert-seal">
+                <span class="cert-seal-icon">🎓</span>
+                PGCE<br>CYMRU
+              </div>
+            </div>
+            <div class="cert-sig-block">
+              <div class="cert-date-val" id="certDateDisplay"></div>
+              <div class="cert-date-label">Date Completed / Dyddiad Cwblhau</div>
+            </div>
+          </div>
+          <div class="cert-stripe" style="margin:1.2rem -2rem -1.6rem;"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">🖨️ Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">✕ Close / Cau</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let score=0; const answeredQs=new Set(); const completedSections=new Set();
+const feedbacks={
+  q1:'Correct! CfW statutory assessment guidance states the overarching purpose is "to support every learner to make progress" — embedded in day-to-day practice, indistinguishable from learning. / Cywir! Mae canllawiau statudol CfW yn datgan mai\'r prif bwrpas yw "cefnogi pob dysgwr i wneud cynnydd" — wedi\'i ymgorffori mewn arfer beunyddiol.',
+  q2:'Correct! The Humanities AoLE has five Statements of What Matters and encompasses Geography, History, Religion Values and Ethics (RVE), Business Studies and Social Studies. Learners may also encounter Economics, Law, Philosophy, Politics and Sociology. / Cywir! Mae gan MDPH y Dyniaethau bum Datganiad o\'r Hyn sy\'n Bwysig ac mae\'n cwmpasu Daearyddiaeth, Hanes, GAE, Astudiaethau Busnes ac Astudiaethau Cymdeithasol.',
+  q3:'Correct! CfW guidance states practitioners should "evaluate learning through observation, questioning and discussion" and use this evidence to plan next steps. / Cywir! Mae canllawiau CfW yn nodi y dylai ymarferwyr "werthuso dysgu trwy arsylwi, cwestiynu a thrafodaeth."',
+  q4:'Correct! The pause gives all learners — not just fast responders — time to think and formulate higher-quality answers, increasing individual accountability across the class. This directly supports CfW\'s principle of embedding assessment into day-to-day practice. / Cywir! Mae\'r seibiant yn rhoi amser i bob dysgwr feddwl a llunio atebion o ansawdd uwch, gan gynyddu atebolrwydd unigol.',
+  q5:'Correct! Black and Wiliam (1998) found that feedback as marks or grades has a negative effect on learning. CfW assessment guidance requires focused feedback that tells learners where they are, where they need to go, and how to get there — marks alone do none of this. / Cywir! Canfu Black a Wiliam (1998) fod adborth ar ffurf marciau neu raddau yn cael effaith negyddol ar ddysgu.',
+  q6:'Correct! This is a reminder prompt that is specific, builds on what the pupil has already done well, and directs them towards the higher-order skill of linking local geography (cynefin) to wider significance — closing the gap between current and potential performance. / Cywir! Mae hwn yn brociad atgoffa sy\'n benodol, yn adeiladu ar yr hyn y mae\'r disgybl eisoes wedi\'i wneud yn dda.',
+  q7:'Correct! CfW statutory assessment guidance explicitly requires practitioners to "provide opportunities for learners to engage in assessing their own work and that of their peers." This is a statutory expectation — not an optional extra. / Cywir! Mae canllawiau statudol CfW yn mynnu\'n benodol bod ymarferwyr yn "darparu cyfleoedd i ddysgwyr ymgysylltu ag asesu eu gwaith eu hunain a gwaith eu cymheiriaid."',
+  q8:'Correct! Co-constructing clear success criteria — including discipline-specific vocabulary — is the essential first step for effective peer assessment. Without shared criteria, pupils cannot assess reliably or give meaningful feedback. / Cywir! Mae cyd-adeiladu meini prawf llwyddiant clir — gan gynnwys geirfa disgybliaeth-benodol — yn gam cyntaf hanfodol ar gyfer asesu cymheiriaid effeithiol.',
+  q9:'Correct! CfW assessment guidance is explicit that assessment information must not be used for external accountability — including ranking or comparing schools or using it as a proxy for standards. Assessment serves learner progression, not institutional accountability. / Cywir! Mae canllawiau asesu CfW yn glir: ni ddylai gwybodaeth asesu gael ei defnyddio ar gyfer atebolrwydd allanol.',
+  q10:'Correct! This reflects the full statutory picture from CfW: assessment is an ongoing, day-to-day, embedded process — using all three pillars (questioning, feedback, peer/self-assessment) to build a holistic picture of learner progression across the five Humanities Statements of What Matters over the 3–16 continuum. / Cywir! Mae hyn yn adlewyrchu\'r darlun statudol llawn: mae asesu yn broses barhaus, feunyddiol, wedi\'i hymgorffori — gan ddefnyddio\'r tri philer i adeiladu darlun cyfannol o gynnydd dysgwyr.',
+};
+function checkQ(qId,btn,isCorrect){
+  if(answeredQs.has(qId))return; answeredQs.add(qId);
+  document.getElementById(qId).querySelectorAll('.option-btn').forEach(b=>b.disabled=true);
+  const fb=document.getElementById(qId+'-fb');
+  if(isCorrect){btn.classList.add('correct');fb.className='feedback correct show';fb.innerHTML='✅ '+feedbacks[qId];score++;}
+  else{btn.classList.add('wrong');fb.className='feedback wrong show';fb.innerHTML='❌ Not quite — '+feedbacks[qId];}
+}
+function nextSection(idx){completedSections.add(idx);updateNav();goTo(idx+1);}
+function goTo(idx){
+  document.querySelectorAll('.section-card').forEach((el,i)=>el.classList.toggle('active',i===idx));
+  document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('active',i===idx));
+  const pct=Math.round(((idx+1)/5)*100);
+  document.getElementById('progress-bar').style.width=pct+'%';
+  document.getElementById('progress-label').textContent=`Section ${idx+1} of 5 · Adran ${idx+1} o 5`;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function updateNav(){document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('done',completedSections.has(i)));}
+function complete(){
+  completedSections.add(4);updateNav();
+  document.querySelectorAll('.section-card').forEach(el=>el.classList.remove('active'));
+  document.getElementById('completion').classList.add('show');
+  document.getElementById('final-score').textContent=score;
+  document.getElementById('progress-bar').style.width='100%';
+  document.getElementById('progress-label').textContent='Complete! · Wedi Cwblhau!';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+let draggedItem=null;
+function dragStart(e){draggedItem=e.target;setTimeout(()=>{if(draggedItem)draggedItem.style.opacity='.4';},0);}
+function dragOver(e){e.preventDefault();e.currentTarget.classList.add('over');}
+function dragLeave(e){e.currentTarget.classList.remove('over');}
+function dropItem(e,zoneId){
+  e.preventDefault();e.currentTarget.classList.remove('over');
+  if(draggedItem){e.currentTarget.appendChild(draggedItem);draggedItem.style.opacity='1';draggedItem=null;}
+}
+document.addEventListener('dragend',()=>{if(draggedItem)draggedItem.style.opacity='1';});
+function checkDrag(){
+  const items=document.querySelectorAll('.draggable-item');let correct=0;
+  items.forEach(item=>{
+    const inZone=item.parentElement.id,expected=item.dataset.cat;
+    if(inZone===expected){correct++;item.style.background='#DCFCE7';item.style.borderColor='#22C55E';item.style.color='#14532D';}
+    else{item.style.background='#FEE2E2';item.style.borderColor='#EF4444';item.style.color='#7F1D1D';}
+  });
+  const fb=document.getElementById('drag-fb');
+  fb.className=correct===4?'drag-feedback show pass':'drag-feedback show fail';
+  fb.textContent=correct===4?'✅ All correct — excellent! · Da iawn! Gwaith ardderchog.':`${correct}/4 correct — red items are in the wrong column, try again. · ${correct}/4 yn gywir — mae eitemau coch yn y golofn anghywir, rhowch gynnig arall.`;
+}
+
+function generateCertificate(){
+  var name=document.getElementById('certNameInput').value.trim();
+  if(!name){
+    document.getElementById('certNameInput').focus();
+    document.getElementById('certNameInput').style.borderColor='#F59E0B';
+    setTimeout(function(){document.getElementById('certNameInput').style.borderColor='';},1500);
+    return;
+  }
+  document.getElementById('certDisplayName').textContent=name;
+  document.getElementById('certScoreDisplay').textContent=score;
+  var now=new Date();
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('certDateDisplay').textContent=now.getDate()+' '+months[now.getMonth()]+' '+now.getFullYear();
+  document.getElementById('certOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeCertificate(){
+  document.getElementById('certOverlay').classList.remove('show');
+  document.body.style.overflow='';
+}
+function printCertificate(){
+  var cert=document.getElementById('certificateEl');
+  var w=window.open('','_blank','width=900,height=700');
+  w.document.write('<html><head><title>Certificate of Completion</title>');
+  document.querySelectorAll('style,link[rel="stylesheet"]').forEach(function(s){w.document.write(s.outerHTML);});
+  w.document.write('</head><body style="margin:0;padding:20px;background:white;">');
+  w.document.write(cert.outerHTML);
+  w.document.write('</body></html>');
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener('click',function(e){if(e.target.id==='certOverlay')closeCertificate();});
+
+</script>
+</body>
+</html>
