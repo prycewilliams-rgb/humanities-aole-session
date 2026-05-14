@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="cy-en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teaching Historical Enquiries & Interpretations | Ymholiadau ac Dehongliadau Hanesyddol — PGCE History</title>
+<style>
+:root{
+  --wine:#6B1E1E;--wine-mid:#9B2335;--wine-light:#FDECEA;--wine-pale:#FFF8F8;
+  --gold:#92400E;--gold-light:#FEF3C7;--gold-pale:#FFFBEB;
+  --sage:#2D6A4F;--sage-light:#D8F3DC;--sage-pale:#F0FFF4;
+  --slate:#1E293B;--slate-mid:#475569;--slate-light:#94A3B8;
+  --indigo:#3730A3;--indigo-light:#C7D2FE;--indigo-pale:#EEF2FF;
+  --teal:#0F766E;--teal-light:#CCFBF1;--teal-pale:#F0FDFA;
+  --amber:#D97706;--amber-light:#FEF3C7;
+  --off:#FAFAF9;--white:#fff;--border:#E7E5E4;
+  --shadow:0 4px 24px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;background:var(--off);color:var(--slate);min-height:100vh}
+header{background:linear-gradient(135deg,#3B0000 0%,var(--wine) 55%,#7B2335 100%);color:#fff;padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.lang-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:.3rem 1rem;font-size:.8rem;font-weight:600;letter-spacing:.05em;margin-bottom:1.5rem}
+header h1{font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.6rem,3.8vw,2.5rem);line-height:1.2;margin-bottom:.4rem}
+header h1 span{display:block;font-size:.55em;font-weight:700;opacity:.75;letter-spacing:.03em;margin-top:.3rem}
+.header-sub{font-size:.92rem;opacity:.82;margin-top:.8rem}
+.subject-pills{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
+.pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.3rem .9rem;font-size:.78rem;font-weight:600}
+.progress-bar-wrap{max-width:600px;margin:1.5rem auto 0;background:rgba(255,255,255,.18);border-radius:999px;height:8px;overflow:hidden}
+#progress-bar{height:100%;background:#FCD34D;border-radius:999px;transition:width .5s ease;width:0%}
+#progress-label{font-size:.78rem;opacity:.78;margin-top:.4rem}
+main{max-width:960px;margin:0 auto;padding:2rem 1rem 4rem}
+.section-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.snav-btn{padding:.4rem .85rem;border-radius:999px;border:2px solid var(--border);background:#fff;font-size:.76rem;font-weight:600;cursor:pointer;color:var(--slate-mid);transition:all .2s;white-space:nowrap}
+.snav-btn.done{border-color:var(--sage);color:#1B4332;background:var(--sage-light)}
+.snav-btn.active{border-color:var(--wine);color:var(--wine);background:var(--wine-pale)}
+.section-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);display:none;animation:fadeIn .4s ease}
+.section-card.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.card-header{padding:1.5rem 2rem;display:flex;align-items:center;gap:1rem;border-bottom:2px solid}
+.card-header.wine{background:var(--wine-pale);border-color:#FECACA}
+.card-header.gold{background:var(--gold-pale);border-color:#FDE68A}
+.card-header.sage{background:var(--sage-pale);border-color:var(--sage-light)}
+.card-header.indigo{background:var(--indigo-pale);border-color:var(--indigo-light)}
+.card-header.teal{background:var(--teal-pale);border-color:var(--teal-light)}
+.card-header.slate{background:#F1F5F9;border-color:#CBD5E1}
+.card-header .icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.card-header.wine .icon{background:var(--wine)}.card-header.gold .icon{background:var(--gold)}
+.card-header.sage .icon{background:var(--sage)}.card-header.indigo .icon{background:var(--indigo)}
+.card-header.teal .icon{background:var(--teal)}.card-header.slate .icon{background:var(--slate)}
+.card-header h2{font-family:Georgia,'Times New Roman',serif;font-size:1.25rem;color:var(--slate);line-height:1.3}
+.card-header h2 em{display:block;font-family:-apple-system,sans-serif;font-size:.75rem;font-style:normal;font-weight:600;color:var(--slate-mid);margin-top:.15rem;letter-spacing:.03em}
+.card-body{padding:2rem}
+@media(max-width:600px){.card-body{padding:1.2rem}}
+/* BILINGUAL */
+.bilingual-block{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+@media(max-width:600px){.bilingual-block{grid-template-columns:1fr}}
+.lang-col{background:var(--wine-pale);border-radius:10px;padding:1.2rem;border-left:4px solid var(--wine)}
+.lang-col.welsh{border-left-color:var(--gold);background:var(--gold-pale)}
+.lang-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-mid);margin-bottom:.6rem}
+.lang-col p,.lang-col li{font-size:.92rem;line-height:1.7;color:var(--slate)}
+.lang-col ul{padding-left:1.2rem;margin-top:.4rem}
+.lang-col li{margin-bottom:.3rem}
+/* INFO BOXES */
+.info-box{background:var(--wine-pale);border:1px solid #FECACA;border-radius:10px;padding:1.2rem 1.5rem;margin-bottom:1.5rem}
+.info-box.gold{background:var(--gold-pale);border-color:#FDE68A}
+.info-box.sage{background:var(--sage-pale);border-color:var(--sage-light)}
+.info-box.key{background:var(--slate);border-color:var(--slate-mid)}
+.info-box.indigo{background:var(--indigo-pale);border-color:var(--indigo-light)}
+.info-box.teal{background:var(--teal-pale);border-color:var(--teal-light)}
+.info-box h3{font-size:.83rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--wine);margin-bottom:.7rem}
+.info-box.gold h3{color:var(--gold)}.info-box.sage h3{color:var(--sage)}
+.info-box.key h3{color:#FCD34D}.info-box.indigo h3{color:var(--indigo)}.info-box.teal h3{color:var(--teal)}
+.info-box p,.info-box li{font-size:.92rem;line-height:1.7;color:var(--slate)}
+.info-box.key p,.info-box.key li{color:rgba(255,255,255,.9)}
+.info-box ul{padding-left:1.3rem;margin-top:.4rem}
+.info-box ul li{margin-bottom:.35rem}
+/* QUOTE */
+.quote-block{background:var(--slate);color:white;border-radius:10px;padding:1.4rem 1.8rem;margin:1.5rem 0;position:relative;overflow:hidden}
+.quote-block::before{content:'"';font-family:Georgia,serif;font-size:6rem;color:rgba(255,255,255,.06);position:absolute;top:-.5rem;left:.5rem;line-height:1}
+.quote-text{font-family:Georgia,serif;font-size:1.05rem;font-style:italic;line-height:1.65;color:rgba(255,255,255,.92);position:relative;z-index:1}
+.quote-attr{font-size:.78rem;color:#FCD34D;margin-top:.6rem;font-weight:600}
+/* CRITERIA CARDS */
+.criteria-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.2rem 0}
+@media(max-width:600px){.criteria-grid{grid-template-columns:1fr}}
+.criteria-card{background:#fff;border:2px solid var(--border);border-radius:10px;padding:1.2rem;border-top:4px solid}
+.criteria-card:nth-child(1){border-top-color:var(--wine)}
+.criteria-card:nth-child(2){border-top-color:var(--indigo)}
+.criteria-card:nth-child(3){border-top-color:var(--sage)}
+.criteria-num{font-family:Georgia,serif;font-size:2rem;font-weight:900;color:var(--wine);line-height:1;display:block;margin-bottom:.4rem}
+.criteria-card:nth-child(2) .criteria-num{color:var(--indigo)}
+.criteria-card:nth-child(3) .criteria-num{color:var(--sage)}
+.criteria-card h4{font-size:.92rem;font-weight:700;color:var(--slate);margin-bottom:.4rem}
+.criteria-card p{font-size:.84rem;color:var(--slate-mid);line-height:1.55}
+/* WEAK VS STRONG */
+.compare-pair{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0}
+@media(max-width:560px){.compare-pair{grid-template-columns:1fr}}
+.compare-weak{background:var(--wine-light);border:2px solid #FECACA;border-radius:10px;padding:1rem}
+.compare-strong{background:var(--sage-pale);border:2px solid var(--sage-light);border-radius:10px;padding:1rem}
+.compare-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;display:flex;align-items:center;gap:.35rem}
+.compare-weak .compare-label{color:var(--wine)}
+.compare-strong .compare-label{color:var(--sage)}
+.compare-q{font-family:Georgia,serif;font-size:1rem;font-style:italic;font-weight:700;color:var(--slate);margin-bottom:.5rem}
+.compare-points{list-style:none;font-size:.82rem;color:var(--slate-mid);line-height:1.6}
+.compare-points li::before{content:'· ';font-weight:700}
+/* DODGY QUESTIONS */
+.dodgy-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin:1rem 0}
+@media(max-width:560px){.dodgy-grid{grid-template-columns:1fr}}
+.dodgy-card{background:#fff;border:2px solid var(--border);border-radius:8px;padding:.8rem 1rem;display:flex;gap:.7rem;align-items:flex-start;cursor:pointer;transition:all .15s}
+.dodgy-card:hover{border-color:var(--wine);background:var(--wine-pale)}
+.dodgy-card.selected-dodgy{border-color:var(--wine);background:var(--wine-pale)}
+.dodgy-card.selected-evidence{border-color:var(--teal);background:var(--teal-pale)}
+.dodgy-card.selected-interp{border-color:var(--indigo);background:var(--indigo-pale)}
+.dodgy-card.selected-good{border-color:var(--sage);background:var(--sage-pale)}
+.dq-num{background:var(--slate);color:white;border-radius:50%;width:1.4rem;height:1.4rem;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
+.dq-text{font-size:.86rem;color:var(--slate);line-height:1.5}
+.dodgy-btns{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.tag-btn{padding:.3rem .8rem;border-radius:999px;border:2px solid;font-size:.76rem;font-weight:700;cursor:pointer;transition:all .15s}
+.tag-btn.dodgy{border-color:var(--wine);color:var(--wine);background:#fff}
+.tag-btn.dodgy:hover,.tag-btn.dodgy.active{background:var(--wine);color:white}
+.tag-btn.evidence{border-color:var(--teal);color:var(--teal);background:#fff}
+.tag-btn.evidence:hover,.tag-btn.evidence.active{background:var(--teal);color:white}
+.tag-btn.interp{border-color:var(--indigo);color:var(--indigo);background:#fff}
+.tag-btn.interp:hover,.tag-btn.interp.active{background:var(--indigo);color:white}
+.tag-btn.good{border-color:var(--sage);color:var(--sage);background:#fff}
+.tag-btn.good:hover,.tag-btn.good.active{background:var(--sage);color:white}
+.tag-btn.clear-tag{border-color:var(--border);color:var(--slate-mid);background:#fff}
+.tag-btn.clear-tag:hover{background:var(--off)}
+/* SOURCES */
+.source-card{background:#fff;border:1px solid var(--border);border-radius:10px;margin-bottom:.8rem;overflow:hidden}
+.source-header{background:var(--slate);color:white;padding:.6rem 1rem;font-size:.8rem;font-weight:700;display:flex;justify-content:space-between}
+.source-text{padding:.9rem 1.1rem;font-size:.9rem;line-height:1.7;color:var(--slate);font-style:italic}
+.source-text em{font-style:normal;font-weight:700;color:var(--wine)}
+/* SEQUENCE STEPS */
+.sequence-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.2rem 0}
+@media(max-width:600px){.sequence-steps{grid-template-columns:1fr}}
+.step-card{background:#fff;border:2px solid var(--border);border-radius:10px;padding:1.1rem;text-align:center;position:relative}
+.step-card::after{content:'→';position:absolute;right:-1.2rem;top:50%;transform:translateY(-50%);font-size:1.4rem;color:var(--border);font-weight:700}
+.step-card:last-child::after{display:none}
+@media(max-width:600px){.step-card::after{display:none}}
+.step-icon{font-size:2rem;display:block;margin-bottom:.5rem}
+.step-card h4{font-size:.9rem;font-weight:700;color:var(--slate);margin-bottom:.3rem}
+.step-card p{font-size:.8rem;color:var(--slate-mid);line-height:1.5}
+/* RILEY TEN */
+.riley-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin:1rem 0}
+@media(max-width:560px){.riley-grid{grid-template-columns:1fr}}
+.riley-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:.8rem 1rem;display:flex;gap:.7rem;align-items:flex-start}
+.riley-num{background:var(--wine);color:white;border-radius:6px;width:1.6rem;height:1.6rem;display:flex;align-items:center;justify-content:center;font-size:.76rem;font-weight:700;flex-shrink:0}
+.riley-card p{font-size:.86rem;color:var(--slate);line-height:1.5}
+/* PLANNING FRAMEWORK */
+.plan-step{background:#fff;border:2px solid var(--border);border-radius:10px;padding:1.2rem 1.4rem;margin-bottom:.8rem;position:relative;padding-left:3.5rem}
+.plan-step-num{position:absolute;left:1rem;top:1.1rem;background:var(--wine);color:white;border-radius:50%;width:1.8rem;height:1.8rem;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82rem}
+.plan-step h4{font-weight:700;font-size:.95rem;color:var(--slate);margin-bottom:.3rem}
+.plan-step p{font-size:.86rem;color:var(--slate-mid);line-height:1.55;margin-bottom:.5rem}
+/* TEXTAREA */
+textarea{width:100%;padding:.7rem .9rem;font-family:-apple-system,sans-serif;font-size:.9rem;border:2px solid var(--border);border-radius:8px;resize:vertical;min-height:70px;color:var(--slate);line-height:1.6;transition:border-color .2s;margin-top:.5rem}
+textarea:focus{outline:none;border-color:var(--wine)}
+.task-box{background:var(--gold-pale);border:2px solid #FDE68A;border-radius:10px;padding:1.2rem 1.4rem;margin:1.4rem 0}
+.task-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.task-num{background:var(--gold);color:white;border-radius:50%;width:1.3rem;height:1.3rem;display:flex;align-items:center;justify-content:center;font-size:.68rem}
+.field-label{font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate-mid);display:block;margin:.6rem 0 .2rem}
+/* QUIZ */
+.quiz-question{background:var(--off);border-radius:10px;padding:1.2rem;margin-bottom:1rem;border:1px solid var(--border)}
+.q-text{font-weight:700;font-size:.97rem;margin-bottom:.25rem;line-height:1.5}
+.q-welsh{font-size:.84rem;color:var(--slate-mid);font-style:italic;margin-bottom:.9rem;line-height:1.5}
+.q-num{display:inline-flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;background:var(--wine);color:white;border-radius:50%;font-size:.72rem;font-weight:700;margin-right:.4rem}
+.options{display:flex;flex-direction:column;gap:.5rem}
+.option-btn{text-align:left;background:#fff;border:2px solid var(--border);border-radius:8px;padding:.65rem 1rem;font-family:-apple-system,sans-serif;font-size:.9rem;cursor:pointer;transition:all .15s;line-height:1.5;color:var(--slate)}
+.option-btn:hover:not(:disabled){border-color:var(--wine);background:var(--wine-pale)}
+.option-btn.correct{border-color:var(--sage);background:var(--sage-pale);color:#1B4332}
+.option-btn.wrong{border-color:var(--wine-mid);background:var(--wine-light);color:#7F1D1D}
+.feedback{display:none;padding:.8rem 1rem;border-radius:8px;font-size:.87rem;line-height:1.6;margin-top:.5rem}
+.feedback.correct.show{display:block;background:var(--sage-pale);border-left:3px solid var(--sage);color:#1B4332}
+.feedback.wrong.show{display:block;background:var(--wine-light);border-left:3px solid var(--wine-mid);color:#7F1D1D}
+/* TAKEAWAYS */
+.takeaway-grid{display:grid;gap:.7rem;margin:1rem 0}
+.takeaway-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:.9rem 1.1rem;display:flex;gap:.8rem;align-items:flex-start}
+.tk-num{background:var(--wine);color:white;border-radius:6px;width:1.6rem;height:1.6rem;display:flex;align-items:center;justify-content:center;font-size:.76rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
+.tk-en{font-size:.9rem;color:var(--slate);line-height:1.6;margin-bottom:.2rem}
+.tk-cy{font-size:.8rem;color:var(--gold);font-style:italic;line-height:1.5}
+/* BTN */
+.btn-row{display:flex;gap:.75rem;justify-content:space-between;flex-wrap:wrap;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border)}
+.btn{padding:.6rem 1.4rem;border-radius:8px;border:2px solid transparent;font-family:-apple-system,sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--wine);color:#fff;border-color:var(--wine)}.btn-primary:hover{background:#3B0000}
+.btn-secondary{background:#fff;color:var(--slate-mid);border-color:var(--border)}.btn-secondary:hover{border-color:var(--slate-mid)}
+.btn-amber{background:var(--gold);color:white;border-color:var(--gold)}.btn-amber:hover{background:#92400E}
+/* COMPLETION */
+.completion-card{display:none;background:linear-gradient(135deg,#3B0000,var(--wine));color:white;border-radius:16px;padding:3rem 2rem;text-align:center;margin-top:2rem}
+.completion-card.show{display:block}
+.badge-icon{font-size:4rem;display:block;margin-bottom:1rem}
+.completion-card h2{font-family:Georgia,serif;font-size:1.8rem;margin-bottom:.75rem}
+.score-badge{display:inline-block;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);border-radius:999px;padding:.3rem 1.2rem;font-size:1rem;font-weight:700;margin-bottom:1rem}
+.completion-card p{font-size:.95rem;opacity:.88;line-height:1.7;max-width:560px;margin:0 auto .8rem}
+/* CERT */
+.cert-trigger-box{margin-top:1.5rem;padding:1.5rem;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.4);border-radius:12px;text-align:center}
+.cert-trigger-box p{font-size:.88rem;opacity:.85;margin-bottom:1rem;line-height:1.6}
+.cert-name-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.cert-name-input{padding:.6rem 1rem;font-family:-apple-system,sans-serif;font-size:.95rem;border:2px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(255,255,255,.15);color:white;width:250px}
+.cert-name-input::placeholder{color:rgba(255,255,255,.4)}
+.cert-name-input:focus{outline:none;border-color:#FCD34D}
+.btn-cert{background:#FCD34D;color:#1a1a1a;border:none;padding:.6rem 1.3rem;border-radius:8px;font-family:-apple-system,sans-serif;font-size:.88rem;font-weight:700;cursor:pointer}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:white;border-radius:8px;width:100%;max-width:780px;max-height:95vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.certificate{width:100%;background:white}
+.cert-frame{margin:16px;border:3px solid #6B1E1E;position:relative}
+.cert-frame::before{content:'';position:absolute;inset:5px;border:1px solid #92400E;pointer-events:none;z-index:1}
+.cert-stripe{height:5px;background:linear-gradient(90deg,#3B0000 0%,#92400E 40%,#2D6A4F 100%)}
+.cert-header{background:linear-gradient(135deg,#3B0000 0%,#6B1E1E 100%);padding:1.3rem 2rem 1.1rem;text-align:center}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.cert-inst-name{font-family:Georgia,serif;color:white;font-size:1rem;text-align:left;line-height:1.2}
+.cert-inst-cy{color:#FDE68A;font-size:.75rem;font-style:italic;display:block;font-family:-apple-system,sans-serif;font-weight:400}
+.cert-body{padding:1.6rem 2rem;text-align:center}
+.cert-presents{font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;margin-bottom:.4rem}
+.cert-main-title{font-family:Georgia,serif;font-size:1.4rem;color:#6B1E1E;line-height:1.2;margin-bottom:.2rem}
+.cert-main-cy{font-size:.85rem;color:#92400E;font-style:italic;margin-bottom:1.2rem}
+.cert-awarded-to{font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;color:#475569;margin-bottom:.2rem}
+.cert-name{font-family:Georgia,serif;font-size:1.9rem;font-style:italic;color:#6B1E1E;border-bottom:2px solid #E2E8F0;display:inline-block;padding:0 1rem .1rem;min-width:260px;margin-bottom:.3rem;line-height:1.3}
+.cert-score-pill{display:inline-block;background:#FEF3C7;border:1px solid #92400E;border-radius:999px;padding:.25rem 1rem;font-size:.8rem;font-weight:700;color:#92400E;margin:.5rem 0 .8rem}
+.cert-divider{height:1px;background:linear-gradient(90deg,transparent,#92400E,transparent);margin:.9rem auto;width:55%}
+.cert-text{font-size:.86rem;color:#1E293B;line-height:1.65;max-width:440px;margin:0 auto .7rem}
+.cert-course{font-family:Georgia,serif;font-size:.95rem;color:#1E293B;background:#FFF8F8;border:1px solid #FECACA;border-left:4px solid #6B1E1E;padding:.45rem .9rem;display:inline-block;margin-bottom:.35rem;text-align:left}
+.cert-course-cy{font-size:.76rem;color:#92400E;font-style:italic;display:block}
+.cert-competencies{font-size:.76rem;color:#475569;margin:.2rem auto 1rem;max-width:420px;line-height:1.55}
+.cert-footer-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:1rem;padding-top:1rem;border-top:1px solid #E2E8F0}
+.cert-sig-block{text-align:center}
+.cert-sig-line{height:1px;background:#1E293B;width:140px;margin:0 auto .25rem}
+.cert-sig-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569}
+.cert-seal{width:64px;height:64px;border-radius:50%;background:#6B1E1E;border:3px solid #92400E;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-size:.5rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;line-height:1.3;margin:0 auto}
+.cert-seal-icon{font-size:1.2rem;display:block;margin-bottom:1px}
+.cert-date-val{font-family:Georgia,serif;font-size:.9rem;color:#1E293B}
+.cert-date-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569;margin-top:.2rem}
+.cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.9rem 1.5rem 1.2rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
+.btn-cert-print{background:#6B1E1E;color:white;border:none;padding:.55rem 1.2rem;border-radius:8px;font-family:-apple-system,sans-serif;font-size:.86rem;font-weight:700;cursor:pointer}
+.btn-cert-close{background:#475569;color:white;border:none;padding:.55rem 1.2rem;border-radius:8px;font-family:-apple-system,sans-serif;font-size:.86rem;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <div class="lang-badge">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg · English</div>
+  <h1>Teaching Historical Enquiries &amp; Interpretations
+    <span>Dysgu Ymholiadau a Dehongliadau Hanesyddol — PGCE History</span>
+  </h1>
+  <p class="header-sub">From crafting the question to constructing the interpretation &nbsp;·&nbsp; O grefftio'r cwestiwn i adeiladu'r dehongliad</p>
+  <div class="subject-pills">
+    <span class="pill">📜 PGCE History · Hanes</span>
+    <span class="pill">🌿 Riley, Teaching History 99</span>
+    <span class="pill">📋 Three Hours · Tair Awr</span>
+    <span class="pill">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Curriculum for Wales</span>
+  </div>
+  <div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+  <p id="progress-label" class="progress-label">Section 1 of 6 · Adran 1 o 6</p>
+</header>
+<main>
+  <div class="section-nav">
+    <button class="snav-btn active" onclick="goTo(0)">1 · Good Enquiries</button>
+    <button class="snav-btn" onclick="goTo(1)">2 · Dodgy Questions</button>
+    <button class="snav-btn" onclick="goTo(2)">3 · Victorian Child Labour</button>
+    <button class="snav-btn" onclick="goTo(3)">4 · Coroner&#39;s Rolls</button>
+    <button class="snav-btn" onclick="goTo(4)">5 · Plan Your Enquiry</button>
+    <button class="snav-btn" onclick="goTo(5)">6 · Quiz &amp; Reflection</button>
+  </div>
+
+  <!-- ═══ SECTION 1: GOOD ENQUIRY QUESTIONS ═══ -->
+  <div class="section-card active" id="sec-0">
+    <div class="card-header wine">
+      <div class="icon">🌱</div>
+      <h2>Part 1: What Is a Good Enquiry Question?
+        <em>Rhan 1: Beth Yw Cwestiwn Ymholi Da? — 45 minutes</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 English</div>
+          <p>Michael Riley's 2000 article in <em>Teaching History</em> 99 remains one of the most influential pieces on enquiry planning in history education. He uses the metaphor of a <strong>'history garden'</strong> — enquiry questions as seeds that, carefully chosen and positioned, grow into coherent, rigorous and motivating learning sequences.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg</div>
+          <p>Mae erthygl Michael Riley yn <em>Teaching History</em> 99 (2000) yn parhau i fod yn un o'r darnau mwyaf dylanwadol ar gynllunio ymholiadau mewn addysg hanes. Mae'n defnyddio metaffor <strong>'gardd hanes'</strong> — mae cwestiynau ymholi fel hadau, a phan gaiff eu dewis a'u lleoli'n ofalus, maent yn tyfu i fod yn ddilyniant dysgu cydlynol.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"A planning device for knitting together a sequence of lessons, so that all the learning activities — teacher exposition, narrative, source-work, role-play, plenary — all move toward the resolution of an interesting historical problem by means of substantial motivating activity at the end."</p>
+        <p class="quote-attr">— Dr Michael Riley, Teaching History 99 (2000)</p>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">1</div> Discuss in pairs / Trafodwch mewn parau (5 mins)</div>
+        <p style="font-size:.9rem;margin-bottom:.6rem">From Riley's definition, discuss: What does it tell us an enquiry question is <em>NOT</em>? What does 'interesting historical problem' actually mean? What 'substantial motivating activity' have you seen or used? / O ddiffiniad Riley: Beth mae'n ei ddweud wrthym nad yw cwestiwn ymholi DDIM yn ei wneud?</p>
+        <label class="field-label">My notes / Fy nodiadau:</label>
+        <textarea placeholder="Your thoughts / Eich meddyliau…"></textarea>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1.05rem;margin:1.2rem 0 .9rem;color:var(--wine)">Three Criteria for a Good Individual Enquiry · Tair Maen Prawf</h3>
+      <div class="criteria-grid">
+        <div class="criteria-card">
+          <span class="criteria-num">1</span>
+          <h4>Captures Interest &amp; Imagination · Dal Diddordeb</h4>
+          <p>Must create a genuine puzzle — not just a title. <em>'Did the towns make people free?'</em> is provocative and specific. <em>'What was life like in towns?'</em> is neither. · Rhaid creu pos dilys — nid dim ond teitl. Mae <em>'A wnaeth y trefi wneud pobl yn rhydd?'</em> yn heriol ac yn benodol.</p>
+        </div>
+        <div class="criteria-card">
+          <span class="criteria-num">2</span>
+          <h4>Historical Thinking at the Forefront · Meddwl Hanesyddol</h4>
+          <p>Every good enquiry foregrounds a second-order concept: <strong>causation, change &amp; continuity, evidential understanding, or interpretations</strong> — embedded in the question itself, not bolted on. · Rhaid i bob ymholiad da flaenoriaethu cysyniad ail-orchymyn.</p>
+        </div>
+        <div class="criteria-card">
+          <span class="criteria-num">3</span>
+          <h4>Substantial Outcome Activity · Gweithgaredd Canlyniad</h4>
+          <p>Pupils must be able to <strong>genuinely answer</strong> the question at the end — not just write about the topic. The outcome generates real debate and demonstrates real understanding. · Rhaid i ddisgyblion allu <strong>ateb y cwestiwn yn ddilys</strong> ar y diwedd.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1.05rem;margin:1.2rem 0 .8rem;color:var(--wine)">Weak vs Strong: The Towns Example · Gwan vs Cryf</h3>
+      <div class="compare-pair">
+        <div class="compare-weak">
+          <div class="compare-label">❌ Weak · Gwan</div>
+          <div class="compare-q">"What was life like in the towns?"</div>
+          <ul class="compare-points">
+            <li>Merely descriptive — not historically rigorous</li>
+            <li>No puzzle or intellectual challenge</li>
+            <li>Does not foreground any second-order concept</li>
+            <li>Will not excite lower <em>or</em> higher attainers</li>
+            <li>Drifts into antiquarianism</li>
+            <li>No criteria for choosing or prioritising information</li>
+          </ul>
+        </div>
+        <div class="compare-strong">
+          <div class="compare-label">✅ Strong · Cryf</div>
+          <div class="compare-q">"Did the towns make people free?"</div>
+          <ul class="compare-points">
+            <li>Carries a specific, surprising puzzle</li>
+            <li>Foregrounds a genuine historical tension</li>
+            <li>Pupils fascinated by questions of rules and freedom</li>
+            <li>Clear criteria for information selection</li>
+            <li>Allows nuance: free for whom? when? in what ways?</li>
+            <li>Connects to pupils' own sense of fairness and rights</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">2</div> Pair task — improve this question / Tasg pâr — gwella'r cwestiwn hwn</div>
+        <p style="font-size:.9rem;margin-bottom:.6rem"><strong>"What was life like in the towns?"</strong> — Which of the three criteria does it fail? What is wrong with it historically? Reframe it twice — once for each of two different second-order concepts. / Pa un o'r tair maen prawf y mae'n methu? Beth sy'n hanesyddol anghywir? Ail-framiwch ef ddwywaith.</p>
+        <label class="field-label">Why it fails / Pam mae'n methu:</label>
+        <textarea style="min-height:55px" placeholder="It fails criterion … because …"></textarea>
+        <label class="field-label">Version A — reframed around causation or change / Fersiwn A:</label>
+        <textarea style="min-height:55px" placeholder="e.g. 'When were the turning points in the development of medieval towns?'"></textarea>
+        <label class="field-label">Version B — reframed around evidential understanding or interpretations / Fersiwn B:</label>
+        <textarea style="min-height:55px" placeholder="e.g. 'Why is it so difficult to find out whether medieval towns made people free?'"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <span></span>
+        <button class="btn btn-primary" onclick="nextSection(0)">Next: The Dodgy Questions Game → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: DODGY QUESTIONS GAME ═══ -->
+  <div class="section-card" id="sec-1">
+    <div class="card-header gold">
+      <div class="icon">🎯</div>
+      <h2>Part 2: The Dodgy Questions Game
+        <em>Rhan 2: Gêm y Cwestiynau Amheus — Treaty of Versailles, Year 9</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="info-box gold">
+        <h3>🎮 How to use this activity / Sut i ddefnyddio'r gweithgaredd hwn</h3>
+        <p>Tag each question using the buttons below, then discuss: Which encourage morally superficial judgements? Which lend themselves to evidential work? Which to interpretations? Which would you choose — and why? · Tagio pob cwestiwn gan ddefnyddio'r botymau isod, yna trafodwch.</p>
+        <p style="margin-top:.4rem;font-size:.85rem">From Christine Counsell's workshop at the SHP Conference (2000) — reproduced in Riley, Teaching History 99. / O weithdai Christine Counsell yn Gynhadledd SHP.</p>
+      </div>
+
+      <div class="dodgy-btns">
+        <span style="font-size:.8rem;font-weight:600;color:var(--slate-mid);align-self:center">Tag a question as:</span>
+        <button class="tag-btn dodgy" id="tag-dodgy" onclick="setTag('dodgy')">❌ Dodgy · Amheus</button>
+        <button class="tag-btn evidence" id="tag-evidence" onclick="setTag('evidence')">🔍 Evidence focus · Ffocws Tystiolaeth</button>
+        <button class="tag-btn interp" id="tag-interp" onclick="setTag('interp')">💬 Interpretations · Dehongliadau</button>
+        <button class="tag-btn good" id="tag-good" onclick="setTag('good')">✅ Good choice · Dewis Da</button>
+        <button class="tag-btn clear-tag" onclick="setTag(null)">Clear / Clirio</button>
+      </div>
+
+      <div class="dodgy-grid" id="dodgyGrid"></div>
+
+      <div class="info-box key" style="margin-top:1.2rem">
+        <h3>💡 The Key Insight / Y Prif Fewnwelediad</h3>
+        <p><strong>Question 1 — "Was the Treaty of Versailles fair?"</strong> asks pupils to BE the moral judge. It invites anachronistic judgement — pupils will give a verdict based on present-day values, not historical understanding.</p>
+        <p style="margin-top:.6rem"><strong>Question 2 — "Why have some people thought that the Treaty of Versailles was not fair?"</strong> asks pupils to UNDERSTAND why people judged differently. It opens up interpretations — different groups, different perspectives, different moments in time.</p>
+        <p style="margin-top:.6rem;color:#FCD34D;font-weight:600">The shift from 'judge' to 'understand why people judged' is fundamental to all interpretations work. · Mae'r symudiad o 'farnu' i 'ddeall pam roedd pobl yn barnu yn wahanol' yn sylfaenol i waith dehongliadau.</p>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">3</div> Reflection / Adlewyrchiad</div>
+        <label class="field-label">Which question(s) are seriously dodgy and why? / Pa gwestiynau sy'n wirioneddol amheus a pham?</label>
+        <textarea placeholder="Questions … are dodgy because …"></textarea>
+        <label class="field-label">Which question would you choose for a rigorous Year 9 enquiry — and why? / Pa gwestiwn fyddech chi'n ei ddewis ar gyfer ymholiad blwyddyn 9 trylwyr?</label>
+        <textarea placeholder="I would choose question … because it foregrounds … and avoids …"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(0)">← Back / Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(1)">Next: Victorian Child Labour → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3: VICTORIAN CHILD LABOUR ═══ -->
+  <div class="section-card" id="sec-2">
+    <div class="card-header sage">
+      <div class="icon">🏭</div>
+      <h2>Part 3: A Worked Example — Victorian Child Labour
+        <em>Rhan 3: Enghraifft Weithiol — Llafur Plant Fictoraidd — 50 minutes</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 The Enquiry Sequence</div>
+          <p>This worked example shows how a carefully sequenced enquiry builds from visual stimulus through primary source to historical interpretation. The overarching question sharpens over the sequence, eventually becoming an interpretations question focused on a specific filmmaker's choices.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Y Dilyniant Ymholi</div>
+          <p>Mae'r enghraifft weithiol hon yn dangos sut mae dilyniant ymholi sydd wedi'i gynllunio'n ofalus yn adeiladu o ysgogiad gweledol drwy ffynhonnell gynradd i ddehongliad hanesyddol. Mae'r cwestiwn gorgyffwrdd yn miniogi dros y dilyniant.</p>
+        </div>
+      </div>
+
+      <div class="info-box wine" style="text-align:center;padding:1.4rem">
+        <h3>The Enquiry Questions · Y Cwestiynau Ymholi</h3>
+        <p style="font-family:Georgia,serif;font-size:1.1rem;font-style:italic;color:var(--slate);margin-bottom:.4rem">"What was life really like in the Victorian countryside?"</p>
+        <p style="font-size:.82rem;color:var(--slate-mid);margin-bottom:.8rem">...sharpening to the interpretations question / ...yn miniogi i'r cwestiwn dehongliadau:</p>
+        <p style="font-family:Georgia,serif;font-size:1.1rem;font-style:italic;color:var(--slate)">"What makes the start of Michael Winterbottom's film <em>Jude</em> so powerful?"</p>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1.05rem;margin:.5rem 0 .9rem;color:var(--sage)">The Three-Step Sequence · Y Dilyniant Tair Cam</h3>
+      <div class="sequence-steps">
+        <div class="step-card">
+          <span class="step-icon">🖼️</span>
+          <h4>Step 1: The Painting</h4>
+          <p>Creates a question: is this accurate? Pupils are curious <em>before</em> they are informed. 30 seconds — invent a title.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-icon">📜</span>
+          <h4>Step 2: Primary Sources</h4>
+          <p>Builds knowledge: individual voices, specific detail, evidential complexity. 1867 parliamentary commission testimonies.</p>
+        </div>
+        <div class="step-card">
+          <span class="step-icon">🎬</span>
+          <h4>Step 3: Film Interpretation</h4>
+          <p>Now pupils can evaluate: does this reflect what we know? What choices has the filmmaker made?</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1.05rem;margin:1.2rem 0 .8rem;color:var(--sage)">Step 1: The Harvest Painting · Cam 1: Y Paentiad Cynhaeaf</h3>
+      <div class="info-box sage">
+        <h3>🖼️ Activity: Invent a Title / Gweithgaredd: Dyfeisiwch Deitl</h3>
+        <p>Pupils are given 30 seconds to invent a title for a harvest painting. Suggestions included: <em>Harvest Picnic · Rewards for Labour · The Country Idyll · Family Day Out · Contentment · Bringing the Corn</em></p>
+        <p style="margin-top:.5rem">The painting's actual title: <strong>'And the Valleys Also Stand Thick With Corn' (Psalm 23)</strong> — message: 'Life in the countryside is good.'</p>
+      </div>
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">4</div> In pairs — 2 minutes / Mewn parau — 2 munud</div>
+        <p style="font-size:.9rem;margin-bottom:.6rem">What in the painting suggests 'life in the countryside is good'? What has the painter chosen to include — and what might they have left out? What sources could you use to test whether this painting is accurate? / Beth yn y paentiad sy'n awgrymu 'mae bywyd yn y wlad yn dda'?</p>
+        <textarea placeholder="My notes / Fy nodiadau…"></textarea>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1.05rem;margin:1.2rem 0 .8rem;color:var(--sage)">Step 2: Parliamentary Commission Evidence 1867 · Cam 2: Tystiolaeth 1867</h3>
+      <p style="font-size:.9rem;color:var(--slate-mid);margin-bottom:.8rem">Riley stressed the importance of building children's knowledge about Victorian child labour <em>before</em> analysing an interpretation. These sources do that work. / Pwysleisiodd Riley bwysigrwydd adeiladu gwybodaeth cyn dadansoddi dehongliad.</p>
+
+      <div class="source-card">
+        <div class="source-header"><span>James Hoare, aged 13 · 13 oed — Staple Fitzpaine, Somerset</span><span>Parliamentary Commission 1867</span></div>
+        <div class="source-text">"I began work at seven years old driving the plough for my father. <em>Found I could not manage the horses well. Sometimes they knocked me down, never hurt me, ran over me sometimes.</em> I went to school before I worked. After I began working, I did five months at school and the rest of the year I worked. I left school at eleven. <em>I liked school better.</em>"</div>
+      </div>
+      <div class="source-card">
+        <div class="source-header"><span>George Wembridge, aged 10 · 10 oed — Staple Fitzpaine</span><span>Parliamentary Commission 1867</span></div>
+        <div class="source-text">"Began working at nine years, driving plough; can manage horses and keep pigs. Father is a labourer. <em>Was taken away from school to mind birds. The farmer wanted a boy, he gave me two shillings.</em>"</div>
+      </div>
+      <div class="source-card">
+        <div class="source-header"><span>Thomas Hole, aged 16 · 16 oed — Bishops Lydeard, Somerset</span><span>Parliamentary Commission 1867</span></div>
+        <div class="source-text">"I first went to work at eight. Went to regular work at nine, when I began to lead horses. <em>Hours 5.30 am to 7 pm in barley sowing; wheat sowing 6.30 am to 4.30 pm.</em> Never went to school at all."</div>
+      </div>
+      <div class="source-card">
+        <div class="source-header"><span>Maria Hayes, aged 10 · 10 oed — Bishops Lydeard</span><span>Parliamentary Commission 1867</span></div>
+        <div class="source-text">"Mother goes out washing, and I stay to take care of the children. One of them is seven years old, the other is four. <em>I can take very good care of them.</em> I like coming to school best."</div>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">5</div> Role play + Discussion / Chwarae Rôl + Trafodaeth</div>
+        <p style="font-size:.9rem;margin-bottom:.6rem">Work in pairs. One person = the parliamentary commissioner. The other = a witness from one of the extracts. Rehearse a 2-minute interview. Then discuss: What were the commissioners interested in? What do the children's own voices add that a summary would not? What questions does this source leave unanswered? / Gweithiwch mewn parau. Un person = y comisiynydd seneddol.</p>
+        <textarea placeholder="Discussion notes / Nodiadau trafodaeth…"></textarea>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1.05rem;margin:1.2rem 0 .8rem;color:var(--sage)">Step 3: Film Interpretation — Winterbottom's <em>Jude</em> (1996) · Cam 3: Dehongliad Ffilm</h3>
+      <div class="info-box teal">
+        <h3>🎬 Three Viewings · Tair Gwyliadwriaeth</h3>
+        <p>Watch the opening of Winterbottom's 1996 film <em>Jude</em> three times, responding to a different question each time. / Gwyliwch agoriad ffilm Winterbottom tair gwaith, gan ymateb i gwestiwn gwahanol bob tro.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-top:.7rem">
+          <div style="background:white;border-radius:8px;padding:.7rem;text-align:center;border:1px solid var(--teal-light)">
+            <div style="font-weight:700;color:var(--teal);font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">1st viewing · 1af</div>
+            <p style="font-size:.84rem;color:var(--slate)">How does the opening make you <strong>feel</strong>?</p>
+          </div>
+          <div style="background:white;border-radius:8px;padding:.7rem;text-align:center;border:1px solid var(--teal-light)">
+            <div style="font-weight:700;color:var(--teal);font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">2nd viewing · 2il</div>
+            <p style="font-size:.84rem;color:var(--slate)">How has Winterbottom <strong>created</strong> this feeling?</p>
+          </div>
+          <div style="background:white;border-radius:8px;padding:.7rem;text-align:center;border:1px solid var(--teal-light)">
+            <div style="font-weight:700;color:var(--teal);font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.3rem">3rd viewing · 3ydd</div>
+            <p style="font-size:.84rem;color:var(--slate)">How does the film <strong>reflect reality</strong>?</p>
+          </div>
+        </div>
+        <p style="margin-top:.7rem;font-size:.84rem"><strong>Filmmaker's choices · Dewisiadau'r cyfarwyddwr:</strong> Black-and-white film · Muted sound · Mist · Lonely child in empty landscape · Deliberate atmosphere</p>
+      </div>
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">6</div> Discussion / Trafodaeth</div>
+        <p style="font-size:.9rem;margin-bottom:.6rem">Why does showing the film AFTER the primary sources make such a difference? What does the comparison between evidence and film reveal about what interpretations do? How do follow-up questions like 'How typical was it that children worked alone?' push pupils to evaluate the interpretation against evidence? / Pam mae dangos y ffilm AR ÔL y ffynonellau cynradd yn gwneud cymaint o wahaniaeth?</p>
+        <textarea placeholder="The key principle is… / Y prif egwyddor yw…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(1)">← Back / Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(2)">Next: The Coroner&#39;s Rolls → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4: CORONER'S ROLLS ═══ -->
+  <div class="section-card" id="sec-3">
+    <div class="card-header indigo">
+      <div class="icon">⚖️</div>
+      <h2>Part 4: The Coroner's Rolls — A Different Enquiry
+        <em>Rhan 4: Rholiau'r Crwner — Ymholiad Gwahanol — 35 minutes</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 English</div>
+          <p>The Somerset and Dorset Coroner's Rolls (1314–1321) are accidental records of medieval life. They record what people were doing when they died — and in doing so, illuminate the texture of daily existence in ways that chronicle sources rarely can. They are <strong>rich, not thin</strong> — one vivid individual does more work than a list of facts.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg</div>
+          <p>Mae Rholiau Crwner Somerset a Dorset (1314–1321) yn gofnodion damweiniol o fywyd canoloesol. Maent yn cofnodi beth roedd pobl yn ei wneud pan fuont farw — ac wrth wneud hynny, maent yn goleuo gwead bywyd bob dydd mewn ffyrdd y mae ffynonellau cronicl yn anaml yn gallu eu cyflawni.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1.05rem;margin:0 0 .9rem;color:var(--indigo)">Somerset County Court — Selected Entries · Cofnodion Dethol</h3>
+
+      <div class="source-card">
+        <div class="source-header"><span>Shearston, 1317</span><span>Somerset Coroner's Rolls</span></div>
+        <div class="source-text">"Robert de Cornwale went to Haddeleghe in Shearston tithing where, <em>because of hunger and destitution, he fell to the ground and died at once by misadventure.</em>"</div>
+      </div>
+      <div class="source-card">
+        <div class="source-header"><span>Nettlecombe, 1317</span><span>Somerset Coroner's Rolls</span></div>
+        <div class="source-text">"Cristina, a poor child, was at Rowdon seeking alms. <em>She was abandoned in Bromparke in Nettlecombe tithing. They do not know by whom, because she was without a father and mother, and she was aged a year or more. She died at once from weakness and the cold.</em>"</div>
+      </div>
+      <div class="source-card">
+        <div class="source-header"><span>Greenham, 1321</span><span>Somerset Coroner's Rolls</span></div>
+        <div class="source-text">"Ralph (the) Smith wanted to knock down the chimney of his forge with one of his blacksmith's hammers in order to repair it. He hammered at his chimney until it leaned over, <em>but as he went out of the door of his smithy the chimney fell on his head, injuring him fatally.</em>"</div>
+      </div>
+      <div class="source-card">
+        <div class="source-header"><span>Wellington, 1316</span><span>Somerset Coroner's Rolls</span></div>
+        <div class="source-text">"William Horny, coming from the market at Wellington, reached Thornheye and there <em>from hunger and weakness he fell to the ground and died by misadventure.</em>"</div>
+      </div>
+      <div class="source-card">
+        <div class="source-header"><span>Runnington, 1316</span><span>Somerset Coroner's Rolls</span></div>
+        <div class="source-text">"William Consail and John atte Brugge together were coming from Wellington market. At Broadbridge <em>they wanted to ride across the Tone on one mare, but because of the height of the water they were drowned by misadventure.</em>"</div>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">7</div> Discussion — 10 mins / Trafodaeth — 10 munud</div>
+        <p style="font-size:.9rem;margin-bottom:.6rem">What do these records tell us about medieval life that other sources might not? What are the limitations of this source? What enquiry question might you build around these records? / Beth mae'r cofnodion hyn yn ei ddweud wrthym am fywyd canoloesol na allai ffynonellau eraill ei ddweud?</p>
+        <label class="field-label">My draft enquiry question / Fy nghwestiwn ymholi drafft:</label>
+        <textarea style="min-height:55px" placeholder="e.g. 'What does a year of accidental deaths tell us about life in medieval Somerset?'"></textarea>
+        <label class="field-label">Possible outcome activity / Gweithgaredd canlyniad posib:</label>
+        <textarea style="min-height:55px" placeholder="e.g. …"></textarea>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1.05rem;margin:1.2rem 0 .8rem;color:var(--indigo)">The Simon Schama Task — Interpretations in Practice · Y Dasg Simon Schama</h3>
+      <div class="info-box indigo">
+        <h3>🎬 Create a 60-second programme introduction · Crëwch gyflwyniad rhaglen 60 eiliad</h3>
+        <p>Create a one-minute introduction to the programme on medieval peasants for Simon Schama's <em>History of Britain</em>. Aim: "Not just instruction, but pleasure..." / Crëwch gyflwyniad un munud i'r rhaglen ar fywydau ffermwyr canoloesol ar gyfer <em>Hanes Prydain</em> Simon Schama.</p>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:.8rem 0">
+          <div style="background:white;border-radius:8px;padding:.8rem;border:1px solid var(--indigo-light)">
+            <div style="font-weight:700;color:var(--indigo);font-size:.76rem;text-transform:uppercase;margin-bottom:.3rem">1–20 seconds</div>
+            <p style="font-size:.84rem;color:var(--slate)"><strong>Opening</strong> — grab the viewer's attention / Cipiwch sylw'r gwyliedydd</p>
+          </div>
+          <div style="background:white;border-radius:8px;padding:.8rem;border:1px solid var(--indigo-light)">
+            <div style="font-weight:700;color:var(--indigo);font-size:.76rem;text-transform:uppercase;margin-bottom:.3rem">21–40 seconds</div>
+            <p style="font-size:.84rem;color:var(--slate)"><strong>Development</strong> — individual people and evidence / Unigolion a thystiolaeth</p>
+          </div>
+          <div style="background:white;border-radius:8px;padding:.8rem;border:1px solid var(--indigo-light)">
+            <div style="font-weight:700;color:var(--indigo);font-size:.76rem;text-transform:uppercase;margin-bottom:.3rem">41–60 seconds</div>
+            <p style="font-size:.84rem;color:var(--slate)"><strong>Hook</strong> into the programme — what's at stake? / Bachyn i mewn i'r rhaglen</p>
+          </div>
+        </div>
+        <p><strong>Resources available:</strong> Images from the Luttrell Psalter (1320–40) · Somerset Coroner's Rolls (1314–21) · Background reading on medieval peasants</p>
+      </div>
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">8</div> Plan your 60 seconds / Cynlluniwch eich 60 eiliad (15 mins)</div>
+        <p style="font-size:.9rem;margin-bottom:.6rem">Consider: What impression of medieval peasant life do you want to create? Which individuals from the Coroner's Rolls will you feature — and why those? How do your choices relate to the evidence? What are you leaving out? After sharing: What choices did different groups make? What do those choices reveal about the nature of interpretation? / Ystyriwch: Pa argraff o fywyd ffermwyr canoloesol yr ydych chi am ei chreu?</p>
+        <label class="field-label">My script plan / Cynllun fy sgript:</label>
+        <textarea style="min-height:100px" placeholder="1–20 seconds: &#10;21–40 seconds: &#10;41–60 seconds: "></textarea>
+        <label class="field-label">What my choices reveal about interpretation / Beth mae fy newisiadau'n ei ddatgelu am ddehongliad:</label>
+        <textarea placeholder="By choosing … I am prioritising … and leaving out … This shows that interpretations always involve …"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(2)">← Back / Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(3)">Next: Plan Your Own Enquiry → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 5: PLAN YOUR OWN ENQUIRY ═══ -->
+  <div class="section-card" id="sec-4">
+    <div class="card-header teal">
+      <div class="icon">📝</div>
+      <h2>Part 5: Planning Your Own Enquiry
+        <em>Rhan 5: Cynllunio Eich Ymholiad Eich Hun — 30 minutes</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <h3 style="font-family:Georgia,serif;font-size:1.05rem;margin-bottom:.9rem;color:var(--teal)">Riley's Ten Key Questions · Deg Cwestiwn Allweddol Riley</h3>
+      <div class="riley-grid">
+        <div class="riley-card"><div class="riley-num">1</div><p>Is this area of content <strong>significant</strong>? / A yw'r cynnwys hwn yn <strong>arwyddocaol</strong>?</p></div>
+        <div class="riley-card"><div class="riley-num">2</div><p>How can we turn this into a <strong>rigorous and motivating enquiry question</strong>? / Sut gallwn droi hwn yn gwestiwn ymholi <strong>trylwyr a chymhellol</strong>?</p></div>
+        <div class="riley-card"><div class="riley-num">3</div><p>Can we <strong>focus on individual people</strong>? / A allwn <strong>ganolbwyntio ar unigolion</strong>?</p></div>
+        <div class="riley-card"><div class="riley-num">4</div><p>How will pupils <strong>communicate understanding through an engaging end product</strong>? / Sut bydd disgyblion yn <strong>cyfathrebu dealltwriaeth</strong>?</p></div>
+        <div class="riley-card"><div class="riley-num">5</div><p>How will we <strong>hook them in</strong> at the start? / Sut byddwn yn eu <strong>dal ar y dechrau</strong>?</p></div>
+        <div class="riley-card"><div class="riley-num">6</div><p>How will we <strong>sequence the learning</strong> for maximum motivation? / Sut byddwn yn <strong>dilyniadu'r dysgu</strong>?</p></div>
+        <div class="riley-card"><div class="riley-num">7</div><p>How can we help pupils <strong>choose and use information</strong>? / Sut gallwn helpu disgyblion i <strong>ddewis a defnyddio gwybodaeth</strong>?</p></div>
+        <div class="riley-card"><div class="riley-num">8</div><p>How can we create activities appealing to <strong>different intelligences</strong>? / Sut gallwn greu gweithgareddau sy'n apelio at <strong>ddeallusrwyddau gwahanol</strong>?</p></div>
+        <div class="riley-card"><div class="riley-num">9</div><p>How will we create <strong>'mini-hooks'</strong> to engage learners? / Sut byddwn yn creu <strong>'bachynnau mini'</strong>?</p></div>
+        <div class="riley-card"><div class="riley-num">10</div><p>How can we create <strong>rich resources</strong> rather than 'grubby gobbets'? / Sut gallwn greu <strong>adnoddau cyfoethog</strong>?</p></div>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1.05rem;margin:1.4rem 0 .9rem;color:var(--teal)">Your Planning Framework — Five Steps · Eich Fframwaith Cynllunio — Pum Cam</h3>
+
+      <div class="plan-step">
+        <div class="plan-step-num">1</div>
+        <h4>The Enquiry Question / Y Cwestiwn Ymholi</h4>
+        <p>Draft three versions — weakest to strongest. Apply the three criteria. Which is most rigorous AND most engaging? / Drafftiwch dair fersiwn — o'r gwannaf i'r cryfaf.</p>
+        <label class="field-label">Version 1 (weakest) / Fersiwn 1 (gwannaf):</label>
+        <textarea style="min-height:45px" placeholder="Probably too descriptive — 'What was life like in…?'"></textarea>
+        <label class="field-label">Version 2 / Fersiwn 2:</label>
+        <textarea style="min-height:45px" placeholder="Better — has a concept, but could be sharper…"></textarea>
+        <label class="field-label">Version 3 (strongest) / Fersiwn 3 (cryfaf):</label>
+        <textarea style="min-height:45px" placeholder="Rigorous, engaging, foregrounding a second-order concept…"></textarea>
+      </div>
+
+      <div class="plan-step">
+        <div class="plan-step-num">2</div>
+        <h4>The Initial Stimulus / Yr Ysgogiad Cychwynnol</h4>
+        <p>What painting, film clip, object or source will hook pupils? How does it create a question <em>before</em> knowledge? / Pa baentiad, clip ffilm, gwrthrych neu ffynhonnell fydd yn dal disgyblion?</p>
+        <textarea placeholder="Stimulus: …&#10;Why it creates curiosity before knowledge: …"></textarea>
+      </div>
+
+      <div class="plan-step">
+        <div class="plan-step-num">3</div>
+        <h4>Source Sequence / Dilyniant Ffynonellau</h4>
+        <p>What types of source feature in each lesson? How does each one add something different to pupils' understanding? / Pa fathau o ffynhonnell sydd ym mhob gwers?</p>
+        <textarea placeholder="Lesson 1 source type: …  adds: …&#10;Lesson 2 source type: …  adds: …&#10;Lesson 3 source type: …  adds: …"></textarea>
+      </div>
+
+      <div class="plan-step">
+        <div class="plan-step-num">4</div>
+        <h4>The Interpretations Element / Yr Elfen Dehongliadau</h4>
+        <p>Where in the sequence do you introduce an interpretation? What knowledge do pupils need BEFORE they can evaluate it? / Ble yn y dilyniant ydych chi'n cyflwyno dehongliad?</p>
+        <textarea placeholder="The interpretation I will use: …&#10;Prior knowledge pupils need: …&#10;Questions pupils will use to evaluate it: …"></textarea>
+      </div>
+
+      <div class="plan-step">
+        <div class="plan-step-num">5</div>
+        <h4>The Outcome Activity / Y Gweithgaredd Canlyniad</h4>
+        <p>What substantial, motivating task enables pupils to genuinely answer the question? How will you differentiate it? / Pa dasg sylweddol sy'n galluogi disgyblion i ateb y cwestiwn yn ddilys?</p>
+        <textarea placeholder="The outcome activity: …&#10;How pupils answer the enquiry question through it: …&#10;Differentiation: …"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(3)">← Back / Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(4)">Next: Quiz &amp; Reflection → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 6: QUIZ & REFLECTION ═══ -->
+  <div class="section-card" id="sec-5">
+    <div class="card-header slate">
+      <div class="icon">🪞</div>
+      <h2>Part 6: Knowledge Check &amp; Reflection
+        <em>Rhan 6: Gwiriad Gwybodaeth ac Adlewyrchiad — 20 minutes</em>
+      </h2>
+    </div>
+    <div class="card-body"><div class="quiz-question" id="q1"><p class="q-text"><span class="q-num">1</span>According to Riley (2000), what is the most fundamental problem with the enquiry question 'What was life like in the towns?'</p><p class="q-welsh">· Yn ôl Riley (2000), beth yw'r broblem fwyaf sylfaenol gyda'r cwestiwn ymholi 'Sut beth oedd bywyd yn y trefi?'</p><div class="options"><button class="option-btn" onclick="checkQ('q1',this,false)">It is too long to fit on a lesson plan / Mae'n rhy hir i ffitio ar gynllun gwers</button><button class="option-btn" onclick="checkQ('q1',this,true)">It is merely descriptive and does not foreground any second-order historical concept or create a genuine intellectual puzzle / Dim ond disgrifiadol ydyw ac nid yw'n blaenoriaethu unrhyw gysyniad hanesyddol ail-orchymyn</button><button class="option-btn" onclick="checkQ('q1',this,false)">It is not suitable for lower-attaining pupils / Nid yw'n addas ar gyfer disgyblion is eu cyrhaeddiad</button><button class="option-btn" onclick="checkQ('q1',this,false)">It does not include a named historical figure / Nid yw'n cynnwys ffigur hanesyddol o'r enw</button></div><div class="feedback" id="q1-fb"></div></div><div class="quiz-question" id="q2"><p class="q-text"><span class="q-num">2</span>In the Dodgy Questions Game, why is 'Was the Treaty of Versailles fair?' considered the most problematic question?</p><p class="q-welsh">· Yn Gêm y Cwestiynau Amheus, pam mae 'A oedd Cytundeb Versailles yn deg?' yn cael ei ystyried y cwestiwn mwyaf problematig?</p><div class="options"><button class="option-btn" onclick="checkQ('q2',this,false)">It is too vague and could refer to many different treaties / Mae'n rhy amwys</button><button class="option-btn" onclick="checkQ('q2',this,true)">It asks pupils to be moral judges using present-day values rather than understanding why people at the time judged differently — encouraging anachronistic thinking rather than historical thinking / Mae'n gofyn i ddisgyblion fod yn farnwyr moesol gan ddefnyddio gwerthoedd presennol</button><button class="option-btn" onclick="checkQ('q2',this,false)">It is too difficult for Year 9 pupils to understand / Mae'n rhy anodd i ddisgyblion Blwyddyn 9</button><button class="option-btn" onclick="checkQ('q2',this,false)">It focuses on interpretation rather than causation which is better at Key Stage 3 / Mae'n canolbwyntio ar ddehongliad yn hytrach na achosiaeth</button></div><div class="feedback" id="q2-fb"></div></div><div class="quiz-question" id="q3"><p class="q-text"><span class="q-num">3</span>Why does Riley's worked example show the film Jude AFTER the primary sources rather than before?</p><p class="q-welsh">· Pam mae enghraifft weithiol Riley yn dangos y ffilm Jude AR ÔL y ffynonellau cynradd yn hytrach na chyn hynny?</p><div class="options"><button class="option-btn" onclick="checkQ('q3',this,false)">Because films are more engaging and should be saved as a reward / Oherwydd bod ffilmiau'n fwy diddorol ac y dylid eu cadw fel gwobr</button><button class="option-btn" onclick="checkQ('q3',this,true)">Because pupils need substantive historical knowledge before they can evaluate an interpretation — the comparison between evidence and film is only possible if pupils know enough to compare / Oherwydd bod angen gwybodaeth hanesyddol sylweddol ar ddisgyblion cyn y gallant werthuso dehongliad</button><button class="option-btn" onclick="checkQ('q3',this,false)">Because copyright rules prevent showing films at the start of a lesson / Oherwydd bod rheolau hawlfraint yn atal dangos ffilmiau ar ddechrau gwers</button><button class="option-btn" onclick="checkQ('q3',this,false)">Because the film was made in 1996 and pupils need context about that decade first / Oherwydd bod y ffilm wedi'i gwneud yn 1996 a bod angen cyd-destun ar ddisgyblion</button></div><div class="feedback" id="q3-fb"></div></div><div class="quiz-question" id="q4"><p class="q-text"><span class="q-num">4</span>Why does Riley describe the Somerset Coroner's Rolls as particularly valuable for history teaching?</p><p class="q-welsh">· Pam mae Riley yn disgrifio Rholiau Crwner Somerset fel rhai arbennig o werthfawr ar gyfer addysgu hanes?</p><div class="options"><button class="option-btn" onclick="checkQ('q4',this,false)">Because they cover a long period and show change over time / Oherwydd eu bod yn cwmpasu cyfnod hir</button><button class="option-btn" onclick="checkQ('q4',this,true)">Because they are accidental records of what individuals were actually doing — giving rich, specific details about the texture of daily life that chronicle sources rarely provide / Oherwydd mai cofnodion damweiniol o'r hyn roedd unigolion yn ei wneud mewn gwirionedd ydynt</button><button class="option-btn" onclick="checkQ('q4',this,false)">Because they contain reliable statistical data about medieval mortality rates / Oherwydd eu bod yn cynnwys data ystadegol dibynadwy</button><button class="option-btn" onclick="checkQ('q4',this,false)">Because they were written by ordinary people rather than church authorities / Oherwydd eu bod wedi'u hysgrifennu gan bobl cyffredin</button></div><div class="feedback" id="q4-fb"></div></div><div class="quiz-question" id="q5"><p class="q-text"><span class="q-num">5</span>What does Riley mean by his criteria that a good enquiry question must result in a 'substantial outcome activity'?</p><p class="q-welsh">· Beth mae Riley yn ei olygu wrth ei faen prawf bod yn rhaid i gwestiwn ymholi da arwain at 'weithgaredd canlyniad sylweddol'?</p><div class="options"><button class="option-btn" onclick="checkQ('q5',this,false)">The outcome must be a long piece of extended writing in exam conditions / Rhaid i'r canlyniad fod yn ddarn hir o ysgrifennu estynedig</button><button class="option-btn" onclick="checkQ('q5',this,true)">Pupils must be able to genuinely answer the enquiry question through a motivating final task — not just write about the topic — and the task should generate real debate demonstrating real historical understanding / Rhaid i ddisgyblion allu ateb y cwestiwn ymholi yn ddilys drwy dasg derfynol gymhellol</button><button class="option-btn" onclick="checkQ('q5',this,false)">The activity must involve a creative project such as a poster or drama performance / Rhaid i'r gweithgaredd gynnwys prosiect creadigol</button><button class="option-btn" onclick="checkQ('q5',this,false)">It must be a formal assessment that can be compared against national standards / Rhaid iddo fod yn asesiad ffurfiol</button></div><div class="feedback" id="q5-fb"></div></div>
+      <h3 style="font-family:Georgia,serif;font-size:1.05rem;margin:1.5rem 0 .8rem;color:var(--slate)">Six Key Takeaways · Chwe Prif Gasgliad</h3>
+      <div class="takeaway-grid">
+        <div class="takeaway-card"><div class="tk-num">1</div><div><div class="tk-en">An enquiry question must be historically rigorous — it must foreground a second-order concept and require genuine historical thinking, not description or moral judgement.</div><div class="tk-cy">Rhaid i gwestiwn ymholi fod yn hanesyddol drylwyr — rhaid iddo flaenoriaethu cysyniad ail-orchymyn a gofyn am feddwl hanesyddol dilys.</div></div></div>
+        <div class="takeaway-card"><div class="tk-num">2</div><div><div class="tk-en">It must also be genuinely engaging — a puzzle pupils want to solve, not just a title for a unit of work. These two demands can conflict, and resolving that tension is the core skill of enquiry planning.</div><div class="tk-cy">Rhaid iddo hefyd fod yn wirioneddol ddiddorol — pos y mae disgyblion eisiau ei ddatrys. Gall y ddau alw hyn wrthdaro, ac mae datrys y tensiwn hwnnw yn sgil craidd cynllunio ymholiadau.</div></div></div>
+        <div class="takeaway-card"><div class="tk-num">3</div><div><div class="tk-en">The initial stimulus matters: a painting, film clip or striking source creates curiosity before knowledge, giving pupils a reason to want that knowledge.</div><div class="tk-cy">Mae'r ysgogiad cychwynnol yn bwysig: mae paentiad, clip ffilm neu ffynhonnell drawiadol yn creu chwilfrydedd cyn gwybodaeth.</div></div></div>
+        <div class="takeaway-card"><div class="tk-num">4</div><div><div class="tk-en">Interpretations work best when pupils have already built substantive knowledge — the comparison between evidence and interpretation is only possible if pupils know enough to compare.</div><div class="tk-cy">Mae gwaith dehongliadau yn gweithio orau pan fydd disgyblion eisoes wedi adeiladu gwybodaeth sylweddol — dim ond os yw disgyblion yn gwybod digon i gymharu y mae'r cymhariaeth yn bosibl.</div></div></div>
+        <div class="takeaway-card"><div class="tk-num">5</div><div><div class="tk-en">Primary sources should be rich, not thin. One vivid individual (James Hoare, Cristina) does more work than a list of facts.</div><div class="tk-cy">Dylai ffynonellau cynradd fod yn gyfoethog, nid yn denau. Mae un unigolyn bywiog (James Hoare, Cristina) yn gwneud mwy o waith na rhestr o ffeithiau.</div></div></div>
+        <div class="takeaway-card"><div class="tk-num">6</div><div><div class="tk-en">Planning collectively matters as much as planning individually — enquiry questions should reinforce each other across a Key Stage, building conceptual fluency over time.</div><div class="tk-cy">Mae cynllunio ar y cyd yr un mor bwysig â chynllunio'n unigol — dylai cwestiynau ymholi atgyfnerthu ei gilydd ar draws cyfnod allweddol.</div></div></div>
+      </div>
+
+      <div class="info-box key" style="margin-top:1.2rem">
+        <h3>📚 Key Reading · Darllen Allweddol</h3>
+        <ul>
+          <li><strong>Essential:</strong> Riley, M. (2000) 'Into the Key Stage 3 history garden: choosing and planting your enquiry questions,' <em>Teaching History</em> 99, pp.8–13. (PDF provided) / <em>Darparwyd PDF</em></li>
+          <li><strong>Enquiry design:</strong> Gorman, M. (1998) 'The structured enquiry is not a contradiction in terms,' <em>Teaching History</em> 92.</li>
+          <li><strong>Whole KS planning:</strong> Counsell, C. and HA Secondary Education Committee (1997) <em>The Twentieth Century World: Planning Study Unit 4.</em> London: Historical Association.</li>
+          <li><strong>Film in history:</strong> British Film Institute resources for history teachers — bfi.org.uk</li>
+          <li><strong>Medieval images:</strong> British Library digitised Luttrell Psalter collection</li>
+        </ul>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">9</div> Final Reflection / Adlewyrchiad Terfynol</div>
+        <p style="font-size:.9rem;margin-bottom:.6rem">Return to Riley's definition. Write one paragraph explaining to a sceptical colleague why the carefully crafted enquiry question matters. Your colleague says: 'I just teach the content. Why do I need a question?' / Dychwelwch at ddiffiniad Riley. Ysgrifennwch un paragraff yn egluro i gydweithiwr amheus pam mae'r cwestiwn ymholi'n bwysig. Mae eich cydweithiwr yn dweud: 'Rwy'n addysgu'r cynnwys yn unig. Pam mae angen cwestiwn arnaf?'</p>
+        <textarea style="min-height:100px" placeholder="Dear colleague, the enquiry question matters because… / Annwyl gydweithiwr, mae'r cwestiwn ymholi'n bwysig oherwydd…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(4)">← Back / Yn ôl</button>
+        <button class="btn btn-amber" onclick="complete()">🎓 Complete Session · Cwblhau'r Sesiwn</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="completion-card" id="completion">
+    <span class="badge-icon">🌱</span>
+    <h2>Session Complete! · Sesiwn Wedi'i Chwblhau!</h2>
+    <div class="score-badge">Quiz Score · Sgôr: <span id="final-score">0</span> / 5</div>
+    <p><strong>Well done!</strong> You have completed the Teaching Historical Enquiries and Interpretations session — from Riley's definition and criteria, through the Dodgy Questions Game, the Victorian child labour worked example, the Somerset Coroner's Rolls, and your own enquiry planning.</p>
+    <p><strong>Da iawn!</strong> Rydych wedi cwblhau'r sesiwn — o ddiffiniad a meini prawf Riley, drwy Gêm y Cwestiynau Amheus, yr enghraifft weithiol llafur plant Fictoraidd, Rholiau Crwner Somerset, a chynllunio eich ymholiad eich hun.</p>
+    <p style="font-style:italic;opacity:.82">"These enquiry questions are only as good as the history teachers' deep understanding of what the question is trying to do." — Riley (2000)</p>
+    <div style="margin-top:1rem"><button class="btn btn-secondary" onclick="location.reload()" style="background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.35);color:#fff;font-size:.85rem;">↺ Start Again · Dechrau Eto</button></div>
+    <div class="cert-trigger-box">
+      <p>🏅 <strong>Generate your personalised completion certificate · Creu eich tystysgrif gwblhau bersonol</strong><br>
+      Enter your full name below. / Rhowch eich enw llawn isod.</p>
+      <div class="cert-name-row">
+        <input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name · Eich enw llawn…" maxlength="80">
+        <button class="btn-cert" onclick="generateCertificate()">🎓 Generate Certificate · Creu Tystysgrif</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- CERTIFICATE OVERLAY -->
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:2rem;">🌱</div>
+            <div class="cert-inst-name">PGCE History · Hanes TGCH
+              <span class="cert-inst-cy">Curriculum for Wales / Cwricwlwm i Gymru</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that · Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher · yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.5rem 0 .3rem"><div class="cert-name" id="certDisplayName">Your Name</div></div>
+          <div class="cert-score-pill">Quiz Score · Sgôr: <span id="certScoreDisplay">—</span> / 5</div>
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the PGCE History training session on</div>
+          <div class="cert-course">Teaching Historical Enquiries and Interpretations
+            <span class="cert-course-cy">Dysgu Ymholiadau a Dehongliadau Hanesyddol</span>
+          </div>
+          <div class="cert-competencies">Demonstrating understanding of: Riley's criteria for crafting rigorous and engaging enquiry questions; the distinction between descriptive and analytically rigorous questions; the Dodgy Questions Game and its implications for interpretations work; the three-step enquiry sequence (painting, primary source, film interpretation) applied to Victorian child labour; the Somerset and Dorset Coroner's Rolls as rich historical evidence; the Simon Schama interpretations task; and Riley's ten key questions for planning a historical enquiry.<br>
+          <em style="color:#92400E;display:block;margin-top:.4rem">Gan ddangos dealltwriaeth o feini prawf Riley ar gyfer crefftio cwestiynau ymholi trylwyr a diddorol; Gêm y Cwestiynau Amheus; y dilyniant ymholi tair cam; Rholiau Crwner Somerset; a deg cwestiwn allweddol Riley ar gyfer cynllunio ymholiad hanesyddol.</em></div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block"><div class="cert-sig-line"></div><div class="cert-sig-label">Programme Director · Cyfarwyddwr y Rhaglen</div></div>
+            <div><div class="cert-seal"><span class="cert-seal-icon">📜</span>PGCE<br>CYMRU</div></div>
+            <div class="cert-sig-block"><div class="cert-date-val" id="certDateDisplay"></div><div class="cert-date-label">Date Completed · Dyddiad Cwblhau</div></div>
+          </div>
+          <div class="cert-stripe" style="margin:1.2rem -2rem -1.6rem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">&#128424; Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">&#10005; Close · Cau</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Dodgy Questions data
+var dqQuestions=[
+  {id:1,text:'Was the Treaty of Versailles fair?'},
+  {id:2,text:'Why have some people thought that the Treaty of Versailles was not 'fair'?'},
+  {id:3,text:'Did the Treaty of Versailles cause the Second World War?'},
+  {id:4,text:'Why did the Treaty of Versailles take the form that it did?'},
+  {id:5,text:'Who can tell us about the Treaty of Versailles?'},
+  {id:6,text:'Who was to blame for the Treaty of Versailles?'},
+  {id:7,text:'Why has the Treaty of Versailles been interpreted in so many different ways?'},
+  {id:8,text:'Have historians been too harsh on the Treaty of Versailles?'},
+  {id:9,text:'Why does the Treaty of Versailles matter so much?'},
+  {id:10,text:'Why did the Treaty of Versailles matter so much?'},
+  {id:11,text:'Why does everyone remember the Treaty of Versailles?'},
+  {id:12,text:'What did the makers of Versailles want?'}
+];
+var dqTags={};
+var currentTag=null;
+
+function setTag(tag){
+  currentTag=tag;
+  document.querySelectorAll('.tag-btn').forEach(function(b){b.classList.remove('active');});
+  if(tag){var btn=document.getElementById('tag-'+tag);if(btn)btn.classList.add('active');}
+}
+
+function tagQuestion(id){
+  if(!currentTag){dqTags[id]=null;}
+  else{dqTags[id]=currentTag;}
+  renderDodgy();
+}
+
+function renderDodgy(){
+  var grid=document.getElementById('dodgyGrid');
+  grid.innerHTML='';
+  dqQuestions.forEach(function(q){
+    var tag=dqTags[q.id]||null;
+    var cls='dodgy-card'+(tag?' selected-'+tag:'');
+    var badge='';
+    if(tag==='dodgy') badge=' <span style="font-size:.7rem;background:#6B1E1E;color:white;padding:.1rem .4rem;border-radius:4px;">DODGY</span>';
+    else if(tag==='evidence') badge=' <span style="font-size:.7rem;background:#0F766E;color:white;padding:.1rem .4rem;border-radius:4px;">EVIDENCE</span>';
+    else if(tag==='interp') badge=' <span style="font-size:.7rem;background:#3730A3;color:white;padding:.1rem .4rem;border-radius:4px;">INTERP</span>';
+    else if(tag==='good') badge=' <span style="font-size:.7rem;background:#2D6A4F;color:white;padding:.1rem .4rem;border-radius:4px;">GOOD</span>';
+    grid.innerHTML+='<div class="'+cls+'" onclick="tagQuestion('+q.id+')"><div class="dq-num">'+q.id+'</div><div class="dq-text">'+q.text+badge+'</div></div>';
+  });
+}
+
+renderDodgy();
+
+// Quiz
+var score=0; var answeredQs=new Set(); var completedSections=new Set();
+var feedbacks={
+  q1:'Correct! Riley's central critique is that these questions are merely descriptive — they drift into antiquarianism, require no historical thinking, and give pupils no criteria for prioritising information. · Cywir! Mae beirniadaeth ganolog Riley yn ymwneud â'r ffaith bod y cwestiynau hyn yn ddim ond disgrifiadol.',
+  q2:'Correct! This is the key distinction: from moral judge to historian. Question 1 invites anachronistic judgement; Question 2 demands contextual historical understanding. This is the fundamental shift in all interpretations work. · Cywir! Dyma'r gwahaniaeth allweddol: o farnwr moesol i hanesydd.',
+  q3:'Correct! You cannot evaluate an interpretation without something to evaluate it against. Riley builds knowledge through painting then primary sources so pupils can ask meaningful questions of Winterbottom's choices. · Cywir! Ni allwch werthuso dehongliad heb rywbeth i'w werthuso yn ei erbyn.',
+  q4:'Correct! Riley champions rich sources — one vivid individual does more historical work than a list of facts. The Coroner's Rolls are accidental windows into daily life because they were not written to impress anyone. · Cywir! Mae Riley yn hyrwyddo ffynonellau cyfoethog — mae un unigolyn bywiog yn gwneud mwy o waith na rhestr o ffeithiau.',
+  q5:'Correct! The outcome activity is what makes the enquiry more than a unit title. Pupils must ANSWER the question — take a position, use evidence, debate. If they are just writing about the topic the enquiry has not worked. · Cywir! Y gweithgaredd canlyniad yw'r hyn sy'n gwneud yr ymholiad yn fwy na theitl uned.'
+};
+
+function checkQ(qId,btn,isCorrect){
+  if(answeredQs.has(qId))return; answeredQs.add(qId);
+  document.getElementById(qId).querySelectorAll('.option-btn').forEach(function(b){b.disabled=true;});
+  var fb=document.getElementById(qId+'-fb');
+  if(isCorrect){btn.classList.add('correct');fb.className='feedback correct show';fb.innerHTML='&#10003; '+feedbacks[qId];score++;}
+  else{btn.classList.add('wrong');fb.className='feedback wrong show';fb.innerHTML='&#10007; Not quite &mdash; '+feedbacks[qId];}
+}
+
+function goTo(idx){
+  document.querySelectorAll('.section-card').forEach(function(el,i){el.classList.toggle('active',i===idx);});
+  document.querySelectorAll('.snav-btn').forEach(function(btn,i){btn.classList.toggle('active',i===idx);});
+  var pct=Math.round(((idx+1)/6)*100);
+  document.getElementById('progress-bar').style.width=pct+'%';
+  document.getElementById('progress-label').textContent='Section '+(idx+1)+' of 6 · Adran '+(idx+1)+' o 6';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function nextSection(idx){
+  completedSections.add(idx);
+  document.querySelectorAll('.snav-btn').forEach(function(btn,i){btn.classList.toggle('done',completedSections.has(i));});
+  goTo(idx+1);
+}
+
+function complete(){
+  completedSections.add(5);
+  document.querySelectorAll('.snav-btn').forEach(function(btn,i){btn.classList.toggle('done',completedSections.has(i));});
+  document.querySelectorAll('.section-card').forEach(function(el){el.classList.remove('active');});
+  document.getElementById('completion').classList.add('show');
+  document.getElementById('final-score').textContent=score;
+  document.getElementById('progress-bar').style.width='100%';
+  document.getElementById('progress-label').textContent='Complete! · Wedi Cwblhau!';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function generateCertificate(){
+  var name=document.getElementById('certNameInput').value.trim();
+  if(!name){document.getElementById('certNameInput').focus();document.getElementById('certNameInput').style.borderColor='#FCD34D';setTimeout(function(){document.getElementById('certNameInput').style.borderColor='';},1500);return;}
+  document.getElementById('certDisplayName').textContent=name;
+  document.getElementById('certScoreDisplay').textContent=score;
+  var now=new Date();
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('certDateDisplay').textContent=now.getDate()+' '+months[now.getMonth()]+' '+now.getFullYear();
+  document.getElementById('certOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeCertificate(){document.getElementById('certOverlay').classList.remove('show');document.body.style.overflow='';}
+function printCertificate(){
+  var cert=document.getElementById('certificateEl');
+  var w=window.open('','_blank','width=900,height=700');
+  w.document.write('<html><head><title>Certificate</title>');
+  document.querySelectorAll('style,link[rel="stylesheet"]').forEach(function(s){w.document.write(s.outerHTML);});
+  w.document.write('</head><body style="margin:0;padding:20px;background:white;">');
+  w.document.write(cert.outerHTML);
+  w.document.write('</body></html>');
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener('click',function(e){if(e.target.id==='certOverlay')closeCertificate();});
+</script>
+</body>
+</html>
