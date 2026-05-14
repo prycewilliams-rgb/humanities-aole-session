@@ -233,6 +233,9 @@ textarea:focus{outline:none;border-color:var(--wine)}
 .cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.9rem 1.5rem 1.2rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
 .btn-cert-print{background:#6B1E1E;color:white;border:none;padding:.55rem 1.2rem;border-radius:8px;font-family:-apple-system,sans-serif;font-size:.86rem;font-weight:700;cursor:pointer}
 .btn-cert-close{background:#475569;color:white;border:none;padding:.55rem 1.2rem;border-radius:8px;font-family:-apple-system,sans-serif;font-size:.86rem;cursor:pointer}
+
+.dq-badge{font-size:.7rem;color:white;padding:.1rem .4rem;border-radius:4px;margin-left:.3rem;font-weight:700}
+
 </style>
 </head>
 <body>
@@ -827,15 +830,20 @@ function tagQuestion(id){
 function renderDodgy(){
   var grid=document.getElementById("dodgyGrid");
   grid.innerHTML="";
+  var colors={dodgy:"#6B1E1E",evidence:"#0F766E",interp:"#3730A3",good:"#2D6A4F"};
+  var labels={dodgy:"DODGY",evidence:"EVIDENCE",interp:"INTERP",good:"GOOD"};
   dqQuestions.forEach(function(q){
     var tag=dqTags[q.id]||null;
     var cls="dodgy-card"+(tag?" selected-"+tag:"");
     var badge="";
-    if(tag==="dodgy") badge=" <span style="font-size:.7rem;background:#6B1E1E;color:white;padding:.1rem .4rem;border-radius:4px;">DODGY</span>";
-    else if(tag==="evidence") badge=" <span style="font-size:.7rem;background:#0F766E;color:white;padding:.1rem .4rem;border-radius:4px;">EVIDENCE</span>";
-    else if(tag==="interp") badge=" <span style="font-size:.7rem;background:#3730A3;color:white;padding:.1rem .4rem;border-radius:4px;">INTERP</span>";
-    else if(tag==="good") badge=" <span style="font-size:.7rem;background:#2D6A4F;color:white;padding:.1rem .4rem;border-radius:4px;">GOOD</span>";
-    grid.innerHTML+="<div class=""+cls+"" onclick="tagQuestion("+q.id+")"><div class="dq-num">"+q.id+"</div><div class="dq-text">"+q.text+badge+"</div></div>";
+    if(tag&&colors[tag]){
+      badge="<span class='dq-badge' style='background:"+colors[tag]+"'>"+labels[tag]+"</span>";
+    }
+    var div=document.createElement("div");
+    div.className=cls;
+    div.innerHTML="<div class='dq-num'>"+q.id+"</div><div class='dq-text'>"+q.text+" "+badge+"</div>";
+    div.addEventListener("click",(function(id){return function(){tagQuestion(id);};})(q.id));
+    grid.appendChild(div);
   });
 }
 
@@ -900,11 +908,12 @@ function closeCertificate(){document.getElementById("certOverlay").classList.rem
 function printCertificate(){
   var cert=document.getElementById("certificateEl");
   var w=window.open("","_blank","width=900,height=700");
-  w.document.write("<html><head><title>Certificate</title>");
-  document.querySelectorAll("style,link[rel=stylesheet]").forEach(function(s){w.document.write(s.outerHTML);});
-  w.document.write("</head><body style="margin:0;padding:20px;background:white;">");
-  w.document.write(cert.outerHTML);
-  w.document.write("</body></html>");
+  var html="<html><head><title>Certificate</title>";
+  document.querySelectorAll("style,link[rel=stylesheet]").forEach(function(s){html+=s.outerHTML;});
+  html+="</head><body style='margin:0;padding:20px;background:white;'>";
+  html+=cert.outerHTML;
+  html+="</body></html>";
+  w.document.write(html);
   w.document.close();w.focus();
   setTimeout(function(){w.print();},800);
 }
