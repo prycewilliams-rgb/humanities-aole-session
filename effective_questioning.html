@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="cy-en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Effective Questioning | Cwestiynu Effeithiol — PGCE Humanities</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#0F766E;--teal-dark:#0D5C56;--teal-mid:#14B8A6;--teal-pale:#CCFBF1;--teal-light:#99F6E4;
+  --amber:#F59E0B;--amber-light:#FEF3C7;--amber-dark:#92400E;
+  --red:#EF4444;--red-light:#FEE2E2;
+  --green:#16A34A;--green-light:#DCFCE7;
+  --indigo:#3730A3;--indigo-light:#C7D2FE;--indigo-pale:#EEF2FF;
+  --purple:#7C3AED;--purple-light:#EDE9FE;
+  --rose:#BE185D;--rose-light:#FCE7F3;
+  --slate:#1E293B;--slate-mid:#475569;--slate-light:#94A3B8;
+  --white:#fff;--off:#F8FAFC;--border:#E2E8F0;
+  --shadow:0 4px 24px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Sans 3',sans-serif;background:var(--off);color:var(--slate);min-height:100vh}
+
+header{background:linear-gradient(135deg,var(--teal-dark) 0%,var(--teal) 55%,var(--teal-mid) 100%);color:#fff;padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.lang-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:.3rem 1rem;font-size:.8rem;font-weight:600;letter-spacing:.05em;margin-bottom:1.5rem}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin-bottom:.4rem}
+header h1 span{display:block;font-size:.55em;font-weight:700;opacity:.78;letter-spacing:.03em;margin-top:.3rem}
+.header-sub{font-size:.95rem;opacity:.85;margin-top:.8rem}
+.subject-pills{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
+.pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:.3rem .9rem;font-size:.78rem;font-weight:600}
+.progress-bar-wrap{max-width:600px;margin:1.5rem auto 0;background:rgba(255,255,255,.2);border-radius:999px;height:8px;overflow:hidden}
+#progress-bar{height:100%;background:var(--amber);border-radius:999px;transition:width .5s ease;width:0%}
+#progress-label{font-size:.78rem;opacity:.8;margin-top:.4rem}
+
+main{max-width:940px;margin:0 auto;padding:2rem 1rem 4rem}
+.section-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.snav-btn{padding:.4rem .85rem;border-radius:999px;border:2px solid var(--border);background:#fff;font-size:.76rem;font-weight:600;cursor:pointer;color:var(--slate-mid);transition:all .2s;white-space:nowrap}
+.snav-btn.done{border-color:var(--green);color:#14532D;background:var(--green-light)}
+.snav-btn.active{border-color:var(--teal);color:var(--teal-dark);background:var(--teal-pale)}
+
+.section-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);display:none;animation:fadeIn .4s ease}
+.section-card.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.card-header{padding:1.5rem 2rem;display:flex;align-items:center;gap:1rem;border-bottom:2px solid}
+.card-header.teal{background:var(--teal-pale);border-color:var(--teal-light)}
+.card-header.amber{background:var(--amber-light);border-color:#FCD34D}
+.card-header.indigo{background:var(--indigo-pale);border-color:var(--indigo-light)}
+.card-header.purple{background:var(--purple-light);border-color:#C4B5FD}
+.card-header.green{background:var(--green-light);border-color:#86EFAC}
+.card-header.rose{background:var(--rose-light);border-color:#FBCFE8}
+.card-header.slate{background:#F1F5F9;border-color:#CBD5E1}
+.card-header .icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.card-header.teal .icon{background:var(--teal)}
+.card-header.amber .icon{background:var(--amber)}
+.card-header.indigo .icon{background:var(--indigo)}
+.card-header.purple .icon{background:var(--purple)}
+.card-header.green .icon{background:var(--green)}
+.card-header.rose .icon{background:var(--rose)}
+.card-header.slate .icon{background:var(--slate)}
+.card-header h2{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--slate);line-height:1.3}
+.card-header h2 em{display:block;font-family:'Source Sans 3',sans-serif;font-size:.76rem;font-style:normal;font-weight:600;color:var(--slate-mid);margin-top:.15rem;letter-spacing:.03em}
+.card-body{padding:2rem}
+@media(max-width:600px){.card-body{padding:1.2rem}}
+
+/* BILINGUAL */
+.bilingual-block{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+@media(max-width:600px){.bilingual-block{grid-template-columns:1fr}}
+.lang-col{background:var(--teal-pale);border-radius:10px;padding:1.2rem;border-left:4px solid var(--teal)}
+.lang-col.welsh{border-left-color:#D4A017;background:#FFFBEB}
+.lang-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-mid);margin-bottom:.6rem}
+.lang-col p,.lang-col li{font-size:.93rem;line-height:1.7;color:var(--slate)}
+.lang-col ul{padding-left:1.2rem;margin-top:.4rem}
+.lang-col li{margin-bottom:.3rem}
+
+/* INFO BOXES */
+.info-box{background:var(--teal-pale);border:1px solid var(--teal-light);border-radius:10px;padding:1.2rem 1.5rem;margin-bottom:1.5rem}
+.info-box.amber{background:var(--amber-light);border-color:#FCD34D}
+.info-box.key{background:var(--slate);border-color:var(--slate-mid);color:white}
+.info-box.red{background:var(--red-light);border-color:#FECACA}
+.info-box.indigo{background:var(--indigo-pale);border-color:var(--indigo-light)}
+.info-box h3{font-size:.83rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:.7rem}
+.info-box.amber h3{color:var(--amber-dark)}
+.info-box.key h3{color:var(--amber)}
+.info-box.red h3{color:#B91C1C}
+.info-box.indigo h3{color:var(--indigo)}
+.info-box p,.info-box li{font-size:.92rem;line-height:1.7;color:var(--slate)}
+.info-box.key p,.info-box.key li{color:rgba(255,255,255,.9)}
+.info-box ul{padding-left:1.3rem;margin-top:.4rem}
+.info-box ul li{margin-bottom:.35rem}
+
+/* STATS GRID */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin:1.2rem 0}
+.stat-card{background:var(--slate);border-radius:10px;padding:1.2rem;text-align:center;color:white}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:var(--amber);line-height:1;display:block;margin-bottom:.4rem}
+.stat-label{font-size:.78rem;color:rgba(255,255,255,.75);line-height:1.4}
+
+/* BLOOM TABLE */
+.blooms-table{width:100%;border-collapse:collapse;margin:1.2rem 0;font-size:.87rem}
+.blooms-table th{padding:.6rem 1rem;text-align:left;font-weight:700;color:#fff;font-size:.76rem;letter-spacing:.04em}
+.blooms-table td{padding:.7rem 1rem;border-bottom:1px solid var(--border);line-height:1.5;vertical-align:top}
+.blooms-table tr:last-child td{border-bottom:none}
+.blooms-table tr:hover td{background:var(--off)}
+.level-badge{display:inline-block;font-size:.68rem;font-weight:800;letter-spacing:.05em;padding:.15rem .55rem;border-radius:4px;text-transform:uppercase;margin-right:.3rem;white-space:nowrap}
+.bl6{background:#7C3AED;color:white}.bl5{background:#2563EB;color:white}
+.bl4{background:#0D9488;color:white}.bl3{background:#16A34A;color:white}
+.bl2{background:#D97706;color:white}.bl1{background:#DC2626;color:white}
+
+/* STRATEGY CARDS */
+.strategy-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0}
+@media(max-width:600px){.strategy-grid{grid-template-columns:1fr}}
+.strategy-card{background:#fff;border:2px solid var(--border);border-radius:10px;padding:1.1rem;transition:border-color .2s,box-shadow .2s;cursor:default}
+.strategy-card:hover{border-color:var(--teal);box-shadow:0 4px 16px rgba(15,118,110,.12)}
+.strategy-name{font-weight:700;font-size:.92rem;color:var(--teal-dark);margin-bottom:.3rem;display:flex;align-items:center;gap:.4rem}
+.strategy-cy{font-size:.75rem;color:#D4A017;font-style:italic;margin-bottom:.5rem}
+.strategy-desc{font-size:.84rem;color:var(--slate-mid);line-height:1.55;margin-bottom:.4rem}
+.strategy-example{font-size:.8rem;background:var(--teal-pale);border-left:3px solid var(--teal);padding:.5rem .7rem;border-radius:0 6px 6px 0;color:var(--slate);line-height:1.5;font-style:italic}
+
+/* WAIT TIME VIZ */
+.wait-time-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1.2rem 0}
+@media(max-width:500px){.wait-time-row{grid-template-columns:1fr}}
+.wait-card{border-radius:10px;padding:1.1rem;text-align:center}
+.wait-card.bad{background:var(--red-light);border:2px solid #FECACA}
+.wait-card.ok{background:var(--amber-light);border:2px solid #FCD34D}
+.wait-card.good{background:var(--green-light);border:2px solid #86EFAC}
+.wait-time{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;display:block;margin-bottom:.3rem}
+.wait-card.bad .wait-time{color:var(--red)}
+.wait-card.ok .wait-time{color:var(--amber-dark)}
+.wait-card.good .wait-time{color:var(--green)}
+.wait-label{font-size:.8rem;font-weight:600;color:var(--slate)}
+.wait-desc{font-size:.76rem;color:var(--slate-mid);margin-top:.3rem;line-height:1.4}
+
+/* SUBJECT CARDS */
+.subject-block{background:#fff;border:2px solid var(--border);border-radius:12px;padding:1.5rem;margin-bottom:1.2rem}
+.subject-block.hist{border-left:5px solid var(--indigo)}
+.subject-block.geog{border-left:5px solid var(--teal)}
+.subject-block.rve{border-left:5px solid var(--rose)}
+.subject-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem}
+.subject-cy{font-size:.78rem;color:var(--slate-mid);font-style:italic;margin-bottom:.9rem}
+.concept-chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.9rem}
+.concept-chip{background:var(--indigo-pale);color:var(--indigo);border:1px solid var(--indigo-light);border-radius:6px;padding:.2rem .65rem;font-size:.76rem;font-weight:600}
+.subject-block.geog .concept-chip{background:var(--teal-pale);color:var(--teal-dark);border-color:var(--teal-light)}
+.subject-block.rve .concept-chip{background:var(--rose-light);color:var(--rose);border-color:#FBCFE8}
+.q-sequence{list-style:none;counter-reset:qseq}
+.q-sequence li{counter-increment:qseq;display:flex;gap:.6rem;align-items:flex-start;padding:.45rem 0;border-bottom:1px solid var(--border);font-size:.88rem}
+.q-sequence li:last-child{border-bottom:none}
+.q-seq-num{background:var(--slate);color:white;border-radius:50%;width:1.4rem;height:1.4rem;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
+
+/* QUIZ */
+.quiz-question{background:var(--off);border-radius:10px;padding:1.2rem;margin-bottom:1rem;border:1px solid var(--border)}
+.q-text{font-weight:700;font-size:.97rem;margin-bottom:.25rem;line-height:1.5}
+.q-welsh{font-size:.85rem;color:var(--slate-mid);font-style:italic;margin-bottom:.9rem;line-height:1.5}
+.q-num{display:inline-flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;background:var(--teal);color:white;border-radius:50%;font-size:.72rem;font-weight:700;margin-right:.4rem;flex-shrink:0}
+.options{display:flex;flex-direction:column;gap:.5rem}
+.option-btn{text-align:left;background:#fff;border:2px solid var(--border);border-radius:8px;padding:.65rem 1rem;font-family:'Source Sans 3',sans-serif;font-size:.9rem;cursor:pointer;transition:all .15s;line-height:1.5;color:var(--slate)}
+.option-btn:hover:not(:disabled){border-color:var(--teal);background:var(--teal-pale)}
+.option-btn.correct{border-color:var(--green);background:var(--green-light);color:#14532D}
+.option-btn.wrong{border-color:var(--red);background:var(--red-light);color:#7F1D1D}
+.feedback{display:none;padding:.8rem 1rem;border-radius:8px;font-size:.87rem;line-height:1.6;margin-top:.5rem}
+.feedback.correct.show{display:block;background:var(--green-light);border-left:3px solid var(--green);color:#14532D}
+.feedback.wrong.show{display:block;background:var(--red-light);border-left:3px solid var(--red);color:#7F1D1D}
+
+/* AUDIT TABLE */
+.audit-table{width:100%;border-collapse:collapse;font-size:.86rem;margin:1rem 0}
+.audit-table th{background:var(--slate);color:white;padding:.6rem .8rem;text-align:left;font-size:.78rem;letter-spacing:.03em}
+.audit-table td{padding:.6rem .8rem;border-bottom:1px solid var(--border);vertical-align:middle;line-height:1.45}
+.audit-table tr:hover td{background:var(--off)}
+.audit-radio-group{display:flex;gap:.5rem;justify-content:center}
+.audit-radio-group label{display:flex;flex-direction:column;align-items:center;gap:.2rem;font-size:.72rem;color:var(--slate-mid);cursor:pointer}
+.audit-radio-group input[type=radio]{accent-color:var(--teal);width:16px;height:16px;cursor:pointer}
+
+/* TEXTAREA */
+textarea{width:100%;padding:.7rem .9rem;font-family:'Source Sans 3',sans-serif;font-size:.9rem;border:2px solid var(--border);border-radius:8px;resize:vertical;min-height:70px;color:var(--slate);line-height:1.6;transition:border-color .2s;margin-top:.5rem}
+textarea:focus{outline:none;border-color:var(--teal)}
+
+/* TASK BOXES */
+.task-box{background:var(--teal-pale);border:2px solid var(--teal-light);border-radius:10px;padding:1.2rem 1.4rem;margin:1.4rem 0}
+.task-box.amber{background:var(--amber-light);border-color:#FCD34D}
+.task-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--teal-dark);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.task-box.amber .task-label{color:var(--amber-dark)}
+.task-label .task-num{background:var(--teal);color:white;border-radius:50%;width:1.3rem;height:1.3rem;display:flex;align-items:center;justify-content:center;font-size:.68rem}
+.task-box.amber .task-label .task-num{background:var(--amber-dark)}
+
+/* ACTION PLAN */
+.target-card{background:#fff;border:2px solid var(--border);border-radius:10px;padding:1.3rem;margin-bottom:1rem}
+.target-num{display:inline-flex;align-items:center;justify-content:center;background:var(--teal);color:white;border-radius:8px;padding:.2rem .7rem;font-size:.8rem;font-weight:700;margin-bottom:.8rem}
+.target-fields{display:grid;gap:.6rem}
+.field-label{font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate-mid);margin-bottom:.2rem;display:block}
+
+/* QUOTE */
+.quote-block{background:var(--slate);color:white;border-radius:10px;padding:1.4rem 1.8rem;margin:1.5rem 0;position:relative;overflow:hidden}
+.quote-block::before{content:'"';font-family:'Playfair Display',serif;font-size:6rem;color:rgba(255,255,255,.07);position:absolute;top:-.5rem;left:.5rem;line-height:1}
+.quote-text{font-family:'Playfair Display',serif;font-size:1.02rem;font-style:italic;line-height:1.65;color:rgba(255,255,255,.92);position:relative;z-index:1}
+.quote-attr{font-size:.78rem;color:var(--teal-mid);margin-top:.6rem;font-weight:600}
+
+/* BTNS */
+.btn-row{display:flex;gap:.75rem;justify-content:space-between;flex-wrap:wrap;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border)}
+.btn{padding:.6rem 1.4rem;border-radius:8px;border:2px solid transparent;font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+.btn-primary:hover{background:var(--teal-dark)}
+.btn-secondary{background:#fff;color:var(--slate-mid);border-color:var(--border)}
+.btn-secondary:hover{border-color:var(--slate-mid)}
+.btn-amber{background:var(--amber);color:var(--amber-dark);border-color:var(--amber)}
+.btn-amber:hover{background:#D97706;color:#fff}
+
+/* SCORE BADGE */
+.score-badge{display:inline-block;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);border-radius:999px;padding:.3rem 1.2rem;font-size:1rem;font-weight:700;margin-bottom:1rem}
+
+/* COMPLETION */
+.completion-card{display:none;background:linear-gradient(135deg,var(--teal-dark),var(--teal));color:white;border-radius:16px;padding:3rem 2rem;text-align:center;margin-top:2rem}
+.completion-card.show{display:block}
+.badge-icon{font-size:4rem;display:block;margin-bottom:1rem}
+
+/* CERT */
+.cert-trigger-box{margin-top:1.5rem;padding:1.5rem;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.4);border-radius:12px;text-align:center}
+.cert-trigger-box p{font-size:.88rem;opacity:.85;margin-bottom:1rem;line-height:1.6}
+.cert-name-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.cert-name-input{padding:.6rem 1rem;font-family:'Source Sans 3',sans-serif;font-size:.95rem;border:2px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(255,255,255,.15);color:white;width:250px}
+.cert-name-input::placeholder{color:rgba(255,255,255,.4)}
+.cert-name-input:focus{outline:none;border-color:var(--amber)}
+.btn-cert{background:var(--amber);color:#1a1a1a;border:none;padding:.6rem 1.3rem;border-radius:8px;font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:9999;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:white;border-radius:8px;width:100%;max-width:780px;max-height:95vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.certificate{width:100%;background:white}
+.cert-frame{margin:16px;border:3px solid #0D5C56;position:relative}
+.cert-frame::before{content:'';position:absolute;inset:5px;border:1px solid #F59E0B;pointer-events:none;z-index:1}
+.cert-stripe{height:5px;background:linear-gradient(90deg,#0D5C56 0%,#14B8A6 40%,#F59E0B 100%)}
+.cert-header{background:linear-gradient(135deg,#0D5C56 0%,#0F766E 100%);padding:1.3rem 2rem 1.1rem;text-align:center}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.cert-inst-name{font-family:'Playfair Display',serif;color:white;font-size:1rem;text-align:left;line-height:1.2}
+.cert-inst-cy{color:#99F6E4;font-size:.75rem;font-style:italic;display:block;font-family:'Source Sans 3',sans-serif;font-weight:400}
+.cert-body{padding:1.6rem 2rem;text-align:center}
+.cert-presents{font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;margin-bottom:.4rem}
+.cert-main-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:#0D5C56;line-height:1.2;margin-bottom:.2rem}
+.cert-main-cy{font-size:.85rem;color:#0F766E;font-style:italic;margin-bottom:1.2rem;font-family:'Source Sans 3',sans-serif}
+.cert-awarded-to{font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;color:#475569;margin-bottom:.2rem}
+.cert-name{font-family:'Playfair Display',serif;font-size:1.9rem;color:#0D5C56;border-bottom:2px solid #E2E8F0;display:inline-block;padding:0 1rem .1rem;min-width:260px;margin-bottom:.3rem;line-height:1.3}
+.cert-divider{height:1px;background:linear-gradient(90deg,transparent,#F59E0B,transparent);margin:.9rem auto;width:55%}
+.cert-text{font-size:.86rem;color:#1E293B;line-height:1.65;max-width:440px;margin:0 auto .7rem}
+.cert-course{font-family:'Playfair Display',serif;font-size:.95rem;color:#1E293B;background:#CCFBF1;border:1px solid #99F6E4;border-left:4px solid #0D5C56;padding:.45rem .9rem;display:inline-block;margin-bottom:.35rem;text-align:left}
+.cert-course-cy{font-size:.76rem;color:#0F766E;font-style:italic;display:block;font-family:'Source Sans 3',sans-serif;font-weight:400}
+.cert-score-pill{display:inline-block;background:#FEF3C7;border:1px solid #FCD34D;border-radius:999px;padding:.25rem 1rem;font-size:.8rem;font-weight:700;color:#92400E;margin:.5rem 0 .8rem}
+.cert-competencies{font-size:.76rem;color:#475569;margin:.2rem auto 1rem;max-width:420px;line-height:1.55}
+.cert-footer-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:1rem;padding-top:1rem;border-top:1px solid #E2E8F0}
+.cert-sig-block{text-align:center}
+.cert-sig-line{height:1px;background:#1E293B;width:140px;margin:0 auto .25rem}
+.cert-sig-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569}
+.cert-seal{width:64px;height:64px;border-radius:50%;background:#0D5C56;border:3px solid #F59E0B;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-size:.5rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;line-height:1.3;margin:0 auto}
+.cert-seal-icon{font-size:1.2rem;display:block;margin-bottom:1px}
+.cert-date-val{font-family:'Playfair Display',serif;font-size:.9rem;color:#1E293B}
+.cert-date-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569;margin-top:.2rem}
+.cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.9rem 1.5rem 1.2rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
+.btn-cert-print{background:#0D5C56;color:white;border:none;padding:.55rem 1.2rem;border-radius:8px;font-family:'Source Sans 3',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer}
+.btn-cert-close{background:#475569;color:white;border:none;padding:.55rem 1.2rem;border-radius:8px;font-family:'Source Sans 3',sans-serif;font-size:.86rem;cursor:pointer}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="lang-badge">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg · English</div>
+  <h1>Effective Questioning in the Humanities Classroom
+    <span>Cwestiynu Effeithiol yn Nosbarth y Dyniaethau</span>
+  </h1>
+  <p class="header-sub">A bilingual PGCE session — History · Geography · Religion, Values &amp; Ethics · Curriculum for Wales</p>
+  <div class="subject-pills">
+    <span class="pill">📜 History · Hanes</span>
+    <span class="pill">🌏 Geography · Daearyddiaeth</span>
+    <span class="pill">🕊️ RVE · GAE</span>
+    <span class="pill">🔬 Research-based · Seiliedig ar Ymchwil</span>
+  </div>
+  <div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+  <p id="progress-label" class="progress-label">Section 1 of 7 · Adran 1 o 7</p>
+</header>
+
+<main>
+  <div class="section-nav">
+    <button class="snav-btn active" onclick="goTo(0)">1 · Why It Matters</button>
+    <button class="snav-btn" onclick="goTo(1)">2 · Types &amp; Bloom's</button>
+    <button class="snav-btn" onclick="goTo(2)">3 · Wait Time</button>
+    <button class="snav-btn" onclick="goTo(3)">4 · Subject Focus</button>
+    <button class="snav-btn" onclick="goTo(4)">5 · Strategies</button>
+    <button class="snav-btn" onclick="goTo(5)">6 · Audit &amp; Quiz</button>
+    <button class="snav-btn" onclick="goTo(6)">7 · Reflection</button>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 1 — WHY IT MATTERS
+  ═══════════════════════════════════════ -->
+  <div class="section-card active" id="sec-0">
+    <div class="card-header teal">
+      <div class="icon">❓</div>
+      <h2>Section 1: Why Does Questioning Matter?
+        <em>Adran 1: Pam Mae Cwestiynu'n Bwysig?</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 English</div>
+          <p>Questioning is one of the most fundamental tools in any teacher's repertoire. Whether you are teaching about the causes of the First World War, the impact of climate change on Welsh upland communities, or Buddhist teachings on suffering — the <strong>quality of your questions shapes the quality of your learners' thinking.</strong></p>
+          <p style="margin-top:.6rem">The Curriculum for Wales places enquiry at the heart of the Humanities AoLE. The 'What Matters' statements explicitly call for learners to participate in different methods of enquiry, evaluate evidence, and develop critical, analytical and evaluative skills.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg</div>
+          <p>Mae cwestiynu yn un o'r offer mwyaf sylfaenol ym mhecyn cymorth unrhyw athro. P'un a ydych chi'n addysgu am achosion y Rhyfel Byd Cyntaf, effaith newid yn yr hinsawdd ar gymunedau ucheldiroedd Cymru, neu ddysgeidiaeth Fwdhaidd ar ddioddefaint — <strong>mae ansawdd eich cwestiynau yn llunio ansawdd meddwl eich dysgwyr.</strong></p>
+          <p style="margin-top:.6rem">Mae Cwricwlwm i Gymru yn gosod ymholi wrth wraidd MDPH y Dyniaethau. Mae datganiadau 'Yr Hyn sy'n Bwysig' yn galw ar ddysgwyr i gymryd rhan mewn dulliau ymholi gwahanol ac i ddatblygu sgiliau meddwl beirniadol.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:.5rem 0 .8rem;color:var(--teal-dark)">The Scale of Classroom Questioning · Graddfa Cwestiynu yn y Dosbarth</h3>
+      <div class="stats-grid">
+        <div class="stat-card"><span class="stat-num">400</span><span class="stat-label">questions asked by a teacher each day · cwestiynau y dydd</span></div>
+        <div class="stat-card"><span class="stat-num">70,000</span><span class="stat-label">questions per school year · cwestiynau y flwyddyn ysgol</span></div>
+        <div class="stat-card"><span class="stat-num">⅓</span><span class="stat-label">of all teaching time spent on questioning · o amser dysgu ar gwestiynu</span></div>
+        <div class="stat-card"><span class="stat-num">&lt;1s</span><span class="stat-label">average wait time before accepting an answer · amser aros cyfartalog</span></div>
+        <div class="stat-card"><span class="stat-num">8%</span><span class="stat-label">of questions are higher-order (Wragg, 1993) · cwestiynau lefel uwch</span></div>
+      </div>
+      <p style="font-size:.78rem;color:var(--slate-light);margin-top:-.5rem;margin-bottom:1.2rem">Sources: Hastings (2003); Wragg (1993); Cotton (1988)</p>
+
+      <div class="quote-block">
+        <p class="quote-text">"Good learning starts with questions, not answers."</p>
+        <p class="quote-attr">— Guy Claxton, Professor of Learning Science, University of Bristol</p>
+      </div>
+
+      <div class="info-box amber">
+        <h3>✏️ Task 1.1 — Initial Audit · Archwiliad Cychwynnol (5 mins)</h3>
+        <p>Think back to a lesson you have observed or taught recently. Estimate what proportion of questions were:</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin:.8rem 0">
+          <div style="background:white;border-radius:8px;padding:.8rem;text-align:center;border:1px solid #FCD34D">
+            <div style="font-size:.75rem;font-weight:700;color:var(--amber-dark);margin-bottom:.4rem">(a) Procedural / Management<br><em style="font-weight:400">Trefniadol</em></div>
+            <input type="text" style="width:60px;border:2px solid #FCD34D;border-radius:6px;padding:.3rem;text-align:center;font-family:'Source Sans 3',sans-serif;font-size:.9rem" placeholder="  %">
+          </div>
+          <div style="background:white;border-radius:8px;padding:.8rem;text-align:center;border:1px solid #FCD34D">
+            <div style="font-size:.75rem;font-weight:700;color:var(--amber-dark);margin-bottom:.4rem">(b) Recall / Knowledge<br><em style="font-weight:400">Atgoffa / Gwybodaeth</em></div>
+            <input type="text" style="width:60px;border:2px solid #FCD34D;border-radius:6px;padding:.3rem;text-align:center;font-family:'Source Sans 3',sans-serif;font-size:.9rem" placeholder="  %">
+          </div>
+          <div style="background:white;border-radius:8px;padding:.8rem;text-align:center;border:1px solid #FCD34D">
+            <div style="font-size:.75rem;font-weight:700;color:var(--amber-dark);margin-bottom:.4rem">(c) Higher-Order<br><em style="font-weight:400">Lefel Uwch</em></div>
+            <input type="text" style="width:60px;border:2px solid #FCD34D;border-radius:6px;padding:.3rem;text-align:center;font-family:'Source Sans 3',sans-serif;font-size:.9rem" placeholder="  %">
+          </div>
+        </div>
+        <label style="font-size:.8rem;font-weight:700;display:block;margin-bottom:.3rem;color:var(--amber-dark)">What does this tell you about the balance of questioning in that lesson? · Beth mae hyn yn ei ddweud wrthych?</label>
+        <textarea placeholder="Your notes here / Eich nodiadau yma…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <span></span>
+        <button class="btn btn-primary" onclick="nextSection(0)">Next: Types &amp; Bloom's → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 2 — TYPES & BLOOM'S
+  ═══════════════════════════════════════ -->
+  <div class="section-card" id="sec-1">
+    <div class="card-header amber">
+      <div class="icon">🧠</div>
+      <h2>Section 2: Types of Questions &amp; Bloom's Taxonomy
+        <em>Adran 2: Mathau o Gwestiynau a Thacsonomeg Bloom</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 English — The Key Distinction</div>
+          <p><strong>Lower-order questions</strong> require pupils to remember. They tend to be closed, with a single right answer, starting with <em>what, who, when, where.</em></p>
+          <p style="margin-top:.5rem"><strong>Higher-order questions</strong> require pupils to think. They are open — with a range of possible responses — starting with <em>how, why, which, to what extent.</em></p>
+          <p style="margin-top:.5rem">Cotton (1988): a combination of higher and lower-order questions is most effective at all ages. For older learners, increasing higher-order questions to ~50% brings significant gains.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg — Y Gwahaniaeth Allweddol</div>
+          <p>Mae <strong>cwestiynau lefel is</strong> yn gofyn i ddisgyblion gofio. Maent yn tueddu i fod yn gaeëdig, gydag un ateb cywir, yn dechrau gyda <em>beth, pwy, pryd, lle.</em></p>
+          <p style="margin-top:.5rem">Mae <strong>cwestiynau lefel uwch</strong> yn gofyn i ddisgyblion feddwl. Maent yn agored — gydag ystod o atebion posib — yn dechrau gyda <em>sut, pam, pa un, i ba raddau.</em></p>
+          <p style="margin-top:.5rem">Cotton (1988): mae cyfuniad o gwestiynau lefel uwch ac is yn fwyaf effeithiol ar bob oedran.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:0 0 .8rem;color:var(--teal-dark)">Tacsonomeg Bloom | Bloom's Taxonomy — Question Levels with Humanities Examples</h3>
+      <table class="blooms-table">
+        <thead><tr style="background:var(--slate)"><th>Level · Lefel</th><th>Trigger Words · Geiriau Sbardun</th><th>Humanities Example · Enghraifft</th></tr></thead>
+        <tbody>
+          <tr><td><span class="level-badge bl6">6 · CREATE · Creu</span></td><td>Design, propose, construct, what if · Dyluniwch, cynigiwch, adeiladwch</td><td>"Design a memorial that captures the complexity of the Welsh mining industry." / "How might you design a memorial to the Senghennydd disaster?"</td></tr>
+          <tr><td><span class="level-badge bl5">5 · EVALUATE · Gwerthuso</span></td><td>Judge, justify, to what extent, assess · Barnwch, cyfiawnhewch, i ba raddau</td><td>"To what extent is urbanisation responsible for flooding in Cardiff?" / "To what extent was colonialism responsible for 19th century famine?"</td></tr>
+          <tr><td><span class="level-badge bl4">4 · ANALYSE · Dadansoddi</span></td><td>Compare, contrast, examine, what evidence · Cymharwch, cyferbyniwch, archwiliwch</td><td>"What evidence supports the view that the Norman Conquest changed Wales?" / "How does Cardiff's growth compare with deindustrialisation in the Valleys?"</td></tr>
+          <tr><td><span class="level-badge bl3">3 · APPLY · Cymhwyso</span></td><td>How would you use, predict, demonstrate · Sut byddech chi'n defnyddio, rhagfynegwch</td><td>"How would a Muslim apply teachings on stewardship to climate change?" / "How would Christian teachings on stewardship apply to the environment?"</td></tr>
+          <tr><td><span class="level-badge bl2">2 · UNDERSTAND · Deall</span></td><td>Explain, describe, summarise · Eglurwch, disgrifiwch, crynhowch</td><td>"Explain how the water cycle links to flooding risk in the South Wales Valleys." / "Explain how the water cycle works in the Brecon Beacons."</td></tr>
+          <tr><td><span class="level-badge bl1">1 · REMEMBER · Cofio</span></td><td>What, who, when, where, list, name · Beth, pwy, pryd, lle, rhestrwch</td><td>"What year did the Act of Union occur?" / "What were the main causes of the Industrial Revolution in Wales?"</td></tr>
+        </tbody>
+      </table>
+
+      <div class="info-box">
+        <h3>🔍 Research Findings · Canfyddiadau Ymchwil</h3>
+        <ul>
+          <li><strong>Wragg (1993):</strong> 57% management questions, 37% recall, only 8% higher-order in secondary lessons.</li>
+          <li><strong>Cotton (1988):</strong> 60%+ of questions require only factual recall across all ages — even with older learners.</li>
+          <li><strong>Kerry (1989):</strong> Only 4% of secondary questions were higher-order in observed lessons.</li>
+          <li><strong>Alexander (2017):</strong> Dialogic teaching — questions should chain together; student answers are built on, not merely received.</li>
+          <li><strong>Paramore (2017):</strong> Closed/convergent questions create 'cognitively restricting rituals' (Alexander, 2006) — limiting classroom dialogue.</li>
+        </ul>
+      </div>
+
+      <div class="task-box amber">
+        <div class="task-label"><div class="task-num">2</div> Task 2.1 — Your Subject Questions · Cwestiynau Eich Pwnc</div>
+        <p style="font-size:.9rem;margin-bottom:.7rem">In your subject (History, Geography or RVE), write TWO lower-order and TWO higher-order questions on a topic you have taught or observed. Then try to push each lower-order question up at least one Bloom's level. · Yn eich pwnc, ysgrifennwch ddau gwestiwn lefel is a dau gwestiwn lefel uwch ar bwnc rydych wedi'i addysgu.</p>
+        <label class="field-label" style="color:var(--amber-dark)">Lower-order questions (×2) · Cwestiynau lefel is (×2):</label>
+        <textarea placeholder="1. &#10;2. "></textarea>
+        <label class="field-label" style="color:var(--amber-dark);margin-top:.6rem;display:block">Higher-order questions (×2) · Cwestiynau lefel uwch (×2):</label>
+        <textarea placeholder="1. &#10;2. "></textarea>
+        <label class="field-label" style="color:var(--amber-dark);margin-top:.6rem;display:block">Why do you think higher-order questions are underused in Humanities? · Pam ydych chi'n meddwl bod cwestiynau lefel uwch yn cael eu tanddefnyddio yn y Dyniaethau?</label>
+        <textarea placeholder="Your response / Eich ymateb…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(0)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(1)">Next: Wait Time → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 3 — WAIT TIME
+  ═══════════════════════════════════════ -->
+  <div class="section-card" id="sec-2">
+    <div class="card-header indigo">
+      <div class="icon">⏱️</div>
+      <h2>Section 3: Wait Time &amp; Questioning Culture
+        <em>Adran 3: Amser Aros a Diwylliant Cwestiynu</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 English</div>
+          <p>Most questions are answered in less than a second — the average time teachers allow between posing a question and accepting an answer. Mary Budd Rowe's (1978) research found that increasing wait time dramatically improved the <strong>number and quality</strong> of responses.</p>
+          <p style="margin-top:.5rem">Research also identifies <strong>'peer fear'</strong> as the main obstacle to pupils answering: children's main fear is not of being wrong, but of <em>looking silly</em> — being ridiculed by the teacher or other pupils (Mitchell, Australia).</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg</div>
+          <p>Mae'r rhan fwyaf o gwestiynau'n cael eu hateb mewn llai nag eiliad — yr amser cyfartalog y mae athrawon yn ei ganiatáu. Canfu ymchwil Mary Budd Rowe (1978) fod cynyddu'r amser aros yn gwella <strong>nifer ac ansawdd</strong> yr ymatebion yn sylweddol.</p>
+          <p style="margin-top:.5rem">Mae ymchwil hefyd yn nodi <strong>'ofn cymheiriaid'</strong> fel y prif rwystr i ddisgyblion ateb: nid ofn bod yn anghywir yw prif ofn plant, ond ofn <em>edrych yn dwp</em> — cael eu gwawdio gan yr athro neu ddisgyblion eraill.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:.5rem 0 .9rem;color:var(--teal-dark)">The Research on Wait Time · Yr Ymchwil ar Amser Aros</h3>
+      <div class="wait-time-row">
+        <div class="wait-card bad">
+          <span class="wait-time">&lt;1 sec</span>
+          <div class="wait-label">Typical classroom · Dosbarth nodweddiadol</div>
+          <div class="wait-desc">Missed thinking opportunity. Rewards the fastest, not the deepest thinkers. · Cyfle meddwl a gollwyd.</div>
+        </div>
+        <div class="wait-card ok">
+          <span class="wait-time">3–5 sec</span>
+          <div class="wait-label">Lower-order questions · Cwestiynau lefel is</div>
+          <div class="wait-desc">Better, more accurate answers. More pupils can participate. · Atebion gwell, mwy cywir. (Rowe, 1978; Cohen et al., 2004)</div>
+        </div>
+        <div class="wait-card good">
+          <span class="wait-time">10+ sec</span>
+          <div class="wait-label">Higher-order questions · Cwestiynau lefel uwch</div>
+          <div class="wait-desc">Richer, more thoughtful responses. Essential for evaluate/create level questions. · Ymatebion cyfoethocach, mwy meddylgar.</div>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:1.2rem 0 .8rem;color:var(--teal-dark)">Building a Questioning Culture · Adeiladu Diwylliant Cwestiynu</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:1.2rem">
+        <div style="background:var(--green-light);border-radius:8px;padding:.9rem;border-left:3px solid var(--green)">
+          <p style="font-size:.82rem;font-weight:700;color:#14532D;margin-bottom:.3rem">✅ Do this · Gwnewch hyn</p>
+          <ul style="font-size:.84rem;padding-left:1rem;color:var(--slate);line-height:1.7">
+            <li>Display key enquiry questions linked to CfW 'What Matters'</li>
+            <li>Celebrate wrong answers: 'Interesting — what made you think that?'</li>
+            <li>Allow learners to discuss <em>before</em> any public response</li>
+            <li>Model curiosity — share questions <em>you</em> don't yet know the answer to</li>
+            <li>Create a 'Question Wall' for learners to post questions throughout the topic</li>
+          </ul>
+        </div>
+        <div style="background:var(--red-light);border-radius:8px;padding:.9rem;border-left:3px solid var(--red)">
+          <p style="font-size:.82rem;font-weight:700;color:#B91C1C;margin-bottom:.3rem">❌ Avoid this · Osgowch hyn</p>
+          <ul style="font-size:.84rem;padding-left:1rem;color:var(--slate);line-height:1.7">
+            <li>Answering your own question immediately after asking it</li>
+            <li>Hands-up only — lets the same pupils dominate every time</li>
+            <li>Rapid-fire questioning — fails to give accurate AfL information (Brooks &amp; Brooks, 2001)</li>
+            <li>Giving weaker pupils less wait time than stronger ones</li>
+            <li>Allowing 'peer fear' to go unaddressed — it's the primary barrier to participation</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">3</div> Task 3.1 — Pose, Pause, Pounce, Bounce · Gofyn, Oedi, Cyfeirio, Bownsio</div>
+        <p style="font-size:.9rem;margin-bottom:.7rem">Plan how you would use 'Pose, Pause, Pounce, Bounce' in your next lesson. Write the key question you would use and annotate how you would manage the technique — including who you would direct the question to and how you would handle the 'bounce'. · Cynlluniwch sut byddech chi'n defnyddio'r dechneg yn eich gwers nesaf.</p>
+        <label class="field-label">The key question I would pose · Y cwestiwn allweddol:</label>
+        <textarea style="min-height:55px" placeholder="e.g. 'To what extent was the Rebecca Riots more about poverty than toll gates?'"></textarea>
+        <label class="field-label" style="margin-top:.6rem;display:block">How I would manage the pause, pounce and bounce · Sut byddwn i'n rheoli'r oedi, cyfeirio a bownsio:</label>
+        <textarea placeholder="Pause: I will wait ___ seconds before directing to… &#10;Pounce: I will direct to… &#10;Bounce: I will then ask… to respond by…"></textarea>
+        <label class="field-label" style="margin-top:.6rem;display:block">How might 'peer fear' affect this in your classroom — and how will you address it? · Sut allai 'ofn cymheiriaid' effeithio ar hyn?</label>
+        <textarea placeholder="Your response / Eich ymateb…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(1)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(2)">Next: Subject Focus → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 4 — SUBJECT FOCUS
+  ═══════════════════════════════════════ -->
+  <div class="section-card" id="sec-3">
+    <div class="card-header purple">
+      <div class="icon">📚</div>
+      <h2>Section 4: Questioning in the Humanities — Subject Focus
+        <em>Adran 4: Cwestiynu yn y Dyniaethau — Ffocws Pwnc</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="info-box">
+        <h3>🏴󠁧󠁢󠁷󠁬󠁳󠁿 Curriculum for Wales Connection · Cysylltiad Cwricwlwm i Gymru</h3>
+        <p>Each Humanities discipline has its own distinctive ways of framing questions. The Curriculum for Wales emphasises enquiry, local Welsh perspectives, and the concept of <strong>cynefin</strong> (a learner's sense of place and belonging) as a foundation for wider engagement. · Mae gan bob disgyblaeth yn y Dyniaethau ei ffyrdd nodweddiadol ei hun o fframio cwestiynau. Mae Cwricwlwm i Gymru yn pwysleisio ymholi a <strong>chynefin</strong>.</p>
+      </div>
+
+      <!-- HISTORY -->
+      <div class="subject-block hist">
+        <div class="subject-title" style="color:var(--indigo)">📜 History · Hanes</div>
+        <div class="subject-cy">Hanes — Ymholi Hanesyddol yng Nghwricwlwm i Gymru</div>
+        <p style="font-size:.88rem;margin-bottom:.8rem;color:var(--slate)">In History, questions engage with the <strong>second-order concepts</strong> that define the discipline. Good historical questions connect to Welsh history and learners' own <em>cynefin</em>.</p>
+        <div class="concept-chips">
+          <span class="concept-chip">Cause &amp; Consequence</span>
+          <span class="concept-chip">Change &amp; Continuity</span>
+          <span class="concept-chip">Significance</span>
+          <span class="concept-chip">Evidence &amp; Interpretation</span>
+          <span class="concept-chip">Similarity &amp; Difference</span>
+          <span class="concept-chip">Historical Perspectives</span>
+        </div>
+        <p style="font-size:.82rem;font-weight:700;color:var(--indigo);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.04em">Example Sequence — The Rebecca Riots · Dilyniant Enghreifftiol</p>
+        <ul class="q-sequence">
+          <li><div class="q-seq-num" style="background:var(--indigo)">R</div><span><span class="level-badge bl1">Remember</span> "What do you already know about the Rebecca Riots?"</span></li>
+          <li><div class="q-seq-num" style="background:var(--indigo)">U</div><span><span class="level-badge bl2">Understand</span> "Explain why toll gates caused such resentment in rural Wales."</span></li>
+          <li><div class="q-seq-num" style="background:var(--indigo)">An</div><span><span class="level-badge bl4">Analyse</span> "What caused the unrest in rural Wales in the 1830–40s beyond the toll gates?"</span></li>
+          <li><div class="q-seq-num" style="background:var(--indigo)">Ev</div><span><span class="level-badge bl5">Evaluate</span> "How far was the toll gate system the most significant cause of the Riots?"</span></li>
+          <li><div class="q-seq-num" style="background:var(--indigo)">Cr</div><span><span class="level-badge bl6">Create</span> "What questions does this primary source raise about how historians have interpreted the Riots?"</span></li>
+        </ul>
+      </div>
+
+      <!-- GEOGRAPHY -->
+      <div class="subject-block geog">
+        <div class="subject-title" style="color:var(--teal-dark)">🌏 Geography · Daearyddiaeth</div>
+        <div class="subject-cy">Daearyddiaeth — Ymholi Daearyddol a Chynefin</div>
+        <p style="font-size:.88rem;margin-bottom:.8rem;color:var(--slate)">Geography is fundamentally an enquiry-based discipline. Use the <strong>Geographical Enquiry Cycle</strong> to build question sequences. Ground enquiry in learners' <em>cynefin</em> before moving to the wider world.</p>
+        <div class="concept-chips">
+          <span class="concept-chip">Observe</span>
+          <span class="concept-chip">Question</span>
+          <span class="concept-chip">Investigate</span>
+          <span class="concept-chip">Analyse</span>
+          <span class="concept-chip">Conclude</span>
+        </div>
+        <p style="font-size:.82rem;font-weight:700;color:var(--teal-dark);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.04em">Example Sequence — Flooding in South Wales · Llifogydd yn Ne Cymru</p>
+        <ul class="q-sequence">
+          <li><div class="q-seq-num">1</div><span><span class="level-badge bl2" style="background:var(--teal)">Observe</span> "What do you notice about this flood map of Cardiff?"</span></li>
+          <li><div class="q-seq-num">2</div><span><span class="level-badge bl2" style="background:var(--teal)">Question</span> "What questions does this raise for you about why flooding occurs here?"</span></li>
+          <li><div class="q-seq-num">3</div><span><span class="level-badge bl3" style="background:var(--teal)">Investigate</span> "What evidence would help us understand the physical and human causes?"</span></li>
+          <li><div class="q-seq-num">4</div><span><span class="level-badge bl4" style="background:var(--teal)">Analyse</span> "Why does flooding occur more frequently in the South Wales Valleys than the Brecon Beacons?"</span></li>
+          <li><div class="q-seq-num">5</div><span><span class="level-badge bl5" style="background:var(--teal)">Conclude</span> "To what extent is global warming responsible for changes in Welsh upland ecosystems?"</span></li>
+        </ul>
+        <div style="background:var(--teal-pale);border-radius:6px;padding:.7rem .9rem;margin-top:.7rem;font-size:.84rem;color:var(--slate)">
+          💡 <strong>Cynefin tip:</strong> "What questions do you have after examining this OS map of your local cynefin?" — Starting with the familiar generates genuine curiosity before scaling up.
+        </div>
+      </div>
+
+      <!-- RVE -->
+      <div class="subject-block rve">
+        <div class="subject-title" style="color:var(--rose)">🕊️ Religion, Values &amp; Ethics · Crefydd, Gwerthoedd ac Moeseg</div>
+        <div class="subject-cy">GAE — Cwestiynu Sensitif a Diogelwch yn y Dosbarth</div>
+        <p style="font-size:.88rem;margin-bottom:.8rem;color:var(--slate)">RVE involves some of the most profound questions humans ask. Questions must be <strong>open, exploratory and non-threatening</strong>. The CfW requires learners to explore their own and others' perspectives on religious and non-religious worldviews.</p>
+        <div class="concept-chips">
+          <span class="concept-chip">Ultimate Questions</span>
+          <span class="concept-chip">Ethical Questions</span>
+          <span class="concept-chip">Interpretive Questions</span>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:.8rem 0">
+          <div style="background:white;border:1px solid #FBCFE8;border-radius:8px;padding:.8rem">
+            <p style="font-size:.75rem;font-weight:700;color:var(--rose);margin-bottom:.4rem;text-transform:uppercase">✅ Appropriate · Priodol</p>
+            <ul style="font-size:.82rem;padding-left:1rem;color:var(--slate);line-height:1.6">
+              <li>"How do different faith traditions approach the question of suffering?"</li>
+              <li>"What might a Muslim mean when they say 'It is God's will'?"</li>
+              <li>"Is it ever right to take a life? Consider different ethical frameworks."</li>
+            </ul>
+          </div>
+          <div style="background:white;border:1px solid #FECACA;border-radius:8px;padding:.8rem">
+            <p style="font-size:.75rem;font-weight:700;color:var(--red);margin-bottom:.4rem;text-transform:uppercase">⚠️ Avoid · Osgowch</p>
+            <ul style="font-size:.82rem;padding-left:1rem;color:var(--slate);line-height:1.6">
+              <li>"Do <em>you</em> believe in God?" — demands personal confession</li>
+              <li>"What is your religion?" — invasive and irrelevant</li>
+              <li>"Which religion is right about what happens after death?" — presupposes a singular answer</li>
+            </ul>
+          </div>
+        </div>
+        <div class="info-box red" style="margin-bottom:0;margin-top:.3rem">
+          <h3>⚠️ Sensitivity Note · Nodyn Sensitifrwydd</h3>
+          <p>Distinguish between questions <em>about</em> beliefs (exploring what people believe and why) and questions that demand personal confession (asking learners to state their own beliefs). <strong>Learners have the right to withhold personal beliefs.</strong> All worldviews — religious and non-religious — must be treated with equal respect and curiosity. · Rhaid gwahaniaethu rhwng cwestiynau am gredoau a chwestiynau sy'n gofyn i ddysgwyr ddatgelu eu credoau personol.</p>
+        </div>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">4</div> Task 4.1 — Subject Question Planning · Cynllunio Cwestiynau Pwnc</div>
+        <p style="font-size:.9rem;margin-bottom:.7rem">Choose a topic relevant to YOUR subject and Wales. Write a question sequence moving from recall to evaluation — one question at each Bloom's level. Then plan how you would move learners through this sequence over a lesson. · Dewiswch destun sy'n berthnasol i'ch pwnc a Chymru. Ysgrifennwch ddilyniant o gwestiynau.</p>
+        <label class="field-label">My topic &amp; subject · Fy nhestun a phwnc:</label>
+        <textarea style="min-height:40px" placeholder="e.g. History — The Merthyr Rising / Geography — Coastal erosion in Pembrokeshire / RVE — Sikh teachings on equality"></textarea>
+        <label class="field-label" style="margin-top:.6rem;display:block">My question sequence (Remember → Create) · Fy nilyniant cwestiynau:</label>
+        <textarea style="min-height:120px" placeholder="Remember (Level 1): &#10;Understand (Level 2): &#10;Apply (Level 3): &#10;Analyse (Level 4): &#10;Evaluate (Level 5): &#10;Create (Level 6): "></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(2)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(3)">Next: Strategies → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 5 — STRATEGIES
+  ═══════════════════════════════════════ -->
+  <div class="section-card" id="sec-4">
+    <div class="card-header green">
+      <div class="icon">🛠️</div>
+      <h2>Section 5: 10 Practical Strategies for the Humanities Classroom
+        <em>Adran 5: 10 Strategaeth Ymarferol ar gyfer Dosbarth y Dyniaethau</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="strategy-grid">
+        <div class="strategy-card">
+          <div class="strategy-name">1 · No Hands Up <span style="font-size:.9rem">🙅</span></div>
+          <div class="strategy-cy">Dim Dwylo i Fyny</div>
+          <div class="strategy-desc">Cold-call any learner using lolly sticks, a seating plan or random selector. Ensures equity — every pupil is accountable, not just volunteers.</div>
+          <div class="strategy-example">Pair with a 'right to pass' — "I'd like to come back to that" — to reduce anxiety without removing accountability.</div>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-name">2 · Think–Pair–Share <span style="font-size:.9rem">👥</span></div>
+          <div class="strategy-cy">Meddwl–Paru–Rhannu</div>
+          <div class="strategy-desc">Pose a question; learners discuss in pairs before sharing with the class. Reduces 'peer fear' by allowing rehearsal before public performance.</div>
+          <div class="strategy-example">"Should we eat meat? Discuss with your partner first." — works well for ethical dilemmas in RVE and contested historical judgements.</div>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-name">3 · Pose, Pause, Pounce, Bounce <span style="font-size:.9rem">🏀</span></div>
+          <div class="strategy-cy">Gofyn, Oedi, Cyfeirio, Bownsio</div>
+          <div class="strategy-desc">Ask the class, wait 5–10 seconds, direct to one learner, then bounce to a second for comment or challenge.</div>
+          <div class="strategy-example">"What does this source tell us about attitudes to Welsh identity? [10 sec] Sion, what do you think? Nia — do you agree?"</div>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-name">4 · Hot Seat <span style="font-size:.9rem">🎭</span></div>
+          <div class="strategy-cy">Y Sedd Boeth</div>
+          <div class="strategy-desc">A learner answers in character as a historical figure, geographer or religious leader. The class questions them.</div>
+          <div class="strategy-example">History: a Rebecca Riots leader. Geography: a coastal resident facing managed retreat. RVE: a key religious figure on suffering.</div>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-name">5 · Question Wall <span style="font-size:.9rem">📌</span></div>
+          <div class="strategy-cy">Wal Gwestiynau</div>
+          <div class="strategy-desc">A display where learners pin their questions throughout the topic. Prioritise wonder, not just recall. Return at the end — which have been answered?</div>
+          <div class="strategy-example">"Begin this unit on Climate Change with 'What questions do you have?' Review the wall at the end — what remains unanswered?"</div>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-name">6 · Here's the Answer… <span style="font-size:.9rem">🔀</span></div>
+          <div class="strategy-cy">Dyma'r Ateb…</div>
+          <div class="strategy-desc">"The answer is 1847. What might the question be?" — multiple valid questions are possible. Promotes out-of-the-box thinking.</div>
+          <div class="strategy-example">"The answer is 47%. What was the question?" — sparks debate about what data means in a Geography lesson on urbanisation.</div>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-name">7 · Snowball <span style="font-size:.9rem">❄️</span></div>
+          <div class="strategy-cy">Pêl Eira</div>
+          <div class="strategy-desc">Write a question, pass to partner who improves it, pass on again. Questions grow in complexity. Scaffolds those who struggle to generate questions independently.</div>
+          <div class="strategy-example">Learner A writes a Level 1 question; Learner B rewrites at Level 3; Learner C pushes to Level 5. Final question is often genuinely challenging.</div>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-name">8 · Odd One Out <span style="font-size:.9rem">🔍</span></div>
+          <div class="strategy-cy">Yr Un Allan o'r Cyffredin</div>
+          <div class="strategy-desc">"Which is the odd one out? Justify your choice." All answers justified by reasoning are valid — the justification is the learning.</div>
+          <div class="strategy-example">RVE: "Mosque, church, synagogue — odd one out?" History: "Chartists, Suffragettes, Rebecca Rioters — odd one out? Justify."</div>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-name">9 · Eavesdropping <span style="font-size:.9rem">👂</span></div>
+          <div class="strategy-cy">Clustfeinio</div>
+          <div class="strategy-desc">Circulate during group work and pose targeted questions to each group based on what you hear. Allows differentiated questioning in real time.</div>
+          <div class="strategy-example">"I heard you say it was unfair — can you explain what standard of fairness you're applying? Who decides?"</div>
+        </div>
+        <div class="strategy-card">
+          <div class="strategy-name">10 · Exit Question <span style="font-size:.9rem">🚪</span></div>
+          <div class="strategy-cy">Cwestiwn Ymadael</div>
+          <div class="strategy-desc">A higher-order question posed at the end of the lesson that learners take home. Answered at the start of the next lesson.</div>
+          <div class="strategy-example">"Was the Industrial Revolution a good thing for Wales? Come with evidence next lesson." — directly links to CfW enquiry cycle.</div>
+        </div>
+      </div>
+
+      <div class="task-box amber">
+        <div class="task-label"><div class="task-num">5</div> Task 5.1 — Strategy Analysis · Dadansoddi Strategaethau</div>
+        <p style="font-size:.9rem;margin-bottom:.7rem">Choose THREE strategies from above. For each one, describe specifically how you would use it in YOUR subject — be specific about a topic, class and the actual question you would use. · Dewiswch TRI strategaeth. Ar gyfer pob un, disgrifiwch yn benodol sut byddech chi'n ei defnyddio yn EICH pwnc.</p>
+        <label class="field-label" style="color:var(--amber-dark)">Strategy 1 — My subject application · Cymhwysiad fy mhwnc:</label>
+        <textarea placeholder="Strategy: &#10;Topic &amp; class: &#10;The question I would use: &#10;How I would manage it: "></textarea>
+        <label class="field-label" style="color:var(--amber-dark);margin-top:.6rem;display:block">Strategy 2 · Strategaeth 2:</label>
+        <textarea placeholder="Strategy: &#10;Topic &amp; class: &#10;The question I would use: &#10;How I would manage it: "></textarea>
+        <label class="field-label" style="color:var(--amber-dark);margin-top:.6rem;display:block">Strategy 3 · Strategaeth 3:</label>
+        <textarea placeholder="Strategy: &#10;Topic &amp; class: &#10;The question I would use: &#10;How I would manage it: "></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(3)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(4)">Next: Audit &amp; Quiz → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 6 — AUDIT & QUIZ
+  ═══════════════════════════════════════ -->
+  <div class="section-card" id="sec-5">
+    <div class="card-header rose">
+      <div class="icon">📋</div>
+      <h2>Section 6: Classroom Audit &amp; Knowledge Check
+        <em>Adran 6: Archwiliad Dosbarth a Gwiriad Gwybodaeth</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.8rem;color:var(--teal-dark)">Classroom Questioning Audit · Archwiliad Cwestiynu Dosbarth</h3>
+      <p style="font-size:.9rem;margin-bottom:.9rem;color:var(--slate-mid)">Use this tool during placement — observing a colleague's lesson or reviewing your own teaching. · Defnyddiwch yr offeryn hwn yn ystod lleoliad — wrth arsylwi ar wers cydweithiwr neu adolygu eich addysgu eich hun.</p>
+      <div style="margin-bottom:.6rem;display:flex;gap:1rem;flex-wrap:wrap">
+        <div style="flex:1;min-width:200px"><label class="field-label">Lesson observed/taught · Gwers:</label><input type="text" style="width:100%;border:2px solid var(--border);border-radius:6px;padding:.4rem .7rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem" placeholder="Topic / Pwnc"></div>
+        <div style="flex:1;min-width:200px"><label class="field-label">Year Group · Grŵp Blwyddyn:</label><input type="text" style="width:100%;border:2px solid var(--border);border-radius:6px;padding:.4rem .7rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem" placeholder="e.g. Year 9 / Blwyddyn 9"></div>
+      </div>
+
+      <table class="audit-table">
+        <thead><tr><th style="width:55%">Behaviour observed · Ymddygiad a welwyd</th><th>Never · Byth</th><th>Sometimes · Weithiau</th><th>Often · Yn Aml</th></tr></thead>
+        <tbody>          <tr>
+            <td>Makes key enquiry questions explicit at the start · Yn gwneud cwestiynau ymholi allweddol yn amlwg ar y dechrau</td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-0" value="never"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-0" value="sometimes"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-0" value="often"><span>○</span></label></div></td>
+          </tr>          <tr>
+            <td>Asks a balance of open and closed questions · Yn gofyn cyfuniad o gwestiynau agored a chaeëdig</td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-1" value="never"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-1" value="sometimes"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-1" value="often"><span>○</span></label></div></td>
+          </tr>          <tr>
+            <td>Uses higher-order questions (analysis, evaluation, creation) · Yn defnyddio cwestiynau lefel uwch</td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-2" value="never"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-2" value="sometimes"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-2" value="often"><span>○</span></label></div></td>
+          </tr>          <tr>
+            <td>Uses wait time of 3+ seconds · Yn defnyddio amser aros o 3+ eiliad</td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-3" value="never"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-3" value="sometimes"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-3" value="often"><span>○</span></label></div></td>
+          </tr>          <tr>
+            <td>Uses wait time of 10+ seconds for higher-order questions · Amser aros 10+ eiliad ar gyfer cwestiynau lefel uwch</td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-4" value="never"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-4" value="sometimes"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-4" value="often"><span>○</span></label></div></td>
+          </tr>          <tr>
+            <td>Distributes questions around the whole class · Yn dosbarthu cwestiynau o amgylch y dosbarth cyfan</td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-5" value="never"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-5" value="sometimes"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-5" value="often"><span>○</span></label></div></td>
+          </tr>          <tr>
+            <td>Uses 'no hands up' or equity strategy · Yn defnyddio 'dim dwylo i fyny' neu strategaeth degwch</td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-6" value="never"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-6" value="sometimes"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-6" value="often"><span>○</span></label></div></td>
+          </tr>          <tr>
+            <td>Builds on student responses — correct and incorrect · Yn adeiladu ar ymatebion myfyrwyr</td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-7" value="never"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-7" value="sometimes"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-7" value="often"><span>○</span></label></div></td>
+          </tr>          <tr>
+            <td>Encourages students to ask questions · Yn annog myfyrwyr i ofyn cwestiynau</td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-8" value="never"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-8" value="sometimes"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-8" value="often"><span>○</span></label></div></td>
+          </tr>          <tr>
+            <td>Students ask questions of each other · Mae myfyrwyr yn gofyn cwestiynau i'w gilydd</td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-9" value="never"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-9" value="sometimes"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-9" value="often"><span>○</span></label></div></td>
+          </tr>          <tr>
+            <td>Varies question level to suit different learners · Yn amrywio lefel cwestiynau i siwtio dysgwyr gwahanol</td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-10" value="never"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-10" value="sometimes"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-10" value="often"><span>○</span></label></div></td>
+          </tr>          <tr>
+            <td>Avoids answering questions immediately after asking them · Yn osgoi ateb cwestiynau ar unwaith</td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-11" value="never"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-11" value="sometimes"><span>○</span></label></div></td>
+            <td><div class="audit-radio-group"><label><input type="radio" name="aud-11" value="often"><span>○</span></label></div></td>
+          </tr>        </tbody>
+      </table>
+      <label class="field-label" style="margin-top:.8rem;display:block">Overall strengths observed · Cryfderau cyffredinol a welwyd:</label>
+      <textarea style="min-height:55px" placeholder="Your notes / Eich nodiadau…"></textarea>
+      <label class="field-label" style="margin-top:.6rem;display:block">One specific target for improvement · Un targed penodol ar gyfer gwelliant:</label>
+      <textarea style="min-height:55px" placeholder="I will… / Byddaf yn…"></textarea>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:1.5rem 0 .8rem;color:var(--teal-dark)">Knowledge Check Quiz · Cwis Gwiriad Gwybodaeth</h3><div class="quiz-question" id="q1"><p class="q-text"><span class="q-num">1</span>According to Wragg (1993), what percentage of teacher questions are higher-order?</p><p class="q-welsh">· Yn ôl Wragg (1993), pa ganran o gwestiynau athrawon sy'n rhai lefel uwch?</p><div class="options"><button class="option-btn" onclick="checkQ('q1',this,false)">Around 50% — if the teacher is experienced / Tua 50% — os yw'r athro'n brofiadol</button><button class="option-btn" onclick="checkQ('q1',this,true)">Only 8% — most questions are recall or management / Dim ond 8% — mae'r rhan fwyaf yn atgoffa neu'n rheoli</button><button class="option-btn" onclick="checkQ('q1',this,false)">Around 30% — analysis and evaluation questions / Tua 30% — cwestiynau dadansoddi a gwerthuso</button><button class="option-btn" onclick="checkQ('q1',this,false)">Around 20% — depending on the subject / Tua 20% — yn dibynnu ar y pwnc</button></div><div class="feedback" id="q1-fb"></div></div><div class="quiz-question" id="q2"><p class="q-text"><span class="q-num">2</span>What does Mary Budd Rowe's (1978) research recommend for higher-order questions?</p><p class="q-welsh">· Beth mae ymchwil Mary Budd Rowe (1978) yn ei argymell ar gyfer cwestiynau lefel uwch?</p><div class="options"><button class="option-btn" onclick="checkQ('q2',this,false)">Ask them only at the end of the lesson when knowledge is secure / Gofynnwch nhw ar ddiwedd y wers yn unig</button><button class="option-btn" onclick="checkQ('q2',this,false)">Give at least 3 seconds of wait time for all questions, regardless of type / Rhowch o leiaf 3 eiliad o amser aros ar gyfer pob cwestiwn</button><button class="option-btn" onclick="checkQ('q2',this,true)">Allow 10 or more seconds of wait time to encourage richer, more thoughtful responses / Caniatewch 10 eiliad neu fwy o amser aros</button><button class="option-btn" onclick="checkQ('q2',this,false)">Provide the answer framework first, then ask the question / Darparwch y fframwaith ateb yn gyntaf</button></div><div class="feedback" id="q2-fb"></div></div><div class="quiz-question" id="q3"><p class="q-text"><span class="q-num">3</span>What is Alexander's (2017) concept of 'dialogic teaching'?</p><p class="q-welsh">· Beth yw cysyniad Alexander (2017) o 'addysgu deialogig'?</p><div class="options"><button class="option-btn" onclick="checkQ('q3',this,false)">A method where the teacher talks for most of the lesson, with pupils listening carefully / Dull lle mae'r athro'n siarad am y rhan fwyaf o'r wers</button><button class="option-btn" onclick="checkQ('q3',this,false)">A system where pupils submit questions in writing before the lesson begins / System lle mae disgyblion yn cyflwyno cwestiynau yn ysgrifenedig</button><button class="option-btn" onclick="checkQ('q3',this,true)">A Socratic approach in which student answers are built on rather than merely received — questions chain together and feedback leads thinking forward / Dull Socratig lle mae atebion myfyrwyr yn cael eu hadeiladu arnynt</button><button class="option-btn" onclick="checkQ('q3',this,false)">An approach where only higher-attaining pupils are asked to respond publicly / Dull lle mai dim ond disgyblion mwy abl sy'n ateb yn gyhoeddus</button></div><div class="feedback" id="q3-fb"></div></div><div class="quiz-question" id="q4"><p class="q-text"><span class="q-num">4</span>Why is 'peer fear' the main barrier to pupil participation in questioning?</p><p class="q-welsh">· Pam mae 'ofn cymheiriaid' yn brif rwystr i gyfranogiad disgyblion mewn cwestiynu?</p><div class="options"><button class="option-btn" onclick="checkQ('q4',this,false)">Because pupils fear being wrong in front of the teacher and receiving a poor mark / Oherwydd bod disgyblion yn ofni cael marc gwael</button><button class="option-btn" onclick="checkQ('q4',this,true)">Because pupils' main fear is not of being wrong, but of looking silly — being ridiculed by the teacher or other pupils / Oherwydd mai prif ofn disgyblion yw edrych yn dwp</button><button class="option-btn" onclick="checkQ('q4',this,false)">Because pupils fear that answering correctly will make them seem too keen / Oherwydd bod disgyblion yn ofni edrych yn rhy awyddus</button><button class="option-btn" onclick="checkQ('q4',this,false)">Because pupils fear questions will appear in the end-of-year assessment / Oherwydd bod disgyblion yn ofni y bydd cwestiynau'n ymddangos yn yr asesiad</button></div><div class="feedback" id="q4-fb"></div></div><div class="quiz-question" id="q5"><p class="q-text"><span class="q-num">5</span>In RVE, what is the key distinction teachers must make when asking questions about beliefs?</p><p class="q-welsh">· Yn GAE, beth yw'r gwahaniaeth allweddol y mae'n rhaid i athrawon ei wneud wrth ofyn cwestiynau am gredoau?</p><div class="options"><button class="option-btn" onclick="checkQ('q5',this,false)">Between questions asked in Welsh and those asked in English / Rhwng cwestiynau a ofynnir yn Gymraeg a'r rhai a ofynnir yn Saesneg</button><button class="option-btn" onclick="checkQ('q5',this,false)">Between questions suitable for Year 7 and those suitable for Year 11 / Rhwng cwestiynau addas i Flwyddyn 7 ac i Flwyddyn 11</button><button class="option-btn" onclick="checkQ('q5',this,true)">Between questions about what religious communities believe and questions demanding learners state their own personal religious beliefs / Rhwng cwestiynau am gredoau a chwestiynau sy'n mynnu datgeliad personol</button><button class="option-btn" onclick="checkQ('q5',this,false)">Between questions about world religions and questions about non-religious worldviews / Rhwng cwestiynau am grefyddau'r byd a rhai am olygfeydd byd anghrefyddol</button></div><div class="feedback" id="q5-fb"></div></div>
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(4)">← Back · Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(5)">Next: Reflection → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════
+       SECTION 7 — REFLECTION & ACTION PLAN
+  ═══════════════════════════════════════ -->
+  <div class="section-card" id="sec-6">
+    <div class="card-header slate">
+      <div class="icon">🪞</div>
+      <h2>Section 7: Personal Reflection &amp; Action Plan
+        <em>Adran 7: Adlewyrchiad Personol a Chynllun Gweithredu</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="quote-block">
+        <p class="quote-text">"It is better to have a classroom full of unanswered questions than unanswered answers."</p>
+        <p class="quote-attr">— Morgan &amp; Saxton (1991) Teaching, Questioning and Learning</p>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:1rem 0 .8rem;color:var(--teal-dark)">Reflective Questions · Cwestiynau Adlewyrchu</h3>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.1rem;margin-bottom:.8rem">
+        <p style="font-weight:700;font-size:.95rem;color:var(--teal-dark);margin-bottom:.15rem">Is my classroom a 'questioning classroom'?</p>
+        <p style="font-size:.82rem;color:#D4A017;font-style:italic;margin-bottom:.4rem">A yw fy nosbarth yn 'ddosbarth cwestiynu'?</p>
+        <p style="font-size:.85rem;color:var(--slate-mid);margin-bottom:.5rem">Do learners feel safe to ask questions, be wrong, and sit with uncertainty? · A yw dysgwyr yn teimlo'n ddiogel i ofyn cwestiynau, bod yn anghywir, ac aros gydag ansicrwydd?</p>
+        <textarea style="min-height:60px" placeholder="My response · Fy ymateb…"></textarea>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.1rem;margin-bottom:.8rem">
+        <p style="font-weight:700;font-size:.95rem;color:var(--teal-dark);margin-bottom:.15rem">What types of questions do I typically ask?</p>
+        <p style="font-size:.82rem;color:#D4A017;font-style:italic;margin-bottom:.4rem">Pa fathau o gwestiynau rwy'n eu gofyn fel arfer?</p>
+        <p style="font-size:.85rem;color:var(--slate-mid);margin-bottom:.5rem">What was the balance of lower-order to higher-order in my last lesson? How might I shift this? · Beth oedd y cydbwysedd rhwng cwestiynau lefel is ac uwch yn fy ngwers ddiwethaf?</p>
+        <textarea style="min-height:60px" placeholder="My response · Fy ymateb…"></textarea>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.1rem;margin-bottom:.8rem">
+        <p style="font-weight:700;font-size:.95rem;color:var(--teal-dark);margin-bottom:.15rem">How do my questions connect to the CfW?</p>
+        <p style="font-size:.82rem;color:#D4A017;font-style:italic;margin-bottom:.4rem">Sut mae fy nghwestiynau'n cysylltu â'r CfW?</p>
+        <p style="font-size:.85rem;color:var(--slate-mid);margin-bottom:.5rem">Do my questions develop the Four Purposes — especially 'ambitious, capable learners'? · A yw fy nghwestiynau'n datblygu'r Pedwar Diben — yn enwedig 'dysgwyr uchelgeisiol, galluog'?</p>
+        <textarea style="min-height:60px" placeholder="My response · Fy ymateb…"></textarea>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.1rem;margin-bottom:.8rem">
+        <p style="font-weight:700;font-size:.95rem;color:var(--teal-dark);margin-bottom:.15rem">How do I differentiate my questioning?</p>
+        <p style="font-size:.82rem;color:#D4A017;font-style:italic;margin-bottom:.4rem">Sut ydw i'n gwahaniaethu fy nghwestiynu?</p>
+        <p style="font-size:.85rem;color:var(--slate-mid);margin-bottom:.5rem">Am I supporting lower-attaining learners while genuinely challenging higher-attaining ones? · A ydw i'n cefnogi dysgwyr is eu cyrhaeddiad tra'n herio rhai uwch?</p>
+        <textarea style="min-height:60px" placeholder="My response · Fy ymateb…"></textarea>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:1.1rem;margin-bottom:.8rem">
+        <p style="font-weight:700;font-size:.95rem;color:var(--teal-dark);margin-bottom:.15rem">How long do I wait?</p>
+        <p style="font-size:.82rem;color:#D4A017;font-style:italic;margin-bottom:.4rem">Am faint ydw i'n aros?</p>
+        <p style="font-size:.85rem;color:var(--slate-mid);margin-bottom:.5rem">Am I giving adequate thinking time — especially 10+ seconds for higher-order questions? · A ydw i'n rhoi amser meddwl digonol — yn enwedig 10+ eiliad ar gyfer cwestiynau lefel uwch?</p>
+        <textarea style="min-height:60px" placeholder="My response · Fy ymateb…"></textarea>
+      </div>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:1.4rem 0 .8rem;color:var(--teal-dark)">My Three Targets for Placement · Fy Nri Thargedau ar gyfer Lleoliad</h3>
+      <div class="target-card">
+        <div class="target-num">Target 1 · Targed 1</div>
+        <div class="target-fields">
+          <div><span class="field-label">What I will do · Beth a wnaf:</span><textarea style="min-height:50px" placeholder="e.g. I will use 'Pose, Pause, Pounce, Bounce' at least once per lesson…"></textarea></div>
+          <div><span class="field-label">How I will do it · Sut y gwnaf hyn:</span><textarea style="min-height:50px" placeholder="e.g. I will prepare a higher-order question in advance and use lolly sticks to select…"></textarea></div>
+          <div><span class="field-label">How I will know it worked · Sut y byddaf yn gwybod ei fod wedi gweithio:</span><textarea style="min-height:50px" placeholder="e.g. I will ask my mentor to count wait times during an observation…"></textarea></div>
+          <div style="display:flex;gap:.8rem;align-items:center;margin-top:.2rem">
+            <span class="field-label" style="white-space:nowrap">Review date · Dyddiad adolygu:</span>
+            <input type="date" style="border:2px solid var(--border);border-radius:6px;padding:.35rem .6rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem">
+          </div>
+        </div>
+      </div>
+      <div class="target-card">
+        <div class="target-num">Target 2 · Targed 2</div>
+        <div class="target-fields">
+          <div><span class="field-label">What I will do · Beth a wnaf:</span><textarea style="min-height:50px" placeholder="e.g. I will use 'Pose, Pause, Pounce, Bounce' at least once per lesson…"></textarea></div>
+          <div><span class="field-label">How I will do it · Sut y gwnaf hyn:</span><textarea style="min-height:50px" placeholder="e.g. I will prepare a higher-order question in advance and use lolly sticks to select…"></textarea></div>
+          <div><span class="field-label">How I will know it worked · Sut y byddaf yn gwybod ei fod wedi gweithio:</span><textarea style="min-height:50px" placeholder="e.g. I will ask my mentor to count wait times during an observation…"></textarea></div>
+          <div style="display:flex;gap:.8rem;align-items:center;margin-top:.2rem">
+            <span class="field-label" style="white-space:nowrap">Review date · Dyddiad adolygu:</span>
+            <input type="date" style="border:2px solid var(--border);border-radius:6px;padding:.35rem .6rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem">
+          </div>
+        </div>
+      </div>
+      <div class="target-card">
+        <div class="target-num">Target 3 · Targed 3</div>
+        <div class="target-fields">
+          <div><span class="field-label">What I will do · Beth a wnaf:</span><textarea style="min-height:50px" placeholder="e.g. I will use 'Pose, Pause, Pounce, Bounce' at least once per lesson…"></textarea></div>
+          <div><span class="field-label">How I will do it · Sut y gwnaf hyn:</span><textarea style="min-height:50px" placeholder="e.g. I will prepare a higher-order question in advance and use lolly sticks to select…"></textarea></div>
+          <div><span class="field-label">How I will know it worked · Sut y byddaf yn gwybod ei fod wedi gweithio:</span><textarea style="min-height:50px" placeholder="e.g. I will ask my mentor to count wait times during an observation…"></textarea></div>
+          <div style="display:flex;gap:.8rem;align-items:center;margin-top:.2rem">
+            <span class="field-label" style="white-space:nowrap">Review date · Dyddiad adolygu:</span>
+            <input type="date" style="border:2px solid var(--border);border-radius:6px;padding:.35rem .6rem;font-family:'Source Sans 3',sans-serif;font-size:.85rem">
+          </div>
+        </div>
+      </div>
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(5)">← Back · Yn ôl</button>
+        <button class="btn btn-amber" onclick="complete()">🎓 Complete Session · Cwblhau'r Sesiwn</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="completion-card" id="completion">
+    <span class="badge-icon">🎓</span>
+    <h2>Session Complete! · Sesiwn Wedi'i Chwblhau!</h2>
+    <div class="score-badge">Quiz Score · Sgôr Cwis: <span id="final-score">0</span> / 5</div>
+    <p><strong>Well done!</strong> You have worked through all seven sections of this Effective Questioning session. Remember: the quality of your questions shapes the quality of your learners' thinking — every lesson, every day.</p>
+    <p style="margin-top:.6rem"><strong>Da iawn!</strong> Rydych chi wedi gweithio drwy'r saith adran. Cofiwch: mae ansawdd eich cwestiynau yn llunio ansawdd meddwl eich dysgwyr — ym mhob gwers, bob dydd.</p>
+    <div style="margin-top:1rem"><button class="btn btn-secondary" onclick="location.reload()" style="background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.35);color:#fff;font-size:.85rem;">↺ Start Again · Dechrau Eto</button></div>
+    <div class="cert-trigger-box">
+      <p>🏅 <strong>Generate your personalised completion certificate · Creu eich tystysgrif gwblhau bersonol</strong><br>
+      Enter your full name to generate a printable certificate. · Rhowch eich enw llawn i greu tystysgrif argraffdwy.</p>
+      <div class="cert-name-row">
+        <input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name · Eich enw llawn…" maxlength="80">
+        <button class="btn-cert" onclick="generateCertificate()">🎓 Generate Certificate · Creu Tystysgrif</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- CERTIFICATE OVERLAY -->
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:2rem;">❓</div>
+            <div class="cert-inst-name">PGCE Secondary — Humanities
+              <span class="cert-inst-cy">Cwricwlwm i Gymru / Curriculum for Wales</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that · Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher · yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.5rem 0 .3rem"><div class="cert-name" id="certDisplayName">Your Name</div></div>
+          <div class="cert-score-pill">Quiz Score · Sgôr Cwis: <span id="certScoreDisplay">—</span> / 5</div>
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the induction training session on</div>
+          <div class="cert-course">Effective Questioning in the Humanities Classroom
+            <span class="cert-course-cy">Cwestiynu Effeithiol yn Nosbarth y Dyniaethau</span>
+          </div>
+          <div class="cert-competencies">Demonstrating understanding of higher and lower-order questioning, Bloom's Taxonomy applied to Humanities, wait time research, dialogic teaching principles, questioning strategies including Pose–Pause–Pounce–Bounce, the geographical enquiry cycle, historical second-order concepts, and sensitive questioning in RVE within the Curriculum for Wales framework.<br>
+          <em style="color:#0F766E;display:block;margin-top:.4rem">Gan ddangos dealltwriaeth o gwestiynu lefel uwch ac is, Tacsonomeg Bloom yn y Dyniaethau, ymchwil amser aros, egwyddorion addysgu deialogig, a strategaethau cwestiynu o fewn fframwaith Cwricwlwm i Gymru.</em></div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <div class="cert-sig-label">Programme Director · Cyfarwyddwr y Rhaglen</div>
+            </div>
+            <div><div class="cert-seal"><span class="cert-seal-icon">🎓</span>PGCE<br>CYMRU</div></div>
+            <div class="cert-sig-block">
+              <div class="cert-date-val" id="certDateDisplay"></div>
+              <div class="cert-date-label">Date Completed · Dyddiad Cwblhau</div>
+            </div>
+          </div>
+          <div class="cert-stripe" style="margin:1.2rem -2rem -1.6rem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">🖨️ Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">✕ Close · Cau</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let score=0; const answeredQs=new Set(); const completedSections=new Set();
+const feedbacks={
+  q1:'Correct! Wragg (1993) found only 8% of questions were higher-order — a powerful reminder of how we can inadvertently set a recall ceiling in our lessons. Kerry (1989) found a similar figure of just 4% in secondary schools. · Cywir! Canfu Wragg (1993) mai dim ond 8% o gwestiynau oedd yn rhai lefel uwch.',
+  q2:'Correct! Rowe (1978) found that wait times of 10+ seconds produce significantly better results with higher-order questions — giving learners time to organise complex thinking. Cohen et al. (2004) recommend 3–5 seconds for closed questions. · Cywir! Canfu Rowe (1978) fod amser aros o 10+ eiliad yn cynhyrchu canlyniadau gwell gyda chwestiynau lefel uwch.',
+  q3:"Correct! Alexander's dialogic teaching requires that answers are 'built on, not merely received' — exchanges chain together, feedback leads thinking forward, and students' contributions are extended. · Cywir! Mae addysgu deialogig Alexander yn gofyn bod atebion yn cael eu 'hadeiladu arnynt, nid eu derbyn yn unig'.",
+  q4:"Correct! Mitchell's research identifies 'peer fear' — the fear of looking silly in front of peers — as the primary obstacle. This is why Think-Pair-Share, wait time and 'right to pass' are so important. · Cywir! Mae ymchwil Mitchell yn nodi 'ofn cymheiriaid' fel y prif rwystr i gyfranogiad.",
+  q5:"Correct! In RVE, learners have the right to withhold personal beliefs. Questions must explore what people believe and why — not demand personal confession. All worldviews must be treated with equal respect. · Cywir! Yn GAE, mae gan ddysgwyr yr hawl i beidio â datgelu credoau personol.",
+};
+const wrongMsg="Not quite — ";
+function checkQ(qId,btn,isCorrect){
+  if(answeredQs.has(qId))return; answeredQs.add(qId);
+  document.getElementById(qId).querySelectorAll('.option-btn').forEach(b=>b.disabled=true);
+  const fb=document.getElementById(qId+'-fb');
+  if(isCorrect){btn.classList.add('correct');fb.className='feedback correct show';fb.innerHTML='✅ '+feedbacks[qId];score++;}
+  else{btn.classList.add('wrong');fb.className='feedback wrong show';fb.innerHTML='❌ '+wrongMsg+feedbacks[qId];}
+}
+function goTo(idx){
+  document.querySelectorAll('.section-card').forEach((el,i)=>el.classList.toggle('active',i===idx));
+  document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('active',i===idx));
+  const pct=Math.round(((idx+1)/7)*100);
+  document.getElementById('progress-bar').style.width=pct+'%';
+  document.getElementById('progress-label').textContent='Section '+(idx+1)+' of 7 · Adran '+(idx+1)+' o 7';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function nextSection(idx){
+  completedSections.add(idx);
+  document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('done',completedSections.has(i)));
+  goTo(idx+1);
+}
+function complete(){
+  completedSections.add(6);
+  document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('done',completedSections.has(i)));
+  document.querySelectorAll('.section-card').forEach(el=>el.classList.remove('active'));
+  document.getElementById('completion').classList.add('show');
+  document.getElementById('final-score').textContent=score;
+  document.getElementById('progress-bar').style.width='100%';
+  document.getElementById('progress-label').textContent='Complete! · Wedi Cwblhau!';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function generateCertificate(){
+  var name=document.getElementById('certNameInput').value.trim();
+  if(!name){document.getElementById('certNameInput').focus();document.getElementById('certNameInput').style.borderColor='#F59E0B';setTimeout(function(){document.getElementById('certNameInput').style.borderColor='';},1500);return;}
+  document.getElementById('certDisplayName').textContent=name;
+  document.getElementById('certScoreDisplay').textContent=score;
+  var now=new Date();
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('certDateDisplay').textContent=now.getDate()+' '+months[now.getMonth()]+' '+now.getFullYear();
+  document.getElementById('certOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeCertificate(){document.getElementById('certOverlay').classList.remove('show');document.body.style.overflow='';}
+function printCertificate(){
+  var cert=document.getElementById('certificateEl');
+  var w=window.open('','_blank','width=900,height=700');
+  w.document.write('<html><head><title>Certificate of Completion</title>');
+  document.querySelectorAll('style,link[rel="stylesheet"]').forEach(function(s){w.document.write(s.outerHTML);});
+  w.document.write('</head><body style="margin:0;padding:20px;background:white;">');
+  w.document.write(cert.outerHTML);
+  w.document.write('</body></html>');
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener('click',function(e){if(e.target.id==='certOverlay')closeCertificate();});
+</script>
+</body>
+</html>
