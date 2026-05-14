@@ -796,26 +796,26 @@ textarea:focus{outline:none;border-color:var(--wine)}
 <script>
 // Dodgy Questions data
 var dqQuestions=[
-  {id:1,text:'Was the Treaty of Versailles fair?'},
-  {id:2,text:'Why have some people thought that the Treaty of Versailles was not 'fair'?'},
-  {id:3,text:'Did the Treaty of Versailles cause the Second World War?'},
-  {id:4,text:'Why did the Treaty of Versailles take the form that it did?'},
-  {id:5,text:'Who can tell us about the Treaty of Versailles?'},
-  {id:6,text:'Who was to blame for the Treaty of Versailles?'},
-  {id:7,text:'Why has the Treaty of Versailles been interpreted in so many different ways?'},
-  {id:8,text:'Have historians been too harsh on the Treaty of Versailles?'},
-  {id:9,text:'Why does the Treaty of Versailles matter so much?'},
-  {id:10,text:'Why did the Treaty of Versailles matter so much?'},
-  {id:11,text:'Why does everyone remember the Treaty of Versailles?'},
-  {id:12,text:'What did the makers of Versailles want?'}
+  {id:1,text:"Was the Treaty of Versailles fair?"},
+  {id:2,text:"Why have some people thought that the Treaty of Versailles was not fair?"},
+  {id:3,text:"Did the Treaty of Versailles cause the Second World War?"},
+  {id:4,text:"Why did the Treaty of Versailles take the form that it did?"},
+  {id:5,text:"Who can tell us about the Treaty of Versailles?"},
+  {id:6,text:"Who was to blame for the Treaty of Versailles?"},
+  {id:7,text:"Why has the Treaty of Versailles been interpreted in so many different ways?"},
+  {id:8,text:"Have historians been too harsh on the Treaty of Versailles?"},
+  {id:9,text:"Why does the Treaty of Versailles matter so much?"},
+  {id:10,text:"Why did the Treaty of Versailles matter so much?"},
+  {id:11,text:"Why does everyone remember the Treaty of Versailles?"},
+  {id:12,text:"What did the makers of Versailles want?"}
 ];
 var dqTags={};
 var currentTag=null;
 
 function setTag(tag){
   currentTag=tag;
-  document.querySelectorAll('.tag-btn').forEach(function(b){b.classList.remove('active');});
-  if(tag){var btn=document.getElementById('tag-'+tag);if(btn)btn.classList.add('active');}
+  document.querySelectorAll(".tag-btn").forEach(function(b){b.classList.remove("active");});
+  if(tag){var btn=document.getElementById("tag-"+tag);if(btn)btn.classList.add("active");}
 }
 
 function tagQuestion(id){
@@ -825,17 +825,17 @@ function tagQuestion(id){
 }
 
 function renderDodgy(){
-  var grid=document.getElementById('dodgyGrid');
-  grid.innerHTML='';
+  var grid=document.getElementById("dodgyGrid");
+  grid.innerHTML="";
   dqQuestions.forEach(function(q){
     var tag=dqTags[q.id]||null;
-    var cls='dodgy-card'+(tag?' selected-'+tag:'');
-    var badge='';
-    if(tag==='dodgy') badge=' <span style="font-size:.7rem;background:#6B1E1E;color:white;padding:.1rem .4rem;border-radius:4px;">DODGY</span>';
-    else if(tag==='evidence') badge=' <span style="font-size:.7rem;background:#0F766E;color:white;padding:.1rem .4rem;border-radius:4px;">EVIDENCE</span>';
-    else if(tag==='interp') badge=' <span style="font-size:.7rem;background:#3730A3;color:white;padding:.1rem .4rem;border-radius:4px;">INTERP</span>';
-    else if(tag==='good') badge=' <span style="font-size:.7rem;background:#2D6A4F;color:white;padding:.1rem .4rem;border-radius:4px;">GOOD</span>';
-    grid.innerHTML+='<div class="'+cls+'" onclick="tagQuestion('+q.id+')"><div class="dq-num">'+q.id+'</div><div class="dq-text">'+q.text+badge+'</div></div>';
+    var cls="dodgy-card"+(tag?" selected-"+tag:"");
+    var badge="";
+    if(tag==="dodgy") badge=" <span style="font-size:.7rem;background:#6B1E1E;color:white;padding:.1rem .4rem;border-radius:4px;">DODGY</span>";
+    else if(tag==="evidence") badge=" <span style="font-size:.7rem;background:#0F766E;color:white;padding:.1rem .4rem;border-radius:4px;">EVIDENCE</span>";
+    else if(tag==="interp") badge=" <span style="font-size:.7rem;background:#3730A3;color:white;padding:.1rem .4rem;border-radius:4px;">INTERP</span>";
+    else if(tag==="good") badge=" <span style="font-size:.7rem;background:#2D6A4F;color:white;padding:.1rem .4rem;border-radius:4px;">GOOD</span>";
+    grid.innerHTML+="<div class=""+cls+"" onclick="tagQuestion("+q.id+")"><div class="dq-num">"+q.id+"</div><div class="dq-text">"+q.text+badge+"</div></div>";
   });
 }
 
@@ -844,71 +844,71 @@ renderDodgy();
 // Quiz
 var score=0; var answeredQs=new Set(); var completedSections=new Set();
 var feedbacks={
-  q1:'Correct! Riley's central critique is that these questions are merely descriptive — they drift into antiquarianism, require no historical thinking, and give pupils no criteria for prioritising information. · Cywir! Mae beirniadaeth ganolog Riley yn ymwneud â'r ffaith bod y cwestiynau hyn yn ddim ond disgrifiadol.',
-  q2:'Correct! This is the key distinction: from moral judge to historian. Question 1 invites anachronistic judgement; Question 2 demands contextual historical understanding. This is the fundamental shift in all interpretations work. · Cywir! Dyma'r gwahaniaeth allweddol: o farnwr moesol i hanesydd.',
-  q3:'Correct! You cannot evaluate an interpretation without something to evaluate it against. Riley builds knowledge through painting then primary sources so pupils can ask meaningful questions of Winterbottom's choices. · Cywir! Ni allwch werthuso dehongliad heb rywbeth i'w werthuso yn ei erbyn.',
-  q4:'Correct! Riley champions rich sources — one vivid individual does more historical work than a list of facts. The Coroner's Rolls are accidental windows into daily life because they were not written to impress anyone. · Cywir! Mae Riley yn hyrwyddo ffynonellau cyfoethog — mae un unigolyn bywiog yn gwneud mwy o waith na rhestr o ffeithiau.',
-  q5:'Correct! The outcome activity is what makes the enquiry more than a unit title. Pupils must ANSWER the question — take a position, use evidence, debate. If they are just writing about the topic the enquiry has not worked. · Cywir! Y gweithgaredd canlyniad yw'r hyn sy'n gwneud yr ymholiad yn fwy na theitl uned.'
+  q1:"Correct! Riley argues that descriptive questions like this drift into antiquarianism — they require no historical thinking and give pupils no criteria for prioritising information. A good question must foreground a second-order concept.",
+  q2:"Correct! This is the key distinction: from moral judge to historian. Question 1 invites anachronistic judgement; Question 2 demands contextual historical understanding. This is the fundamental shift in all interpretations work.",
+  q3:"Correct! You cannot evaluate an interpretation without something to evaluate it against. Riley builds knowledge through painting then primary sources so pupils can ask meaningful questions of the filmmaker choices.",
+  q4:"Correct! Riley champions rich sources. One vivid individual does more historical work than a list of facts. The Rolls are accidental windows into daily life because they were not written to impress anyone.",
+  q5:"Correct! The outcome activity is what makes the enquiry more than a unit title. Pupils must ANSWER the question — take a position, use evidence, debate. Writing about the topic is not the same as answering the question."
 };
 
 function checkQ(qId,btn,isCorrect){
   if(answeredQs.has(qId))return; answeredQs.add(qId);
-  document.getElementById(qId).querySelectorAll('.option-btn').forEach(function(b){b.disabled=true;});
-  var fb=document.getElementById(qId+'-fb');
-  if(isCorrect){btn.classList.add('correct');fb.className='feedback correct show';fb.innerHTML='&#10003; '+feedbacks[qId];score++;}
-  else{btn.classList.add('wrong');fb.className='feedback wrong show';fb.innerHTML='&#10007; Not quite &mdash; '+feedbacks[qId];}
+  document.getElementById(qId).querySelectorAll(".option-btn").forEach(function(b){b.disabled=true;});
+  var fb=document.getElementById(qId+"-fb");
+  if(isCorrect){btn.classList.add("correct");fb.className="feedback correct show";fb.innerHTML="&#10003; "+feedbacks[qId];score++;}
+  else{btn.classList.add("wrong");fb.className="feedback wrong show";fb.innerHTML="&#10007; Not quite &mdash; "+feedbacks[qId];}
 }
 
 function goTo(idx){
-  document.querySelectorAll('.section-card').forEach(function(el,i){el.classList.toggle('active',i===idx);});
-  document.querySelectorAll('.snav-btn').forEach(function(btn,i){btn.classList.toggle('active',i===idx);});
+  document.querySelectorAll(".section-card").forEach(function(el,i){el.classList.toggle("active",i===idx);});
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("active",i===idx);});
   var pct=Math.round(((idx+1)/6)*100);
-  document.getElementById('progress-bar').style.width=pct+'%';
-  document.getElementById('progress-label').textContent='Section '+(idx+1)+' of 6 · Adran '+(idx+1)+' o 6';
-  window.scrollTo({top:0,behavior:'smooth'});
+  document.getElementById("progress-bar").style.width=pct+"%";
+  document.getElementById("progress-label").textContent="Section "+(idx+1)+" of 6 · Adran "+(idx+1)+" o 6";
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function nextSection(idx){
   completedSections.add(idx);
-  document.querySelectorAll('.snav-btn').forEach(function(btn,i){btn.classList.toggle('done',completedSections.has(i));});
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("done",completedSections.has(i));});
   goTo(idx+1);
 }
 
 function complete(){
   completedSections.add(5);
-  document.querySelectorAll('.snav-btn').forEach(function(btn,i){btn.classList.toggle('done',completedSections.has(i));});
-  document.querySelectorAll('.section-card').forEach(function(el){el.classList.remove('active');});
-  document.getElementById('completion').classList.add('show');
-  document.getElementById('final-score').textContent=score;
-  document.getElementById('progress-bar').style.width='100%';
-  document.getElementById('progress-label').textContent='Complete! · Wedi Cwblhau!';
-  window.scrollTo({top:0,behavior:'smooth'});
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("done",completedSections.has(i));});
+  document.querySelectorAll(".section-card").forEach(function(el){el.classList.remove("active");});
+  document.getElementById("completion").classList.add("show");
+  document.getElementById("final-score").textContent=score;
+  document.getElementById("progress-bar").style.width="100%";
+  document.getElementById("progress-label").textContent="Complete! · Wedi Cwblhau!";
+  window.scrollTo({top:0,behavior:"smooth"});
 }
 
 function generateCertificate(){
-  var name=document.getElementById('certNameInput').value.trim();
-  if(!name){document.getElementById('certNameInput').focus();document.getElementById('certNameInput').style.borderColor='#FCD34D';setTimeout(function(){document.getElementById('certNameInput').style.borderColor='';},1500);return;}
-  document.getElementById('certDisplayName').textContent=name;
-  document.getElementById('certScoreDisplay').textContent=score;
+  var name=document.getElementById("certNameInput").value.trim();
+  if(!name){document.getElementById("certNameInput").focus();document.getElementById("certNameInput").style.borderColor="#FCD34D";setTimeout(function(){document.getElementById("certNameInput").style.borderColor="";},1500);return;}
+  document.getElementById("certDisplayName").textContent=name;
+  document.getElementById("certScoreDisplay").textContent=score;
   var now=new Date();
-  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
-  document.getElementById('certDateDisplay').textContent=now.getDate()+' '+months[now.getMonth()]+' '+now.getFullYear();
-  document.getElementById('certOverlay').classList.add('show');
-  document.body.style.overflow='hidden';
+  var months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  document.getElementById("certDateDisplay").textContent=now.getDate()+" "+months[now.getMonth()]+" "+now.getFullYear();
+  document.getElementById("certOverlay").classList.add("show");
+  document.body.style.overflow="hidden";
 }
-function closeCertificate(){document.getElementById('certOverlay').classList.remove('show');document.body.style.overflow='';}
+function closeCertificate(){document.getElementById("certOverlay").classList.remove("show");document.body.style.overflow="";}
 function printCertificate(){
-  var cert=document.getElementById('certificateEl');
-  var w=window.open('','_blank','width=900,height=700');
-  w.document.write('<html><head><title>Certificate</title>');
-  document.querySelectorAll('style,link[rel="stylesheet"]').forEach(function(s){w.document.write(s.outerHTML);});
-  w.document.write('</head><body style="margin:0;padding:20px;background:white;">');
+  var cert=document.getElementById("certificateEl");
+  var w=window.open("","_blank","width=900,height=700");
+  w.document.write("<html><head><title>Certificate</title>");
+  document.querySelectorAll("style,link[rel=stylesheet]").forEach(function(s){w.document.write(s.outerHTML);});
+  w.document.write("</head><body style="margin:0;padding:20px;background:white;">");
   w.document.write(cert.outerHTML);
-  w.document.write('</body></html>');
+  w.document.write("</body></html>");
   w.document.close();w.focus();
   setTimeout(function(){w.print();},800);
 }
-document.addEventListener('click',function(e){if(e.target.id==='certOverlay')closeCertificate();});
+document.addEventListener("click",function(e){if(e.target.id==="certOverlay")closeCertificate();});
 </script>
 </body>
 </html>
