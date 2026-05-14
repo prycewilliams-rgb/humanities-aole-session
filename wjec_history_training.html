@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WJEC GCSE History – Exemplar Answer Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a2e52;
+    --navy-light: #253f6b;
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --cream: #faf8f3;
+    --warm-white: #ffffff;
+    --slate: #4a5568;
+    --slate-light: #718096;
+    --grade-c-bg: #fff8e6;
+    --grade-c-border: #e6a817;
+    --grade-c-text: #7a4f00;
+    --grade-a-bg: #e8f5e9;
+    --grade-a-border: #2e7d32;
+    --grade-a-text: #1b5e20;
+    --highlight-yellow: #fff3cd;
+    --highlight-green: #d4edda;
+    --annotation: #e8eaf6;
+    --shadow: 0 4px 20px rgba(15,31,61,0.12);
+    --shadow-hover: 0 8px 32px rgba(15,31,61,0.2);
+    --radius: 12px;
+    --radius-sm: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: var(--navy);
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .wjec-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    font-weight: 600;
+    color: white;
+    line-height: 1.2;
+  }
+  header p.subtitle {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+  .progress-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .progress-track {
+    width: 120px;
+    height: 6px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--gold);
+    width: 0%;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+
+  /* ─── SECTION TABS ─── */
+  .section-tabs {
+    max-width: 1100px;
+    margin: 28px auto 0;
+    padding: 0 24px;
+    display: flex;
+    gap: 8px;
+    border-bottom: 2px solid rgba(15,31,61,0.12);
+  }
+  .section-tab {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 24px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-bottom: none;
+    background: transparent;
+    color: var(--slate);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: all 0.2s;
+    position: relative;
+    bottom: -2px;
+  }
+  .section-tab:hover { color: var(--navy); background: rgba(15,31,61,0.04); }
+  .section-tab.active {
+    color: var(--navy);
+    background: var(--cream);
+    border-color: rgba(15,31,61,0.12);
+    border-bottom-color: var(--cream);
+  }
+  .section-tab .tab-sub { font-weight: 400; font-size: 0.75rem; color: var(--slate-light); display: block; }
+  .section-tab.active .tab-sub { color: var(--slate); }
+
+  /* ─── MAIN CONTENT ─── */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 24px 60px;
+  }
+  .section-panel { display: none; }
+  .section-panel.active { display: block; }
+
+  /* ─── INTRO BANNER ─── */
+  .intro-banner {
+    background: var(--navy);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 28px;
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .intro-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+  .intro-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+  }
+  .intro-banner p { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+  /* ─── QUESTION CARD ─── */
+  .q-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(15,31,61,0.08);
+    transition: box-shadow 0.2s;
+  }
+  .q-card:hover { box-shadow: var(--shadow-hover); }
+
+  .q-header {
+    background: var(--navy);
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    cursor: pointer;
+    user-select: none;
+  }
+  .q-header-left { display: flex; align-items: center; gap: 14px; }
+  .q-number {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .q-title {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: white;
+    line-height: 1.3;
+  }
+  .q-marks {
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.9);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .q-chevron {
+    color: rgba(255,255,255,0.6);
+    font-size: 1.1rem;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .q-card.expanded .q-chevron { transform: rotate(180deg); }
+
+  .q-body {
+    display: none;
+    padding: 0;
+  }
+  .q-card.expanded .q-body { display: block; }
+
+  /* ─── QUESTION TEXT BOX ─── */
+  .q-text-box {
+    padding: 18px 22px;
+    background: #f8f9ff;
+    border-bottom: 1px solid rgba(15,31,61,0.08);
+  }
+  .q-text-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--slate-light);
+    margin-bottom: 8px;
+  }
+  .q-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.95rem;
+    color: var(--navy);
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  /* ─── SOURCE ITEM BOX ─── */
+  .source-box {
+    margin: 0 22px 0;
+    padding: 16px 18px;
+    background: #fffdf5;
+    border-left: 4px solid var(--gold);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-top: 14px;
+    margin-bottom: 4px;
+  }
+  .source-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .source-attribution {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+    font-style: italic;
+    font-family: 'Source Serif 4', serif;
+  }
+  .source-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    color: var(--slate);
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  /* ─── GRADE TOGGLE ─── */
+  .grade-toggle-section {
+    padding: 18px 22px 0;
+  }
+  .grade-toggle-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--slate-light);
+    margin-bottom: 10px;
+  }
+  .grade-toggle {
+    display: inline-flex;
+    border: 2px solid var(--navy);
+    border-radius: 30px;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .grade-btn {
+    padding: 8px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--navy);
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .grade-btn:hover { background: rgba(15,31,61,0.06); }
+  .grade-btn.active-c {
+    background: var(--grade-c-border);
+    color: white;
+  }
+  .grade-btn.active-a {
+    background: var(--grade-a-border);
+    color: white;
+  }
+
+  /* ─── ANSWER PANELS ─── */
+  .answer-panels { padding: 0 22px 22px; }
+  .answer-panel { display: none; }
+  .answer-panel.visible { display: block; }
+
+  .grade-label-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 14px;
+    border: 2px solid;
+  }
+  .grade-label-banner.c-banner {
+    background: var(--grade-c-bg);
+    border-color: var(--grade-c-border);
+    color: var(--grade-c-text);
+  }
+  .grade-label-banner.a-banner {
+    background: var(--grade-a-bg);
+    border-color: var(--grade-a-border);
+    color: var(--grade-a-text);
+  }
+  .grade-big {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .grade-desc { font-size: 0.82rem; line-height: 1.4; }
+  .grade-desc strong { display: block; font-size: 0.9rem; }
+
+  .answer-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.93rem;
+    line-height: 1.8;
+    color: #2d3748;
+    padding: 16px 18px;
+    background: #fdfdfd;
+    border: 1px solid #e2e8f0;
+    border-radius: var(--radius-sm);
+    margin-bottom: 14px;
+    white-space: pre-wrap;
+  }
+
+  /* ─── EXAMINER COMMENTARY ─── */
+  .commentary-section {
+    margin-top: 4px;
+  }
+  .commentary-toggle {
+    background: var(--annotation);
+    border: none;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: #3730a3;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    text-align: left;
+    transition: background 0.2s;
+  }
+  .commentary-toggle:hover { background: #dde2f5; }
+  .commentary-toggle .ct-icon { font-size: 1rem; }
+  .commentary-toggle .ct-arrow { margin-left: auto; font-size: 0.8rem; transition: transform 0.2s; }
+  .commentary-toggle.open .ct-arrow { transform: rotate(180deg); }
+
+  .commentary-body {
+    display: none;
+    background: var(--annotation);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    padding: 16px;
+    margin-top: -4px;
+  }
+  .commentary-body.open { display: block; }
+
+  .commentary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  @media (max-width: 640px) { .commentary-grid { grid-template-columns: 1fr; } }
+
+  .comm-point {
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    border-left: 3px solid;
+  }
+  .comm-point.strength { border-color: #2e7d32; }
+  .comm-point.weakness { border-color: #c62828; }
+  .comm-point.tip { border-color: #1565c0; }
+
+  .comm-point-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+  .comm-point.strength .comm-point-label { color: #2e7d32; }
+  .comm-point.weakness .comm-point-label { color: #c62828; }
+  .comm-point.tip .comm-point-label { color: #1565c0; }
+  .comm-point p { font-size: 0.83rem; color: var(--slate); line-height: 1.5; }
+
+  .mark-band-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    font-size: 0.82rem;
+    color: var(--slate);
+  }
+  .band-pip {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #e0e0e0;
+    flex-shrink: 0;
+  }
+  .band-pip.active-c { background: var(--grade-c-border); }
+  .band-pip.active-a { background: var(--grade-a-border); }
+
+  /* ─── BAND SCALE ─── */
+  .band-scale {
+    display: flex;
+    gap: 4px;
+    margin: 12px 0 4px;
+    align-items: center;
+  }
+  .band-cell {
+    flex: 1;
+    height: 8px;
+    border-radius: 4px;
+    background: #e2e8f0;
+    position: relative;
+    cursor: default;
+  }
+  .band-cell.filled-c { background: var(--grade-c-border); }
+  .band-cell.filled-a { background: var(--grade-a-border); }
+  .band-scale-label { font-size: 0.73rem; color: var(--slate-light); }
+
+  /* ─── MULTI SOURCE ─── */
+  .sources-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 14px 22px 4px;
+  }
+  @media (max-width: 640px) { .sources-row { grid-template-columns: 1fr; } }
+
+  /* ─── SECTION DIVIDER ─── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 10px 0 20px;
+  }
+  .section-divider-line { flex: 1; height: 1px; background: rgba(15,31,61,0.12); }
+  .section-divider-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    color: var(--navy-mid);
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 18px;
+    font-size: 0.78rem;
+    margin-top: 40px;
+  }
+  footer span { color: var(--gold); }
+
+/* ── CERTIFICATE ── */
+.cert-trigger-box{margin-top:1.5rem;padding:1.4rem;background:rgba(0,0,0,.25);border:2px solid var(--gold);border-radius:10px;text-align:center}
+.cert-trigger-box p{font-size:.88rem;opacity:.85;margin-bottom:1rem;line-height:1.6;color:rgba(255,255,255,.9)}
+.cert-name-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.cert-name-input{padding:.6rem 1rem;font-family:inherit;font-size:.95rem;border:2px solid rgba(255,255,255,.3);border-radius:6px;background:rgba(255,255,255,.12);color:white;width:250px}
+.cert-name-input::placeholder{color:rgba(255,255,255,.4)}
+.cert-name-input:focus{outline:none;border-color:var(--gold)}
+.btn-cert{background:var(--gold);color:#1a1a1a;border:none;padding:.6rem 1.3rem;border-radius:6px;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer}
+.btn-cert:hover{opacity:.85}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:white;border-radius:6px;width:100%;max-width:780px;max-height:95vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.certificate{width:100%;background:white}
+.cert-frame{margin:16px;border:3px solid #1a2438;position:relative}
+.cert-frame::before{content:'';position:absolute;inset:5px;border:1px solid #c9a84c;pointer-events:none;z-index:1}
+.cert-stripe{height:5px;background:linear-gradient(90deg,#1a2438 0%,#c9a84c 50%,#1a2438 100%)}
+.cert-header{background:linear-gradient(135deg,#1a2438 0%,#2d3a56 100%);padding:1.3rem 2rem 1.1rem;text-align:center}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.cert-inst-name{font-family:'Georgia',serif;color:white;font-size:1rem;text-align:left;line-height:1.2}
+.cert-inst-sub{color:#e8c86a;font-size:.75rem;display:block;font-style:italic}
+.cert-body{padding:1.6rem 2rem;text-align:center}
+.cert-presents{font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;margin-bottom:.4rem}
+.cert-main-title{font-family:'Georgia',serif;font-size:1.4rem;color:#1a2438;line-height:1.2;margin-bottom:.2rem}
+.cert-awarded-to{font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;color:#475569;margin-bottom:.2rem}
+.cert-name{font-family:'Georgia',serif;font-size:1.9rem;font-style:italic;color:#1a2438;border-bottom:2px solid #E2E8F0;display:inline-block;padding:0 1rem .1rem;min-width:260px;margin-bottom:.3rem;line-height:1.3}
+.cert-score-pill{display:inline-block;background:#FEF3C7;border:1px solid #c9a84c;border-radius:999px;padding:.25rem 1rem;font-size:.8rem;font-weight:700;color:#92400E;margin:.5rem 0 .8rem}
+.cert-divider{height:1px;background:linear-gradient(90deg,transparent,#c9a84c,transparent);margin:.9rem auto;width:55%}
+.cert-text{font-size:.86rem;color:#1E293B;line-height:1.65;max-width:440px;margin:0 auto .7rem}
+.cert-course{font-family:'Georgia',serif;font-size:.95rem;color:#1E293B;background:#F8F4E8;border:1px solid #e8c86a;border-left:4px solid #1a2438;padding:.45rem .9rem;display:inline-block;margin-bottom:.35rem;text-align:left}
+.cert-course-sub{font-size:.76rem;color:#c9a84c;display:block;font-style:italic}
+.cert-competencies{font-size:.76rem;color:#475569;margin:.2rem auto 1rem;max-width:420px;line-height:1.55}
+.cert-footer-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:1rem;padding-top:1rem;border-top:1px solid #E2E8F0}
+.cert-sig-block{text-align:center}
+.cert-sig-line{height:1px;background:#1a2438;width:140px;margin:0 auto .25rem}
+.cert-sig-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569}
+.cert-seal{width:64px;height:64px;border-radius:50%;background:#1a2438;border:3px solid #c9a84c;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-size:.5rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;line-height:1.3;margin:0 auto}
+.cert-seal-icon{font-size:1.2rem;display:block;margin-bottom:1px}
+.cert-date-val{font-family:'Georgia',serif;font-size:.9rem;color:#1E293B}
+.cert-date-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569;margin-top:.2rem}
+.cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.9rem 1.5rem 1.2rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
+.btn-cert-print{background:#1a2438;color:white;border:none;padding:.55rem 1.2rem;border-radius:6px;font-family:inherit;font-size:.86rem;font-weight:700;cursor:pointer}
+.btn-cert-close{background:#475569;color:white;border:none;padding:.55rem 1.2rem;border-radius:6px;font-family:inherit;font-size:.86rem;cursor:pointer}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="wjec-badge">WJEC · CBAC</div>
+      <div>
+        <h1>GCSE History – Unit 1: Early Modern</h1>
+        <p class="subtitle">Exemplar Answer Training Activity &nbsp;|&nbsp; Sections A &amp; B &nbsp;|&nbsp; Teaching from 2026</p>
+      </div>
+    </div>
+    <div class="progress-bar-wrap">
+      <span id="progress-text">0 / 8 reviewed</span>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</header>
+
+<div class="section-tabs">
+  <button class="section-tab active" onclick="showSection('secA',this)">
+    Section A
+    <span class="tab-sub">Wales &amp; the Early Tudors, c.1485–c.1547</span>
+  </button>
+  <button class="section-tab" onclick="showSection('secB',this)">
+    Section B
+    <span class="tab-sub">Wales in the Era of the Civil War, 1603–c.1660</span>
+  </button>
+</div>
+
+<main>
+
+<!-- ═══════════════════════════════════ SECTION A ═══════════════════════════════════ -->
+<div class="section-panel active" id="secA">
+
+  <div class="intro-banner">
+    <div class="intro-icon">📜</div>
+    <div>
+      <h2>How to use this training activity</h2>
+      <p>Click any question to expand it. Use the <strong>C Grade / A Grade</strong> toggle to compare exemplar answers side by side. Then open the <strong>Examiner Commentary</strong> to see exactly what earns marks — and what holds an answer back. Questions are drawn directly from the WJEC Sample Assessment Materials.</p>
+    </div>
+  </div>
+
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-text">Extended Writing Questions</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <!-- ── Q2: Henry's claim ── -->
+  <div class="q-card" id="qA2">
+    <div class="q-header" onclick="toggleCard('qA2')">
+      <div class="q-header-left">
+        <div class="q-number">Q2</div>
+        <div class="q-title">Explain why Henry, Earl of Richmond had a claim to the English throne.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">10 marks · AO1 + AO2</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">The Question</div>
+        <div class="q-text">Explain why Henry, Earl of Richmond had a claim to the English throne.</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Select a grade to view exemplar answer</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qA2','c',this)">C Grade</button>
+          <button class="grade-btn" onclick="showGrade('qA2','a',this)">A Grade</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qA2-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Approx. 5–6 / 10</strong>Some accurate knowledge shown, but understanding is inconsistent. Points are made but not fully developed or linked back to the question.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Henry had a claim to the English throne because he was related to the Lancastrian kings. His mother was Margaret Beaufort who was connected to John of Gaunt. Henry also got support from important people when he invaded England from Wales. The Stanleys helped him at Bosworth in 1485 when he defeated Richard III.
+
+After this he married Elizabeth of York which made his claim even stronger because it joined the two families together. Henry landed at Milford Haven in Wales with his uncle Jasper Tudor who helped him gather support.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is a C grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Strengths</div>
+                  <p>Names Margaret Beaufort and John of Gaunt correctly. Identifies Bosworth, the Stanleys, Jasper Tudor, and the marriage to Elizabeth of York — these are all relevant and earn marks.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Weaknesses</div>
+                  <p>Facts are listed rather than explained. The answer never says <em>why</em> descent from John of Gaunt gave a claim — the Lancastrian line isn't unpacked. "Even stronger" is vague; the significance of uniting York and Lancaster is not developed.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Missing</div>
+                  <p>No reference to the Wars of the Roses context or the significance of the Princes in the Tower. No explanation of <em>how</em> military support translated into a legitimate claim. No analytical link between evidence and the concept of 'claim'.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ To improve</div>
+                  <p>After every piece of evidence, ask: <em>"What does this show?"</em> E.g., "This shows that Henry could position himself as the true Lancastrian heir at a time when Richard III's legitimacy was being questioned."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qA2-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Approx. 9–10 / 10</strong>Precise, convincing knowledge. Understanding is fully developed with clear analytical links to the question throughout.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Henry, Earl of Richmond's primary claim to the English throne rested on his Lancastrian ancestry. His mother, Margaret Beaufort, was a direct descendant of John of Gaunt, son of Edward III and father of Henry IV — making Henry the heir to the Lancastrian line that had contested the throne against the Yorkists throughout the Wars of the Roses. With Richard III's hold on power increasingly questioned, particularly following the suspicious disappearance of the Princes in the Tower, Henry could position himself as the legitimate alternative to a king many regarded as a usurper.
+
+This dynastic claim was considerably strengthened by the support Henry was able to gather. His uncle Jasper Tudor helped him land at Milford Haven in 1485 and rally Welsh support for his campaign, while the powerful Stanley family — though initially neutral — played a decisive role at Bosworth when they intervened on Henry's side at the critical moment, turning the battle in his favour. Military success reinforced his claim in a way that pedigree alone could not.
+
+Furthermore, Henry consolidated his claim after victory by marrying Elizabeth of York, the daughter of Edward IV. This shrewd political marriage united the rival Houses of Lancaster and York — symbolised by the Tudor rose — and effectively ended the dynastic conflict of the Wars of the Roses. His claim was therefore built on three reinforcing pillars: ancestral right, military success, and political marriage — a combination that proved difficult to challenge.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is an A grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Structure &amp; Argument</div>
+                  <p>Three clear, distinct reasons are developed: ancestry, military/political support, and marriage. Each is unpacked and explicitly linked to the concept of a 'claim' — not just listed.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Contextual Depth</div>
+                  <p>References the Wars of the Roses, the Princes in the Tower, and the significance of the Tudor rose — showing understanding of the <em>context</em> rather than just isolated facts.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Analytical Language</div>
+                  <p>"Military success reinforced his claim in a way that pedigree alone could not" — this is precisely the kind of analytical commentary that moves an answer from Band 3 to Band 5.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Key technique</div>
+                  <p>Note how the conclusion draws together all three reasons as "reinforcing pillars". This shows the examiner the argument is considered and complete — a hallmark of Band 5 responses.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q3b: Source value – Sir Rhys ── -->
+  <div class="q-card" id="qA3b">
+    <div class="q-header" onclick="toggleCard('qA3b')">
+      <div class="q-header-left">
+        <div class="q-number">Q3b</div>
+        <div class="q-title">How valuable is Item 1 to our understanding of Henry VIII's relationship with Sir Rhys ap Gruffydd?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">15 marks · AO2 + AO3</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">The Question</div>
+        <div class="q-text">How valuable is Item 1 to our understanding of Henry VIII's relationship with Sir Rhys ap Gruffydd?</div>
+        <div class="source-box">
+          <div class="source-label">Item 1</div>
+          <div class="source-attribution">Huw Llywelyn Rees writing on his personal Facebook blog <em>The History of Wales</em> (2021)</div>
+          <div class="source-text">"Sir Rhys ap Gruffydd was critical of Henry's relationship with Anne Boleyn, instead supporting both Katherine of Aragon and Cardinal Wolsey. Henry accused Rhys of treason on the charge of plotting with James V of Scotland to overthrow him and install himself as Prince of Wales. Rhys was found guilty and subsequently executed."</div>
+        </div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Select a grade to view exemplar answer</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qA3b','c',this)">C Grade</button>
+          <button class="grade-btn" onclick="showGrade('qA3b','a',this)">A Grade</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qA3b-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Approx. 8–9 / 15</strong>Some analysis of value present, but inconsistent. Provenance is acknowledged but not fully explored. Judgement reached without sufficient support.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Item 1 is valuable because it tells us about Henry VIII's relationship with Sir Rhys ap Gruffydd. It says that Rhys supported Katherine of Aragon and was against Henry's marriage to Anne Boleyn. Henry then accused him of treason saying he was plotting with James V of Scotland and Rhys was executed. This is useful because it shows us that Henry and Rhys had a bad relationship.
+
+However, the item is from a Facebook blog which means it might not be reliable because anyone can write anything on Facebook. The author Huw Llywelyn Rees might not be a proper historian. The item does not tell us everything about their relationship, for example it doesn't mention that Henry gave Rhys's inheritance to Lord Ferrers.
+
+Overall the item is quite valuable but has some limitations.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is a C grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Strengths</div>
+                  <p>The answer identifies a key omission (the Lord Ferrers inheritance) — this is exactly the kind of contextual knowledge needed for AO2. Provenance is touched on with the Facebook reference.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Weaknesses</div>
+                  <p>The provenance point — "anyone can write anything on Facebook" — is generic rather than specific to <em>this</em> author and source. It doesn't consider Rees's apparent specialism in Welsh history, or the implications of writing without a cited bibliography.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Missing</div>
+                  <p>No structured evaluation of both <em>what the source says</em> and <em>what it doesn't say</em>. No use of the word "valuable" in a way that weighs up the factors analytically. The conclusion is asserted rather than argued.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ To improve</div>
+                  <p>Structure your answer using VALUE → LIMITATION for content, then VALUE → LIMITATION for provenance, then an overall judgement. Always ask: <em>"How does the nature of this source affect what it tells us?"</em></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qA3b-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Approx. 13–15 / 15</strong>Precise analysis of both content and provenance. Value is evaluated rather than just described. Valid, well-supported judgement throughout.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Item 1 is of some value to our understanding of Henry VIII's relationship with Sir Rhys ap Gruffydd, though this value is significantly qualified by both what the source omits and the nature of its origin. In terms of content, the item accurately identifies that Rhys opposed Henry's decision to separate from Katherine of Aragon and executed him for alleged treason linked to a plot with James V of Scotland. These details correctly capture the dramatic breakdown in their relationship and are broadly consistent with historical knowledge.
+
+However, the item's value is limited by a crucial omission: it makes no mention of the dispute over the estate of Rhys's grandfather, which Henry had controversially awarded to his ally Lord Ferrers. This was arguably the original source of the deterioration in their relationship, and without it the reader receives only a partial account. Presenting the conflict as purely political and religious obscures the personal resentment that had built over years of Henry's interference in Welsh affairs.
+
+Turning to provenance: the fact that Item 1 appears on a personal Facebook page titled 'The History of Wales' suggests Huw Llywelyn Rees has a genuine interest in Welsh history, which may make his account reasonably accurate. However, without an academic affiliation, cited sources, or peer review, there is no way to verify how he has arrived at his conclusions. Unlike a published textbook, a social media post carries no editorial scrutiny. On the other hand, the 2021 date means the author could have drawn on recent historical scholarship.
+
+On balance, Item 1 has limited but real value: it provides an accessible, broadly accurate summary of key events in the relationship. However, its failure to provide the full context of the Lord Ferrers dispute and its unverified social media provenance mean it can only partially inform our understanding of this politically complex relationship.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is an A grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Content Analysis</div>
+                  <p>The answer evaluates both what the source <em>does</em> say (the religious dispute, the treason charge) and crucially what it <em>doesn't</em> say (the Lord Ferrers estate) — and explains why the omission matters.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Provenance Analysis</div>
+                  <p>Provenance is explored in both directions: the author's interest in Welsh history may enhance accuracy; but no bibliography and no peer review limits reliability. This balanced approach is exactly what Band 5 requires.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Confident Judgement</div>
+                  <p>"Limited but real value" — this phrasing demonstrates a secure, nuanced conclusion rather than a binary "valuable / not valuable" position. The judgement is earned through the preceding analysis.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Key technique</div>
+                  <p>Notice the four-part structure: content value → content limitation → provenance strength → provenance limitation → overall judgement. This ensures all aspects of AO3 are addressed systematically.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q4b: Acts of Union ── -->
+  <div class="q-card" id="qA4b">
+    <div class="q-header" onclick="toggleCard('qA4b')">
+      <div class="q-header-left">
+        <div class="q-number">Q4b</div>
+        <div class="q-title">To what extent do Items 2 and 3 persuade you that the Acts of Union had a positive impact on Wales?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">20 marks · AO2 + AO3</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">The Question</div>
+        <div class="q-text">To what extent do Item 2 and Item 3 persuade you that the Acts of Union had a positive impact on Wales?</div>
+      </div>
+      <div class="sources-row">
+        <div class="source-box" style="margin:0">
+          <div class="source-label">Item 2</div>
+          <div class="source-attribution">Lloyd Bowen, historian, <em>Early Modern Wales c.1536–1689</em> (2022)</div>
+          <div class="source-text">"The Welsh were to enjoy the same rights and freedoms as the English. The counties and large towns of Wales were allowed to elect Members of Parliament to represent their communities at the centre of government in London."</div>
+        </div>
+        <div class="source-box" style="margin:0">
+          <div class="source-label">Item 3</div>
+          <div class="source-attribution">From the Act for the Government of Wales (1536)</div>
+          <div class="source-text">"No one that uses the Welsh language shall hold office in England, Wales or the King's other territories. Those who do will have to give up those offices unless they use the English language."</div>
+        </div>
+      </div>
+
+      <div class="grade-toggle-section" style="margin-top:18px">
+        <div class="grade-toggle-label">Select a grade to view exemplar answer</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qA4b','c',this)">C Grade</button>
+          <button class="grade-btn" onclick="showGrade('qA4b','a',this)">A Grade</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qA4b-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Approx. 11–12 / 20</strong>Both items described and evaluated with some accuracy. Provenance touched on but underdeveloped. Judgement present but lacks comprehensive support from contextual knowledge.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">The items give different views on the Acts of Union. Item 2 says the Welsh got the same rights as the English and could elect MPs to Parliament. This suggests the Acts had a positive impact because Welsh people got more rights. Item 3 says people who spoke Welsh could not hold office and had to use English instead. This was negative because Welsh was the language of most people in Wales.
+
+Item 2 was written by a historian called Lloyd Bowen in 2022 so it is probably reliable because he is an expert. Item 3 is a primary source from 1536 so it is a first-hand account of what the Act actually said.
+
+Overall the Acts had both positive and negative impacts so the items partly persuade me but I am not fully persuaded because of Item 3 showing the Welsh language being restricted.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is a C grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Strengths</div>
+                  <p>Both items are used and both are evaluated. The contradiction between them is noticed. Provenance is mentioned for each. A judgement is reached that engages with the "to what extent" framing.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Weaknesses</div>
+                  <p>Provenance is superficial: saying Lloyd Bowen is "probably reliable because he is an expert" without exploring what type of source, its purpose, or its potential limitations gains few marks. "Primary source = first-hand" is too generic.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Missing</div>
+                  <p>No own knowledge deployed beyond what the items say. The answer doesn't mention the end of Marcher lawlessness, the extension of English law, or the long-term cultural consequences of the language clause — all of which appear in the mark scheme's indicative content.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ To improve</div>
+                  <p>Always bring in contextual knowledge that goes <em>beyond</em> what the items say. Ask: "What do I know about this topic that helps me judge how persuasive the items really are?" This is what separates Band 3 from Band 5.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qA4b-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Approx. 17–20 / 20</strong>Precise analysis and evaluation of both items. Valid judgement reached and comprehensively supported with own contextual knowledge. Clear continuous text throughout.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Items 2 and 3 present contrasting perspectives on the Acts of Union, and together they only partially persuade me that the impact was positive. Item 2 emphasises the political gains for Wales — specifically the right of Welsh counties and towns to elect Members of Parliament, giving Welsh people a voice at the centre of government for the first time. This was undeniably significant and represents a genuine step towards political equality with England.
+
+Item 2's value as evidence is strengthened by its provenance. Written by Lloyd Bowen, a historian specialising in early modern Wales, in an academic textbook published in 2022, it benefits from scholarly research and the advantage of hindsight in assessing long-term impacts. However, as a textbook covering over 150 years of Welsh history, it inevitably provides only an overview, and its focus on political representation means it says nothing about the cultural or social consequences of the Acts.
+
+Item 3 directly challenges the narrative of positive change. As an extract from the Act itself, it carries the authority of a primary source and makes unmistakably clear that Welsh speakers were to be excluded from public office. Given that Welsh was the first language of the overwhelming majority of the population, this was a deeply discriminatory measure that fundamentally undermined any claim to equal rights. The very language of the Act — that officials "will have to give up those offices unless they use the English language" — reveals the coercive nature of the Union's terms.
+
+My own knowledge adds further layers to this judgement. The Acts did bring genuine benefits: they extended English law uniformly across Wales, ended the lawlessness of the Marcher lordships, and gave Welsh people access to royal courts. Yet the systematic suppression of the Welsh language had profound and lasting cultural consequences that stretched well beyond the period covered by either item.
+
+On balance, I am only partially persuaded that the Acts had a positive impact. While Item 2 illustrates real political gains, Item 3 and the weight of contextual evidence make it impossible to ignore the significant cultural costs. The Acts were a mixed legacy — beneficial to Welsh political representation and legal stability, but damaging to Welsh cultural identity.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is an A grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Both Items Evaluated</div>
+                  <p>Each item is analysed for its content <em>and</em> its provenance, with specific details cited from the text. The answer never merely paraphrases — it always links back to the question.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Own Knowledge</div>
+                  <p>The paragraph on Marcher lawlessness, legal uniformity, and long-term cultural consequences goes clearly beyond the items — this is AO2 in action and is what the mark scheme rewards at Band 5.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Sophisticated Judgement</div>
+                  <p>"A mixed legacy" — the conclusion avoids a simplistic yes/no answer and instead offers a nuanced verdict that acknowledges complexity. This is the hallmark of a top-band response.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Key technique</div>
+                  <p>Note how quotation from Item 3 is used not decoratively but analytically — the actual language "will have to give up" is highlighted to show the coercive intent of the Act. Quote selectively to build an argument.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- ═══════════════════════════════════ END SECTION A ═══════════════════════════════════ -->
+
+
+<!-- ═══════════════════════════════════ SECTION B ═══════════════════════════════════ -->
+<div class="section-panel" id="secB">
+
+  <div class="intro-banner">
+    <div class="intro-icon">⚔️</div>
+    <div>
+      <h2>Section B: Wales in the Era of the Civil War</h2>
+      <p>These exemplars cover Questions 6, 7b, and 8b — the extended writing tasks for the Civil War section. Use the grade toggle and examiner commentary to identify exactly what separates a C grade response from an A grade response for each question type.</p>
+    </div>
+  </div>
+
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-text">Extended Writing Questions</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <!-- ── Q6: Monarchy restored ── -->
+  <div class="q-card" id="qB6">
+    <div class="q-header" onclick="toggleCard('qB6')">
+      <div class="q-header-left">
+        <div class="q-number">Q6</div>
+        <div class="q-title">Explain why the monarchy was restored in 1660.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">10 marks · AO1 + AO2</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">The Question</div>
+        <div class="q-text">Explain why the monarchy was restored in 1660.</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Select a grade to view exemplar answer</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qB6','c',this)">C Grade</button>
+          <button class="grade-btn" onclick="showGrade('qB6','a',this)">A Grade</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qB6-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Approx. 5–6 / 10</strong>Several reasons identified and supported with some knowledge. Points lack development and are not fully linked back to the question.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">The monarchy was restored in 1660 for several reasons. Oliver Cromwell died in 1658 and his son Richard took over but he wasn't a good leader and quickly stepped down. This left a power vacuum and politicians didn't know what to do next.
+
+People in Wales still supported the king. Thomas Myddleton declared Charles II was the rightful king even though he had supported Parliament before. General Monck also helped bring back the king and Charles II promised to pardon people who had opposed his father in the Declaration of Breda. This convinced many people to accept him as king because they wouldn't be punished.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is a C grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Strengths</div>
+                  <p>Three causes are present: Richard Cromwell's failure, continuing royalist support (with the Welsh example of Myddleton), and General Monck's role. The Declaration of Breda is named and its purpose explained. All relevant and mark-worthy.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Weaknesses</div>
+                  <p>Points are described rather than explained. "Politicians didn't know what to do" is vague. The irony of Richard Cromwell's succession is noted but not analysed. No connection is drawn between the different causes to show how they worked together.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Missing</div>
+                  <p>The specific political context of competing parliamentary factions is absent. The full significance of Monck's army march from Scotland and how it enabled the restoration is only touched on. No overall judgement about which factor was most important.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ To improve</div>
+                  <p>Develop each cause with a "this meant that..." sentence. Show how the causes are <em>connected</em> — e.g., Richard Cromwell's failure created the instability that allowed Monck to act, which made the Declaration of Breda possible.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qB6-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Approx. 9–10 / 10</strong>Multiple reasons precisely explained and analytically linked. Understanding of causation shown throughout. Convincing and accurate throughout.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">The restoration of the monarchy in 1660 resulted from a combination of political instability, widespread disillusionment with republican rule, and skilled diplomacy by royalist supporters — factors that reinforced one another in making restoration seem not just desirable but inevitable.
+
+The immediate trigger was the collapse of the Protectorate. When Oliver Cromwell died in 1658, his son Richard succeeded him — a deeply ironic outcome for a republic built on opposition to hereditary rule. Richard lacked both the political credibility and the military authority to hold the regime together, and he quickly resigned, plunging the republic into a crisis of competing factions. This instability created the political vacuum that restoration would fill.
+
+Yet political failure alone does not explain the restoration; it also required the survival of royalist sentiment. In Wales, support for the Stuarts had endured throughout the Interregnum. By 1659 even former parliamentarians such as Thomas Myddleton of Chirk, disillusioned by years of harsh republican governance, were publicly declaring Charles II the rightful king. This shows that the restoration reflected a genuine shift in opinion, not merely a military coup.
+
+The decisive factor, however, was General Monck's military intervention. Commanding a disciplined army in Scotland, Monck marched south, took control of Parliament, and engineered the conditions for Charles's return. Charles sealed the deal through the Declaration of Breda — a masterpiece of political pragmatism in which he offered a general pardon to his former enemies, religious tolerance, and settlement of the army's pay arrears. By removing the most significant fears of potential opponents, he made restoration politically safe for those who might otherwise have resisted it.
+
+The restoration was therefore the product of republican failure, enduring royalist loyalty, and shrewd political diplomacy working in combination — a process that was largely peaceful precisely because so many people, for different reasons, saw it as the best available outcome.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is an A grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Causal Analysis</div>
+                  <p>The answer doesn't just list causes — it explains how they connect. Richard's failure creates a vacuum; that vacuum allows Monck to act; Monck's action makes the Declaration of Breda possible. This is sophisticated causal reasoning.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Precise Vocabulary</div>
+                  <p>"A masterpiece of political pragmatism" and "largely peaceful precisely because..." demonstrate higher-order analysis. The answer doesn't just describe what happened — it evaluates its significance.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Welsh Context</div>
+                  <p>The Myddleton reference is used pointedly to illustrate <em>why</em> royalist sentiment endured, not just <em>that</em> it did. This shows how to deploy specific evidence to support an argument.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Key technique</div>
+                  <p>The opening paragraph sets out the argument before proving it. The conclusion restates it in light of the evidence. This framing technique signals to the examiner that the answer is analytical, not just descriptive.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q7b: Source value – James I ── -->
+  <div class="q-card" id="qB7b">
+    <div class="q-header" onclick="toggleCard('qB7b')">
+      <div class="q-header-left">
+        <div class="q-number">Q7b</div>
+        <div class="q-title">How valuable is Item 1 to our understanding of the reasons why James I had problems ruling his kingdoms?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">15 marks · AO2 + AO3</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">The Question</div>
+        <div class="q-text">How valuable is Item 1 to our understanding of the reasons why James I had problems ruling his kingdoms?</div>
+        <div class="source-box">
+          <div class="source-label">Item 1</div>
+          <div class="source-attribution">John Simkin, History teacher and author, <em>Spartacus Educational</em> website (updated 2020)</div>
+          <div class="source-text">"The English view was that Scotland should be incorporated into England, the Scottish that the two kingdoms should be equal partners. The contemporary historian Sir Robert Cotton argued at the time that, previously, smaller kingdoms had joined to become the kingdom of England, so now the smaller kingdoms within the British Isles would come together under the ancient name of Britain."</div>
+        </div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Select a grade to view exemplar answer</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qB7b','c',this)">C Grade</button>
+          <button class="grade-btn" onclick="showGrade('qB7b','a',this)">A Grade</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qB7b-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Approx. 8–9 / 15</strong>Some analysis of content and provenance. Omissions noted. Judgement is inconsistent and not fully supported through the answer.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Item 1 is valuable because it tells us about why James I had problems ruling his kingdoms. It explains that England and Scotland had different views about how they should be united — England wanted Scotland to join England but Scotland wanted them to be equal. This is useful for understanding why James had difficulties.
+
+The item is from a website called Spartacus Educational which is a history education website so it should be accurate. The author John Simkin is a History teacher so he knows about History. However, the item does not mention the religious problems James faced like the Gunpowder Plot which was also a big problem.
+
+Overall the item gives us some useful information but only covers one aspect of James's problems.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is a C grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Strengths</div>
+                  <p>The constitutional tension between England and Scotland is correctly identified. A key omission (religious problems / Gunpowder Plot) is noted. Provenance is mentioned. A judgement is reached.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Weaknesses</div>
+                  <p>Provenance is described rather than evaluated. "He is a History teacher so he knows about History" is circular reasoning — it doesn't explain <em>why</em> the website context affects the source's value. The implications for reliability are not explored.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Missing</div>
+                  <p>No discussion of the simplification that comes with writing for an educational website audience. No mention of Sir Robert Cotton (who appears in the source itself) and what his inclusion adds. No nuanced weighing of value vs limitation.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ To improve</div>
+                  <p>When evaluating provenance, always ask: <em>Does the type of source, its purpose, and its audience affect what it says and how far we can trust it?</em> For a website aimed at students, simplification is both a feature and a limitation.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qB7b-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Approx. 13–15 / 15</strong>Precise evaluation of both content and provenance. Strengths and limitations explored in both directions. Nuanced, well-supported judgement.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Item 1 offers valuable but limited insight into the reasons why James I experienced difficulties ruling his kingdoms. Its primary contribution is in clearly explaining the constitutional impasse over union: England's desire to absorb Scotland, Scotland's insistence on equal partnership, and the alternative vision of a new kingdom of 'Britain'. These tensions were genuine and significant, and the inclusion of Sir Robert Cotton's contemporary perspective helpfully grounds the interpretation in period evidence, lending it a degree of historical authenticity beyond what a modern commentator alone could provide.
+
+However, the source's value is considerably constrained by what it excludes. It focuses entirely on the constitutional question of union and says nothing about the religious dimension of James's problems, which was arguably just as destabilising. The Catholic threat — culminating in the Gunpowder Plot of 1605 — and Puritan discontent in Scotland over the imposition of the King James Bible were major sources of conflict that this item completely ignores. An understanding of James's difficulties based solely on Item 1 would therefore be seriously incomplete.
+
+Turning to provenance: John Simkin's background as a History teacher and published author suggests he approached this topic with genuine knowledge and a commitment to accuracy. The fact that the Spartacus Educational website was updated in 2020 means it likely incorporates relatively recent historical scholarship. These are genuine strengths. Yet the nature of the source — a website designed to educate students — necessarily introduces simplification. Educational content prioritises accessibility over nuance, and the brevity of the item reflects this. An academic article or textbook would explore the same issues with greater complexity and citation of sources.
+
+On balance, Item 1 is of moderate value: it provides a clear and broadly accurate account of the constitutional tensions in James's kingdoms, but its narrow scope and the inherent simplifications of educational web publishing mean it can only partially explain why James struggled to rule his kingdoms effectively.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is an A grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Uses the Source Precisely</div>
+                  <p>The answer picks up Sir Robert Cotton's presence in the source itself and analyses its significance — this shows careful reading and is the kind of detail that distinguishes Band 5 answers.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Own Knowledge as Counter-argument</div>
+                  <p>The Gunpowder Plot and the King James Bible are used specifically to show what the source <em>omits</em> — not as irrelevant additional information, but as a direct challenge to the source's completeness.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Provenance Both Ways</div>
+                  <p>Simkin's expertise and the 2020 update are noted as strengths; the educational audience and resulting simplification are identified as limitations. This two-sided provenance analysis is essential for Band 5.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Key technique</div>
+                  <p>The phrase "an understanding based solely on Item 1 would be seriously incomplete" is powerful because it shows the examiner the answer is evaluating <em>sufficiency</em>, not just accuracy — a higher-order skill.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q8b: Wales and Royalists ── -->
+  <div class="q-card" id="qB8b">
+    <div class="q-header" onclick="toggleCard('qB8b')">
+      <div class="q-header-left">
+        <div class="q-number">Q8b</div>
+        <div class="q-title">To what extent do Items 2 and 3 persuade you that Wales was important to the Royalists during the Civil War?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">20 marks · AO2 + AO3</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">The Question</div>
+        <div class="q-text">To what extent do Item 2 and Item 3 persuade you that Wales was important to the Royalists during the Civil War?</div>
+      </div>
+      <div class="sources-row">
+        <div class="source-box" style="margin:0">
+          <div class="source-label">Item 2</div>
+          <div class="source-attribution">Report by Parliamentary informers to the House of Commons (5 April 1644)</div>
+          <div class="source-text">"We hear that 6,000 Irish rebels have landed in Wales. They are behaving in a cruel and savage way. Unless some speedy help is sent to Chirk, the whole country will be destroyed by these Irish invaders."</div>
+        </div>
+        <div class="source-box" style="margin:0">
+          <div class="source-label">Item 3</div>
+          <div class="source-attribution">Geraint Jenkins, professor of Welsh History, <em>The Foundations of Modern Wales 1642–1780</em> (1987)</div>
+          <div class="source-text">"From the outset it was vitally important for the king to control the borderlands. Wales could not only supply him with wealth, supplies and armies, but might also offer a route for loyal troops from Ireland if he needed them. Parliament was determined to break through the barrier of the Welsh Marches."</div>
+        </div>
+      </div>
+
+      <div class="grade-toggle-section" style="margin-top:18px">
+        <div class="grade-toggle-label">Select a grade to view exemplar answer</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qB8b','c',this)">C Grade</button>
+          <button class="grade-btn" onclick="showGrade('qB8b','a',this)">A Grade</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qB8b-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Approx. 11–12 / 20</strong>Both items described and some evaluation offered. Provenance noted for each. Judgement present but contextual knowledge not deployed to go beyond the items.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Items 2 and 3 both suggest that Wales was important to the Royalists. Item 2 says that 6,000 Irish rebels had landed in Wales and were causing trouble unless help was sent to Chirk. This shows that Wales was being used as a landing point for Royalist troops from Ireland. Item 3 says Wales was important because it could supply the King with wealth, supplies and armies, and also provided a route for Irish troops.
+
+Item 2 is a primary source from 1644 written by parliamentary informers so it might be biased against the Royalists. Item 3 is by a historian called Geraint Jenkins and is more reliable because he is an expert writing with the benefit of hindsight.
+
+Overall both items persuade me that Wales was important to the Royalists but Item 3 is more persuasive because it is more reliable.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is a C grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Strengths</div>
+                  <p>Both items used. Content from each is applied to the question. Provenance recognised for both. A final judgement is reached and a reason given for preferring Item 3.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Weaknesses</div>
+                  <p>The bias point for Item 2 is asserted but not developed. Why might parliamentary informers exaggerate the Irish landing? How does this affect how far we can trust the 6,000 figure? These questions need answering.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Missing</div>
+                  <p>No own knowledge beyond the items: Welsh castles as Royalist strongholds, key battles (Edgehill, Newbury), Welsh landowners raising Royalist troops, or the fact that Wales ultimately fell to Parliament — which adds important context to the question of how "important" Wales really was.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ To improve</div>
+                  <p>For 20-mark questions, you must demonstrate contextual knowledge that goes <em>beyond both items</em>. Ask: "What do I know that adds to, qualifies, or challenges what these items say?" This is what earns marks in Bands 4 and 5.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qB8b-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Approx. 17–20 / 20</strong>Both items precisely evaluated for content and provenance. Substantial own knowledge deployed beyond the items. Valid, comprehensive judgement that reflects the complexity of the question.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Both items are persuasive in suggesting that Wales held considerable strategic importance for the Royalists during the Civil War, though each requires careful evaluation before accepting its evidence at face value.
+
+Item 3 is the more comprehensively persuasive of the two. Written by Geraint Jenkins, a professor of Welsh History, in an academic textbook covering the period from 1642, it benefits from scholarly authority and a long-term analytical perspective. Jenkins identifies Wales as strategically vital from multiple angles simultaneously: as a source of wealth and troops, as a supply base, and as a corridor for Royalist forces from Ireland. Crucially, his observation that Parliament was "determined to break through the barrier of the Welsh Marches" independently validates Wales's importance — the enemy's strategic priorities reveal as much as the King's own. My contextual knowledge supports this assessment: Welsh landowners overwhelmingly raised troops for the Royalist cause, approximately 1,000 Welsh soldiers died at Edgehill, and Welsh castles such as Raglan provided vital Royalist strongholds throughout the conflict.
+
+Item 2 also contributes to the argument, though it must be handled more carefully. As a report from parliamentary informers in April 1644, it confirms that Wales was indeed being used as a landing point for forces from Ireland — lending direct support to Jenkins's analysis in Item 3. However, the source's provenance raises important questions about reliability. Parliamentary informers reported to military commanders who needed to justify resources and raise alarm; the figure of 6,000 Irish troops may well be an exaggeration designed to secure a rapid military response rather than an accurate count. Furthermore, describing the soldiers as "Irish rebels" who were "cruel and savage" reflects parliamentary propaganda rather than objective military intelligence. This does not mean the evidence of Irish troops landing in Wales is false, but it does mean the numbers and the characterisation should be treated cautiously.
+
+On balance, I am substantially persuaded — particularly by Item 3 and my wider contextual knowledge — that Wales was genuinely important to the Royalists as a source of manpower, supplies, wealth, and a strategic corridor from Ireland. However, this importance must be placed in perspective: the Royalists ultimately lost the Civil War, and Parliamentary forces did successfully break through the Welsh Marches. Wales was strategically vital, but it could not compensate for the Royalists' broader weaknesses.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is an A grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Enemy's Strategy as Evidence</div>
+                  <p>"The enemy's strategic priorities reveal as much as the King's own" — using Parliament's determination to break through Welsh Marches as evidence of Royalist importance is a sophisticated, original analytical move.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Provenance: Both Ways</div>
+                  <p>For Item 2, the answer identifies both what the source confirms (Irish troops landing) and why elements of it might be exaggerated (informers needed to justify resources). This layered provenance analysis is characteristic of Band 5.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Conclusion Adds Perspective</div>
+                  <p>The final point — that Wales was important but the Royalists still lost — prevents the answer from being one-sided. This kind of contextualised qualification demonstrates the historical thinking required at the highest level.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Key technique</div>
+                  <p>Notice that own knowledge (Edgehill, Welsh castles, landowners raising troops) is woven into the analysis of Item 3 — not placed in a separate paragraph. Integrated contextual knowledge always earns more than knowledge listed separately.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- ═══════════════════════════════════ END SECTION B ═══════════════════════════════════ -->
+
+</main>
+
+<footer>
+  <p>WJEC GCSE History Unit 1: Early Modern &nbsp;·&nbsp; Exemplar Training Activity &nbsp;·&nbsp; Based on <span>WJEC CBAC Sample Assessment Materials 2024</span></p>
+  <p style="margin-top:4px">Teaching from 2026 · For award from 2028 · This resource is for teaching purposes only.</p>
+</footer>
+
+<script>
+  const reviewed = new Set();
+
+  function showSection(id, btn) {
+    document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.section-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleCard(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('expanded');
+    if (card.classList.contains('expanded')) {
+      reviewed.add(id);
+      updateProgress();
+    }
+  }
+
+  function showGrade(qId, grade, btn) {
+    // Hide all panels for this question
+    document.querySelectorAll(`#${qId}-c, #${qId}-a`).forEach(p => p.classList.remove('visible'));
+    // Show selected
+    document.getElementById(`${qId}-${grade}`).classList.add('visible');
+    // Update buttons
+    const toggle = btn.closest('.grade-toggle');
+    toggle.querySelectorAll('.grade-btn').forEach(b => {
+      b.classList.remove('active-c', 'active-a');
+    });
+    btn.classList.add(grade === 'c' ? 'active-c' : 'active-a');
+  }
+
+  function toggleCommentary(btn) {
+    btn.classList.toggle('open');
+    const body = btn.nextElementSibling;
+    body.classList.toggle('open');
+  }
+
+  function updateProgress() {
+    const total = 8; // 3 Section A + 3 Section B
+    const count = reviewed.size;
+    document.getElementById('progress-text').textContent = `${count} / ${total} reviewed`;
+    document.getElementById('progress-fill').style.width = `${(count / total) * 100}%`;
+    if (count >= 8) {
+      if (!document.getElementById('certTriggerBox')) {
+        var trig = document.createElement('div');
+        trig.id = 'certTriggerBox';
+        trig.className = 'cert-trigger-box';
+        trig.innerHTML = '<p>&#127885; <strong>Congratulations! You have reviewed all exemplars. Enter your full name to generate your personalised completion certificate.</strong><br><em style="opacity:.65;font-size:.82rem">Llongyfarchiadau — rhowch eich enw i greu eich tystysgrif.</em></p><div class="cert-name-row"><input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name &middot; Eich enw llawn&hellip;" maxlength="80"><button class="btn-cert" onclick="generateCertificate()">&#127891; Generate Certificate &middot; Creu Tystysgrif</button></div>';
+        var footer = document.querySelector('footer');
+        if (footer) { footer.parentNode.insertBefore(trig, footer); }
+        else { document.querySelector('main').appendChild(trig); }
+        setTimeout(function(){ trig.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 300);
+      }
+    }
+  }
+
+  // Auto-open first question in each section
+  window.addEventListener('load', () => {
+    // Stagger card entrance
+    document.querySelectorAll('.q-card').forEach((card, i) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(16px)';
+      setTimeout(() => {
+        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 100 + i * 80);
+    });
+  });
+</script>
+
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:2rem;">📜</div>
+            <div class="cert-inst-name">WJEC CBAC — GCSE History · Hanes TGAU
+              <span class="cert-inst-sub">Curriculum for Wales | Cwricwlwm i Gymru</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that · Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher · yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.5rem 0 .3rem"><div class="cert-name" id="certDisplayName">Your Name</div></div>
+          
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the training session on</div>
+          <div class="cert-course">WJEC GCSE History — Unit 1 Early Modern: Exemplar Answer Training
+            <span class="cert-course-sub">TGAU Hanes CBAC — Uned 1 Cynnar Fodern: Hyfforddiant Atebion Enghreifftiol</span>
+          </div>
+          <div class="cert-competencies">Demonstrating understanding of WJEC GCSE History Unit 1 Early Modern band descriptors, evaluation of Band C and Band A exemplar responses, source evaluation using provenance and own knowledge, and extended writing techniques for 'To what extent' questions.</div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <div class="cert-sig-label">Subject Tutor · Tiwtor Pwnc</div>
+            </div>
+            <div><div class="cert-seal"><span class="cert-seal-icon">🎓</span>PGCE<br>CYMRU</div></div>
+            <div class="cert-sig-block">
+              <div class="cert-date-val" id="certDateDisplay"></div>
+              <div class="cert-date-label">Date Completed · Dyddiad Cwblhau</div>
+            </div>
+          </div>
+          <div class="cert-stripe" style="margin:1.2rem -2rem -1.6rem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">🖨 Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">✕ Close · Cau</button>
+    </div>
+  </div>
+</div>
+<script>
+function generateCertificate(){
+  var name=document.getElementById('certNameInput').value.trim();
+  if(!name){document.getElementById('certNameInput').focus();document.getElementById('certNameInput').style.borderColor='#c9a84c';setTimeout(function(){document.getElementById('certNameInput').style.borderColor='';},1500);return;}
+  document.getElementById('certDisplayName').textContent=name;
+  var now=new Date();
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('certDateDisplay').textContent=now.getDate()+' '+months[now.getMonth()]+' '+now.getFullYear();
+  document.getElementById('certOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeCertificate(){document.getElementById('certOverlay').classList.remove('show');document.body.style.overflow='';}
+function printCertificate(){
+  var cert=document.getElementById('certificateEl');
+  var w=window.open('','_blank','width=900,height=700');
+  w.document.write('<html><head><title>Certificate</title>');
+  document.querySelectorAll('style,link[rel="stylesheet"]').forEach(function(s){w.document.write(s.outerHTML);});
+  w.document.write('</head><body style="margin:0;padding:20px;background:white;">');
+  w.document.write(cert.outerHTML);
+  w.document.write('</body></html>');
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener('click',function(e){if(e.target.id==='certOverlay')closeCertificate();});
+</script>
+</body>
+</html>

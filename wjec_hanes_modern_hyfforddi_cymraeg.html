@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="cy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBAC TGAU Hanes – Uned 1 Modern – Hyfforddi Atebion Enghreifftiol</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a2e52;
+    --navy-light: #253f6b;
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --cream: #faf8f3;
+    --warm-white: #ffffff;
+    --slate: #4a5568;
+    --slate-light: #718096;
+    --grade-c-bg: #fff8e6;
+    --grade-c-border: #e6a817;
+    --grade-c-text: #7a4f00;
+    --grade-a-bg: #e8f5e9;
+    --grade-a-border: #2e7d32;
+    --grade-a-text: #1b5e20;
+    --highlight-yellow: #fff3cd;
+    --highlight-green: #d4edda;
+    --annotation: #e8eaf6;
+    --shadow: 0 4px 20px rgba(15,31,61,0.12);
+    --shadow-hover: 0 8px 32px rgba(15,31,61,0.2);
+    --radius: 12px;
+    --radius-sm: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--navy);
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .wjec-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    font-weight: 600;
+    color: white;
+    line-height: 1.2;
+  }
+  header p.subtitle {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+  .progress-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .progress-track {
+    width: 120px;
+    height: 6px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--gold);
+    width: 0%;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+
+  .section-tabs {
+    max-width: 1100px;
+    margin: 28px auto 0;
+    padding: 0 24px;
+    display: flex;
+    gap: 8px;
+    border-bottom: 2px solid rgba(15,31,61,0.12);
+  }
+  .section-tab {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 24px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-bottom: none;
+    background: transparent;
+    color: var(--slate);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: all 0.2s;
+    position: relative;
+    bottom: -2px;
+  }
+  .section-tab:hover { color: var(--navy); background: rgba(15,31,61,0.04); }
+  .section-tab.active {
+    color: var(--navy);
+    background: var(--cream);
+    border-color: rgba(15,31,61,0.12);
+    border-bottom-color: var(--cream);
+  }
+  .section-tab .tab-sub { font-weight: 400; font-size: 0.75rem; color: var(--slate-light); display: block; }
+  .section-tab.active .tab-sub { color: var(--slate); }
+
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 24px 60px;
+  }
+  .section-panel { display: none; }
+  .section-panel.active { display: block; }
+
+  .intro-banner {
+    background: var(--navy);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 28px;
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .intro-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+  .intro-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+  }
+  .intro-banner p { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 20px;
+  }
+  .section-divider-line { flex: 1; height: 1px; background: rgba(15,31,61,0.15); }
+  .section-divider-text {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--slate-light);
+    white-space: nowrap;
+  }
+
+  .q-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(15,31,61,0.08);
+    transition: box-shadow 0.2s;
+  }
+  .q-card:hover { box-shadow: var(--shadow-hover); }
+
+  .q-header {
+    background: var(--navy);
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    cursor: pointer;
+    user-select: none;
+  }
+  .q-header-left { display: flex; align-items: center; gap: 14px; }
+  .q-number {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .q-title {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: white;
+    line-height: 1.3;
+  }
+  .q-marks {
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.9);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .q-chevron {
+    color: rgba(255,255,255,0.6);
+    font-size: 1.1rem;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .q-card.expanded .q-chevron { transform: rotate(180deg); }
+
+  .q-body { display: none; padding: 0; }
+  .q-card.expanded .q-body { display: block; }
+
+  .q-text-box {
+    padding: 18px 22px;
+    background: #f8f9ff;
+    border-bottom: 1px solid rgba(15,31,61,0.08);
+  }
+  .q-text-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--slate-light);
+    margin-bottom: 8px;
+  }
+  .q-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.95rem;
+    color: var(--navy);
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  .source-box {
+    margin: 14px 22px 4px;
+    padding: 16px 18px;
+    background: #fffdf5;
+    border-left: 4px solid var(--gold);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+  .source-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .source-attribution {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+    font-style: italic;
+    font-family: 'Source Serif 4', serif;
+  }
+  .source-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    color: var(--slate);
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  .grade-toggle-section { padding: 18px 22px 0; }
+  .grade-toggle-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--slate-light);
+    margin-bottom: 10px;
+  }
+  .grade-toggle {
+    display: inline-flex;
+    border: 2px solid var(--navy);
+    border-radius: 30px;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .grade-btn {
+    padding: 8px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--navy);
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .grade-btn:hover { background: rgba(15,31,61,0.06); }
+  .grade-btn.active-c { background: var(--grade-c-border); color: white; }
+  .grade-btn.active-a { background: var(--grade-a-border); color: white; }
+
+  .answer-panels { padding: 0 22px 22px; }
+  .answer-panel { display: none; }
+  .answer-panel.visible { display: block; }
+
+  .grade-label-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 14px;
+    border: 2px solid;
+  }
+  .grade-label-banner.c-banner { background: var(--grade-c-bg); border-color: var(--grade-c-border); color: var(--grade-c-text); }
+  .grade-label-banner.a-banner { background: var(--grade-a-bg); border-color: var(--grade-a-border); color: var(--grade-a-text); }
+  .grade-big { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; line-height: 1; }
+  .grade-desc { font-size: 0.82rem; line-height: 1.4; }
+  .grade-desc strong { display: block; font-size: 0.9rem; }
+
+  .band-scale { display: flex; align-items: center; gap: 4px; margin-bottom: 14px; }
+  .band-cell { width: 28px; height: 10px; border-radius: 3px; background: rgba(15,31,61,0.1); }
+  .band-cell.filled-c { background: var(--grade-c-border); }
+  .band-cell.filled-a { background: var(--grade-a-border); }
+  .band-scale-label { font-size: 0.7rem; color: var(--slate-light); margin-left: 6px; }
+
+  .answer-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: var(--navy);
+    background: var(--cream);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    white-space: pre-wrap;
+    border: 1px solid rgba(15,31,61,0.08);
+  }
+
+  .commentary-section { margin-top: 6px; }
+  .commentary-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: var(--annotation);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.84rem;
+    color: var(--navy-light);
+    text-align: left;
+    transition: background 0.2s;
+  }
+  .commentary-toggle:hover { background: #dde0f5; }
+  .ct-icon { font-size: 1rem; }
+  .ct-arrow { margin-left: auto; transition: transform 0.3s; font-size: 0.8rem; }
+  .commentary-toggle.open .ct-arrow { transform: rotate(180deg); }
+
+  .commentary-body {
+    display: none;
+    padding: 16px 14px;
+    background: #f4f5fb;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    border: 1px solid #dde0f5;
+    border-top: none;
+  }
+  .commentary-body.open { display: block; }
+
+  .commentary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 640px) { .commentary-grid { grid-template-columns: 1fr; } }
+
+  .comm-point {
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.83rem;
+    line-height: 1.55;
+  }
+  .comm-point-label { font-weight: 700; font-size: 0.78rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .comm-point p { color: var(--slate); }
+  .comm-point.strength { background: var(--highlight-green); }
+  .comm-point.strength .comm-point-label { color: var(--grade-a-text); }
+  .comm-point.weakness { background: #fdecea; }
+  .comm-point.weakness .comm-point-label { color: #b71c1c; }
+  .comm-point.tip { background: #e8f4fd; grid-column: span 2; }
+  .comm-point.tip .comm-point-label { color: #1565c0; }
+  @media (max-width: 640px) { .comm-point.tip { grid-column: span 1; } }
+
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 18px;
+    font-size: 0.78rem;
+    margin-top: 40px;
+  }
+  footer span { color: var(--gold); }
+
+/* ── CERTIFICATE ── */
+.cert-trigger-box{margin-top:1.5rem;padding:1.4rem;background:rgba(0,0,0,.25);border:2px solid var(--gold);border-radius:10px;text-align:center}
+.cert-trigger-box p{font-size:.88rem;opacity:.85;margin-bottom:1rem;line-height:1.6;color:rgba(255,255,255,.9)}
+.cert-name-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.cert-name-input{padding:.6rem 1rem;font-family:inherit;font-size:.95rem;border:2px solid rgba(255,255,255,.3);border-radius:6px;background:rgba(255,255,255,.12);color:white;width:250px}
+.cert-name-input::placeholder{color:rgba(255,255,255,.4)}
+.cert-name-input:focus{outline:none;border-color:var(--gold)}
+.btn-cert{background:var(--gold);color:#1a1a1a;border:none;padding:.6rem 1.3rem;border-radius:6px;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer}
+.btn-cert:hover{opacity:.85}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:white;border-radius:6px;width:100%;max-width:780px;max-height:95vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.certificate{width:100%;background:white}
+.cert-frame{margin:16px;border:3px solid #1a2438;position:relative}
+.cert-frame::before{content:'';position:absolute;inset:5px;border:1px solid #c9a84c;pointer-events:none;z-index:1}
+.cert-stripe{height:5px;background:linear-gradient(90deg,#1a2438 0%,#c9a84c 50%,#1a2438 100%)}
+.cert-header{background:linear-gradient(135deg,#1a2438 0%,#2d3a56 100%);padding:1.3rem 2rem 1.1rem;text-align:center}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.cert-inst-name{font-family:'Georgia',serif;color:white;font-size:1rem;text-align:left;line-height:1.2}
+.cert-inst-sub{color:#e8c86a;font-size:.75rem;display:block;font-style:italic}
+.cert-body{padding:1.6rem 2rem;text-align:center}
+.cert-presents{font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;margin-bottom:.4rem}
+.cert-main-title{font-family:'Georgia',serif;font-size:1.4rem;color:#1a2438;line-height:1.2;margin-bottom:.2rem}
+.cert-awarded-to{font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;color:#475569;margin-bottom:.2rem}
+.cert-name{font-family:'Georgia',serif;font-size:1.9rem;font-style:italic;color:#1a2438;border-bottom:2px solid #E2E8F0;display:inline-block;padding:0 1rem .1rem;min-width:260px;margin-bottom:.3rem;line-height:1.3}
+.cert-score-pill{display:inline-block;background:#FEF3C7;border:1px solid #c9a84c;border-radius:999px;padding:.25rem 1rem;font-size:.8rem;font-weight:700;color:#92400E;margin:.5rem 0 .8rem}
+.cert-divider{height:1px;background:linear-gradient(90deg,transparent,#c9a84c,transparent);margin:.9rem auto;width:55%}
+.cert-text{font-size:.86rem;color:#1E293B;line-height:1.65;max-width:440px;margin:0 auto .7rem}
+.cert-course{font-family:'Georgia',serif;font-size:.95rem;color:#1E293B;background:#F8F4E8;border:1px solid #e8c86a;border-left:4px solid #1a2438;padding:.45rem .9rem;display:inline-block;margin-bottom:.35rem;text-align:left}
+.cert-course-sub{font-size:.76rem;color:#c9a84c;display:block;font-style:italic}
+.cert-competencies{font-size:.76rem;color:#475569;margin:.2rem auto 1rem;max-width:420px;line-height:1.55}
+.cert-footer-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:1rem;padding-top:1rem;border-top:1px solid #E2E8F0}
+.cert-sig-block{text-align:center}
+.cert-sig-line{height:1px;background:#1a2438;width:140px;margin:0 auto .25rem}
+.cert-sig-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569}
+.cert-seal{width:64px;height:64px;border-radius:50%;background:#1a2438;border:3px solid #c9a84c;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-size:.5rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;line-height:1.3;margin:0 auto}
+.cert-seal-icon{font-size:1.2rem;display:block;margin-bottom:1px}
+.cert-date-val{font-family:'Georgia',serif;font-size:.9rem;color:#1E293B}
+.cert-date-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569;margin-top:.2rem}
+.cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.9rem 1.5rem 1.2rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
+.btn-cert-print{background:#1a2438;color:white;border:none;padding:.55rem 1.2rem;border-radius:6px;font-family:inherit;font-size:.86rem;font-weight:700;cursor:pointer}
+.btn-cert-close{background:#475569;color:white;border:none;padding:.55rem 1.2rem;border-radius:6px;font-family:inherit;font-size:.86rem;cursor:pointer}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="wjec-badge">CBAC · WJEC</div>
+      <div>
+        <h1>TGAU Hanes – Uned 1: Modern</h1>
+        <p class="subtitle">Gweithgaredd Hyfforddi Atebion Enghreifftiol &nbsp;|&nbsp; Adrannau A ac B &nbsp;|&nbsp; Addysgu o 2026</p>
+      </div>
+    </div>
+    <div class="progress-bar-wrap">
+      <span id="progress-text">0 / 6 wedi adolygu</span>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</header>
+
+<div class="section-tabs">
+  <button class="section-tab active" onclick="showSection('secA',this)">
+    Adran A
+    <span class="tab-sub">Gwrthryfeloedd a Phrotestio yng Nghymru tua 1831–tua 1891</span>
+  </button>
+  <button class="section-tab" onclick="showSection('secB',this)">
+    Adran B
+    <span class="tab-sub">Cymru yn yr ugeinfed ganrif gynnar i ganol tua 1914–tua 1959</span>
+  </button>
+</div>
+
+<main>
+
+<!-- ═══════════════════════════════════ ADRAN A ═══════════════════════════════════ -->
+<div class="section-panel active" id="secA">
+
+  <div class="intro-banner">
+    <div class="intro-icon">📜</div>
+    <div>
+      <h2>Sut i ddefnyddio'r gweithgaredd hyfforddi hwn</h2>
+      <p>Cliciwch ar unrhyw gwestiwn i'w ehangu. Defnyddiwch y toglo <strong>Gradd C / Gradd A</strong> i gymharu atebion enghreifftiol. Yna agorwch <strong>Sylwadau'r Arholwr</strong> i weld yn union beth sy'n ennill marciau — a beth sy'n dal ateb yn ôl. Mae'r cwestiynau wedi'u cymryd yn uniongyrchol o Ddeunyddiau Asesu Enghreifftiol CBAC (2024).</p>
+    </div>
+  </div>
+
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-text">Cwestiynau Ysgrifennu Estynedig</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <!-- ── C2: Terfysgoedd Beca ── -->
+  <div class="q-card" id="qA2">
+    <div class="q-header" onclick="toggleCard('qA2')">
+      <div class="q-header-left">
+        <div class="q-number">C2</div>
+        <div class="q-title">Eglurwch pam y digwyddodd Terfysgoedd Beca.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">10 marc · AA1 + AA2</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">Y Cwestiwn</div>
+        <div class="q-text">Eglurwch pam y digwyddodd Terfysgoedd Beca.</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Dewiswch radd i weld yr ateb enghreifftiol</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qA2','c',this)">Gradd C</button>
+          <button class="grade-btn" onclick="showGrade('qA2','a',this)">Gradd A</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qA2-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Tua 5–6 / 10</strong>Dangosir rhywfaint o wybodaeth gywir gyda rhyw ymgais i fynd i'r afael â'r cwestiwn. Gwneir pwyntiau ond nid yw'r esboniadau wedi'u datblygu'n llawn nac wedi'u cysylltu'n iawn â'r cysyniad o achosion.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bandiau 1–5</span>
+          </div>
+          <div class="answer-text">Digwyddodd Terfysgoedd Beca oherwydd bod ffermwyr yn ddig am y gatiau tollbyrth ar y ffyrdd yn ne Cymru. Roedd yn rhaid iddynt dalu arian bob tro yr aent drwy borth ac roedd hyn yn ei gwneud hi'n anoddach iddynt wneud elw. Gwisgodd y terfysgwyr fel merched a galw eu hunain yn Beca a'i merched.
+
+Roedd hefyd ddigter am Ddeddf y Tlodion 1834 a orfodai bobl tlawd i mewn i'r tlotai. Roedd ffermwyr Cymru yn pryderu am golli eu ffermydd ac yn gorfod byw yn y mannau hyn. Roedd y tlotai yn lleoedd llym iawn.
+
+Roedd yn rhaid i ffermwyr hefyd dalu degymau i Eglwys Lloegr er nad oedd y rhan fwyaf o bobl Cymru yn anghydffurfwyr. Roedd hyn yn ymddangos yn annheg iddynt. Roedd y tirfeddianwyr yn aml yn Saeson ac nid oeddent yn deall problemau ffermwyr Cymru.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Sylwadau'r Arholwr — pam mai Gradd C yw hwn
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Cryfderau</div>
+                  <p>Nodwyd tair achos dilys: y gatiau tollbyrth, Deddf y Tlodion, a'r dicter tuag at y tirfeddianwyr a'r degymau. Mae'r cynnwys ffeithiol yn gywir ar y cyfan, gan gynnwys y confensiwn gwisgo fel menywod a'r dyddiad 1834. Mae hyn yn dangos gwybodaeth berthnasol ar draws y pwnc.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Gwendidau</div>
+                  <p>Mae pob pwynt yn stopio cyn egluro'n llawn. Mae'r ateb yn dweud bod y gatiau tollbyrth wedi gwneud elw yn anoddach — ond nid yw'n egluro <em>pam</em> y daeth hyn yn argyfwng: roedd tyddynnod eisoes ar ymyl mewn cyfnod o dwf poblogaeth cynyddol, ac roedd y tollbyrth yn ddiferyn olaf y ddiod. Mae "roedd y tlotai yn llym iawn" yn ddisgrifiad, nid yn esboniad o achosion.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Heb ei gynnwys</div>
+                  <p>Nid oes cyswllt datblygedig rhwng yr achosion — er enghraifft, y cysylltiad rhwng grym y tirfeddianwyr, y degymau a'r ymddiriedolaethau tollbyrth yn cael eu rheoli gan yr un dosbarth cyfoethog Saesneg ei iaith. Nid oes dadansoddi pam y gwnaeth yr achosion hyn gyfuno i wneud trais yn ymddangos fel yr unig opsiwn.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Er mwyn gwella</div>
+                  <p>Ar ôl pob achos, gofynnwch: <em>"Pam yr oedd hyn yn bwysig cymaint yn y cyfnod penodol hwn?"</em> Dangoswch fod y sbardun uniongyrchol (y gatiau tollbyrth) yn gorwedd ar ben cwynion hirdymor dyfnach. Dyma'r esboniad haenedig sy'n gwahaniaethu atebion Bandiau 4–5 oddi wrth Fand 3.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qA2-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Tua 9–10 / 10</strong>Gwybodaeth fanwl a chonvinciol wedi'i defnyddio drwy'r ateb. Mae achosion wedi'u hegluro a'u cysylltu'n ddadansoddol â'i gilydd ac â'r cysyniad o pam y digwyddodd y terfysgoedd.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bandiau 1–5</span>
+          </div>
+          <div class="answer-text">Y sbardun uniongyrchol i Derfysgoedd Beca oedd baich y tollbyrth ar ffyrdd tyrpeg de Cymru. Roedd ffermwyr a oedd yn gweithio tyddynnod yn cael eu gorfodi i dalu bob tro yr oeddent yn gyrru da byw neu gynnyrch i'r farchnad, ac roedd y taliadau yn cronni — gallai un daith ofyn am dalu mewn sawl porth a reolid gan ymddiriedolaethau gwahanol. Ar elwon tenau ffermio cynhaliaeth Cymru, nid anfantais mo'r costau hyn ond bygythiad bodolaeth i fodd byw.
+
+Ni thaniodd y gŵyn uniongyrchol hon, fodd bynnag, ond oherwydd y pryder economaidd dwfn a oedd yn rhedeg drwy gymunedau gwledig Cymru yn y 1830au a'r 1840au. Roedd Deddf Diwygio Deddf y Tlodion 1834 wedi disodli cymorth uniongyrchol traddodiadol â system y tloty llawer llymach. I deulu fferm ar ymyl tlodi, roedd colli'r fferm bellach yn golygu nid cymorth o'r plwyf — ond y tloty. Roedd twf poblogaeth ar draws Cymru eisoes wedi dwysáu'r gystadleuaeth am dir ac wedi lleihau cyflogau, gan ei gwneud hi'n fwyfwy anodd cynnal ffermydd bach. Roedd y gatiau tollbyrth, felly, yn symbol mwyaf gweladwy system a ymddangosai wedi'i dylunio i yrru tyddynwyr oddi ar eu tir yn gyfan gwbl.
+
+Yn gorwedd o dan y pwysau economaidd hyn yr oedd dicter ehangach tuag at y boneddigion Saesneg eu hiaith, Anglicanaidd a reolai'r ymddiriedolaethau tollbyrth a'r tir. Nid yn unig y gosododd y tirfeddianwyr hyn y tollau ar y ffyrdd, ond gorfodent hefyd y degymau y bu'n rhaid i ffermwyr anghydffurfiol Cymru eu talu i Eglwys Lloegr — eglwys nad oedd y mwyafrif helaeth ohonynt yn ei mynychu. Talu degymau i gynnal eglwys estron, tra'n cael eu codi tâl yr un pryd gan yr un dosbarth o dirfeddianwyr am ddefnyddio'r ffyrdd cyhoeddus, a gynhyrchodd ymdeimlad pwerus o annhegwch a unodd gŵyn economaidd ag hunaniaeth ddiwylliannol a chrefyddol. Y cyfuniad hwn — pwysau ariannol uniongyrchol wedi'i haenu ar ddicter dosbarth a diwylliannol hirdymor — sy'n egluro pam y torrodd Terfysgoedd Beca allan gyda'r fath rym a lledaenu mor gyflym ar draws de Cymru.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Sylwadau'r Arholwr — pam mai Gradd A yw hwn
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Achosion Uniongyrchol yn erbyn Achosion Dyfnach</div>
+                  <p>Mae'r ateb yn gwahaniaethu'n benodol rhwng y sbardun uniongyrchol (y gatiau tollbyrth) ac achosion strwythurol dyfnach (Deddf y Tlodion, twf poblogaeth, rheolaeth y tirfeddianwyr). Mae'r dull haenedig hwn yn dangos y math o feddwl hanesyddol sy'n ennill Band 5.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Cysylltiadau Achosiaeth</div>
+                  <p>"Roedd y gatiau tollbyrth yn symbol mwyaf gweladwy system a ymddangosai wedi'i dylunio i yrru tyddynwyr oddi ar eu tir" — nid rhestr o achosion yn unig yw hon ond dadansoddiad o sut y cysylltwyd ac yr atgyfnerthwyd hwy. Mae'r arholwyr yn gwobrwyo'r math hwn o synthesis.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Dimensiwn Diwylliannol</div>
+                  <p>Mae cysylltu'r degymau, anghydffurfiaeth a'r iaith Gymraeg â'r cwynion economaidd yn dangos dealltwriaeth ddilys o'r cyfnod. Nid am arian yn unig yr oedd y terfysgoedd — yr oeddent am hunaniaeth ac urddas. Mae cydnabod hyn yn ennill marciau sylweddol.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Techneg allweddol</div>
+                  <p>Sylwch ar y casgliad: "y cyfuniad hwn… sy'n egluro pam y torrodd Terfysgoedd Beca allan gyda'r fath rym." Peidiwch byth â rhestru achosion yn unig — bob amser clowch drwy egluro <em>pam yr oedd y cyfuniad yn bwysig</em>. Mae hyn yn ateb y cwestiwn yn uniongyrchol.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── C3b: Gwrthryfel Merthyr – Wikipedia ── -->
+  <div class="q-card" id="qA3b">
+    <div class="q-header" onclick="toggleCard('qA3b')">
+      <div class="q-header-left">
+        <div class="q-number">C3b</div>
+        <div class="q-title">Pa mor werthfawr yw Eitem 1 i'n dealltwriaeth o ddigwyddiadau Gwrthryfel Merthyr?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">15 marc · AA2 + AA3</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">Y Cwestiwn</div>
+        <div class="q-text">Pa mor werthfawr yw Eitem 1 i'n dealltwriaeth o ddigwyddiadau Gwrthryfel Merthyr?</div>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Eitem 1</div>
+        <div class="source-attribution">Wedi'i addasu o gofnod Wikipedia ar Wrthryfel Merthyr (cyrchwyd 2024). Gwyddoniadur rhyngrwyd y gall unrhyw un gael mynediad ato a'i olygu yw Wikipedia.</div>
+        <div class="source-text">"Gwrthryfel Merthyr 1831 oedd uchafbwynt treisgar i flynyddoedd lawer o aflonyddwch dig ymhlith poblogaeth weithiol dosbarth Merthyr Tudful a'r ardal gyfagos. Roedd y Gwrthryfel yn nodi'r tro cyntaf i'r faner goch gael ei defnyddio fel symbol o brotestio dosbarth gweithiol yn y Deyrnas Unedig."</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Dewiswch radd i weld yr ateb enghreifftiol</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qA3b','c',this)">Gradd C</button>
+          <button class="grade-btn" onclick="showGrade('qA3b','a',this)">Gradd A</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qA3b-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Tua 8–9 / 15</strong>Mae cynnwys yr eitem yn cael ei gymhwyso i'r cwestiwn a gwneir pwynt am brofvenans. Cynigir rhywfaint o werthusiad. Mae gwybodaeth gefndirol brin ac nid yw'n cael ei defnyddio i brofi cyflawnder yr eitem.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bandiau 1–5</span>
+          </div>
+          <div class="answer-text">Mae Eitem 1 yn werthfawr i'n dealltwriaeth o Wrthryfel Merthyr oherwydd ei bod yn dweud wrthym ei fod yn ddigwyddiad treisgar a oedd yn cynnwys pobl dosbarth gweithiol ym Merthyr Tudful. Mae hefyd yn dweud wrthym i'r faner goch gael ei defnyddio yma am y tro cyntaf fel symbol o brotestio.
+
+Fodd bynnag, mae'r eitem yn llai gwerthfawr oherwydd ei bod yn dod o Wikipedia, gwyddoniadur y gall unrhyw un ei olygu. Mae hyn yn golygu efallai nad yw'r wybodaeth yn gywir oherwydd gallai fod wedi'i ysgrifennu gan rywun nad yw'n gwybod llawer am y pwnc. Nid ydym yn gwybod pwy a'i hysgrifennodd.
+
+Mae'r eitem hefyd yn eithaf byr ac nid yw'n rhoi llawer o fanylion inni am yr hyn a ddigwyddodd mewn gwirionedd yn ystod y Gwrthryfel, fel yr ymosodiadau ar feiliaid nac ychwaith am yr hyn a arweiniodd at y digwyddiad.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Sylwadau'r Arholwr — pam mai Gradd C yw hwn
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Cryfderau</div>
+                  <p>Mae'r ateb yn nodi'n gywir yr hyn y mae'r eitem yn ei ddweud wrthym (trais, cyfranogiad dosbarth gweithiol, arwyddocâd y faner goch). Nodwyd cyfyngiad provenanws Wikipedia, a nodwyd byrder yr eitem. Mae strwythur sylfaenol gwerth/cyfyngiadau yn bresennol.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Gwendidau</div>
+                  <p>Mae'r beirniadaeth o Wikipedia yn annigonol. Nid yw dweud "gall unrhyw un ei olygu" yn ddigon — mae angen i'r ateb ymgysylltu â'r ddadl wrthbwynt: mae erthyglau Wikipedia ar ddigwyddiadau hanesyddol yn tueddu i fod wedi'u seilio ar ymchwil gyhoeddedig, yn cael eu monitro'n aml, ac yn cynrychioli'r consensws mwyaf cyfredol. Mae cyfyngiad awduraeth anhysbys yn fwy cymhlethi na "efallai'n anghywir."</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Heb ei gynnwys</div>
+                  <p>Dylai gwybodaeth gefndirol bersonol (gweithwyr yn ymgasglu ar Waun Gyfarthfa, gwrthdaro dros eiddo Lewis Lewis a'r beiliaid, milwyr o Aberhonddu, crogi Dic Penderyn) gael ei defnyddio i ddangos yn union <em>beth</em> y mae'r eitem yn ei hepgor — nid yn unig ei fod yn fyr. Dyma sut yr enillir marciau yn Bandiau 4 a 5.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Er mwyn gwella</div>
+                  <p>Meddyliwch am eich gwybodaeth bersonol fel <em>mesurydd</em> ar gyfer y ffynhonnell. Defnyddiwch yr hyn a wyddoch i ddweud: "Mae'r eitem yn dweud wrthym X ond mae'n hepgor Y a Z, sy'n bwysig oherwydd…" Mae hyn yn profi cyflawnder yr eitem, nid dim ond ei chynnwys. Mae'r dadansoddiad hwnnw'n ennill marciau yn y bandiau uwch.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qA3b-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Tua 13–15 / 15</strong>Mae cynnwys a phrovenanws ill dau wedi'u gwerthuso â phendantrwydd a beirniadaeth. Defnyddir gwybodaeth gefndirol bersonol yn bwrpasol i brofi cyflawnder yr eitem. Cyrhaeddir barn gyffredinol ddilys a gefnogir yn dda.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bandiau 1–5</span>
+          </div>
+          <div class="answer-text">Mae Eitem 1 yn meddu ar werth dilys i'n dealltwriaeth o Wrthryfel Merthyr, er bod cyfyngiadau sylweddol yn atal y darlun rhag bod yn gynhwysfawr.
+
+O ran cynnwys, mae'r eitem yn disgrifio'r Gwrthryfel yn gywir fel uchafbwynt treisgar o aflonyddwch hirdymor ymhlith y boblogaeth weithiol ym Merthyr. Mae hyn yn fframio defnyddiol: mae'n lleoli digwyddiadau 1831 yn gywir fel rhan o batrwm o ddigter yn hytrach na ffrwydrad sydyn, sy'n hanesyddol gywir o ystyried y toriadau cyflog a osodwyd gan deulu'r Crawshays a thrallod ehangach gweithwyr yn byw dan yr Llys Ceisiadau. Mae'r honiad am y faner goch yn arbennig o werthfawr — mae'n gosod y Gwrthryfel o fewn traddodiad ehangach o brotestio dosbarth gweithiol ledled Prydain ac yn rhoi arwyddocâd iddo y tu hwnt i Ferthyr ei hun.
+
+Fodd bynnag, mae byrder yr eitem yn golygu ei bod yn hepgor llawer o'r hyn y byddem ei angen i ddeall digwyddiadau gwirioneddol y Gwrthryfel. Nid yw'n dweud dim am y gwrthdaro sbarduno dros feddiannaeth eiddo Lewis Lewis gan feiliaid, yr ymgasgliad torfol o filoedd o weithwyr ar Waun Gyfarthfa, nac ychwaith yr uwchgyfeiriad pan ddanfonwyd milwyr o Aberhonddu a lladdwyd tua ugain o brotestwyr. Heb y manylion hyn, mae'r "uchafbwynt treisgar" a ddisgrifir yn sylwadol yn gwbl anesboniadwy. Nid yw'r eitem ychwaith yn mynd i'r afael â'r canlyniad terfynol: crogi Dic Penderyn — a gredir yn eang ei fod yn ddieuog — a ddaeth yn symbol pwerus o anghyfiawnder dosbarth gweithiol.
+
+O ran provenanws, mae tarddiad Wikipedia yr eitem yn cyflwyno cryfderau a gwendidau ill dau. Gan gael ei hysgrifennu yn 2024, mae ganddi fynediad at ddegawdau o ymchwil academaidd ar y Gwrthryfel ac yn gallu adlewyrchu consensws hanesyddol cyfredol. Ar y llaw arall, mae anhysbysrwydd ei hawduraeth yn golygu na allwn asesu cymwysterau'r awdur na gwirio sut y mae wedi dehongli ei ffynonellau. Mae'r ffaith y gall Wikipedia gael ei golygu gan unrhyw un yn cyflwyno peth pryder dibynadwyedd, er bod cofnodion ar ddigwyddiadau hanesyddol arwyddocaol, mewn ymarfer, yn tueddu i fod yn seiliedig ar ffynonellau cyhoeddedig ac yn cael eu monitro am gywirdeb.
+
+Ar y cyfan, mae Eitem 1 yn werthfawr fel trosolwg cryno a chywir sy'n nodi arwyddocâd hanesyddol y Gwrthryfel — yn enwedig symbolaeth y faner goch. Mae ei gwerth yn gyfyngedig, fodd bynnag, gan absenoldeb bron llwyr o ddigwyddiadau, achosion a chanlyniadau penodol a fyddai'n hanfodol i ddealltwriaeth wirioneddol o yr hyn a ddigwyddodd ym Merthyr yn 1831.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Sylwadau'r Arholwr — pam mai Gradd A yw hwn
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Cynnwys + Bylchau wedi'u Profi</div>
+                  <p>Nid yw'r ateb yn unig yn dweud yr hyn y mae'r eitem yn ei gynnwys — mae'n defnyddio gwybodaeth gefndirol (Waun Gyfarthfa, Lewis Lewis, Dic Penderyn, milwyr o Aberhonddu) i ddangos beth y mae'n ei adael allan. Dyma'r brif dechneg ar gyfer cwestiynau gwerthuso ffynonellau 15 marc.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Provenanws Cytbwys</div>
+                  <p>Mae dadansoddiad Wikipedia yn osgoi'r trap syml "gall unrhyw un ei olygu = annibynadwy." Yn lle hynny, mae'n cydnabod mantais amseroldeb a chyfyngiad anhysbysrwydd ill dau. Mae'r dull cymhleth hwn yn nodweddu meddylfryd Band 5.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Pwynt y Faner Goch wedi'i Ddatblygu</div>
+                  <p>Mae arwyddocâd y faner goch yn cael ei ymestyn y tu hwnt i'r eitem ei hun — gan ei gysylltu â thraddodiadau protest dosbarth gweithiol ehangach ledled Prydain. Mae hyn yn dangos bod y disgybl yn deall <em>pwysigrwydd hanesyddol</em> y manylion, nid dim ond y manylion eu hunain.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Techneg allweddol</div>
+                  <p>Ar gyfer pob cwestiwn ffynhonnell 15 marc, gofynnwch bob amser: (1) Beth mae'r cynnwys yn ei ddweud wrthym — ac a yw'n gywir? (2) Pa gyd-destun pwysig y mae'r eitem yn ei <em>hepgor</em>? (3) Beth mae tarddiad y ffynhonnell yn ei ddweud wrthym am ei safbwynt? Yna cyrhaeddwch farn gyffredinol glir.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── C4b: Gwrthryfel Casnewydd ── -->
+  <div class="q-card" id="qA4b">
+    <div class="q-header" onclick="toggleCard('qA4b')">
+      <div class="q-header-left">
+        <div class="q-number">C4b</div>
+        <div class="q-title">I ba raddau y mae Eitem 2 ac Eitem 3 yn eich argyhoeddi bod Gwrthryfel Casnewydd yn fygythiad i'r llywodraeth?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">20 marc · AA2 + AA3</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">Y Cwestiwn</div>
+        <div class="q-text">I ba raddau y mae Eitem 2 ac Eitem 3 yn eich argyhoeddi bod Gwrthryfel Casnewydd yn fygythiad i'r llywodraeth?</div>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Eitem 2</div>
+        <div class="source-attribution">Kenneth Budd, artist Seisnig, yn portreadu Gwrthryfel Casnewydd yn ei furlun <em>The Chartist Mural</em> (a grëwyd yn 1978), a oedd gynt wedi'i leoli yng nghanol dinas Casnewydd. Mae'r faner yn nodi "300 etholaeth o riferoedd cyfartal o etholwyr".</div>
+        <div class="source-text">[Murlun mosäig yn dangos gorymdeithwyr Siartaidd arfog yn symud ymlaen, yn cario baneri ac arfau, yn wynebu milwyr ar yr ochr dde.]</div>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Eitem 3</div>
+        <div class="source-attribution">Syr John Campbell, yn erlyn, yn egluro ei farn ar Wrthryfel Casnewydd i'r rheithgor, mewn trawsgrifiad o gofnodion swyddogol treial John Frost yn Mynwy (1839).</div>
+        <div class="source-text">"Wrth gyrraedd Casnewydd, roedd y Siartyddion yn anelu at ymosod ar y milwyr a oedd yno. Roeddent am gymryd rheolaeth dros y dref. Nid cyfarfod i ddeisebu'r Frenhines na'r Senedd oedd hwn. Eu hamcan oedd defnyddio grym arfog i newid cyfraith y wlad hon."</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Dewiswch radd i weld yr ateb enghreifftiol</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qA4b','c',this)">Gradd C</button>
+          <button class="grade-btn" onclick="showGrade('qA4b','a',this)">Gradd A</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qA4b-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Tua 11–12 / 20</strong>Defnyddir y ddwy eitem a chysylltu eu cynnwys â'r cwestiwn. Nodwyd provenanws sylfaenol ar gyfer pob un. Cyrhaeddir barn ond nid yw gwybodaeth gefndirol bersonol yn cael ei defnyddio i brofi'r eitemau na rhoi dyfnder.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bandiau 1–5</span>
+          </div>
+          <div class="answer-text">Mae Eitem 2 ac Eitem 3 ill dau yn fy argyhoeddi bod Gwrthryfel Casnewydd yn fygythiad i'r llywodraeth. Mae Eitem 2 yn furlun gan Kenneth Budd sy'n dangos gorymdeithwyr Siartaidd gydag arfau yn mynd i mewn i Gasnewydd. Mae hyn yn dangos eu bod yn barod i ddefnyddio trais, a fyddai'n fygythiad i'r llywodraeth. Mae'r faner yn dweud "300 etholaeth o riferoedd cyfartal o etholwyr" sy'n dangos eu bod am newid gwleidyddol.
+
+Mae Eitem 3 o dreial John Frost yn 1839 ac yn dweud bod y Siartyddion am ddefnyddio grym arfog i newid y gyfraith. Mae hyn yn awgrymu'n gryf bod Gwrthryfel Casnewydd yn fygythiad oherwydd nid oeddent yn deisebu'n heddychlon ond mewn gwirionedd yn ceisio cymryd rheolaeth dros y dref.
+
+Crëwyd Eitem 2 yn 1978 felly roedd gan yr artist fantais o edrych yn ôl. Mae Eitem 3 yn fwy dibynadwy fel ffynhonnell gynradd o'r treial ei hun. Ar y cyfan, mae'r ddwy eitem yn fy argyhoeddi bod y Gwrthryfel yn fygythiad i'r llywodraeth oherwydd mae'r ddwy yn dangos trais a bwriad i newid pethau drwy rym.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Sylwadau'r Arholwr — pam mai Gradd C yw hwn
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Cryfderau</div>
+                  <p>Defnyddir y ddwy eitem a chysylltu eu cynnwys â'r cwestiwn. Nododd yr ateb yr arfau yn Eitem 2 a'r iaith "grym arfog" yn Eitem 3 fel tystiolaeth o fygythiad. Mae casgliad yn bresennol a cheisiwyd rhywfaint o brovenanws.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Gwendidau</div>
+                  <p>Mae dadansoddiad provenanws yn rhy arwynebol. Mae dweud bod Eitem 3 yn "fwy dibynadwy fel ffynhonnell gynradd" yn camgymryd dibynadwyedd — mae gan fargyfreithiwr erlyn mewn treial am deyrnfradwriaeth gymhelliant cryf iawn i orliwio'r bygythiad. Dylai hyn godi cwestiynau am ragfarn, nid awdurdod.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Heb ei gynnwys</div>
+                  <p>Dim gwybodaeth bersonol: gwrthod y tair deiseb Siartaidd, methiant yng Nghasnewydd (22 o Siartyddion wedi'u lladd, arweinwyr wedi'u trawsgludo), y ffaith i'r llywodraeth allu trechu'r Gwrthryfel yn gyflym. Mae'r pwyntiau cyd-destunol hyn yn angenrheidiol i farnu <em>pa mor fawr</em> o fygythiad ydoedd mewn gwirionedd.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Er mwyn gwella</div>
+                  <p>Ar gyfer cwestiynau 20 marc, defnyddiwch eich gwybodaeth bersonol bob amser i fynd <em>y tu hwnt</em> i'r eitemau. Gofynnwch: "Beth a wn i sy'n cefnogi, cymhwyso, neu'n herio'r hyn y mae'r eitemau hyn yn ei ddweud?" Hefyd, holwch am brovenanws yn feirniadol — pwy a wnaeth hyn? Pam? Beth a allent fod am i ni feddwl?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qA4b-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Tua 17–20 / 20</strong>Mae'r ddwy eitem wedi'u gwerthuso'n feirniadol o ran cynnwys a phrovenanws. Defnyddir gwybodaeth bersonol sylweddol i gyd-destunoli a chymhwyso hawliadau'r eitemau. Cyrhaeddir barn gynhwysfawr a chymhleth.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bandiau 1–5</span>
+          </div>
+          <div class="answer-text">Mae'r ddwy eitem yn cynnig tystiolaeth bod Gwrthryfel Casnewydd yn cynrychioli bygythiad i'r llywodraeth, ac gyda'i gilydd maent yn argyhoeddi — er bod angen gwerthuso pob un yn ofalus cyn y gellir derbyn ei dystiolaeth ar ei ben ei hun.
+
+Eitem 3 yw'r fwyaf argyhoeddiadol yn uniongyrchol o'r ddwy. Fel trawsgrifiad o dreial John Frost yn 1839, mae'n cipio dadl y bargyfreithiwr erlyn bod y Siartyddion wedi gorymdeithio i Gasnewydd gyda'r bwriad penodol o ddefnyddio grym arfog i gymryd rheolaeth dros y dref a newid y gyfraith. Os yw hyn yn wir, nid protest ond gwrthryfel yw hwn — her uniongyrchol i awdurdod y wladwriaeth. Mae natur gyfoes y ffynhonnell yn rhoi uniongyrchedd iddi: gwnaed y ddadl hon mewn llys cyfraith lle bu'n rhaid cyflwyno a phrofi tystiolaeth. Fodd bynnag, mae rôl Syr John Campbell fel yr erlyniad yn hanfodol i'w dehongliad. Ei waith oedd argyhoeddi'r rheithgor fod Frost a'i gyd-ddiffynyddion yn euog o deyrnfradwriaeth — trosedd a allai arwain at y gosb eithaf. Felly roedd ganddo bob cymhelliant i gyflwyno'r Gwrthryfel yn y termau mwyaf bygythiol posibl. Nid yw hyn yn golygu bod ei honiad yn anghywir, ond mae'n golygu y gallai orliwio bwriad chwyldroadol y Gwrthryfel. Mae fy ngwybodaeth bersonol yn cefnogi ei brif honiad: gorymdeithiodd tua 5,000 o Siartyddion i Gasnewydd, llawer yn arfog, a bu gwrthdaro treisgar â milwyr yng Ngwesty'r Westgate.
+
+Mae Eitem 2, murlun Kenneth Budd yn 1978, yn werthfawr fel cynrychiolaeth weledol o'r Gwrthryfel. Mae ei bortread o Siartyddion yn symud ymlaen gydag arfau a baneri yn cadarnhau maint a natur arfog y orymdaith. Yn hollbwysig, mae cyfeiriad y faner at etholaethau cyfartal yn dangos nad trais disynnwyr oedd hwn ond rhan o alw egwyddorol am ddiwygio democrataidd — un o chwe phwynt y Siarter. Fel gwaith celf cyhoeddus comisiynol a osodwyd yng nghanol dinas Casnewydd, byddai Budd wedi gorfod ymchwilio i'r digwyddiadau'n drylwyr i argyhoeddi'r awdurdodau lleol bod ei ddehongliad yn gywir. Er hynny, fel gwaith ôl-weithredol gan artist yn hytrach na hanesydd, dehongliad artistig ydyw yn hytrach na thystiolaeth, ac mae'n naturiol cymryd safbwynt cydymdeimladol o achos y Siartyddion.
+
+Yn gyd-destunol, mae dadl wrthbwynt bwysig nad yw'r eitemau yn ei mynd i'r afael â hi: roedd Gwrthryfel Casnewydd yn aflwyddiant trychinebus. Lladdwyd dau ddeg dau o Siartyddion a dedfrydwyd yr arweinwyr — gan gynnwys Frost — i drawsgludo. Mae'r atal cyflym hwn yn awgrymu, er bod y Gwrthryfel yn mynegi bwriad bygythiol, nad oedd yn peri llawer o berygl ymarferol i lywodraeth a oedd â'r grym milwrol i'w ddod i ben o fewn oriau. At hynny, roedd mudiad Siartaidd ehangach eisoes wedi gweld ei ddeiseb 1839 yn cael ei gwrthod, gan awgrymu bod y llywodraeth yn ymwybodol o'r her a dewis gwrthdaro yn hytrach na chyfaddawdu.
+
+Ar y cyfan, mae'r eitemau yn fy argyhoeddi bod Gwrthryfel Casnewydd wedi'i fwriadu fel bygythiad i'r llywodraeth — gorymdeithiodd y Siartyddion yn glir gydag arfau a galwadau gwleidyddol a oedd yn mynd y tu hwnt i ddeiseb heddychlon. Fodd bynnag, dylid cymhwyso "bygythiad": dyma'r gwrthryfel dosbarth gweithiol mwyaf difrifol a welodd Prydain ers cenhedlaeth, ond fe'i trechwyd hefyd yn gyflym ac yn bendant, gan awgrymu nad oedd safle'r llywodraeth mewn gwirionedd mewn perygl gwirioneddol.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Sylwadau'r Arholwr — pam mai Gradd A yw hwn
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Provenanws: Cymhelliant wedi'i Nodi</div>
+                  <p>Mae'r ateb yn mynd y tu hwnt i "mae'n ffynhonnell gynradd felly mae'n ddibynadwy" — mae'n nodi <em>pam</em> y byddai bargyfreithiwr erlyn mewn treial teyrnfradwriaeth yn â buddiant i orliwio bygythiad y Gwrthryfel. Mae'r math hwn o ddadansoddiad provenanws yn seiliedig ar gymhelliant yn nodwedd Band 5.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Gwybodaeth Bersonol yn Profi'r Eitemau</div>
+                  <p>Defnyddir y ddadl wrthbwynt am fethiant cyflym y Gwrthryfel — 22 o Siartyddion wedi'u lladd, arweinwyr wedi'u trawsgludo, wedi'i drechu o fewn oriau — i <em>gymhwyso</em> honiad ymhlyg yr eitemau. Dyma'n union beth y mae'r band marcio uchaf yn ei ofyn: gwybodaeth sy'n mynd y tu hwnt i'r eitemau i'w holi.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Atebir "I ba raddau"</div>
+                  <p>Mae'r casgliad yn mynd i'r afael yn uniongyrchol â'r iaith y cwestiwn: "ie, roedd yn fygythiad o ran bwriad, ond nid mewn termau ymarferol." Mae'r strwythur "ie, ond" cymhleth hwn yn dangos i'r arholwr fod y cwestiwn wedi'i ymgysylltu ag ef mewn gwirionedd.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Techneg allweddol</div>
+                  <p>Mae cwestiynau "I ba raddau" bob amser yn gofyn am gymhwysiad. Mae argyhoeddiad llwyr (ie, yn llwyr) bron byth yn ennill marciau llawn. Mae'r atebion mwyaf argyhoeddiadol yn cydnabod yr hyn y mae'r eitemau yn ei awgrymu, yna'n defnyddio gwybodaeth bersonol i brofi, cymhlethu, neu ychwanegu niwans at yr awgrym hwnnw.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- ═══════════════════════════════════ DIWEDD ADRAN A ═══════════════════════════════════ -->
+
+
+<!-- ═══════════════════════════════════ ADRAN B ═══════════════════════════════════ -->
+<div class="section-panel" id="secB">
+
+  <div class="intro-banner">
+    <div class="intro-icon">🏭</div>
+    <div>
+      <h2>Sut i ddefnyddio'r gweithgaredd hyfforddi hwn</h2>
+      <p>Cliciwch ar unrhyw gwestiwn i'w ehangu. Defnyddiwch y toglo <strong>Gradd C / Gradd A</strong> i gymharu atebion enghreifftiol. Yna agorwch <strong>Sylwadau'r Arholwr</strong> i weld yn union beth sy'n ennill marciau — a beth sy'n dal ateb yn ôl. Mae'r cwestiynau wedi'u cymryd yn uniongyrchol o Ddeunyddiau Asesu Enghreifftiol CBAC (2024).</p>
+    </div>
+  </div>
+
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-text">Cwestiynau Ysgrifennu Estynedig</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <!-- ── C6: Hamdden yr 1950au ── -->
+  <div class="q-card" id="qB6">
+    <div class="q-header" onclick="toggleCard('qB6')">
+      <div class="q-header-left">
+        <div class="q-number">C6</div>
+        <div class="q-title">Eglurwch pam y bu newidiadau mewn cyfleoedd hamdden yng Nghymru yn yr 1950au.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">10 marc · AA1 + AA2</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">Y Cwestiwn</div>
+        <div class="q-text">Eglurwch pam y bu newidiadau mewn cyfleoedd hamdden yng Nghymru yn yr 1950au.</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Dewiswch radd i weld yr ateb enghreifftiol</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qB6','c',this)">Gradd C</button>
+          <button class="grade-btn" onclick="showGrade('qB6','a',this)">Gradd A</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qB6-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Tua 5–6 / 10</strong>Nodwyd rhai achosion perthnasol gyda gwybodaeth gywir ar y cyfan. Datganir pwyntiau yn hytrach na'u hegluro'n llawn, a gweithredir y cysylltiadau rhwng achos a newid yn annigonol.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bandiau 1–5</span>
+          </div>
+          <div class="answer-text">Bu newidiadau mewn cyfleoedd hamdden yng Nghymru yn yr 1950au oherwydd bod gan bobl fwy o arian. Ar ôl yr Ail Ryfel Byd, cynyddodd cyflogau ac roedd pobl yn gallu fforddio prynu pethau fel setiau teledu. Golygodd hyn fod adloniant gartref wedi dod yn llawer mwy poblogaidd.
+
+Newidiodd technoleg bethau hefyd. Golygodd dyfeisiadau newydd fel y radio transistor fod pobl yn gallu gwrando ar gerddoriaeth yn haws. Daeth ceir yn fwy cyffredin sy'n golygu y gallai pobl deithio ymhellach er mwyn treulio amser hamdden.
+
+Tyfodd twristiaeth hefyd oherwydd gallai pobl fynd i'r glan môr yn haws. Roedd gwersylloedd gwyliau hefyd yn boblogaidd.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Sylwadau'r Arholwr — pam mai Gradd C yw hwn
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Cryfderau</div>
+                  <p>Nodwyd tair achos ddilys: cyfoeth cynyddol, newid technolegol, a thwristiaeth gynyddol. Nododd yr ateb y teledu, y radio transistor a'r car modur yn gywir fel rhai perthnasol. Mae'r strwythur yn rhesymegol.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Gwendidau</div>
+                  <p>Mae'r cysylltiadau esboniadol yn wan. Mae "roedd gan bobl fwy o arian" → "daeth setiau teledu yn boblogaidd" yn naid — mae angen i'r ateb egluro <em>pam</em> yr oedd hyn yn cynrychioli newid oddi wrth yr hyn oedd o'r blaen: oriau gwaith byrrach, cyflogaeth lawn ar ôl y rhyfel, a marchnad nwyddau traul a oedd bron yn bodoli o'r blaen. Mae "Daeth ceir yn fwy cyffredin" angen ei ddatblygu: pam yr 1950au yn benodol?</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Heb ei gynnwys</div>
+                  <p>Dim sôn am gyd-destun penodol ar gyfer y newid: y cyferbyniad â dogni'r rhyfel yn dod i ben, diwedd cynildeb yn 1954, chwaraewr recordiau Dansette yn creu diwylliant hamdden ieuenctid, na sefydlu Parciau Cenedlaethol yng Nghymru o 1951 ymlaen sy'n darparu mannau hamdden newydd.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Er mwyn gwella</div>
+                  <p>Ar gyfer pob achos, gofynnwch: <em>"Pam y arweiniodd hyn at newid yn benodol yn yr 1950au, yn hytrach nag yn gynharach?"</em> Mae hyn yn eich gorfodi i egluro'r cyd-destun hanesyddol — ffyniant ar ôl y rhyfel, diwedd dogni, technolegau newydd — yn hytrach na dim ond rhestru beth a newidiodd.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qB6-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Tua 9–10 / 10</strong>Gwybodaeth fanwl a chonvinciol gyda datblygiad dadansoddol llawn. Eglurwyd pob achos yng nghyd-destun yr haen ac fe'i cysylltwyd yn uniongyrchol â pham y digwyddodd newid yn yr union ddegawd hon.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bandiau 1–5</span>
+          </div>
+          <div class="answer-text">Un o'r rhesymau pwysicaf dros newid cyfleoedd hamdden yng Nghymru yn yr 1950au oedd y cyfuniad o gyflogau cynyddol ac oriau gwaith lleihau. Ar ôl aflonyddwch a chynildeb yr Ail Ryfel Byd, gwelodd yr 1950au gyflogaeth lawn, cyflogau uwch, a diwylliant defnyddiaeth cynyddol — nid daeth dogni bwyd i ben yn derfynol tan 1954, ac roedd codi'r cyfyngiadau hyn yn cynrychioli newid seicolegol yn ogystal ag economaidd. Bellach roedd gan weithwyr a oedd gynt â fawr ddim incwm gwario na hamdden ill dau, ac roedd y diwydiant hamdden sy'n dod i'r amlwg yn awyddus i ddiwallu'r galw newydd hwn.
+
+Sianelwyd y ffyniant hwn yn uniongyrchol i hamdden technolegol. Cynyddodd perchenogaeth teledu yn aruthrol yn ystod yr 1950au, wedi'i ysgogi gan fforddiadwyedd a hwb darllediad Coroni 1953, a ddaeth â llawer o deuluoedd Cymru eu set gyntaf. Ochr yn ochr â'r teledu, creodd chwaraewr recordiau Dansette a'r radio transistor ddiwylliant symudol newydd o gerddoriaeth boblogaidd — yn arbennig o bwysig i bobl iau a oedd bellach â'r arian i'w wario a'r awydd am adloniant a oedd yn benodol iddynt hwy. Newidiodd y technolegau hyn hamdden yn sylfaenol o rywbeth a ddigwyddai y tu allan i'r cartref (y sinema, y dafarn) i rywbeth oedd ar gael yn yr ystafell fyw.
+
+Helaethwyd teithio a thwristiaeth hefyd yn sylweddol. Agorodd cynnydd perchenogaeth car cefn gwlad a glannau môr Cymru i deuluoedd a oedd gynt wedi'u cyfyngu i gyrchfannau lleol. Sefydlodd Parc Cenedlaethol Eryri yn 1951 a Pharc Cenedlaethol Arfordir Penfro yn 1952 fannau hamdden hygyrch yn fwriadol ar gyfer y nifer cynyddol o bobl a oedd am dreulio eu hamser hamdden yn yr awyr agored. Cyrhaeddodd gwersylloedd gwyliau — llawer ohonynt wedi agor yn yr 1930au ond wedi cyrraedd eu brig o boblogrwydd yn yr 1950au — eu hanterth, gan gynnig gwyliau cynhwysfawr fforddiadwy a gwneud gwyliau yn ddisgwyliad dilys i lawer o deuluoedd Cymreig am y tro cyntaf. Gyda'i gilydd, golygodd y newidiadau hyn fod yr 1950au yn cynrychioli trawsnewidiad go iawn yn sut, ble ac mor aml y gallai pobl yng Nghymru fwynhau eu hamser hamdden.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Sylwadau'r Arholwr — pam mai Gradd A yw hwn
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Cyd-destun Penodol</div>
+                  <p>Dogni yn dod i ben yn 1954, darllediad Coroni 1953, Parc Cenedlaethol Eryri yn 1951 — mae'r manylion penodol hyn yn angor pob achos yn yr 1950au yn hytrach na gwneud honiadau annelwig am "fwy o arian." Mae'r math hwn o fanwldeb sy'n gwahanu Band 5 oddi wrth Fand 3.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Cysylltiadau Esboniadol</div>
+                  <p>"Newid seicolegol yn ogystal ag economaidd" — mae'r ateb yn egluro <em>pam</em> yr oedd diwedd cynildeb yn bwysig, nid dim ond ei fod wedi digwydd. Yn yr un modd, eglurwyd y newid o hamdden cyhoeddus i ddomestig (sinema/tafarn → teledu) fel newid strwythurol, nid dim ond dewis. Mae'r math hwn o esboniad yn ennill marciau yn y bandiau uwch.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Diwylliant Ieuenctid</div>
+                  <p>Mae cysylltu'r Dansette a'r radio transistor â chynulleidfa hamdden iau yn benodol yn dangos ymwybyddiaeth nad oedd newid mewn hamdden yn unffurf — creodd grwpiau cymdeithasol newydd. Mae'r math hwn o niwans yn ennill marciau yn y bandiau uwch.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Techneg allweddol</div>
+                  <p>Sylwch sut mae'r casgliad yn crynhoi effaith gronnus: "trawsnewidiad go iawn yn sut, ble ac mor aml." Mae dod â'r tair dimensiwn newid (dull, lle, amledd) at ei gilydd mewn un frawddeg yn dangos i'r arholwr fod yr ateb wedi amgyffred cwmpas llawn y cwestiwn.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── C7b: Capel Celyn / Cenedlaetholdeb Cymreig ── -->
+  <div class="q-card" id="qB7b">
+    <div class="q-header" onclick="toggleCard('qB7b')">
+      <div class="q-header-left">
+        <div class="q-number">C7b</div>
+        <div class="q-title">Pa mor werthfawr yw Eitem 1 i'n dealltwriaeth o ddylanwad cenedlaetholdeb Cymreig yn yr 1950au?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">15 marc · AA2 + AA3</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">Y Cwestiwn</div>
+        <div class="q-text">Pa mor werthfawr yw Eitem 1 i'n dealltwriaeth o ddylanwad cenedlaetholdeb Cymreig yn yr 1950au?</div>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Eitem 1</div>
+        <div class="source-attribution">David Williamson, newyddiadurwr gwleidyddol, yn ysgrifennu yn yr erthygl "The Story of the outrage that has shaped Welsh politics for more than five decades" ar wefan newyddion Gymreig Wales Online (2016).</div>
+        <div class="source-text">"Mae boddi pentref Cymraeg Capel Celyn er mwyn creu cronfa ddŵr i ddarparu dŵr i Lerpwl yn ddigwyddiad hollbwysig yn hanes modern Cymru. Roedd dicter ynghylch y ffaith y byddai trigolion Cymraeg eu hiaith yn cael eu symud allan a bod adnoddau naturiol yn cael eu cymryd oddi wrth Gymru. Bu apeliadau i gyngor dinas Lerpwl i achub y pentref, ond nid oeddent yn ddigon i gael cynlluniau wedi'u gollwng."</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Dewiswch radd i weld yr ateb enghreifftiol</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qB7b','c',this)">Gradd C</button>
+          <button class="grade-btn" onclick="showGrade('qB7b','a',this)">Gradd A</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qB7b-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Tua 8–9 / 15</strong>Mae'r cynnwys yn cael ei gymhwyso i'r cwestiwn a gwneir pwynt provenanws. Mae'r gwerthusiad yn anghyson — mae'r ateb yn nodi gwerth a chyfyngiad ill dau ond nid yw'n datblygu naill ai'n llawn.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bandiau 1–5</span>
+          </div>
+          <div class="answer-text">Mae Eitem 1 yn werthfawr oherwydd ei bod yn egluro bod boddi Capel Celyn yn ddigwyddiad pwysig yn hanes Cymru. Mae'n dangos bod pobl Cymru yn ddig am eu hiaith a'u hadnoddau yn cael eu cymryd i ffwrdd. Mae hyn yn berthnasol i genedlaetholdeb Cymreig oherwydd mae'n dangos pam y dechreuodd pobl gefnogi achosion fel Plaid Cymru.
+
+Fodd bynnag, mae'n llai gwerthfawr oherwydd ei fod wedi'i ysgrifennu gan newyddiadurwr, nid hanesydd. Nid yw newyddiadurwyr bob amser mor gywir â haneswyr ac efallai y byddant yn gorliwio pethau. Hefyd, mae'r erthygl o 2016 sy'n amser maith ar ôl yr 1950au felly efallai nad yw'r awdur yn gwybod yn union beth a ddigwyddodd.
+
+Dim ond un digwyddiad y mae'r eitem hefyd yn siarad amdano — boddi'r dyffryn — ac nid yw'n sôn am agweddau eraill ar genedlaetholdeb Cymreig yn yr 1950au fel dirywiad yr iaith Gymraeg nac ymgyrchoedd Plaid Cymru.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Sylwadau'r Arholwr — pam mai Gradd C yw hwn
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Cryfderau</div>
+                  <p>Gwneir y cysylltiad rhwng Capel Celyn a theimlad cenedlaetholgar Cymreig yn gywir. Nodwyd cyfyngiad canolbwyntio ar un digwyddiad yn unig. Gwnaed rhywfaint o ymgais at brovenanws.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Gwendidau</div>
+                  <p>Nid yw "mae 2016 yn amser maith ar ôl" yn gyfyngiad awtomatig — mae edrych yn ôl yn aml yn gwella dealltwriaeth hanesyddol. Mae'r pwynt newyddiadurwr-yn-erbyn-hanesydd yn annigonol: beth yn benodol y gallai newyddiadurwr ei ysgrifennu na fyddai hanesydd? Ni sylwir ar y gair "alldaith" yn nheitl yr erthygl ei hun — sy'n awgrymu safbwynt cydymdeimladol — na'i archwilio.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Heb ei gynnwys</div>
+                  <p>Gwybodaeth bersonol i brofi'r cynnwys: dylid profi honiad yr erthygl bod Capel Celyn yn "hollbwysig" yn erbyn yr hyn a wyddom — bod y boddi wedi sbarduno cefnogaeth i Blaid Cymru, na phleidleisiodd yr un AS Cymreig o blaid y bil yng Nghynghrair Lerpwl, a bod Gwynfor Evans wedi gwneud hyn yn bwnc canolog yn isetholiad Caerfyrddin 1966.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Er mwyn gwella</div>
+                  <p>Ar brovenanws, chwiliwch bob amser am gliwiau penodol o fewn y ffynhonnell ei hun. Mae teitl yr erthygl hon yn defnyddio'r gair "alldaith" — mae hynny'n dweud wrthych am safbwynt yr awdur cyn i chi hyd yn oed ddarllen y cynnwys. Defnyddiwch y cliwiau hynny fel eich tystiolaeth ar gyfer pwynt provenanws, nid dim ond datganiadau cyffredinol am newyddiadurwyr neu edrych yn ôl.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qB7b-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Tua 13–15 / 15</strong>Mae cynnwys a phrovenanws ill dau wedi'u gwerthuso â phendantrwydd a beirniadaeth. Defnyddir gwybodaeth gefndirol bersonol i brofi honiadau'r eitem a mesur ei chyflawnder. Cyrhaeddir barn gyffredinol argyhoeddiadol.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bandiau 1–5</span>
+          </div>
+          <div class="answer-text">Mae Eitem 1 yn meddu ar werth sylweddol i'n dealltwriaeth o genedlaetholdeb Cymreig yn yr 1950au, er bod cwmpas yr hyn y gall ei ddweud wrthym wedi'i gyfyngu gan ei ffocws ar un digwyddiad yn unig a chan gwestiynau am safbwynt ei hawdur.
+
+O ran cynnwys, mae'r eitem yn nodi'n gywir fod boddi Capel Celyn yn foment allweddol yn hanes cenedlaetholgar Cymreig. Mae'n egluro dwy natur y gŵyn: dadleoli cymuned Gymraeg ei hiaith a meddiannu adnoddau naturiol Cymru ar gyfer dinas Seisnig. Roedd y ddau elfen hyn yn ganolog i rethreg genedlaetholgar ar y pryd. Mae fy ngwybodaeth bersonol yn cadarnhau bod y bleidlais seneddol i gymeradwyo bil Tryweryn wedi pasio heb yr un AS Cymreig yn cefnogi — ffaith a roddodd i genedlaetholwyr ddadl bwerus na allai buddiannau Cymru byth gael eu gwarchod o fewn y system Westminsteraidd. Bwydodd hyn yn uniongyrchol i gefnogaeth gynyddol i Blaid Cymru wrth i bleidleiswyr geisio plaid a fyddai'n cynrychioli Cymru yn hytrach nag ildio i Lundain. Mae honiad yr eitem bod Capel Celyn yn "hollbwysig" yn hanes Cymru yn cael ei gadarnhau gan y dystiolaeth.
+
+Fodd bynnag, mae gwerth yr eitem yn gyfyngedig mewn dwy ffordd bwysig. Yn gyntaf, nid yw ond yn disgrifio un dimensiwn o genedlaetholdeb Cymreig yn yr 1950au, gan adael allan gyrwyr sylweddol eraill o deimlad cenedlaetholgar: y dirywiad parhaus a chyflym yn nifer y siaradwyr Cymraeg, uchelgeisiau etholiadol cynyddol Plaid Cymru dan Gwynfor Evans, a chau'r pyllau glo Cymreig a oedd yn creu cymunedau a oedd ag ychydig iawn o ffydd yn y pleidiau gwleidyddol presennol. Ffenomenon llydan ac esblygus oedd cenedlaetholdeb Cymreig yn yr 1950au; Capel Celyn oedd ei foment fwyaf dramatig unigol, nid ei gyfanrwydd.
+
+Yn ail, ac ar brovenanws, mae'r erthygl yn cludo marcwyr safbwynt cydymdeimladol. Mae defnydd teitl yr erthygl o'r gair "alldaith" yn arwyddo bod Williamson yn ysgrifennu o fewn y naratif cenedlaetholgar yn hytrach na chynnig dadansoddiad niwtral. Gan ysgrifennu ar gyfer gwefan newyddion Gymreig yn 2016 — ar adeg ymwybyddiaeth wleidyddol Gymreig adnewyddedig yn dilyn datganoli — byddai ei gynulleidfa yn disgwyl y fframio hwn. Mae Williamson yn newyddiadurwr gwleidyddol, nid hanesydd, sy'n golygu mai ei brif ddiben oedd adrodd stori ac ymgysylltu â'i ddarllenwyr yn hytrach na chynnig yr asesiad mesurol a fyddai'n ofyniad yn y disgyblaeth hanesyddol academaidd.
+
+Ar y cyfan, mae Eitem 1 yn wirioneddol werthfawr fel cyfrif clir a hygyrch o bennod Capel Celyn a'i harwyddocâd i genedlaetholdeb Cymreig — cyfrif y mae fy ngwybodaeth bersonol yn cadarnhau ei brif honiadau. Mae ei gwerth yn gyfyngedig, fodd bynnag, gan ei ffocws ar un pennod, ei safbwynt cydymdeimladol, a'r absenoldeb o ddadansoddiad ehangach o beth yn union oedd dylanwad cenedlaetholgar ar draws yr 1950au cyfan yn ei olygu.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Sylwadau'r Arholwr — pam mai Gradd A yw hwn
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Provenanws o'r Ffynhonnell Ei Hun</div>
+                  <p>Defnyddir "alldaith" yn nheitl yr erthygl fel tystiolaeth uniongyrchol o safbwynt yr awdur. Mae hyn yn llawer cryfach na dweud "gallai newyddiadurwyr fod yn rhagfarnllyd" — mae'n nodi cliw testunol penodol ac yn tynnu casgliad rhesymegol ohono.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Gwybodaeth Bersonol i Gadarnhau AC Ymestyn</div>
+                  <p>Defnyddir y bleidlais seneddol ar Dryweryn (dim AS Cymreig o blaid) i <em>gadarnhau</em> hawliad yr eitem ac i <em>ymestyn</em> ef drwy egluro'r canlyniad gwleidyddol. Mae'r defnydd deuol hwn o wybodaeth bersonol — gwirio ac ychwanegu — yn nodweddu'r bandiau uchaf.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Cyflawnder wedi'i Brofi</div>
+                  <p>Mae'r ateb yn nodi beth oedd cenedlaetholdeb Cymreig yn yr 1950au yn <em>cynnwys y tu hwnt i</em> Gapel Celyn: dirywiad yr iaith, Gwynfor Evans, cau pyllau glo. Mae hyn yn profi cyflawnder yr eitem yn hytrach na dim ond ei chywirdeb — gwahaniaeth hanfodol ym Mand 5.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Techneg allweddol</div>
+                  <p>Ar gyfer cwestiynau ffynhonnell 15 marc, strwythurwch eich ateb o amgylch tair haen: (1) Beth mae'r cynnwys yn ei ddweud wrthym — ac a yw'n gywir? (2) Pa gyd-destun pwysig y mae'r eitem yn ei hepgor? (3) Beth mae tarddiad y ffynhonnell yn ei ddweud wrthym am ei safbwynt? Yna cyrhaeddwch farn gyffredinol glir.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── C8b: Terfysgoedd Hil 1919 ── -->
+  <div class="q-card" id="qB8b">
+    <div class="q-header" onclick="toggleCard('qB8b')">
+      <div class="q-header-left">
+        <div class="q-number">C8b</div>
+        <div class="q-title">I ba raddau y mae Eitem 2 ac Eitem 3 yn eich argyhoeddi bod tensiynau hiliol yn sylweddol yn ne Cymru yn 1919?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">20 marc · AA2 + AA3</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">Y Cwestiwn</div>
+        <div class="q-text">I ba raddau y mae Eitem 2 ac Eitem 3 yn eich argyhoeddi bod tensiynau hiliol yn sylweddol yn ne Cymru yn 1919?</div>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Eitem 2</div>
+        <div class="source-attribution">Wedi'i addasu o'r llyfr hanes <em>Black and British – A Forgotten History</em> gan yr hanesydd a darlledwr teledu David Olusoga (2016).</div>
+        <div class="source-text">"Ym mis Mehefin, ffrwydrodd trais yng Nghasnewydd yng Nghymru. Ymosodwyd ar lety dynion duon a chartrefi teuluoedd duon a'u hysbeilio. Ffrwydrodd trais hiliol nesaf yn nhref harbwr Barry yng Nghymru, ac erbyn 11 Mehefin roedd wedi lledaenu i Fae Teigr yng Nghaerdydd. Parhaodd y terfysgoedd yng Nghaerdydd am wythnos a bu farw tri dyn. Roedd gangiau enfawr yn patrolio'r strydoedd ar helfa am ddynion duon."</div>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Eitem 3</div>
+        <div class="source-attribution">Adroddiad yn y papur newydd Cymreig <em>The Western Mail</em> (12 Mehefin 1919).</div>
+        <div class="source-text">"Symudodd tyrfa'r terfysgwyr i Stryd Herbert yn Bae Caerdydd lle'r oedd gwybodaeth wedi'i phasio o gwmpas ynglŷn â thŷ a feddiannid gan sawl dyn du. Nid oedd oedi o gwbl. Ymosododd y dyrfa ar y tŷ ar unwaith, yn torri'r ffenestri a gorfodi mynediad i'r adeilad. Cafodd yr interior ei ddinistrio'n llwyr a thaflwyd y dodrefn i'r ffordd."</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Dewiswch radd i weld yr ateb enghreifftiol</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qB8b','c',this)">Gradd C</button>
+          <button class="grade-btn" onclick="showGrade('qB8b','a',this)">Gradd A</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qB8b-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Tua 11–12 / 20</strong>Defnyddir y ddwy eitem a chysylltu eu cynnwys â'r cwestiwn. Nodwyd provenanws ar gyfer pob un. Cyrhaeddir barn ond nid yw gwybodaeth gefndirol bersonol yn cael ei defnyddio i fynd y tu hwnt i'r eitemau.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bandiau 1–5</span>
+          </div>
+          <div class="answer-text">Mae Eitem 2 ac Eitem 3 ill dau yn fy argyhoeddi bod tensiynau hiliol yn sylweddol yn ne Cymru yn 1919. Mae Eitem 2 yn dweud bod trais wedi lledaenu o Gasnewydd i Barry ac i Gaerdydd ac wedi para am wythnos, sy'n dangos ei fod yn ddifrifol a helaeth. Bu farw tri dyn sy'n dangos hefyd pa mor arwyddocaol oedd y tensiynau.
+
+Mae Eitem 3 yn rhoi enghraifft benodol o dyrfa yn ymosod ar dŷ lle'r oedd dynion duon yn byw. Mae hyn yn dangos natur hiliol yr ymosodiadau a pha mor dargedigol oeddent.
+
+Ysgrifennwyd Eitem 2 gan David Olusoga sy'n hanesydd felly mae'n ddibynadwy. Mae Eitem 3 yn ffynhonnell gynradd o bapur newydd yn 1919 sy'n ei gwneud hi'n adroddiad uniongyrchol o'r hyn a ddigwyddodd.
+
+Ar y cyfan rwy'n cael fy argyhoeddi bod y tensiynau hiliol yn sylweddol oherwydd mae'r ddwy eitem yn dangos trais eang yn erbyn pobl dduon yn ne Cymru.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Sylwadau'r Arholwr — pam mai Gradd C yw hwn
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Cryfderau</div>
+                  <p>Defnyddir y ddwy eitem a chysylltu eu cynnwys â'r cwestiwn. Nodwyd y dystiolaeth o ledaenu (Casnewydd–Barry–Caerdydd), hyd (wythnos) a natur dargedigol yr ymosodiadau yn gywir. Mae casgliad yn bresennol.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Gwendidau</div>
+                  <p>Mae dadansoddiad provenanws yn rhy syml. Mae "David Olusoga yn hanesydd felly mae'n ddibynadwy" yn anwybyddu'r ffaith ei fod hefyd yn ddarlledwr teledu sy'n adnabyddus am ysgrifennu o safbwynt hanes Du Prydeinig — nid cyfyngiad yw hyn ond mae yn siapio ei ffocws a'i bwrpas. Mae "ffynhonnell gynradd = dibynadwy" ar gyfer Eitem 3 yn gamdybiad cyffredin: gallai adroddiad papur newydd fod wedi'i orliwio, fod heb gyd-destun, neu adlewyrchu safbwynt y gohebydd ei hun.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Heb ei gynnwys</div>
+                  <p>Mae gwybodaeth bersonol yn hanfodol ar y lefel marc hwn: arestio anghymesur dioddefwyr Duon yn hytrach na therfysgwyr gwyn; cynllun adrepatriadu'r llywodraeth; cyd-destun milwyr yn cael eu dadwrthfilwreiddio a chystadlu am swyddi; Gorchymyn Estroniad 1920. Mae'r pwyntiau cyd-destunol hyn yn caniatáu i'r myfyriwr brofi honiad yr eitemau bod tensiynau yn "sylweddol" a dangos cyfanrwydd yr hyn a olygodd yr arwyddocâd hwnnw.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Er mwyn gwella</div>
+                  <p>Ar ôl gwerthuso'r ddwy eitem, gofynnwch bob amser: <em>"Beth a wn i nad yw'r eitemau yn ei grybwyll — a beth y mae hynny'n ei ychwanegu at fy ateb?"</em> Efallai nad yr agwedd fwyaf arwyddocaol o derfysgoedd 1919 yw'r trais ei hun ond yr ymateb sefydliadol: arestiwyd dynion Duon fel dioddefwyr, a ymatebodd y llywodraeth â deportiad yn hytrach nag amddiffyniad. Mae hynny'n dweud hyd yn oed mwy wrthym am ddyfnder y tensiynau hiliol.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qB8b-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Tua 17–20 / 20</strong>Mae'r ddwy eitem wedi'u gwerthuso'n feirniadol o ran cynnwys a phrovenanws. Defnyddir gwybodaeth bersonol sylweddol i gyd-destunoli, ymestyn a chymhwyso tystiolaeth yr eitemau. Cyrhaeddir barn nuansaidd, gynhwysfawr.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bandiau 1–5</span>
+          </div>
+          <div class="answer-text">Mae'r ddwy eitem yn cynnig tystiolaeth argyhoeddiadol bod tensiynau hiliol yn sylweddol yn ne Cymru yn 1919, ac gyda'i gilydd maent yn adeiladu achos cymhellol. Fodd bynnag, nid yw ond yn dweud rhan o'r stori — ac mae'r rhannau y maent yn eu hepgor yn datgelu arwyddocâd y tensiynau hynny yn efallai hyd yn oed yn fwy trawiadol na'r trais y maent yn ei ddisgrifio.
+
+Mae Eitem 2, o lyfr David Olusoga Black and British, yn cynnig y dystiolaeth gliriaf o raddfa a difrifoldeb y terfysgoedd. Mae'r lledaeniad daearyddol — o Gasnewydd i Barry i Fae Teigr yng Nghaerdydd — a'r hyd o wythnos yn dangos nad digwyddiad unigol o aflonyddwch oedd hwn ond ton barhaol o drais a gymhellwyd gan hil. Mae'r manylion bod "gangiau enfawr yn patrolio'r strydoedd ar helfa am ddynion duon" yn cipio natur drefnus a thargedol yr ymosodiadau — nid trosedd achlysurol oedd hwn ond erledigaeth hiliol fwriadol. Fel hanesydd a darlledwr sydd wedi arbenigo mewn hanes Du Prydeinig, mae Olusoga yn ysgrifennu o safle o wybodaeth sylweddol ac ymrwymiad i adfer yr hanes esgeulusiedig hwn. Mae ei gyfrif yn debygol o fod yn gywir ac wedi'i ymchwilio'n drylwyr, er ei bod yn werth nodi bod ei ffocws ar brofiad Du Prydeinig yn golygu nad yw persbectif y terfysgwyr gwyn — beth a yrrodd eu cyfranogiad — yn cael ei archwilio yma.
+
+Mae Eitem 3, yr adroddiad cyfoes o'r Western Mail, yn cadarnhau natur dargedol y trais â manylion uniongyrchol yn null tyst llygad. Mae casglu gwybodaeth y dyrfa — "roedd gwybodaeth wedi'i phasio o gwmpas ynglŷn â thŷ" — a phendantrwydd yr ymosodiad yn awgrymu graddfa o gydlyniad sy'n mynd y tu hwnt i drais torf ysgogol. Fel adroddiad papur newydd o ddiwrnod y digwyddiadau, mae'n cynnig tystiolaeth uniongyrchol o'r hyn oedd yn digwydd ar strydoedd Bae Caerdydd. Fodd bynnag, byddwn yn nodi bod yr adroddiad yn disgrifio'r olygfa heb roi unrhyw gyd-destun pam yr oedd hyn yn digwydd — nid oes cyfeiriad at achosion y tensiwn, a gallai darllenydd heb wybodaeth ychwanegol gasglu bod yr ymosodiadau hyn wedi dod o unman.
+
+Mae fy ngwybodaeth bersonol yn ychwanegu dwy ddimensiwn nad yw'r eitemau yn gallu eu darparu ar eu pennau eu hunain, y ddau yn cryfhau'r achos bod tensiynau'n ddwfn arwyddocaol. Yn gyntaf, yr achosion cefndirol: creodd dychweliad milwyr wedi'u dadwrthfilwreiddio ar ôl y Rhyfel Byd Cyntaf gystadleuaeth ddwys am swyddi a thai yn ardaloedd dociau Caerdydd. Roedd gweithwyr gwyn, llawer ohonynt wedi gwasanaethu yn y rhyfel, yn digio presenoldeb gweithwyr duon yr oeddent yn eu gweld fel cystadleuwyr. Cyfunodd y pryder economaidd hwn â rhagfarn hiliol cyn-fodolaeth i wneud cymunedau porthladdoedd de Cymru yn fflamychbwynt. Yn ail — a'r mwyaf datgeliadol am ddyfnder y tensiynau — oedd yr ymateb sefydliadol. Er mai dynion duon a'u teuluoedd oedd dioddefwyr y trais, roedd cyfran anghymesur o'r rhai a arestiwyd gan yr heddlu o'r gymuned leiafrifoedd ethnig. Nid oedd ymateb y llywodraeth yn amddiffyn y dioddefwyr ond yn cyflwyno cynllun adrepatriadu a thynhau deddfwriaeth mewnfudo gyda Gorchymyn Estroniad 1920. Mae'r cymeradwyaeth swyddogol hon o hierarchiaeth hiliol yn awgrymu bod y tensiynau nid yn unig yn sylweddol ar lefel y stryd ond wedi'u hymgorffori yng nghilfachau'r wladwriaeth ei hun.
+
+Ar y cyfan, rwy'n cael fy argyhoeddi'n fawr bod tensiynau hiliol yn sylweddol iawn yn ne Cymru yn 1919. Mae'r eitemau yn dangos maint a dwysedd y trais; mae fy ngwybodaeth bersonol yn dangos bod ymateb yr heddlu a'r llywodraeth ill dau wedi dilysu ac ymestyn y trais hwnnw yn hytrach na'i herio. Y cyfuniad hwn — trais torfol ar y stryd wedi'i ddilyn gan gydgyfranogiad sefydliadol — yw'r mesur llawnaf o ba mor sylweddol yr oedd y tensiynau hynny mewn gwirionedd.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Sylwadau'r Arholwr — pam mai Gradd A yw hwn
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Ymateb Sefydliadol fel Tystiolaeth</div>
+                  <p>Symudiad mwyaf pwerus yr ateb yw defnyddio ymateb yr heddlu a'r llywodraeth — arestio dioddefwyr, cyflwyno deportiad — fel tystiolaeth bod tensiynau'n <em>hyd yn oed yn fwy</em> arwyddocaol na'r hyn y mae'r eitemau yn ei ddangos. Dyma feddwl hanesyddol soffistigedig: mae'r hyn y mae'r wladwriaeth yn ei wneud mewn ymateb i ddigwyddiadau yn aml yn datgelu mwy na'r digwyddiadau eu hunain.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Provenanws: Cymhleth, nid Deuaidd</div>
+                  <p>Cydnabyddir Olusoga fel medrus AC nodwyd fel meddu ar ffocws penodol — felly mae ei safbwynt yn siapio yr hyn y mae'n ei gynnwys. Canmolir Eitem 3 am uniongyrchedd ond beirniadir am ddiffyg cyd-destun. Nid yw'r un ffynhonnell yn syml "ddibynadwy" neu "annibynadwy" — mae'r dull cymhleth hwn yn nodweddu Band 5.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Achosion fel Cyd-destun</div>
+                  <p>Cyflwynir dadwrthfilwreiddio milwyr a chystadleuaeth am swyddi — nad yw yn yr un eitem — i egluro <em>pam</em> yr oedd y tensiynau'n bodoli, nid dim ond eu bod nhw. Mae'r cyd-destun achosiaeth hwn yn dangos i'r arholwr fod y myfyriwr yn deall y cyfnod, nid dim ond y digwyddiad.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Techneg allweddol</div>
+                  <p>Sylwch ar y casgliad: "trais torfol wedi'i ddilyn gan gydgyfranogiad sefydliadol — yw'r mesur llawnaf o ba mor sylweddol yr oedd y tensiynau." Mae hwn yn mynd y tu hwnt i'r eitemau i gyrraedd ateb dyfnach. Gofynnwch bob amser beth y mae eich gwybodaeth bersonol yn ei ychwanegu at y cwestiwn na all yr eitemau ei ateb ar eu pennau eu hunain.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- ═══════════════════════════════════ DIWEDD ADRAN B ═══════════════════════════════════ -->
+
+</main>
+
+<footer>
+  <p>TGAU Hanes CBAC Uned 1: Modern &nbsp;·&nbsp; Gweithgaredd Hyfforddi Atebion Enghreifftiol &nbsp;·&nbsp; Yn seiliedig ar <span>Ddeunyddiau Asesu Enghreifftiol CBAC 2024</span></p>
+  <p style="margin-top:4px">Addysgu o 2026 · I'w ddyfarnu o 2028 · Mae'r adnodd hwn at ddibenion addysgu yn unig.</p>
+</footer>
+
+<script>
+  const reviewed = new Set();
+
+  function showSection(id, btn) {
+    document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.section-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleCard(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('expanded');
+    if (card.classList.contains('expanded')) {
+      reviewed.add(id);
+      updateProgress();
+    }
+  }
+
+  function showGrade(qId, grade, btn) {
+    document.querySelectorAll(`#${qId}-c, #${qId}-a`).forEach(p => p.classList.remove('visible'));
+    document.getElementById(`${qId}-${grade}`).classList.add('visible');
+    const toggle = btn.closest('.grade-toggle');
+    toggle.querySelectorAll('.grade-btn').forEach(b => {
+      b.classList.remove('active-c', 'active-a');
+    });
+    btn.classList.add(grade === 'c' ? 'active-c' : 'active-a');
+  }
+
+  function toggleCommentary(btn) {
+    btn.classList.toggle('open');
+    const body = btn.nextElementSibling;
+    body.classList.toggle('open');
+  }
+
+  function updateProgress() {
+    const total = 6;
+    const count = reviewed.size;
+    document.getElementById('progress-text').textContent = `${count} / ${total} wedi adolygu`;
+    document.getElementById('progress-fill').style.width = `${(count / total) * 100}%`;
+    if (count >= 6) {
+      if (!document.getElementById('certTriggerBox')) {
+        var trig = document.createElement('div');
+        trig.id = 'certTriggerBox';
+        trig.className = 'cert-trigger-box';
+        trig.innerHTML = '<p>&#127885; <strong>Llongyfarchiadau! Rydych chi wedi adolygu'r holl enghreifftiau. Rhowch eich enw llawn i greu eich tystysgrif gwblhau bersonol.</strong><br><em style="opacity:.65;font-size:.82rem">Congratulations — enter your name to generate your certificate.</em></p><div class="cert-name-row"><input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name &middot; Eich enw llawn&hellip;" maxlength="80"><button class="btn-cert" onclick="generateCertificate()">&#127891; Generate Certificate &middot; Creu Tystysgrif</button></div>';
+        var footer = document.querySelector('footer');
+        if (footer) { footer.parentNode.insertBefore(trig, footer); }
+        else { document.querySelector('main').appendChild(trig); }
+        setTimeout(function(){ trig.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 300);
+      }
+    }
+  }
+
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.q-card').forEach((card, i) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(16px)';
+      setTimeout(() => {
+        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 100 + i * 80);
+    });
+  });
+</script>
+
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:2rem;">📜</div>
+            <div class="cert-inst-name">WJEC CBAC — GCSE History · Hanes TGAU
+              <span class="cert-inst-sub">Curriculum for Wales | Cwricwlwm i Gymru</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that · Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher · yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.5rem 0 .3rem"><div class="cert-name" id="certDisplayName">Your Name</div></div>
+          
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the training session on</div>
+          <div class="cert-course">CBAC TGAU Hanes — Uned 1 Modern: Hyfforddiant Atebion Enghreifftiol (Cymraeg)
+            <span class="cert-course-sub">WJEC GCSE History — Unit 1 Modern: Exemplar Training (Welsh Medium)</span>
+          </div>
+          <div class="cert-competencies">Gan ddangos dealltwriaeth o ddisgrifyddion bandiau TGAU Hanes CBAC, gwerthuso atebion enghreifftiol Bandiau C ac A, defnyddio gwybodaeth bersonol i brofi eitemau, a thechnegau ysgrifennu estynedig ar gyfer cwestiynau 'I ba raddau' — gan gynnwys cyd-destunau Cymreig fel Tryweryn a Therfysgoedd Hil Caerdydd 1919.</div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <div class="cert-sig-label">Subject Tutor · Tiwtor Pwnc</div>
+            </div>
+            <div><div class="cert-seal"><span class="cert-seal-icon">🎓</span>PGCE<br>CYMRU</div></div>
+            <div class="cert-sig-block">
+              <div class="cert-date-val" id="certDateDisplay"></div>
+              <div class="cert-date-label">Date Completed · Dyddiad Cwblhau</div>
+            </div>
+          </div>
+          <div class="cert-stripe" style="margin:1.2rem -2rem -1.6rem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">🖨 Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">✕ Close · Cau</button>
+    </div>
+  </div>
+</div>
+<script>
+function generateCertificate(){
+  var name=document.getElementById('certNameInput').value.trim();
+  if(!name){document.getElementById('certNameInput').focus();document.getElementById('certNameInput').style.borderColor='#c9a84c';setTimeout(function(){document.getElementById('certNameInput').style.borderColor='';},1500);return;}
+  document.getElementById('certDisplayName').textContent=name;
+  var now=new Date();
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('certDateDisplay').textContent=now.getDate()+' '+months[now.getMonth()]+' '+now.getFullYear();
+  document.getElementById('certOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeCertificate(){document.getElementById('certOverlay').classList.remove('show');document.body.style.overflow='';}
+function printCertificate(){
+  var cert=document.getElementById('certificateEl');
+  var w=window.open('','_blank','width=900,height=700');
+  w.document.write('<html><head><title>Certificate</title>');
+  document.querySelectorAll('style,link[rel="stylesheet"]').forEach(function(s){w.document.write(s.outerHTML);});
+  w.document.write('</head><body style="margin:0;padding:20px;background:white;">');
+  w.document.write(cert.outerHTML);
+  w.document.write('</body></html>');
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener('click',function(e){if(e.target.id==='certOverlay')closeCertificate();});
+</script>
+</body>
+</html>

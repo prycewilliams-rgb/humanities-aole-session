@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WJEC GCSE History — Examiner Training | Unit 1 Medieval</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap');
+
+  :root {
+    --bg:        #0b1209;
+    --bg2:       #111c0e;
+    --bg3:       #182314;
+    --card:      #152012;
+    --border:    #2a4020;
+    --accent:    #6a9c52;
+    --accent2:   #8aba6e;
+    --accent3:   #4a7a32;
+    --gold:      #c9a84c;
+    --gold2:     #e8c86a;
+    --text:      #dce8d4;
+    --text2:     #9cb890;
+    --text3:     #6a8860;
+    --danger:    #c06060;
+    --warn:      #c09040;
+    --success:   #60a870;
+    --glow:      rgba(106,156,82,0.15);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Crimson Pro', serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── BACKGROUND TEXTURE ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 30%, rgba(106,156,82,0.06) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 70%, rgba(74,122,50,0.04) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: linear-gradient(180deg, #0d1a0a 0%, var(--bg2) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 32px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.5);
+  }
+
+  .header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .header-left h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.0rem;
+    color: var(--accent2);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .header-left p {
+    font-size: 0.75rem;
+    color: var(--text3);
+    margin-top: 2px;
+  }
+
+  .progress-track {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+  }
+
+  .pdot {
+    width: 10px; height: 10px; border-radius: 50%;
+    border: 1.5px solid var(--accent3);
+    background: transparent;
+    transition: all 0.35s ease;
+  }
+  .pdot.done { background: var(--accent3); }
+  .pdot.active {
+    background: var(--accent);
+    border-color: var(--accent2);
+    box-shadow: 0 0 0 3px rgba(106,156,82,0.25);
+    transform: scale(1.25);
+  }
+
+  /* ─── MAIN ─── */
+  .main { max-width: 960px; margin: 0 auto; padding: 32px 20px 80px; position: relative; z-index: 1; }
+
+  /* ─── SCREENS ─── */
+  .screen { display: none; }
+  .screen.active { display: block; animation: fadeUp 0.5s ease; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ─── LANDING ─── */
+  .landing-header {
+    text-align: center;
+    padding: 48px 20px 40px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 40px;
+  }
+
+  .wjec-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 6px 16px;
+    font-size: 0.72rem;
+    color: var(--text3);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
+
+  .wjec-badge span { color: var(--accent2); font-weight: 600; }
+
+  .landing-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.4rem;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .landing-header h2 em {
+    font-style: italic;
+    color: var(--accent2);
+  }
+
+  .landing-header p {
+    font-size: 1.1rem;
+    color: var(--text2);
+    max-width: 580px;
+    margin: 0 auto 32px;
+  }
+
+  .spec-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    max-width: 680px;
+    margin: 0 auto 36px;
+  }
+
+  .spec-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 0.85rem;
+    text-align: left;
+  }
+
+  .spec-item .si-label { color: var(--text3); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .spec-item .si-val { color: var(--text); font-weight: 400; }
+
+  .questions-overview {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+    max-width: 800px;
+    margin: 0 auto 40px;
+  }
+
+  .qo-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    font-size: 0.85rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .qo-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--accent3);
+  }
+
+  .qo-num { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text3); margin-bottom: 4px; }
+  .qo-title { color: var(--text); margin-bottom: 6px; line-height: 1.4; font-size: 0.9rem; }
+  .qo-marks { color: var(--gold); font-size: 0.78rem; }
+
+  .grade-pill {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-left: 6px;
+  }
+  .grade-pill.a { background: rgba(96,168,112,0.2); color: var(--success); border: 1px solid rgba(96,168,112,0.3); }
+  .grade-pill.c { background: rgba(201,168,76,0.2); color: var(--gold); border: 1px solid rgba(201,168,76,0.3); }
+
+  .start-btn {
+    background: var(--accent);
+    color: #0b1209;
+    border: none;
+    border-radius: 8px;
+    padding: 14px 40px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all 0.25s;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .start-btn:hover {
+    background: var(--accent2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(106,156,82,0.35);
+  }
+
+  /* ─── QUESTION SCREEN ─── */
+  .q-section-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding: 10px 16px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.78rem;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .q-section-banner .sec-tag {
+    background: var(--accent3);
+    color: #0b1209;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 0.7rem;
+  }
+
+  .counter {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 28px;
+  }
+
+  .counter-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--accent3);
+    line-height: 1;
+    opacity: 0.5;
+  }
+
+  .counter-of {
+    font-size: 0.85rem;
+    color: var(--text3);
+  }
+
+  .q-header {
+    margin-bottom: 20px;
+  }
+
+  .q-type-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    margin-bottom: 8px;
+  }
+
+  .q-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    color: var(--text);
+    line-height: 1.35;
+    margin-bottom: 10px;
+  }
+
+  .q-marks-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 4px;
+    padding: 4px 12px;
+    font-size: 0.82rem;
+    color: var(--gold);
+  }
+
+  /* ─── ITEMS ─── */
+  .items-block {
+    margin: 20px 0;
+  }
+
+  .item-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent3);
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+  }
+
+  .item-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent2);
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .item-source {
+    font-size: 0.8rem;
+    color: var(--text3);
+    font-style: italic;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+
+  .item-text {
+    font-size: 0.95rem;
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  /* ─── STUDENT ANSWER ─── */
+  .answer-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin: 24px 0;
+    position: relative;
+  }
+
+  .answer-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  .answer-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text3);
+    font-weight: 600;
+  }
+
+  .grade-mystery {
+    background: var(--bg3);
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+    padding: 3px 12px;
+    font-size: 0.75rem;
+    color: var(--text3);
+  }
+
+  .answer-text {
+    font-size: 1.0rem;
+    line-height: 1.75;
+    color: var(--text);
+  }
+
+  .answer-text p { margin-bottom: 14px; }
+  .answer-text p:last-child { margin-bottom: 0; }
+
+  /* ─── BAND DESCRIPTORS COLLAPSIBLE ─── */
+  .band-desc-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 10px 14px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    margin: 16px 0;
+    font-size: 0.82rem;
+    color: var(--text2);
+    transition: all 0.2s;
+    user-select: none;
+  }
+
+  .band-desc-toggle:hover { border-color: var(--accent3); color: var(--text); }
+
+  .band-desc-toggle .arrow { transition: transform 0.25s; font-size: 0.65rem; }
+  .band-desc-toggle.open .arrow { transform: rotate(90deg); }
+
+  .band-desc-panel {
+    display: none;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    padding: 16px;
+    margin-top: -6px;
+    margin-bottom: 16px;
+  }
+
+  .band-desc-panel.open { display: block; }
+
+  .bd-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .bd-table th {
+    text-align: left;
+    padding: 6px 10px;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text3);
+    border-bottom: 1px solid var(--border);
+  }
+  .bd-table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid rgba(42,64,32,0.4);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .bd-table tr:last-child td { border-bottom: none; }
+  .bd-band { color: var(--accent2); font-weight: 600; font-size: 0.85rem; }
+  .bd-marks { color: var(--gold); white-space: nowrap; }
+
+  /* ─── BAND SELECTOR ─── */
+  .marking-section { margin: 28px 0; }
+
+  .marking-label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text3);
+    margin-bottom: 14px;
+  }
+
+  .band-selector {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+
+  .band-btn {
+    flex: 1;
+    min-width: 80px;
+    background: var(--bg3);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s;
+    color: var(--text2);
+    font-family: 'Crimson Pro', serif;
+  }
+
+  .band-btn .bn { font-family: 'Playfair Display', serif; font-size: 1.6rem; display: block; line-height: 1; margin-bottom: 4px; color: var(--text3); }
+  .band-btn .bl { font-size: 0.72rem; color: var(--text3); }
+
+  .band-btn:hover {
+    border-color: var(--accent);
+    background: rgba(106,156,82,0.08);
+    color: var(--text);
+  }
+
+  .band-btn:hover .bn { color: var(--accent2); }
+
+  .band-btn.selected {
+    border-color: var(--accent);
+    background: rgba(106,156,82,0.12);
+  }
+
+  .band-btn.selected .bn { color: var(--accent2); }
+
+  .reveal-btn {
+    background: transparent;
+    border: 1.5px solid var(--accent);
+    color: var(--accent2);
+    border-radius: 8px;
+    padding: 12px 32px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.05rem;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all 0.25s;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .reveal-btn.ready {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .reveal-btn.ready:hover {
+    background: var(--accent);
+    color: #0b1209;
+    box-shadow: 0 6px 20px rgba(106,156,82,0.3);
+    transform: translateY(-1px);
+  }
+
+  /* ─── REVEAL PANEL ─── */
+  .reveal-panel {
+    display: none;
+    animation: fadeUp 0.45s ease;
+    margin: 24px 0;
+  }
+
+  .reveal-panel.open { display: block; }
+
+  .verdict-card {
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .verdict-card.correct {
+    background: rgba(96,168,112,0.1);
+    border: 1.5px solid rgba(96,168,112,0.35);
+  }
+
+  .verdict-card.close {
+    background: rgba(201,168,76,0.1);
+    border: 1.5px solid rgba(201,168,76,0.35);
+  }
+
+  .verdict-card.off {
+    background: rgba(192,96,96,0.1);
+    border: 1.5px solid rgba(192,96,96,0.35);
+  }
+
+  .verdict-icon { font-size: 2rem; line-height: 1; }
+  .verdict-text h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; margin-bottom: 6px; }
+  .verdict-text p { font-size: 0.9rem; color: var(--text2); }
+
+  .verdict-card.correct .verdict-text h3 { color: var(--success); }
+  .verdict-card.close .verdict-text h3 { color: var(--gold); }
+  .verdict-card.off .verdict-text h3 { color: var(--danger); }
+
+  .marks-reveal {
+    display: flex;
+    gap: 16px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+
+  .mr-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 20px;
+    text-align: center;
+    flex: 1;
+    min-width: 100px;
+  }
+
+  .mr-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 6px; }
+  .mr-val { font-family: 'Playfair Display', serif; font-size: 2rem; line-height: 1; }
+  .mr-sub { font-size: 0.78rem; color: var(--text3); margin-top: 4px; }
+
+  .mr-block.actual .mr-val { color: var(--accent2); }
+  .mr-block.yours .mr-val { color: var(--gold); }
+
+  .commentary-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 22px;
+    margin: 16px 0;
+  }
+
+  .commentary-block h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--accent2);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .commentary-body { font-size: 0.95rem; line-height: 1.75; color: var(--text); }
+  .commentary-body p { margin-bottom: 12px; }
+  .commentary-body p:last-child { margin-bottom: 0; }
+
+  .annotation-list { list-style: none; margin: 12px 0; }
+  .annotation-list li {
+    display: flex;
+    gap: 12px;
+    padding: 9px 12px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+    font-size: 0.88rem;
+    line-height: 1.55;
+  }
+
+  .annotation-list li.strength { background: rgba(96,168,112,0.08); border-left: 3px solid var(--success); }
+  .annotation-list li.develop  { background: rgba(201,168,76,0.08);  border-left: 3px solid var(--gold); }
+  .annotation-list li.missing  { background: rgba(192,96,96,0.08);   border-left: 3px solid var(--danger); }
+
+  .ann-icon { font-size: 0.9rem; margin-top: 2px; flex-shrink: 0; }
+  .ann-text { color: var(--text2); }
+
+  .next-btn {
+    background: var(--accent3);
+    color: var(--text);
+    border: none;
+    border-radius: 8px;
+    padding: 13px 36px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.05rem;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all 0.25s;
+    margin-top: 24px;
+    display: block;
+  }
+
+  .next-btn:hover {
+    background: var(--accent);
+    color: #0b1209;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(106,156,82,0.3);
+  }
+
+  /* ─── RESULTS ─── */
+  .results-header {
+    text-align: center;
+    padding: 40px 20px 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+
+  .results-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+
+  .score-circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    border: 3px solid var(--accent);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    background: radial-gradient(circle, rgba(106,156,82,0.1), transparent);
+  }
+
+  .score-num { font-family: 'Playfair Display', serif; font-size: 2.4rem; color: var(--accent2); line-height: 1; }
+  .score-den { font-size: 0.78rem; color: var(--text3); }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 28px 0;
+  }
+
+  .result-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+  }
+
+  .ri-q { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 6px; }
+  .ri-title { font-size: 0.88rem; color: var(--text2); margin-bottom: 10px; line-height: 1.4; }
+  .ri-bands { display: flex; gap: 8px; align-items: center; font-size: 0.82rem; }
+  .ri-yours { color: var(--gold); }
+  .ri-arrow { color: var(--text3); }
+  .ri-actual { color: var(--accent2); }
+  .ri-verdict { margin-top: 6px; font-size: 0.72rem; }
+  .ri-verdict.exact { color: var(--success); }
+  .ri-verdict.close { color: var(--gold); }
+  .ri-verdict.off   { color: var(--danger); }
+
+  .reflection-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 20px 22px;
+    margin: 24px 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .reflection-block h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: var(--accent2);
+    margin-bottom: 10px;
+  }
+
+  .restart-btn {
+    background: var(--bg3);
+    color: var(--accent2);
+    border: 1.5px solid var(--accent3);
+    border-radius: 8px;
+    padding: 12px 32px;
+    font-family: 'Crimson Pro', serif;
+    font-size: 1.05rem;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: all 0.25s;
+    display: block;
+    margin: 28px auto 0;
+  }
+
+  .restart-btn:hover {
+    background: var(--accent3);
+    color: var(--text);
+    transform: translateY(-2px);
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 28px 0;
+  }
+
+  /* ─── NOTICE ─── */
+  .notice {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent3);
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 0.85rem;
+    color: var(--text2);
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+
+  .notice strong { color: var(--accent2); }
+
+  /* scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg2); }
+  ::-webkit-scrollbar-thumb { background: var(--accent3); border-radius: 3px; }
+
+/* ── CERTIFICATE ── */
+.cert-trigger-box{margin-top:1.5rem;padding:1.4rem;background:rgba(0,0,0,.25);border:2px solid var(--gold);border-radius:10px;text-align:center}
+.cert-trigger-box p{font-size:.88rem;opacity:.85;margin-bottom:1rem;line-height:1.6;color:rgba(255,255,255,.9)}
+.cert-name-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.cert-name-input{padding:.6rem 1rem;font-family:inherit;font-size:.95rem;border:2px solid rgba(255,255,255,.3);border-radius:6px;background:rgba(255,255,255,.12);color:white;width:250px}
+.cert-name-input::placeholder{color:rgba(255,255,255,.4)}
+.cert-name-input:focus{outline:none;border-color:var(--gold)}
+.btn-cert{background:var(--gold);color:#1a1a1a;border:none;padding:.6rem 1.3rem;border-radius:6px;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer}
+.btn-cert:hover{opacity:.85}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:white;border-radius:6px;width:100%;max-width:780px;max-height:95vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.certificate{width:100%;background:white}
+.cert-frame{margin:16px;border:3px solid #1a2438;position:relative}
+.cert-frame::before{content:'';position:absolute;inset:5px;border:1px solid #c9a84c;pointer-events:none;z-index:1}
+.cert-stripe{height:5px;background:linear-gradient(90deg,#1a2438 0%,#c9a84c 50%,#1a2438 100%)}
+.cert-header{background:linear-gradient(135deg,#1a2438 0%,#2d3a56 100%);padding:1.3rem 2rem 1.1rem;text-align:center}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.cert-inst-name{font-family:'Georgia',serif;color:white;font-size:1rem;text-align:left;line-height:1.2}
+.cert-inst-sub{color:#e8c86a;font-size:.75rem;display:block;font-style:italic}
+.cert-body{padding:1.6rem 2rem;text-align:center}
+.cert-presents{font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;margin-bottom:.4rem}
+.cert-main-title{font-family:'Georgia',serif;font-size:1.4rem;color:#1a2438;line-height:1.2;margin-bottom:.2rem}
+.cert-awarded-to{font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;color:#475569;margin-bottom:.2rem}
+.cert-name{font-family:'Georgia',serif;font-size:1.9rem;font-style:italic;color:#1a2438;border-bottom:2px solid #E2E8F0;display:inline-block;padding:0 1rem .1rem;min-width:260px;margin-bottom:.3rem;line-height:1.3}
+.cert-score-pill{display:inline-block;background:#FEF3C7;border:1px solid #c9a84c;border-radius:999px;padding:.25rem 1rem;font-size:.8rem;font-weight:700;color:#92400E;margin:.5rem 0 .8rem}
+.cert-divider{height:1px;background:linear-gradient(90deg,transparent,#c9a84c,transparent);margin:.9rem auto;width:55%}
+.cert-text{font-size:.86rem;color:#1E293B;line-height:1.65;max-width:440px;margin:0 auto .7rem}
+.cert-course{font-family:'Georgia',serif;font-size:.95rem;color:#1E293B;background:#F8F4E8;border:1px solid #e8c86a;border-left:4px solid #1a2438;padding:.45rem .9rem;display:inline-block;margin-bottom:.35rem;text-align:left}
+.cert-course-sub{font-size:.76rem;color:#c9a84c;display:block;font-style:italic}
+.cert-competencies{font-size:.76rem;color:#475569;margin:.2rem auto 1rem;max-width:420px;line-height:1.55}
+.cert-footer-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:1rem;padding-top:1rem;border-top:1px solid #E2E8F0}
+.cert-sig-block{text-align:center}
+.cert-sig-line{height:1px;background:#1a2438;width:140px;margin:0 auto .25rem}
+.cert-sig-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569}
+.cert-seal{width:64px;height:64px;border-radius:50%;background:#1a2438;border:3px solid #c9a84c;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-size:.5rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;line-height:1.3;margin:0 auto}
+.cert-seal-icon{font-size:1.2rem;display:block;margin-bottom:1px}
+.cert-date-val{font-family:'Georgia',serif;font-size:.9rem;color:#1E293B}
+.cert-date-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569;margin-top:.2rem}
+.cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.9rem 1.5rem 1.2rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
+.btn-cert-print{background:#1a2438;color:white;border:none;padding:.55rem 1.2rem;border-radius:6px;font-family:inherit;font-size:.86rem;font-weight:700;cursor:pointer}
+.btn-cert-close{background:#475569;color:white;border:none;padding:.55rem 1.2rem;border-radius:6px;font-family:inherit;font-size:.86rem;cursor:pointer}
+
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <h1>GCSE History — Examiner Training</h1>
+      <p>WJEC Unit 1: Medieval Wales · Sample Assessment</p>
+    </div>
+    <div class="progress-track" id="progressTrack"></div>
+  </div>
+</header>
+
+<div class="main">
+
+  <!-- ══════════════════════════════ LANDING ══════════════════════════════ -->
+  <div class="screen active" id="screen-landing">
+    <div class="landing-header">
+      <div class="wjec-badge"><span>WJEC</span> GCSE History · Unit 1 Medieval · Teaching from 2026</div>
+      <h2>Examiner Calibration<br><em>Training Exercise</em></h2>
+      <p>Read each student response, assign a band and approximate mark, then reveal the actual grade with full examiner commentary.</p>
+    </div>
+
+    <div class="spec-grid">
+      <div class="spec-item">
+        <div class="si-label">Qualification</div>
+        <div class="si-val">GCSE History (Wales)</div>
+      </div>
+      <div class="spec-item">
+        <div class="si-label">Unit</div>
+        <div class="si-val">Unit 1 — Medieval</div>
+      </div>
+      <div class="spec-item">
+        <div class="si-label">Sections covered</div>
+        <div class="si-val">A (Rhys ap Gruffydd) &amp; B (Owain Glyndwr)</div>
+      </div>
+      <div class="spec-item">
+        <div class="si-label">Questions</div>
+        <div class="si-val">4 extended responses</div>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-bottom:28px;">
+      <p style="font-size:0.88rem; color:var(--text3); margin-bottom:16px;">The four exercises below cover all main extended-writing question types across both sections:</p>
+    </div>
+
+    <div class="questions-overview">
+      <div class="qo-card">
+        <div class="qo-num">Question 2 · Section A</div>
+        <div class="qo-title">Explain why there was conflict in South Wales 1146–1170</div>
+        <div class="qo-marks">10 marks <span class="grade-pill c">Grade C</span></div>
+      </div>
+      <div class="qo-card">
+        <div class="qo-num">Question 3b · Section A</div>
+        <div class="qo-title">How valuable is Item 1 to our understanding of Rhys ap Gruffydd's warfare 1189–1196?</div>
+        <div class="qo-marks">15 marks <span class="grade-pill a">Grade A</span></div>
+      </div>
+      <div class="qo-card">
+        <div class="qo-num">Question 6 · Section B</div>
+        <div class="qo-title">Explain why outside support was important to Owain Glyndwr</div>
+        <div class="qo-marks">10 marks <span class="grade-pill a">Grade A</span></div>
+      </div>
+      <div class="qo-card">
+        <div class="qo-num">Question 8b · Section B</div>
+        <div class="qo-title">To what extent do Items 2 &amp; 3 persuade you that Henry IV's policies led to increased support for the Revolt?</div>
+        <div class="qo-marks">20 marks <span class="grade-pill c">Grade C</span></div>
+      </div>
+    </div>
+
+    <button class="start-btn" onclick="startExercise()">Begin marking exercise →</button>
+  </div>
+
+  <!-- ══════════════════════════════ QUESTIONS ══════════════════════════════ -->
+  <div class="screen" id="screen-question"></div>
+
+  <!-- ══════════════════════════════ RESULTS ══════════════════════════════ -->
+  <div class="screen" id="screen-results"></div>
+
+</div>
+
+<script>
+const questions = [
+  {
+    id: 'q2',
+    section: 'A',
+    sectionTitle: 'Rhys ap Gruffydd, Prince of Deheubarth c.1132–1197',
+    number: 'Question 2',
+    type: 'Explain why…',
+    title: 'Explain why there was conflict in South Wales between 1146 and 1170.',
+    totalMarks: 10,
+    items: [],
+    gradeLetter: 'C',
+    actualBand: 3,
+    actualMarkRange: '5–6',
+    answer: `There was lots of conflict in South Wales during this period because Welsh rulers and the Normans were always fighting over land. Rhys ap Gruffydd wanted to get back Deheubarth which his family had lost to the Normans back in 1093. He carried on the fight that his father Gruffydd ap Rhys had started, and he captured Carmarthen castle in 1145 which shows he was getting stronger.
+
+The English king was also quite weak during this time because there was a civil war in England between King Stephen and Empress Matilda. This made it easier for Welsh rulers to attack Norman lands because the Normans didn't have strong support from the king. Both Rhys and Owain Gwynedd of Gwynedd took advantage of this to take back territory.
+
+Owain Gwynedd was also a problem because he was taking land that Rhys ap Gruffydd also wanted. This created competition and conflict between the Welsh rulers as well, not just with the Normans.
+
+Henry II became king in 1154 and this led to more conflict because he wanted to take back the lands that the Welsh had captured. He invaded Wales several times. Rhys ap Gruffydd and Owain Gwynedd made an alliance against the English in 1163. Eventually there was peace between Rhys and Henry II by around 1170 which ended this period of conflict.`,
+    bandDescriptors: [
+      { band: 5, marks: '5 marks', ao1: 'Relevant and accurate historical knowledge. Understanding is convincing.', ao2: 'Precise, convincing and accurate application to address the historical concept.' },
+      { band: 4, marks: '4 marks', ao1: 'Relevant and mainly accurate knowledge. Understanding is clear.', ao2: 'Clear and mainly accurate application to address the historical concept.' },
+      { band: 3, marks: '3 marks', ao1: 'Relevant knowledge with some historical accuracy. Understanding is implicit.', ao2: 'Some accurate application to address the concept, but inconsistent.' },
+      { band: 2, marks: '2 marks', ao1: 'Limited level of relevant knowledge. Limited evidence of understanding.', ao2: 'Limited application of knowledge and understanding.' },
+      { band: 1, marks: '1 mark',  ao1: 'Minimal level of relevant knowledge. No evidence of understanding.', ao2: 'Minimal application of knowledge.' },
+    ],
+    commentary: `This is a Band 3 response that earns marks in the mid-range for both AO1 and AO2. The candidate demonstrates some accurate historical knowledge: the Norman seizure of Deheubarth in 1093, the role of Gruffydd ap Rhys, the capture of Carmarthen in 1145, the civil war between Stephen and Matilda, and the eventual peace around 1170 are all correct and relevant points. There is clearly a working understanding of the period.
+
+However, the response does not progress beyond a surface-level retelling. While several causes of conflict are identified — the dynastic claim, English weakness, competition with Gwynedd, and Henry II's reassertion of power — they are listed rather than analysed. The candidate states that Rhys "wanted to get back Deheubarth" and that Henry II "wanted to take back the lands," but does not explain why these pressures intensified conflict across the specific 1146–1170 period. There is no discussion of the ebb and flow of power, the significance of Welsh alliances, or the impact of the 1163 revolt on Norman policy.
+
+To reach Band 4 or 5, the candidate would need to demonstrate more sustained, precise application of knowledge to the concept of conflict — showing not just what happened but why those events created ongoing instability. Explaining, for example, how English royal weakness created a power vacuum exploited by both Welsh rulers and rival Norman lords, or how Gwynedd's territorial expansion under Owain directly threatened Deheubarth's security, would lift this response considerably.`,
+    annotations: [
+      { type: 'strength', text: 'Accurate identification of the Norman seizure of Deheubarth and the family dynastic claim as a root cause.' },
+      { type: 'strength', text: 'Correct linking of English royal weakness during the Stephen–Matilda civil war to Norman vulnerability in Wales.' },
+      { type: 'strength', text: 'Correct identification of the 1163 alliance and eventual peace, showing awareness of the period\'s arc.' },
+      { type: 'develop',  text: 'Points are listed rather than developed — each cause needs a sentence or two explaining its specific impact on conflict levels.' },
+      { type: 'develop',  text: 'Competition between Rhys and Owain Gwynedd is mentioned but not developed; this is an important dimension of the conflict that deserves more analysis.' },
+      { type: 'missing',  text: 'No explanation of why the accession of Henry II in 1154 specifically escalated conflict — the mechanism of royal pressure and Norman reassertion is missing.' },
+    ]
+  },
+
+  {
+    id: 'q3b',
+    section: 'A',
+    sectionTitle: 'Rhys ap Gruffydd, Prince of Deheubarth c.1132–1197',
+    number: 'Question 3b',
+    type: 'Source / interpretation value',
+    title: 'How valuable is Item 1 to our understanding of the reasons why Rhys ap Gruffydd became involved in warfare between 1189 and 1196?',
+    totalMarks: 15,
+    items: [
+      {
+        label: 'Item 1',
+        source: 'Thomas Jones Pierce, a medieval historian, writing in the article "Rhys ap Gruffydd (1132–1197), Lord of Deheubarth" in the Dictionary of Welsh Biography (1959)',
+        text: 'His last years were dominated by the disobedience of his sons, and by Richard I\'s lack of interest in the special position which Rhys ap Gruffydd had held under Henry II. Believing attack to be the best means of defence, Lord Rhys resumed attacks against his Norman neighbours, which continued until the end of his life.'
+      }
+    ],
+    gradeLetter: 'A',
+    actualBand: 5,
+    actualMarkRange: '13–15',
+    answer: `Item 1 offers a valuable but incomplete account of why Rhys ap Gruffydd returned to warfare in his final years. Its value lies in accurately identifying two key pressures — the breakdown of family loyalty and the withdrawal of royal protection — though it does not fully explain the causes or consequences of either.
+
+The item's greatest strength is its identification of Rhys's sons as a destabilising force. His sons Maelgwn, Rhys Gryg and Maredudd were genuinely in conflict with their father over succession and territorial inheritance, creating genuine internal instability that undermined his authority in Deheubarth. The item captures this accurately and concisely. However, by labelling this simply as "disobedience," it gives no sense of why these tensions arose or why Rhys was unable to resolve them, which limits our understanding of how internal weakness contributed to the decision to go to war externally.
+
+The item's claim about Richard I is equally accurate but equally underdeveloped. Richard I genuinely did not renew the close relationship Rhys had enjoyed under Henry II, leaving him without the royal protection that had kept Norman lords at bay. But this had nothing to do with Rhys himself — Richard was preoccupied with the Crusades and his father's complicated political legacy. By presenting Richard's indifference as a simple fact rather than explaining it in context, the item gives a misleading impression that Rhys was merely a victim of changing royal attitudes, when in reality the wider political context of the Angevin succession was crucial.
+
+The item's value is enhanced by its authorship. Thomas Jones Pierce was a respected medieval historian, and writing in the Dictionary of Welsh Biography — an academic reference work — suggests the information is methodologically sound and based on contemporary sources. This gives the item credibility that a general-interest account might not have. However, the format of a short biographical entry necessarily limited the depth of analysis Pierce could offer, and the entry is now over sixty years old, meaning it does not reflect more recent scholarship on the Norman lordships or Rhys's late military campaigns.
+
+Overall, Item 1 is moderately valuable. It provides an accurate expert summary of the two main pressures on Rhys at the end of his life, and the phrase "attack as the best means of defence" is historically insightful. However, its brevity and lack of contextual explanation mean it raises more questions than it answers. It is most useful as a starting point for understanding this period rather than a comprehensive account of why Rhys resumed warfare.`,
+    bandDescriptors: [
+      { band: 5, marks: 'AO2: 5 / AO3: 9–10', ao1: '', ao2: 'Precise, convincing and accurate application of knowledge to the historical concept.', ao3: 'Precise analysis and evaluation. Valid judgement with comprehensive support. Continuous text.' },
+      { band: 4, marks: 'AO2: 4 / AO3: 7–8', ao1: '', ao2: 'Clear and mainly accurate application of knowledge.', ao3: 'Clear analysis and evaluation. Valid judgement with good support. Continuous text.' },
+      { band: 3, marks: 'AO2: 3 / AO3: 5–6', ao1: '', ao2: 'Some accurate application, but inconsistent.', ao3: 'Inconsistent analysis. Inconsistent judgement with some support.' },
+      { band: 2, marks: 'AO2: 2 / AO3: 3–4', ao1: '', ao2: 'Limited application of knowledge.', ao3: 'Limited analysis. Incomplete judgement with limited support.' },
+      { band: 1, marks: 'AO2: 1 / AO3: 1–2', ao1: '', ao2: 'Minimal application of knowledge.', ao3: 'Minimal analysis. Superficial judgement.' },
+    ],
+    commentary: `This is a confident Band 5 response that demonstrates precisely the dual-track analysis required for this question type: contextual knowledge to evaluate the item's accuracy and completeness, and critical analysis of the item's nature, authorship and limitations.
+
+The candidate evaluates both specific claims in the item — the sons' "disobedience" and Richard I's indifference — rather than simply summarising them. They correctly identify the relevant historical detail (Maelgwn, Rhys Gryg, Maredudd; succession disputes; Richard's preoccupation with the Crusades) and use this knowledge to show what the item gets right while also pinpointing where it oversimplifies. This is precisely the "knowledge-in-service-of-evaluation" approach that separates Band 5 from Band 3.
+
+The authorship analysis is handled with appropriate nuance — the candidate notes both the academic credibility of the source (dictionary of biography, respected medieval historian) and its limitations (brevity imposed by format, age of the publication). Crucially, they use these observations to form a clear, supported overall judgement in the final paragraph, which is expressed coherently in continuous prose throughout.
+
+To push towards the very top of Band 5 (15/15), the candidate could have briefly considered what kinds of sources or evidence Pierce was likely drawing on, or noted other factors in Rhys's decision to go to war that the item entirely omits, such as the specific Norman encroachments on Deheubarth's borders in 1189.`,
+    annotations: [
+      { type: 'strength', text: 'Opens by identifying both the value and limitation in the same sentence — establishes the evaluative approach immediately.' },
+      { type: 'strength', text: 'Uses specific contextual knowledge (names of sons, succession disputes, Richard\'s Crusade preoccupation) to test the item\'s claims — this is Band 5 technique.' },
+      { type: 'strength', text: 'Authorship analysis is linked to value judgement rather than treated as a separate "nature of source" paragraph.' },
+      { type: 'strength', text: 'Clear, well-structured overall judgement in the final paragraph with specific reasons for the verdict.' },
+      { type: 'develop',  text: 'Could acknowledge the specific Norman encroachments in 1189 as something the item omits entirely — this would further demonstrate the gap between the item\'s account and the full picture.' },
+      { type: 'develop',  text: 'The observation that the 1959 date limits the item\'s engagement with recent scholarship could be sharpened by naming a specific aspect of the topic where understanding has developed.' },
+    ]
+  },
+
+  {
+    id: 'q6',
+    section: 'B',
+    sectionTitle: 'Owain Glyndwr c.1354–1416',
+    number: 'Question 6',
+    type: 'Explain why…',
+    title: 'Explain why support from outside Wales was important to Owain Glyndwr during his reign as Prince of Wales.',
+    totalMarks: 10,
+    items: [],
+    gradeLetter: 'A',
+    actualBand: 5,
+    actualMarkRange: '9–10',
+    answer: `External support was essential to Owain Glyndwr's ability to sustain his revolt, providing military reinforcement, international political legitimacy, and strategic pressure on England that Wales alone could never have created.
+
+France was by far the most significant external ally. The Hundred Years' War meant France had powerful strategic reasons to support a rebellion that would destabilise England, and the alliance was formalised in the Pennal Letter of 1406, which proposed coordinated military action and also saw Glyndwr pledge his allegiance to the Avignon Pope, aligning Wales with France in the Great Schism. In practical terms, French troops fought alongside Welsh forces at the Battle of Stalling Down in 1403, and French and Scottish ships patrolled the Welsh coastline, significantly reducing the risk of a large-scale English naval assault. This military support was vital: Wales lacked the resources to sustain a prolonged war against English wealth and manpower without outside reinforcement.
+
+External support also provided Glyndwr with political legitimacy he could not have achieved alone. The attendance of French, Scottish and Spanish envoys at his parliament in Machynlleth in 1404 demonstrated that major European powers recognised him as the legitimate Prince of Wales, not merely a rebel leader. This was enormously significant: it transformed the revolt from a regional uprising into an internationally acknowledged challenge to Henry IV's authority and made it far harder for England to present Glyndwr as a mere brigand.
+
+Finally, support from disaffected English lords further stretched Henry IV's resources. The Tripartite Indenture of 1405 allied Glyndwr with Henry Percy and Edmund Mortimer, who had personal grievances against Henry IV and a rival claim to the English throne. This alliance forced Henry to manage simultaneous internal and external threats, preventing him from mounting the concentrated military campaign that might otherwise have crushed the Welsh revolt far sooner. Without the distraction provided by English opponents of Henry IV, it is likely that Glyndwr's revolt would have been suppressed much more quickly.`,
+    bandDescriptors: [
+      { band: 5, marks: '5 marks', ao1: 'Relevant and accurate historical knowledge. Understanding is convincing.', ao2: 'Precise, convincing and accurate application to address the historical concept.' },
+      { band: 4, marks: '4 marks', ao1: 'Relevant and mainly accurate knowledge. Understanding is clear.', ao2: 'Clear and mainly accurate application to address the historical concept.' },
+      { band: 3, marks: '3 marks', ao1: 'Relevant knowledge with some historical accuracy. Understanding is implicit.', ao2: 'Some accurate application to address the concept, but inconsistent.' },
+      { band: 2, marks: '2 marks', ao1: 'Limited level of relevant knowledge. Limited evidence of understanding.', ao2: 'Limited application of knowledge and understanding.' },
+      { band: 1, marks: '1 mark',  ao1: 'Minimal level of relevant knowledge. No evidence of understanding.', ao2: 'Minimal application of knowledge.' },
+    ],
+    commentary: `This is a convincing Band 5 response that demonstrates the kind of precise, developed application of knowledge that distinguishes the top band from a competent Band 4 answer. The candidate structures their answer around three distinct reasons — military reinforcement, political legitimacy, and strategic distraction — and develops each with specific supporting evidence rather than moving rapidly from point to point.
+
+The use of the Pennal Letter (1406), the Battle of Stalling Down (1403), the Machynlleth parliament (1404), and the Tripartite Indenture (1405) shows strong command of specific factual detail, and crucially, each piece of evidence is explained in terms of why it matters to the specific question being asked. The candidate does not just list what Glyndwr did but consistently explains why this support was important.
+
+Particularly impressive is the strategic insight in the final paragraph: the candidate observes that English allies "forced Henry to manage simultaneous internal and external threats," showing an understanding of how the importance of outside support operated at the level of political strategy, not just battlefield numbers. This kind of analytical framing takes the response beyond simply recalling facts.
+
+To be considered a very strong example of 10/10, a small amount of additional precision could be added — for instance, noting the French army's numerical contribution at Stalling Down, or briefly acknowledging the limits of French support (which ultimately was not sustained enough to turn the tide of the revolt). However, this is a fully justified Band 5 response as it stands.`,
+    annotations: [
+      { type: 'strength', text: 'Strong opening that immediately identifies three distinct dimensions of importance — military, diplomatic, and strategic — giving the answer clear structure.' },
+      { type: 'strength', text: 'Specific, accurate use of the Pennal Letter, Stalling Down, Machynlleth parliament, and Tripartite Indenture — all deployed to support the argument, not just listed.' },
+      { type: 'strength', text: 'The Great Schism context for the Pennal Letter is a nice piece of additional contextual knowledge that enriches the answer.' },
+      { type: 'strength', text: 'Final paragraph demonstrates strategic thinking — understanding that English internal enemies forced Henry to split his focus is a strong analytical point.' },
+      { type: 'develop',  text: 'A brief acknowledgement that French and Scottish support had limits — and that this ultimately contributed to the revolt\'s decline — would add evaluative depth.' },
+    ]
+  },
+
+  {
+    id: 'q8b',
+    section: 'B',
+    sectionTitle: 'Owain Glyndwr c.1354–1416',
+    number: 'Question 8b',
+    type: 'Two-source persuasion',
+    title: 'To what extent do Item 2 and Item 3 persuade you that Henry IV\'s policies led to increased support in Wales for the Welsh Revolt?',
+    totalMarks: 20,
+    items: [
+      {
+        label: 'Item 2',
+        source: 'An extract from the Penal Laws against the Welsh passed by Henry IV\'s Parliament in 1402.',
+        text: 'It is ordered that no Englishman be convicted by any Welshman but by Englishmen.\n\nIt is ordered that no Welshman shall be armed upon pain of imprisonment.\n\nIt is ordered that no Welshman shall have his own castle, fortress nor defended house.'
+      },
+      {
+        label: 'Item 3',
+        source: 'Gideon Brough, a university lecturer in medieval History, writing in his academic book The Rise and Fall of Owain Glyndwr – England, France and the Welsh Rebellion in the Late Middle Ages (2017)',
+        text: 'The Battle of Bryn Glas in 1402 had a significant impact on support for the Welsh Revolt. This showed that the Welsh were organised, well prepared, and well led, and that they were following a plan that was working. The English lost a lot of men and their equipment was used to strengthen the Welsh military. The revolt grew in strength and began to overwhelm the English army and the English government in Wales.'
+      }
+    ],
+    gradeLetter: 'C',
+    actualBand: 3,
+    actualMarkRange: '10–12',
+    answer: `Item 2 persuades me that Henry IV's policies increased support for the Welsh Revolt because the Penal Laws were very harsh on Welsh people. The laws said that no Welshman could be armed, could not own a castle, and could not even give evidence against an Englishman in court. This would have made Welsh people very angry and many of them would have wanted to join Glyndwr's rebellion to fight back against these unfair laws.
+
+Item 3 also persuades me that support for the revolt increased but it is mainly about a military victory rather than Henry IV's policies directly. Gideon Brough says that the Battle of Bryn Glas in 1402 showed the Welsh were organised and well-led, and that the English lost men and equipment. This would have encouraged more Welsh people to join because it showed the revolt could succeed.
+
+Item 2 is valuable because it is a primary source — it is actually from the Penal Laws themselves. This means it definitely shows what the laws said and how harsh they were. However, it doesn't tell us how the Welsh actually reacted to these laws, so we can only guess that they made people angry. Item 3 is written by a university lecturer so he is an expert on the period. This makes it quite reliable. However, as it is a book about Owain Glyndwr it might look at things more from a Welsh point of view.
+
+Overall both items persuade me that support for the revolt increased. Item 2 shows how harsh Henry IV was to Welsh people and Item 3 shows that the revolt was winning battles. I think Henry IV's policies were important but the military successes of Glyndwr were also very important in making people want to join. So the items only tell part of the story.`,
+    bandDescriptors: [
+      { band: 5, marks: 'AO2: 9–10 / AO3: 9–10', ao1: '', ao2: 'Precise, convincing and accurate application of knowledge to the concept.', ao3: 'Precise analysis and evaluation. Valid judgement with comprehensive support. Continuous text.' },
+      { band: 4, marks: 'AO2: 7–8 / AO3: 7–8', ao1: '', ao2: 'Clear and mainly accurate application of knowledge.', ao3: 'Clear analysis and evaluation. Valid judgement with good support.' },
+      { band: 3, marks: 'AO2: 5–6 / AO3: 5–6', ao1: '', ao2: 'Some accurate application, but inconsistent.', ao3: 'Inconsistent analysis. Inconsistent judgement with some support.' },
+      { band: 2, marks: 'AO2: 3–4 / AO3: 3–4', ao1: '', ao2: 'Limited application of knowledge.', ao3: 'Limited analysis. Incomplete judgement with limited support.' },
+      { band: 1, marks: 'AO2: 1–2 / AO3: 1–2', ao1: '', ao2: 'Minimal application of knowledge.', ao3: 'Minimal analysis. Superficial judgement.' },
+    ],
+    commentary: `This is a Band 3 response with some accurate analysis that falls short of Band 4 because the evaluation of both items remains superficial and the contextual knowledge deployed is limited to basic recall rather than developed analysis.
+
+The candidate correctly identifies the key content of both items: the severity of the Penal Laws and the significance of the Battle of Bryn Glas. The observation that Item 3 focuses on military success rather than directly on Henry IV's policies is a good analytical instinct that shows some critical thinking. The attempt at a balanced conclusion that acknowledges military success alongside political oppression is also positive.
+
+However, the analysis of Item 2 does not progress beyond stating that the laws were harsh and that Welsh people would have been angry. To reach Band 4, the candidate needs to explain in more specific terms how the nature of the source (a parliamentary Act) affects what it can and cannot tell us — not merely that it is a "primary source" and therefore reliable. The observation that it cannot show us how the Welsh reacted is correct, but this is not developed into a judgement about the item's overall value or limitation in answering this specific question.
+
+The analysis of Item 3 has a similar problem. Noting that Gideon Brough is a university lecturer is not in itself a meaningful evaluative observation unless the candidate explains how this background shapes his methodology or perspective. The suggestion that a book about Glyndwr might be written from "a Welsh point of view" is an interesting idea but is not developed or substantiated.
+
+To move to Band 4–5, the candidate needs: (a) sharper use of contextual knowledge to test the items' claims, (b) more developed evaluation of authorship in terms of purpose and methodology, and (c) a more sustained overall argument across the whole response rather than item-by-item commentary followed by a brief conclusion.`,
+    annotations: [
+      { type: 'strength', text: 'Accurate summary of both items\' content and a reasonable attempt to connect each to the question being asked.' },
+      { type: 'strength', text: 'Correct instinct that Item 3 is not directly about Henry IV\'s policies — shows awareness that the items don\'t all point in exactly the same direction.' },
+      { type: 'develop',  text: '"Primary source = reliable/definitive" is a common misconception — the evaluation needs to focus on what the source can and cannot show, not on a reliability label.' },
+      { type: 'develop',  text: 'The "Welsh point of view" observation about Brough is interesting but needs developing: what specifically in his account might reflect this, and does it affect his argument about Bryn Glas?' },
+      { type: 'missing',  text: 'No contextual knowledge beyond the items themselves is deployed — a Band 4/5 answer would bring in other examples (e.g. capture of Conwy, the French alliance) to assess what the items leave out.' },
+      { type: 'missing',  text: 'No developed overall judgement: the conclusion simply repeats the two factors from each item rather than weighing them against each other to reach a clear position on "to what extent."' },
+    ]
+  }
+];
+
+// ── STATE ──
+let currentQ = 0;
+let selectedBand = null;
+let revealed = false;
+const results = [];
+
+function buildProgressDots() {
+  const track = document.getElementById('progressTrack');
+  track.innerHTML = '';
+  questions.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'pdot' + (i === 0 ? ' active' : '');
+    d.id = 'pdot-' + i;
+    track.appendChild(d);
+  });
+}
+
+function updateProgress() {
+  questions.forEach((_, i) => {
+    const d = document.getElementById('pdot-' + i);
+    if (!d) return;
+    d.className = 'pdot';
+    if (i < currentQ) d.classList.add('done');
+    else if (i === currentQ) d.classList.add('active');
+  });
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function startExercise() {
+  buildProgressDots();
+  renderQuestion(0);
+  showScreen('screen-question');
+}
+
+function renderQuestion(idx) {
+  currentQ = idx;
+  selectedBand = null;
+  revealed = false;
+  updateProgress();
+
+  const q = questions[idx];
+  const container = document.getElementById('screen-question');
+
+  // Build band descriptor rows
+  let bdRows = q.bandDescriptors.map(b => `
+    <tr>
+      <td class="bd-band">Band ${b.band}</td>
+      <td class="bd-marks">${b.marks}</td>
+      ${b.ao1 ? `<td>${b.ao1}</td>` : ''}
+      <td>${b.ao2}${b.ao3 ? `<br><br><em style="color:var(--text3)">AO3: </em>${b.ao3}` : ''}</td>
+    </tr>
+  `).join('');
+
+  // Build items
+  let itemsHtml = '';
+  if (q.items.length > 0) {
+    itemsHtml = `<div class="items-block">` + q.items.map((item, ii) => `
+      <div class="item-card">
+        <div class="item-label">${item.label}</div>
+        <div class="item-source">${item.source}</div>
+        <div class="item-text">${item.text.replace(/\n\n/g, '<br><br>')}</div>
+      </div>
+    `).join('') + `</div>`;
+  }
+
+  // Format answer
+  const paras = q.answer.split('\n\n').map(p => `<p>${p}</p>`).join('');
+
+  // Build band selector buttons
+  const bandBtns = [5,4,3,2,1].map(b => `
+    <button class="band-btn" id="bBtn${b}" onclick="selectBand(${b})">
+      <span class="bn">${b}</span>
+      <span class="bl">${getBandLabel(b)}</span>
+    </button>
+  `).join('');
+
+  container.innerHTML = `
+    <div class="q-section-banner">
+      <span class="sec-tag">Section ${q.section}</span>
+      ${q.sectionTitle}
+    </div>
+
+    <div class="counter">
+      <span class="counter-num">0${idx + 1}</span>
+      <span class="counter-of">/ ${questions.length}</span>
+    </div>
+
+    <div class="q-header">
+      <div class="q-type-label">${q.type} · ${q.number}</div>
+      <div class="q-title">${q.title}</div>
+      <div class="q-marks-badge">
+        <span>★</span> ${q.totalMarks} marks
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    ${itemsHtml}
+
+    <div class="notice"><strong>Before you read the student's answer:</strong> You may wish to review the band descriptors below.</div>
+
+    <div class="band-desc-toggle" id="bdToggle" onclick="toggleBandDesc()">
+      <span class="arrow">▶</span> View band descriptors for this question
+    </div>
+    <div class="band-desc-panel" id="bdPanel">
+      <table class="bd-table">
+        <thead>
+          <tr>
+            <th>Band</th>
+            <th>Marks</th>
+            ${q.bandDescriptors[0].ao1 ? '<th>AO1 Knowledge</th>' : ''}
+            <th>AO2 / AO3 Requirements</th>
+          </tr>
+        </thead>
+        <tbody>${bdRows}</tbody>
+      </table>
+    </div>
+
+    <div class="answer-block">
+      <div class="answer-block-header">
+        <span class="answer-label">Student Response</span>
+        <span class="grade-mystery">Grade hidden</span>
+      </div>
+      <div class="answer-text">${paras}</div>
+    </div>
+
+    <div class="marking-section">
+      <div class="marking-label">Select a band for this response</div>
+      <div class="band-selector">${bandBtns}</div>
+      <button class="reveal-btn" id="revealBtn" onclick="revealAnswer()">Reveal mark &amp; examiner commentary →</button>
+    </div>
+
+    <div class="reveal-panel" id="revealPanel"></div>
+  `;
+}
+
+function getBandLabel(b) {
+  return {5:'High',4:'Good',3:'Moderate',2:'Limited',1:'Minimal'}[b];
+}
+
+function selectBand(b) {
+  selectedBand = b;
+  document.querySelectorAll('.band-btn').forEach(btn => btn.classList.remove('selected'));
+  document.getElementById('bBtn' + b).classList.add('selected');
+  document.getElementById('revealBtn').classList.add('ready');
+}
+
+function toggleBandDesc() {
+  const toggle = document.getElementById('bdToggle');
+  const panel  = document.getElementById('bdPanel');
+  toggle.classList.toggle('open');
+  panel.classList.toggle('open');
+}
+
+function revealAnswer() {
+  if (!selectedBand || revealed) return;
+  revealed = true;
+
+  const q = questions[currentQ];
+  const diff = Math.abs(selectedBand - q.actualBand);
+  const verdictClass = diff === 0 ? 'correct' : diff === 1 ? 'close' : 'off';
+  const verdictIcon  = diff === 0 ? '✓' : diff === 1 ? '~' : '✗';
+  const verdictTitle = diff === 0 ? 'Exactly right' : diff === 1 ? 'One band away' : 'Outside range';
+  const verdictMsg   = diff === 0
+    ? `You correctly identified this as a Band ${q.actualBand} response. Well calibrated.`
+    : diff === 1
+    ? `You marked this as Band ${selectedBand}; the answer sits in Band ${q.actualBand}. Read the commentary to see the key distinctions.`
+    : `You marked this as Band ${selectedBand}; the answer is Band ${q.actualBand}. The commentary below explains why. Focus on the band boundary criteria.`;
+
+  results.push({ qNum: q.number, title: q.title.substring(0,55) + '…', yours: selectedBand, actual: q.actualBand, diff });
+
+  // Annotations
+  const annHtml = q.annotations.map(a => `
+    <li class="${a.type}">
+      <span class="ann-icon">${a.type === 'strength' ? '✔' : a.type === 'develop' ? '→' : '✗'}</span>
+      <span class="ann-text">${a.text}</span>
+    </li>
+  `).join('');
+
+  const comParas = q.commentary.split('\n\n').map(p => `<p>${p}</p>`).join('');
+
+  const isLast = currentQ === questions.length - 1;
+
+  const panel = document.getElementById('revealPanel');
+  panel.innerHTML = `
+    <div class="verdict-card ${verdictClass}">
+      <div class="verdict-icon">${verdictIcon}</div>
+      <div class="verdict-text">
+        <h3>${verdictTitle}</h3>
+        <p>${verdictMsg}</p>
+      </div>
+    </div>
+
+    <div class="marks-reveal">
+      <div class="mr-block yours">
+        <div class="mr-label">Your band</div>
+        <div class="mr-val">${selectedBand}</div>
+        <div class="mr-sub">${getBandLabel(selectedBand)}</div>
+      </div>
+      <div class="mr-block actual">
+        <div class="mr-label">Actual band</div>
+        <div class="mr-val">${q.actualBand}</div>
+        <div class="mr-sub">${getBandLabel(q.actualBand)}</div>
+      </div>
+      <div class="mr-block actual">
+        <div class="mr-label">Grade</div>
+        <div class="mr-val" style="font-size:1.8rem; color:var(--gold)">${q.gradeLetter}</div>
+        <div class="mr-sub">~${q.actualMarkRange} / ${q.totalMarks}</div>
+      </div>
+    </div>
+
+    <div class="commentary-block">
+      <h4>Examiner commentary</h4>
+      <div class="commentary-body">${comParas}</div>
+    </div>
+
+    <div class="commentary-block">
+      <h4>Annotated observations</h4>
+      <ul class="annotation-list">${annHtml}</ul>
+    </div>
+
+    <button class="next-btn" onclick="${isLast ? 'showResults()' : 'renderQuestion(' + (currentQ + 1) + ')'}">
+      ${isLast ? 'See your results →' : 'Next question →'}
+    </button>
+  `;
+
+  panel.classList.add('open');
+  setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+}
+
+function showResults() {
+  const exact  = results.filter(r => r.diff === 0).length;
+  const close  = results.filter(r => r.diff === 1).length;
+  const off    = results.filter(r => r.diff >= 2).length;
+
+  const score = exact * 3 + close * 1;
+  const maxScore = questions.length * 3;
+
+  let reflectionText = '';
+  if (exact === questions.length) {
+    reflectionText = `Exceptional calibration. You matched every band precisely — this is the standard expected of a fully standardised examiner. Your marking instincts are well aligned with the mark scheme criteria across both question types and both sections of the paper.`;
+  } else if (exact + close === questions.length) {
+    reflectionText = `Good calibration overall. You were within one band on every response, which is the acceptable range in examiner standardisation. Review the commentary for the questions where you were one band away and identify the specific criteria that distinguish adjacent bands — this is usually where most development is needed.`;
+  } else if (off === 1) {
+    reflectionText = `Mostly well calibrated with one marking decision that fell outside the acceptable range. Return to the examiner commentary for that question and focus on understanding what the band criteria require at each level. Pay particular attention to the distinction between "listing" and "analysing" in the AO2 descriptors, and between "some support" (Band 3) and "good support" (Band 4) in AO3.`;
+  } else {
+    reflectionText = `Your marking shows room for further calibration work. Re-read all four examiner commentaries carefully, paying close attention to what distinguishes Band 3 from Band 4 responses in each question type. For the "Explain why" questions, the key shift is from listing causes to explaining mechanisms. For the source evaluation questions, the key shift is from describing what the source says to evaluating what it can and cannot tell us — and why.`;
+  }
+
+  const resItems = results.map(r => {
+    const vc = r.diff === 0 ? 'exact' : r.diff === 1 ? 'close' : 'off';
+    const vt = r.diff === 0 ? '✓ Exact' : r.diff === 1 ? '~ One band away' : '✗ Outside range';
+    return `
+      <div class="result-item">
+        <div class="ri-q">${r.qNum}</div>
+        <div class="ri-title">${r.title}</div>
+        <div class="ri-bands">
+          <span class="ri-yours">Band ${r.yours}</span>
+          <span class="ri-arrow">→</span>
+          <span class="ri-actual">Band ${r.actual}</span>
+        </div>
+        <div class="ri-verdict ${vc}">${vt}</div>
+      </div>
+    `;
+  }).join('');
+
+  const container = document.getElementById('screen-results');
+  container.innerHTML = `
+    <div class="results-header">
+      <div class="wjec-badge" style="display:inline-flex; margin-bottom:16px;"><span>WJEC</span> Results Summary</div>
+      <h2>Marking Exercise Complete</h2>
+      <div class="score-circle">
+        <div class="score-num">${exact}</div>
+        <div class="score-den">exact / ${questions.length}</div>
+      </div>
+      <p style="font-size:0.9rem; color:var(--text3);">${exact} exact · ${close} within one band · ${off} outside range</p>
+    </div>
+
+    <div class="results-grid">${resItems}</div>
+
+    <div class="reflection-block">
+      <h4>Examiner development note</h4>
+      <p>${reflectionText}</p>
+    </div>
+
+    <div class="reflection-block" style="border-left-color: var(--gold);">
+      <h4>Key marking principles for this paper</h4>
+      <p><strong style="color:var(--accent2)">For "Explain why" questions (10 marks):</strong> The distinction between Band 3 and Band 4 lies in whether the candidate analyses causes (explains why they led to conflict/success) or merely describes them. Look for connective language — "this meant that," "as a result," "because of this" — as indicators of analysis. A Band 5 response will also show understanding of the inter-relationship between causes.</p>
+      <p><strong style="color:var(--accent2)">For "How valuable" questions (15 marks):</strong> Candidates must do more than describe or summarise the item. Value judgements must be supported with contextual knowledge to test the item's accuracy or completeness, and authorship/provenance must be linked explicitly to how it affects the item's usefulness — not treated as a separate tick-box.</p>
+      <p><strong style="color:var(--accent2)">For "To what extent" questions (20 marks):</strong> Both items must be analysed individually and then weighed against each other and against wider knowledge. A clear, substantiated overall judgement is essential for Band 4+. Be alert to responses that deal with each item in isolation and then offer a brief conclusion — these typically sit in Band 3.</p>
+    </div>
+
+    <button class="restart-btn" onclick="restart()">↩ Restart exercise</button>
+    <div style="margin-top:1.5rem;padding:1.3rem;background:rgba(0,0,0,.3);border:2px solid #c9a84c;border-radius:8px;text-align:center">
+      <p style="color:rgba(255,255,255,.9);font-size:.88rem;margin-bottom:.9rem;line-height:1.6">&#127885; <strong>Generate your personalised completion certificate &middot; Creu eich tystysgrif gwblhau</strong><br><em style="opacity:.65;font-size:.82rem">Enter your name to generate a printable certificate showing your calibration score.</em></p>
+      <div style="display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;align-items:center">
+        <input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name &middot; Eich enw llawn&hellip;" maxlength="80">
+        <button class="btn-cert" onclick="generateCertificate()">&#127891; Generate Certificate &middot; Creu Tystysgrif</button>
+      </div>
+    </div>
+  `;
+
+  // Update progress
+  document.querySelectorAll('.pdot').forEach(d => d.classList.remove('active'));
+  document.querySelectorAll('.pdot').forEach(d => d.classList.add('done'));
+
+  showScreen('screen-results');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function restart() {
+  results.length = 0;
+  currentQ = 0;
+  selectedBand = null;
+  revealed = false;
+  buildProgressDots();
+  renderQuestion(0);
+  showScreen('screen-question');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:2rem;">📜</div>
+            <div class="cert-inst-name">WJEC CBAC — GCSE History · Hanes TGAU
+              <span class="cert-inst-sub">Curriculum for Wales | Cwricwlwm i Gymru</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that · Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher · yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.5rem 0 .3rem"><div class="cert-name" id="certDisplayName">Your Name</div></div>
+          <div class="cert-score-pill">Score: <span id="certScoreDisplay">—</span></div>
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the training session on</div>
+          <div class="cert-course">WJEC GCSE History — Unit 1 Medieval: Examiner Calibration Training
+            <span class="cert-course-sub">TGAU Hanes CBAC — Uned 1 Canoloesol: Hyfforddiant Calibradu Arholwr</span>
+          </div>
+          <div class="cert-competencies">Demonstrating the ability to calibrate marks against WJEC band descriptors for 'Explain why' (10-mark), 'How valuable' source evaluation (15-mark), and 'To what extent' extended writing (20-mark) questions for the Unit 1 Medieval period.</div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <div class="cert-sig-label">Subject Tutor · Tiwtor Pwnc</div>
+            </div>
+            <div><div class="cert-seal"><span class="cert-seal-icon">🎓</span>PGCE<br>CYMRU</div></div>
+            <div class="cert-sig-block">
+              <div class="cert-date-val" id="certDateDisplay"></div>
+              <div class="cert-date-label">Date Completed · Dyddiad Cwblhau</div>
+            </div>
+          </div>
+          <div class="cert-stripe" style="margin:1.2rem -2rem -1.6rem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">🖨 Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">✕ Close · Cau</button>
+    </div>
+  </div>
+</div>
+<script>
+function generateCertificate(){
+  var name=document.getElementById('certNameInput').value.trim();
+  if(!name){document.getElementById('certNameInput').focus();document.getElementById('certNameInput').style.borderColor='#c9a84c';setTimeout(function(){document.getElementById('certNameInput').style.borderColor='';},1500);return;}
+  document.getElementById('certDisplayName').textContent=name;
+  var now=new Date();
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('certDateDisplay').textContent=now.getDate()+' '+months[now.getMonth()]+' '+now.getFullYear();
+  document.getElementById('certOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeCertificate(){document.getElementById('certOverlay').classList.remove('show');document.body.style.overflow='';}
+function printCertificate(){
+  var cert=document.getElementById('certificateEl');
+  var w=window.open('','_blank','width=900,height=700');
+  w.document.write('<html><head><title>Certificate</title>');
+  document.querySelectorAll('style,link[rel="stylesheet"]').forEach(function(s){w.document.write(s.outerHTML);});
+  w.document.write('</head><body style="margin:0;padding:20px;background:white;">');
+  w.document.write(cert.outerHTML);
+  w.document.write('</body></html>');
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener('click',function(e){if(e.target.id==='certOverlay')closeCertificate();});
+
+// Override to pull score from rendered DOM
+var _origGenCert = generateCertificate;
+generateCertificate = function(){
+  var numEl=document.querySelector('.score-num');
+  var denEl=document.querySelector('.score-den');
+  var scoreEl=document.getElementById('certScoreDisplay');
+  if(scoreEl&&numEl&&denEl) scoreEl.textContent=numEl.textContent+' '+denEl.textContent;
+  _origGenCert();
+};
+</script>
+</body>
+</html>

@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WJEC GCSE History – Unit 1 Modern – Exemplar Answer Training</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1f3d;
+    --navy-mid: #1a2e52;
+    --navy-light: #253f6b;
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --cream: #faf8f3;
+    --warm-white: #ffffff;
+    --slate: #4a5568;
+    --slate-light: #718096;
+    --grade-c-bg: #fff8e6;
+    --grade-c-border: #e6a817;
+    --grade-c-text: #7a4f00;
+    --grade-a-bg: #e8f5e9;
+    --grade-a-border: #2e7d32;
+    --grade-a-text: #1b5e20;
+    --highlight-yellow: #fff3cd;
+    --highlight-green: #d4edda;
+    --annotation: #e8eaf6;
+    --shadow: 0 4px 20px rgba(15,31,61,0.12);
+    --shadow-hover: 0 8px 32px rgba(15,31,61,0.2);
+    --radius: 12px;
+    --radius-sm: 6px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--navy);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* ─── HEADER ─── */
+  header {
+    background: var(--navy);
+    color: white;
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.3);
+  }
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .header-left { display: flex; align-items: center; gap: 16px; }
+  .wjec-badge {
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 4px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 2.5vw, 1.35rem);
+    font-weight: 600;
+    color: white;
+    line-height: 1.2;
+  }
+  header p.subtitle {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.5px;
+    margin-top: 2px;
+  }
+  .progress-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .progress-track {
+    width: 120px;
+    height: 6px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--gold);
+    width: 0%;
+    border-radius: 3px;
+    transition: width 0.4s ease;
+  }
+
+  /* ─── SECTION TABS ─── */
+  .section-tabs {
+    max-width: 1100px;
+    margin: 28px auto 0;
+    padding: 0 24px;
+    display: flex;
+    gap: 8px;
+    border-bottom: 2px solid rgba(15,31,61,0.12);
+  }
+  .section-tab {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    padding: 10px 24px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    border-bottom: none;
+    background: transparent;
+    color: var(--slate);
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+    transition: all 0.2s;
+    position: relative;
+    bottom: -2px;
+  }
+  .section-tab:hover { color: var(--navy); background: rgba(15,31,61,0.04); }
+  .section-tab.active {
+    color: var(--navy);
+    background: var(--cream);
+    border-color: rgba(15,31,61,0.12);
+    border-bottom-color: var(--cream);
+  }
+  .section-tab .tab-sub { font-weight: 400; font-size: 0.75rem; color: var(--slate-light); display: block; }
+  .section-tab.active .tab-sub { color: var(--slate); }
+
+  /* ─── MAIN CONTENT ─── */
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 24px 60px;
+  }
+  .section-panel { display: none; }
+  .section-panel.active { display: block; }
+
+  /* ─── INTRO BANNER ─── */
+  .intro-banner {
+    background: var(--navy);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 28px;
+    color: white;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  .intro-icon { font-size: 1.8rem; flex-shrink: 0; margin-top: 2px; }
+  .intro-banner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+  }
+  .intro-banner p { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+  /* ─── SECTION DIVIDER ─── */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 20px;
+  }
+  .section-divider-line { flex: 1; height: 1px; background: rgba(15,31,61,0.15); }
+  .section-divider-text {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--slate-light);
+    white-space: nowrap;
+  }
+
+  /* ─── QUESTION CARD ─── */
+  .q-card {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(15,31,61,0.08);
+    transition: box-shadow 0.2s;
+  }
+  .q-card:hover { box-shadow: var(--shadow-hover); }
+
+  .q-header {
+    background: var(--navy);
+    padding: 16px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    cursor: pointer;
+    user-select: none;
+  }
+  .q-header-left { display: flex; align-items: center; gap: 14px; }
+  .q-number {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 5px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .q-title {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: white;
+    line-height: 1.3;
+  }
+  .q-marks {
+    background: rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.9);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    white-space: nowrap;
+  }
+  .q-chevron {
+    color: rgba(255,255,255,0.6);
+    font-size: 1.1rem;
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+  .q-card.expanded .q-chevron { transform: rotate(180deg); }
+
+  .q-body {
+    display: none;
+    padding: 0;
+  }
+  .q-card.expanded .q-body { display: block; }
+
+  /* ─── QUESTION TEXT BOX ─── */
+  .q-text-box {
+    padding: 18px 22px;
+    background: #f8f9ff;
+    border-bottom: 1px solid rgba(15,31,61,0.08);
+  }
+  .q-text-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--slate-light);
+    margin-bottom: 8px;
+  }
+  .q-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.95rem;
+    color: var(--navy);
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  /* ─── SOURCE ITEM BOX ─── */
+  .source-box {
+    margin: 14px 22px 4px;
+    padding: 16px 18px;
+    background: #fffdf5;
+    border-left: 4px solid var(--gold);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  }
+  .source-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .source-attribution {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 8px;
+    font-style: italic;
+    font-family: 'Source Serif 4', serif;
+  }
+  .source-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.9rem;
+    color: var(--slate);
+    line-height: 1.65;
+    font-style: italic;
+  }
+
+  /* ─── GRADE TOGGLE ─── */
+  .grade-toggle-section {
+    padding: 18px 22px 0;
+  }
+  .grade-toggle-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--slate-light);
+    margin-bottom: 10px;
+  }
+  .grade-toggle {
+    display: inline-flex;
+    border: 2px solid var(--navy);
+    border-radius: 30px;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .grade-btn {
+    padding: 8px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.88rem;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    color: var(--navy);
+    transition: all 0.2s;
+    letter-spacing: 0.5px;
+  }
+  .grade-btn:hover { background: rgba(15,31,61,0.06); }
+  .grade-btn.active-c { background: var(--grade-c-border); color: white; }
+  .grade-btn.active-a { background: var(--grade-a-border); color: white; }
+
+  /* ─── ANSWER PANELS ─── */
+  .answer-panels { padding: 0 22px 22px; }
+  .answer-panel { display: none; }
+  .answer-panel.visible { display: block; }
+
+  .grade-label-banner {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 14px;
+    border: 2px solid;
+  }
+  .grade-label-banner.c-banner { background: var(--grade-c-bg); border-color: var(--grade-c-border); color: var(--grade-c-text); }
+  .grade-label-banner.a-banner { background: var(--grade-a-bg); border-color: var(--grade-a-border); color: var(--grade-a-text); }
+  .grade-big { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 700; line-height: 1; }
+  .grade-desc { font-size: 0.82rem; line-height: 1.4; }
+  .grade-desc strong { display: block; font-size: 0.9rem; }
+
+  /* ─── BAND SCALE ─── */
+  .band-scale {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 14px;
+  }
+  .band-cell {
+    width: 28px;
+    height: 10px;
+    border-radius: 3px;
+    background: rgba(15,31,61,0.1);
+  }
+  .band-cell.filled-c { background: var(--grade-c-border); }
+  .band-cell.filled-a { background: var(--grade-a-border); }
+  .band-scale-label { font-size: 0.7rem; color: var(--slate-light); margin-left: 6px; }
+
+  /* ─── ANSWER TEXT ─── */
+  .answer-text {
+    font-family: 'Source Serif 4', serif;
+    font-size: 0.93rem;
+    line-height: 1.75;
+    color: var(--navy);
+    background: var(--cream);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+    margin-bottom: 14px;
+    white-space: pre-wrap;
+    border: 1px solid rgba(15,31,61,0.08);
+  }
+
+  /* ─── COMMENTARY ─── */
+  .commentary-section { margin-top: 6px; }
+  .commentary-toggle {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    background: var(--annotation);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.84rem;
+    color: var(--navy-light);
+    text-align: left;
+    transition: background 0.2s;
+  }
+  .commentary-toggle:hover { background: #dde0f5; }
+  .ct-icon { font-size: 1rem; }
+  .ct-arrow { margin-left: auto; transition: transform 0.3s; font-size: 0.8rem; }
+  .commentary-toggle.open .ct-arrow { transform: rotate(180deg); }
+
+  .commentary-body {
+    display: none;
+    padding: 16px 14px;
+    background: #f4f5fb;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    border: 1px solid #dde0f5;
+    border-top: none;
+  }
+  .commentary-body.open { display: block; }
+
+  .commentary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  @media (max-width: 640px) { .commentary-grid { grid-template-columns: 1fr; } }
+
+  .comm-point {
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 0.83rem;
+    line-height: 1.55;
+  }
+  .comm-point-label { font-weight: 700; font-size: 0.78rem; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .comm-point p { color: var(--slate); }
+  .comm-point.strength { background: var(--highlight-green); }
+  .comm-point.strength .comm-point-label { color: var(--grade-a-text); }
+  .comm-point.weakness { background: #fdecea; }
+  .comm-point.weakness .comm-point-label { color: #b71c1c; }
+  .comm-point.tip { background: #e8f4fd; grid-column: span 2; }
+  .comm-point.tip .comm-point-label { color: #1565c0; }
+  @media (max-width: 640px) { .comm-point.tip { grid-column: span 1; } }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    text-align: center;
+    padding: 18px;
+    font-size: 0.78rem;
+    margin-top: 40px;
+  }
+  footer span { color: var(--gold); }
+
+/* ── CERTIFICATE ── */
+.cert-trigger-box{margin-top:1.5rem;padding:1.4rem;background:rgba(0,0,0,.25);border:2px solid var(--gold);border-radius:10px;text-align:center}
+.cert-trigger-box p{font-size:.88rem;opacity:.85;margin-bottom:1rem;line-height:1.6;color:rgba(255,255,255,.9)}
+.cert-name-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.cert-name-input{padding:.6rem 1rem;font-family:inherit;font-size:.95rem;border:2px solid rgba(255,255,255,.3);border-radius:6px;background:rgba(255,255,255,.12);color:white;width:250px}
+.cert-name-input::placeholder{color:rgba(255,255,255,.4)}
+.cert-name-input:focus{outline:none;border-color:var(--gold)}
+.btn-cert{background:var(--gold);color:#1a1a1a;border:none;padding:.6rem 1.3rem;border-radius:6px;font-family:inherit;font-size:.88rem;font-weight:700;cursor:pointer}
+.btn-cert:hover{opacity:.85}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:white;border-radius:6px;width:100%;max-width:780px;max-height:95vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.6)}
+.certificate{width:100%;background:white}
+.cert-frame{margin:16px;border:3px solid #1a2438;position:relative}
+.cert-frame::before{content:'';position:absolute;inset:5px;border:1px solid #c9a84c;pointer-events:none;z-index:1}
+.cert-stripe{height:5px;background:linear-gradient(90deg,#1a2438 0%,#c9a84c 50%,#1a2438 100%)}
+.cert-header{background:linear-gradient(135deg,#1a2438 0%,#2d3a56 100%);padding:1.3rem 2rem 1.1rem;text-align:center}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.cert-inst-name{font-family:'Georgia',serif;color:white;font-size:1rem;text-align:left;line-height:1.2}
+.cert-inst-sub{color:#e8c86a;font-size:.75rem;display:block;font-style:italic}
+.cert-body{padding:1.6rem 2rem;text-align:center}
+.cert-presents{font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;margin-bottom:.4rem}
+.cert-main-title{font-family:'Georgia',serif;font-size:1.4rem;color:#1a2438;line-height:1.2;margin-bottom:.2rem}
+.cert-awarded-to{font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;color:#475569;margin-bottom:.2rem}
+.cert-name{font-family:'Georgia',serif;font-size:1.9rem;font-style:italic;color:#1a2438;border-bottom:2px solid #E2E8F0;display:inline-block;padding:0 1rem .1rem;min-width:260px;margin-bottom:.3rem;line-height:1.3}
+.cert-score-pill{display:inline-block;background:#FEF3C7;border:1px solid #c9a84c;border-radius:999px;padding:.25rem 1rem;font-size:.8rem;font-weight:700;color:#92400E;margin:.5rem 0 .8rem}
+.cert-divider{height:1px;background:linear-gradient(90deg,transparent,#c9a84c,transparent);margin:.9rem auto;width:55%}
+.cert-text{font-size:.86rem;color:#1E293B;line-height:1.65;max-width:440px;margin:0 auto .7rem}
+.cert-course{font-family:'Georgia',serif;font-size:.95rem;color:#1E293B;background:#F8F4E8;border:1px solid #e8c86a;border-left:4px solid #1a2438;padding:.45rem .9rem;display:inline-block;margin-bottom:.35rem;text-align:left}
+.cert-course-sub{font-size:.76rem;color:#c9a84c;display:block;font-style:italic}
+.cert-competencies{font-size:.76rem;color:#475569;margin:.2rem auto 1rem;max-width:420px;line-height:1.55}
+.cert-footer-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:1rem;padding-top:1rem;border-top:1px solid #E2E8F0}
+.cert-sig-block{text-align:center}
+.cert-sig-line{height:1px;background:#1a2438;width:140px;margin:0 auto .25rem}
+.cert-sig-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569}
+.cert-seal{width:64px;height:64px;border-radius:50%;background:#1a2438;border:3px solid #c9a84c;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-size:.5rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;line-height:1.3;margin:0 auto}
+.cert-seal-icon{font-size:1.2rem;display:block;margin-bottom:1px}
+.cert-date-val{font-family:'Georgia',serif;font-size:.9rem;color:#1E293B}
+.cert-date-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569;margin-top:.2rem}
+.cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.9rem 1.5rem 1.2rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
+.btn-cert-print{background:#1a2438;color:white;border:none;padding:.55rem 1.2rem;border-radius:6px;font-family:inherit;font-size:.86rem;font-weight:700;cursor:pointer}
+.btn-cert-close{background:#475569;color:white;border:none;padding:.55rem 1.2rem;border-radius:6px;font-family:inherit;font-size:.86rem;cursor:pointer}
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="wjec-badge">WJEC · CBAC</div>
+      <div>
+        <h1>GCSE History – Unit 1: Modern</h1>
+        <p class="subtitle">Exemplar Answer Training Activity &nbsp;|&nbsp; Sections A &amp; B &nbsp;|&nbsp; Teaching from 2026</p>
+      </div>
+    </div>
+    <div class="progress-bar-wrap">
+      <span id="progress-text">0 / 6 reviewed</span>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+  </div>
+</header>
+
+<div class="section-tabs">
+  <button class="section-tab active" onclick="showSection('secA',this)">
+    Section A
+    <span class="tab-sub">Rebellions and Protest in Wales c.1831–c.1891</span>
+  </button>
+  <button class="section-tab" onclick="showSection('secB',this)">
+    Section B
+    <span class="tab-sub">Wales in the early to mid-twentieth century c.1914–c.1959</span>
+  </button>
+</div>
+
+<main>
+
+<!-- ═══════════════════════════════════ SECTION A ═══════════════════════════════════ -->
+<div class="section-panel active" id="secA">
+
+  <div class="intro-banner">
+    <div class="intro-icon">📜</div>
+    <div>
+      <h2>How to use this training activity</h2>
+      <p>Click any question to expand it. Use the <strong>C Grade / A Grade</strong> toggle to compare exemplar answers. Then open the <strong>Examiner Commentary</strong> to see exactly what earns marks — and what holds an answer back. Questions are drawn directly from the WJEC Sample Assessment Materials (2024).</p>
+    </div>
+  </div>
+
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-text">Extended Writing Questions</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <!-- ── Q2: Rebecca Riots ── -->
+  <div class="q-card" id="qA2">
+    <div class="q-header" onclick="toggleCard('qA2')">
+      <div class="q-header-left">
+        <div class="q-number">Q2</div>
+        <div class="q-title">Explain why the Rebecca Riots occurred.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">10 marks · AO1 + AO2</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">The Question</div>
+        <div class="q-text">Explain why the Rebecca Riots occurred.</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Select a grade to view exemplar answer</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qA2','c',this)">C Grade</button>
+          <button class="grade-btn" onclick="showGrade('qA2','a',this)">A Grade</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qA2-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Approx. 5–6 / 10</strong>Some accurate knowledge shown with an attempt to address the question. Points are made but explanations are underdeveloped and not fully connected to the concept of causation.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">The Rebecca Riots happened because farmers were angry about the toll gates on the roads in South Wales. They had to pay money every time they went through a gate and this made it harder for them to make a profit. The rioters dressed as women and called themselves Rebecca and her daughters.
+
+There was also anger about the Poor Law of 1834 which forced poor people into workhouses. Welsh farmers were worried about losing their farms and ending up in these places. The workhouses were very harsh.
+
+Farmers also had to pay tithes to the Church of England even though most Welsh people were nonconformists. This seemed unfair to them. The landlords were often English and didn't understand the problems of Welsh farmers.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is a C grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Strengths</div>
+                  <p>Three valid causes are identified: toll gates, the Poor Law, and tithes/landlord resentment. Factual content is mostly accurate, including the cross-dressing convention and the 1834 date. This demonstrates relevant knowledge across the topic.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Weaknesses</div>
+                  <p>Each point stops short of full explanation. The answer says toll gates made profit harder — but doesn't explain <em>why</em> this became a crisis: smallholdings were already marginal, population growth had increased land competition, and tolls were the final straw. "Workhouses were very harsh" is a description, not an explanation of causation.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Missing</div>
+                  <p>No developed link between causes — for example, the connection between landlord power, tithes, and the toll trusts all being controlled by the same wealthy English-speaking elite. No analysis of why these causes combined to make violence feel like the only option for farming communities.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ To improve</div>
+                  <p>After each cause, ask: <em>"Why did this matter so much at this particular time?"</em> Show that the immediate trigger (toll gates) sat on top of deeper, long-running grievances. This layered explanation is what distinguishes Band 4–5 answers from Band 3.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qA2-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Approx. 9–10 / 10</strong>Precise, convincing knowledge deployed throughout. Causes are explained and linked analytically to each other and to the concept of why the riots occurred.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">The immediate trigger for the Rebecca Riots was the burden of toll-gate charges on the turnpike roads of South Wales. Farmers working smallholdings were forced to pay each time they drove livestock or produce to market, and the charges were compounding — a single journey could require payment at multiple gates controlled by different trusts. On the thin margins of Welsh subsistence farming, these costs were not an inconvenience but an existential threat to livelihoods.
+
+This immediate grievance, however, only ignited because of the deep economic anxiety running through Welsh rural communities in the 1830s and 1840s. The 1834 Poor Law Amendment Act had replaced traditional outdoor relief with the much harsher workhouse system. For a farming family on the edge of poverty, losing the farm no longer meant receiving help from the parish — it meant the workhouse. Population growth across Wales had already intensified competition for land and reduced wages, making it ever harder to sustain small farms. The toll gates, therefore, were the most visible symbol of a system that seemed designed to drive smallholders off their land entirely.
+
+Underlying these economic pressures was a broader resentment towards the English-speaking, Anglican gentry who controlled both the toll trusts and the land. These landlords not only set the tolls but also enforced the tithes that Welsh nonconformist farmers were legally required to pay to the Church of England — a church the vast majority of them did not attend. Paying tithes to support an alien church, while simultaneously being charged by the same class of landlords to use the public roads, generated a powerful sense of injustice that united economic grievance with cultural and religious identity. It was this combination — immediate financial pressure layered upon long-standing class and cultural resentment — that explains why the Rebecca Riots broke out with such intensity and spread so rapidly across South Wales.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is an A grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Immediate vs Deep Causes</div>
+                  <p>The answer explicitly distinguishes the immediate trigger (toll gates) from deeper structural causes (Poor Law, population growth, landlord control). This layered approach demonstrates the kind of historical thinking that earns Band 5.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Causal Links</div>
+                  <p>"The toll gates were the most visible symbol of a system that seemed designed to drive smallholders off their land" — this is not just a list of causes but an analysis of how they connected and reinforced each other. The examiners reward this kind of synthesis.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Cultural Dimension</div>
+                  <p>Connecting tithes, nonconformity, and the Welsh language to the economic grievances shows genuine understanding of the period. The riots were not just about money — they were about identity and dignity. Recognising this earns significant marks.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Key technique</div>
+                  <p>Notice the conclusion: "this combination… explains why the Rebecca Riots broke out with such intensity and spread so rapidly." Never just list causes — always end by explaining <em>why the combination mattered</em>. This directly answers the question rather than implying it.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q3b: Merthyr Rising – Wikipedia ── -->
+  <div class="q-card" id="qA3b">
+    <div class="q-header" onclick="toggleCard('qA3b')">
+      <div class="q-header-left">
+        <div class="q-number">Q3b</div>
+        <div class="q-title">How valuable is Item 1 to our understanding of the events of the Merthyr Rising?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">15 marks · AO2 + AO3</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">The Question</div>
+        <div class="q-text">How valuable is Item 1 to our understanding of the events of the Merthyr Rising?</div>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Item 1</div>
+        <div class="source-attribution">Adapted from the Wikipedia entry for the Merthyr Rising (accessed 2024). Wikipedia is an internet encyclopaedia that anyone can access and edit.</div>
+        <div class="source-text">"The Merthyr Rising of 1831 was the violent climax to many years of angry unrest among the working-class population of Merthyr Tydfil and the surrounding area. The Rising marked the first time the red flag was used as a symbol of working-class protest in the United Kingdom."</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Select a grade to view exemplar answer</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qA3b','c',this)">C Grade</button>
+          <button class="grade-btn" onclick="showGrade('qA3b','a',this)">A Grade</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qA3b-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Approx. 8–9 / 15</strong>The item's content is applied to the question and provenance is noted. Some evaluation is offered. Own knowledge is limited and not used to test the item's completeness.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Item 1 is valuable to our understanding of the Merthyr Rising because it tells us that it was a violent event involving working-class people in Merthyr Tydfil. It also tells us that the red flag was first used here as a symbol of protest.
+
+However, the item is less valuable because it comes from Wikipedia, which is an encyclopaedia that anyone can edit. This means the information might not be accurate because it could have been written by someone who doesn't know much about the subject. We don't know who wrote it.
+
+The item is also quite short and doesn't give us much detail about what actually happened during the Rising, such as the attacks on bailiffs or the arrival of soldiers.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is a C grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Strengths</div>
+                  <p>The answer correctly identifies what the item tells us (violence, working-class involvement, red flag significance). The Wikipedia provenance limitation is recognised, and the brevity of the item is noted. A basic structure of value/limitations is present.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Weaknesses</div>
+                  <p>The Wikipedia criticism is underdeveloped. Simply saying "anyone can edit it" is not enough — the answer needs to engage with the counter-argument: Wikipedia articles on historical events tend to be based on published research, are often monitored, and represent the most up-to-date consensus. The limitation of anonymous authorship is more nuanced than just "might be wrong."</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Missing</div>
+                  <p>Own contextual knowledge (workers gathering at Waun Common, the bailiff confrontations, troops from Brecon, the hanging of Dic Penderyn) should be used to show precisely <em>what</em> the item omits — not just that it is short. This is how marks in Bands 4 and 5 are earned.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ To improve</div>
+                  <p>Think of your own knowledge as a <em>measuring stick</em> for the source. Use what you know to say: "The item tells us X but omits Y and Z, which are important because…" This tests the item's completeness, not just its content. That analysis earns marks in the higher bands.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qA3b-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Approx. 13–15 / 15</strong>Content and provenance evaluated with precision. Own knowledge deployed purposefully to test the item's completeness. A valid, well-supported overall judgement reached.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Item 1 has genuine value to our understanding of the Merthyr Rising, though significant limitations prevent it from offering a comprehensive picture of events.
+
+In terms of content, the item accurately describes the Rising as a violent culmination of long-standing unrest among the working-class population of Merthyr. This is a useful framing: it correctly situates the events of 1831 as part of a pattern of anger rather than a sudden eruption, which is historically accurate given the wage cuts imposed by the Crawshays and the broader desperation of workers living under the Court of Requests. The claim about the red flag is particularly valuable — it places the Rising within a wider tradition of working-class protest across Britain and gives it a significance beyond Merthyr itself.
+
+However, the item's brevity means it omits much of what we would need to understand the actual events of the Rising. It says nothing about the triggering confrontation over Lewis Lewis's possessions being seized by bailiffs, the mass gathering of thousands of workers at Waun Common, or the subsequent escalation when troops from Brecon were deployed and around twenty protesters were killed. Without this detail, the "violent climax" it describes is essentially unexplained. Nor does it address the eventual outcome: the hanging of Dic Penderyn — widely believed to be innocent — which became a powerful symbol of working-class injustice.
+
+On provenance, the item's Wikipedia origin presents both strengths and weaknesses. Being written in 2024, it has access to decades of academic research on the Rising and can reflect current historical consensus. On the other hand, the anonymity of its authorship means we cannot assess the author's credentials or check how they have interpreted their sources. The fact that Wikipedia can be edited by anyone introduces a potential reliability concern, even though in practice, entries on significant historical events are typically based on published sources and monitored for accuracy.
+
+Overall, Item 1 is valuable as a concise introductory overview that correctly identifies the Rising's historical significance — particularly the red flag symbolism. Its value is limited, however, by the near-total absence of specific events, causes, and consequences that would be essential to a genuine understanding of what happened in Merthyr in 1831.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is an A grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Content + Omissions Tested</div>
+                  <p>The answer doesn't just say what the item includes — it uses contextual knowledge (Waun Common, Lewis Lewis, Dic Penderyn, troops from Brecon) to demonstrate what it leaves out. This is the key technique for 15-mark source evaluation questions.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Balanced Provenance</div>
+                  <p>The Wikipedia analysis avoids the simplistic "anyone can edit it = unreliable" trap. Instead it acknowledges both the advantage of recency and the limitation of anonymity. This nuanced approach is characteristic of Band 5 thinking.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Red Flag Point Developed</div>
+                  <p>The red flag's significance is extended beyond the item itself — connecting it to broader working-class protest traditions. This shows that the student understands the <em>historical importance</em> of the detail, not just the detail itself.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Key technique</div>
+                  <p>For every 15-mark source question, always ask: (1) What does the content tell us — and is it accurate? (2) What important events/context does it <em>omit</em>? (3) What does the nature and origin of the source tell us about its reliability? Then reach a clear overall judgement.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q4b: Newport Rising ── -->
+  <div class="q-card" id="qA4b">
+    <div class="q-header" onclick="toggleCard('qA4b')">
+      <div class="q-header-left">
+        <div class="q-number">Q4b</div>
+        <div class="q-title">To what extent do Item 2 and Item 3 persuade you that the Newport Rising was a threat to the government?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">20 marks · AO2 + AO3</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">The Question</div>
+        <div class="q-text">To what extent do Item 2 and Item 3 persuade you that the Newport Rising was a threat to the government?</div>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Item 2</div>
+        <div class="source-attribution">Kenneth Budd, an English artist, depicts the Newport Rising in his mural <em>The Chartist Mural</em> (created in 1978), which used to be sited in Newport city centre. The banner states "300 constituencies of equal numbers of electors".</div>
+        <div class="source-text">[A mosaic mural showing armed Chartist marchers advancing, carrying banners and weapons, confronting troops on the right-hand side.]</div>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Item 3</div>
+        <div class="source-attribution">Sir John Campbell, prosecuting, explains his view on the Newport Rising to the jury, in a transcript of the official records of the trial of John Frost in Monmouth (1839).</div>
+        <div class="source-text">"Arriving at Newport, the Chartists aimed to attack the troops that were there. They wanted to take control of the town. This was not a meeting to petition the Queen or Parliament. Their objective was to use armed force to change the law of this country."</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Select a grade to view exemplar answer</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qA4b','c',this)">C Grade</button>
+          <button class="grade-btn" onclick="showGrade('qA4b','a',this)">A Grade</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qA4b-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Approx. 11–12 / 20</strong>Both items used and their content applied to the question. Basic provenance noted for each. A judgement is reached but contextual knowledge is not deployed to test the items or add depth.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Both Item 2 and Item 3 persuade me that the Newport Rising was a threat to the government. Item 2 is a mural by Kenneth Budd that shows Chartist marchers with weapons going into Newport. This shows that they were prepared to use violence, which would be a threat to the government. The banner says "300 constituencies of equal numbers of electors" which shows they wanted political change.
+
+Item 3 is from the trial of John Frost in 1839 and says that the Chartists wanted to use armed force to change the law. This strongly suggests the Newport Rising was a threat because they were not just petitioning peacefully but were actually trying to take over the town.
+
+Item 2 was made in 1978 so the artist had the benefit of hindsight. Item 3 is more reliable as a primary source from the actual trial. Overall, both items persuade me that the Rising was a threat to the government because they both show violence and an intention to change things by force.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is a C grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Strengths</div>
+                  <p>Both items are used and their content is linked to the question. The weapons in Item 2 and the armed-force language in Item 3 are correctly identified as evidence of threat. A conclusion is reached and some provenance attempted.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Weaknesses</div>
+                  <p>The provenance analysis is too shallow. Saying Item 3 is "more reliable as a primary source" misunderstands reliability — a prosecuting lawyer at a treason trial has a very strong motive to exaggerate the threat. This should raise questions about bias, not authority.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Missing</div>
+                  <p>No own knowledge deployed: the rejection of all three Chartist petitions, the failure at Newport itself (22 Chartists killed, leaders transported), the fact that the government was able to suppress the Rising quickly. These contextual points are needed to judge <em>how much</em> of a threat it actually was.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ To improve</div>
+                  <p>For 20-mark questions, always use your own knowledge to go <em>beyond</em> the items. Ask: "What do I know that supports, qualifies, or challenges what these items say?" Also interrogate provenance critically — who made this? Why? What might they want us to think?</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qA4b-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Approx. 17–20 / 20</strong>Both items evaluated critically for content and provenance. Substantial own knowledge deployed to contextualise and qualify the items' claims. A comprehensive, nuanced judgement is reached.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Both items offer evidence that the Newport Rising represented a threat to the government, and together they are persuasive — though each requires careful evaluation before their evidence can be accepted at face value.
+
+Item 3 is the more directly persuasive of the two. As a transcript from the trial of John Frost in 1839, it captures the prosecuting barrister's argument that the Chartists marched on Newport with the explicit intention of using armed force to take control of the town and change the law. If true, this is not protest but insurrection — a direct challenge to the authority of the state. The contemporary nature of the source lends it immediacy: this argument was made in a court of law where evidence had to be presented and tested. However, Sir John Campbell's role as the prosecution is critical to its interpretation. His job was to convince the jury that Frost and his co-defendants were guilty of high treason — a capital offence. He therefore had every motivation to present the Rising in the most threatening terms possible. This does not mean his claim is false, but it does mean it may exaggerate the Rising's revolutionary intent. My own knowledge supports his core claim: approximately 5,000 Chartists did march on Newport, many carrying weapons, and there was a violent confrontation with soldiers at the Westgate Hotel.
+
+Item 2, Kenneth Budd's 1978 mural, is valuable as a visual representation of the Rising. Its depiction of Chartists advancing with weapons and banners confirms the scale and armed nature of the march. Crucially, the banner's reference to equal electoral constituencies shows that this was not mindless violence but part of a principled demand for democratic reform — one of the six points of the People's Charter. As a commissioned public artwork placed in Newport city centre, Budd would have needed to research the events thoroughly to satisfy the local authorities that his interpretation was accurate. That said, as a retrospective work by an artist rather than a historian, it is an artistic interpretation rather than evidence, and it naturally takes a sympathetic view of the Chartist cause.
+
+Contextually, there is an important counter-argument that the items do not address: the Newport Rising was actually a disastrous failure. Twenty-two Chartists were killed and the leaders — including Frost — were sentenced to transportation. This rapid suppression suggests that while the Rising expressed a threatening intent, it posed very little practical danger to a government with the military power to end it within hours. Moreover, the broader Chartist movement had already had its 1839 petition rejected, suggesting the government was well aware of the challenge and chose confrontation over compromise.
+
+On balance, the items do persuade me that the Newport Rising was intended as a threat to the government — the Chartists clearly marched with weapons and with political demands that went beyond a peaceful petition. However, "threat" should be qualified: it was the most serious working-class uprising Britain had seen for a generation, but it was also swiftly and decisively crushed, suggesting the government's position was never genuinely in danger.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is an A grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Provenance: Motive Identified</div>
+                  <p>The answer goes beyond "it's a primary source so it's reliable" — it identifies <em>why</em> a prosecuting barrister at a treason trial would have an interest in exaggerating the Rising's threat. This kind of motive-based provenance analysis is a hallmark of Band 5.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Own Knowledge Tests the Items</div>
+                  <p>The counter-argument about the Rising's rapid failure — 22 Chartists killed, leaders transported, suppressed in hours — is used to <em>qualify</em> the items' implied claim. This is exactly what the highest-mark band requires: knowledge that goes beyond the items to interrogate them.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ "To what extent" is Answered</div>
+                  <p>The conclusion directly addresses the question's language: "yes, it was a threat in intent, but not in practical terms." This nuanced "yes, but" structure shows the examiner that the question has been genuinely engaged with rather than just described.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Key technique</div>
+                  <p>"To what extent" questions always demand a qualification. Full persuasion (yes, completely) almost never earns full marks. The most convincing answers acknowledge what the items suggest, then deploy own knowledge to test, complicate, or add nuance to that suggestion.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- ═══════════════════════════════════ END SECTION A ═══════════════════════════════════ -->
+
+
+<!-- ═══════════════════════════════════ SECTION B ═══════════════════════════════════ -->
+<div class="section-panel" id="secB">
+
+  <div class="intro-banner">
+    <div class="intro-icon">🏭</div>
+    <div>
+      <h2>How to use this training activity</h2>
+      <p>Click any question to expand it. Use the <strong>C Grade / A Grade</strong> toggle to compare exemplar answers. Then open the <strong>Examiner Commentary</strong> to see exactly what earns marks — and what holds an answer back. Questions are drawn directly from the WJEC Sample Assessment Materials (2024).</p>
+    </div>
+  </div>
+
+  <div class="section-divider">
+    <div class="section-divider-line"></div>
+    <div class="section-divider-text">Extended Writing Questions</div>
+    <div class="section-divider-line"></div>
+  </div>
+
+  <!-- ── Q6: Leisure 1950s ── -->
+  <div class="q-card" id="qB6">
+    <div class="q-header" onclick="toggleCard('qB6')">
+      <div class="q-header-left">
+        <div class="q-number">Q6</div>
+        <div class="q-title">Explain why there were changes in leisure opportunities in Wales in the 1950s.</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">10 marks · AO1 + AO2</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">The Question</div>
+        <div class="q-text">Explain why there were changes in leisure opportunities in Wales in the 1950s.</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Select a grade to view exemplar answer</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qB6','c',this)">C Grade</button>
+          <button class="grade-btn" onclick="showGrade('qB6','a',this)">A Grade</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qB6-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Approx. 5–6 / 10</strong>Some relevant causes identified with generally accurate knowledge. Points are stated rather than fully explained, and the links between cause and change are underdeveloped.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">There were changes in leisure opportunities in Wales in the 1950s because people had more money. After the Second World War, wages went up and people could afford to buy things like televisions. This meant that entertainment at home became much more popular.
+
+Technology also changed things. New inventions like the transistor radio meant people could listen to music more easily. Cars became more common which meant people could travel further for leisure.
+
+Tourism also grew because people could go to the seaside more easily. There were also holiday camps which were popular.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is a C grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Strengths</div>
+                  <p>Three valid causes are identified: rising affluence, technological change, and growing tourism. The television, transistor radio, and motor car are all correctly identified as relevant. The structure is logical.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Weaknesses</div>
+                  <p>The explanatory links are weak. "People had more money" → "televisions became popular" is a leap — the answer needs to explain <em>why</em> this represented a change from before: shorter working hours, full employment after the post-war boom, and a consumer goods market that had barely existed before. "Cars became more common" needs developing: why 1950s specifically?</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Missing</div>
+                  <p>No mention of specific context for the change: the contrast with wartime rationing ending, the end of austerity in 1954, the Dansette record player creating a youth leisure culture, or the opening of national parks in Wales from 1951 providing new recreational spaces.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ To improve</div>
+                  <p>For every cause, ask: <em>"Why did this lead to change specifically in the 1950s, rather than earlier?"</em> This forces you to explain the historical context — post-war prosperity, the end of rationing, new technologies — rather than just listing what changed.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qB6-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Approx. 9–10 / 10</strong>Precise, convincing knowledge with full analytical development. Each cause is explained in context and linked directly to why change occurred in this specific decade.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">One of the most important reasons for changing leisure opportunities in Wales in the 1950s was the combination of rising wages and reduced working hours. After the disruption and austerity of the Second World War, the 1950s saw full employment, higher pay, and a growing culture of consumerism — food rationing did not finally end until 1954, and the lifting of these restrictions signalled a psychological as well as economic shift. Workers who had previously had little disposable income or free time now had both, and the emerging leisure industry was eager to meet this new demand.
+
+This affluence was channelled directly into technological leisure. Television ownership expanded enormously during the 1950s, driven both by affordability and by the boost of the 1953 Coronation broadcast, which brought many Welsh families their first set. Alongside television, the Dansette record player and the transistor radio created a new portable culture of popular music — particularly important for younger people who now had money to spend and a desire for entertainment that was specifically theirs. These technologies fundamentally changed leisure from something that happened outside the home (the cinema, the pub) to something available in the living room.
+
+Travel and tourism also expanded significantly. Rising car ownership opened up the Welsh countryside and coastline to families who had previously been limited to local destinations. The establishment of Snowdonia National Park in 1951 and the Pembrokeshire Coast National Park in 1952 deliberately created accessible recreational spaces for the growing number of people who wanted to spend their leisure time outdoors. Holiday camps — many of which had opened in the 1930s but reached peak popularity in the 1950s — offered affordable all-inclusive breaks, making holidays a genuine expectation for many working Welsh families for the first time. Together, these changes meant that the 1950s represented a genuine transformation in how, where, and how often people in Wales were able to enjoy their leisure time.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is an A grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Specific Context</div>
+                  <p>Rationing ending in 1954, the 1953 Coronation broadcast, Snowdonia National Park in 1951 — these specific details anchor each cause to the 1950s rather than making vague claims about "more money." Precision like this is what separates Band 5 from Band 3.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Explanatory Links</div>
+                  <p>"A psychological as well as economic shift" — the answer explains <em>why</em> the end of austerity mattered, not just that it happened. Similarly, the shift from public to domestic leisure (cinema/pub → television) is explained as a structural change, not just a preference.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Youth Culture</div>
+                  <p>Connecting the Dansette and transistor radio to a specifically younger leisure audience shows awareness that change in leisure was not uniform — it created new social groupings. This kind of nuance earns marks in the higher bands.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Key technique</div>
+                  <p>Notice how the conclusion summarises the cumulative effect: "a genuine transformation in how, where, and how often people… enjoyed leisure time." Bringing together all three dimensions of change (manner, place, frequency) in one sentence shows the examiner that the answer has grasped the full scope of the question.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q7b: Capel Celyn / Welsh nationalism ── -->
+  <div class="q-card" id="qB7b">
+    <div class="q-header" onclick="toggleCard('qB7b')">
+      <div class="q-header-left">
+        <div class="q-number">Q7b</div>
+        <div class="q-title">How valuable is Item 1 to our understanding of the influence of Welsh nationalism in the 1950s?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">15 marks · AO2 + AO3</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">The Question</div>
+        <div class="q-text">How valuable is Item 1 to our understanding of the influence of Welsh nationalism in the 1950s?</div>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Item 1</div>
+        <div class="source-attribution">David Williamson, a political journalist, writing in the article "The Story of the outrage that has shaped Welsh politics for more than five decades" on the Welsh news website Wales Online (2016).</div>
+        <div class="source-text">"The flooding of the Welsh-speaking village of Capel Celyn to create a reservoir to provide water for Liverpool is a vital event in modern Welsh history. There was anger that Welsh-speaking residents would be moved out and natural resources were being taken away from Wales. There were appeals to Liverpool city council to save the village, but they were not enough to get plans dropped."</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Select a grade to view exemplar answer</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qB7b','c',this)">C Grade</button>
+          <button class="grade-btn" onclick="showGrade('qB7b','a',this)">A Grade</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qB7b-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Approx. 8–9 / 15</strong>Content is applied to the question and a provenance point is made. The evaluation is inconsistent — the answer identifies both value and limitation but does not develop either fully.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Item 1 is valuable because it explains that the flooding of Capel Celyn was an important event in Welsh history. It shows that Welsh people were angry about their language and resources being taken away. This is relevant to Welsh nationalism because it shows why people began to support causes like Plaid Cymru.
+
+However, it is less valuable because it was written by a journalist, not a historian. Journalists are not always as accurate as historians and might exaggerate things. Also, the article is from 2016 which is a long time after the 1950s so the writer might not know exactly what happened.
+
+The item also only talks about one event — the flooding of the valley — and doesn't mention other aspects of Welsh nationalism in the 1950s like the decline of the Welsh language or Plaid Cymru's campaigns.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is a C grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Strengths</div>
+                  <p>The connection between Capel Celyn and Welsh nationalist sentiment is correctly made. The limitation of focusing on a single event is identified. An attempt at provenance is made.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Weaknesses</div>
+                  <p>"2016 is a long time after" is not automatically a limitation — hindsight often improves historical understanding. The journalist-vs-historian point is underdeveloped: what specifically might a journalist write that a historian would not? The word "outrage" in the article's own title — implying a sympathetic viewpoint — is not noticed or explored.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Missing</div>
+                  <p>Own knowledge to test the content: the article's claim that Capel Celyn was "vital" to Welsh history should be tested against what we know — that the flooding galvanised support for Plaid Cymru, that Liverpool Corporation passed the bill without a single Welsh MP voting for it, and that Gwynfor Evans made it a central issue in the 1966 Carmarthen by-election.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ To improve</div>
+                  <p>On provenance, always look for specific clues within the source itself. This article's title uses the word "outrage" — that tells you about the author's perspective before you even read the content. Use those clues as your evidence for a provenance point, not just general assertions about journalists or hindsight.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qB7b-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Approx. 13–15 / 15</strong>Content and provenance both evaluated precisely and critically. Own contextual knowledge used to test the item's claims and measure its completeness. A convincing overall judgement is reached.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Item 1 has considerable value to our understanding of Welsh nationalism in the 1950s, though the scope of what it can tell us is constrained both by its focus on a single event and by questions about the perspective of its author.
+
+In terms of content, the item correctly identifies the flooding of Capel Celyn as a pivotal moment in Welsh nationalist history. It explains the dual nature of the grievance: the displacement of a Welsh-speaking community and the appropriation of Welsh natural resources for an English city. Both of these elements were central to nationalist rhetoric at the time. My own knowledge confirms that the parliamentary vote approving the Tryweryn bill passed without a single Welsh MP supporting it — a fact that gave nationalists a powerful argument that Welsh interests could never be protected within the Westminster system. This directly fed growing support for Plaid Cymru as voters sought a party that would represent Wales rather than defer to London. The item's claim that Capel Celyn was "a vital event in modern Welsh history" is borne out by the evidence.
+
+However, the item's value is limited in two important ways. First, it only describes one dimension of Welsh nationalism in the 1950s, leaving out other significant drivers of nationalist sentiment: the sharp ongoing decline in Welsh speakers, Plaid Cymru's growing electoral ambitions under Gwynfor Evans, and the closure of Welsh coal mines that was creating communities with little faith in the existing political parties. Welsh nationalism in the 1950s was a broad and evolving phenomenon; Capel Celyn was its most dramatic single moment, not its entirety.
+
+Second, and on provenance, the article carries markers of a sympathetic perspective. The title's use of the word "outrage" signals that Williamson is writing from within the nationalist narrative rather than offering a neutral analysis. Writing for a Welsh news website in 2016 — at a moment of renewed Welsh political consciousness following devolution — his audience would expect this framing. Williamson is a political journalist, not a historian, which means his primary purpose was to narrate and engage his readership rather than to offer the kind of measured assessment that academic history would require.
+
+Overall, Item 1 is genuinely valuable as a clear and accessible account of the Capel Celyn episode and its significance for Welsh nationalism — an account that my own knowledge confirms is accurate in its key claims. Its value is limited, however, by its focus on one episode, its sympathetic perspective, and the absence of a wider analysis of what nationalist influence across the 1950s as a whole actually consisted of.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is an A grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Provenance from the Source Itself</div>
+                  <p>"Outrage" in the title is used as direct evidence of the author's perspective. This is much stronger than saying "journalists might be biased" — it identifies a specific, textual clue and draws a reasoned inference from it.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Own Knowledge to Confirm AND Extend</div>
+                  <p>The Tryweryn parliamentary vote (no Welsh MPs in favour) is used to both <em>confirm</em> the item's claim and <em>extend</em> it by explaining the political consequence. This dual use of own knowledge — verifying and adding — is characteristic of the highest bands.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Completeness Tested</div>
+                  <p>The answer identifies what nationalism in the 1950s consisted of <em>beyond</em> Capel Celyn: language decline, Gwynfor Evans, pit closures. This tests the item's completeness rather than just its accuracy — a critical distinction at Band 5.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Key technique</div>
+                  <p>For 15-mark source questions, structure your answer around three layers: (1) What the content tells us and whether it's accurate; (2) What important context the item omits; (3) What the source's origins tell us about its perspective. Always bring these together in a final judgement.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Q8b: 1919 Race Riots ── -->
+  <div class="q-card" id="qB8b">
+    <div class="q-header" onclick="toggleCard('qB8b')">
+      <div class="q-header-left">
+        <div class="q-number">Q8b</div>
+        <div class="q-title">To what extent do Item 2 and Item 3 persuade you that racial tensions were significant in South Wales in 1919?</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <div class="q-marks">20 marks · AO2 + AO3</div>
+        <div class="q-chevron">▼</div>
+      </div>
+    </div>
+    <div class="q-body">
+      <div class="q-text-box">
+        <div class="q-text-label">The Question</div>
+        <div class="q-text">To what extent do Item 2 and Item 3 persuade you that racial tensions were significant in South Wales in 1919?</div>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Item 2</div>
+        <div class="source-attribution">Adapted from the history book <em>Black and British – A Forgotten History</em> by historian and television broadcaster David Olusoga (2016).</div>
+        <div class="source-text">"In June, violence erupted in Newport in Wales. Black men's lodgings and black families' homes were attacked and ransacked. Racial violence next exploded in the Welsh port of Barry, and by 11 June it had spread to Tiger Bay in Cardiff. The riots in Cardiff lasted a week and cost three men their lives. Huge gangs patrolled the streets on the hunt for black men."</div>
+      </div>
+
+      <div class="source-box">
+        <div class="source-label">Item 3</div>
+        <div class="source-attribution">A report in the Wales-based newspaper <em>The Western Mail</em> (12 June 1919).</div>
+        <div class="source-text">"The crowd of rioters moved to Herbert Street in Cardiff Bay where information had been passed around concerning a house occupied by several black men. There was no hesitation. The crowd attacked the house immediately, breaking the windows and forcing an entrance to the building. The interior was completely wrecked and the furniture was thrown into the road."</div>
+      </div>
+
+      <div class="grade-toggle-section">
+        <div class="grade-toggle-label">Select a grade to view exemplar answer</div>
+        <div class="grade-toggle">
+          <button class="grade-btn active-c" onclick="showGrade('qB8b','c',this)">C Grade</button>
+          <button class="grade-btn" onclick="showGrade('qB8b','a',this)">A Grade</button>
+        </div>
+      </div>
+
+      <div class="answer-panels">
+        <div class="answer-panel visible" id="qB8b-c">
+          <div class="grade-label-banner c-banner">
+            <div class="grade-big">C</div>
+            <div class="grade-desc"><strong>Band 3 · Approx. 11–12 / 20</strong>Both items are used and their content linked to the question. Provenance is noted for each. A judgement is reached but own contextual knowledge is not deployed to go beyond the items.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell filled-c"></div>
+            <div class="band-cell"></div>
+            <div class="band-cell"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Items 2 and 3 both persuade me that racial tensions were significant in South Wales in 1919. Item 2 says that violence spread from Newport to Barry to Cardiff and lasted a week, which shows it was serious and widespread. Three men died which also shows how significant the tensions were.
+
+Item 3 gives a specific example of a mob attacking a house where black men were living. This shows the racial nature of the attacks and how targeted they were.
+
+Item 2 was written by David Olusoga who is a historian so it is reliable. Item 3 is a primary source from a newspaper in 1919 which makes it a direct account of what happened.
+
+Overall I am persuaded that the racial tensions were significant because both items show widespread violence against black people in South Wales.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is a C grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Strengths</div>
+                  <p>Both items are used and linked to the question. Evidence of spread (Newport–Barry–Cardiff), duration (one week), and targeted nature of attacks is correctly extracted. A conclusion is present.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Weaknesses</div>
+                  <p>The provenance analysis is too simple. "David Olusoga is a historian so it is reliable" ignores that Olusoga is also a television broadcaster and is known for writing from the perspective of Black British history — which is not a limitation but does shape his focus and purpose. "Primary source = reliable" for Item 3 is a common misconception: a newspaper account could be sensationalised, lack context, or reflect the reporter's own perspective.</p>
+                </div>
+                <div class="comm-point weakness">
+                  <div class="comm-point-label">✗ Missing</div>
+                  <p>Own knowledge is essential at this mark level: the disproportionate arrest of Black victims rather than white rioters; the government's repatriation scheme; the context of demobilised soldiers competing for jobs; the 1919 Immigration Act. These contextual points would allow the student to test the items' claim that tensions were "significant" and to show the full extent of what that significance meant.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ To improve</div>
+                  <p>After evaluating both items, always ask: <em>"What do I know that the items do not mention — and what does that add to my answer?"</em> The most significant aspect of the 1919 riots may not be the violence itself but the institutional response: Black men were arrested as victims, and the government responded with deportation rather than protection. That tells us even more about how deep the racial tensions ran.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="answer-panel" id="qB8b-a">
+          <div class="grade-label-banner a-banner">
+            <div class="grade-big">A</div>
+            <div class="grade-desc"><strong>Band 5 · Approx. 17–20 / 20</strong>Both items evaluated critically for content and provenance. Substantial own knowledge deployed to contextualise, extend, and qualify the items' evidence. A nuanced, comprehensive judgement is reached.</div>
+          </div>
+          <div class="band-scale">
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <div class="band-cell filled-a"></div>
+            <span class="band-scale-label">Bands 1–5</span>
+          </div>
+          <div class="answer-text">Both items provide persuasive evidence that racial tensions were significant in South Wales in 1919, and together they build a compelling case. However, they tell only part of the story — and the parts they omit arguably reveal the significance of those tensions even more starkly than the violence they describe.
+
+Item 2, from David Olusoga's book Black and British, offers the clearest evidence of the scale and severity of the riots. The geographical spread — from Newport to Barry to Tiger Bay in Cardiff — and the duration of a week demonstrate that this was not a single incident of disorder but a sustained wave of racially motivated violence. The detail that "huge gangs patrolled the streets on the hunt for black men" captures the organised, targeted nature of the attacks — this was not opportunistic crime but deliberate racial persecution. As a historian and broadcaster who has specialised in Black British history, Olusoga writes from a position of considerable knowledge and a commitment to recovering this neglected history. His account is likely accurate and well-researched, though it is worth noting that his focus on Black British experience means the perspective of the white rioters — what drove their participation — is not explored here.
+
+Item 3, the contemporary Western Mail report, corroborates the targeted nature of the violence with immediate, eyewitness-style detail. The mob's intelligence-gathering — "information had been passed around concerning a house occupied by several black men" — and the precision of the attack suggest a degree of coordination that goes beyond spontaneous crowd violence. As a newspaper report from the day of the events, it provides direct evidence of what was happening on the streets of Cardiff Bay. However, I would note that the report describes the scene without providing any context for why it was happening — there is no mention of the causes of tension, and a reader without additional knowledge might conclude that these attacks emerged from nowhere.
+
+My own knowledge adds two dimensions that the items alone cannot provide, both of which strengthen the case that tensions were deeply significant. First, the background causes: the return of demobilised soldiers after the First World War created intense competition for jobs and housing in Cardiff's docklands communities. White workers, many of whom had served in the war, resented the presence of Black workers whom they perceived as competitors. This economic anxiety combined with pre-existing racial prejudice to make South Wales's port communities a flashpoint. Second — and most telling about the depth of the tensions — was the institutional response. Despite the fact that Black men and their families were the victims of the violence, a disproportionate number of those arrested by the police were from the Black community. The government's reaction was not to protect the victims but to introduce a repatriation scheme and tighten immigration legislation with the 1920 Aliens Order. This official endorsement of racial hierarchy suggests that the tensions were not just significant at street level but were embedded in the structures of the state itself.
+
+On balance, I am persuaded that racial tensions were very significant in South Wales in 1919. The items demonstrate the extent and intensity of the violence; my own knowledge shows that the response of both the police and the government effectively validated and extended that violence rather than challenging it. This combination — mass street violence followed by institutional complicity — is the fullest measure of just how significant those tensions were.</div>
+          <div class="commentary-section">
+            <button class="commentary-toggle" onclick="toggleCommentary(this)">
+              <span class="ct-icon">💬</span> Examiner Commentary — why this is an A grade
+              <span class="ct-arrow">▼</span>
+            </button>
+            <div class="commentary-body">
+              <div class="commentary-grid">
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Institutional Response as Evidence</div>
+                  <p>The answer's most powerful move is using the police and government response — arresting victims, introducing deportation — as evidence that racial tensions were <em>even more</em> significant than the items show. This is sophisticated historical thinking: what the state does in response to events often reveals more than the events themselves.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Provenance: Nuanced, Not Binary</div>
+                  <p>Olusoga is acknowledged as knowledgeable AND noted as having a specific focus — so his perspective shapes what he includes. Item 3 is praised for immediacy but criticised for lacking context. Neither source is simply "reliable" or "unreliable" — this nuanced approach characterises Band 5.</p>
+                </div>
+                <div class="comm-point strength">
+                  <div class="comm-point-label">✓ Causes as Context</div>
+                  <p>The demobilisation of soldiers and competition for jobs — not in either item — is introduced to explain <em>why</em> the tensions existed, not just that they did. This causal context shows the examiner that the student understands the period, not just the incident.</p>
+                </div>
+                <div class="comm-point tip">
+                  <div class="comm-point-label">→ Key technique</div>
+                  <p>Notice the conclusion: "mass street violence followed by institutional complicity — is the fullest measure of just how significant those tensions were." This goes beyond the items to reach a deeper answer. Always ask what your own knowledge adds to the question that the items cannot answer on their own.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- ═══════════════════════════════════ END SECTION B ═══════════════════════════════════ -->
+
+</main>
+
+<footer>
+  <p>WJEC GCSE History Unit 1: Modern &nbsp;·&nbsp; Exemplar Training Activity &nbsp;·&nbsp; Based on <span>WJEC CBAC Sample Assessment Materials 2024</span></p>
+  <p style="margin-top:4px">Teaching from 2026 · For award from 2028 · This resource is for teaching purposes only.</p>
+</footer>
+
+<script>
+  const reviewed = new Set();
+
+  function showSection(id, btn) {
+    document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.section-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+  }
+
+  function toggleCard(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('expanded');
+    if (card.classList.contains('expanded')) {
+      reviewed.add(id);
+      updateProgress();
+    }
+  }
+
+  function showGrade(qId, grade, btn) {
+    document.querySelectorAll(`#${qId}-c, #${qId}-a`).forEach(p => p.classList.remove('visible'));
+    document.getElementById(`${qId}-${grade}`).classList.add('visible');
+    const toggle = btn.closest('.grade-toggle');
+    toggle.querySelectorAll('.grade-btn').forEach(b => {
+      b.classList.remove('active-c', 'active-a');
+    });
+    btn.classList.add(grade === 'c' ? 'active-c' : 'active-a');
+  }
+
+  function toggleCommentary(btn) {
+    btn.classList.toggle('open');
+    const body = btn.nextElementSibling;
+    body.classList.toggle('open');
+  }
+
+  function updateProgress() {
+    const total = 6;
+    const count = reviewed.size;
+    document.getElementById('progress-text').textContent = `${count} / ${total} reviewed`;
+    document.getElementById('progress-fill').style.width = `${(count / total) * 100}%`;
+    if (count >= 6) {
+      if (!document.getElementById('certTriggerBox')) {
+        var trig = document.createElement('div');
+        trig.id = 'certTriggerBox';
+        trig.className = 'cert-trigger-box';
+        trig.innerHTML = '<p>&#127885; <strong>Congratulations! You have reviewed all exemplars. Enter your full name to generate your personalised completion certificate.</strong><br><em style="opacity:.65;font-size:.82rem">Llongyfarchiadau — rhowch eich enw i greu eich tystysgrif.</em></p><div class="cert-name-row"><input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name &middot; Eich enw llawn&hellip;" maxlength="80"><button class="btn-cert" onclick="generateCertificate()">&#127891; Generate Certificate &middot; Creu Tystysgrif</button></div>';
+        var footer = document.querySelector('footer');
+        if (footer) { footer.parentNode.insertBefore(trig, footer); }
+        else { document.querySelector('main').appendChild(trig); }
+        setTimeout(function(){ trig.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 300);
+      }
+    }
+  }
+
+  window.addEventListener('load', () => {
+    document.querySelectorAll('.q-card').forEach((card, i) => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(16px)';
+      setTimeout(() => {
+        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, 100 + i * 80);
+    });
+  });
+</script>
+
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:2rem;">📜</div>
+            <div class="cert-inst-name">WJEC CBAC — GCSE History · Hanes TGAU
+              <span class="cert-inst-sub">Curriculum for Wales | Cwricwlwm i Gymru</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that · Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher · yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.5rem 0 .3rem"><div class="cert-name" id="certDisplayName">Your Name</div></div>
+          
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the training session on</div>
+          <div class="cert-course">WJEC GCSE History — Unit 1 Modern: Exemplar Answer Training
+            <span class="cert-course-sub">TGAU Hanes CBAC — Uned 1 Modern: Hyfforddiant Atebion Enghreifftiol</span>
+          </div>
+          <div class="cert-competencies">Demonstrating understanding of WJEC GCSE History Unit 1 Modern band descriptors, evaluation of Band C and Band A exemplar responses, source evaluation using provenance and own knowledge, and extended writing for 'To what extent' questions — including Welsh contexts: the Merthyr Rising 1831, Capel Celyn/Tryweryn, and the 1919 Cardiff race riots.</div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <div class="cert-sig-label">Subject Tutor · Tiwtor Pwnc</div>
+            </div>
+            <div><div class="cert-seal"><span class="cert-seal-icon">🎓</span>PGCE<br>CYMRU</div></div>
+            <div class="cert-sig-block">
+              <div class="cert-date-val" id="certDateDisplay"></div>
+              <div class="cert-date-label">Date Completed · Dyddiad Cwblhau</div>
+            </div>
+          </div>
+          <div class="cert-stripe" style="margin:1.2rem -2rem -1.6rem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">🖨 Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">✕ Close · Cau</button>
+    </div>
+  </div>
+</div>
+<script>
+function generateCertificate(){
+  var name=document.getElementById('certNameInput').value.trim();
+  if(!name){document.getElementById('certNameInput').focus();document.getElementById('certNameInput').style.borderColor='#c9a84c';setTimeout(function(){document.getElementById('certNameInput').style.borderColor='';},1500);return;}
+  document.getElementById('certDisplayName').textContent=name;
+  var now=new Date();
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('certDateDisplay').textContent=now.getDate()+' '+months[now.getMonth()]+' '+now.getFullYear();
+  document.getElementById('certOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeCertificate(){document.getElementById('certOverlay').classList.remove('show');document.body.style.overflow='';}
+function printCertificate(){
+  var cert=document.getElementById('certificateEl');
+  var w=window.open('','_blank','width=900,height=700');
+  w.document.write('<html><head><title>Certificate</title>');
+  document.querySelectorAll('style,link[rel="stylesheet"]').forEach(function(s){w.document.write(s.outerHTML);});
+  w.document.write('</head><body style="margin:0;padding:20px;background:white;">');
+  w.document.write(cert.outerHTML);
+  w.document.write('</body></html>');
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener('click',function(e){if(e.target.id==='certOverlay')closeCertificate();});
+</script>
+</body>
+</html>
