@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="cy-en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teaching Historical Interpretations | Dysgu Dehongliad Hanesyddol — PGCE History Wales</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --hist:#7C2D12;--hist-mid:#B91C1C;--hist-light:#FEE2E2;--hist-pale:#FFF5F5;
+  --gold:#B45309;--gold-light:#FEF3C7;--gold-pale:#FFFBEB;
+  --teal:#0F766E;--teal-light:#CCFBF1;--teal-pale:#F0FDFA;
+  --indigo:#3730A3;--indigo-light:#C7D2FE;--indigo-pale:#EEF2FF;
+  --green:#15803D;--green-light:#DCFCE7;
+  --purple:#6D28D9;--purple-light:#EDE9FE;
+  --slate:#1E293B;--slate-mid:#475569;--slate-light:#94A3B8;
+  --white:#fff;--off:#FAFAF9;--border:#E7E5E4;
+  --shadow:0 4px 24px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Sans 3',sans-serif;background:var(--off);color:var(--slate);min-height:100vh}
+header{background:linear-gradient(135deg,#450A0A 0%,var(--hist) 55%,#991B1B 100%);color:#fff;padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.lang-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:.3rem 1rem;font-size:.8rem;font-weight:600;letter-spacing:.05em;margin-bottom:1.5rem}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.8vw,2.5rem);line-height:1.2;margin-bottom:.4rem}
+header h1 span{display:block;font-size:.55em;font-weight:700;opacity:.75;letter-spacing:.03em;margin-top:.3rem}
+.header-sub{font-size:.93rem;opacity:.82;margin-top:.8rem}
+.subject-pills{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
+.pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.3rem .9rem;font-size:.78rem;font-weight:600}
+.progress-bar-wrap{max-width:600px;margin:1.5rem auto 0;background:rgba(255,255,255,.18);border-radius:999px;height:8px;overflow:hidden}
+#progress-bar{height:100%;background:#FCD34D;border-radius:999px;transition:width .5s ease;width:0%}
+#progress-label{font-size:.78rem;opacity:.78;margin-top:.4rem}
+main{max-width:960px;margin:0 auto;padding:2rem 1rem 4rem}
+.section-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.snav-btn{padding:.4rem .85rem;border-radius:999px;border:2px solid var(--border);background:#fff;font-size:.76rem;font-weight:600;cursor:pointer;color:var(--slate-mid);transition:all .2s;white-space:nowrap}
+.snav-btn.done{border-color:var(--green);color:#14532D;background:var(--green-light)}
+.snav-btn.active{border-color:var(--hist);color:var(--hist);background:var(--hist-pale)}
+.section-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);display:none;animation:fadeIn .4s ease}
+.section-card.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.card-header{padding:1.5rem 2rem;display:flex;align-items:center;gap:1rem;border-bottom:2px solid}
+.card-header.hist{background:var(--hist-pale);border-color:#FECACA}
+.card-header.gold{background:var(--gold-pale);border-color:#FDE68A}
+.card-header.teal{background:var(--teal-pale);border-color:var(--teal-light)}
+.card-header.indigo{background:var(--indigo-pale);border-color:var(--indigo-light)}
+.card-header.green{background:var(--green-light);border-color:#86EFAC}
+.card-header.purple{background:var(--purple-light);border-color:#C4B5FD}
+.card-header.slate{background:#F1F5F9;border-color:#CBD5E1}
+.card-header .icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.card-header.hist .icon{background:var(--hist)}.card-header.gold .icon{background:var(--gold)}
+.card-header.teal .icon{background:var(--teal)}.card-header.indigo .icon{background:var(--indigo)}
+.card-header.green .icon{background:var(--green)}.card-header.purple .icon{background:var(--purple)}
+.card-header.slate .icon{background:var(--slate)}
+.card-header h2{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--slate);line-height:1.3}
+.card-header h2 em{display:block;font-family:'Source Sans 3',sans-serif;font-size:.75rem;font-style:normal;font-weight:600;color:var(--slate-mid);margin-top:.15rem;letter-spacing:.03em}
+.card-body{padding:2rem}
+@media(max-width:600px){.card-body{padding:1.2rem}}
+.bilingual-block{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+@media(max-width:600px){.bilingual-block{grid-template-columns:1fr}}
+.lang-col{background:var(--hist-pale);border-radius:10px;padding:1.2rem;border-left:4px solid var(--hist)}
+.lang-col.welsh{border-left-color:#B45309;background:var(--gold-pale)}
+.lang-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-mid);margin-bottom:.6rem}
+.lang-col p,.lang-col li{font-size:.92rem;line-height:1.7;color:var(--slate)}
+.lang-col ul{padding-left:1.2rem;margin-top:.4rem}
+.lang-col li{margin-bottom:.3rem}
+.info-box{background:var(--hist-pale);border:1px solid #FECACA;border-radius:10px;padding:1.2rem 1.5rem;margin-bottom:1.5rem}
+.info-box.gold{background:var(--gold-pale);border-color:#FDE68A}
+.info-box.teal{background:var(--teal-pale);border-color:var(--teal-light)}
+.info-box.key{background:var(--slate);border-color:var(--slate-mid)}
+.info-box.indigo{background:var(--indigo-pale);border-color:var(--indigo-light)}
+.info-box.green{background:var(--green-light);border-color:#86EFAC}
+.info-box.purple{background:var(--purple-light);border-color:#C4B5FD}
+.info-box h3{font-size:.83rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--hist);margin-bottom:.7rem}
+.info-box.gold h3{color:var(--gold)}.info-box.teal h3{color:var(--teal)}
+.info-box.key h3{color:#FCD34D}.info-box.indigo h3{color:var(--indigo)}
+.info-box.green h3{color:var(--green)}.info-box.purple h3{color:var(--purple)}
+.info-box p,.info-box li{font-size:.92rem;line-height:1.7;color:var(--slate)}
+.info-box.key p,.info-box.key li{color:rgba(255,255,255,.9)}
+.info-box ul{padding-left:1.3rem;margin-top:.4rem}
+.info-box ul li{margin-bottom:.35rem}
+.quote-block{background:var(--slate);color:white;border-radius:10px;padding:1.4rem 1.8rem;margin:1.5rem 0;position:relative;overflow:hidden}
+.quote-block::before{content:'"';font-family:'Playfair Display',serif;font-size:6rem;color:rgba(255,255,255,.06);position:absolute;top:-.5rem;left:.5rem;line-height:1}
+.quote-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;line-height:1.65;color:rgba(255,255,255,.92);position:relative;z-index:1}
+.quote-attr{font-size:.78rem;color:#FCD34D;margin-top:.6rem;font-weight:600}
+/* ARTICLE CARDS */
+.article-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1.2rem 0}
+@media(max-width:700px){.article-grid{grid-template-columns:1fr}}
+.article-card{background:#fff;border:2px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color .2s,box-shadow .2s}
+.article-card:hover{border-color:var(--hist);box-shadow:0 4px 16px rgba(124,45,18,.1)}
+.article-card h4{font-family:'Playfair Display',serif;font-size:.97rem;color:var(--hist);margin-bottom:.2rem;line-height:1.3}
+.article-card .author{font-size:.76rem;color:var(--slate-mid);font-style:italic;margin-bottom:.5rem}
+.article-card p{font-size:.83rem;color:var(--slate-mid);line-height:1.55}
+.article-num{display:inline-flex;align-items:center;justify-content:center;background:var(--hist);color:white;border-radius:6px;width:1.6rem;height:1.6rem;font-size:.78rem;font-weight:700;margin-bottom:.6rem}
+.article-pdf-note{margin-top:.6rem;background:var(--gold-pale);border:1px solid #FDE68A;border-radius:6px;padding:.4rem .7rem;font-size:.76rem;color:var(--gold);font-weight:600}
+/* COMPARE TABLE */
+.compare-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.87rem}
+.compare-table th{background:var(--slate);color:white;padding:.7rem 1rem;text-align:left;font-size:.78rem;letter-spacing:.03em}
+.compare-table td{padding:.7rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55}
+.compare-table tr:hover td{background:var(--off)}
+.compare-table tr:last-child td{border-bottom:none}
+/* PURPOSE GRID */
+.purpose-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0}
+@media(max-width:560px){.purpose-grid{grid-template-columns:1fr}}
+.purpose-card{border-radius:10px;padding:1.1rem;border:2px solid}
+.purpose-card.ambitious{border-color:var(--indigo-light);background:var(--indigo-pale)}
+.purpose-card.enterprising{border-color:#FDE68A;background:var(--gold-pale)}
+.purpose-card.ethical{border-color:var(--teal-light);background:var(--teal-pale)}
+.purpose-card.healthy{border-color:#86EFAC;background:var(--green-light)}
+.purpose-label{font-size:.76rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem}
+.purpose-card.ambitious .purpose-label{color:var(--indigo)}
+.purpose-card.enterprising .purpose-label{color:var(--gold)}
+.purpose-card.ethical .purpose-label{color:var(--teal)}
+.purpose-card.healthy .purpose-label{color:var(--green)}
+.purpose-card ul{padding-left:1.1rem;font-size:.84rem;line-height:1.6;color:var(--slate)}
+.purpose-card li{margin-bottom:.25rem}
+/* STATEMENTS */
+.statement-row{display:flex;gap:.8rem;align-items:flex-start;padding:.7rem 0;border-bottom:1px solid var(--border)}
+.statement-row:last-child{border-bottom:none}
+.stmt-num{background:var(--hist);color:white;border-radius:6px;width:1.8rem;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
+.stmt-num.active-stmt{background:var(--gold);color:var(--slate)}
+.stmt-content h4{font-size:.93rem;font-weight:700;color:var(--slate);margin-bottom:.2rem}
+.stmt-content p{font-size:.85rem;color:var(--slate-mid);line-height:1.55}
+/* STRATEGY CARDS */
+.strategy-block{background:#fff;border:2px solid var(--border);border-radius:12px;margin-bottom:1.5rem;overflow:hidden}
+.strategy-header{padding:1rem 1.4rem;display:flex;align-items:center;gap:.8rem;border-bottom:1px solid var(--border)}
+.strategy-header.stanford{background:var(--indigo-pale);border-color:var(--indigo-light)}
+.strategy-header.dawson{background:var(--teal-pale);border-color:var(--teal-light)}
+.strategy-header.sugarman{background:var(--gold-pale);border-color:#FDE68A}
+.strategy-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.strategy-header.stanford .strategy-icon{background:var(--indigo)}
+.strategy-header.dawson .strategy-icon{background:var(--teal)}
+.strategy-header.sugarman .strategy-icon{background:var(--gold)}
+.strategy-title{font-family:'Playfair Display',serif;font-size:1rem;color:var(--slate);line-height:1.3}
+.strategy-title em{display:block;font-family:'Source Sans 3',sans-serif;font-size:.74rem;font-style:normal;color:var(--slate-mid);margin-top:.1rem}
+.strategy-body{padding:1.3rem 1.4rem}
+.strategy-body p{font-size:.9rem;line-height:1.65;color:var(--slate);margin-bottom:.8rem}
+.welsh-adapt{background:var(--gold-pale);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:.7rem 1rem;font-size:.87rem;line-height:1.6;color:var(--slate);margin:.6rem 0}
+.welsh-adapt strong{color:var(--gold);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.2rem}
+/* READING FRAMES */
+.reading-frame{background:var(--off);border:2px solid var(--border);border-radius:10px;padding:1.2rem;margin-bottom:1.2rem}
+.reading-frame h4{font-family:'Playfair Display',serif;font-size:.97rem;color:var(--hist);margin-bottom:.5rem}
+.focus-q{background:var(--gold-pale);border-left:3px solid var(--gold);border-radius:0 7px 7px 0;padding:.65rem .9rem;margin:.45rem 0;font-size:.88rem;color:var(--slate);line-height:1.55}
+.focus-q strong{color:var(--gold);font-size:.74rem;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:.15rem}
+/* QUIZ */
+.quiz-question{background:var(--off);border-radius:10px;padding:1.2rem;margin-bottom:1rem;border:1px solid var(--border)}
+.q-text{font-weight:700;font-size:.97rem;margin-bottom:.25rem;line-height:1.5}
+.q-welsh{font-size:.84rem;color:var(--slate-mid);font-style:italic;margin-bottom:.9rem;line-height:1.5}
+.q-num{display:inline-flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;background:var(--hist);color:white;border-radius:50%;font-size:.72rem;font-weight:700;margin-right:.4rem;flex-shrink:0}
+.options{display:flex;flex-direction:column;gap:.5rem}
+.option-btn{text-align:left;background:#fff;border:2px solid var(--border);border-radius:8px;padding:.65rem 1rem;font-family:'Source Sans 3',sans-serif;font-size:.9rem;cursor:pointer;transition:all .15s;line-height:1.5;color:var(--slate)}
+.option-btn:hover:not(:disabled){border-color:var(--hist);background:var(--hist-pale)}
+.option-btn.correct{border-color:var(--green);background:var(--green-light);color:#14532D}
+.option-btn.wrong{border-color:var(--hist-mid);background:var(--hist-light);color:#7F1D1D}
+.feedback{display:none;padding:.8rem 1rem;border-radius:8px;font-size:.87rem;line-height:1.6;margin-top:.5rem}
+.feedback.correct.show{display:block;background:var(--green-light);border-left:3px solid var(--green);color:#14532D}
+.feedback.wrong.show{display:block;background:var(--hist-light);border-left:3px solid var(--hist-mid);color:#7F1D1D}
+/* GLOSSARY */
+.glossary-grid{display:grid;gap:.8rem;margin:1rem 0}
+.glossary-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start}
+.gloss-term{font-weight:700;font-size:.88rem;color:var(--hist);min-width:8rem;flex-shrink:0}
+.gloss-def{font-size:.87rem;color:var(--slate-mid);line-height:1.6}
+/* TEXTAREA */
+textarea{width:100%;padding:.7rem .9rem;font-family:'Source Sans 3',sans-serif;font-size:.9rem;border:2px solid var(--border);border-radius:8px;resize:vertical;min-height:70px;color:var(--slate);line-height:1.6;transition:border-color .2s;margin-top:.5rem}
+textarea:focus{outline:none;border-color:var(--hist)}
+.task-box{background:var(--gold-pale);border:2px solid #FDE68A;border-radius:10px;padding:1.2rem 1.4rem;margin:1.4rem 0}
+.task-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.task-num{background:var(--gold);color:white;border-radius:50%;width:1.3rem;height:1.3rem;display:flex;align-items:center;justify-content:center;font-size:.68rem}
+.field-label{font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate-mid);margin-bottom:.2rem;display:block;margin-top:.6rem}
+/* COMPARISON TABLE */
+.big-compare{width:100%;border-collapse:collapse;font-size:.83rem;margin:1rem 0}
+.big-compare th{background:var(--slate);color:white;padding:.6rem .8rem;text-align:left;font-size:.78rem;letter-spacing:.03em}
+.big-compare td{padding:.6rem .8rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+.big-compare tr:hover td{background:var(--off)}
+/* BTN */
+.btn-row{display:flex;gap:.75rem;justify-content:space-between;flex-wrap:wrap;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border)}
+.btn{padding:.6rem 1.4rem;border-radius:8px;border:2px solid transparent;font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--hist);color:#fff;border-color:var(--hist)}.btn-primary:hover{background:#6b1010}
+.btn-secondary{background:#fff;color:var(--slate-mid);border-color:var(--border)}.btn-secondary:hover{border-color:var(--slate-mid)}
+.btn-amber{background:var(--gold);color:white;border-color:var(--gold)}.btn-amber:hover{background:#92400E}
+/* COMPLETION */
+.completion-card{display:none;background:linear-gradient(135deg,#450A0A,var(--hist));color:white;border-radius:16px;padding:3rem 2rem;text-align:center;margin-top:2rem}
+.completion-card.show{display:block}
+.badge-icon{font-size:4rem;display:block;margin-bottom:1rem}
+.completion-card h2{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.75rem}
+.score-badge{display:inline-block;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);border-radius:999px;padding:.3rem 1.2rem;font-size:1rem;font-weight:700;margin-bottom:1rem}
+.completion-card p{font-size:.95rem;opacity:.88;line-height:1.7;max-width:560px;margin:0 auto .8rem}
+/* CERT */
+.cert-trigger-box{margin-top:1.5rem;padding:1.5rem;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.4);border-radius:12px;text-align:center}
+.cert-trigger-box p{font-size:.88rem;opacity:.85;margin-bottom:1rem;line-height:1.6}
+.cert-name-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.cert-name-input{padding:.6rem 1rem;font-family:'Source Sans 3',sans-serif;font-size:.95rem;border:2px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(255,255,255,.15);color:white;width:250px}
+.cert-name-input::placeholder{color:rgba(255,255,255,.4)}
+.cert-name-input:focus{outline:none;border-color:#FCD34D}
+.btn-cert{background:#FCD34D;color:#1a1a1a;border:none;padding:.6rem 1.3rem;border-radius:8px;font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:white;border-radius:8px;width:100%;max-width:780px;max-height:95vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.certificate{width:100%;background:white}
+.cert-frame{margin:16px;border:3px solid #7C2D12;position:relative}
+.cert-frame::before{content:'';position:absolute;inset:5px;border:1px solid #B45309;pointer-events:none;z-index:1}
+.cert-stripe{height:5px;background:linear-gradient(90deg,#450A0A 0%,#B45309 40%,#006400 100%)}
+.cert-header{background:linear-gradient(135deg,#450A0A 0%,#7C2D12 100%);padding:1.3rem 2rem 1.1rem;text-align:center}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.cert-inst-name{font-family:'Playfair Display',serif;color:white;font-size:1rem;text-align:left;line-height:1.2}
+.cert-inst-cy{color:#FDE68A;font-size:.75rem;font-style:italic;display:block;font-family:'Source Sans 3',sans-serif;font-weight:400}
+.cert-body{padding:1.6rem 2rem;text-align:center}
+.cert-presents{font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;margin-bottom:.4rem}
+.cert-main-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:#7C2D12;line-height:1.2;margin-bottom:.2rem}
+.cert-main-cy{font-size:.85rem;color:#B45309;font-style:italic;margin-bottom:1.2rem;font-family:'Source Sans 3',sans-serif}
+.cert-awarded-to{font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;color:#475569;margin-bottom:.2rem}
+.cert-name{font-family:'Playfair Display',serif;font-size:1.9rem;color:#7C2D12;border-bottom:2px solid #E2E8F0;display:inline-block;padding:0 1rem .1rem;min-width:260px;margin-bottom:.3rem;line-height:1.3}
+.cert-score-pill{display:inline-block;background:#FEF3C7;border:1px solid #B45309;border-radius:999px;padding:.25rem 1rem;font-size:.8rem;font-weight:700;color:#92400E;margin:.5rem 0 .8rem}
+.cert-divider{height:1px;background:linear-gradient(90deg,transparent,#B45309,transparent);margin:.9rem auto;width:55%}
+.cert-text{font-size:.86rem;color:#1E293B;line-height:1.65;max-width:440px;margin:0 auto .7rem}
+.cert-course{font-family:'Playfair Display',serif;font-size:.95rem;color:#1E293B;background:#FFF7ED;border:1px solid #FDE68A;border-left:4px solid #7C2D12;padding:.45rem .9rem;display:inline-block;margin-bottom:.35rem;text-align:left}
+.cert-course-cy{font-size:.76rem;color:#B45309;font-style:italic;display:block;font-family:'Source Sans 3',sans-serif;font-weight:400}
+.cert-competencies{font-size:.76rem;color:#475569;margin:.2rem auto 1rem;max-width:420px;line-height:1.55}
+.cert-footer-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:1rem;padding-top:1rem;border-top:1px solid #E2E8F0}
+.cert-sig-block{text-align:center}
+.cert-sig-line{height:1px;background:#1E293B;width:140px;margin:0 auto .25rem}
+.cert-sig-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569}
+.cert-seal{width:64px;height:64px;border-radius:50%;background:#7C2D12;border:3px solid #B45309;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-size:.5rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;line-height:1.3;margin:0 auto}
+.cert-seal-icon{font-size:1.2rem;display:block;margin-bottom:1px}
+.cert-date-val{font-family:'Playfair Display',serif;font-size:.9rem;color:#1E293B}
+.cert-date-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569;margin-top:.2rem}
+.cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.9rem 1.5rem 1.2rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
+.btn-cert-print{background:#7C2D12;color:white;border:none;padding:.55rem 1.2rem;border-radius:8px;font-family:'Source Sans 3',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer}
+.btn-cert-close{background:#475569;color:white;border:none;padding:.55rem 1.2rem;border-radius:8px;font-family:'Source Sans 3',sans-serif;font-size:.86rem;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <div class="lang-badge">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg · English</div>
+  <h1>Teaching Historical Interpretations
+    <span>Dysgu Dehongliad Hanesyddol — PGCE History | Curriculum for Wales</span>
+  </h1>
+  <p class="header-sub">Drawing on Teaching History 130: Stanford · Dawson · Sugarman-Banaszak &nbsp;|&nbsp; Humanities AoLE · CfW · Cynefin</p>
+  <div class="subject-pills">
+    <span class="pill">📜 PGCE History · Hanes</span>
+    <span class="pill">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Curriculum for Wales</span>
+    <span class="pill">🎨 Teaching History 130</span>
+    <span class="pill">📋 Statements of What Matters</span>
+  </div>
+  <div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+  <p id="progress-label" class="progress-label">Section 1 of 7 · Adran 1 o 7</p>
+</header>
+<main>
+  <div class="section-nav">
+    <button class="snav-btn active" onclick="goTo(0)">1 · CfW Framework</button>
+    <button class="snav-btn" onclick="goTo(1)">2 · Sources vs Interpretations</button>
+    <button class="snav-btn" onclick="goTo(2)">3 · Three Articles</button>
+    <button class="snav-btn" onclick="goTo(3)">4 · Strategies</button>
+    <button class="snav-btn" onclick="goTo(4)">5 · Connecting &amp; Planning</button>
+    <button class="snav-btn" onclick="goTo(5)">6 · Quiz</button>
+    <button class="snav-btn" onclick="goTo(6)">7 · Reflection</button>
+  </div>
+
+  <!-- ═══ SECTION 1: CfW FRAMEWORK ═══ -->
+  <div class="section-card active" id="sec-0">
+    <div class="card-header hist">
+      <div class="icon">🏴󠁧󠁢󠁷󠁬󠁳󠁿</div>
+      <h2>Section 1: The Curriculum for Wales Framework
+        <em>Adran 1: Fframwaith Cwricwlwm i Gymru</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 English</div>
+          <p>This session explores one of the most important — and sometimes underused — concepts in the Humanities AoLE: <strong>historical interpretations</strong>. As a PGCE trainee in Wales, you must understand the CfW's distinct requirements, not the English National Curriculum. Welsh history is <em>mandatory</em>, and interpretations are a <em>named concept</em> within the framework.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg</div>
+          <p>Mae'r sesiwn hon yn archwilio un o'r cysyniadau pwysicaf — ac weithiau'r mwyaf tan-ddefnyddiog — yn MDP y Dyniaethau: <strong>dehongliadau hanesyddol</strong>. Fel hyfforddai TGCH yng Nghymru, rhaid i chi ddeall gofynion penodol y CfW — nid Cwricwlwm Cenedlaethol Lloegr. Mae hanes Cymru yn <em>orfodol</em>, ac mae dehongliadau yn <em>gysyniad a enwir</em> yn y fframwaith.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.9rem;color:var(--hist)">The Four Purposes — How Interpretations Fit · Y Pedwar Diben</h3>
+      <div class="purpose-grid">
+        <div class="purpose-card ambitious">
+          <div class="purpose-label">🎓 Ambitious, Capable Learners · Dysgwyr Uchelgeisiol</div>
+          <ul>
+            <li>Apply disciplinary thinking to historical interpretations</li>
+            <li>Evaluate why accounts of Wales differ</li>
+            <li>Frame and investigate their own enquiry questions</li>
+          </ul>
+        </div>
+        <div class="purpose-card enterprising">
+          <div class="purpose-label">💡 Enterprising, Creative Contributors · Cyfranwyr Mentrus</div>
+          <ul>
+            <li>Produce their own historical representations</li>
+            <li>Use visual, digital and creative media to interpret the past</li>
+            <li>Communicate understanding in diverse, non-written forms</li>
+          </ul>
+        </div>
+        <div class="purpose-card ethical">
+          <div class="purpose-label">🌍 Ethical, Informed Citizens · Dinasyddion Gwybodus</div>
+          <ul>
+            <li>Understand how Welsh history has been told — and sometimes silenced</li>
+            <li>Appreciate diverse perspectives: BAME histories, Welsh-language communities</li>
+            <li>Recognise that interpretations can empower or marginalise communities</li>
+          </ul>
+        </div>
+        <div class="purpose-card healthy">
+          <div class="purpose-label">❤️ Healthy, Confident Individuals · Unigolion Hyderus</div>
+          <ul>
+            <li>Develop identity and cynefin through local and national Welsh history</li>
+            <li>See their own locality reflected in historical accounts</li>
+            <li>Understand their place in the story of Wales</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:1.2rem 0 .9rem;color:var(--hist)">Five Statements of What Matters — Humanities AoLE · Y Pum Datganiad</h3>
+      <div>
+        <div class="statement-row"><div class="stmt-num">1</div><div class="stmt-content"><h4>Enquiry, Evidence &amp; Disciplinary Thinking / Ymholi, Tystiolaeth a Meddwl Disgyblaethol</h4><p>Learners are curious, question critically and use evidence to build supported answers about Welsh history and the wider world.</p></div></div>
+        <div class="statement-row"><div class="stmt-num active-stmt">2</div><div class="stmt-content"><h4>⭐ Interpreting Human Experience / Dehongli Profiad Dynol — <em>the key statement for this session</em></h4><p>Learners explore how they and others <strong>view, interpret and represent</strong> human experiences. This includes: representations, perspectives, interpretations, significance and validity — all <em>named concepts</em> within the AoLE. This is not optional extra — it is core.</p></div></div>
+        <div class="statement-row"><div class="stmt-num">3</div><div class="stmt-content"><h4>Identity, Heritage &amp; Cynefin / Hunaniaeth, Treftadaeth a Chynefin</h4><p>An appreciation of Welsh identity, heritage and cynefin — the history of Wales and the world — helps learners build their sense of self and of belonging.</p></div></div>
+        <div class="statement-row"><div class="stmt-num">4</div><div class="stmt-content"><h4>Diversity &amp; Human Society / Amrywiaeth a Chymdeithas Ddynol</h4><p>Consistent exposure to the story of Wales and the wider world enables understanding of complex, pluralistic, diverse societies — including BAME communities in Wales.</p></div></div>
+        <div class="statement-row"><div class="stmt-num">5</div><div class="stmt-content"><h4>Citizenship &amp; Action / Dinasyddiaeth a Chamau Gweithredu</h4><p>Learners take considered, ethical action as responsible citizens of Wales and the world.</p></div></div>
+      </div>
+
+      <div class="quote-block" style="margin-top:1.5rem">
+        <p class="quote-text">"Cynefin — the place where we feel we belong, where the people and landscape around us are familiar, and the sights and sounds are reassuringly recognisable. Learners should be grounded in an understanding of the identities, landscapes and histories that come together to form their cynefin."</p>
+        <p class="quote-attr">— Curriculum for Wales, Humanities Area of Learning and Experience (2022)</p>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">1</div> Task 1.1 · Tasg 1.1 — CfW Framework Reflection</div>
+        <p style="font-size:.9rem;margin-bottom:.6rem">Statement 2 explicitly names 'representations, perspectives, interpretations, significance and validity' as concepts learners must explore. How does this differ from simply asking learners to 'evaluate sources'? Discuss with a partner, then note below. · Mae Datganiad 2 yn enwi'r cysyniadau hyn yn benodol. Sut mae hyn yn wahanol i ofyn i ddysgwyr 'werthuso ffynonellau' yn unig?</p>
+        <textarea placeholder="Your notes / Eich nodiadau…"></textarea>
+        <label class="field-label">How does teaching historical interpretations support learners' understanding of their cynefin and Welsh identity? Give one concrete example. / Sut mae addysgu dehongliadau hanesyddol yn cefnogi dealltwriaeth y dysgwyr o'u cynefin?</label>
+        <textarea placeholder="Your response / Eich ymateb…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <span></span>
+        <button class="btn btn-primary" onclick="nextSection(0)">Next: Sources vs Interpretations → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: SOURCES vs INTERPRETATIONS ═══ -->
+  <div class="section-card" id="sec-1">
+    <div class="card-header gold">
+      <div class="icon">⚖️</div>
+      <h2>Section 2: Sources vs Interpretations — A Crucial Distinction
+        <em>Adran 2: Ffynonellau v Dehongliadau — Gwahaniaeth Allweddol</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 English</div>
+          <p>One of the most common confusions in history teaching is treating interpretations and sources as the same thing. They are not. Getting this distinction right is fundamental to teaching the CfW's Statement 2 effectively.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg</div>
+          <p>Un o'r dryswch mwyaf cyffredin mewn addysgu hanes yw trin dehongliadau a ffynonellau fel yr un peth. Nid ydynt yr un peth. Mae cael y gwahaniaeth hwn yn gywir yn sylfaenol i addysgu Datganiad 2 y CfW yn effeithiol.</p>
+        </div>
+      </div>
+
+      <table class="compare-table">
+        <thead><tr style="background:var(--slate)"><th>Historical SOURCE · FFYNHONNELL Hanesyddol</th><th>Historical INTERPRETATION · DEHONGLIAD Hanesyddol</th></tr></thead>
+        <tbody>
+          <tr><td>Created <strong>at or near</strong> the time of the event · Crëwyd <em>ar adeg</em> y digwyddiad</td><td>Created <strong>after</strong> the event — often long after · Crëwyd <em>ar ôl</em> y digwyddiad — weithiau ymhell wedyn</td></tr>
+          <tr><td>Used as <strong>evidence</strong> by historians and learners · Defnyddiwyd fel <em>tystiolaeth</em></td><td>Represents someone's <strong>considered account or argument</strong> about the past · Mae'n cynrychioli cyfrif neu ddadl ystyriol rhywun</td></tr>
+          <tr><td>Evaluated for reliability, bias and utility · Wedi'i werthuso am ddibynadwyedd, tuedd a defnyddioldeb</td><td>Evaluated for <strong>purpose, audience, selection and context</strong> · Wedi'i werthuso am bwrpas, cynulleidfa, dewis a chyd-destun</td></tr>
+          <tr><td>Primary material: documents, photographs, artefacts, oral testimony · Deunydd cynradd</td><td>E.g. textbooks, films, museums, paintings, learners' own work · e.e. gwerslyfrau, ffilmiau, amgueddfeydd, gwaith dysgwyr</td></tr>
+          <tr><td>Learners ask: <em>"What does this tell us about Wales/the world at this time?"</em> · Dysgwyr yn gofyn: "Beth mae hyn yn ei ddweud wrthym?"</td><td>Learners ask: <em>"Why has this version of the Welsh/wider past been produced?"</em> · Dysgwyr yn gofyn: "Pam y cynhyrchwyd y fersiwn hon?"</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:1.2rem 0 .8rem;color:var(--hist)">Types of Interpretation — Welsh Contexts · Mathau o Ddehongliad — Cyd-destunau Cymreig</h3>
+      <table class="compare-table">
+        <thead><tr style="background:var(--slate)"><th>Type / Math</th><th>Welsh Example / Enghraifft Gymreig</th><th>Why it's an interpretation / Pam mae'n ddehongliad</th></tr></thead>
+        <tbody>
+          <tr><td>Learner drawing/artwork</td><td>A pupil's drawn book cover for <em>Changing Wales 1870–1914</em></td><td>Selection of what to include = significance judgement</td></tr>
+          <tr><td>Film / TV</td><td>S4C productions about Welsh history; Y Gwyll/Hinterland as Welsh cultural representation</td><td>Choices about narrative, character, what to include/exclude</td></tr>
+          <tr><td>Museum display</td><td>St Fagans National Museum of History; Big Pit; Amgueddfa Cymru</td><td>Curators select which objects, stories, communities to foreground</td></tr>
+          <tr><td>Thematic narrative</td><td>A 'story of the Welsh language' from suppression to revival — whose story? What's left out?</td><td>Selection of turning points = constructed interpretation</td></tr>
+          <tr><td>Then &amp; now photographs</td><td>A Welsh colliery village before and after pit closure; Tiger Bay / Cardiff Bay</td><td>The absence in the 'now' image is itself an interpreted past</td></tr>
+          <tr><td>Welsh history textbook</td><td>Changing Wales 1870–1914 — which changes are treated as turning points?</td><td>Author's selection of what matters is an interpretive choice</td></tr>
+        </tbody>
+      </table>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">2</div> Task 2.1 · Tasg 2.1</div>
+        <p style="font-size:.9rem;margin-bottom:.6rem">In your subject, write ONE example of a historical source and ONE historical interpretation relevant to Wales. For each, note what questions learners would ask. · Yn eich pwnc, ysgrifennwch UN enghraifft o ffynhonnell hanesyddol ac UN dehongliad hanesyddol sy'n berthnasol i Gymru.</p>
+        <label class="field-label">My historical source + learner questions / Fy ffynhonnell hanesyddol + cwestiynau:</label>
+        <textarea placeholder="Source: …&#10;Learner questions: …"></textarea>
+        <label class="field-label">My historical interpretation + learner questions / Fy nehongliad hanesyddol + cwestiynau:</label>
+        <textarea placeholder="Interpretation: …&#10;Learner questions: …"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(0)">← Back / Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(1)">Next: Three Articles → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3: THREE ARTICLES ═══ -->
+  <div class="section-card" id="sec-2">
+    <div class="card-header teal">
+      <div class="icon">📄</div>
+      <h2>Section 3: The Three Articles — Reading Guides
+        <em>Adran 3: Y Tair Erthygl — Canllawiau Darllen</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="info-box teal">
+        <h3>📋 The Three Articles · Y Tair Erthygl</h3>
+        <p>All three articles are from <strong>Teaching History 130 (March 2008)</strong> — reproduced for educational purposes and available as PDFs alongside this session. Read at least one in full before completing the reading frames below. · Mae'r tair erthygl o <strong>Teaching History 130</strong> — sydd ar gael fel PDFau ochr yn ochr â'r sesiwn hon.</p>
+      </div>
+
+      <div class="article-grid">
+        <div class="article-card">
+          <div class="article-num">1</div>
+          <h4>Redrawing the Renaissance: non-verbal assessment in Year 7</h4>
+          <div class="author">Matt Stanford — Teaching History 130, pp.4–11</div>
+          <p>Stanford argues that pupils with a flair for the visual were unfairly excluded from historical assessment. He designed a non-verbal task for Year 7 on the Renaissance — pupils create an image representing the period, assessed through what they selected to include and how they represented it.</p>
+          <div class="article-pdf-note">📄 PDF provided — read pp.4–11</div>
+        </div>
+        <div class="article-card">
+          <div class="article-num">2</div>
+          <h4>Thinking across time: planning and teaching the story of power and democracy at KS3</h4>
+          <div class="author">Ian Dawson — Teaching History 130, pp.14–23</div>
+          <p>Dawson argues that pupils leave school unable to tell coherent historical stories across time. His solution: 'thematic stories' — narratives that follow one theme (e.g. power and democracy) from past to present. He shows how such stories are themselves constructs — interpretations — that could be told differently.</p>
+          <div class="article-pdf-note">📄 PDF provided — read pp.14–23</div>
+        </div>
+        <div class="article-card">
+          <div class="article-num">3</div>
+          <h4>Stepping into the past: using images to travel through time</h4>
+          <div class="author">Caille Sugarman-Banaszak — Teaching History 130, pp.24–29</div>
+          <p>Sugarman-Banaszak uses images — including her own family photographs — as 'ladders' to the past. She explores how photographs, artwork and 'then and now' comparisons help pupils both receive and produce historical interpretations, including through a virtual museum of the Shoah.</p>
+          <div class="article-pdf-note">📄 PDF provided — read pp.24–29</div>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:1.4rem 0 .8rem;color:var(--hist)">Reading Frames — Complete as you read · Fframiau Darllen</h3>
+
+      <!-- STANFORD FRAME -->
+      <div class="reading-frame">
+        <h4>📄 Article 1: Stanford (2008) — Redrawing the Renaissance</h4>
+        <div class="focus-q"><strong>Q1</strong> What problem is Stanford trying to solve? Why does it matter in a Welsh CfW context where 'enterprising, creative contributors' is a core purpose?</div>
+        <textarea placeholder="Stanford's problem: …&#10;CfW connection: …"></textarea>
+        <div class="focus-q"><strong>Q2</strong> Describe the non-verbal mark scheme (Figure 4 in the article). What does it assess — and what does this tell us about what counts as valid historical understanding?</div>
+        <textarea placeholder="The mark scheme assesses: …"></textarea>
+        <div class="focus-q"><strong>Q3</strong> How could Stanford's approach be adapted for a Welsh historical topic? (e.g. Changing Wales, a local colliery community, Welsh-language history) Give a specific example.</div>
+        <textarea placeholder="My Welsh adaptation: e.g. pupils draw a 'most Welsh' image for 1870–1914…"></textarea>
+        <div class="focus-q"><strong>Q4 — CfW Discussion</strong> Stanford argues a drawn image can be a valid historical interpretation. How does this connect to Statement 2 (interpreting human experience) and the CfW's creative contributor purpose? What assessment criteria would you use?</div>
+        <textarea placeholder="Your response / Eich ymateb…"></textarea>
+      </div>
+
+      <!-- DAWSON FRAME -->
+      <div class="reading-frame">
+        <h4>📄 Article 2: Dawson (2008) — Thinking Across Time</h4>
+        <div class="focus-q"><strong>Q1</strong> What is a 'thematic story', and why does Dawson prefer this term to 'framework' or 'theme'? What does this linguistic choice tell us about his view of historical knowledge?</div>
+        <textarea placeholder="A thematic story is… Dawson prefers this term because…"></textarea>
+        <div class="focus-q"><strong>Q2</strong> Why is a thematic story itself an interpretation? What does Dawson mean when he says it 'could be told differently, depending on viewpoint or choice of content'?</div>
+        <textarea placeholder="A thematic story is an interpretation because…"></textarea>
+        <div class="focus-q"><strong>Q3 — Welsh Thematic Story</strong> Sketch a Welsh thematic story relevant to your school placement (e.g. the story of the Welsh language, coal and Wales, democracy in Wales, women's lives in Wales). What key turning points would you include — and what would you leave out?</div>
+        <textarea style="min-height:90px" placeholder="My Welsh thematic story: …&#10;Key turning points: …&#10;What I'd leave out and why: …"></textarea>
+        <div class="focus-q"><strong>Q4 — CfW Discussion</strong> The CfW requires 'consistent exposure to the story of Wales'. Dawson's approach suggests this story is a construct. How can you teach learners that the 'story of Wales' is shaped by selection — without undermining their sense of cynefin and identity?</div>
+        <textarea placeholder="Your response / Eich ymateb…"></textarea>
+      </div>
+
+      <!-- SUGARMAN-BANASZAK FRAME -->
+      <div class="reading-frame">
+        <h4>📄 Article 3: Sugarman-Banaszak (2008) — Stepping into the Past</h4>
+        <div class="focus-q"><strong>Q1</strong> How does Sugarman-Banaszak use images as 'ladders' to the past? What makes this an interpretations activity rather than a source analysis task?</div>
+        <textarea placeholder="Images as ladders: … This is an interpretations activity because…"></textarea>
+        <div class="focus-q"><strong>Q2 — Welsh Adaptation</strong> How could 'then and now' photographs be used with a Welsh topic? (e.g. Merthyr Tydfil before/after deindustrialisation; Tiger Bay/Cardiff Bay; Welsh-language signage before and after the Language Act)</div>
+        <textarea placeholder="My Welsh then-and-now adaptation: …"></textarea>
+        <div class="focus-q"><strong>Q3</strong> The Changing Wales activity asks learners to design a book cover and a coat of arms. How are these similar to Sugarman-Banaszak's 'virtual museum'? What interpretations skills do they develop?</div>
+        <textarea placeholder="Similarities: … Interpretations skills developed: …"></textarea>
+        <div class="focus-q"><strong>Q4 — Cynefin Discussion</strong> Sugarman-Banaszak brings her own family photographs into the classroom. How could you use learners' own cynefin — their locality, community's history, family stories — as the starting point for interpretations work in a Welsh school?</div>
+        <textarea placeholder="Your response / Eich ymateb…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(1)">← Back / Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(2)">Next: Strategies → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4: STRATEGIES ═══ -->
+  <div class="section-card" id="sec-3">
+    <div class="card-header indigo">
+      <div class="icon">🛠️</div>
+      <h2>Section 4: Three Classroom Strategies — Welsh Adaptations
+        <em>Adran 4: Tair Strategaeth Dosbarth — Addasiadau Cymreig</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <!-- STANFORD STRATEGY -->
+      <div class="strategy-block">
+        <div class="strategy-header stanford">
+          <div class="strategy-icon">🎨</div>
+          <div class="strategy-title">Strategy 1: Non-Verbal Assessment (Stanford)
+            <em>Strategaeth 1: Asesiad Di-eiriau — Addysgu Ymdeimlad o Gyfnod</em>
+          </div>
+        </div>
+        <div class="strategy-body">
+          <p><strong>The core insight:</strong> Stanford realised that pupils with a flair for the visual were being unfairly excluded from historical success because history assessments almost exclusively rewarded the written word. He designed a task where Year 7 pupils drew an image representing the Renaissance — assessed not on artistic quality but on what historical understanding their choices revealed.</p>
+          <p><strong>The mark scheme</strong> (Figure 4) assessed four dimensions: Things from the Renaissance, Ideas from the Renaissance, Would it have pleased Lorenzo the Magnificent?, and Artistic techniques from the Renaissance. Each dimension had descriptors from 'none included' to 'I can see lots.' This is a <em>historical</em> mark scheme, not an art mark scheme.</p>
+          <div class="welsh-adapt">
+            <strong>🏴󠁧󠁢󠁷󠁬󠁳󠁿 Welsh Adaptation · Addasiad Cymreig</strong>
+            Ask pupils to draw the 'most Welsh' image for Changing Wales 1870–1914 — or design a book cover selecting four images to represent population change, heavy industry, leisure and the Welsh language. The Changing Wales coat of arms task is essentially Stanford's approach applied to Welsh history. Assess: What has the pupil included? What does their selection tell us about their understanding of significance? Which CfW Statement does this address? (Statement 2 and Statement 3: cynefin/identity)
+          </div>
+          <div class="info-box indigo" style="margin-top:1rem;margin-bottom:0">
+            <h3>🔗 CfW Connection · Cysylltiad CfW</h3>
+            <p>The CfW's 'enterprising, creative contributor' purpose explicitly legitimises visual and non-verbal expression. The Expressive Arts AoLE links also support cross-curricular work. Non-verbal assessments of historical understanding are not a soft option — they can be more rigorous than essays when properly designed. Statement 2 is clear: learners produce their own representations.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- DAWSON STRATEGY -->
+      <div class="strategy-block">
+        <div class="strategy-header dawson">
+          <div class="strategy-icon">📖</div>
+          <div class="strategy-title">Strategy 2: Thematic Stories (Dawson)
+            <em>Strategaeth 2: Straeon Thematig — Cynllunio Ar Draws Amser</em>
+          </div>
+        </div>
+        <div class="strategy-body">
+          <p><strong>The core insight:</strong> Dawson argues that pupils emerge from school with patchy knowledge of individual events but no coherent big picture — no story they can tell. His solution is 'thematic stories': narratives that follow one theme across time, tell-able in a single lesson, and expandable into depth across years of schooling. Critically, a thematic story is always a <em>construct</em> — it could be told differently.</p>
+          <p><strong>Key planning principles:</strong> Plan backwards — what will learners take away? Make the story tell-able in one lesson before expanding. Use ICT (Movie Maker, PowerPoint) to create stories learners can return to. Ask: if you're never going to refer back to this topic, why are you teaching it?</p>
+          <div class="welsh-adapt">
+            <strong>🏴󠁧󠁢󠁷󠁬󠁳󠁿 Welsh Thematic Stories · Straeon Thematig Cymreig</strong>
+            The Welsh language — from the 'Welsh Not' to the Welsh Language Act and S4C. Coal and iron in Wales — growth, community, disaster, deindustrialisation. Women's lives in Wales — from the pit brow to the Senedd. Democracy in Wales — Chartism, suffrage, devolution. Wales and the world — Welsh communities in Patagonia, the USA, migration in and out. Each story is an interpretation: whose voices are foregrounded? What's left out? How does BAME Welsh history (Tiger Bay, Butetown) fit?
+          </div>
+          <div class="info-box teal" style="margin-top:1rem;margin-bottom:0">
+            <h3>🔗 CfW Connection · Cysylltiad CfW</h3>
+            <p>The CfW requires 'consistent exposure to the story of their locality and the story of Wales.' Dawson's approach shows this story is a construct. Teaching learners to see it as such is exactly what Statement 2 demands: exploring how we <em>represent and interpret</em> human experiences. The local/national Welsh dimension threads through all thematic stories.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SUGARMAN-BANASZAK STRATEGY -->
+      <div class="strategy-block">
+        <div class="strategy-header sugarman">
+          <div class="strategy-icon">🖼️</div>
+          <div class="strategy-title">Strategy 3: Images as Interpretations (Sugarman-Banaszak)
+            <em>Strategaeth 3: Delweddau fel Dehongliadau — Camu i'r Gorffennol</em>
+          </div>
+        </div>
+        <div class="strategy-body">
+          <p><strong>The core insight:</strong> Images are more than visual sources — they are interpretations. Sugarman-Banaszak uses her own family photographs as classroom 'ladders' to the past, grounding historical enquiry in personal connection. She also uses 'then and now' comparisons, the Bosch 'Where's Wally?' technique, and asks pupils to design a virtual museum that memorialises the Shoah.</p>
+          <p><strong>The virtual museum task:</strong> Pupils compile visual and written material, explaining in a final statement 'the purpose of the images and story within.' Both the art and images they create, and those they curate, allow them to step back into the past whilst remaining grounded in the present. The museum is itself a historical interpretation.</p>
+          <div class="welsh-adapt">
+            <strong>🏴󠁧󠁢󠁷󠁬󠁳󠁿 Welsh Adaptations · Addasiadau Cymreig</strong>
+            Then &amp; now: a Welsh colliery village before/after pit closure — the absence in the 'now' photograph IS the interpretation. Tiger Bay / Cardiff Bay: once a diverse maritime community, largely demolished in the 1970s — what does the Senedd building's presence/absence tell us? Welsh-language signage before/after the Language Act. Learners design a 'virtual museum of Wales' — curation is interpretation. Use learners' own cynefin photography: what does their locality look like, and what does it remember?
+          </div>
+          <div class="info-box gold" style="margin-top:1rem;margin-bottom:0">
+            <h3>🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cynefin Connection · Cysylltiad Cynefin</h3>
+            <p>Sugarman-Banaszak's personal family photographs create a three-way bond between teacher, pupil and history. In Wales, learners' own cynefin — their locality, community, family stories — can serve the same function. A photograph of a learner's grandparent's mining village, or a bilingual street sign, is a starting point for asking: whose story of this place has been told? And whose has been left out?</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(2)">← Back / Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(3)">Next: Connecting &amp; Planning → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 5: CONNECTING & PLANNING ═══ -->
+  <div class="section-card" id="sec-4">
+    <div class="card-header green">
+      <div class="icon">🔗</div>
+      <h2>Section 5: Connecting the Articles &amp; Lesson Planning
+        <em>Adran 5: Cysylltu'r Erthyglau a Chynllunio Gwers</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.9rem;color:var(--green)">Connecting All Three Articles · Cysylltu'r Tair Erthygl</h3>
+      <table class="big-compare">
+        <thead><tr><th>Theme / Thema</th><th>Stanford</th><th>Dawson</th><th>Sugarman-Banaszak</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Interpretations involve selection</strong></td><td>Pupils select what to include in their image — every inclusion is a significance judgement</td><td>Thematic stories 'could be told differently' — selection of turning points = interpretation</td><td>Curating a virtual museum = selecting which images represent 'the past'</td></tr>
+          <tr><td><strong>Non-written media are valid</strong></td><td>Core argument: drawn images are as rigorous as essays if properly assessed</td><td>ICT stories (Movie Maker, PowerPoint) as legitimate historical products</td><td>Images, photographs, artwork as primary vehicles for historical understanding</td></tr>
+          <tr><td><strong>Learners produce interpretations</strong></td><td>Year 7 pupils' drawings ARE historical interpretations, not just art</td><td>Pupils tell the thematic story — their version is their interpretation</td><td>Virtual museum and image sequences produced by learners</td></tr>
+          <tr><td><strong>Welsh/local contexts</strong></td><td>Book cover/coat of arms for Changing Wales — any Welsh history topic</td><td>Story of the Welsh language, coal, democracy, women in Wales</td><td>Then/now Welsh colliery communities; cynefin photography; St Fagans</td></tr>
+          <tr><td><strong>CfW Statement 2</strong></td><td>Learners produce their own representations using visual media</td><td>Learners explore how thematic narratives of Wales are constructed</td><td>Learners receive AND produce historical interpretations of Welsh past</td></tr>
+        </tbody>
+      </table>
+
+      <div class="info-box key" style="margin:1.2rem 0">
+        <h3>💬 Group Discussion Questions · Cwestiynau Trafod Grŵp</h3>
+        <ul>
+          <li>All three articles challenge the dominance of the written essay. In a Welsh school, how could you justify non-verbal assessment to a sceptical head of department? · Sut gallech chi gyfiawnhau asesiad di-eiriau i bennaeth adran amheus?</li>
+          <li>All three require learners to make selection decisions. How does this help learners understand what historians actually do — and what the CfW's interpretations strand really means? · Sut mae hyn yn helpu dysgwyr i ddeall beth mae haneswyr yn ei wneud?</li>
+          <li>The CfW requires Welsh history at the heart of the Humanities AoLE. How does each article create space for Welsh history, Welsh perspectives and cynefin? · Sut mae pob erthygl yn creu lle i hanes Cymru, safbwyntiau Cymreig a chynefin?</li>
+        </ul>
+        <textarea style="background:rgba(255,255,255,.1);color:white;border-color:rgba(255,255,255,.3);margin-top:.8rem" placeholder="Group discussion notes / Nodiadau trafodaeth grŵp…"></textarea>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:1.4rem 0 .9rem;color:var(--green)">Lesson Planning Frame — Interpretations in Your Welsh School · Cynllunio Gwers</h3>
+      <div style="background:#fff;border:2px solid var(--green-light);border-radius:12px;padding:1.5rem">
+        <p style="font-size:.9rem;margin-bottom:1rem;color:var(--slate-mid)">Plan an interpretations activity for a class you are currently teaching or observing in Wales. · Cynlluniwch weithgaredd dehongliadau ar gyfer dosbarth rydych chi'n ei addysgu neu'n ei arsylwi yng Nghymru.</p>
+        <label class="field-label">Year group, school and topic / Grŵp blwyddyn, ysgol a phwnc:</label>
+        <textarea style="min-height:50px" placeholder="e.g. Year 9, [School], Changing Wales 1870–1914"></textarea>
+        <label class="field-label">Which Statement of What Matters does this primarily address? / Pa Ddatganiad o'r Hyn sy'n Bwysig?</label>
+        <textarea style="min-height:45px" placeholder="e.g. Statement 2: Interpreting human experience — learners produce their own representations…"></textarea>
+        <label class="field-label">Welsh dimension / cynefin connection / Dimensiwn Cymreig / cysylltiad cynefin:</label>
+        <textarea style="min-height:50px" placeholder="How does this connect to learners' locality, Welsh history, or the story of Wales?"></textarea>
+        <label class="field-label">Type of interpretation learners will study or produce / Math o ddehongliad:</label>
+        <textarea style="min-height:45px" placeholder="e.g. thematic story, artwork, image sequence, book cover, shield/coat of arms, virtual museum…"></textarea>
+        <label class="field-label">Enquiry question / Cwestiwn ymholi:</label>
+        <textarea style="min-height:45px" placeholder="e.g. 'Whose story of Wales is this?' / 'How was the Rhondda Valley represented in 1910 and today?'"></textarea>
+        <label class="field-label">Task learners will complete / Y dasg:</label>
+        <textarea style="min-height:70px" placeholder="Describe the task in detail…"></textarea>
+        <label class="field-label">Assessment criteria — capturing historical understanding, not just creative effort / Meini prawf asesu:</label>
+        <textarea style="min-height:70px" placeholder="e.g. Has the pupil selected items that are historically significant? Can they justify their choices? Do they show understanding of WHY this interpretation was produced?"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(3)">← Back / Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(4)">Next: Quiz → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 6: QUIZ ═══ -->
+  <div class="section-card" id="sec-5">
+    <div class="card-header purple">
+      <div class="icon">✅</div>
+      <h2>Section 6: Knowledge Check Quiz
+        <em>Adran 6: Cwis Gwiriad Gwybodaeth</em>
+      </h2>
+    </div>
+    <div class="card-body"><div class="quiz-question" id="q1"><p class="q-text"><span class="q-num">1</span>Which Curriculum for Wales Humanities AoLE Statement of What Matters explicitly names 'representations, perspectives, interpretations, significance and validity' as concepts learners must explore?</p><p class="q-welsh">· Pa Ddatganiad o'r Hyn sy'n Bwysig sy'n enwi 'cynrychioliadau, safbwyntiau, dehongliadau, arwyddocâd a dilysrwydd' yn benodol?</p><div class="options"><button class="option-btn" onclick="checkQ('q1',this,false)">Statement 1: Enquiry, evidence and disciplinary thinking / Datganiad 1: Ymholi, tystiolaeth a meddwl disgyblaethol</button><button class="option-btn" onclick="checkQ('q1',this,true)">Statement 2: Interpreting human experience — learners explore how they and others view, interpret and represent human experiences / Datganiad 2: Dehongli profiad dynol</button><button class="option-btn" onclick="checkQ('q1',this,false)">Statement 3: Identity, heritage and cynefin / Datganiad 3: Hunaniaeth, treftadaeth a chynefin</button><button class="option-btn" onclick="checkQ('q1',this,false)">Statement 5: Citizenship and action / Datganiad 5: Dinasyddiaeth a chamau gweithredu</button></div><div class="feedback" id="q1-fb"></div></div><div class="quiz-question" id="q2"><p class="q-text"><span class="q-num">2</span>What is the most important distinction between a historical source and a historical interpretation?</p><p class="q-welsh">· Beth yw'r gwahaniaeth pwysicaf rhwng ffynhonnell hanesyddol a dehongliad hanesyddol?</p><div class="options"><button class="option-btn" onclick="checkQ('q2',this,false)">Sources are always written; interpretations are always visual / Mae ffynonellau bob amser yn ysgrifenedig; mae dehongliadau bob amser yn weledol</button><button class="option-btn" onclick="checkQ('q2',this,true)">Sources are created at or near the time of the event and used as evidence; interpretations are created after the event and represent someone's considered account, shaped by purpose, audience and selection / Mae ffynonellau'n cael eu creu ar adeg y digwyddiad; mae dehongliadau'n cael eu creu ar ôl hynny</button><button class="option-btn" onclick="checkQ('q2',this,false)">Sources are primary materials; interpretations are only textbooks written by professional historians / Mae ffynonellau'n ddeunyddiau cynradd; nid yw dehongliadau ond yn werslyfrau</button><button class="option-btn" onclick="checkQ('q2',this,false)">There is no meaningful distinction — both are evaluated for bias and reliability / Nid oes gwahaniaeth ystyrlon — mae'r ddau'n cael eu gwerthuso am duedd</button></div><div class="feedback" id="q2-fb"></div></div><div class="quiz-question" id="q3"><p class="q-text"><span class="q-num">3</span>Matt Stanford (2008) argues that a pupil's drawn image can be a valid historical interpretation. What is his key criterion for this?</p><p class="q-welsh">· Mae Matt Stanford (2008) yn dadlau y gall llun a dynnwyd gan ddisgybl fod yn ddehongliad hanesyddol dilys. Beth yw ei brif faen prawf?</p><div class="options"><button class="option-btn" onclick="checkQ('q3',this,false)">The image must be artistically accomplished and show technical skill / Rhaid i'r ddelwedd fod yn gyflawnedig yn artistig</button><button class="option-btn" onclick="checkQ('q3',this,true)">The image must be assessed on what historical understanding it reveals — what the pupil has selected to include and how they have represented it, not the quality of the art / Rhaid asesu'r ddelwedd ar yr hyn y mae'n ei ddatgelu am ddealltwriaeth hanesyddol</button><button class="option-btn" onclick="checkQ('q3',this,false)">The image must be accompanied by a written explanation of at least 200 words / Rhaid i'r ddelwedd fod gydag egluriad ysgrifenedig</button><button class="option-btn" onclick="checkQ('q3',this,false)">The image must focus on factual recall — dates, names and events from the period / Rhaid i'r ddelwedd ganolbwyntio ar atgoffa ffeithiol</button></div><div class="feedback" id="q3-fb"></div></div><div class="quiz-question" id="q4"><p class="q-text"><span class="q-num">4</span>Ian Dawson (2008) argues that a thematic story is itself an interpretation. Why?</p><p class="q-welsh">· Mae Ian Dawson (2008) yn dadlau bod stori thematig yn ddehongliad ynddo'i hun. Pam?</p><div class="options"><button class="option-btn" onclick="checkQ('q4',this,false)">Because thematic stories are always written by biased historians who have a political agenda / Oherwydd bod straeon thematig bob amser yn cael eu hysgrifennu gan haneswyr rhagfarnllyd</button><button class="option-btn" onclick="checkQ('q4',this,true)">Because a thematic story involves selection — which events count as turning points, whose experiences are foregrounded, and what the story is 'about' — and it could be told differently depending on viewpoint or choice of content / Oherwydd bod stori thematig yn cynnwys dewis</button><button class="option-btn" onclick="checkQ('q4',this,false)">Because thematic stories are always told from a nationalist perspective that privileges one country / Oherwydd bod straeon thematig bob amser yn cael eu hadrodd o safbwynt cenedlaetholgar</button><button class="option-btn" onclick="checkQ('q4',this,false)">Because they cover too long a time period to be historically accurate / Oherwydd eu bod yn cwmpasu cyfnod amser rhy hir</button></div><div class="feedback" id="q4-fb"></div></div><div class="quiz-question" id="q5"><p class="q-text"><span class="q-num">5</span>What is the concept of cynefin, and why is it significant for teaching historical interpretations in Wales?</p><p class="q-welsh">· Beth yw cysyniad cynefin, a pham mae'n arwyddocaol ar gyfer addysgu dehongliadau hanesyddol yng Nghymru?</p><div class="options"><button class="option-btn" onclick="checkQ('q5',this,false)">A Welsh examination board's assessment framework for history — used to grade pupils' interpretations / Fframwaith asesu bwrdd arholi Cymru ar gyfer hanes</button><button class="option-btn" onclick="checkQ('q5',this,false)">A Welsh word meaning historical source — the primary evidence used to construct interpretations / Gair Cymraeg sy'n golygu ffynhonnell hanesyddol</button><button class="option-btn" onclick="checkQ('q5',this,true)">A Welsh concept of a sense of place and belonging — the landscape, people, language and histories that feel familiar; it grounds learners in local Welsh history and makes interpretations work personally meaningful / Cysyniad Cymreig o ymdeimlad o le a pherthyn — mae'n sylfaenu dysgwyr mewn hanes lleol Cymreig</button><button class="option-btn" onclick="checkQ('q5',this,false)">A term from Curriculum for Wales meaning the five Statements of What Matters in the Humanities AoLE / Term o Gwricwlwm i Gymru sy'n golygu'r pum Datganiad o'r Hyn sy'n Bwysig</button></div><div class="feedback" id="q5-fb"></div></div>
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(4)">← Back / Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(5)">Next: Reflection → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 7: REFLECTION & GLOSSARY ═══ -->
+  <div class="section-card" id="sec-6">
+    <div class="card-header slate">
+      <div class="icon">🪞</div>
+      <h2>Section 7: Reflection, Glossary &amp; Exit Task
+        <em>Adran 7: Adlewyrchiad, Geirfa ac Exit Task</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="quote-block">
+        <p class="quote-text">"The past is not given to us — it is constructed. In Wales, we have a particular responsibility to ask: whose construction, and whose Wales?"</p>
+        <p class="quote-attr">— Teaching Historical Interpretations in Wales (PGCE session closing)</p>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:1rem 0 .8rem;color:var(--slate)">Key Concepts Glossary · Geirfa Cysyniadau Allweddol</h3>
+      <div class="glossary-grid">
+        <div class="glossary-card"><div class="gloss-term">Historical interpretation</div><div class="gloss-def">A representation of the past produced after the event, shaped by purpose, audience, selection of evidence and cultural context. In Wales, all interpretations of Welsh history are also shaped by political, linguistic and community context.</div></div>
+        <div class="glossary-card"><div class="gloss-term">Cynefin</div><div class="gloss-def">The Welsh concept of a sense of place and belonging — the landscape, people, language and histories that feel familiar and home. Central to the CfW Humanities AoLE; interpretations of local Welsh history engage learners' cynefin directly.</div></div>
+        <div class="glossary-card"><div class="gloss-term">Statement 2 (CfW)</div><div class="gloss-def">The Humanities AoLE statement that requires learners to explore representations, perspectives, interpretations, significance and validity — named concepts, not optional extras. The core statement for this session.</div></div>
+        <div class="glossary-card"><div class="gloss-term">Thematic story (Dawson)</div><div class="gloss-def">A narrative that follows one theme across time — e.g. the story of the Welsh language, or democracy in Wales. A construct that could be told differently, depending on viewpoint or selection. Must be tell-able in one lesson.</div></div>
+        <div class="glossary-card"><div class="gloss-term">Non-verbal assessment (Stanford)</div><div class="gloss-def">Assessing historical understanding through a medium other than writing — a drawn image, a shield, a book cover. Assessed on what the pupil selected to include, not on artistic quality. Particularly relevant to the CfW's creative contributor purpose.</div></div>
+        <div class="glossary-card"><div class="gloss-term">Welsh dimension</div><div class="gloss-def">The mandatory requirement in the CfW that Welsh history, culture, language and society are woven through all learning in the Humanities AoLE. Not a bolt-on — it is the core context for all interpretations work.</div></div>
+        <div class="glossary-card"><div class="gloss-term">Progression steps (CfW)</div><div class="gloss-def">CfW descriptors of what learners can do at different stages (ages 5, 8, 11, 14, 16). In Humanities, progression in interpretations moves from identifying that accounts differ to critically evaluating why — and to producing increasingly sophisticated representations.</div></div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:1.4rem 0 .8rem;color:var(--slate)">Exit Task — Taking It Into Your Welsh School · Cymryd Hyn i'ch Ysgol Gymreig</h3>
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">7</div> Task 7.1 — Three Exit Responses · Tair Ymateb Ymadael</div>
+        <label class="field-label">1. Identify ONE lesson in your upcoming teaching where you will develop interpretations work. How will it connect to learners' cynefin and the Welsh dimension? / Nodwch UN wers yn eich addysgu sydd i ddod lle byddwch chi'n datblygu gwaith dehongliadau.</label>
+        <textarea placeholder="Lesson: … Cynefin/Welsh dimension connection: …"></textarea>
+        <label class="field-label">2. Write a one-sentence definition of historical interpretation that you would use with a class in Wales — make it meaningful for the Welsh context. / Ysgrifennwch ddiffiniad un frawddeg o ddehongliad hanesyddol y byddech chi'n ei ddefnyddio gyda dosbarth yng Nghymru.</label>
+        <textarea style="min-height:55px" placeholder="A historical interpretation is… (in Welsh classroom language)"></textarea>
+        <label class="field-label">3. Which Welsh thematic story, image-based task or non-verbal assessment will you pilot first? Describe your plan. / Pa stori thematig Gymreig, dasg seiliedig ar ddelweddau neu asesiad di-eiriau a fyddwch chi'n ei beilota gyntaf?</label>
+        <textarea placeholder="My plan: …"></textarea>
+      </div>
+
+      <div class="info-box gold">
+        <h3>📚 Further Reading · Darllen Pellach</h3>
+        <ul>
+          <li>McAleavy, T. (1993) 'Using the Attainment Targets in KS3: Interpretations of History', Teaching History 72</li>
+          <li>Howells, G. (2005) 'Interpretations and history teaching: why Ronald Hutton's Debates in Stuart History matters', Teaching History 121</li>
+          <li>Fordham, M. (2014) 'But why then? Chronological context and historical interpretations', Teaching History 156</li>
+          <li>Humanities AoLE Statements of What Matters: hwb.gov.wales/curriculum-for-wales/humanities/statements-of-what-matters</li>
+          <li>DARPL Our Welsh History resources (BAME Welsh histories): darpl.org/our-welsh-history</li>
+          <li>Welsh Government (2022) Written Statement: Welsh History in the Curriculum for Wales: gov.wales</li>
+        </ul>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(5)">← Back / Yn ôl</button>
+        <button class="btn btn-amber" onclick="complete()">🎓 Complete Session · Cwblhau'r Sesiwn</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="completion-card" id="completion">
+    <span class="badge-icon">📜</span>
+    <h2>Session Complete! · Sesiwn Wedi'i Chwblhau!</h2>
+    <div class="score-badge">Quiz Score · Sgôr: <span id="final-score">0</span> / 5</div>
+    <p><strong>Well done!</strong> You have worked through the Teaching Historical Interpretations session — from the CfW framework and Statement 2, through the three Teaching History 130 articles, classroom strategies with Welsh adaptations, lesson planning, and the key concepts glossary.</p>
+    <p><strong>Da iawn!</strong> Rydych chi wedi gweithio drwy sesiwn Dysgu Dehongliad Hanesyddol — o fframwaith y CfW a Datganiad 2, drwy'r tair erthygl o Teaching History 130, strategaethau dosbarth gydag addasiadau Cymreig, cynllunio gwers, a geirfa cysyniadau allweddol.</p>
+    <p style="font-style:italic;opacity:.8">"The past is not given to us — it is constructed. In Wales, we have a particular responsibility to ask: whose construction, and whose Wales?"</p>
+    <div style="margin-top:1rem"><button class="btn btn-secondary" onclick="location.reload()" style="background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.35);color:#fff;font-size:.85rem;">↺ Start Again · Dechrau Eto</button></div>
+    <div class="cert-trigger-box">
+      <p>🏅 <strong>Generate your personalised completion certificate · Creu eich tystysgrif gwblhau bersonol</strong><br>
+      Enter your full name to generate a printable certificate. · Rhowch eich enw llawn.</p>
+      <div class="cert-name-row">
+        <input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name · Eich enw llawn…" maxlength="80">
+        <button class="btn-cert" onclick="generateCertificate()">🎓 Generate Certificate · Creu Tystysgrif</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- CERTIFICATE OVERLAY -->
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:2rem;">📜</div>
+            <div class="cert-inst-name">PGCE History · Hanes TGCH — Cymru / Wales
+              <span class="cert-inst-cy">Curriculum for Wales / Cwricwlwm i Gymru · Humanities AoLE</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that · Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher · yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.5rem 0 .3rem"><div class="cert-name" id="certDisplayName">Your Name</div></div>
+          <div class="cert-score-pill">Quiz Score · Sgôr: <span id="certScoreDisplay">—</span> / 5</div>
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the PGCE History session on</div>
+          <div class="cert-course">Teaching Historical Interpretations in Wales
+            <span class="cert-course-cy">Dysgu Dehongliad Hanesyddol yng Nghymru</span>
+          </div>
+          <div class="cert-competencies">Demonstrating understanding of: the CfW Humanities AoLE Statements of What Matters (particularly Statement 2); the distinction between historical sources and interpretations; non-verbal assessment strategies (Stanford, 2008); thematic stories as historical constructs (Dawson, 2008); images as historical interpretations (Sugarman-Banaszak, 2008); Welsh adaptations of all three approaches; the role of cynefin in interpretations work; and lesson planning for interpretations within the Curriculum for Wales.<br>
+          <em style="color:#B45309;display:block;margin-top:.4rem">Gan ddangos dealltwriaeth o Ddatganiad 2 MDP y Dyniaethau, y gwahaniaeth rhwng ffynonellau a dehongliadau hanesyddol, strategaethau asesiad di-eiriau, straeon thematig fel cyfansoddiad, delweddau fel dehongliadau hanesyddol, addasiadau Cymreig, rôl cynefin, a chynllunio gwers yng Nghwricwlwm i Gymru.</em></div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <div class="cert-sig-label">Programme Director · Cyfarwyddwr y Rhaglen</div>
+            </div>
+            <div><div class="cert-seal"><span class="cert-seal-icon">📜</span>PGCE<br>CYMRU</div></div>
+            <div class="cert-sig-block">
+              <div class="cert-date-val" id="certDateDisplay"></div>
+              <div class="cert-date-label">Date Completed · Dyddiad Cwblhau</div>
+            </div>
+          </div>
+          <div class="cert-stripe" style="margin:1.2rem -2rem -1.6rem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">🖨️ Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">✕ Close · Cau</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let score=0; const answeredQs=new Set(); const completedSections=new Set();
+const feedbacks={
+  q1:'Correct! Statement 2 explicitly names representations, perspectives, interpretations, significance and validity — not optional extras. · Cywir! Mae Datganiad 2 yn enwi cynrychioliadau, safbwyntiau, dehongliadau, arwyddocâd a dilysrwydd yn benodol.',
+  q2:'Correct! Sources = at/near the time, used as evidence; Interpretations = after the event, shaped by purpose/audience/selection. · Cywir! Ffynonellau = ar adeg y digwyddiad; Dehongliadau = ar ôl hynny, wedi'u llunio gan bwrpas/cynulleidfa/dewis.',
+  q3:'Correct! Stanford's mark scheme assesses historical understanding through what is selected — not artistic quality. · Cywir! Mae cynllun marcio Stanford yn asesu dealltwriaeth hanesyddol drwy'r hyn a ddewiswyd.',
+  q4:'Correct! A thematic story involves selection of turning points and voices — it could be told differently. · Cywir! Mae stori thematig yn cynnwys dewis o bwyntiau troi a lleisiau — gallai gael ei hadrodd yn wahanol.',
+  q5:'Correct! Cynefin = sense of place/belonging, grounds learners in Welsh history and identity. · Cywir! Cynefin = ymdeimlad o le/perthyn, yn sylfaenu dysgwyr mewn hanes a hunaniaeth Cymreig.',
+};
+function checkQ(qId,btn,isCorrect){
+  if(answeredQs.has(qId))return; answeredQs.add(qId);
+  document.getElementById(qId).querySelectorAll('.option-btn').forEach(b=>b.disabled=true);
+  const fb=document.getElementById(qId+'-fb');
+  if(isCorrect){btn.classList.add('correct');fb.className='feedback correct show';fb.innerHTML='✅ '+feedbacks[qId];score++;}
+  else{btn.classList.add('wrong');fb.className='feedback wrong show';fb.innerHTML='❌ Not quite — '+feedbacks[qId];}
+}
+function goTo(idx){
+  document.querySelectorAll('.section-card').forEach((el,i)=>el.classList.toggle('active',i===idx));
+  document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('active',i===idx));
+  const pct=Math.round(((idx+1)/7)*100);
+  document.getElementById('progress-bar').style.width=pct+'%';
+  document.getElementById('progress-label').textContent='Section '+(idx+1)+' of 7 · Adran '+(idx+1)+' o 7';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function nextSection(idx){
+  completedSections.add(idx);
+  document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('done',completedSections.has(i)));
+  goTo(idx+1);
+}
+function complete(){
+  completedSections.add(6);
+  document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('done',completedSections.has(i)));
+  document.querySelectorAll('.section-card').forEach(el=>el.classList.remove('active'));
+  document.getElementById('completion').classList.add('show');
+  document.getElementById('final-score').textContent=score;
+  document.getElementById('progress-bar').style.width='100%';
+  document.getElementById('progress-label').textContent='Complete! · Wedi Cwblhau!';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function generateCertificate(){
+  var name=document.getElementById('certNameInput').value.trim();
+  if(!name){document.getElementById('certNameInput').focus();document.getElementById('certNameInput').style.borderColor='#FCD34D';setTimeout(function(){document.getElementById('certNameInput').style.borderColor='';},1500);return;}
+  document.getElementById('certDisplayName').textContent=name;
+  document.getElementById('certScoreDisplay').textContent=score;
+  var now=new Date();
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('certDateDisplay').textContent=now.getDate()+' '+months[now.getMonth()]+' '+now.getFullYear();
+  document.getElementById('certOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeCertificate(){document.getElementById('certOverlay').classList.remove('show');document.body.style.overflow='';}
+function printCertificate(){
+  var cert=document.getElementById('certificateEl');
+  var w=window.open('','_blank','width=900,height=700');
+  w.document.write('<html><head><title>Certificate</title>');
+  document.querySelectorAll('style,link[rel="stylesheet"]').forEach(function(s){w.document.write(s.outerHTML);});
+  w.document.write('</head><body style="margin:0;padding:20px;background:white;">');
+  w.document.write(cert.outerHTML);
+  w.document.write('</body></html>');
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener('click',function(e){if(e.target.id==='certOverlay')closeCertificate();});
+</script>
+</body>
+</html>
