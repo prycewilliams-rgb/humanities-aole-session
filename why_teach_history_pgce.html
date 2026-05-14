@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="cy-en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Teach History? | Pam Addysgu Hanes? — PGCE History Session 1</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --hist:#7C2D12;--hist-mid:#B91C1C;--hist-light:#FEE2E2;--hist-pale:#FFF5F5;
+  --gold:#B45309;--gold-light:#FEF3C7;--gold-pale:#FFFBEB;
+  --teal:#0F766E;--teal-light:#CCFBF1;--teal-pale:#F0FDFA;
+  --indigo:#3730A3;--indigo-light:#C7D2FE;--indigo-pale:#EEF2FF;
+  --green:#15803D;--green-light:#DCFCE7;
+  --slate:#1E293B;--slate-mid:#475569;--slate-light:#94A3B8;
+  --white:#fff;--off:#FAFAF9;--border:#E7E5E4;
+  --shadow:0 4px 24px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Source Sans 3',sans-serif;background:var(--off);color:var(--slate);min-height:100vh}
+
+header{background:linear-gradient(135deg,#450A0A 0%,var(--hist) 55%,#991B1B 100%);color:#fff;padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+header::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.lang-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:.3rem 1rem;font-size:.8rem;font-weight:600;letter-spacing:.05em;margin-bottom:1.5rem}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,4vw,2.6rem);line-height:1.2;margin-bottom:.4rem}
+header h1 span{display:block;font-size:.55em;font-weight:700;opacity:.75;letter-spacing:.03em;margin-top:.3rem}
+.header-sub{font-size:.95rem;opacity:.82;margin-top:.8rem}
+.subject-pills{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem}
+.pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.3rem .9rem;font-size:.78rem;font-weight:600}
+.progress-bar-wrap{max-width:600px;margin:1.5rem auto 0;background:rgba(255,255,255,.18);border-radius:999px;height:8px;overflow:hidden}
+#progress-bar{height:100%;background:#FCD34D;border-radius:999px;transition:width .5s ease;width:0%}
+#progress-label{font-size:.78rem;opacity:.78;margin-top:.4rem}
+
+main{max-width:940px;margin:0 auto;padding:2rem 1rem 4rem}
+.section-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.snav-btn{padding:.4rem .85rem;border-radius:999px;border:2px solid var(--border);background:#fff;font-size:.76rem;font-weight:600;cursor:pointer;color:var(--slate-mid);transition:all .2s;white-space:nowrap}
+.snav-btn.done{border-color:var(--green);color:#14532D;background:var(--green-light)}
+.snav-btn.active{border-color:var(--hist);color:var(--hist);background:var(--hist-pale)}
+
+.section-card{background:#fff;border-radius:16px;box-shadow:var(--shadow);margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);display:none;animation:fadeIn .4s ease}
+.section-card.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+
+.card-header{padding:1.5rem 2rem;display:flex;align-items:center;gap:1rem;border-bottom:2px solid}
+.card-header.hist{background:var(--hist-pale);border-color:#FECACA}
+.card-header.gold{background:var(--gold-pale);border-color:#FDE68A}
+.card-header.teal{background:var(--teal-pale);border-color:var(--teal-light)}
+.card-header.indigo{background:var(--indigo-pale);border-color:var(--indigo-light)}
+.card-header.green{background:var(--green-light);border-color:#86EFAC}
+.card-header.slate{background:#F1F5F9;border-color:#CBD5E1}
+.card-header .icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.card-header.hist .icon{background:var(--hist)}
+.card-header.gold .icon{background:var(--gold)}
+.card-header.teal .icon{background:var(--teal)}
+.card-header.indigo .icon{background:var(--indigo)}
+.card-header.green .icon{background:var(--green)}
+.card-header.slate .icon{background:var(--slate)}
+.card-header h2{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--slate);line-height:1.3}
+.card-header h2 em{display:block;font-family:'Source Sans 3',sans-serif;font-size:.76rem;font-style:normal;font-weight:600;color:var(--slate-mid);margin-top:.15rem;letter-spacing:.03em}
+.card-body{padding:2rem}
+@media(max-width:600px){.card-body{padding:1.2rem}}
+
+/* BILINGUAL */
+.bilingual-block{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem}
+@media(max-width:600px){.bilingual-block{grid-template-columns:1fr}}
+.lang-col{background:var(--hist-pale);border-radius:10px;padding:1.2rem;border-left:4px solid var(--hist)}
+.lang-col.welsh{border-left-color:#B45309;background:var(--gold-pale)}
+.lang-label{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--slate-mid);margin-bottom:.6rem}
+.lang-col p,.lang-col li{font-size:.93rem;line-height:1.7;color:var(--slate)}
+.lang-col ul{padding-left:1.2rem;margin-top:.4rem}
+.lang-col li{margin-bottom:.3rem}
+
+/* INFO BOXES */
+.info-box{background:var(--hist-pale);border:1px solid #FECACA;border-radius:10px;padding:1.2rem 1.5rem;margin-bottom:1.5rem}
+.info-box.gold{background:var(--gold-pale);border-color:#FDE68A}
+.info-box.teal{background:var(--teal-pale);border-color:var(--teal-light)}
+.info-box.key{background:var(--slate);border-color:var(--slate-mid)}
+.info-box.indigo{background:var(--indigo-pale);border-color:var(--indigo-light)}
+.info-box h3{font-size:.83rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--hist);margin-bottom:.7rem}
+.info-box.gold h3{color:var(--gold)}
+.info-box.teal h3{color:var(--teal)}
+.info-box.key h3{color:#FCD34D}
+.info-box.indigo h3{color:var(--indigo)}
+.info-box p,.info-box li{font-size:.92rem;line-height:1.7;color:var(--slate)}
+.info-box.key p,.info-box.key li{color:rgba(255,255,255,.9)}
+.info-box ul{padding-left:1.3rem;margin-top:.4rem}
+.info-box ul li{margin-bottom:.35rem}
+
+/* STAT CARDS */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin:1.2rem 0}
+.stat-card{background:var(--slate);border-radius:10px;padding:1.2rem;text-align:center;color:white}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:900;color:#FCD34D;line-height:1;display:block;margin-bottom:.4rem}
+.stat-label{font-size:.78rem;color:rgba(255,255,255,.73);line-height:1.4}
+
+/* SUBJECT RANK */
+.rank-row{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin:1rem 0}
+.rank-badge{border-radius:8px;padding:.5rem .9rem;text-align:center;font-size:.82rem;font-weight:700}
+.rank-1{background:#F59E0B;color:#1a1a1a}
+.rank-2{background:#94A3B8;color:white}
+.rank-3{background:#B45309;color:white}
+.rank-4{background:#6366F1;color:white}
+.rank-5{background:var(--hist);color:white}
+
+/* QUOTE */
+.quote-block{background:var(--slate);color:white;border-radius:10px;padding:1.4rem 1.8rem;margin:1.5rem 0;position:relative;overflow:hidden}
+.quote-block::before{content:'"';font-family:'Playfair Display',serif;font-size:6rem;color:rgba(255,255,255,.06);position:absolute;top:-.5rem;left:.5rem;line-height:1}
+.quote-text{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;line-height:1.65;color:rgba(255,255,255,.92);position:relative;z-index:1}
+.quote-attr{font-size:.78rem;color:#FCD34D;margin-top:.6rem;font-weight:600}
+
+/* READING CARDS */
+.reading-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0}
+@media(max-width:600px){.reading-grid{grid-template-columns:1fr}}
+.reading-card{background:#fff;border:2px solid var(--border);border-radius:10px;padding:1.2rem;transition:border-color .2s,box-shadow .2s}
+.reading-card:hover{border-color:var(--hist);box-shadow:0 4px 16px rgba(124,45,18,.1)}
+.reading-card h4{font-family:'Playfair Display',serif;font-size:.97rem;color:var(--hist);margin-bottom:.2rem}
+.reading-card .author{font-size:.78rem;color:var(--slate-mid);font-style:italic;margin-bottom:.6rem}
+.reading-card p{font-size:.84rem;color:var(--slate-mid);line-height:1.55}
+.reading-num{display:inline-flex;align-items:center;justify-content:center;background:var(--hist);color:white;border-radius:6px;width:1.6rem;height:1.6rem;font-size:.78rem;font-weight:700;margin-bottom:.6rem}
+
+/* FOCUS Qs */
+.focus-q{background:var(--gold-pale);border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:.7rem 1rem;margin:.5rem 0;font-size:.9rem;color:var(--slate);line-height:1.55}
+.focus-q strong{color:var(--gold);font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.2rem}
+
+/* WINEBURG COMPARE */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0}
+@media(max-width:560px){.compare-grid{grid-template-columns:1fr}}
+.compare-card{border-radius:10px;padding:1.1rem;border:2px solid}
+.compare-card.student{border-color:#FECACA;background:var(--hist-pale)}
+.compare-card.historian{border-color:var(--teal-light);background:var(--teal-pale)}
+.compare-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.compare-card.student .compare-label{color:var(--hist)}
+.compare-card.historian .compare-label{color:var(--teal)}
+.compare-card p{font-size:.86rem;line-height:1.6;color:var(--slate)}
+
+/* LENS CARDS */
+.lens-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0}
+@media(max-width:560px){.lens-grid{grid-template-columns:1fr}}
+.lens-card{background:#fff;border:2px solid var(--border);border-radius:10px;padding:1.1rem}
+.lens-word{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:var(--hist);display:block;margin-bottom:.3rem}
+.lens-card p{font-size:.85rem;color:var(--slate-mid);line-height:1.55}
+
+/* DEBATE CARDS */
+.debate-grid{display:grid;gap:.8rem;margin:1.2rem 0}
+.debate-card{background:#fff;border:2px solid var(--border);border-radius:10px;padding:1.1rem;display:flex;gap:.9rem;align-items:flex-start}
+.debate-q-num{background:var(--hist);color:white;border-radius:6px;width:1.8rem;height:1.8rem;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:700;flex-shrink:0;margin-top:.1rem}
+.debate-card h4{font-size:.95rem;font-weight:700;color:var(--slate);margin-bottom:.3rem}
+.debate-card p{font-size:.84rem;color:var(--slate-mid);line-height:1.55}
+
+/* QUIZ */
+.quiz-question{background:var(--off);border-radius:10px;padding:1.2rem;margin-bottom:1rem;border:1px solid var(--border)}
+.q-text{font-weight:700;font-size:.97rem;margin-bottom:.25rem;line-height:1.5}
+.q-welsh{font-size:.85rem;color:var(--slate-mid);font-style:italic;margin-bottom:.9rem;line-height:1.5}
+.q-num{display:inline-flex;align-items:center;justify-content:center;width:1.5rem;height:1.5rem;background:var(--hist);color:white;border-radius:50%;font-size:.72rem;font-weight:700;margin-right:.4rem;flex-shrink:0}
+.options{display:flex;flex-direction:column;gap:.5rem}
+.option-btn{text-align:left;background:#fff;border:2px solid var(--border);border-radius:8px;padding:.65rem 1rem;font-family:'Source Sans 3',sans-serif;font-size:.9rem;cursor:pointer;transition:all .15s;line-height:1.5;color:var(--slate)}
+.option-btn:hover:not(:disabled){border-color:var(--hist);background:var(--hist-pale)}
+.option-btn.correct{border-color:var(--green);background:var(--green-light);color:#14532D}
+.option-btn.wrong{border-color:var(--hist-mid);background:var(--hist-light);color:#7F1D1D}
+.feedback{display:none;padding:.8rem 1rem;border-radius:8px;font-size:.87rem;line-height:1.6;margin-top:.5rem}
+.feedback.correct.show{display:block;background:var(--green-light);border-left:3px solid var(--green);color:#14532D}
+.feedback.wrong.show{display:block;background:var(--hist-light);border-left:3px solid var(--hist-mid);color:#7F1D1D}
+
+/* TEXTAREA */
+textarea{width:100%;padding:.7rem .9rem;font-family:'Source Sans 3',sans-serif;font-size:.9rem;border:2px solid var(--border);border-radius:8px;resize:vertical;min-height:70px;color:var(--slate);line-height:1.6;transition:border-color .2s;margin-top:.5rem}
+textarea:focus{outline:none;border-color:var(--hist)}
+
+/* TASK BOXES */
+.task-box{background:var(--gold-pale);border:2px solid #FDE68A;border-radius:10px;padding:1.2rem 1.4rem;margin:1.4rem 0}
+.task-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.6rem;display:flex;align-items:center;gap:.4rem}
+.task-num{background:var(--gold);color:white;border-radius:50%;width:1.3rem;height:1.3rem;display:flex;align-items:center;justify-content:center;font-size:.68rem}
+.field-label{font-size:.76rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--slate-mid);margin-bottom:.2rem;display:block;margin-top:.6rem}
+
+/* BTN ROW */
+.btn-row{display:flex;gap:.75rem;justify-content:space-between;flex-wrap:wrap;margin-top:1.5rem;padding-top:1rem;border-top:1px solid var(--border)}
+.btn{padding:.6rem 1.4rem;border-radius:8px;border:2px solid transparent;font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--hist);color:#fff;border-color:var(--hist)}
+.btn-primary:hover{background:#6b1010}
+.btn-secondary{background:#fff;color:var(--slate-mid);border-color:var(--border)}
+.btn-secondary:hover{border-color:var(--slate-mid)}
+.btn-amber{background:var(--gold);color:white;border-color:var(--gold)}
+.btn-amber:hover{background:#92400E}
+
+/* COMPLETION */
+.completion-card{display:none;background:linear-gradient(135deg,#450A0A,var(--hist));color:white;border-radius:16px;padding:3rem 2rem;text-align:center;margin-top:2rem}
+.completion-card.show{display:block}
+.badge-icon{font-size:4rem;display:block;margin-bottom:1rem}
+.completion-card h2{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.75rem}
+.score-badge{display:inline-block;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);border-radius:999px;padding:.3rem 1.2rem;font-size:1rem;font-weight:700;margin-bottom:1rem}
+.completion-card p{font-size:.95rem;opacity:.88;line-height:1.7;max-width:560px;margin:0 auto .8rem}
+
+/* CERT */
+.cert-trigger-box{margin-top:1.5rem;padding:1.5rem;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.4);border-radius:12px;text-align:center}
+.cert-trigger-box p{font-size:.88rem;opacity:.85;margin-bottom:1rem;line-height:1.6}
+.cert-name-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.cert-name-input{padding:.6rem 1rem;font-family:'Source Sans 3',sans-serif;font-size:.95rem;border:2px solid rgba(255,255,255,.3);border-radius:8px;background:rgba(255,255,255,.15);color:white;width:250px}
+.cert-name-input::placeholder{color:rgba(255,255,255,.4)}
+.cert-name-input:focus{outline:none;border-color:#FCD34D}
+.btn-cert{background:#FCD34D;color:#1a1a1a;border:none;padding:.6rem 1.3rem;border-radius:8px;font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:white;border-radius:8px;width:100%;max-width:780px;max-height:95vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.certificate{width:100%;background:white}
+.cert-frame{margin:16px;border:3px solid #7C2D12;position:relative}
+.cert-frame::before{content:'';position:absolute;inset:5px;border:1px solid #B45309;pointer-events:none;z-index:1}
+.cert-stripe{height:5px;background:linear-gradient(90deg,#450A0A 0%,#B45309 40%,#7C2D12 100%)}
+.cert-header{background:linear-gradient(135deg,#450A0A 0%,#7C2D12 100%);padding:1.3rem 2rem 1.1rem;text-align:center}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.cert-inst-name{font-family:'Playfair Display',serif;color:white;font-size:1rem;text-align:left;line-height:1.2}
+.cert-inst-cy{color:#FDE68A;font-size:.75rem;font-style:italic;display:block;font-family:'Source Sans 3',sans-serif;font-weight:400}
+.cert-body{padding:1.6rem 2rem;text-align:center}
+.cert-presents{font-size:.73rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;margin-bottom:.4rem}
+.cert-main-title{font-family:'Playfair Display',serif;font-size:1.4rem;color:#7C2D12;line-height:1.2;margin-bottom:.2rem}
+.cert-main-cy{font-size:.85rem;color:#B45309;font-style:italic;margin-bottom:1.2rem;font-family:'Source Sans 3',sans-serif}
+.cert-awarded-to{font-size:.73rem;text-transform:uppercase;letter-spacing:.1em;color:#475569;margin-bottom:.2rem}
+.cert-name{font-family:'Playfair Display',serif;font-size:1.9rem;color:#7C2D12;border-bottom:2px solid #E2E8F0;display:inline-block;padding:0 1rem .1rem;min-width:260px;margin-bottom:.3rem;line-height:1.3}
+.cert-score-pill{display:inline-block;background:#FEF3C7;border:1px solid #B45309;border-radius:999px;padding:.25rem 1rem;font-size:.8rem;font-weight:700;color:#92400E;margin:.5rem 0 .8rem}
+.cert-divider{height:1px;background:linear-gradient(90deg,transparent,#B45309,transparent);margin:.9rem auto;width:55%}
+.cert-text{font-size:.86rem;color:#1E293B;line-height:1.65;max-width:440px;margin:0 auto .7rem}
+.cert-course{font-family:'Playfair Display',serif;font-size:.95rem;color:#1E293B;background:#FFF7ED;border:1px solid #FDE68A;border-left:4px solid #7C2D12;padding:.45rem .9rem;display:inline-block;margin-bottom:.35rem;text-align:left}
+.cert-course-cy{font-size:.76rem;color:#B45309;font-style:italic;display:block;font-family:'Source Sans 3',sans-serif;font-weight:400}
+.cert-competencies{font-size:.76rem;color:#475569;margin:.2rem auto 1rem;max-width:420px;line-height:1.55}
+.cert-footer-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:1rem;padding-top:1rem;border-top:1px solid #E2E8F0}
+.cert-sig-block{text-align:center}
+.cert-sig-line{height:1px;background:#1E293B;width:140px;margin:0 auto .25rem}
+.cert-sig-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569}
+.cert-seal{width:64px;height:64px;border-radius:50%;background:#7C2D12;border:3px solid #B45309;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-size:.5rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;line-height:1.3;margin:0 auto}
+.cert-seal-icon{font-size:1.2rem;display:block;margin-bottom:1px}
+.cert-date-val{font-family:'Playfair Display',serif;font-size:.9rem;color:#1E293B}
+.cert-date-label{font-size:.68rem;text-transform:uppercase;letter-spacing:.07em;color:#475569;margin-top:.2rem}
+.cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.9rem 1.5rem 1.2rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
+.btn-cert-print{background:#7C2D12;color:white;border:none;padding:.55rem 1.2rem;border-radius:8px;font-family:'Source Sans 3',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer}
+.btn-cert-close{background:#475569;color:white;border:none;padding:.55rem 1.2rem;border-radius:8px;font-family:'Source Sans 3',sans-serif;font-size:.86rem;cursor:pointer}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="lang-badge">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg · English</div>
+  <h1>Why Is Teaching History Important?
+    <span>Pam Mae Addysgu Hanes yn Bwysig?</span>
+  </h1>
+  <p class="header-sub">PGCE History — Session 1 &nbsp;·&nbsp; Investigating the discipline, challenging preconceptions, locating History in the Curriculum for Wales</p>
+  <div class="subject-pills">
+    <span class="pill">📜 PGCE History · Hanes</span>
+    <span class="pill">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Curriculum for Wales</span>
+    <span class="pill">📋 Standards P6, P8, PL1</span>
+  </div>
+  <div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+  <p id="progress-label" class="progress-label">Section 1 of 6 · Adran 1 o 6</p>
+</header>
+
+<main>
+  <div class="section-nav">
+    <button class="snav-btn active" onclick="goTo(0)">1 · Provocation</button>
+    <button class="snav-btn" onclick="goTo(1)">2 · Wineburg</button>
+    <button class="snav-btn" onclick="goTo(2)">3 · Reading Guides</button>
+    <button class="snav-btn" onclick="goTo(3)">4 · CfW &amp; Debates</button>
+    <button class="snav-btn" onclick="goTo(4)">5 · Knowledge Check</button>
+    <button class="snav-btn" onclick="goTo(5)">6 · Reflection</button>
+  </div>
+
+  <!-- ══════════════ SECTION 1 — PROVOCATION ══════════════ -->
+  <div class="section-card active" id="sec-0">
+    <div class="card-header hist">
+      <div class="icon">❓</div>
+      <h2>Section 1: Before We Begin — A Provocation
+        <em>Adran 1: Cyn Dechrau — Heriad</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 English</div>
+          <p>Welcome to Session 1 of your PGCE History course. Before we explore why teaching history matters, we start with a challenge to your assumptions — and a piece of data that might surprise you.</p>
+          <p style="margin-top:.6rem">This session connects directly to <strong>Teaching Standards P6, P8 and PL1</strong>: understanding your subject's disciplinary foundations, developing subject knowledge, and engaging critically with curriculum frameworks.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg</div>
+          <p>Croeso i Sesiwn 1 eich cwrs TGCH Hanes. Cyn i ni archwilio pam mae addysgu hanes yn bwysig, rydym yn dechrau gyda her i'ch rhagdybiaethau — a darn o ddata a allai eich synnu.</p>
+          <p style="margin-top:.6rem">Mae'r sesiwn hon yn cysylltu'n uniongyrchol â <strong>Safonau Addysgu P6, P8 a PL1</strong>: deall sylfeini disgyblaethol eich pwnc, datblygu gwybodaeth bwnc, ac ymgysylltu'n feirniadol â fframweithiau cwricwlwm.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.9rem;color:var(--hist)">How enjoyable is history? · Pa mor bleserus yw hanes?</h3>
+      <div class="stats-grid">
+        <div class="stat-card"><span class="stat-num">69.8%</span><span class="stat-label">of pupils say history is 'quite enjoyable' · o ddisgyblion yn dweud bod hanes yn 'eithaf pleserus' (Harris &amp; Haydn, 2006)</span></div>
+        <div class="stat-card"><span class="stat-num">1,740</span><span class="stat-label">pupils surveyed across 12 schools · disgyblion a arolygwyd ar draws 12 ysgol</span></div>
+        <div class="stat-card"><span class="stat-num">5th</span><span class="stat-label">history ranked 5th most enjoyable subject · hanes wedi'i raddio'n 5ed pwnc mwyaf pleserus</span></div>
+      </div>
+
+      <p style="font-size:.88rem;font-weight:700;color:var(--slate-mid);margin:.3rem 0 .5rem;text-transform:uppercase;letter-spacing:.06em">Ranked above history · Wedi'u rhestru uwchlaw hanes:</p>
+      <div class="rank-row">
+        <div class="rank-badge rank-1">🥇 1st — PE · Addysg Gorfforol</div>
+        <div class="rank-badge rank-2">🥈 2nd — Design Technology · DT</div>
+        <div class="rank-badge rank-3">🥉 3rd — ICT · TGCh</div>
+        <div class="rank-badge rank-4">4th — Art · Celf</div>
+        <div class="rank-badge rank-5">✓ 5th — History · Hanes</div>
+      </div>
+
+      <div class="info-box gold" style="margin-top:1.2rem">
+        <h3>💬 Opening Discussion · Trafodaeth Agoriadol</h3>
+        <p>All the top four subjects require pupils to <strong>DO</strong> things actively. What does this tell us about how history should be taught? Do the most engaging history lessons share this quality? What are the implications for your practice? · Mae'r pedwar pwnc uchaf yn gofyn i ddisgyblion <strong>WNEUD</strong> pethau'n weithredol. Beth mae hyn yn ei ddweud wrthym am sut dylid addysgu hanes?</p>
+        <textarea placeholder="Your initial thoughts / Eich meddyliau cychwynnol…"></textarea>
+      </div>
+
+      <div class="info-box key">
+        <h3>📋 Session Learning Intentions · Bwriadau Dysgu'r Sesiwn</h3>
+        <ul>
+          <li><strong>Investigated</strong> how the subject discipline is conceived in the classroom — and how it came to be this way · <em>Ymchwiliodd</em> sut y mae'r ddisgyblaeth bwnc yn cael ei chynllunio yn y dosbarth</li>
+          <li><strong>Challenged</strong> preconceptions that may be a barrier to effective history teaching (e.g. 'it's all about learning dates!') · <em>Heriodd</em> ragdybiaethau a allai fod yn rhwystr i addysgu hanes effeithiol</li>
+          <li><strong>Connected</strong> subject-specific skills and knowledge to the experiences that allow pupils to access them · <em>Cysylltodd</em> sgiliau a gwybodaeth bwnc-benodol â'r profiadau sy'n galluogi disgyblion</li>
+          <li><strong>Located</strong> history within the Humanities AoLE of the Curriculum for Wales — and critiqued the framework · <em>Lleolwyd</em> hanes o fewn MDP y Dyniaethau yng Nghwricwlwm i Gymru — a beirniadwyd y fframwaith</li>
+        </ul>
+      </div>
+
+      <div class="btn-row">
+        <span></span>
+        <button class="btn btn-primary" onclick="nextSection(0)">Next: Wineburg → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ SECTION 2 — WINEBURG ══════════════ -->
+  <div class="section-card" id="sec-1">
+    <div class="card-header gold">
+      <div class="icon">🔬</div>
+      <h2>Section 2: Wineburg — Unnatural and Essential
+        <em>Adran 2: Wineburg — Annaturiol ac Hanfodol</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="quote-block">
+        <p class="quote-text">"Historical thinking goes against the grain of how we ordinarily think."</p>
+        <p class="quote-attr">— Sam Wineburg, Teaching History 129 (2007)</p>
+      </div>
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 English — The Central Argument</div>
+          <p>Wineburg argues that historical thinking is both <strong>'unnatural'</strong> and <strong>'essential'</strong>. It is unnatural because it runs counter to our everyday cognitive habits — snap judgements, vivid associations, surface-level pattern matching. It is essential because without it we cannot navigate the complexities of living in time.</p>
+          <p style="margin-top:.5rem">He demonstrates this through an experiment comparing how a 17-year-old student, primary teachers, and doctoral historians read the same historical document — a Harrison Proclamation from 1892.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Cymraeg — Y Ddadl Ganolog</div>
+          <p>Mae Wineburg yn dadlau bod meddwl hanesyddol yn <strong>'annaturiol'</strong> ac yn <strong>'hanfodol'</strong>. Mae'n annaturiol oherwydd ei fod yn mynd yn groes i'n harferion gwybyddol bob dydd — barnau brysiog, cysylltiadau bywiog, cyfatebiaeth arwynebol. Mae'n hanfodol oherwydd hebddo ni allwn lywio cymhlethdodau byw mewn amser.</p>
+          <p style="margin-top:.5rem">Mae'n dangos hyn drwy arbrawf yn cymharu sut roedd disgybl 17 oed, athrawon cynradd, a myfyrwyr doethuriaeth yn darllen yr un ddogfen hanesyddol.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:.5rem 0 .9rem;color:var(--hist)">Two Key Cognitive Concepts · Dau Gysyniad Gwybyddol Allweddol</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem">
+        <div class="info-box" style="margin:0">
+          <h3>Spread of Activation · Lledaenu Actifadu</h3>
+          <p>Semantic information is organised in associative memory networks. Once a 'node' is activated, related nodes are more likely to be activated. E.g. flashing 'car' makes you quicker to think of BMW than bread. · Mae gwybodaeth eirfaol wedi'i threfnu mewn rhwydweithiau cof cysylladol.</p>
+        </div>
+        <div class="info-box gold" style="margin:0">
+          <h3>Availability Heuristic · Hiwristig Argaeledd</h3>
+          <p>Thinkers privilege information that is <em>vivid and easily available</em> in memory over more pallid but often more probative information. E.g. citing a grandfather who smoked but lived to 95 over statistical mortality data. · Mae meddylwyr yn blaenoriaethu gwybodaeth fywiog.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:0 0 .9rem;color:var(--hist)">The Harrison Proclamation Experiment · Arbrawf Cyhoeddiad Harrison</h3>
+      <div class="compare-grid">
+        <div class="compare-card student">
+          <div class="compare-label">❌ Jacob — 17-year-old student · Disgybl 17 oed</div>
+          <p>"He gazed cursorily at the sheet and then launched into a mini-speech about Columbus, intoning with youthful exuberance his zeitgeist's politically correct shibboleths. He was 'critical' of Columbus — but 'being critical' and 'thinking critically' are not the same."</p>
+          <p style="margin-top:.5rem;font-size:.82rem;color:var(--hist);font-weight:600">The Columbus node activated → availability heuristic dominated → context ignored · Nod Columbus wedi'i actifadu → cyd-destun wedi'i anwybyddu</p>
+        </div>
+        <div class="compare-card historian">
+          <div class="compare-label">✅ Matt — PhD History student · Myfyriwr Hanes PhD</div>
+          <p>"Okay it's 1892, so it's the 400th anniversary. Benjamin Harrison… The 1890s, the beginning of the Progressive Era, end of the century, closing of the frontier, Frederick Jackson Turner… Biggest wave of immigration in US history. <strong>That's it.</strong>"</p>
+          <p style="margin-top:.5rem;font-size:.82rem;color:var(--teal);font-weight:600">Puzzled about 1892, not 1492 — asked what the document meant in its moment of production · Cwestiynodd 1892, nid 1492</p>
+        </div>
+      </div>
+
+      <div class="info-box teal">
+        <h3>🔑 The Key Insight — 'Specification of Ignorance' · 'Penodi Anwybodaeth'</h3>
+        <p>Historians use a document not merely to issue a judgement about it, but to <strong>stimulate new questions</strong> and identify gaps in knowledge. Students typically encountered the document and issued judgements. Historians positioned themselves <em>to learn.</em> This is why we call history a <strong>discipline</strong> — it cultivates modes of thought that counterbalance haste and avert premature judgement. · Safonau meddwl sy'n gwrthbwyso brys ac yn atal barn brydlon.</p>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">2</div> Task 2.1 — The Wineburg Questions · Cwestiynau Wineburg</div>
+        <p style="font-size:.9rem;margin-bottom:.7rem">Return to these questions at the end of the session to see if your answers have changed. · Dychwelwch at y cwestiynau hyn ar ddiwedd y sesiwn i weld a yw eich atebion wedi newid.</p>
+        <label class="field-label">1. If historical thinking is 'unnatural' — why bother teaching it? / Os yw meddwl hanesyddol yn 'annaturiol' — pam trafferthu ei addysgu?</label>
+        <textarea placeholder="Your response / Eich ymateb…"></textarea>
+        <label class="field-label">2. What specifically makes it 'unnatural'? / Beth yn benodol sy'n ei wneud yn 'annaturiol'?</label>
+        <textarea placeholder="Your response / Eich ymateb…"></textarea>
+        <label class="field-label">3. What does this mean for how you teach? / Beth mae hyn yn ei olygu ar gyfer sut rydych chi'n addysgu?</label>
+        <textarea placeholder="Your response / Eich ymateb…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(0)">← Back / Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(1)">Next: Reading Guides → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ SECTION 3 — READING GUIDES ══════════════ -->
+  <div class="section-card" id="sec-2">
+    <div class="card-header teal">
+      <div class="icon">📚</div>
+      <h2>Section 3: Session Reading Guides
+        <em>Adran 3: Canllawiau Darllen y Sesiwn</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="info-box teal">
+        <h3>📋 How to use this section · Sut i ddefnyddio'r adran hon</h3>
+        <p>Choose <strong>one</strong> of the four texts. Read your reading guide first to orient yourself, then read the article using the focus questions. Prepare a brief infographic or prompts to share next session. Identify 2–3 claims you would defend to a sceptical head of department who says: <em>'History is just learning dates.'</em> · Dewiswch <strong>un</strong> o'r pedwar testun. Darllenwch y canllaw darllen yn gyntaf, yna darllenwch yr erthygl gan ddefnyddio'r cwestiynau ffocws.</p>
+      </div>
+
+      <div class="reading-grid">
+
+        <div class="reading-card">
+          <div class="reading-num">1</div>
+          <h4>Secondary History: Current Themes</h4>
+          <div class="author">Terry Haydn — in Davies (ed.) Debates in History Teaching (2011)</div>
+          <p>Haydn surveys secondary history teaching in England and Wales — challenges teachers face, the contested nature of the subject, and the professional context you are entering. Available via university library: search 'Debates in History Teaching Davies'.</p>
+          <div class="focus-q" style="margin-top:.8rem"><strong>Q1</strong> What does Haydn identify as the main purposes of history teaching? Are they in tension?</div>
+          <div class="focus-q"><strong>Q2</strong> What does he say about the relationship between subject knowledge and pedagogical knowledge?</div>
+          <div class="focus-q"><strong>Q3</strong> What challenges are specific to history (rather than generic teaching challenges)?</div>
+          <div class="focus-q"><strong>Q4</strong> What would Haydn say to a headteacher proposing to replace history with a generic 'humanities' course?</div>
+        </div>
+
+        <div class="reading-card">
+          <div class="reading-num">2</div>
+          <h4>Understanding History Teaching — Chapter 1</h4>
+          <div class="author">Husbands, Kitson &amp; Pendry (2003) — OUP. pp. 1–22</div>
+          <p>The opening chapter argues that history is one of the most ideologically contested school subjects, drawing on research with teachers and pupils to show how history teachers think about their subject. Available via university library: search 'Understanding History Teaching Husbands'.</p>
+          <div class="focus-q" style="margin-top:.8rem"><strong>Q1</strong> Why do the authors describe history as 'ideologically contested'? Do you agree?</div>
+          <div class="focus-q"><strong>Q2</strong> What distinction is drawn between 'content knowledge' and 'pedagogical content knowledge' in history?</div>
+          <div class="focus-q"><strong>Q3</strong> How do the teachers in their research justify teaching history? Which justification is most convincing?</div>
+          <div class="focus-q"><strong>Q4</strong> What does the chapter suggest about the relationship between a teacher's understanding of history and how they teach it?</div>
+        </div>
+
+        <div class="reading-card">
+          <div class="reading-num">3</div>
+          <h4>Understanding History Teaching — Chapter 8</h4>
+          <div class="author">Husbands, Kitson &amp; Pendry (2003) — OUP. pp. 141–155</div>
+          <p>The closing chapter asks what it means to be a history teacher in the contemporary school — arguing that being a subject specialist and a professional educator are not in tension but mutually reinforcing. Available via university library.</p>
+          <div class="focus-q" style="margin-top:.8rem"><strong>Q1</strong> What should be the overarching aim of school history? How does this compare with your expectations?</div>
+          <div class="focus-q"><strong>Q2</strong> What kind of relationship with the subject does being a good history teacher require?</div>
+          <div class="focus-q"><strong>Q3</strong> How do the authors address the tension between 'covering content' and developing historical thinking skills?</div>
+          <div class="focus-q"><strong>Q4</strong> What practical implications does the argument have for how you might plan and teach a history lesson?</div>
+        </div>
+
+        <div class="reading-card">
+          <div class="reading-num">4</div>
+          <h4>Unnatural and Essential: The Nature of Historical Thinking</h4>
+          <div class="author">Sam Wineburg — Teaching History 129 (2007), pp. 6–11</div>
+          <p>Full text included in your reading booklet (Article A). Wineburg demonstrates why historical thinking is 'unnatural' through a striking experiment comparing how students, teachers and historians read the same document. Also available via the Historical Association.</p>
+          <div class="focus-q" style="margin-top:.8rem"><strong>Q1</strong> What does Wineburg mean by 'unnatural'? Why did this claim cause controversy?</div>
+          <div class="focus-q"><strong>Q2</strong> What are the 'spread of activation effect' and the 'availability heuristic', and why do they matter?</div>
+          <div class="focus-q"><strong>Q3</strong> Why did Jacob and the doctoral historians read the Harrison Proclamation so differently?</div>
+          <div class="focus-q"><strong>Q4</strong> Wineburg argues history 'provides an antidote to impulse'. Do you find this convincing?</div>
+        </div>
+
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">3</div> Task 3.1 — Your Reading Notes · Nodiadau Darllen</div>
+        <p style="font-size:.9rem;margin-bottom:.7rem">Which text did you choose? Use the space below to note 2–3 key claims you would defend to a sceptical head of department who says: <em>'History is just learning dates.'</em> · Pa destun wnaethoch chi ei ddewis? Nodwch 2–3 honiad allweddol y byddech chi'n eu hamddiffyn.</p>
+        <label class="field-label">Reading chosen / Darlleniad a ddewiswyd:</label>
+        <textarea style="min-height:45px" placeholder="e.g. Reading 4 — Wineburg (2007)"></textarea>
+        <label class="field-label">My 2–3 claims to defend / Fy 2–3 honiad i'w hamddiffyn:</label>
+        <textarea style="min-height:100px" placeholder="1. &#10;2. &#10;3. "></textarea>
+        <label class="field-label">My infographic idea / Fy syniad am infograffig:</label>
+        <textarea placeholder="What would make someone stop and read this? Images, data, a quote? / Beth fyddai'n gwneud i rywun stopio a darllen hyn?"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(1)">← Back / Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(2)">Next: CfW &amp; Debates → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ SECTION 4 — CfW & DEBATES ══════════════ -->
+  <div class="section-card" id="sec-3">
+    <div class="card-header indigo">
+      <div class="icon">🏴󠁧󠁢󠁷󠁬󠁳󠁿</div>
+      <h2>Section 4: History in the Curriculum for Wales &amp; Key Debates
+        <em>Adran 4: Hanes yng Nghwricwlwm i Gymru a Dadleuon Allweddol</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.9rem;color:var(--indigo)">Locating History in the Curriculum for Wales · Lleoli Hanes yng Nghwricwlwm i Gymru</h3>
+      <p style="font-size:.93rem;margin-bottom:1rem">Explore the Humanities AoLE on Hwb (<strong>hwb.gov.wales</strong>), then use these four lenses to guide your critique. History sits within the Humanities Area of Learning and Experience alongside Geography, Religion Values &amp; Ethics, Business Studies and Social Studies. · Archwiliwch MDPH y Dyniaethau ar Hwb, yna defnyddiwch y pedair lens i arwain eich beirniadaeth.</p>
+
+      <div class="lens-grid">
+        <div class="lens-card">
+          <span class="lens-word">WHAT · BETH</span>
+          <p>What history does the CfW say should be taught? What's specified — and what's left to you as the teacher? Is Welsh history foregrounded? · Beth mae'r CfW yn dweud y dylid ei addysgu? Beth sy'n benodol — a beth sy'n cael ei adael i chi?</p>
+        </div>
+        <div class="lens-card">
+          <span class="lens-word">WHY · PAM</span>
+          <p>Does the framework explain why history matters? What justification does it offer for the subject? Does it align with the arguments in your readings? · A yw'r fframwaith yn egluro pam mae hanes yn bwysig?</p>
+        </div>
+        <div class="lens-card">
+          <span class="lens-word">HOW · SUT</span>
+          <p>Does it say anything about pedagogy? Or does it leave the 'how' entirely to the teacher? What does the absence (or presence) of pedagogical guidance tell us? · A yw'n dweud unrhyw beth am addysgeg?</p>
+        </div>
+        <div class="lens-card">
+          <span class="lens-word">GAPS · BYLCHAU</span>
+          <p>What's missing? What would you want it to say that it doesn't? What battles were fought to get history to where it is today — and what battles remain? · Beth sydd ar goll? Beth fyddech chi am iddo ei ddweud nad yw'n ei ddweud?</p>
+        </div>
+      </div>
+
+      <div class="info-box indigo" style="margin-bottom:1.2rem">
+        <h3>🔗 Resources · Adnoddau</h3>
+        <p><strong>Humanities AoLE guidance:</strong> hwb.gov.wales/curriculum-for-wales/humanities &nbsp;|&nbsp; <strong>WJEC GCSE History spec:</strong> wjec.co.uk &nbsp;|&nbsp; <strong>Historical Association Wales:</strong> history.org.uk/wales</p>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin:.5rem 0 .8rem;color:var(--indigo)">Key Debates to Discuss · Dadleuon Allweddol i'w Trafod</h3>
+
+      <div class="debate-grid">
+        <div class="debate-card"><div class="debate-q-num">Q1</div><div><h4>What's the point in studying the past? / Beth yw'r diben astudio'r gorffennol?</h4><p>Is history studied for its own sake, for citizenship, for transferable skills, for national identity — or all of these? Who decides? · A yw hanes yn cael ei astudio er ei fwyn ei hun, ar gyfer dinasyddiaeth, sgiliau trosglwyddadwy, hunaniaeth genedlaethol — neu'r cwbl?</p></div></div>
+        <div class="debate-card"><div class="debate-q-num">Q2</div><div><h4>Who should decide what is taught? / Pwy ddylai benderfynu beth sy'n cael ei addysgu?</h4><p>Government? Exam boards? Teachers? Pupils? Communities? What happens when these conflict — as they do in Wales around Welsh history, colonialism, and whose voices are centred? · Llywodraeth? Byrddau arholi? Athrawon? Disgyblion? Cymunedau?</p></div></div>
+        <div class="debate-card"><div class="debate-q-num">Q3</div><div><h4>Knowledge or skills — which is more important? / Gwybodaeth neu sgiliau — pa un sy'n bwysicach?</h4><p>Can you develop historical thinking skills without substantive content knowledge? Or does skills-led history risk becoming hollow? Where does this debate sit in the Welsh context? · A ellir datblygu sgiliau meddwl hanesyddol heb gynnwys gwybodaeth sylweddol?</p></div></div>
+        <div class="debate-card"><div class="debate-q-num">Q4</div><div><h4>Should GCSE History remain single tier in Wales? / A ddylai TGAU Hanes aros yn un haen yng Nghymru?</h4><p>WJEC offers a single-tier entry for GCSE History. What are the pedagogical and equity arguments for and against? How does this affect your teaching? · Mae CBAC yn cynnig mynediad un haen ar gyfer TGAU Hanes. Beth yw'r dadleuon addysgegol a thegwch?</p></div></div>
+        <div class="debate-card"><div class="debate-q-num">Q5</div><div><h4>Only WJEC in Wales at GCSE and A Level? / Dim ond CBAC yng Nghymru?</h4><p>Welsh schools largely take WJEC specifications — what are the strengths and limitations of this? Does it serve the diversity of learners in Wales? · Mae ysgolion Cymru yn bennaf yn cymryd manylebau CBAC — beth yw'r cryfderau a'r cyfyngiadau?</p></div></div>
+        <div class="debate-card"><div class="debate-q-num">Q6</div><div><h4>Did the history you studied represent you? / A oedd yr hanes a astudioch yn eich cynrychioli chi?</h4><p>Whose history was taught in your school? Whose was absent? What does this tell us about power, curriculum design, and whose stories are considered historically significant in Wales? · Hanes pwy gafodd ei addysgu yn eich ysgol chi?</p></div></div>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">4</div> Task 4.1 — CfW Critique · Beirniadaeth CfW</div>
+        <p style="font-size:.9rem;margin-bottom:.7rem">After exploring the Humanities AoLE on Hwb, write your critique using the four lenses (What / Why / How / Gaps). · Ar ôl archwilio MDP y Dyniaethau ar Hwb, ysgrifennwch eich beirniadaeth gan ddefnyddio'r pedair lens.</p>
+        <label class="field-label">WHAT — What's specified, what's left open? / Beth sy'n benodol, beth sy'n agored?</label>
+        <textarea placeholder="Your analysis…"></textarea>
+        <label class="field-label">WHY — What justification does the framework offer? / Pa gyfiawnhad mae'r fframwaith yn ei gynnig?</label>
+        <textarea placeholder="Your analysis…"></textarea>
+        <label class="field-label">HOW — What does it say about pedagogy? / Beth mae'n ei ddweud am addysgeg?</label>
+        <textarea placeholder="Your analysis…"></textarea>
+        <label class="field-label">GAPS — What's missing? What would you want it to say? / Beth sydd ar goll?</label>
+        <textarea placeholder="Your analysis…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(2)">← Back / Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(3)">Next: Knowledge Check → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ SECTION 5 — KNOWLEDGE CHECK ══════════════ -->
+  <div class="section-card" id="sec-4">
+    <div class="card-header green">
+      <div class="icon">✅</div>
+      <h2>Section 5: Knowledge Check Quiz
+        <em>Adran 5: Cwis Gwiriad Gwybodaeth</em>
+      </h2>
+    </div>
+    <div class="card-body"><div class="quiz-question" id="q1"><p class="q-text"><span class="q-num">1</span>According to Harris & Haydn (2006), how did history rank among school subjects in terms of pupil enjoyment?</p><p class="q-welsh">· Yn ôl Harris a Haydn (2006), sut roedd hanes yn sgorio ymhlith pynciau ysgol o ran mwynhad disgyblion?</p><div class="options"><button class="option-btn" onclick="checkQ('q1',this,false)">1st — the most enjoyed subject overall / 1af — y pwnc mwyaf pleserus</button><button class="option-btn" onclick="checkQ('q1',this,true)">5th — behind PE, DT, ICT and Art / 5ed — y tu ôl i Addysg Gorfforol, DT, TGCh a Chelf</button><button class="option-btn" onclick="checkQ('q1',this,false)">7th — in the bottom third of subjects / 7fed — yn y traean isaf o bynciau</button><button class="option-btn" onclick="checkQ('q1',this,false)">3rd — particularly popular with boys / 3ydd — yn arbennig o boblogaidd gyda bechgyn</button></div><div class="feedback" id="q1-fb"></div></div><div class="quiz-question" id="q2"><p class="q-text"><span class="q-num">2</span>What does Wineburg (2007) mean when he calls historical thinking 'unnatural'?</p><p class="q-welsh">· Beth mae Wineburg (2007) yn ei olygu pan fydd yn galw meddwl hanesyddol yn 'annaturiol'?</p><div class="options"><button class="option-btn" onclick="checkQ('q2',this,false)">It is too difficult for most pupils and should only be taught to high attainers / Mae'n rhy anodd i'r rhan fwyaf o ddisgyblion</button><button class="option-btn" onclick="checkQ('q2',this,false)">It is a recent invention with no basis in human psychology / Mae'n ddyfais ddiweddar</button><button class="option-btn" onclick="checkQ('q2',this,true)">It runs counter to normal cognitive habits — snap judgements, vivid associations and surface-level pattern matching — and must be cultivated / Mae'n mynd yn groes i arferion gwybyddol arferol</button><button class="option-btn" onclick="checkQ('q2',this,false)">It can only be learned through university study, not school / Dim ond drwy astudio mewn prifysgol y gellir ei ddysgu</button></div><div class="feedback" id="q2-fb"></div></div><div class="quiz-question" id="q3"><p class="q-text"><span class="q-num">3</span>In Wineburg's Harrison Proclamation experiment, why did the doctoral historians respond differently to the 17-year-old Jacob?</p><p class="q-welsh">· Yn arbrawf Cyhoeddiad Harrison Wineburg, pam ymatebodd y myfyrwyr doethuriaeth yn wahanol i Jacob?</p><div class="options"><button class="option-btn" onclick="checkQ('q3',this,false)">They had more factual knowledge about Columbus and the 15th century / Roedd ganddynt fwy o wybodaeth ffeithiol am Columbus</button><button class="option-btn" onclick="checkQ('q3',this,true)">They paused to think about the context of 1892 rather than following the Columbus node — asking what the document meant in its moment of production / Fe wnaethant oedi i feddwl am gyd-destun 1892</button><button class="option-btn" onclick="checkQ('q3',this,false)">They were trained to be more politically correct in their judgements about historical figures / Roeddent wedi'u hyfforddi i fod yn fwy cywir yn wleidyddol</button><button class="option-btn" onclick="checkQ('q3',this,false)">They ignored the document and relied entirely on prior knowledge / Fe wnaethant anwybyddu'r ddogfen</button></div><div class="feedback" id="q3-fb"></div></div><div class="quiz-question" id="q4"><p class="q-text"><span class="q-num">4</span>Which of the following BEST describes the structure of the Curriculum for Wales Humanities AoLE?</p><p class="q-welsh">· Pa un o'r canlynol sy'n disgrifio orau strwythur MDP y Dyniaethau yng Nghwricwlwm i Gymru?</p><div class="options"><button class="option-btn" onclick="checkQ('q4',this,false)">A list of compulsory topics and dates that all pupils must cover from Years 7–11 / Rhestr o bynciau a dyddiadau gorfodol</button><button class="option-btn" onclick="checkQ('q4',this,true)">An AoLE organised around five Statements of What Matters, encompassing History, Geography, RVE, Business Studies and Social Studies — with History embedded as a core discipline rather than taught in isolation / MDP wedi'i drefnu o gwmpas pum Datganiad o'r Hyn sy'n Bwysig</button><button class="option-btn" onclick="checkQ('q4',this,false)">A standalone History curriculum separate from other humanities subjects / Cwricwlwm Hanes ar wahân</button><button class="option-btn" onclick="checkQ('q4',this,false)">A skills-only framework with no specified content for History teachers to cover / Fframwaith sgiliau yn unig</button></div><div class="feedback" id="q4-fb"></div></div><div class="quiz-question" id="q5"><p class="q-text"><span class="q-num">5</span>Husbands, Kitson & Pendry (2003) describe history as 'ideologically contested'. What do they mean?</p><p class="q-welsh">· Mae Husbands, Kitson a Pendry (2003) yn disgrifio hanes fel un 'wedi'i herio'n ideolegol'. Beth ydynt yn ei olygu?</p><div class="options"><button class="option-btn" onclick="checkQ('q5',this,false)">History is too politically sensitive to be taught in schools at all / Mae hanes yn rhy sensitif yn wleidyddol i'w addysgu mewn ysgolion</button><button class="option-btn" onclick="checkQ('q5',this,false)">Different political groups want different historical facts to be taught / Mae grwpiau gwleidyddol gwahanol am addysgu ffeithiau hanesyddol gwahanol</button><button class="option-btn" onclick="checkQ('q5',this,true)">Fundamental questions — whose history, why we teach it, what counts as historical knowledge — are genuinely contested and shaped by power, values and political context / Mae cwestiynau sylfaenol wedi'u herio ac wedi'u llunio gan bŵer, gwerthoedd a chyd-destun gwleidyddol</button><button class="option-btn" onclick="checkQ('q5',this,false)">History teachers regularly disagree with each other about what happened in the past / Mae athrawon hanes yn anghytuno'n rheolaidd</button></div><div class="feedback" id="q5-fb"></div></div>
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(3)">← Back / Yn ôl</button>
+        <button class="btn btn-primary" onclick="nextSection(4)">Next: Reflection → / Nesaf →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ SECTION 6 — REFLECTION ══════════════ -->
+  <div class="section-card" id="sec-5">
+    <div class="card-header slate">
+      <div class="icon">🪞</div>
+      <h2>Section 6: Plenary Reflection — I Used to Think… Now I Think…
+        <em>Adran 6: Adlewyrchiad — Roeddwn i'n Arfer Meddwl… Nawr Rwy'n Meddwl…</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="quote-block">
+        <p class="quote-text">"Asking good questions is the basis for becoming a successful learner. If children aren't asking questions, they're being spoon-fed. That might be effective in terms of getting results, but it won't turn out curious, flexible learners suited to the 21st century."</p>
+        <p class="quote-attr">— Guy Claxton, Professor of Learning Science, University of Bristol</p>
+      </div>
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">🇬🇧 The I Used to Think… Now I Think… Plenary</div>
+          <p>On a post-it note — or in the boxes below — complete these two sentences. Then return to your Wineburg questions from Section 2: has your answer to 'why bother teaching historical thinking?' changed after exploring the readings and debates?</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">🏴󠁧󠁢󠁷󠁬󠁳󠁿 Y Plenari — Roeddwn i'n Arfer Meddwl…</div>
+          <p>Ar nodyn post-it — neu yn y blychau isod — cwblhewch y ddwy frawddeg hon. Yna dychwelwch at eich cwestiynau Wineburg o Adran 2: a yw eich ateb i 'pam trafferthu addysgu meddwl hanesyddol?' wedi newid?</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.2rem">
+        <div style="background:var(--hist-pale);border:2px solid #FECACA;border-radius:10px;padding:1.2rem">
+          <p style="font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--hist);margin-bottom:.5rem">I used to think… · Roeddwn i'n arfer meddwl…</p>
+          <p style="font-size:.9rem;color:var(--slate);margin-bottom:.4rem">history was taught in schools because…</p>
+          <textarea style="min-height:80px" placeholder="Your response / Eich ymateb…"></textarea>
+        </div>
+        <div style="background:var(--teal-pale);border:2px solid var(--teal-light);border-radius:10px;padding:1.2rem">
+          <p style="font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);margin-bottom:.5rem">Now I think… · Nawr rwy'n meddwl…</p>
+          <p style="font-size:.9rem;color:var(--slate);margin-bottom:.4rem">history should be taught because…</p>
+          <textarea style="min-height:80px" placeholder="Your response / Eich ymateb…"></textarea>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:.8rem;color:var(--slate)">Returning to Wineburg · Dychwelyd at Wineburg</h3>
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">6</div> Has your thinking shifted? · A yw eich meddwl wedi newid?</div>
+        <p style="font-size:.9rem;margin-bottom:.7rem">Return to your three Wineburg responses from Section 2. Has your answer changed? · Dychwelwch at eich tair ymateb Wineburg o Adran 2. A yw eich ateb wedi newid?</p>
+        <label class="field-label">If historical thinking is 'unnatural' — why bother teaching it? (revised answer) · Os yw meddwl hanesyddol yn 'annaturiol' — pam trafferthu? (ateb diwygiedig)</label>
+        <textarea placeholder="Has your answer changed from Section 2? / A yw eich ateb wedi newid ers Adran 2?"></textarea>
+        <label class="field-label" style="margin-top:.6rem;display:block">What is your key takeaway from today's session? / Beth yw eich prif gasgliad o sesiwn heddiw?</label>
+        <textarea placeholder="Your response / Eich ymateb…"></textarea>
+        <label class="field-label" style="margin-top:.6rem;display:block">What question does today's session leave you with? / Pa gwestiwn mae sesiwn heddiw yn ei adael i chi?</label>
+        <textarea placeholder="For next session / Ar gyfer y sesiwn nesaf…"></textarea>
+      </div>
+
+      <div class="info-box gold">
+        <h3>📌 Next Session · Sesiwn Nesaf</h3>
+        <p>Bring your infographic or prompts from your reading. You will share your 2–3 claims to defend to a sceptical head of department. Come ready to discuss: which reading challenged you most, and why? · Dewch â'ch infograffig neu bwyntiau o'ch darlleniad. Byddwch yn rhannu eich 2–3 honiad i'w hamddiffyn wrth bennaeth adran amheus.</p>
+        <p style="margin-top:.5rem"><strong>Additional reading:</strong> Phillips, R. (2000) 'Government policies, the State and the teaching of history' in Arthur &amp; Phillips (eds) Issues in History Teaching. London: Routledge. Available via your university library.</p>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(4)">← Back / Yn ôl</button>
+        <button class="btn btn-amber" onclick="complete()">🎓 Complete Session · Cwblhau'r Sesiwn</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="completion-card" id="completion">
+    <span class="badge-icon">📜</span>
+    <h2>Session Complete! · Sesiwn Wedi'i Chwblhau!</h2>
+    <div class="score-badge">Quiz Score · Sgôr Cwis: <span id="final-score">0</span> / 5</div>
+    <p><strong>Well done!</strong> You have completed Session 1 of your PGCE History course — exploring why teaching history matters, Wineburg's challenge, your session readings, History in the Curriculum for Wales, and the key debates of your discipline.</p>
+    <p><strong>Da iawn!</strong> Rydych chi wedi cwblhau Sesiwn 1 — archwilio pam mae addysgu hanes yn bwysig, her Wineburg, eich darlleniadau, Hanes yng Nghwricwlwm i Gymru, a phrif ddadleuon eich disgyblaeth.</p>
+    <p style="margin-top:.5rem;font-style:italic;opacity:.78">"History provides an antidote to impulse by cultivating modes of thought that counterbalance haste and avert premature judgement." — Wineburg (2007)</p>
+    <div style="margin-top:1rem"><button class="btn btn-secondary" onclick="location.reload()" style="background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.35);color:#fff;font-size:.85rem;">↺ Start Again · Dechrau Eto</button></div>
+    <div class="cert-trigger-box">
+      <p>🏅 <strong>Generate your personalised completion certificate · Creu eich tystysgrif gwblhau bersonol</strong><br>
+      Enter your full name to generate a printable certificate. · Rhowch eich enw llawn i greu tystysgrif argraffdwy.</p>
+      <div class="cert-name-row">
+        <input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name · Eich enw llawn…" maxlength="80">
+        <button class="btn-cert" onclick="generateCertificate()">🎓 Generate Certificate · Creu Tystysgrif</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- CERTIFICATE OVERLAY -->
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:2rem;">📜</div>
+            <div class="cert-inst-name">PGCE History · Hanes TGCH
+              <span class="cert-inst-cy">Curriculum for Wales / Cwricwlwm i Gymru</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that · Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher · yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.5rem 0 .3rem"><div class="cert-name" id="certDisplayName">Your Name</div></div>
+          <div class="cert-score-pill">Quiz Score · Sgôr: <span id="certScoreDisplay">—</span> / 5</div>
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed Session 1 of the PGCE History programme on</div>
+          <div class="cert-course">Why Is Teaching History Important?
+            <span class="cert-course-cy">Pam Mae Addysgu Hanes yn Bwysig? — Sesiwn 1</span>
+          </div>
+          <div class="cert-competencies">Demonstrating engagement with the disciplinary foundations of history education, including Wineburg's concept of historical thinking as 'unnatural and essential', the Harris &amp; Haydn (2006) pupil enjoyment research, the contested nature of the school history curriculum (Husbands, Kitson &amp; Pendry, 2003), and the structure and critiques of the Humanities AoLE within the Curriculum for Wales framework. Teaching Standards P6, P8, PL1.<br>
+          <em style="color:#B45309;display:block;margin-top:.4rem">Gan ddangos ymgysylltiad â sylfeini disgyblaethol addysg hanes, gan gynnwys cysyniad Wineburg o feddwl hanesyddol ac MDP y Dyniaethau yng Nghwricwlwm i Gymru. Safonau P6, P8, PL1.</em></div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block">
+              <div class="cert-sig-line"></div>
+              <div class="cert-sig-label">Programme Director · Cyfarwyddwr y Rhaglen</div>
+            </div>
+            <div><div class="cert-seal"><span class="cert-seal-icon">📜</span>PGCE<br>CYMRU</div></div>
+            <div class="cert-sig-block">
+              <div class="cert-date-val" id="certDateDisplay"></div>
+              <div class="cert-date-label">Date Completed · Dyddiad Cwblhau</div>
+            </div>
+          </div>
+          <div class="cert-stripe" style="margin:1.2rem -2rem -1.6rem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">🖨️ Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">✕ Close · Cau</button>
+    </div>
+  </div>
+</div>
+
+<script>
+let score=0; const answeredQs=new Set(); const completedSections=new Set();
+const feedbacks={
+  q1:'Correct! 69.8% of pupils found history quite enjoyable — 5th behind PE, DT, ICT and Art. All four above are active DO subjects — a key insight for how history should be taught. · Cywir! 69.8% yn cael hanes yn eithaf pleserus — 5ed.',
+  q2:"Correct! Wineburg argues everyday thinking relies on the availability heuristic and spread of activation — making us jump to vivid conclusions. Historical thinking resists this and must be deliberately cultivated. · Cywir! Mae meddwl hanesyddol yn mynd yn groes i arferion gwybyddol arferol.",
+  q3:"Correct! Historians used the document to puzzle about 1892, not 1492 — identifying gaps in knowledge and generating new questions. This is the 'specification of ignorance'. · Cywir! Defnyddiodd haneswyr y ddogfen i gwestiynu am 1892, nid 1492.",
+  q4:'Correct! The Humanities AoLE has five Statements of What Matters with History as a core discipline alongside Geography, RVE, Business Studies and Social Studies. · Cywir! Mae MDP y Dyniaethau â phum Datganiad gyda Hanes yn ddisgyblaeth graidd.',
+  q5:"Correct! History is 'ideologically contested' because deeper questions — whose stories, who has power, what history is FOR — are genuinely political and value-laden. · Cywir! Mae hanes wedi'i herio'n ideolegol oherwydd bod cwestiynau dyfnach yn wleidyddol a llawn gwerthoedd.",
+};
+function checkQ(qId,btn,isCorrect){
+  if(answeredQs.has(qId))return; answeredQs.add(qId);
+  document.getElementById(qId).querySelectorAll('.option-btn').forEach(b=>b.disabled=true);
+  const fb=document.getElementById(qId+'-fb');
+  if(isCorrect){btn.classList.add('correct');fb.className='feedback correct show';fb.innerHTML='✅ '+feedbacks[qId];score++;}
+  else{btn.classList.add('wrong');fb.className='feedback wrong show';fb.innerHTML='❌ Not quite — '+feedbacks[qId];}
+}
+function goTo(idx){
+  document.querySelectorAll('.section-card').forEach((el,i)=>el.classList.toggle('active',i===idx));
+  document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('active',i===idx));
+  const pct=Math.round(((idx+1)/6)*100);
+  document.getElementById('progress-bar').style.width=pct+'%';
+  document.getElementById('progress-label').textContent='Section '+(idx+1)+' of 6 · Adran '+(idx+1)+' o 6';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function nextSection(idx){
+  completedSections.add(idx);
+  document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('done',completedSections.has(i)));
+  goTo(idx+1);
+}
+function complete(){
+  completedSections.add(5);
+  document.querySelectorAll('.snav-btn').forEach((btn,i)=>btn.classList.toggle('done',completedSections.has(i)));
+  document.querySelectorAll('.section-card').forEach(el=>el.classList.remove('active'));
+  document.getElementById('completion').classList.add('show');
+  document.getElementById('final-score').textContent=score;
+  document.getElementById('progress-bar').style.width='100%';
+  document.getElementById('progress-label').textContent='Complete! · Wedi Cwblhau!';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function generateCertificate(){
+  var name=document.getElementById('certNameInput').value.trim();
+  if(!name){document.getElementById('certNameInput').focus();document.getElementById('certNameInput').style.borderColor='#FCD34D';setTimeout(function(){document.getElementById('certNameInput').style.borderColor='';},1500);return;}
+  document.getElementById('certDisplayName').textContent=name;
+  document.getElementById('certScoreDisplay').textContent=score;
+  var now=new Date();
+  var months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('certDateDisplay').textContent=now.getDate()+' '+months[now.getMonth()]+' '+now.getFullYear();
+  document.getElementById('certOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeCertificate(){document.getElementById('certOverlay').classList.remove('show');document.body.style.overflow='';}
+function printCertificate(){
+  var cert=document.getElementById('certificateEl');
+  var w=window.open('','_blank','width=900,height=700');
+  w.document.write('<html><head><title>Certificate</title>');
+  document.querySelectorAll('style,link[rel="stylesheet"]').forEach(function(s){w.document.write(s.outerHTML);});
+  w.document.write('</head><body style="margin:0;padding:20px;background:white;">');
+  w.document.write(cert.outerHTML);
+  w.document.write('</body></html>');
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener('click',function(e){if(e.target.id==='certOverlay')closeCertificate();});
+</script>
+</body>
+</html>
