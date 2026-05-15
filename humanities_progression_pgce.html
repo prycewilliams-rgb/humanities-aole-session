@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="cy-en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Progression in Humanities | Cynnydd yn y Dyniaethau — Principles & Steps — PGCE Wales</title>
+<style>
+:root{
+  --sage:#065F46;--sage-mid:#059669;--sage-light:#D1FAE5;--sage-pale:#ECFDF5;
+  --gold:#92400E;--gold-light:#FEF3C7;--gold-pale:#FFFBEB;
+  --blue:#1E3A5F;--blue-light:#DBEAFE;--blue-pale:#EFF6FF;
+  --violet:#4C1D95;--violet-light:#EDE9FE;--violet-pale:#F5F3FF;
+  --rust:#9A3412;--rust-light:#FEE2E2;--rust-pale:#FFF5F5;
+  --ink:#1C1917;--ink-mid:#44403C;--ink-light:#78716C;
+  --off:#FAFAF9;--cream:#F5F5F4;--border:#E7E5E4;
+  --shadow:0 4px 24px rgba(0,0,0,.07);
+  --ps1:#7C3AED;--ps2:#1D4ED8;--ps3:#065F46;--ps4:#92400E;--ps5:#9A3412;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--off);color:var(--ink);min-height:100vh}
+header{background:linear-gradient(135deg,#02291E 0%,var(--sage) 55%,#047857 100%);color:#fff;padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+header::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.lang-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:.3rem 1rem;font-size:.8rem;font-weight:600;letter-spacing:.05em;margin-bottom:1.5rem}
+header h1{font-family:Georgia,serif;font-size:clamp(1.5rem,3.5vw,2.4rem);line-height:1.2;margin-bottom:.3rem}
+header h1 span{display:block;font-size:.55em;font-weight:400;opacity:.75;font-style:italic;margin-top:.3rem}
+.header-sub{font-size:.9rem;opacity:.8;margin-top:.7rem}
+.subject-pills{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.1rem}
+.pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.28rem .85rem;font-size:.76rem;font-weight:600}
+.progress-bar-wrap{max-width:600px;margin:1.4rem auto 0;background:rgba(255,255,255,.18);border-radius:999px;height:7px;overflow:hidden}
+#progress-bar{height:100%;background:#FCD34D;border-radius:999px;transition:width .5s ease;width:0%}
+#progress-label{font-size:.77rem;opacity:.75;margin-top:.4rem}
+main{max-width:960px;margin:0 auto;padding:2rem 1rem 4rem}
+.section-nav{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.snav-btn{padding:.38rem .8rem;border-radius:999px;border:2px solid var(--border);background:#fff;font-size:.74rem;font-weight:600;cursor:pointer;color:var(--ink-mid);transition:all .2s;white-space:nowrap}
+.snav-btn.done{border-color:var(--sage);color:#065F46;background:var(--sage-light)}
+.snav-btn.active{border-color:var(--sage);color:var(--sage);background:var(--sage-pale)}
+.section-card{background:#fff;border-radius:14px;box-shadow:var(--shadow);margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);display:none;animation:fadeIn .4s ease}
+.section-card.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card-header{padding:1.4rem 2rem;display:flex;align-items:center;gap:1rem;border-bottom:2px solid}
+.card-header.sage{background:var(--sage-pale);border-color:var(--sage-light)}
+.card-header.gold{background:var(--gold-pale);border-color:#FDE68A}
+.card-header.blue{background:var(--blue-pale);border-color:var(--blue-light)}
+.card-header.violet{background:var(--violet-pale);border-color:var(--violet-light)}
+.card-header.rust{background:var(--rust-pale);border-color:#FECACA}
+.card-header.slate{background:#F1F5F9;border-color:#CBD5E1}
+.card-header .icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.card-header.sage .icon{background:var(--sage)}.card-header.gold .icon{background:var(--gold)}
+.card-header.blue .icon{background:var(--blue)}.card-header.violet .icon{background:var(--violet)}
+.card-header.rust .icon{background:var(--rust)}.card-header.slate .icon{background:var(--ink)}
+.card-header h2{font-family:Georgia,serif;font-size:1.18rem;color:var(--ink);line-height:1.3}
+.card-header h2 em{display:block;font-family:-apple-system,sans-serif;font-size:.73rem;font-style:normal;font-weight:600;color:var(--ink-light);margin-top:.12rem;letter-spacing:.03em}
+.card-body{padding:1.8rem}
+@media(max-width:600px){.card-body{padding:1.2rem}}
+.bilingual-block{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-bottom:1.4rem}
+@media(max-width:600px){.bilingual-block{grid-template-columns:1fr}}
+.lang-col{background:var(--sage-pale);border-radius:9px;padding:1.1rem;border-left:4px solid var(--sage)}
+.lang-col.welsh{border-left-color:var(--gold);background:var(--gold-pale)}
+.lang-label{font-size:.69rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.5rem}
+.lang-col p,.lang-col li{font-size:.91rem;line-height:1.7;color:var(--ink)}
+.lang-col ul{padding-left:1.2rem;margin-top:.4rem}
+.lang-col li{margin-bottom:.3rem}
+.info-box{border-radius:9px;padding:1.1rem 1.4rem;margin-bottom:1.4rem;border:1px solid}
+.info-box.sage{background:var(--sage-pale);border-color:var(--sage-light)}
+.info-box.gold{background:var(--gold-pale);border-color:#FDE68A}
+.info-box.blue{background:var(--blue-pale);border-color:var(--blue-light)}
+.info-box.violet{background:var(--violet-pale);border-color:var(--violet-light)}
+.info-box.key{background:var(--ink);border-color:var(--ink-mid)}
+.info-box.rust{background:var(--rust-pale);border-color:#FECACA}
+.info-box h3{font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.65rem}
+.info-box.sage h3{color:var(--sage)}.info-box.gold h3{color:var(--gold)}
+.info-box.blue h3{color:var(--blue)}.info-box.violet h3{color:var(--violet)}
+.info-box.key h3{color:#FCD34D}.info-box.rust h3{color:var(--rust)}
+.info-box p,.info-box li{font-size:.9rem;line-height:1.7;color:var(--ink)}
+.info-box.key p,.info-box.key li{color:rgba(255,255,255,.88)}
+.info-box ul{padding-left:1.2rem;margin-top:.4rem}
+.info-box ul li{margin-bottom:.3rem}
+.quote-block{background:var(--ink);color:#fff;border-radius:10px;padding:1.4rem 1.8rem;margin:1.4rem 0;position:relative;overflow:hidden}
+.quote-block::before{content:'"';font-family:Georgia,serif;font-size:7rem;color:rgba(255,255,255,.05);position:absolute;top:-1rem;left:.3rem;line-height:1}
+.quote-text{font-family:Georgia,serif;font-size:1.05rem;font-style:italic;line-height:1.65;color:rgba(255,255,255,.92);position:relative;z-index:1}
+.quote-attr{font-size:.77rem;color:#FCD34D;margin-top:.6rem;font-weight:600}
+/* PRINCIPLE CARDS */
+.principle-card{background:#fff;border:2px solid var(--border);border-radius:11px;margin-bottom:1.1rem;overflow:hidden}
+.principle-header{padding:.9rem 1.3rem;display:flex;align-items:center;gap:.8rem;border-bottom:1px solid var(--border)}
+.p1h{background:var(--sage-pale)}.p2h{background:var(--gold-pale)}.p3h{background:var(--blue-pale)}.p4h{background:var(--violet-pale)}.p5h{background:var(--rust-pale)}
+.p-num{width:2rem;height:2rem;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.88rem;color:white;flex-shrink:0}
+.p1n{background:var(--sage)}.p2n{background:var(--gold)}.p3n{background:var(--blue)}.p4n{background:var(--violet)}.p5n{background:var(--rust)}
+.p-title{font-family:Georgia,serif;font-size:.98rem;font-weight:700}
+.p1t{color:var(--sage)}.p2t{color:var(--gold)}.p3t{color:var(--blue)}.p4t{color:var(--violet)}.p5t{color:var(--rust)}
+.p-cy{font-size:.73rem;color:var(--ink-light);font-style:italic;display:block;margin-top:.1rem}
+.principle-body{padding:1.1rem 1.3rem}
+.principle-body p{font-size:.89rem;line-height:1.7;color:var(--ink)}
+.principle-body .implication{background:var(--sage-pale);border-left:3px solid var(--sage);border-radius:0 7px 7px 0;padding:.65rem .9rem;margin-top:.7rem;font-size:.85rem;color:var(--ink);line-height:1.6}
+.principle-body .implication strong{color:var(--sage);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:.2rem}
+.p2h .implication,.p2h~.principle-body .implication{border-color:var(--gold)}
+.p2h .implication strong{color:var(--gold)}
+/* PROGRESSION STEPS */
+.ps-strip{display:flex;gap:0;margin:1.2rem 0;border-radius:10px;overflow:hidden;border:2px solid var(--border)}
+.ps-block{flex:1;text-align:center;padding:.7rem .4rem;border-right:1px solid var(--border)}
+.ps-block:last-child{border-right:none}
+.ps-num{font-weight:800;font-size:.82rem;color:white;border-radius:4px;padding:.15rem .45rem;display:inline-block;margin-bottom:.3rem}
+.ps1b{background:var(--ps1)}.ps2b{background:var(--ps2)}.ps3b{background:var(--ps3)}.ps4b{background:var(--ps4)}.ps5b{background:var(--ps5)}
+.ps-age{font-size:.76rem;font-weight:700;color:var(--ink-mid);margin-bottom:.15rem}
+.ps-year{font-size:.7rem;color:var(--ink-light)}
+.ps-block.active-ps{background:var(--sage-pale)}
+/* PS DETAIL CARDS */
+.ps-detail{border-radius:12px;border:3px solid;margin-bottom:1.3rem;overflow:hidden}
+.ps-detail.ps1{border-color:var(--ps1)}.ps-detail.ps2{border-color:var(--ps2)}
+.ps-detail.ps3{border-color:var(--ps3)}.ps-detail.ps4{border-color:var(--ps4)}
+.ps-detail.ps5{border-color:var(--ps5)}
+.ps-detail-header{padding:1rem 1.3rem;color:white;display:flex;align-items:center;gap:.8rem}
+.ps-detail.ps1 .ps-detail-header{background:var(--ps1)}.ps-detail.ps2 .ps-detail-header{background:var(--ps2)}
+.ps-detail.ps3 .ps-detail-header{background:var(--ps3)}.ps-detail.ps4 .ps-detail-header{background:var(--ps4)}
+.ps-detail.ps5 .ps-detail-header{background:var(--ps5)}
+.ps-detail-header h3{font-family:Georgia,serif;font-size:1rem;line-height:1.3}
+.ps-detail-header h3 em{display:block;font-size:.73rem;font-style:italic;opacity:.82;margin-top:.1rem}
+.ps-detail-body{padding:1.2rem 1.3rem;background:#fff}
+.statement-section{margin-bottom:1rem}
+.stmt-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-light);margin-bottom:.4rem;display:flex;align-items:center;gap:.4rem}
+.stmt-tag{font-size:.66rem;font-weight:700;padding:.12rem .4rem;border-radius:3px;color:white}
+.st1{background:#B45309}.st2{background:#1D4ED8}.st3{background:#065F46}.st4{background:#6D28D9}.st5{background:#991B1B}
+.stmt-content{font-size:.87rem;color:var(--ink);line-height:1.65}
+/* SUBJECT COMPARE */
+.subject-compare{display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin:1.1rem 0}
+@media(max-width:640px){.subject-compare{grid-template-columns:1fr}}
+.subj-card{border-radius:9px;padding:1rem;border:2px solid}
+.subj-hist{border-color:#FECACA;background:#FFF5F5}
+.subj-geog{border-color:var(--sage-light);background:var(--sage-pale)}
+.subj-rve{border-color:var(--violet-light);background:var(--violet-pale)}
+.subj-title{font-weight:700;font-size:.85rem;margin-bottom:.5rem}
+.subj-hist .subj-title{color:#7C2D12}.subj-geog .subj-title{color:var(--sage)}.subj-rve .subj-title{color:var(--violet)}
+.subj-card ul{padding-left:1.1rem;font-size:.82rem;color:var(--ink);line-height:1.6}
+.subj-card li{margin-bottom:.3rem}
+/* ACCORDION */
+.accordion-item{border:2px solid var(--border);border-radius:9px;margin-bottom:.6rem;overflow:hidden}
+.accordion-btn{width:100%;text-align:left;background:#fff;border:none;padding:.9rem 1.1rem;font-family:-apple-system,sans-serif;font-size:.9rem;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:space-between;color:var(--ink);transition:background .15s}
+.accordion-btn:hover{background:var(--sage-pale)}
+.accordion-btn.open{background:var(--sage-pale);color:var(--sage)}
+.accordion-arrow{font-size:.8rem;transition:transform .2s;flex-shrink:0}
+.accordion-btn.open .accordion-arrow{transform:rotate(180deg)}
+.accordion-content{display:none;padding:1rem 1.1rem;border-top:1px solid var(--border);background:var(--off);font-size:.87rem;color:var(--ink);line-height:1.7}
+.accordion-content.open{display:block}
+/* QUIZ */
+.quiz-question{background:var(--cream);border-radius:9px;padding:1.1rem;margin-bottom:.9rem;border:1px solid var(--border)}
+.q-text{font-weight:700;font-size:.96rem;margin-bottom:.2rem;line-height:1.5}
+.q-welsh{font-size:.83rem;color:var(--ink-light);font-style:italic;margin-bottom:.85rem}
+.q-num{display:inline-flex;align-items:center;justify-content:center;width:1.45rem;height:1.45rem;background:var(--sage);color:white;border-radius:50%;font-size:.7rem;font-weight:700;margin-right:.4rem}
+.options{display:flex;flex-direction:column;gap:.45rem}
+.option-btn{text-align:left;background:#fff;border:2px solid var(--border);border-radius:7px;padding:.6rem .95rem;font-family:-apple-system,sans-serif;font-size:.88rem;cursor:pointer;transition:all .15s;line-height:1.5;color:var(--ink)}
+.option-btn:hover:not(:disabled){border-color:var(--sage);background:var(--sage-pale)}
+.option-btn.correct{border-color:var(--sage);background:var(--sage-pale);color:#065F46}
+.option-btn.wrong{border-color:var(--rust);background:var(--rust-pale);color:#7F1D1D}
+.feedback{display:none;padding:.75rem .95rem;border-radius:7px;font-size:.85rem;line-height:1.6;margin-top:.45rem}
+.feedback.correct.show{display:block;background:var(--sage-pale);border-left:3px solid var(--sage);color:#065F46}
+.feedback.wrong.show{display:block;background:var(--rust-pale);border-left:3px solid var(--rust);color:#7F1D1D}
+textarea{width:100%;padding:.65rem .85rem;font-family:-apple-system,sans-serif;font-size:.89rem;border:2px solid var(--border);border-radius:7px;resize:vertical;min-height:68px;color:var(--ink);line-height:1.6;transition:border-color .2s;margin-top:.45rem}
+textarea:focus{outline:none;border-color:var(--sage)}
+.task-box{background:var(--gold-pale);border:2px solid #FDE68A;border-radius:9px;padding:1.1rem 1.3rem;margin:1.3rem 0}
+.task-label{font-size:.71rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.55rem;display:flex;align-items:center;gap:.38rem}
+.task-num{background:var(--gold);color:white;border-radius:50%;width:1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;font-size:.66rem}
+.field-label{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-light);display:block;margin:.55rem 0 .18rem}
+.btn-row{display:flex;gap:.7rem;justify-content:space-between;flex-wrap:wrap;margin-top:1.4rem;padding-top:.9rem;border-top:1px solid var(--border)}
+.btn{padding:.55rem 1.3rem;border-radius:7px;border:2px solid transparent;font-family:-apple-system,sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--sage);color:#fff}.btn-primary:hover{background:#02291E}
+.btn-secondary{background:#fff;color:var(--ink-mid);border-color:var(--border)}.btn-secondary:hover{border-color:var(--ink-mid)}
+.btn-amber{background:var(--gold);color:white}.btn-amber:hover{background:#78350F}
+.completion-card{display:none;background:linear-gradient(135deg,#02291E,var(--sage));color:white;border-radius:14px;padding:2.8rem 2rem;text-align:center;margin-top:2rem}
+.completion-card.show{display:block}
+.badge-icon{font-size:3.8rem;display:block;margin-bottom:.9rem}
+.completion-card h2{font-family:Georgia,serif;font-size:1.75rem;margin-bottom:.7rem}
+.score-badge{display:inline-block;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);border-radius:999px;padding:.28rem 1.1rem;font-size:.95rem;font-weight:700;margin-bottom:.9rem}
+.completion-card p{font-size:.93rem;opacity:.87;line-height:1.7;max-width:540px;margin:0 auto .75rem}
+.cert-trigger-box{margin-top:1.4rem;padding:1.4rem;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.38);border-radius:10px;text-align:center}
+.cert-trigger-box p{font-size:.87rem;opacity:.84;margin-bottom:.9rem;line-height:1.6}
+.cert-name-row{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.cert-name-input{padding:.55rem .95rem;font-family:-apple-system,sans-serif;font-size:.93rem;border:2px solid rgba(255,255,255,.28);border-radius:7px;background:rgba(255,255,255,.14);color:white;width:240px}
+.cert-name-input::placeholder{color:rgba(255,255,255,.38)}
+.cert-name-input:focus{outline:none;border-color:#FCD34D}
+.btn-cert{background:#FCD34D;color:#1a1a1a;border:none;padding:.55rem 1.2rem;border-radius:7px;font-family:-apple-system,sans-serif;font-size:.86rem;font-weight:700;cursor:pointer}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:white;border-radius:8px;width:100%;max-width:780px;max-height:95vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.certificate{width:100%;background:white}
+.cert-frame{margin:14px;border:3px solid #065F46;position:relative}
+.cert-frame::before{content:"";position:absolute;inset:5px;border:1px solid #92400E;pointer-events:none;z-index:1}
+.cert-stripe{height:5px;background:linear-gradient(90deg,#7C3AED 0%,#1D4ED8 20%,#065F46 40%,#92400E 70%,#9A3412 100%)}
+.cert-header{background:linear-gradient(135deg,#02291E 0%,#065F46 100%);padding:1.2rem 2rem 1rem;text-align:center}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.cert-inst-name{font-family:Georgia,serif;color:white;font-size:.98rem;text-align:left;line-height:1.2}
+.cert-inst-cy{color:#FDE68A;font-size:.73rem;font-style:italic;display:block}
+.cert-body{padding:1.5rem 2rem;text-align:center}
+.cert-presents{font-size:.71rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;margin-bottom:.35rem}
+.cert-awarded-to{font-size:.71rem;text-transform:uppercase;letter-spacing:.1em;color:#475569;margin-bottom:.18rem}
+.cert-name{font-family:Georgia,serif;font-size:1.85rem;font-style:italic;color:#065F46;border-bottom:2px solid #E2E8F0;display:inline-block;padding:0 .9rem .1rem;min-width:250px;margin-bottom:.3rem;line-height:1.3}
+.cert-score-pill{display:inline-block;background:#FEF3C7;border:1px solid #92400E;border-radius:999px;padding:.22rem .9rem;font-size:.78rem;font-weight:700;color:#92400E;margin:.45rem 0 .75rem}
+.cert-divider{height:1px;background:linear-gradient(90deg,transparent,#065F46,transparent);margin:.85rem auto;width:50%}
+.cert-text{font-size:.84rem;color:#1E293B;line-height:1.65;max-width:430px;margin:0 auto .65rem}
+.cert-course{font-family:Georgia,serif;font-size:.93rem;color:#1E293B;background:var(--sage-pale);border:1px solid var(--sage-light);border-left:4px solid #065F46;padding:.42rem .85rem;display:inline-block;margin-bottom:.3rem;text-align:left}
+.cert-course-cy{font-size:.73rem;color:#065F46;font-style:italic;display:block}
+.cert-competencies{font-size:.74rem;color:#475569;margin:.18rem auto .9rem;max-width:420px;line-height:1.55}
+.cert-footer-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:.9rem;padding-top:.9rem;border-top:1px solid #E2E8F0}
+.cert-sig-block{text-align:center}
+.cert-sig-line{height:1px;background:#1E293B;width:130px;margin:0 auto .22rem}
+.cert-sig-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:#475569}
+.cert-seal{width:60px;height:60px;border-radius:50%;background:#065F46;border:3px solid #92400E;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-size:.48rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;line-height:1.3;margin:0 auto}
+.cert-seal-icon{font-size:1.1rem;display:block;margin-bottom:1px}
+.cert-date-val{font-family:Georgia,serif;font-size:.88rem;color:#1E293B}
+.cert-date-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:#475569;margin-top:.18rem}
+.cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.85rem 1.4rem 1.1rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
+.btn-cert-print{background:#065F46;color:white;border:none;padding:.5rem 1.1rem;border-radius:7px;font-family:-apple-system,sans-serif;font-size:.84rem;font-weight:700;cursor:pointer}
+.btn-cert-close{background:#475569;color:white;border:none;padding:.5rem 1.1rem;border-radius:7px;font-family:-apple-system,sans-serif;font-size:.84rem;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <div class="lang-badge">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Cymraeg &middot; English</div>
+  <h1>Progression in the Humanities AoLE
+    <span>Cynnydd ym Maes Dysgu a Phrofiad y Dyniaethau &mdash; PGCE Humanities Wales</span>
+  </h1>
+  <p class="header-sub">Principles of Progression &middot; Progression Steps &middot; Planning for Progress &middot; Curriculum for Wales</p>
+  <div class="subject-pills">
+    <span class="pill">&#128203; 5 Principles &middot; 5 Egwyddor</span>
+    <span class="pill">&#128200; PS1&ndash;PS5</span>
+    <span class="pill">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; CfW &middot; Cwricwlwm i Gymru</span>
+    <span class="pill">&#128296; PGCE Humanities</span>
+  </div>
+  <div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+  <p id="progress-label">Section 1 of 6 &middot; Adran 1 o 6</p>
+</header>
+<main>
+  <div class="section-nav">
+    <button class="snav-btn active" onclick="goTo(0)">1 &middot; What is Progression?</button>
+    <button class="snav-btn" onclick="goTo(1)">2 &middot; The 5 Principles</button>
+    <button class="snav-btn" onclick="goTo(2)">3 &middot; The 5 Steps (PS1&ndash;PS5)</button>
+    <button class="snav-btn" onclick="goTo(3)">4 &middot; In Your Subject</button>
+    <button class="snav-btn" onclick="goTo(4)">5 &middot; Planning for Progression</button>
+    <button class="snav-btn" onclick="goTo(5)">6 &middot; Quiz &amp; Reflection</button>
+  </div>
+
+  <!-- ═══ SECTION 1: WHAT IS PROGRESSION ═══ -->
+  <div class="section-card active" id="sec-0">
+    <div class="card-header sage">
+      <div class="icon">&#128200;</div>
+      <h2>Section 1: What Does Progression Mean in the Humanities AoLE?
+        <em>Adran 1: Beth Mae Cynnydd yn ei Olygu ym MDP y Dyniaethau?</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">&#127468;&#127463; English</div>
+          <p>In the Curriculum for Wales, <strong>progression is not simply about covering more content</strong>. It describes the ways in which learners become more sophisticated thinkers, more independent enquirers, and more confident users of disciplinary knowledge and skills over time. The Humanities AoLE has five statutory Principles of Progression and five Progression Steps that together define what it means to make progress from ages 5 to 16.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Cymraeg</div>
+          <p>Yng Nghwricwlwm i Gymru, <strong>nid yw cynnydd yn ymwneud yn syml &acirc; chwmpasu mwy o gynnwys</strong>. Mae'n disgrifio'r ffyrdd y mae dysgwyr yn dod yn feddylwyr mwy soffistigedig, yn ymholwyr mwy annibynnol, ac yn ddefnyddwyr mwy hyderus o wybodaeth a sgiliau disgyblaethol dros amser.</p>
+        </div>
+      </div>
+
+      <div class="info-box key">
+        <h3>&#128204; Three Interconnected Structures &middot; Tair Strwythur Cydgysylltiedig</h3>
+        <p><strong>Principles of Progression (mandatory)</strong> &mdash; five statutory statements describing how learners make progress in Humanities. These apply across the whole 3&ndash;16 continuum and must be reflected in your curriculum design. / <em>Egwyddorion Cynnydd (gorfodol)</em> &mdash; pum datganiad statudol yn disgrifio sut mae dysgwyr yn gwneud cynnydd.</p>
+        <p style="margin-top:.5rem"><strong>Progression Steps (PS1&ndash;PS5)</strong> &mdash; five reference points that broadly correspond to ages 5, 8, 11, 14 and 16. They describe what learners should be achieving at each point across the Humanities disciplines. They are not rigid thresholds &mdash; learners progress at different paces. / <em>Camau Cynnydd (CS1&ndash;CS5)</em> &mdash; pum pwynt cyfeirio sy'n cyfateb yn fras i oedrannau 5, 8, 11, 14 a 16.</p>
+        <p style="margin-top:.5rem"><strong>Descriptions of Learning</strong> &mdash; detailed statements within each Progression Step showing what progress looks like for each Statement of What Matters. These guide your planning, not your assessment. / <em>Disgrifiadau Dysgu</em> &mdash; datganiadau manwl o fewn pob Cam Cynnydd yn dangos sut olwg sydd ar gynnydd.</p>
+      </div>
+
+      <div class="ps-strip">
+        <div class="ps-block"><span class="ps-num ps1b">PS 1</span><div class="ps-age">Age ~5</div><div class="ps-year">Nursery&ndash;Y2</div></div>
+        <div class="ps-block"><span class="ps-num ps2b">PS 2</span><div class="ps-age">Age ~8</div><div class="ps-year">Y3&ndash;Y4</div></div>
+        <div class="ps-block active-ps"><span class="ps-num ps3b">PS 3</span><div class="ps-age">Age ~11</div><div class="ps-year">Y5&ndash;Y6 / Y7</div></div>
+        <div class="ps-block"><span class="ps-num ps4b">PS 4</span><div class="ps-age">Age ~14</div><div class="ps-year">Y8&ndash;Y9</div></div>
+        <div class="ps-block"><span class="ps-num ps5b">PS 5</span><div class="ps-age">Age ~16</div><div class="ps-year">Y10&ndash;Y11</div></div>
+      </div>
+      <p style="font-size:.77rem;color:var(--ink-light);text-align:center;margin-bottom:1.3rem">Progression Steps broadly correspond to these ages but are not rigid thresholds. The pace of progress differs between learners. &middot; Mae'r Camau Cynnydd yn cyfateb yn fras i'r oedrannau hyn ond nid ydynt yn rhentynnau anhyblyg.</p>
+
+      <div class="info-box sage">
+        <h3>&#127968; Why does this matter for your teaching? &middot; Pam mae hyn yn bwysig i'ch addysgu?</h3>
+        <ul>
+          <li>You must plan your Humanities curriculum so that learners <strong>progressively deepen</strong> their knowledge, skills and understanding &mdash; not just encounter new content / Rhaid i chi gynllunio eich cwricwlwm Dyniaethau fel bod dysgwyr yn <strong>dyfnhau'n raddol</strong> eu gwybodaeth, sgiliau a dealltwriaeth</li>
+          <li>You need to understand where your learners are on the 3&ndash;16 continuum and <strong>plan learning that moves them forward</strong> &mdash; not just delivers content / Rhaid i chi ddeall ble mae eich dysgwyr ar y continwwm ac <strong>gynllunio dysgu sy'n eu symud ymlaen</strong></li>
+          <li>Progression in Humanities is <strong>not linear</strong>: revisiting the same concepts with increasing depth and complexity is itself a form of progression / Nid yw cynnydd yn llinol: mae dychwelyd at yr un cysyniadau gyda dyfnder a chymhlethdod cynyddol yn ffurf o gynnydd</li>
+          <li>Assessment should help you understand <strong>where a learner is</strong> and <strong>what they need next</strong> &mdash; not measure them against a fixed list of content / Dylai asesu eich helpu i ddeall ble mae dysgwr ac yr hyn sydd ei angen arno nesaf</li>
+        </ul>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"Progression is further supported by descriptions of learning which provide guidance on how learners should progress within each statement of what matters as they journey through the continuum of learning. These are not designed as stand-alone tasks, activities or assessment criteria."</p>
+        <p class="quote-attr">&mdash; Curriculum for Wales Guidance (Welsh Government, 2020)</p>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">1</div> Initial Reflection &middot; Adlewyrchiad Cychwynnol</div>
+        <label class="field-label">In your placement school, which Progression Steps are most relevant to your teaching? What do you currently know about what learners at this stage are expected to achieve in Humanities? / Ym mha Gamau Cynnydd yn eich ysgol leoliad rydych chi'n addysgu?</label>
+        <textarea placeholder="I am primarily teaching PS… My current understanding of expectations at this stage: …"></textarea>
+        <label class="field-label">What is the difference between a lesson that COVERS content and a lesson that DEVELOPS progression? Can you give an example from your placement? / Beth yw'r gwahaniaeth rhwng gwers sy'n CWMPASU cynnwys a gwers sy'n DATBLYGU cynnydd?</label>
+        <textarea placeholder="A lesson that only covers content: …&#10;A lesson that develops progression: …"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <span></span>
+        <button class="btn btn-primary" onclick="nextSection(0)">Next: The 5 Principles &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: THE 5 PRINCIPLES ═══ -->
+  <div class="section-card" id="sec-1">
+    <div class="card-header gold">
+      <div class="icon">&#128218;</div>
+      <h2>Section 2: The Five Mandatory Principles of Progression
+        <em>Adran 2: Y Pum Egwyddor Gynnydd Gorfodol</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="info-box gold">
+        <h3>&#128204; Statutory status &middot; Statws statudol</h3>
+        <p>These five principles are <strong>mandatory</strong> &mdash; taken directly from Hwb (hwb.gov.wales/curriculum-for-wales/humanities/principles-of-progression). Your curriculum design <em>must</em> reflect all five. They are not aspirational guidelines; they are the required shape of progression in Humanities. / Mae'r pum egwyddor hyn yn <strong>orfodol</strong>. Rhaid i'ch dyluniad cwricwlwm adlewyrchu'r pump i gyd.</p>
+      </div>
+
+      <!-- PRINCIPLE 1 -->
+      <div class="principle-card">
+        <div class="principle-header p1h">
+          <div class="p-num p1n">1</div>
+          <div><div class="p-title p1t">Increasing effectiveness as a learner</div><div class="p-cy">Cynyddu effeithiolrwydd fel dysgwr</div></div>
+        </div>
+        <div class="principle-body">
+          <p>As learners make progress within this Area, they will be asking increasingly sophisticated enquiry questions. They will show a greater independence in finding suitable information, making informed predictions and hypotheses, and making judgements including about reliability and utility. They will also become more able to effectively work with others, especially, but not limited to, taking part in social action.</p>
+          <div class="implication"><strong>&#128296; What this means for your planning</strong> Progression is not just about what learners know &mdash; it is about what they can <em>do</em> with that knowledge. Plan for learners to take greater ownership of enquiry questions, to choose their own sources, and to evaluate evidence with increasing independence. A Year 7 pupil might be given a question; a Year 10 pupil should be framing their own. / Nid yw cynnydd yn ymwneud yn unig &acirc;'r hyn y mae dysgwyr yn ei wybod &mdash; mae'n ymwneud &acirc;'r hyn y gallant ei wneud gyda'r wybodaeth honno.</div>
+        </div>
+      </div>
+
+      <!-- PRINCIPLE 2 -->
+      <div class="principle-card">
+        <div class="principle-header p2h">
+          <div class="p-num p2n">2</div>
+          <div><div class="p-title p2t">Increasing breadth and depth of knowledge</div><div class="p-cy">Cynyddu lled a dyfnder gwybodaeth</div></div>
+        </div>
+        <div class="principle-body">
+          <p>Progression in the Humanities Area is demonstrated by learners engaging with an increasing breadth and depth of knowledge and underlying concepts. Learners increasingly develop the capacity to organise and make links across propositional knowledge, to identify and develop more powerful concepts related to the area of study, and to make supported judgements in more complex contexts. Learners connect new ideas and information to knowledge acquired from previous learning from within and outside school and use it to build an increasingly clear and coherent understanding of the world around them.</p>
+          <div class="implication"><strong>&#128296; What this means for your planning</strong> This is not about more facts &mdash; it is about deeper conceptual understanding. A younger learner might understand that events have causes; an older learner understands that causation is multi-layered, contested and constructed. Plan for revisiting concepts (change, significance, enquiry) with increasing complexity across years. / Nid yw hyn am fwy o ffeithiau &mdash; mae am ddealltwriaeth gysyniadol ddyfnach.</div>
+        </div>
+      </div>
+
+      <!-- PRINCIPLE 3 -->
+      <div class="principle-card">
+        <div class="principle-header p3h">
+          <div class="p-num p3n">3</div>
+          <div><div class="p-title p3t">Deepening understanding of the ideas and disciplines within Areas</div><div class="p-cy">Dyfnhau dealltwriaeth o syniadau a disgyblaethau o fewn Meysydd</div></div>
+        </div>
+        <div class="principle-body">
+          <p>Progression within this Area is demonstrated in the early stages as learners experience holistic approaches to exploring the world around them and are supported in shaping an understanding of themselves in the world. Learners will move on to more focused awareness of the lives of others, in their own social context, elsewhere in the world and in different eras. As they move through the continuum of learning, learners have an increased understanding of the defining features of the constituent disciplines (including history; geography; religion, values and ethics; business studies and social studies) and how these can be brought together to provide different lenses through which to view issues and address questions or problems.</p>
+          <div class="implication"><strong>&#128296; What this means for your planning</strong> Early learners experience Humanities holistically. As they progress, they begin to understand what makes History different from Geography, and RVE different from both. By KS4, learners should understand what disciplinary thinking looks like in their subject &mdash; how historians use evidence, how geographers use fieldwork, how RVE scholars engage with philosophical and ethical arguments. Plan for <em>disciplinary</em> as well as substantive progression. / Mae dysgwyr cynnar yn profi'r Dyniaethau yn gyfannol. Wrth iddynt symud ymlaen, maent yn dechrau deall beth sy'n gwneud Hanes yn wahanol i Ddaraearyddiaeth.</div>
+        </div>
+      </div>
+
+      <!-- PRINCIPLE 4 -->
+      <div class="principle-card">
+        <div class="principle-header p4h">
+          <div class="p-num p4n">4</div>
+          <div><div class="p-title p4t">Refinement and growing sophistication in the use and application of skills</div><div class="p-cy">Mireinio a chynyddu soffistigeiddrwydd yn y defnydd a chymhwysiad o sgiliau</div></div>
+        </div>
+        <div class="principle-body">
+          <p>As learners experience, understand and apply increasingly complex concepts, they show an increasing accuracy and fluency in using a variety of skills identified in the descriptions of learning and statements of what matters. As they progress, learners will be continually refining and developing a growing sophistication of key disciplinary skills, including those relating to enquiry such as framing questions and using evidence to construct and support an answer, and relating that to representation and interpretation of enquiry results. Progression in this Area is demonstrated through an ability to work with an increasing number and sophistication of sources of information, and a growing understanding of how to resolve contradictory or conflicting accounts.</p>
+          <div class="implication"><strong>&#128296; What this means for your planning</strong> Skills are not one-off activities to be taught then ticked off. Framing enquiry questions, evaluating sources, interpreting data, weighing competing arguments &mdash; these are skills that must be developed progressively across years with increasing complexity. Plan for learners to encounter more, and more challenging, sources over time; and to handle contradiction and conflict in evidence with increasing confidence. / Nid yw sgiliau'n weithgareddau untro. Rhaid eu datblygu'n raddol ar draws blynyddoedd gyda chymhlethdod cynyddol.</div>
+        </div>
+      </div>
+
+      <!-- PRINCIPLE 5 -->
+      <div class="principle-card">
+        <div class="principle-header p5h">
+          <div class="p-num p5n">5</div>
+          <div><div class="p-title p5t">Making connections and transferring learning into new contexts</div><div class="p-cy">Creu cysylltiadau a throsglwyddo dysgu i gyd-destunau newydd</div></div>
+        </div>
+        <div class="principle-body">
+          <p>Progression in this Area is also characterised through more sophisticated use of relevant skills and the growing ability to transfer existing skills and knowledge into new, and increasingly unfamiliar contexts. As learners progress, they will be able to make links within and between periods and places, identifying similarities and differences, changes and continuities, and use the understanding of concepts to identify connections between new and previous learning. With greater understanding of the world, of other people and their values, in different times, places and circumstances, of their environment and how it has been shaped, learners will demonstrate greater ability to influence events by exercising informed and responsible citizenship.</p>
+          <div class="implication"><strong>&#128296; What this means for your planning</strong> The hallmark of deep progression is transfer: a learner who can take what they know about change in Welsh industrial history and apply that conceptual thinking to a completely new context has genuinely progressed. Plan for tasks that require learners to make connections across topics, across disciplines, and from the past to the present. Cynefin &mdash; the sense of place &mdash; is a key vehicle for this in Wales. / Nodwedd cynnydd dwfn yw trosglwyddiad: dysgwr sy'n gallu cymryd yr hyn y maent yn ei wybod am newid mewn hanes diwydiannol Cymreig a chymhwyso'r meddwl cysyniadol hwnnw i gyd-destun newydd.</div>
+        </div>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">2</div> Task 2.1 &middot; Matching principles to practice</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">For each principle, identify ONE specific example from your placement &mdash; something you have seen or taught that illustrates that principle in action (or its absence). / Ar gyfer pob egwyddor, nodwch UN enghraifft benodol o'ch lleoliad.</p>
+        <label class="field-label">Principle 1 (Effectiveness as a learner) &mdash; example from placement / Egwyddor 1 o'ch lleoliad:</label>
+        <textarea placeholder="I saw / taught … which shows / does not show this principle because…"></textarea>
+        <label class="field-label">Principle 2 (Breadth and depth of knowledge) / Egwyddor 2:</label>
+        <textarea placeholder="I saw / taught … which shows / does not show this principle because…"></textarea>
+        <label class="field-label">Principle 3 (Deepening disciplinary understanding) / Egwyddor 3:</label>
+        <textarea placeholder="I saw / taught … which shows / does not show this principle because…"></textarea>
+        <label class="field-label">Principle 4 (Refinement of skills) / Egwyddor 4:</label>
+        <textarea placeholder="I saw / taught … which shows / does not show this principle because…"></textarea>
+        <label class="field-label">Principle 5 (Transfer and connections) / Egwyddor 5:</label>
+        <textarea placeholder="I saw / taught … which shows / does not show this principle because…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(0)">&larr; Back</button>
+        <button class="btn btn-primary" onclick="nextSection(1)">Next: The 5 Progression Steps &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3: THE 5 STEPS ═══ -->
+  <div class="section-card" id="sec-2">
+    <div class="card-header blue">
+      <div class="icon">&#128200;</div>
+      <h2>Section 3: Progression Steps 1&ndash;5 — What Do They Look Like?
+        <em>Adran 3: Camau Cynnydd 1&ndash;5 &mdash; Sut Olwg Sydd Arnynt?</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="info-box blue">
+        <h3>&#128270; Important note about Progression Steps &middot; Nodyn pwysig</h3>
+        <p>Progression Steps are <strong>reference points</strong>, not assessment levels. They describe what learners should broadly be able to do at ages 5, 8, 11, 14 and 16. Learners progress at different rates &mdash; a PS4 learner is not necessarily in Year 9. As a secondary Humanities teacher, PS3, PS4 and PS5 are most relevant to you, but understanding the full continuum helps you know where your learners have come from and where they are going. / Mae'r Camau Cynnydd yn <strong>bwyntiau cyfeirio</strong>, nid lefelau asesu.</p>
+      </div>
+
+      <!-- PS1 -->
+      <div class="ps-detail ps1">
+        <div class="ps-detail-header">
+          <span class="ps-num ps1b" style="font-size:.9rem;padding:.2rem .6rem">PS1</span>
+          <h3>Progression Step 1 &mdash; broadly age 5 &middot; Cam Cynnydd 1 &mdash; tua 5 oed
+            <em>Nursery &amp; Year 1&ndash;2 &middot; Meithrin a Blwyddyn 1&ndash;2</em>
+          </h3>
+        </div>
+        <div class="ps-detail-body">
+          <p style="font-size:.88rem;color:var(--ink-mid);margin-bottom:.9rem">Learners at PS1 are beginning their journey through the Humanities. They explore the world around them in a holistic, experiential way. The focus is on themselves, their immediate environment and the people close to them. / Mae dysgwyr ar CS1 yn dechrau eu taith drwy'r Dyniaethau. Maent yn archwilio'r byd o'u cwmpas mewn ffordd gyfannol a phrofiadol.</p>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st1">Enquiry</span> What learners can broadly do / Yr hyn y gall dysgwyr ei wneud yn fras</div>
+            <div class="stmt-content">Begin to ask simple questions about the world around them and their immediate experience. Explore their local environment and community. Notice similarities and differences between themselves and others. Begin to understand that things change over time in simple ways. Relate to stories about people in the past and people in other places.</div>
+          </div>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st3">Cynefin</span> Identity and belonging / Hunaniaeth a pherthyn</div>
+            <div class="stmt-content">Begin to develop a sense of themselves, their family, their local community and their place in Wales. Explore what makes their local area special &mdash; their cynefin. Begin to understand that other people may have different traditions, stories and beliefs.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PS2 -->
+      <div class="ps-detail ps2">
+        <div class="ps-detail-header">
+          <span class="ps-num ps2b" style="font-size:.9rem;padding:.2rem .6rem">PS2</span>
+          <h3>Progression Step 2 &mdash; broadly age 8 &middot; Cam Cynnydd 2 &mdash; tua 8 oed
+            <em>Year 3&ndash;4 &middot; Blwyddyn 3&ndash;4</em>
+          </h3>
+        </div>
+        <div class="ps-detail-body">
+          <p style="font-size:.88rem;color:var(--ink-mid);margin-bottom:.9rem">Learners at PS2 are developing their ability to ask questions and use a range of sources. They begin to place events in time, explore their local area in more detail, and consider why people hold different beliefs and values. / Mae dysgwyr ar CS2 yn datblygu eu gallu i ofyn cwestiynau a defnyddio ystod o ffynonellau.</p>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st1">Enquiry</span> What learners can broadly do / Yr hyn y gall dysgwyr ei wneud yn fras</div>
+            <div class="stmt-content">Ask and respond to questions about the world around them, the past and other places. Use simple sources of evidence to find out about the past and present. Place events in a simple chronological order and understand that things change over time. Recognise that there can be different accounts of events.</div>
+          </div>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st2">Geography</span> Place and environment / Lle ac amgylchedd</div>
+            <div class="stmt-content">Describe their local environment and make comparisons with other places. Understand that the physical environment affects how people live. Begin to use maps and geographical tools to find out about places in Wales and beyond.</div>
+          </div>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st5">RVE</span> Beliefs and values / Credoau a gwerthoedd</div>
+            <div class="stmt-content">Show awareness that people have different beliefs, values and traditions. Begin to explore religious and non-religious worldviews and ask questions about meaning and purpose. Understand that their community in Wales includes people with different beliefs and traditions.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PS3 -->
+      <div class="ps-detail ps3">
+        <div class="ps-detail-header">
+          <span class="ps-num ps3b" style="font-size:.9rem;padding:.2rem .6rem">PS3</span>
+          <h3>Progression Step 3 &mdash; broadly age 11 &middot; Cam Cynnydd 3 &mdash; tua 11 oed
+            <em>Year 5&ndash;7 &middot; Blwyddyn 5&ndash;7</em>
+          </h3>
+        </div>
+        <div class="ps-detail-body">
+          <p style="font-size:.88rem;color:var(--ink-mid);margin-bottom:.9rem">This is a pivotal progression step &mdash; learners begin to engage with the disciplines of History, Geography and RVE more distinctly. They use a wider range of sources with growing confidence, place events in broader chronological contexts, and begin to understand that evidence can be interpreted in different ways. / Dyma gam cynnydd allweddol &mdash; mae dysgwyr yn dechrau ymgysylltu yn fwy penodol &acirc; disgyblaethau Hanes, Daearyddiaeth a GAE.</p>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st1">History</span> What learners can broadly do / Yr hyn y gall dysgwyr ei wneud yn fras</div>
+            <div class="stmt-content">Frame and investigate enquiry questions about the past, including Welsh history. Use a range of sources of evidence, evaluating their usefulness and reliability. Understand that historical accounts can differ and begin to explain why. Place events in a broad chronological framework, identifying causes and consequences. Understand key historical concepts including change, continuity, significance and causation.</div>
+          </div>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st2">Geography</span> Place and environment / Lle ac amgylchedd</div>
+            <div class="stmt-content">Investigate geographical questions about places and environments in Wales and beyond. Use maps, data and fieldwork to gather, represent and interpret geographical evidence. Understand physical and human processes and their interconnections. Begin to evaluate different perspectives on environmental and human issues.</div>
+          </div>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st5">RVE</span> Beliefs and values / Credoau a gwerthoedd</div>
+            <div class="stmt-content">Investigate different religious and non-religious worldviews and their impact on people's lives. Explore ethical questions from a range of perspectives. Understand that Welsh society includes people of diverse religious, cultural and non-religious backgrounds. Develop respectful and informed attitudes towards religious and non-religious worldviews.</div>
+          </div>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st3">Cynefin</span> Wales and local identity / Cymru a hunaniaeth leol</div>
+            <div class="stmt-content">Develop a sense of their own identity and place within Wales, its history and its communities. Connect their learning to their local cynefin and to the broader story of Wales. Understand the diverse communities, languages and cultures that make up Wales today.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PS4 -->
+      <div class="ps-detail ps4">
+        <div class="ps-detail-header">
+          <span class="ps-num ps4b" style="font-size:.9rem;padding:.2rem .6rem">PS4</span>
+          <h3>Progression Step 4 &mdash; broadly age 14 &middot; Cam Cynnydd 4 &mdash; tua 14 oed
+            <em>Year 8&ndash;9 &middot; Blwyddyn 8&ndash;9</em>
+          </h3>
+        </div>
+        <div class="ps-detail-body">
+          <p style="font-size:.88rem;color:var(--ink-mid);margin-bottom:.9rem">At PS4, learners engage with increased sophistication in disciplinary thinking. They evaluate evidence more critically, construct more complex arguments, and apply conceptual understanding to new and unfamiliar contexts. / Ar CS4, mae dysgwyr yn ymgysylltu gyda meddwl disgyblaethol gyda mwy o soffistigeiddrwydd.</p>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st1">History</span> What learners can broadly do / Yr hyn y gall dysgwyr ei wneud yn fras</div>
+            <div class="stmt-content">Frame increasingly sophisticated historical enquiry questions and investigate them independently. Critically evaluate a range of sources, understanding the relationship between provenance, context, purpose and utility. Construct sustained historical arguments supported by evidence. Understand that historical interpretations are shaped by the context in which they are produced. Apply second-order concepts (causation, change, significance, evidence, interpretations, historical perspective) to complex historical situations, including Welsh and global history.</div>
+          </div>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st2">Geography</span> Place and environment / Lle ac amgylchedd</div>
+            <div class="stmt-content">Conduct geographical investigations using a range of quantitative and qualitative methods. Analyse and evaluate data, including maps, graphs, fieldwork data and digital sources. Understand complex physical and human geographical processes and their interrelationships. Evaluate different geographical perspectives on complex issues including climate change, migration and urbanisation, with Welsh and global contexts.</div>
+          </div>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st5">RVE</span> Beliefs and values / Credoau a gwerthoedd</div>
+            <div class="stmt-content">Analyse and evaluate diverse religious and non-religious worldviews with increasing sophistication. Engage with complex ethical questions using a range of philosophical and theological frameworks. Understand the diversity of belief and practice within and across religious traditions. Apply ethical reasoning to contemporary issues including human rights, environmental ethics and social justice, in Welsh and global contexts.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PS5 -->
+      <div class="ps-detail ps5">
+        <div class="ps-detail-header">
+          <span class="ps-num ps5b" style="font-size:.9rem;padding:.2rem .6rem">PS5</span>
+          <h3>Progression Step 5 &mdash; broadly age 16 &middot; Cam Cynnydd 5 &mdash; tua 16 oed
+            <em>Year 10&ndash;11 &middot; Blwyddyn 10&ndash;11</em>
+          </h3>
+        </div>
+        <div class="ps-detail-body">
+          <p style="font-size:.88rem;color:var(--ink-mid);margin-bottom:.9rem">At PS5, learners demonstrate the highest level of Humanities understanding expected at 16. They engage with complex disciplinary concepts with independence and nuance, and show the ability to transfer learning to new contexts and exercise informed citizenship. / Ar CS5, mae dysgwyr yn dangos y lefel uchaf o ddealltwriaeth Dyniaethau a ddisgwylir yn 16 oed.</p>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st1">History</span> What learners can broadly do / Yr hyn y gall dysgwyr ei wneud yn fras</div>
+            <div class="stmt-content">Independently frame, investigate and reach supported conclusions on complex historical enquiries. Critically analyse and evaluate a wide range of primary and secondary sources, understanding how context shapes historical knowledge. Construct complex, nuanced historical arguments that acknowledge contradictory evidence, multiple causation and different interpretations. Understand how historiographical perspectives have changed over time, and how the history of Wales connects to and informs understanding of the wider world.</div>
+          </div>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st2">Geography</span> Synthesis and action / Syntesu a gweithredu</div>
+            <div class="stmt-content">Conduct and evaluate sophisticated geographical investigations, justifying methodological choices. Synthesise complex geographical evidence to reach well-supported conclusions on issues of local, national and global significance. Understand the complex interactions between physical and human geography, and between Wales, the UK and the wider world. Engage with geographical issues as an informed citizen, including through social action.</div>
+          </div>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st5">RVE</span> Critical engagement / Ymgysylltiad beirniadol</div>
+            <div class="stmt-content">Critically and empathetically engage with a wide range of religious and non-religious worldviews. Construct and evaluate complex ethical arguments, demonstrating awareness of philosophical frameworks and their limitations. Understand the political, social and historical contexts that shape religious and non-religious belief. Exercise informed and responsible citizenship in a religiously diverse Welsh and global society.</div>
+          </div>
+          <div class="statement-section">
+            <div class="stmt-label"><span class="stmt-tag st3">Transfer</span> Citizenship and action / Dinasyddiaeth a gweithredu</div>
+            <div class="stmt-content">Apply Humanities knowledge and skills to new, unfamiliar and complex situations. Make connections across disciplines, periods and places. Demonstrate ability to influence events by exercising informed and responsible citizenship at local, national and global levels. Show a clear understanding of their own identity within Wales and within the wider world.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(1)">&larr; Back</button>
+        <button class="btn btn-primary" onclick="nextSection(2)">Next: In Your Subject &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4: IN YOUR SUBJECT ═══ -->
+  <div class="section-card" id="sec-3">
+    <div class="card-header violet">
+      <div class="icon">&#128218;</div>
+      <h2>Section 4: Progression Across the Three Humanities Disciplines
+        <em>Adran 4: Cynnydd ar Draws Tair Disgyblaeth y Dyniaethau</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <p style="font-size:.9rem;color:var(--ink-mid);margin-bottom:1.2rem">Each of the three main Humanities disciplines has its own progression pathway &mdash; but they share the same five principles and five progression steps. This section shows how progression looks different in History, Geography and RVE at key stages. / Mae gan bob un o dair prif ddisgyblaethol y Dyniaethau ei llwybr cynnydd ei hun &mdash; ond maent yn rhannu'r un pum egwyddor a phum cam cynnydd.</p>
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin-bottom:.9rem;color:var(--violet)">The concept of ENQUIRY across PS3&ndash;PS5 &middot; Y cysyniad o YMHOLIAD ar draws CS3&ndash;CS5</h3>
+
+      <div class="subject-compare">
+        <div class="subj-card subj-hist">
+          <div class="subj-title">&#128380; History &middot; Hanes</div>
+          <ul>
+            <li><strong>PS3:</strong> Investigate given enquiry questions; evaluate sources provided; understand that accounts differ</li>
+            <li><strong>PS4:</strong> Frame own enquiry questions; independently evaluate a range of sources; understand how interpretations are shaped by context</li>
+            <li><strong>PS5:</strong> Conduct independent complex enquiries; analyse historiographical change; connect Welsh history to world history</li>
+          </ul>
+        </div>
+        <div class="subj-card subj-geog">
+          <div class="subj-title">&#127758; Geography &middot; Daearyddiaeth</div>
+          <ul>
+            <li><strong>PS3:</strong> Investigate geographical questions using provided maps, data, fieldwork; understand that geographical processes are interconnected</li>
+            <li><strong>PS4:</strong> Conduct own geographical investigations; evaluate methodological choices; analyse complex human and physical processes</li>
+            <li><strong>PS5:</strong> Design and evaluate sophisticated investigations; synthesise complex evidence; engage as informed citizen on global issues</li>
+          </ul>
+        </div>
+        <div class="subj-card subj-rve">
+          <div class="subj-title">&#9774; RVE &middot; GAE</div>
+          <ul>
+            <li><strong>PS3:</strong> Investigate different worldviews; explore ethical questions; understand diversity within Welsh society</li>
+            <li><strong>PS4:</strong> Analyse worldviews critically; apply philosophical frameworks; engage with complex contemporary ethical issues</li>
+            <li><strong>PS5:</strong> Construct complex ethical arguments; evaluate philosophical frameworks; exercise informed citizenship in diverse society</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin:1.4rem 0 .9rem;color:var(--violet)">What progression looks like in practice &middot; Sut olwg sydd ar gynnydd yn ymarferol</h3>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          &#128380; History: Moving from PS3 to PS4 &mdash; Causation <span class="accordion-arrow">&#9660;</span>
+        </button>
+        <div class="accordion-content">
+          <p><strong>PS3 (age ~11):</strong> A learner can identify and list causes of an event (e.g. the Rebecca Riots). They can sort causes into categories (economic, political, social) and explain which they think was most important with some reference to evidence.</p>
+          <p style="margin-top:.5rem"><strong>PS4 (age ~14):</strong> A learner understands that causation is complex and contested. They can construct a sustained argument about causation, weighing different types of evidence, acknowledging that historians have prioritised different causes, and explaining why context shapes judgements about significance.</p>
+          <p style="margin-top:.5rem"><strong>What has progressed?</strong> Not just more knowledge of the Rebecca Riots &mdash; deeper <em>conceptual understanding</em> of how causation works as a historical concept, and greater <em>independence</em> in applying that understanding to argument.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          &#127758; Geography: Moving from PS3 to PS4 &mdash; Geographical Data <span class="accordion-arrow">&#9660;</span>
+        </button>
+        <div class="accordion-content">
+          <p><strong>PS3 (age ~11):</strong> A learner can read a climate graph for Cardiff, describe the pattern of rainfall and temperature, and explain in simple terms why Cardiff receives more rainfall than eastern England.</p>
+          <p style="margin-top:.5rem"><strong>PS4 (age ~14):</strong> A learner can design a fieldwork method to investigate rainfall patterns, collect and process data, choose appropriate graphical representations, and evaluate the reliability and validity of their own methodology. They can connect climate patterns to human and environmental issues (flooding, agriculture, tourism) in Wales.</p>
+          <p style="margin-top:.5rem"><strong>What has progressed?</strong> From reading provided data to designing and evaluating their own data collection. From description to analysis and evaluation. From a simple task to an independently conducted geographical investigation.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item">
+        <button class="accordion-btn" onclick="toggleAcc(this)">
+          &#9774; RVE: Moving from PS3 to PS5 &mdash; Ethical reasoning <span class="accordion-arrow">&#9660;</span>
+        </button>
+        <div class="accordion-content">
+          <p><strong>PS3 (age ~11):</strong> A learner can explain what different religious traditions teach about care for the environment, identify similarities and differences between them, and express a personal view on environmental responsibility.</p>
+          <p style="margin-top:.5rem"><strong>PS5 (age ~16):</strong> A learner can construct a complex ethical argument about climate justice, drawing on utilitarian, deontological and virtue ethics frameworks alongside religious teachings. They can evaluate the strengths and limitations of different ethical approaches, acknowledge competing claims and reach a nuanced, supported conclusion. They understand the political and economic contexts that shape responses to climate change globally and in Wales.</p>
+          <p style="margin-top:.5rem"><strong>What has progressed?</strong> From knowing what traditions teach to applying and evaluating philosophical frameworks. From a personal opinion to a constructed, evidenced ethical argument. From description of diversity to critical engagement with it.</p>
+        </div>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">3</div> Task 4.1 &middot; Describe progression in your subject</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">Choose ONE concept or skill central to your subject. Describe what a learner engaging with it looks like at THREE different progression steps. / Dewiswch UN cysyniad neu sgil canolog i'ch pwnc. Disgrifiwch sut olwg sydd ar ddysgwr yn ymgysylltu ag ef ar TRI cham cynnydd gwahanol.</p>
+        <label class="field-label">My subject and concept/skill / Fy mhwnc a fy nghysyniad/sgil:</label>
+        <textarea style="min-height:42px" placeholder="e.g. History — historical significance / Geography — fieldwork skills / RVE — ethical reasoning"></textarea>
+        <label class="field-label">At PS3 (age ~11), this looks like... / Ar CS3 (tua 11 oed), mae hyn yn edrych fel...</label>
+        <textarea placeholder="A learner at PS3 can…"></textarea>
+        <label class="field-label">At PS4 (age ~14) / Ar CS4 (tua 14 oed):</label>
+        <textarea placeholder="A learner at PS4 can… What has progressed is…"></textarea>
+        <label class="field-label">At PS5 (age ~16) / Ar CS5 (tua 16 oed):</label>
+        <textarea placeholder="A learner at PS5 can… What has progressed is…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(2)">&larr; Back</button>
+        <button class="btn btn-primary" onclick="nextSection(3)">Next: Planning for Progression &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 5: PLANNING ═══ -->
+  <div class="section-card" id="sec-4">
+    <div class="card-header rust">
+      <div class="icon">&#128196;</div>
+      <h2>Section 5: Planning for Progression in Your Teaching
+        <em>Adran 5: Cynllunio ar gyfer Cynnydd yn Eich Addysgu</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="info-box rust">
+        <h3>&#128204; The planning question &middot; Y cwestiwn cynllunio</h3>
+        <p>For every lesson and unit you plan, ask: <strong>"How does this learning move my learners forward on the 3&ndash;16 continuum?"</strong> If you cannot answer this, the learning may be covering content without developing progression. / Ar gyfer pob gwers ac uned rydych chi'n ei gynllunio, gofynnwch: <strong>"Sut mae'r dysgu hwn yn symud fy nysgwyr ymlaen ar y continwwm 3&ndash;16?"</strong></p>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin:.5rem 0 .9rem;color:var(--rust)">Key planning principles &middot; Egwyddorion cynllunio allweddol</h3>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:1.3rem">
+        <div style="background:#fff;border:2px solid var(--sage-light);border-radius:9px;padding:1rem">
+          <div style="font-weight:800;color:var(--sage);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem">&#10003; Plan for depth, not coverage</div>
+          <p style="font-size:.84rem;color:var(--ink);line-height:1.6">Returning to the same concept (causation, significance, enquiry) with increasing depth and sophistication IS progression. Do not feel you need to cover everything &mdash; deep engagement with a smaller number of powerful ideas is more valuable than surface coverage of many. / Dychwelyd at yr un cysyniad gyda dyfnder cynyddol yw cynnydd.</p>
+        </div>
+        <div style="background:#fff;border:2px solid var(--sage-light);border-radius:9px;padding:1rem">
+          <div style="font-weight:800;color:var(--sage);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem">&#10003; Plan for increasing independence</div>
+          <p style="font-size:.84rem;color:var(--ink);line-height:1.6">At PS3, learners work with provided enquiry questions and sources. By PS4, they are framing their own questions and choosing their own sources. By PS5, they are designing their own investigations. Plan the gradual release of responsibility deliberately. / Cynllunio datgeliad graddol o gyfrifoldeb yn fwriadol.</p>
+        </div>
+        <div style="background:#fff;border:2px solid var(--sage-light);border-radius:9px;padding:1rem">
+          <div style="font-weight:800;color:var(--sage);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem">&#10003; Plan for transfer</div>
+          <p style="font-size:.84rem;color:var(--ink);line-height:1.6">Include tasks that require learners to apply what they have learned to unfamiliar contexts. A Geography student who can apply knowledge of flooding causes learned in Wales to a case study in Bangladesh is demonstrating genuine progression. / Cynnwys tasgau sy'n ei gwneud yn ofynnol i ddysgwyr gymhwyso'r hyn y maent wedi'i ddysgu i gyd-destunau anghyfarwydd.</p>
+        </div>
+        <div style="background:#fff;border:2px solid var(--sage-light);border-radius:9px;padding:1rem">
+          <div style="font-weight:800;color:var(--sage);font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.6rem">&#10003; Plan for connections across time and place</div>
+          <p style="font-size:.84rem;color:var(--ink);line-height:1.6">The CfW explicitly expects learners to make connections within and between periods and places. Plan for learners to connect their Welsh cynefin to wider national and global stories. Explicitly ask: how does this connect to what we studied before? / Cynllunio i ddysgwyr gysylltu eu cynefin Cymreig &acirc; straeon cenedlaethol a byd-eang ehangach.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"Supporting learner progression is a fundamental driver of the Framework. Progression should be embedded in learning and teaching and should form the basis of thinking in schools when designing and planning the school curriculum."</p>
+        <p class="quote-attr">&mdash; Curriculum for Wales Guidance (Welsh Government, 2020)</p>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">4</div> Task 5.1 &middot; Progression audit of a unit / Archwiliad cynnydd o uned</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">Choose a unit or scheme of work you are teaching or have observed. Audit it against the five Principles of Progression. / Dewiswch uned neu gynllun gwaith rydych chi'n ei addysgu neu wedi'i arsylwi. Archwilwch hi yn erbyn y pum Egwyddor Gynnydd.</p>
+        <label class="field-label">Unit / topic / Uned / pwnc:</label>
+        <textarea style="min-height:42px" placeholder="e.g. 'Changing Wales 1870-1914' — Year 9 History"></textarea>
+        <label class="field-label">Which Progression Step(s) does this unit primarily target? / Pa Gam(au) Cynnydd y mae'r uned hon yn eu targedu?</label>
+        <textarea style="min-height:42px" placeholder="This unit targets PS… because learners at this stage are expected to…"></textarea>
+        <label class="field-label">Rate 1-5: How well does this unit address each principle? Where are the gaps? / Sgoriwch 1-5: Pa mor dda mae'r uned hon yn mynd i'r afael &acirc; phob egwyddor?</label>
+        <textarea placeholder="Principle 1 (Effectiveness as learner): /5 — Gap: …&#10;Principle 2 (Breadth and depth): /5 — Gap: …&#10;Principle 3 (Disciplinary understanding): /5 — Gap: …&#10;Principle 4 (Skill refinement): /5 — Gap: …&#10;Principle 5 (Transfer and connections): /5 — Gap: …"></textarea>
+        <label class="field-label">ONE specific change you will make to improve how this unit develops progression / UN newid penodol:</label>
+        <textarea placeholder="I will add / change / remove … because it will better develop Principle … by…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(3)">&larr; Back</button>
+        <button class="btn btn-primary" onclick="nextSection(4)">Next: Quiz &amp; Reflection &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 6: QUIZ & REFLECTION ═══ -->
+  <div class="section-card" id="sec-5">
+    <div class="card-header slate">
+      <div class="icon">&#9997;</div>
+      <h2>Section 6: Knowledge Check &amp; Reflection
+        <em>Adran 6: Gwiriad Gwybodaeth ac Adlewyrchiad</em>
+      </h2>
+    </div>
+    <div class="card-body"><div class="quiz-question" id="q1"><p class="q-text"><span class="q-num">1</span>How many Progression Steps are there in the Curriculum for Wales, and to what ages do they broadly correspond?</p><p class="q-welsh">&middot; Faint o Gamau Cynnydd sydd yng Nghwricwlwm i Gymru, ac i ba oedrannau y maent yn cyfateb yn fras?</p><div class="options"><button class="option-btn" onclick="checkQ('q1',this,false)">Three steps: ages 7, 11 and 16 / Tri cham: oedrannau 7, 11 a 16</button><button class="option-btn" onclick="checkQ('q1',this,true)">Five steps: broadly ages 5, 8, 11, 14 and 16 / Pum cam: yn fras oedrannau 5, 8, 11, 14 a 16</button><button class="option-btn" onclick="checkQ('q1',this,false)">Five steps, each corresponding rigidly to a specific year group / Pum cam, pob un yn cyfateb yn anhyblyg i grwp blwyddyn penodol</button><button class="option-btn" onclick="checkQ('q1',this,false)">Four steps corresponding to Key Stages 1, 2, 3 and 4 / Pedwar cam sy'n cyfateb i Gyfnodau Allweddol 1, 2, 3 a 4</button></div><div class="feedback" id="q1-fb"></div></div><div class="quiz-question" id="q2"><p class="q-text"><span class="q-num">2</span>According to the Principles of Progression, which of the following BEST describes progression in the Humanities AoLE?</p><p class="q-welsh">&middot; Yn ol yr Egwyddorion Cynnydd, pa un o'r canlynol sy'n disgrifio cynnydd yn MDP y Dyniaethau orau?</p><div class="options"><button class="option-btn" onclick="checkQ('q2',this,false)">Covering an increasing number of historical events, geographical places and religious traditions / Cwmpasu nifer gynyddol o ddigwyddiadau hanesyddol, lleoedd daearyddol a thraddodiadau crefyddol</button><button class="option-btn" onclick="checkQ('q2',this,true)">Moving through increasingly sophisticated enquiry, deeper conceptual knowledge, growing disciplinary understanding, more refined skills, and the ability to transfer learning to new contexts / Symud drwy ymholiad mwy soffistigedig, gwybodaeth gysyniadol ddyfnach, dealltwriaeth ddisgyblaeethol well, sgiliau wedi'u mireinio, a'r gallu i drosglwyddo dysgu</button><button class="option-btn" onclick="checkQ('q2',this,false)">Achieving progressively higher grades in WJEC GCSE History, Geography or Religious Studies / Cyrraedd graddau uwch yn barhaus mewn TGAU CBAC</button><button class="option-btn" onclick="checkQ('q2',this,false)">Completing all five Progression Steps before the end of Year 9 / Cwblhau'r pum Cam Cynnydd cyn diwedd Blwyddyn 9</button></div><div class="feedback" id="q2-fb"></div></div><div class="quiz-question" id="q3"><p class="q-text"><span class="q-num">3</span>Which Principle of Progression is being demonstrated when a Year 10 History learner applies their understanding of causation learned from studying the Rebecca Riots to a new enquiry on the causes of the First World War?</p><p class="q-welsh">&middot; Pa Egwyddor Gynnydd sy'n cael ei dangos pan fo dysgwr Hanes Blwyddyn 10 yn cymhwyso ei ddealltwriaeth o achosiaeth?</p><div class="options"><button class="option-btn" onclick="checkQ('q3',this,false)">Increasing breadth and depth of knowledge / Cynyddu lled a dyfnder gwybodaeth</button><button class="option-btn" onclick="checkQ('q3',this,false)">Deepening understanding of the ideas and disciplines within Areas / Dyfnhau dealltwriaeth o syniadau a disgyblaethau</button><button class="option-btn" onclick="checkQ('q3',this,true)">Making connections and transferring learning into new contexts / Creu cysylltiadau a throsglwyddo dysgu i gyd-destunau newydd</button><button class="option-btn" onclick="checkQ('q3',this,false)">Increasing effectiveness as a learner / Cynyddu effeithiolrwydd fel dysgwr</button></div><div class="feedback" id="q3-fb"></div></div><div class="quiz-question" id="q4"><p class="q-text"><span class="q-num">4</span>A teacher plans a Geography lesson where learners are given a pre-drawn climate graph and asked to describe the pattern shown. Which aspect of progression is LEAST developed by this activity?</p><p class="q-welsh">&middot; Mae athro Daearyddiaeth yn cynllunio gwers lle rhoddir graff hinsawdd i ddysgwyr. Pa agwedd ar gynnydd sy'n LLEIAF datblygedig gan y gweithgaredd hwn?</p><div class="options"><button class="option-btn" onclick="checkQ('q4',this,false)">Reading and interpreting geographical data / Darllen a dehongli data daearyddol</button><button class="option-btn" onclick="checkQ('q4',this,true)">Increasing effectiveness as a learner through independent enquiry and self-directed investigation / Cynyddu effeithiolrwydd fel dysgwr drwy ymholiad annibynnol</button><button class="option-btn" onclick="checkQ('q4',this,false)">Breadth of geographical knowledge / Lled gwybodaeth ddaearyddol</button><button class="option-btn" onclick="checkQ('q4',this,false)">Understanding how to represent geographical data / Deall sut i gynrychioli data daearyddol</button></div><div class="feedback" id="q4-fb"></div></div><div class="quiz-question" id="q5"><p class="q-text"><span class="q-num">5</span>How should Progression Steps be used in relation to assessment?</p><p class="q-welsh">&middot; Sut dylid defnyddio Camau Cynnydd mewn perthynas ag asesu?</p><div class="options"><button class="option-btn" onclick="checkQ('q5',this,false)">As fixed levels: each learner should be formally assessed and assigned a Progression Step level each term / Fel lefelau sefydlog: dylid asesu pob dysgwr yn ffurfiol a'i neilltuo i lefel Cam Cynnydd bob tymor</button><button class="option-btn" onclick="checkQ('q5',this,true)">As reference points to help teachers understand where learners are on the 3-16 continuum and plan appropriate next steps &mdash; not as assessment criteria or stand-alone tasks / Fel pwyntiau cyfeirio i helpu athrawon i ddeall ble mae dysgwyr ar y continwwm 3-16 ac i gynllunio camau nesaf priodol</button><button class="option-btn" onclick="checkQ('q5',this,false)">As minimum entry requirements for GCSE &mdash; learners must reach PS4 before beginning Year 10 courses / Fel gofynion mynediad lleiaf ar gyfer TGAU</button><button class="option-btn" onclick="checkQ('q5',this,false)">As equivalent to the old National Curriculum levels 1-8, to be used in end-of-year reports / Fel cyfwerth a hen lefelau Cwricwlwm Cenedlaethol 1-8</button></div><div class="feedback" id="q5-fb"></div></div>
+      <div class="task-box" style="margin-top:1.4rem">
+        <div class="task-label"><div class="task-num">5</div> Final Reflection &middot; Adlewyrchiad Terfynol</div>
+        <label class="field-label">Which of the five Principles of Progression do you find MOST challenging to plan for in your placement school &mdash; and why? / Pa un o'r pum Egwyddor Gynnydd rydych chi'n ei chael hi'n FWYAF heriol i gynllunio ar ei chyfer?</label>
+        <textarea placeholder="I find Principle … most challenging because… In my placement, I have seen that…"></textarea>
+        <label class="field-label">Write a brief (100-150 word) explanation of what 'progression' means in the Humanities AoLE that you could use in a parent's evening or a job interview. / Ysgrifennwch esboniad byr (100-150 gair) o'r hyn y mae 'cynnydd' yn ei olygu ym MDP y Dyniaethau:</label>
+        <textarea style="min-height:120px" placeholder="In the Curriculum for Wales Humanities AoLE, progression means…"></textarea>
+        <label class="field-label">Return to your Section 1 response. Has your understanding of progression changed? What specifically is clearer now? / Dychwelwch at eich ymateb Adran 1. A yw eich dealltwriaeth o gynnydd wedi newid?</label>
+        <textarea placeholder="Before this session, I thought progression meant… Now I understand that…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(4)">&larr; Back</button>
+        <button class="btn btn-amber" onclick="complete()">&#127891; Complete Session &middot; Cwblhau'r Sesiwn</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="completion-card" id="completion">
+    <span class="badge-icon">&#128200;</span>
+    <h2>Session Complete! &middot; Sesiwn Wedi'i Chwblhau!</h2>
+    <div class="score-badge">Quiz Score &middot; Sgôr: <span id="final-score">0</span> / 5</div>
+    <p><strong>Well done!</strong> You have completed the Progression in Humanities session &mdash; covering the five mandatory Principles of Progression, all five Progression Steps (PS1&ndash;PS5), subject-specific progression in History, Geography and RVE, and planning principles.</p>
+    <p><strong>Da iawn!</strong> Rydych wedi cwblhau'r sesiwn Cynnydd yn y Dyniaethau &mdash; gan gwmpasu'r pum Egwyddor Gynnydd gorfodol, y pum Cam Cynnydd (CS1&ndash;CS5), cynnydd pwnc-benodol mewn Hanes, Daearyddiaeth a GAE, ac egwyddorion cynllunio.</p>
+    <p style="font-style:italic;opacity:.78">"Progression should be embedded in learning and teaching and should form the basis of thinking in schools when designing and planning the school curriculum." &mdash; Curriculum for Wales</p>
+    <div style="margin-top:1rem"><button class="btn btn-secondary" onclick="location.reload()" style="background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.33);color:#fff;font-size:.83rem;">&#8634; Start Again &middot; Dechrau Eto</button></div>
+    <div class="cert-trigger-box">
+      <p>&#127885; <strong>Generate your personalised completion certificate &middot; Creu eich tystysgrif gwblhau</strong><br>
+      Enter your full name below. / Rhowch eich enw llawn isod.</p>
+      <div class="cert-name-row">
+        <input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name &middot; Eich enw llawn&hellip;" maxlength="80">
+        <button class="btn-cert" onclick="generateCertificate()">&#127891; Generate Certificate &middot; Creu Tystysgrif</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- CERTIFICATE -->
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:1.9rem;">&#128200;</div>
+            <div class="cert-inst-name">PGCE Humanities &middot; Y Dyniaethau TGCH
+              <span class="cert-inst-cy">Curriculum for Wales / Cwricwlwm i Gymru</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that &middot; Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher &middot; yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.45rem 0 .25rem"><div class="cert-name" id="certDisplayName">Your Name</div></div>
+          <div class="cert-score-pill">Quiz Score &middot; Sgôr: <span id="certScoreDisplay">0</span> / 5</div>
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the PGCE Humanities session on</div>
+          <div class="cert-course">Progression in the Humanities AoLE: Principles and Steps
+            <span class="cert-course-cy">Cynnydd ym MDP y Dyniaethau: Egwyddorion a Chamau</span>
+          </div>
+          <div class="cert-competencies">Demonstrating understanding of: the five mandatory Principles of Progression in the Humanities AoLE (Curriculum for Wales); the five Progression Steps (PS1-PS5) and their broad age correspondence; what progression looks like across History, Geography and RVE at PS3, PS4 and PS5; how the principles and steps interconnect and differ from the old levels system; and how to plan for progression &mdash; including depth over coverage, increasing independence, transfer, and connections across time and place within the Curriculum for Wales framework.</div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block"><div class="cert-sig-line"></div><div class="cert-sig-label">Programme Director &middot; Cyfarwyddwr y Rhaglen</div></div>
+            <div><div class="cert-seal"><span class="cert-seal-icon">&#128200;</span>PGCE<br>CYMRU</div></div>
+            <div class="cert-sig-block"><div class="cert-date-val" id="certDateDisplay"></div><div class="cert-date-label">Date Completed &middot; Dyddiad Cwblhau</div></div>
+          </div>
+          <div class="cert-stripe" style="margin:1.1rem -2rem -1.5rem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">&#128424; Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">&#10005; Close &middot; Cau</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var score=0;var answeredQs=new Set();var completedSections=new Set();
+var feedbacks={
+  q1:"Correct! Five Progression Steps, broadly ages 5, 8, 11, 14 and 16 (PS1-PS5). They are reference points, not rigid thresholds. As a secondary teacher, PS3, PS4 and PS5 are most relevant to your daily work.",
+  q2:"Correct! The five Principles of Progression describe a multidimensional view of progress: more sophisticated enquiry, deeper knowledge, growing disciplinary understanding, refined skills, and the ability to transfer learning. This is richer than content coverage or grade achievement.",
+  q3:"Correct! Transfer - applying conceptual understanding to a new, unfamiliar context - is the hallmark of Principle 5. The learner is using the conceptual tool of causation in a completely new historical setting. This is deep progression.",
+  q4:"Correct! Providing a pre-drawn graph does not develop Principle 1 - increasing effectiveness as an independent learner. At PS4-PS5, learners should be designing investigations, choosing data sources and evaluating their own methods. The task does not develop that independence.",
+  q5:"Correct! The CfW guidance is explicit: Progression Steps are not assessment criteria or stand-alone tasks. They are reference points that help teachers understand where learners are and what they need next. They replace, not replicate, the old levels system."
+};
+function checkQ(qId,btn,isCorrect){
+  if(answeredQs.has(qId))return;answeredQs.add(qId);
+  document.getElementById(qId).querySelectorAll(".option-btn").forEach(function(b){b.disabled=true;});
+  var fb=document.getElementById(qId+"-fb");
+  if(isCorrect){btn.classList.add("correct");fb.className="feedback correct show";fb.innerHTML="&#10003; "+feedbacks[qId];score++;}
+  else{btn.classList.add("wrong");fb.className="feedback wrong show";fb.innerHTML="&#10007; Not quite &mdash; "+feedbacks[qId];}
+}
+function toggleAcc(btn){
+  btn.classList.toggle("open");
+  var content=btn.nextElementSibling;
+  content.classList.toggle("open");
+}
+function goTo(idx){
+  document.querySelectorAll(".section-card").forEach(function(el,i){el.classList.toggle("active",i===idx);});
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("active",i===idx);});
+  var pct=Math.round(((idx+1)/6)*100);
+  document.getElementById("progress-bar").style.width=pct+"%";
+  document.getElementById("progress-label").textContent="Section "+(idx+1)+" of 6 · Adran "+(idx+1)+" o 6";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function nextSection(idx){
+  completedSections.add(idx);
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("done",completedSections.has(i));});
+  goTo(idx+1);
+}
+function complete(){
+  completedSections.add(5);
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("done",completedSections.has(i));});
+  document.querySelectorAll(".section-card").forEach(function(el){el.classList.remove("active");});
+  document.getElementById("completion").classList.add("show");
+  document.getElementById("final-score").textContent=score;
+  document.getElementById("progress-bar").style.width="100%";
+  document.getElementById("progress-label").textContent="Complete! · Wedi Cwblhau!";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function generateCertificate(){
+  var name=document.getElementById("certNameInput").value.trim();
+  if(!name){document.getElementById("certNameInput").focus();document.getElementById("certNameInput").style.borderColor="#FCD34D";setTimeout(function(){document.getElementById("certNameInput").style.borderColor="";},1500);return;}
+  document.getElementById("certDisplayName").textContent=name;
+  document.getElementById("certScoreDisplay").textContent=score;
+  var now=new Date();
+  var months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  document.getElementById("certDateDisplay").textContent=now.getDate()+" "+months[now.getMonth()]+" "+now.getFullYear();
+  document.getElementById("certOverlay").classList.add("show");
+  document.body.style.overflow="hidden";
+}
+function closeCertificate(){document.getElementById("certOverlay").classList.remove("show");document.body.style.overflow="";}
+function printCertificate(){
+  var cert=document.getElementById("certificateEl");
+  var w=window.open("","_blank","width=900,height=700");
+  var h="<html><head><title>Certificate</title>";
+  document.querySelectorAll("style,link[rel=stylesheet]").forEach(function(s){h+=s.outerHTML;});
+  h+="</head><body style='margin:0;padding:20px;background:white;'>";
+  h+=cert.outerHTML;
+  h+="</body></html>";
+  w.document.write(h);
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener("click",function(e){if(e.target.id==="certOverlay")closeCertificate();});
+</script>
+</body>
+</html>
