@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="cy-en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Literacy and Numeracy Framework (LNF) | Fframwaith Llythrennedd a Rhifedd — PGCE Humanities Wales</title>
+<style>
+:root{
+  --teal:#0E7490;--teal-light:#CFFAFE;--teal-pale:#ECFEFF;
+  --green:#166534;--green-light:#DCFCE7;--green-pale:#F0FFF4;
+  --amber:#92400E;--amber-light:#FEF3C7;--amber-pale:#FFFBEB;
+  --red:#991B1B;--red-light:#FEE2E2;--red-pale:#FFF5F5;
+  --violet:#4C1D95;--violet-light:#EDE9FE;--violet-pale:#F5F3FF;
+  --blue:#1E3A5F;--blue-light:#DBEAFE;--blue-pale:#EFF6FF;
+  --hist:#7C2D12;--geog:#065F46;--rve:#3730A3;
+  --ink:#1C1917;--ink-mid:#44403C;--ink-light:#78716C;
+  --off:#FAFAF9;--cream:#F5F5F4;--border:#E7E5E4;
+  --shadow:0 4px 24px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--off);color:var(--ink);min-height:100vh}
+header{background:linear-gradient(135deg,#004D5A 0%,var(--teal) 55%,#0891B2 100%);color:#fff;padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+header::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.lang-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:.3rem 1rem;font-size:.8rem;font-weight:600;letter-spacing:.05em;margin-bottom:1.5rem}
+header h1{font-family:Georgia,serif;font-size:clamp(1.5rem,3.5vw,2.4rem);line-height:1.2;margin-bottom:.3rem}
+header h1 span{display:block;font-size:.55em;font-weight:400;opacity:.75;font-style:italic;margin-top:.3rem}
+.header-sub{font-size:.9rem;opacity:.8;margin-top:.7rem}
+.subject-pills{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.1rem}
+.pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.28rem .85rem;font-size:.76rem;font-weight:600}
+.progress-bar-wrap{max-width:600px;margin:1.4rem auto 0;background:rgba(255,255,255,.18);border-radius:999px;height:7px;overflow:hidden}
+#progress-bar{height:100%;background:#FCD34D;border-radius:999px;transition:width .5s ease;width:0%}
+#progress-label{font-size:.77rem;opacity:.75;margin-top:.4rem}
+main{max-width:960px;margin:0 auto;padding:2rem 1rem 4rem}
+.section-nav{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.snav-btn{padding:.38rem .8rem;border-radius:999px;border:2px solid var(--border);background:#fff;font-size:.74rem;font-weight:600;cursor:pointer;color:var(--ink-mid);transition:all .2s;white-space:nowrap}
+.snav-btn.done{border-color:var(--green);color:#14532D;background:var(--green-light)}
+.snav-btn.active{border-color:var(--teal);color:var(--teal);background:var(--teal-pale)}
+.section-card{background:#fff;border-radius:14px;box-shadow:var(--shadow);margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);display:none;animation:fadeIn .4s ease}
+.section-card.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card-header{padding:1.4rem 2rem;display:flex;align-items:center;gap:1rem;border-bottom:2px solid}
+.card-header.teal{background:var(--teal-pale);border-color:var(--teal-light)}
+.card-header.green{background:var(--green-pale);border-color:#86EFAC}
+.card-header.amber{background:var(--amber-pale);border-color:#FDE68A}
+.card-header.violet{background:var(--violet-pale);border-color:var(--violet-light)}
+.card-header.blue{background:var(--blue-pale);border-color:var(--blue-light)}
+.card-header.slate{background:#F1F5F9;border-color:#CBD5E1}
+.card-header .icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.card-header.teal .icon{background:var(--teal)}.card-header.green .icon{background:var(--green)}
+.card-header.amber .icon{background:var(--amber)}.card-header.violet .icon{background:var(--violet)}
+.card-header.blue .icon{background:var(--blue)}.card-header.slate .icon{background:var(--ink)}
+.card-header h2{font-family:Georgia,serif;font-size:1.18rem;color:var(--ink);line-height:1.3}
+.card-header h2 em{display:block;font-family:-apple-system,sans-serif;font-size:.73rem;font-style:normal;font-weight:600;color:var(--ink-light);margin-top:.12rem;letter-spacing:.03em}
+.card-body{padding:1.8rem}
+@media(max-width:600px){.card-body{padding:1.2rem}}
+.bilingual-block{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-bottom:1.4rem}
+@media(max-width:600px){.bilingual-block{grid-template-columns:1fr}}
+.lang-col{background:var(--teal-pale);border-radius:9px;padding:1.1rem;border-left:4px solid var(--teal)}
+.lang-col.welsh{border-left-color:var(--amber);background:var(--amber-pale)}
+.lang-label{font-size:.69rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.5rem}
+.lang-col p,.lang-col li{font-size:.91rem;line-height:1.7;color:var(--ink)}
+.lang-col ul{padding-left:1.2rem;margin-top:.4rem}
+.lang-col li{margin-bottom:.3rem}
+.info-box{border-radius:9px;padding:1.1rem 1.4rem;margin-bottom:1.4rem;border:1px solid}
+.info-box.teal{background:var(--teal-pale);border-color:var(--teal-light)}
+.info-box.amber{background:var(--amber-pale);border-color:#FDE68A}
+.info-box.green{background:var(--green-pale);border-color:#86EFAC}
+.info-box.violet{background:var(--violet-pale);border-color:var(--violet-light)}
+.info-box.key{background:var(--ink);border-color:var(--ink-mid)}
+.info-box.red{background:var(--red-pale);border-color:#FECACA}
+.info-box.blue{background:var(--blue-pale);border-color:var(--blue-light)}
+.info-box h3{font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.65rem}
+.info-box.teal h3{color:var(--teal)}.info-box.amber h3{color:var(--amber)}
+.info-box.green h3{color:var(--green)}.info-box.violet h3{color:var(--violet)}
+.info-box.key h3{color:#FCD34D}.info-box.red h3{color:var(--red)}
+.info-box.blue h3{color:var(--blue)}
+.info-box p,.info-box li{font-size:.9rem;line-height:1.7;color:var(--ink)}
+.info-box.key p,.info-box.key li{color:rgba(255,255,255,.88)}
+.info-box ul{padding-left:1.2rem;margin-top:.4rem}
+.info-box ul li{margin-bottom:.3rem}
+.quote-block{background:var(--ink);color:#fff;border-radius:10px;padding:1.4rem 1.8rem;margin:1.4rem 0;position:relative;overflow:hidden}
+.quote-block::before{content:'"';font-family:Georgia,serif;font-size:7rem;color:rgba(255,255,255,.05);position:absolute;top:-1rem;left:.3rem;line-height:1}
+.quote-text{font-family:Georgia,serif;font-size:1.05rem;font-style:italic;line-height:1.65;color:rgba(255,255,255,.92);position:relative;z-index:1}
+.quote-attr{font-size:.77rem;color:#FCD34D;margin-top:.6rem;font-weight:600}
+/* STRAND GRID */
+.strand-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1.1rem 0}
+@media(max-width:640px){.strand-grid{grid-template-columns:1fr}}
+.strand-card{border-radius:10px;padding:1.1rem;border:2px solid;text-align:center}
+.sc-oracy{border-color:#0891B2;background:var(--teal-pale)}
+.sc-reading{border-color:var(--green);background:var(--green-pale)}
+.sc-writing{border-color:var(--violet);background:var(--violet-pale)}
+.sc-reasoning{border-color:var(--amber);background:var(--amber-pale)}
+.sc-number{border-color:var(--blue);background:var(--blue-pale)}
+.sc-measure{border-color:var(--green);background:var(--green-pale)}
+.sc-data{border-color:var(--red);background:var(--red-pale)}
+.strand-icon{font-size:1.9rem;display:block;margin-bottom:.5rem}
+.strand-card h4{font-size:.92rem;font-weight:700;margin-bottom:.2rem}
+.sc-oracy h4{color:#0891B2}.sc-reading h4{color:var(--green)}.sc-writing h4{color:var(--violet)}
+.sc-reasoning h4{color:var(--amber)}.sc-number h4{color:var(--blue)}.sc-measure h4{color:var(--green)}.sc-data h4{color:var(--red)}
+.strand-cy{font-size:.72rem;font-style:italic;color:var(--ink-light);margin-bottom:.4rem;display:block}
+.strand-card p{font-size:.79rem;color:var(--ink-mid);line-height:1.5}
+/* SUBJECT BLOCKS */
+.subject-block{background:#fff;border:2px solid var(--border);border-radius:12px;margin-bottom:1.3rem;overflow:hidden}
+.subject-header{padding:.9rem 1.3rem;display:flex;align-items:center;gap:.7rem;border-bottom:2px solid}
+.subject-header.hist{background:#FFF5F5;border-color:#FECACA}
+.subject-header.geog{background:#F0FFF4;border-color:#86EFAC}
+.subject-header.rve{background:var(--violet-pale);border-color:var(--violet-light)}
+.subject-title{font-family:Georgia,serif;font-size:1rem;font-weight:700}
+.subject-title.hist{color:var(--hist)}.subject-title.geog{color:var(--geog)}.subject-title.rve{color:var(--rve)}
+.subject-cy{font-size:.74rem;color:var(--ink-light);font-style:italic}
+.subject-body{padding:1.2rem 1.3rem}
+/* EXAMPLE ROWS */
+.example-row{display:flex;gap:.9rem;align-items:flex-start;padding:.55rem 0;border-bottom:1px solid var(--border);font-size:.86rem;line-height:1.55}
+.example-row:last-child{border-bottom:none}
+.strand-badge{font-size:.68rem;font-weight:700;padding:.15rem .5rem;border-radius:4px;white-space:nowrap;color:white;flex-shrink:0;margin-top:.1rem}
+.sb-oracy{background:#0891B2}.sb-reading{background:var(--green)}.sb-writing{background:var(--violet)}
+.sb-reasoning{background:var(--amber)}.sb-number{background:var(--blue)}.sb-data{background:var(--red)}
+.sb-measure{background:var(--geog)}
+.example-desc{color:var(--ink)}
+.example-cy{font-size:.78rem;color:var(--ink-light);font-style:italic;display:block;margin-top:.12rem}
+/* TWO-COL AVOID TABLE */
+.avoid-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1rem 0}
+@media(max-width:560px){.avoid-grid{grid-template-columns:1fr}}
+.avoid-card{border-radius:9px;padding:.95rem;border:2px solid}
+.avoid-bad{border-color:#FECACA;background:var(--red-pale)}
+.avoid-good{border-color:#86EFAC;background:var(--green-pale)}
+.avoid-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem}
+.avoid-bad .avoid-label{color:var(--red)}.avoid-good .avoid-label{color:var(--green)}
+.avoid-card p,.avoid-card li{font-size:.85rem;line-height:1.6;color:var(--ink)}
+.avoid-card ul{padding-left:1.1rem}
+.avoid-card li{margin-bottom:.3rem}
+/* QUIZ */
+.quiz-question{background:var(--cream);border-radius:9px;padding:1.1rem;margin-bottom:.9rem;border:1px solid var(--border)}
+.q-text{font-weight:700;font-size:.96rem;margin-bottom:.2rem;line-height:1.5}
+.q-welsh{font-size:.83rem;color:var(--ink-light);font-style:italic;margin-bottom:.85rem}
+.q-num{display:inline-flex;align-items:center;justify-content:center;width:1.45rem;height:1.45rem;background:var(--teal);color:white;border-radius:50%;font-size:.7rem;font-weight:700;margin-right:.4rem}
+.options{display:flex;flex-direction:column;gap:.45rem}
+.option-btn{text-align:left;background:#fff;border:2px solid var(--border);border-radius:7px;padding:.6rem .95rem;font-family:-apple-system,sans-serif;font-size:.88rem;cursor:pointer;transition:all .15s;line-height:1.5;color:var(--ink)}
+.option-btn:hover:not(:disabled){border-color:var(--teal);background:var(--teal-pale)}
+.option-btn.correct{border-color:var(--green);background:var(--green-pale);color:#14532D}
+.option-btn.wrong{border-color:var(--red);background:var(--red-pale);color:#7F1D1D}
+.feedback{display:none;padding:.75rem .95rem;border-radius:7px;font-size:.85rem;line-height:1.6;margin-top:.45rem}
+.feedback.correct.show{display:block;background:var(--green-pale);border-left:3px solid var(--green);color:#14532D}
+.feedback.wrong.show{display:block;background:var(--red-pale);border-left:3px solid var(--red);color:#7F1D1D}
+textarea{width:100%;padding:.65rem .85rem;font-family:-apple-system,sans-serif;font-size:.89rem;border:2px solid var(--border);border-radius:7px;resize:vertical;min-height:68px;color:var(--ink);line-height:1.6;transition:border-color .2s;margin-top:.45rem}
+textarea:focus{outline:none;border-color:var(--teal)}
+.task-box{background:var(--amber-pale);border:2px solid #FDE68A;border-radius:9px;padding:1.1rem 1.3rem;margin:1.3rem 0}
+.task-label{font-size:.71rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--amber);margin-bottom:.55rem;display:flex;align-items:center;gap:.38rem}
+.task-num{background:var(--amber);color:white;border-radius:50%;width:1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;font-size:.66rem}
+.field-label{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-light);display:block;margin:.55rem 0 .18rem}
+.btn-row{display:flex;gap:.7rem;justify-content:space-between;flex-wrap:wrap;margin-top:1.4rem;padding-top:.9rem;border-top:1px solid var(--border)}
+.btn{padding:.55rem 1.3rem;border-radius:7px;border:2px solid transparent;font-family:-apple-system,sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--teal);color:#fff}.btn-primary:hover{background:#0E6380}
+.btn-secondary{background:#fff;color:var(--ink-mid);border-color:var(--border)}.btn-secondary:hover{border-color:var(--ink-mid)}
+.btn-amber{background:var(--amber);color:white}.btn-amber:hover{background:#78350F}
+.completion-card{display:none;background:linear-gradient(135deg,#004D5A,var(--teal));color:white;border-radius:14px;padding:2.8rem 2rem;text-align:center;margin-top:2rem}
+.completion-card.show{display:block}
+.badge-icon{font-size:3.8rem;display:block;margin-bottom:.9rem}
+.completion-card h2{font-family:Georgia,serif;font-size:1.75rem;margin-bottom:.7rem}
+.score-badge{display:inline-block;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);border-radius:999px;padding:.28rem 1.1rem;font-size:.95rem;font-weight:700;margin-bottom:.9rem}
+.completion-card p{font-size:.93rem;opacity:.87;line-height:1.7;max-width:540px;margin:0 auto .75rem}
+.cert-trigger-box{margin-top:1.4rem;padding:1.4rem;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.38);border-radius:10px;text-align:center}
+.cert-trigger-box p{font-size:.87rem;opacity:.84;margin-bottom:.9rem;line-height:1.6}
+.cert-name-row{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.cert-name-input{padding:.55rem .95rem;font-family:-apple-system,sans-serif;font-size:.93rem;border:2px solid rgba(255,255,255,.28);border-radius:7px;background:rgba(255,255,255,.14);color:white;width:240px}
+.cert-name-input::placeholder{color:rgba(255,255,255,.38)}
+.cert-name-input:focus{outline:none;border-color:#FCD34D}
+.btn-cert{background:#FCD34D;color:#1a1a1a;border:none;padding:.55rem 1.2rem;border-radius:7px;font-family:-apple-system,sans-serif;font-size:.86rem;font-weight:700;cursor:pointer}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:white;border-radius:8px;width:100%;max-width:780px;max-height:95vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.certificate{width:100%;background:white}
+.cert-frame{margin:14px;border:3px solid #0E7490;position:relative}
+.cert-frame::before{content:"";position:absolute;inset:5px;border:1px solid #92400E;pointer-events:none;z-index:1}
+.cert-stripe{height:5px;background:linear-gradient(90deg,#004D5A 0%,#0E7490 30%,#7C2D12 55%,#065F46 75%,#3730A3 100%)}
+.cert-header{background:linear-gradient(135deg,#004D5A 0%,#0E7490 100%);padding:1.2rem 2rem 1rem;text-align:center}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.cert-inst-name{font-family:Georgia,serif;color:white;font-size:.98rem;text-align:left;line-height:1.2}
+.cert-inst-cy{color:#FDE68A;font-size:.73rem;font-style:italic;display:block}
+.cert-body{padding:1.5rem 2rem;text-align:center}
+.cert-presents{font-size:.71rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;margin-bottom:.35rem}
+.cert-awarded-to{font-size:.71rem;text-transform:uppercase;letter-spacing:.1em;color:#475569;margin-bottom:.18rem}
+.cert-name{font-family:Georgia,serif;font-size:1.85rem;font-style:italic;color:#0E7490;border-bottom:2px solid #E2E8F0;display:inline-block;padding:0 .9rem .1rem;min-width:250px;margin-bottom:.3rem;line-height:1.3}
+.cert-score-pill{display:inline-block;background:#FEF3C7;border:1px solid #92400E;border-radius:999px;padding:.22rem .9rem;font-size:.78rem;font-weight:700;color:#92400E;margin:.45rem 0 .75rem}
+.cert-divider{height:1px;background:linear-gradient(90deg,transparent,#0E7490,transparent);margin:.85rem auto;width:50%}
+.cert-text{font-size:.84rem;color:#1E293B;line-height:1.65;max-width:430px;margin:0 auto .65rem}
+.cert-course{font-family:Georgia,serif;font-size:.93rem;color:#1E293B;background:var(--teal-pale);border:1px solid var(--teal-light);border-left:4px solid #0E7490;padding:.42rem .85rem;display:inline-block;margin-bottom:.3rem;text-align:left}
+.cert-course-cy{font-size:.73rem;color:#0E7490;font-style:italic;display:block}
+.cert-competencies{font-size:.74rem;color:#475569;margin:.18rem auto .9rem;max-width:420px;line-height:1.55}
+.cert-subjects{display:flex;justify-content:center;gap:.5rem;margin-bottom:.5rem;flex-wrap:wrap}
+.cert-subj-pill{font-size:.72rem;font-weight:700;padding:.2rem .65rem;border-radius:4px;color:white}
+.cs-hist{background:var(--hist)}.cs-geog{background:var(--geog)}.cs-rve{background:var(--rve)}
+.cert-footer-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:.9rem;padding-top:.9rem;border-top:1px solid #E2E8F0}
+.cert-sig-block{text-align:center}
+.cert-sig-line{height:1px;background:#1E293B;width:130px;margin:0 auto .22rem}
+.cert-sig-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:#475569}
+.cert-seal{width:60px;height:60px;border-radius:50%;background:#0E7490;border:3px solid #92400E;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-size:.48rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;line-height:1.3;margin:0 auto}
+.cert-seal-icon{font-size:1.1rem;display:block;margin-bottom:1px}
+.cert-date-val{font-family:Georgia,serif;font-size:.88rem;color:#1E293B}
+.cert-date-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:#475569;margin-top:.18rem}
+.cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.85rem 1.4rem 1.1rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
+.btn-cert-print{background:#0E7490;color:white;border:none;padding:.5rem 1.1rem;border-radius:7px;font-family:-apple-system,sans-serif;font-size:.84rem;font-weight:700;cursor:pointer}
+.btn-cert-close{background:#475569;color:white;border:none;padding:.5rem 1.1rem;border-radius:7px;font-family:-apple-system,sans-serif;font-size:.84rem;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <div class="lang-badge">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Cymraeg &middot; English</div>
+  <h1>The Literacy and Numeracy Framework (LNF)
+    <span>Fframwaith Llythrennedd a Rhifedd &mdash; PGCE Humanities: History &middot; Geography &middot; RVE</span>
+  </h1>
+  <p class="header-sub">Understanding and applying the LNF in the Humanities classroom &middot; Curriculum for Wales &middot; Deall a chymhwyso'r FLlRh yn nosbarth y Dyniaethau</p>
+  <div class="subject-pills">
+    <span class="pill">&#128214; Literacy &middot; Llythrennedd</span>
+    <span class="pill">&#128290; Numeracy &middot; Rhifedd</span>
+    <span class="pill">&#128203; CfW &middot; Cwricwlwm i Gymru</span>
+    <span class="pill">&#128296; PGCE Humanities &middot; Dyniaethau</span>
+  </div>
+  <div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+  <p id="progress-label">Section 1 of 6 &middot; Adran 1 o 6</p>
+</header>
+<main>
+  <div class="section-nav">
+    <button class="snav-btn active" onclick="goTo(0)">1 &middot; What is the LNF?</button>
+    <button class="snav-btn" onclick="goTo(1)">2 &middot; Literacy Strands</button>
+    <button class="snav-btn" onclick="goTo(2)">3 &middot; Numeracy Strands</button>
+    <button class="snav-btn" onclick="goTo(3)">4 &middot; In Your Subject</button>
+    <button class="snav-btn" onclick="goTo(4)">5 &middot; Planning &amp; Pitfalls</button>
+    <button class="snav-btn" onclick="goTo(5)">6 &middot; Quiz &amp; Reflection</button>
+  </div>
+
+  <!-- ═══ SECTION 1: WHAT IS THE LNF ═══ -->
+  <div class="section-card active" id="sec-0">
+    <div class="card-header teal">
+      <div class="icon">&#128203;</div>
+      <h2>Section 1: What Is the LNF and Why Does It Matter?
+        <em>Adran 1: Beth yw'r FLlRh a Pham Mae'n Bwysig?</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">&#127468;&#127463; English</div>
+          <p>The <strong>Literacy and Numeracy Framework (LNF)</strong> is a statutory cross-curricular skills framework within the Curriculum for Wales. It sets out the literacy and numeracy skills that <em>all</em> learners should develop across <em>all</em> subjects from ages 5&ndash;16. As a Humanities teacher, you are a teacher of literacy and numeracy &mdash; not just a teacher of History, Geography or RVE.</p>
+          <p style="margin-top:.5rem">The LNF is <strong>not optional</strong>. It is a statutory requirement that sits alongside the Humanities AoLE and must be embedded into your planning, teaching and assessment.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Cymraeg</div>
+          <p>Mae'r <strong>Fframwaith Llythrennedd a Rhifedd (FLlRh)</strong> yn fframwaith sgiliau trawsgwricwlaidd statudol o fewn Cwricwlwm i Gymru. Mae'n nodi'r sgiliau llythrennedd a rhifedd y dylai <em>pob</em> dysgwr eu datblygu ar draws <em>pob</em> pwnc. Fel athro'r Dyniaethau, rydych chi'n athro llythrennedd a rhifedd &mdash; nid yn unig athro Hanes, Daearyddiaeth neu GAE.</p>
+          <p style="margin-top:.5rem">Nid yw'r FLlRh yn ddewisiol. Mae'n ofyniad statudol sy'n cyd-fynd ag MDP y Dyniaethau.</p>
+        </div>
+      </div>
+
+      <div class="info-box key">
+        <h3>&#128204; The Core Principle &middot; Yr Egwyddor Graidd</h3>
+        <p>Every teacher in every subject is responsible for developing learners' literacy and numeracy. The LNF does not ask you to teach separate literacy or numeracy lessons &mdash; it asks you to <strong>embed these skills naturally into your subject</strong> so that Humanities content and cross-curricular skills develop together. / Mae pob athro ym mhob pwnc yn gyfrifol am ddatblygu llythrennedd a rhifedd dysgwyr. Nid yw'r FLlRh yn gofyn i chi addysgu gwersi llythrennedd ar wahan &mdash; mae'n gofyn i chi <strong>ymgorffori'r sgiliau hyn yn naturiol yn eich pwnc</strong>.</p>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin:.5rem 0 .9rem;color:var(--teal)">Structure of the LNF &middot; Strwythur y FLlRh</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:1.3rem">
+        <div style="background:var(--teal-pale);border-radius:10px;padding:1.2rem;border:2px solid var(--teal-light)">
+          <div style="font-weight:800;color:var(--teal);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.7rem">&#128214; LITERACY &middot; LLYTHRENNEDD</div>
+          <div style="display:flex;flex-direction:column;gap:.4rem">
+            <div style="background:white;border-radius:6px;padding:.5rem .7rem;font-size:.85rem;border-left:3px solid #0891B2"><strong>Oracy</strong> &middot; Llafar &mdash; speaking and listening</div>
+            <div style="background:white;border-radius:6px;padding:.5rem .7rem;font-size:.85rem;border-left:3px solid var(--green)"><strong>Reading</strong> &middot; Darllen &mdash; across all texts and media</div>
+            <div style="background:white;border-radius:6px;padding:.5rem .7rem;font-size:.85rem;border-left:3px solid var(--violet)"><strong>Writing</strong> &middot; Ysgrifennu &mdash; for a range of purposes</div>
+          </div>
+        </div>
+        <div style="background:var(--amber-pale);border-radius:10px;padding:1.2rem;border:2px solid #FDE68A">
+          <div style="font-weight:800;color:var(--amber);font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.7rem">&#128290; NUMERACY &middot; RHIFEDD</div>
+          <div style="display:flex;flex-direction:column;gap:.4rem">
+            <div style="background:white;border-radius:6px;padding:.5rem .7rem;font-size:.85rem;border-left:3px solid var(--amber)"><strong>Developing numerical reasoning</strong> &middot; Rhesymeg rifiadol &mdash; underpins all three</div>
+            <div style="background:white;border-radius:6px;padding:.5rem .7rem;font-size:.85rem;border-left:3px solid var(--blue)"><strong>Using number skills</strong> &middot; Defnyddio sgiliau rhif</div>
+            <div style="background:white;border-radius:6px;padding:.5rem .7rem;font-size:.85rem;border-left:3px solid var(--green)"><strong>Using measuring skills</strong> &middot; Defnyddio sgiliau mesur</div>
+            <div style="background:white;border-radius:6px;padding:.5rem .7rem;font-size:.85rem;border-left:3px solid var(--red)"><strong>Using data skills</strong> &middot; Defnyddio sgiliau data</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="info-box teal">
+        <h3>&#127968; Where does the LNF fit in the CfW? &middot; Ble mae'r FLlRh yn ffitio yn y CfW?</h3>
+        <ul>
+          <li>The LNF sits <strong>alongside</strong> the six Areas of Learning and Experience as a statutory cross-curricular skills framework / Mae'r FLlRh yn eistedd ochr yn ochr a'r chwe Maes Dysgu a Phrofiad fel fframwaith sgiliau trawsgwricwlaidd statudol</li>
+          <li>It connects directly to the CfW's ambition for learners to become <strong>ambitious, capable learners</strong> &mdash; one of the Four Purposes / Mae'n cysylltu'n uniongyrchol ag uchelgais y CfW ar gyfer dysgwyr i ddod yn ddysgwyr uchelgeisiol, galluog</li>
+          <li>Literacy and numeracy skills are not add-ons to Humanities &mdash; they are the <strong>tools through which pupils do History, Geography and RVE</strong> / Nid yw sgiliau llythrennedd a rhifedd yn ategion &mdash; maent yn offer y mae disgyblion yn defnyddio i wneud Hanes, Daearyddiaeth a GAE</li>
+          <li>Schools must plan <strong>systematically</strong> for LNF progression across the curriculum &mdash; this is a whole-school responsibility / Rhaid i ysgolion gynllunio'n systematig ar gyfer dilyniant FLlRh</li>
+        </ul>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"The LNF is primarily a curriculum planning tool. It is also an assessment tool in that it informs teacher assessment. Schools will need to ensure that whole-school systems are in place to support the consistent and rigorous development of literacy and numeracy skills across all subjects."</p>
+        <p class="quote-attr">&mdash; Curriculum for Wales: Literacy and Numeracy Framework (Welsh Government)</p>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">1</div> Initial Audit &middot; Archwiliad Cychwynnol</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">Before going further, reflect on your current knowledge and practice. / Cyn mynd ymhellach, adlewyrchwch ar eich gwybodaeth ac ymarfer presennol.</p>
+        <label class="field-label">Visit the LNF on Hwb: hwb.gov.wales/curriculum-for-wales/cross-curricular-skills-frameworks/literacy-and-numeracy-framework-lnf &mdash; What surprises you most about the framework? / Beth sy'n eich synnu fwyaf am y fframwaith?</label>
+        <textarea placeholder="What surprised me: …"></textarea>
+        <label class="field-label">Think of a lesson you have recently taught or observed. Which LNF strands were present &mdash; even if not explicitly planned? / Meddyliwch am wers a addysgodd neu a arsylwoch yn ddiweddar. Pa ffrydiau FLlRh oedd yn bresennol?</label>
+        <textarea placeholder="Lesson: … LNF strands present: … Were they planned or incidental?"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <span></span>
+        <button class="btn btn-primary" onclick="nextSection(0)">Next: Literacy Strands &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: LITERACY STRANDS ═══ -->
+  <div class="section-card" id="sec-1">
+    <div class="card-header green">
+      <div class="icon">&#128214;</div>
+      <h2>Section 2: The Three Literacy Strands
+        <em>Adran 2: Y Tair Ffrwd Llythrennedd</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="strand-grid">
+        <div class="strand-card sc-oracy">
+          <span class="strand-icon">&#128483;</span>
+          <h4>Oracy &middot; Llafar</h4>
+          <span class="strand-cy">Siarad a gwrando</span>
+          <p>Speaking and listening for different purposes and audiences. Includes discussion, debate, presentation, role play, questioning and responding. In Humanities: class discussions, enquiry dialogue, hot-seating, think-pair-share, debate. / Siarad a gwrando at ddibenion a chynulleidfaoedd gwahanol.</p>
+        </div>
+        <div class="strand-card sc-reading">
+          <span class="strand-icon">&#128366;</span>
+          <h4>Reading &middot; Darllen</h4>
+          <span class="strand-cy">Deall testunau amrywiol</span>
+          <p>Reading and understanding a range of continuous and non-continuous texts, print and digital. Includes locating information, inference, evaluation of sources and interpretations. In Humanities: primary sources, maps, statistics, graphs, images, secondary accounts. / Darllen a deall ystod o destunau.</p>
+        </div>
+        <div class="strand-card sc-writing">
+          <span class="strand-icon">&#9997;</span>
+          <h4>Writing &middot; Ysgrifennu</h4>
+          <span class="strand-cy">Ysgrifennu at wahanol ddibenion</span>
+          <p>Writing for different purposes, audiences and forms: organising ideas and information, and writing accurately. Includes analytical essays, extended responses, structured argument. In Humanities: extended writing, discursive essays, analytical reports, creative responses. / Ysgrifennu at ddibenion, cynulleidfaoedd a ffurfiau gwahanol.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin:1.3rem 0 .9rem;color:var(--green)">Key aspects within each strand &middot; Agweddau allweddol ym mhob ffrwd</h3>
+
+      <div style="display:grid;grid-template-columns:1fr;gap:.7rem">
+        <!-- Oracy detail -->
+        <div style="background:#fff;border:2px solid var(--teal-light);border-radius:9px;padding:1rem 1.2rem">
+          <div style="font-weight:700;color:#0891B2;font-size:.88rem;margin-bottom:.6rem">&#128483; Oracy &mdash; What the LNF expects / Beth mae'r FLlRh yn ei ddisgwyl</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem">
+            <div>
+              <p style="font-size:.78rem;font-weight:700;color:var(--ink-mid);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">Listening and understanding</p>
+              <ul style="font-size:.84rem;padding-left:1.1rem;color:var(--ink);line-height:1.6">
+                <li>Listening carefully and responding to complex information</li>
+                <li>Identifying key ideas and evaluating what is heard</li>
+                <li>Understanding and responding to different viewpoints</li>
+              </ul>
+            </div>
+            <div>
+              <p style="font-size:.78rem;font-weight:700;color:var(--ink-mid);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">Speaking and presenting</p>
+              <ul style="font-size:.84rem;padding-left:1.1rem;color:var(--ink);line-height:1.6">
+                <li>Speaking clearly and confidently for different purposes</li>
+                <li>Presenting ideas logically and persuasively</li>
+                <li>Choosing appropriate vocabulary and register</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Reading detail -->
+        <div style="background:#fff;border:2px solid #86EFAC;border-radius:9px;padding:1rem 1.2rem">
+          <div style="font-weight:700;color:var(--green);font-size:.88rem;margin-bottom:.6rem">&#128366; Reading &mdash; What the LNF expects / Beth mae'r FLlRh yn ei ddisgwyl</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem">
+            <div>
+              <p style="font-size:.78rem;font-weight:700;color:var(--ink-mid);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">Locating and using information</p>
+              <ul style="font-size:.84rem;padding-left:1.1rem;color:var(--ink);line-height:1.6">
+                <li>Retrieving, summarising and synthesising information</li>
+                <li>Reading for different purposes: pleasure, research, critical analysis</li>
+                <li>Interpreting and integrating information from multiple sources</li>
+              </ul>
+            </div>
+            <div>
+              <p style="font-size:.78rem;font-weight:700;color:var(--ink-mid);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">Responding to and analysing</p>
+              <ul style="font-size:.84rem;padding-left:1.1rem;color:var(--ink);line-height:1.6">
+                <li>Identifying bias, purpose and audience</li>
+                <li>Evaluating reliability and validity of texts</li>
+                <li>Making inferences and identifying implicit meaning</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Writing detail -->
+        <div style="background:#fff;border:2px solid var(--violet-light);border-radius:9px;padding:1rem 1.2rem">
+          <div style="font-weight:700;color:var(--violet);font-size:.88rem;margin-bottom:.6rem">&#9997; Writing &mdash; What the LNF expects / Beth mae'r FLlRh yn ei ddisgwyl</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.7rem">
+            <div>
+              <p style="font-size:.78rem;font-weight:700;color:var(--ink-mid);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">Organising ideas and information</p>
+              <ul style="font-size:.84rem;padding-left:1.1rem;color:var(--ink);line-height:1.6">
+                <li>Planning and structuring writing for different purposes</li>
+                <li>Selecting and deploying relevant information</li>
+                <li>Using appropriate forms, genres and structures</li>
+              </ul>
+            </div>
+            <div>
+              <p style="font-size:.78rem;font-weight:700;color:var(--ink-mid);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.3rem">Writing accurately</p>
+              <ul style="font-size:.84rem;padding-left:1.1rem;color:var(--ink);line-height:1.6">
+                <li>Using accurate grammar, spelling and punctuation</li>
+                <li>Developing vocabulary appropriate to subject context</li>
+                <li>Using connectives and discourse markers to aid cohesion</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-box" style="margin-top:1.3rem">
+        <div class="task-label"><div class="task-num">2</div> Task 2.1 &middot; Mapping Literacy to Your Subject</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">For your main subject (History, Geography or RVE), give ONE specific classroom activity for each literacy strand. Be specific: name the topic, the task and exactly which LNF aspect it develops. / Ar gyfer eich prif bwnc, rhowch UN gweithgaredd dosbarth penodol ar gyfer pob ffrwd llythrennedd.</p>
+        <label class="field-label">My subject / Fy mhwnc: History / Geography / RVE (circle one)</label>
+        <label class="field-label">Oracy activity &middot; Gweithgaredd llafar:</label>
+        <textarea placeholder="Activity: … Topic: … LNF aspect developed: …"></textarea>
+        <label class="field-label">Reading activity &middot; Gweithgaredd darllen:</label>
+        <textarea placeholder="Activity: … Topic: … LNF aspect developed: …"></textarea>
+        <label class="field-label">Writing activity &middot; Gweithgaredd ysgrifennu:</label>
+        <textarea placeholder="Activity: … Topic: … LNF aspect developed: …"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(0)">&larr; Back</button>
+        <button class="btn btn-primary" onclick="nextSection(1)">Next: Numeracy Strands &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3: NUMERACY STRANDS ═══ -->
+  <div class="section-card" id="sec-2">
+    <div class="card-header amber">
+      <div class="icon">&#128290;</div>
+      <h2>Section 3: The Four Numeracy Strands
+        <em>Adran 3: Y Pedair Ffrwd Rhifedd</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="info-box amber">
+        <h3>&#128270; An important distinction &middot; Gwahaniaeth pwysig</h3>
+        <p>Numeracy in the LNF is <strong>not the same as mathematics</strong>. It is the ability to apply numerical skills and reasoning to real-world contexts &mdash; including the contexts of History, Geography and RVE. You are not expected to teach mathematics; you are expected to use numerical information purposefully and to develop learners' confidence and accuracy when doing so in your subject. / Nid yw rhifedd yn yr FLlRh yr un fath a mathemateg. Mae'n allu i gymhwyso sgiliau a rhesymeg rifiadol i gyd-destunau byd go iawn.</p>
+      </div>
+
+      <div class="strand-grid">
+        <div class="strand-card sc-reasoning">
+          <span class="strand-icon">&#129504;</span>
+          <h4>Developing Numerical Reasoning</h4>
+          <span class="strand-cy">Datblygu Rhesymeg Rifiadol</span>
+          <p><strong>Underpins all three other strands.</strong> Identifying mathematical strategies, representing and communicating findings, reviewing and improving. This is about thinking numerically &mdash; asking good questions about data, spotting patterns, challenging conclusions. / Yn sylfaen i'r tair ffrwd arall. Mae hwn am feddwl yn rifiadol.</p>
+        </div>
+        <div class="strand-card sc-number">
+          <span class="strand-icon">&#128290;</span>
+          <h4>Using Number Skills</h4>
+          <span class="strand-cy">Defnyddio Sgiliau Rhif</span>
+          <p>Using and applying numbers in context: percentages, fractions, ratios, estimation. In Humanities: population statistics, historical date calculations, percentage change (population growth, mortality rates, land use), electoral data. / Defnyddio a chymhwyso rhifau mewn cyd-destun: canrannau, ffracsiynau, cymharebau.</p>
+        </div>
+        <div class="strand-card sc-measure">
+          <span class="strand-icon">&#128207;</span>
+          <h4>Using Measuring Skills</h4>
+          <span class="strand-cy">Defnyddio Sgiliau Mesur</span>
+          <p>Measuring, estimating and recording in appropriate units. In Geography this is particularly prominent: map scales, distances, area, temperature, rainfall, river discharge. In History: dimensions of historical sites, timelines to scale. / Mesur, amcangyfrif a chofnodi. Yn amlwg iawn mewn Daearyddiaeth: graddfeydd map, pellter, arwynebedd.</p>
+        </div>
+        <div class="strand-card sc-data">
+          <span class="strand-icon">&#128202;</span>
+          <h4>Using Data Skills</h4>
+          <span class="strand-cy">Defnyddio Sgiliau Data</span>
+          <p>Collecting, representing, analysing and interpreting data. In Humanities: population graphs, climate data, historical census data, survey results, choropleth maps, pie charts of religious affiliation. Reading and critiquing data representations. / Casglu, cynrychioli, dadansoddi a dehongli data.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin:1.3rem 0 .9rem;color:var(--amber)">Numeracy in the three Humanities subjects &middot; Rhifedd yn y tair disgyblaeth</h3>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.9rem;margin-bottom:1.3rem">
+        <div style="background:#FFF5F5;border-radius:9px;padding:1rem;border:2px solid #FECACA">
+          <div style="font-weight:800;color:var(--hist);font-size:.82rem;text-transform:uppercase;margin-bottom:.6rem">&#128380; History &middot; Hanes</div>
+          <ul style="font-size:.83rem;padding-left:1.1rem;color:var(--ink);line-height:1.7">
+            <li>Timeline construction and calculation</li>
+            <li>Population data: census, mortality, migration rates</li>
+            <li>Percentage change over time</li>
+            <li>Interpreting graphs showing economic change</li>
+            <li>Electoral data and voting patterns</li>
+            <li>Scale and chronology</li>
+          </ul>
+        </div>
+        <div style="background:var(--green-pale);border-radius:9px;padding:1rem;border:2px solid #86EFAC">
+          <div style="font-weight:800;color:var(--geog);font-size:.82rem;text-transform:uppercase;margin-bottom:.6rem">&#127758; Geography &middot; Daearyddiaeth</div>
+          <ul style="font-size:.83rem;padding-left:1.1rem;color:var(--ink);line-height:1.7">
+            <li>Map scales and grid references</li>
+            <li>Climate graphs and rainfall data</li>
+            <li>Population pyramids</li>
+            <li>River discharge and flooding statistics</li>
+            <li>Choropleth and proportional symbol maps</li>
+            <li>Fieldwork data collection and analysis</li>
+          </ul>
+        </div>
+        <div style="background:var(--violet-pale);border-radius:9px;padding:1rem;border:2px solid var(--violet-light)">
+          <div style="font-weight:800;color:var(--rve);font-size:.82rem;text-transform:uppercase;margin-bottom:.6rem">&#9774; RVE &middot; GAE</div>
+          <ul style="font-size:.83rem;padding-left:1.1rem;color:var(--ink);line-height:1.7">
+            <li>Statistics on religious affiliation in Wales and globally</li>
+            <li>Survey data on religious belief</li>
+            <li>Interpreting census data on faith communities</li>
+            <li>Timelines of religious events and movements</li>
+            <li>Comparing demographic trends across faith groups</li>
+            <li>Ethical data: poverty statistics, global inequalities</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">3</div> Task 3.1 &middot; Numeracy in Your Subject</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">Identify ONE genuine numeracy opportunity in each of the four strands within your subject. For each, name the topic, the specific numerical task and which strand it addresses. / Nodwch UN cyfle rhifedd dilys ym mhob un o'r pedair ffrwd o fewn eich pwnc.</p>
+        <label class="field-label">Numerical reasoning (a question you would ask learners to think numerically): / Rhesymeg rifiadol:</label>
+        <textarea placeholder="Topic: … Question/task: … e.g. 'Does this graph prove that the population of Cardiff doubled between 1850 and 1900? What would you need to check?'"></textarea>
+        <label class="field-label">Number skills (a calculation learners would perform in context): / Sgiliau rhif:</label>
+        <textarea placeholder="Topic: … Calculation: … e.g. 'What percentage of the Welsh population spoke Welsh in 1901 vs 2021?'"></textarea>
+        <label class="field-label">Measuring skills (a measuring or scale activity): / Sgiliau mesur:</label>
+        <textarea placeholder="Topic: … Measuring task: … e.g. 'Using the OS map, calculate the distance of the coastal erosion at this site.'"></textarea>
+        <label class="field-label">Data skills (a data reading or graph interpretation task): / Sgiliau data:</label>
+        <textarea placeholder="Topic: … Data task: … e.g. 'What does this population pyramid tell us about ageing in rural Wales?'"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(1)">&larr; Back</button>
+        <button class="btn btn-primary" onclick="nextSection(2)">Next: In Your Subject &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4: IN YOUR SUBJECT ═══ -->
+  <div class="section-card" id="sec-3">
+    <div class="card-header violet">
+      <div class="icon">&#128218;</div>
+      <h2>Section 4: The LNF in History, Geography and RVE
+        <em>Adran 4: Y FLlRh mewn Hanes, Daearyddiaeth a GAE</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <p style="font-size:.9rem;color:var(--ink-mid);margin-bottom:1.2rem">Each subject in the Humanities AoLE has its own particular relationship with the LNF strands. The examples below show how LNF skills are not external impositions &mdash; they are how the disciplines actually work. / Mae gan bob pwnc yn MDP y Dyniaethau ei berthynas arbennig ei hun gyda ffrydiau'r FLlRh.</p>
+
+      <!-- HISTORY -->
+      <div class="subject-block">
+        <div class="subject-header hist">
+          <div style="font-size:1.5rem">&#128380;</div>
+          <div>
+            <div class="subject-title hist">History &middot; Hanes</div>
+            <div class="subject-cy">Ymholiad hanesyddol a sgiliau trawsgwricwlaidd</div>
+          </div>
+        </div>
+        <div class="subject-body">
+          <div class="example-row">
+            <span class="strand-badge sb-oracy">Oracy</span>
+            <div class="example-desc">Historical debate: <em>"Was the Treaty of Versailles the main cause of World War Two?"</em> Pupils present a structured spoken argument, listen critically to opposing views and use evidence to rebut. Develops speaking for a purpose, use of historical vocabulary and listening to evaluate.
+              <span class="example-cy">Dadl hanesyddol: disgyblion yn cyflwyno dadl lafar strwythuredig, yn gwrando'n feirniadol ac yn defnyddio tystiolaeth i wrthbrofi.</span>
+            </div>
+          </div>
+          <div class="example-row">
+            <span class="strand-badge sb-reading">Reading</span>
+            <div class="example-desc">Source analysis using a 1917 Welsh coalfield photograph. Pupils locate information, make inferences about working conditions, evaluate the provenance and purpose of the source. Directly addresses locating information, inference and evaluating reliability.
+              <span class="example-cy">Dadansoddi ffynhonnell: disgyblion yn lleoli gwybodaeth, yn gwneud casgliadau am amodau gwaith, yn gwerthuso tarddiad y ffynhonnell.</span>
+            </div>
+          </div>
+          <div class="example-row">
+            <span class="strand-badge sb-writing">Writing</span>
+            <div class="example-desc">Structured analytical essay: <em>"How far was the Rebecca Riots a response to poverty rather than toll gates?"</em> Pupils plan, draft and write a substantiated argument using Counsell's sorting and writing frame strategies.
+              <span class="example-cy">Traethawd dadansoddol strwythuredig gyda fframwaith ysgrifennu: disgyblion yn cynllunio, drafftio ac ysgrifennu dadl sylweddol.</span>
+            </div>
+          </div>
+          <div class="example-row">
+            <span class="strand-badge sb-data">Data</span>
+            <div class="example-desc">Interpreting a graph showing the decline of Welsh-speaking population 1901&ndash;2021. Pupils read percentage data, identify trends and connect to historical causes (industrialisation, migration, language policy). Develops data skills within a historical context.
+              <span class="example-cy">Dehongli graff yn dangos dirywiad poblogaeth Cymraeg ei hiaith 1901-2021: darllen data canrannol, nodi tueddiadau a chysylltu ag achosion hanesyddol.</span>
+            </div>
+          </div>
+          <div class="example-row">
+            <span class="strand-badge sb-reasoning">Reasoning</span>
+            <div class="example-desc">Evaluating a historical claim: <em>"Did the number of deaths at Senghennydd prove that coal mine safety was inadequate?"</em> Pupils assess what the statistic shows and what it does not show, and what additional evidence would be needed.
+              <span class="example-cy">Gwerthuso honiad hanesyddol: disgyblion yn asesu beth mae'r ystadegyn yn ei brofi a beth nad yw'n ei brofi.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GEOGRAPHY -->
+      <div class="subject-block">
+        <div class="subject-header geog">
+          <div style="font-size:1.5rem">&#127758;</div>
+          <div>
+            <div class="subject-title geog">Geography &middot; Daearyddiaeth</div>
+            <div class="subject-cy">Ymholiad daearyddol a sgiliau data ac iaith</div>
+          </div>
+        </div>
+        <div class="subject-body">
+          <div class="example-row">
+            <span class="strand-badge sb-oracy">Oracy</span>
+            <div class="example-desc">Geographical enquiry discussion: after studying flood risk maps of Cardiff, pupils use Think-Pair-Share to discuss: <em>"Is flooding in the South Wales Valleys primarily a physical or human problem?"</em> Developing use of geographical vocabulary, structured argument and listening to evaluate evidence.
+              <span class="example-cy">Trafodaeth ymholiad daearyddol: disgyblion yn defnyddio Meddwl-Paru-Rhannu i drafod perygl llifogydd.</span>
+            </div>
+          </div>
+          <div class="example-row">
+            <span class="strand-badge sb-reading">Reading</span>
+            <div class="example-desc">Reading and interpreting an OS map of a Welsh coastal area to identify land use, relief and human features. Pupils locate, infer and evaluate geographical information from a non-continuous text. Directly addresses reading across different formats and media.
+              <span class="example-cy">Darllen a dehongli map OS: lleoli, casglu a gwerthuso gwybodaeth ddaearyddol o destun amharhaus.</span>
+            </div>
+          </div>
+          <div class="example-row">
+            <span class="strand-badge sb-writing">Writing</span>
+            <div class="example-desc">Report writing: <em>"Should the Welsh Government invest in managed coastal retreat at [local site]?"</em> Pupils write a structured geographical report presenting evidence from multiple sources, with a reasoned recommendation. Addresses organising ideas and writing for purpose and audience.
+              <span class="example-cy">Ysgrifennu adroddiad: <em>"A ddylai Llywodraeth Cymru fuddsoddi mewn enciliad arfordirol rheoledig?"</em> Disgyblion yn cyflwyno tystiolaeth ac argymhelliad rhesymegol.</span>
+            </div>
+          </div>
+          <div class="example-row">
+            <span class="strand-badge sb-measure">Measure</span>
+            <div class="example-desc">Using a 1:25,000 OS map to calculate the distance between two points using the scale bar, and estimating journey time. Connects measuring skills to real-world geographical decision-making.
+              <span class="example-cy">Defnyddio map OS 1:25,000 i gyfrifo pellter gan ddefnyddio'r bar graddfa, ac amcangyfrif amser teithio.</span>
+            </div>
+          </div>
+          <div class="example-row">
+            <span class="strand-badge sb-data">Data</span>
+            <div class="example-desc">Constructing and interpreting a climate graph for Cardiff and a contrasting location. Pupils collect data, plot and read a dual-axis graph, and write a comparison that draws on the data. Develops all four aspects of data skills: collect, represent, analyse, interpret.
+              <span class="example-cy">Adeiladu a dehongli graff hinsawdd ar gyfer Caerdydd a lleoliad cyferbyniol.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RVE -->
+      <div class="subject-block">
+        <div class="subject-header rve">
+          <div style="font-size:1.5rem">&#9774;</div>
+          <div>
+            <div class="subject-title rve">Religion, Values and Ethics (RVE) &middot; Crefydd, Gwerthoedd a Moeseg (GAE)</div>
+            <div class="subject-cy">Ymholiad moesegol a sgiliau cyfathrebu sensitif</div>
+          </div>
+        </div>
+        <div class="subject-body">
+          <div class="example-row">
+            <span class="strand-badge sb-oracy">Oracy</span>
+            <div class="example-desc">Philosophical enquiry discussion on an ethical dilemma: <em>"Is it ever right to break the law if you believe it is unjust?"</em> Pupils practise structured listening, building on others' contributions, using connective language and religious/ethical vocabulary with precision. Develops extended speaking and critical listening.
+              <span class="example-cy">Trafodaeth ymholiad athronyddol: disgyblion yn ymarfer gwrando strwythuredig, adeiladu ar gyfraniadau eraill, defnyddio geirfa grefyddol/foesegol yn fanwl gywir.</span>
+            </div>
+          </div>
+          <div class="example-row">
+            <span class="strand-badge sb-reading">Reading</span>
+            <div class="example-desc">Reading a Buddhist text alongside a contemporary commentary on environmental ethics, and a news article on climate action. Pupils integrate information across three different text types and identify how different sources are shaped by their purpose and audience.
+              <span class="example-cy">Darllen testun Bwdhaidd a sylwebaeth gyfoes ar foeseg amgylcheddol: integreiddio gwybodaeth ar draws tri math gwahanol o destun.</span>
+            </div>
+          </div>
+          <div class="example-row">
+            <span class="strand-badge sb-writing">Writing</span>
+            <div class="example-desc">Writing a balanced discursive essay: <em>"Do religious teachings on the sanctity of life always provide clear guidance on end-of-life decisions?"</em> Pupils must organise competing perspectives, acknowledge complexity and reach a substantiated conclusion. Addresses all aspects of writing: organising ideas, appropriate genre, accuracy.
+              <span class="example-cy">Ysgrifennu traethawd traethodol cytbwys: disgyblion yn trefnu safbwyntiau cystadleuol, cydnabod cymhlethdod a chyrraedd casgliad sylweddol.</span>
+            </div>
+          </div>
+          <div class="example-row">
+            <span class="strand-badge sb-data">Data</span>
+            <div class="example-desc">Analysing Census 2021 data on religious affiliation in Wales and England: reading pie charts and bar graphs showing the rise of 'no religion', decline of Christianity and distribution of minority faiths. Pupils connect data to contextual understanding of secularisation.
+              <span class="example-cy">Dadansoddi data Cyfrifiad 2021 ar ymrwymiad crefyddol yng Nghymru a Lloegr: darllen siartiau cylch a graffiau bar yn dangos codiad 'dim crefydd'.</span>
+            </div>
+          </div>
+          <div class="example-row">
+            <span class="strand-badge sb-reasoning">Reasoning</span>
+            <div class="example-desc">Evaluating global poverty statistics in the context of religious teachings on stewardship: <em>"Does the fact that 700 million people live in extreme poverty prove that religious teachings on care for others have failed?"</em> Pupils assess what the statistic shows and its relationship to religious ethical claims.
+              <span class="example-cy">Gwerthuso ystadegau tlodi byd-eang yng nghyd-destun dysgeidiaeth grefyddol am stiwardiaeth.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(2)">&larr; Back</button>
+        <button class="btn btn-primary" onclick="nextSection(3)">Next: Planning and Pitfalls &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 5: PLANNING & PITFALLS ═══ -->
+  <div class="section-card" id="sec-4">
+    <div class="card-header blue">
+      <div class="icon">&#128196;</div>
+      <h2>Section 5: Planning for LNF &amp; Avoiding Common Pitfalls
+        <em>Adran 5: Cynllunio ar gyfer y FLlRh ac Osgoi Peryglon Cyffredin</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">&#127468;&#127463; English</div>
+          <p>LNF skills should emerge naturally from strong subject teaching &mdash; not be bolted on artificially. The most effective practice is when a teacher plans to develop a specific LNF skill <em>because</em> it is the skill that subject content demands, not because a box needs to be ticked. The question to ask is always: <strong>"What literacy or numeracy skill does engaging with this historical/geographical/ethical material actually require?"</strong></p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Cymraeg</div>
+          <p>Dylai sgiliau FLlRh godi'n naturiol o addysgu pwnc cryf &mdash; nid eu hategion yn artiffisial. Y ymarfer mwyaf effeithiol yw pan fydd athro'n cynllunio i ddatblygu sgil FLlRh penodol <em>oherwydd</em> mai dyna'r sgil y mae cynnwys y pwnc yn ei ofyn. Y cwestiwn i'w ofyn bob amser yw: <strong>"Pa sgil llythrennedd neu rifedd y mae ymgysylltu gyda'r deunydd hwn yn ei ofyn?"</strong></p>
+        </div>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin:.5rem 0 .9rem;color:var(--blue)">Common Pitfalls &middot; Peryglon Cyffredin</h3>
+      <div class="avoid-grid">
+        <div class="avoid-card avoid-bad">
+          <div class="avoid-label">&#10060; Avoid &middot; Osgowch</div>
+          <ul>
+            <li><strong>Tokenism</strong> &mdash; adding a graph or word bank to a lesson and calling it LNF. If pupils are not actually developing the skill, there is no LNF benefit. / Toceniaeth &mdash; ychwanegu graff neu fanc geiriau at wers a'i galw'n FLlRh.</li>
+            <li><strong>Literacy for its own sake</strong> &mdash; extended writing that has no relationship to the historical/geographical/ethical enquiry. If the writing does not develop subject understanding, it is not serving the LNF or the subject. / Llythrennedd er ei mwyn ei hun.</li>
+            <li><strong>Treating oracy as chat</strong> &mdash; unstructured discussion is not oracy in the LNF sense. Oracy requires pupils to develop speaking for a purpose, listening critically and responding to evidence. / Trin llafar fel sgwrs anstrwythuredig.</li>
+            <li><strong>Ignoring numeracy</strong> &mdash; many Humanities teachers underestimate how much numeracy their subject demands. Learners who cannot read a graph or interpret a percentage will be limited in their engagement with real historical and geographical evidence. / Anwybyddu rhifedd.</li>
+            <li><strong>One-off activities</strong> &mdash; a single lesson on graph reading does not develop data skills. LNF requires sustained, progressive development across the year. / Gweithgareddau untro &mdash; nid yw un wers ar ddarllen graff yn datblygu sgiliau data.</li>
+          </ul>
+        </div>
+        <div class="avoid-card avoid-good">
+          <div class="avoid-label">&#10003; Instead, do this &middot; Yn hytrach, gwnewch hyn</div>
+          <ul>
+            <li><strong>Plan backwards</strong> &mdash; identify the LNF skill that your enquiry question genuinely demands, then build activities that develop it through subject content. / Cynllunio'n ôl &mdash; nodi'r sgil FLlRh y mae eich cwestiwn ymholi'n ei ofyn go iawn.</li>
+            <li><strong>Make the skill explicit</strong> &mdash; tell learners which literacy or numeracy skill they are developing and why it matters in this subject. Metacognitive awareness improves performance. / Gwneud y sgil yn benodol &mdash; dweud wrth ddysgwyr pa sgil y maent yn ei datblygu.</li>
+            <li><strong>Use subject content to teach the skill</strong> &mdash; a historical source is the ideal vehicle for developing inference and evaluation skills, not just source content. / Defnyddio cynnwys y pwnc i addysgu'r sgil.</li>
+            <li><strong>Plan for progression</strong> &mdash; note which LNF skills you are developing in each scheme of work, and ensure learners encounter them repeatedly and with increasing complexity. / Cynllunio ar gyfer dilyniant &mdash; nodi pa sgiliau FLlRh rydych yn eu datblygu ym mhob cynllun gwaith.</li>
+            <li><strong>Collaborate with your department</strong> &mdash; LNF planning should be a departmental responsibility, not a lone teacher's task. A skills map across KS3 and KS4 ensures coherence. / Cydweithio gyda'ch adran &mdash; dylai cynllunio'r FLlRh fod yn gyfrifoldeb adrannol.</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin:1.4rem 0 .9rem;color:var(--blue)">Annotating a lesson plan for LNF &middot; Anodi cynllun gwers ar gyfer y FLlRh</h3>
+      <div class="info-box blue">
+        <h3>&#128204; A simple annotation system &middot; System anodi syml</h3>
+        <p>When planning a lesson, annotate each activity with the LNF strand it addresses. Use shorthand: <strong>O</strong> (Oracy), <strong>R</strong> (Reading), <strong>W</strong> (Writing), <strong>NR</strong> (Numerical Reasoning), <strong>N</strong> (Number), <strong>M</strong> (Measuring), <strong>D</strong> (Data). If you finish planning a lesson and there are no annotations at all, that is a signal to think about whether you are missing LNF opportunities &mdash; not to add them artificially, but to notice what the subject material naturally offers. / Wrth gynllunio gwers, anodwch bob gweithgaredd gyda'r ffrwd FLlRh y mae'n ei fynd i'r afael.</p>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">4</div> Task 5.1 &middot; Annotate a Lesson Plan</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">Take a lesson plan you have recently written or are about to write. Use the space below to describe each activity and annotate which LNF strand(s) it addresses &mdash; or note where you could strengthen LNF provision without compromising subject integrity. / Cymerwch gynllun gwers rydych chi wedi'i ysgrifennu yn ddiweddar ac anodwch bob gweithgaredd.</p>
+        <label class="field-label">Lesson topic and year group / Pwnc y wers a grwp blwyddyn:</label>
+        <textarea style="min-height:42px" placeholder="e.g. 'The Tryweryn Controversy' &mdash; Year 9 History"></textarea>
+        <label class="field-label">Activity 1 and LNF strand(s) addressed / Gweithgaredd 1 a ffrwd(iau) FLlRh:</label>
+        <textarea placeholder="Activity: … LNF strands: O / R / W / NR / N / M / D … How: …"></textarea>
+        <label class="field-label">Activity 2 / Gweithgaredd 2:</label>
+        <textarea placeholder="Activity: … LNF strands: … How: …"></textarea>
+        <label class="field-label">Activity 3 / Gweithgaredd 3:</label>
+        <textarea placeholder="Activity: … LNF strands: … How: …"></textarea>
+        <label class="field-label">Which LNF strands are absent from this lesson? Is their absence justified &mdash; or is there a natural opportunity you have missed? / Pa ffrydiau FLlRh sy'n absennol o'r wers hon?</label>
+        <textarea placeholder="Absent strands: … Justified because: … OR opportunity I missed: …"></textarea>
+        <label class="field-label">One specific improvement you will make to embed LNF more effectively in this lesson / Un gwelliant penodol:</label>
+        <textarea placeholder="I will … because …"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(3)">&larr; Back</button>
+        <button class="btn btn-primary" onclick="nextSection(4)">Next: Quiz &amp; Reflection &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 6: QUIZ & REFLECTION ═══ -->
+  <div class="section-card" id="sec-5">
+    <div class="card-header slate">
+      <div class="icon">&#9997;</div>
+      <h2>Section 6: Knowledge Check &amp; Reflection
+        <em>Adran 6: Gwiriad Gwybodaeth ac Adlewyrchiad</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin-bottom:1rem;color:var(--ink)">Quiz &middot; Cwis</h3><div class="quiz-question" id="q1"><p class="q-text"><span class="q-num">1</span>How many strands make up the Literacy component of the LNF?</p><p class="q-welsh">&middot; Faint o ffrydiau sydd yn elfen Llythrennedd yr FLlRh?</p><div class="options"><button class="option-btn" onclick="checkQ('q1',this,false)">Two: reading and writing / Dwy: darllen ac ysgrifennu</button><button class="option-btn" onclick="checkQ('q1',this,true)">Three: oracy, reading and writing / Tair: llafar, darllen ac ysgrifennu</button><button class="option-btn" onclick="checkQ('q1',this,false)">Four: speaking, listening, reading and writing / Pedair: siarad, gwrando, darllen ac ysgrifennu</button><button class="option-btn" onclick="checkQ('q1',this,false)">Five: speaking, listening, reading, writing and digital literacy / Pump</button></div><div class="feedback" id="q1-fb"></div></div><div class="quiz-question" id="q2"><p class="q-text"><span class="q-num">2</span>Which numeracy strand UNDERPINS the other three in the LNF?</p><p class="q-welsh">&middot; Pa ffrwd rhifedd sy'n SYLFAEN i'r tair arall yn yr FLlRh?</p><div class="options"><button class="option-btn" onclick="checkQ('q2',this,false)">Using number skills / Defnyddio sgiliau rhif</button><button class="option-btn" onclick="checkQ('q2',this,false)">Using data skills / Defnyddio sgiliau data</button><button class="option-btn" onclick="checkQ('q2',this,true)">Developing numerical reasoning / Datblygu rhesymeg rifiadol</button><button class="option-btn" onclick="checkQ('q2',this,false)">Using measuring skills / Defnyddio sgiliau mesur</button></div><div class="feedback" id="q2-fb"></div></div><div class="quiz-question" id="q3"><p class="q-text"><span class="q-num">3</span>A History teacher asks pupils to read a 1916 photograph and explain what it suggests about life in the trenches. Which LNF strand does this PRIMARILY address?</p><p class="q-welsh">&middot; Mae athro Hanes yn gofyn i ddisgyblion ddarllen ffotograff o 1916. Pa ffrwd FLlRh y mae hyn YN BENNAF yn mynd i'r afael ag ef?</p><div class="options"><button class="option-btn" onclick="checkQ('q3',this,false)">Oracy / Llafar</button><button class="option-btn" onclick="checkQ('q3',this,false)">Writing / Ysgrifennu</button><button class="option-btn" onclick="checkQ('q3',this,false)">Numerical reasoning / Rhesymeg rifiadol</button><button class="option-btn" onclick="checkQ('q3',this,true)">Reading, specifically locating information, making inferences and evaluating the source / Darllen, yn benodol lleoli gwybodaeth, gwneud casgliadau a gwerthuso'r ffynhonnell</button></div><div class="feedback" id="q3-fb"></div></div><div class="quiz-question" id="q4"><p class="q-text"><span class="q-num">4</span>A Geography teacher plans a lesson where pupils construct and interpret a climate graph. Which LNF strands are MOST directly addressed?</p><p class="q-welsh">&middot; Mae athro Daearyddiaeth yn cynllunio gwers lle mae disgyblion yn adeiladu ac yn dehongli graff hinsawdd. Pa ffrydiau FLlRh?</p><div class="options"><button class="option-btn" onclick="checkQ('q4',this,false)">Oracy and Writing / Llafar ac Ysgrifennu</button><button class="option-btn" onclick="checkQ('q4',this,false)">Reading and Oracy / Darllen a Llafar</button><button class="option-btn" onclick="checkQ('q4',this,true)">Data skills and Numerical reasoning / Sgiliau data a Rhesymeg rifiadol</button><button class="option-btn" onclick="checkQ('q4',this,false)">Measuring skills and Number skills / Sgiliau mesur a Sgiliau rhif</button></div><div class="feedback" id="q4-fb"></div></div><div class="quiz-question" id="q5"><p class="q-text"><span class="q-num">5</span>Which of the following BEST describes the correct approach to embedding LNF in a Humanities lesson?</p><p class="q-welsh">&middot; Pa un o'r canlynol sy'n disgrifio orau y dull cywir o ymgorffori'r FLlRh mewn gwers Dyniaethau?</p><div class="options"><button class="option-btn" onclick="checkQ('q5',this,false)">Add a word bank and a graph to every lesson to demonstrate LNF coverage / Ychwanegu banc geiriau a graff at bob gwers i ddangos sylw FLlRh</button><button class="option-btn" onclick="checkQ('q5',this,false)">Teach a separate LNF lesson at the start of each unit before the Humanities content begins / Addysgu gwers FLlRh ar wahan ar ddechrau pob uned cyn i'r cynnwys Dyniaethau ddechrau</button><button class="option-btn" onclick="checkQ('q5',this,true)">Identify the literacy or numeracy skill that the subject content and enquiry question genuinely demand, then plan activities that develop that skill through the subject material / Nodi'r sgil llythrennedd neu rifedd y mae cynnwys y pwnc a'r cwestiwn ymholi yn ei ofyn go iawn</button><button class="option-btn" onclick="checkQ('q5',this,false)">Only plan for LNF skills explicitly identified in the school's departmental marking policy / Dim ond cynllunio ar gyfer sgiliau FLlRh a nodir yn benodol yn y polisi marcio adrannol</button></div><div class="feedback" id="q5-fb"></div></div>
+      <div class="task-box" style="margin-top:1.4rem">
+        <div class="task-label"><div class="task-num">5</div> Final Reflection &middot; Adlewyrchiad Terfynol</div>
+        <label class="field-label">The LNF requires every teacher to be a teacher of literacy and numeracy. What does this mean for your identity as a Humanities specialist? Do you see this as a burden or an opportunity &mdash; and why? / Beth mae hyn yn ei olygu ar gyfer eich hunaniaeth fel arbenigwr y Dyniaethau?</label>
+        <textarea placeholder="I see this as… because…"></textarea>
+        <label class="field-label">Which LNF strand do you feel LEAST confident about developing in your subject? What will you do about it? / Pa ffrwd FLlRh rydych chi'n teimlo'r lleiaf hyderus yn ei datblygu yn eich pwnc?</label>
+        <textarea placeholder="Least confident with: … Because: … My plan: …"></textarea>
+        <label class="field-label">Write a brief (100-150 word) statement for a job application explaining how you plan for LNF in your Humanities teaching. / Ysgrifennwch ddatganiad byr ar gyfer cais am swydd:</label>
+        <textarea style="min-height:120px" placeholder="As a Humanities teacher, I embed the LNF by…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(4)">&larr; Back</button>
+        <button class="btn btn-amber" onclick="complete()">&#127891; Complete Session &middot; Cwblhau'r Sesiwn</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="completion-card" id="completion">
+    <span class="badge-icon">&#128214;</span>
+    <h2>Session Complete! &middot; Sesiwn Wedi'i Chwblhau!</h2>
+    <div class="score-badge">Quiz Score &middot; Sgôr: <span id="final-score">0</span> / 5</div>
+    <p><strong>Well done!</strong> You have completed the LNF session &mdash; covering the structure of the framework, all seven strands, subject-specific examples across History, Geography and RVE, and planning principles.</p>
+    <p><strong>Da iawn!</strong> Rydych chi wedi cwblhau'r sesiwn FLlRh &mdash; yn cwmpasu strwythur y fframwaith, y saith ffrwd, enghreifftiau pwnc-benodol ar draws Hanes, Daearyddiaeth a GAE, ac egwyddorion cynllunio.</p>
+    <p style="font-style:italic;opacity:.78">"Every teacher in every subject is responsible for developing learners' literacy and numeracy." &mdash; Curriculum for Wales</p>
+    <div style="margin-top:1rem"><button class="btn btn-secondary" onclick="location.reload()" style="background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.33);color:#fff;font-size:.83rem;">&#8634; Start Again &middot; Dechrau Eto</button></div>
+    <div class="cert-trigger-box">
+      <p>&#127885; <strong>Generate your personalised completion certificate &middot; Creu eich tystysgrif gwblhau bersonol</strong><br>Enter your full name below. / Rhowch eich enw llawn isod.</p>
+      <div class="cert-name-row">
+        <input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name &middot; Eich enw llawn&hellip;" maxlength="80">
+        <button class="btn-cert" onclick="generateCertificate()">&#127891; Generate Certificate &middot; Creu Tystysgrif</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- CERTIFICATE -->
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:1.9rem;">&#128214;</div>
+            <div class="cert-inst-name">PGCE Humanities &middot; Y Dyniaethau TGCH
+              <span class="cert-inst-cy">Curriculum for Wales / Cwricwlwm i Gymru</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that &middot; Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher &middot; yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.45rem 0 .25rem"><div class="cert-name" id="certDisplayName">Your Name</div></div>
+          <div class="cert-score-pill">Quiz Score &middot; Sgôr: <span id="certScoreDisplay">0</span> / 5</div>
+          <div class="cert-subjects">
+            <span class="cert-subj-pill cs-hist">&#128380; History &middot; Hanes</span>
+            <span class="cert-subj-pill cs-geog">&#127758; Geography &middot; Daearyddiaeth</span>
+            <span class="cert-subj-pill cs-rve">&#9774; RVE &middot; GAE</span>
+          </div>
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the training session on</div>
+          <div class="cert-course">The Literacy and Numeracy Framework (LNF) in Humanities
+            <span class="cert-course-cy">Y Fframwaith Llythrennedd a Rhifedd (FLlRh) yn y Dyniaethau</span>
+          </div>
+          <div class="cert-competencies">Demonstrating understanding of: the structure and statutory status of the LNF within the Curriculum for Wales; the three literacy strands (oracy, reading, writing) and four numeracy strands (numerical reasoning, number, measuring, data); subject-specific LNF applications in History, Geography and RVE; principles for embedding LNF organically into Humanities lesson planning; and common pitfalls to avoid when planning for cross-curricular literacy and numeracy.</div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block"><div class="cert-sig-line"></div><div class="cert-sig-label">Programme Director &middot; Cyfarwyddwr y Rhaglen</div></div>
+            <div><div class="cert-seal"><span class="cert-seal-icon">&#128214;</span>PGCE<br>CYMRU</div></div>
+            <div class="cert-sig-block"><div class="cert-date-val" id="certDateDisplay"></div><div class="cert-date-label">Date Completed &middot; Dyddiad Cwblhau</div></div>
+          </div>
+          <div class="cert-stripe" style="margin:1.1rem -2rem -1.5rem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">&#128424; Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">&#10005; Close &middot; Cau</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var score=0;var answeredQs=new Set();var completedSections=new Set();
+var feedbacks={
+  q1:"Correct! The LNF Literacy component has three strands: Oracy (speaking and listening), Reading, and Writing. As a Humanities teacher you are responsible for developing all three through your subject content.",
+  q2:"Correct! Developing numerical reasoning underpins all three procedural strands. It is not separate but a way of thinking numerically that permeates all numeracy work. Asking 'does this statistic prove the claim?' is numerical reasoning in action.",
+  q3:"Correct! Reading in the LNF includes non-continuous texts such as photographs, maps and graphs. This activity develops locating information, inference and source evaluation - all Reading strand aspects.",
+  q4:"Correct! Constructing a graph is data representation; interpreting it requires data analysis and evaluation. Asking pupils to explain what the graph means connects to numerical reasoning. Data skills and numerical reasoning are the primary strands here.",
+  q5:"Correct! The most effective LNF embedding starts with subject content and enquiry, identifies the skills that content naturally demands, and plans activities accordingly. This avoids tokenism and ensures LNF development genuinely enhances subject learning."
+};
+function checkQ(qId,btn,isCorrect){
+  if(answeredQs.has(qId))return;answeredQs.add(qId);
+  document.getElementById(qId).querySelectorAll(".option-btn").forEach(function(b){b.disabled=true;});
+  var fb=document.getElementById(qId+"-fb");
+  if(isCorrect){btn.classList.add("correct");fb.className="feedback correct show";fb.innerHTML="&#10003; "+feedbacks[qId];score++;}
+  else{btn.classList.add("wrong");fb.className="feedback wrong show";fb.innerHTML="&#10007; Not quite &mdash; "+feedbacks[qId];}
+}
+function goTo(idx){
+  document.querySelectorAll(".section-card").forEach(function(el,i){el.classList.toggle("active",i===idx);});
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("active",i===idx);});
+  var pct=Math.round(((idx+1)/6)*100);
+  document.getElementById("progress-bar").style.width=pct+"%";
+  document.getElementById("progress-label").textContent="Section "+(idx+1)+" of 6 · Adran "+(idx+1)+" o 6";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function nextSection(idx){
+  completedSections.add(idx);
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("done",completedSections.has(i));});
+  goTo(idx+1);
+}
+function complete(){
+  completedSections.add(5);
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("done",completedSections.has(i));});
+  document.querySelectorAll(".section-card").forEach(function(el){el.classList.remove("active");});
+  document.getElementById("completion").classList.add("show");
+  document.getElementById("final-score").textContent=score;
+  document.getElementById("progress-bar").style.width="100%";
+  document.getElementById("progress-label").textContent="Complete! · Wedi Cwblhau!";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function generateCertificate(){
+  var name=document.getElementById("certNameInput").value.trim();
+  if(!name){document.getElementById("certNameInput").focus();document.getElementById("certNameInput").style.borderColor="#FCD34D";setTimeout(function(){document.getElementById("certNameInput").style.borderColor="";},1500);return;}
+  document.getElementById("certDisplayName").textContent=name;
+  document.getElementById("certScoreDisplay").textContent=score;
+  var now=new Date();
+  var months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  document.getElementById("certDateDisplay").textContent=now.getDate()+" "+months[now.getMonth()]+" "+now.getFullYear();
+  document.getElementById("certOverlay").classList.add("show");
+  document.body.style.overflow="hidden";
+}
+function closeCertificate(){document.getElementById("certOverlay").classList.remove("show");document.body.style.overflow="";}
+function printCertificate(){
+  var cert=document.getElementById("certificateEl");
+  var w=window.open("","_blank","width=900,height=700");
+  var h="<html><head><title>Certificate</title>";
+  document.querySelectorAll("style,link[rel=stylesheet]").forEach(function(s){h+=s.outerHTML;});
+  h+="</head><body style='margin:0;padding:20px;background:white;'>";
+  h+=cert.outerHTML;
+  h+="</body></html>";
+  w.document.write(h);
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener("click",function(e){if(e.target.id==="certOverlay")closeCertificate();});
+</script>
+</body>
+</html>
