@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="cy-en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analytical and Discursive Writing | Ysgrifennu Dadansoddol — Counsell 1997 — PGCE History</title>
+<style>
+:root{
+  --ink:#1C1917;--ink-mid:#44403C;--ink-light:#78716C;
+  --cream:#FAFAF9;--cream-mid:#F5F5F4;--parchment:#FAF0E6;
+  --rust:#9A3412;--rust-light:#FEE2E2;--rust-pale:#FFF5F5;
+  --sage:#166534;--sage-light:#DCFCE7;--sage-pale:#F0FFF4;
+  --gold:#92400E;--gold-light:#FEF3C7;--gold-pale:#FFFBEB;
+  --blue:#1E3A5F;--blue-light:#DBEAFE;--blue-pale:#EFF6FF;
+  --violet:#4C1D95;--violet-light:#EDE9FE;--violet-pale:#F5F3FF;
+  --teal:#0F5132;--teal-light:#D1FAE5;--teal-pale:#ECFDF5;
+  --white:#fff;--border:#E7E5E4;
+  --shadow:0 4px 24px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--cream);color:var(--ink);min-height:100vh}
+header{background:linear-gradient(135deg,#1C0A00 0%,var(--rust) 60%,#7C2D12 100%);color:#fff;padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+header::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E")}
+.lang-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:.3rem 1rem;font-size:.8rem;font-weight:600;letter-spacing:.05em;margin-bottom:1.5rem}
+header h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.5rem,3.5vw,2.4rem);line-height:1.2;margin-bottom:.3rem}
+header h1 span{display:block;font-size:.55em;font-weight:400;opacity:.75;font-style:italic;margin-top:.3rem}
+.header-sub{font-size:.9rem;opacity:.8;margin-top:.7rem}
+.subject-pills{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.1rem}
+.pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.28rem .85rem;font-size:.76rem;font-weight:600}
+.progress-bar-wrap{max-width:600px;margin:1.4rem auto 0;background:rgba(255,255,255,.18);border-radius:999px;height:7px;overflow:hidden}
+#progress-bar{height:100%;background:#FCD34D;border-radius:999px;transition:width .5s ease;width:0%}
+#progress-label{font-size:.77rem;opacity:.75;margin-top:.4rem}
+main{max-width:960px;margin:0 auto;padding:2rem 1rem 4rem}
+.section-nav{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.snav-btn{padding:.38rem .8rem;border-radius:999px;border:2px solid var(--border);background:#fff;font-size:.74rem;font-weight:600;cursor:pointer;color:var(--ink-mid);transition:all .2s;white-space:nowrap}
+.snav-btn.done{border-color:var(--sage);color:#14532D;background:var(--sage-light)}
+.snav-btn.active{border-color:var(--rust);color:var(--rust);background:var(--rust-pale)}
+.section-card{background:#fff;border-radius:14px;box-shadow:var(--shadow);margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);display:none;animation:fadeIn .4s ease}
+.section-card.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card-header{padding:1.4rem 2rem;display:flex;align-items:center;gap:1rem;border-bottom:2px solid}
+.card-header.rust{background:var(--rust-pale);border-color:#FECACA}
+.card-header.gold{background:var(--gold-pale);border-color:#FDE68A}
+.card-header.blue{background:var(--blue-pale);border-color:var(--blue-light)}
+.card-header.sage{background:var(--sage-pale);border-color:var(--teal-light)}
+.card-header.violet{background:var(--violet-pale);border-color:var(--violet-light)}
+.card-header.teal{background:var(--teal-pale);border-color:var(--teal-light)}
+.card-header.slate{background:#F1F5F9;border-color:#CBD5E1}
+.card-header .icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.card-header.rust .icon{background:var(--rust)}.card-header.gold .icon{background:var(--gold)}
+.card-header.blue .icon{background:var(--blue)}.card-header.sage .icon{background:var(--sage)}
+.card-header.violet .icon{background:var(--violet)}.card-header.teal .icon{background:var(--teal)}
+.card-header.slate .icon{background:var(--ink)}
+.card-header h2{font-family:Georgia,serif;font-size:1.18rem;color:var(--ink);line-height:1.3}
+.card-header h2 em{display:block;font-family:-apple-system,sans-serif;font-size:.73rem;font-style:normal;font-weight:600;color:var(--ink-light);margin-top:.12rem;letter-spacing:.03em}
+.card-body{padding:1.8rem}
+@media(max-width:600px){.card-body{padding:1.2rem}}
+/* BILINGUAL */
+.bilingual-block{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-bottom:1.4rem}
+@media(max-width:600px){.bilingual-block{grid-template-columns:1fr}}
+.lang-col{background:var(--rust-pale);border-radius:9px;padding:1.1rem;border-left:4px solid var(--rust)}
+.lang-col.welsh{border-left-color:var(--gold);background:var(--gold-pale)}
+.lang-label{font-size:.69rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.5rem}
+.lang-col p,.lang-col li{font-size:.91rem;line-height:1.7;color:var(--ink)}
+.lang-col ul{padding-left:1.2rem;margin-top:.4rem}
+.lang-col li{margin-bottom:.3rem}
+/* INFO BOXES */
+.info-box{border-radius:9px;padding:1.1rem 1.4rem;margin-bottom:1.4rem;border:1px solid}
+.info-box.rust{background:var(--rust-pale);border-color:#FECACA}
+.info-box.gold{background:var(--gold-pale);border-color:#FDE68A}
+.info-box.sage{background:var(--sage-pale);border-color:#86EFAC}
+.info-box.blue{background:var(--blue-pale);border-color:var(--blue-light)}
+.info-box.key{background:var(--ink);border-color:var(--ink-mid)}
+.info-box.violet{background:var(--violet-pale);border-color:var(--violet-light)}
+.info-box.teal{background:var(--teal-pale);border-color:var(--teal-light)}
+.info-box h3{font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.65rem}
+.info-box.rust h3{color:var(--rust)}.info-box.gold h3{color:var(--gold)}
+.info-box.sage h3{color:var(--sage)}.info-box.blue h3{color:var(--blue)}
+.info-box.key h3{color:#FCD34D}.info-box.violet h3{color:var(--violet)}
+.info-box.teal h3{color:var(--teal)}
+.info-box p,.info-box li{font-size:.9rem;line-height:1.7;color:var(--ink)}
+.info-box.key p,.info-box.key li{color:rgba(255,255,255,.88)}
+.info-box ul{padding-left:1.2rem;margin-top:.4rem}
+.info-box ul li{margin-bottom:.3rem}
+/* QUOTE */
+.quote-block{background:var(--ink);color:#fff;border-radius:10px;padding:1.4rem 1.8rem;margin:1.4rem 0;position:relative;overflow:hidden}
+.quote-block::before{content:'"';font-family:Georgia,serif;font-size:7rem;color:rgba(255,255,255,.05);position:absolute;top:-1rem;left:.3rem;line-height:1}
+.quote-text{font-family:Georgia,serif;font-size:1.08rem;font-style:italic;line-height:1.65;color:rgba(255,255,255,.92);position:relative;z-index:1}
+.quote-attr{font-size:.77rem;color:#FCD34D;margin-top:.6rem;font-weight:600}
+/* CHALLENGE CARDS */
+.challenge-grid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.1rem 0}
+@media(max-width:560px){.challenge-grid{grid-template-columns:1fr}}
+.challenge-card{background:#fff;border:2px solid var(--border);border-radius:9px;padding:1rem;border-top:4px solid}
+.ch1{border-top-color:#DC2626}.ch2{border-top-color:#D97706}.ch3{border-top-color:#7C3AED}
+.ch4{border-top-color:#0E7490}.ch5{border-top-color:#166534}
+.ch-num{font-size:1.6rem;font-weight:900;line-height:1;margin-bottom:.3rem;font-family:Georgia,serif}
+.ch1 .ch-num{color:#DC2626}.ch2 .ch-num{color:#D97706}.ch3 .ch-num{color:#7C3AED}
+.ch4 .ch-num{color:#0E7490}.ch5 .ch-num{color:#166534}
+.challenge-card h4{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.3rem}
+.challenge-card .ch-cy{font-size:.75rem;color:var(--gold);font-style:italic;margin-bottom:.4rem}
+.challenge-card p{font-size:.82rem;color:var(--ink-mid);line-height:1.55}
+/* STRATEGIES */
+.strategy-group{background:#fff;border:2px solid var(--border);border-radius:11px;margin-bottom:1.4rem;overflow:hidden}
+.strategy-group-header{padding:.9rem 1.3rem;display:flex;align-items:center;gap:.7rem;border-bottom:1px solid var(--border)}
+.strategy-group-header.sorting{background:#FEF2F2}.strategy-group-header.arranging{background:var(--blue-pale)}.strategy-group-header.language{background:var(--teal-pale)}
+.strategy-group-title{font-family:Georgia,serif;font-size:1rem;color:var(--ink)}
+.strategy-group-title em{display:block;font-family:-apple-system,sans-serif;font-size:.72rem;font-style:normal;color:var(--ink-light);margin-top:.1rem}
+.strategy-body{padding:1.2rem 1.3rem}
+.strategy-item{background:var(--cream-mid);border-radius:7px;padding:.85rem 1rem;margin-bottom:.7rem;border-left:3px solid var(--rust)}
+.strategy-item.arr{border-left-color:var(--blue)}.strategy-item.lang{border-left-color:var(--teal)}
+.strategy-item h5{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.3rem}
+.strategy-item .cy{font-size:.74rem;color:var(--gold);font-style:italic;margin-bottom:.35rem}
+.strategy-item p{font-size:.84rem;color:var(--ink-mid);line-height:1.55}
+.challenge-tag{display:inline-block;font-size:.67rem;font-weight:700;letter-spacing:.05em;padding:.12rem .45rem;border-radius:4px;margin-left:.3rem;vertical-align:middle;color:white}
+.ct1{background:#DC2626}.ct2{background:#D97706}.ct3{background:#7C3AED}
+.ct4{background:#0E7490}.ct5{background:#166534}
+/* PRINCIPLES */
+.principles-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1.1rem 0}
+@media(max-width:560px){.principles-grid{grid-template-columns:1fr}}
+.principle-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:.9rem 1rem}
+.principle-icon{font-size:1.4rem;display:block;margin-bottom:.4rem}
+.principle-card h4{font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.3rem}
+.principle-card p{font-size:.82rem;color:var(--ink-mid);line-height:1.55}
+/* RATING */
+.rating-row{display:flex;align-items:center;gap:.6rem;margin-bottom:.7rem;flex-wrap:wrap}
+.rating-label{font-size:.86rem;font-weight:600;color:var(--ink);min-width:200px;flex:1}
+.rating-stars{display:flex;gap:.3rem}
+.star-btn{width:1.6rem;height:1.6rem;border-radius:4px;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:.75rem;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.star-btn:hover{border-color:var(--gold);background:var(--gold-pale)}
+.star-btn.lit{background:var(--gold);border-color:var(--gold);color:white}
+/* QUIZ */
+.quiz-question{background:var(--cream-mid);border-radius:9px;padding:1.1rem;margin-bottom:.9rem;border:1px solid var(--border)}
+.q-text{font-weight:700;font-size:.96rem;margin-bottom:.2rem;line-height:1.5}
+.q-welsh{font-size:.83rem;color:var(--ink-light);font-style:italic;margin-bottom:.85rem;line-height:1.5}
+.q-num{display:inline-flex;align-items:center;justify-content:center;width:1.45rem;height:1.45rem;background:var(--rust);color:white;border-radius:50%;font-size:.7rem;font-weight:700;margin-right:.4rem}
+.options{display:flex;flex-direction:column;gap:.45rem}
+.option-btn{text-align:left;background:#fff;border:2px solid var(--border);border-radius:7px;padding:.6rem .95rem;font-family:-apple-system,sans-serif;font-size:.88rem;cursor:pointer;transition:all .15s;line-height:1.5;color:var(--ink)}
+.option-btn:hover:not(:disabled){border-color:var(--rust);background:var(--rust-pale)}
+.option-btn.correct{border-color:var(--sage);background:var(--sage-pale);color:#14532D}
+.option-btn.wrong{border-color:var(--rust);background:var(--rust-pale);color:#7F1D1D}
+.feedback{display:none;padding:.75rem .95rem;border-radius:7px;font-size:.85rem;line-height:1.6;margin-top:.45rem}
+.feedback.correct.show{display:block;background:var(--sage-pale);border-left:3px solid var(--sage);color:#14532D}
+.feedback.wrong.show{display:block;background:var(--rust-pale);border-left:3px solid var(--rust);color:#7F1D1D}
+/* TEXTAREA */
+textarea{width:100%;padding:.65rem .85rem;font-family:-apple-system,sans-serif;font-size:.89rem;border:2px solid var(--border);border-radius:7px;resize:vertical;min-height:68px;color:var(--ink);line-height:1.6;transition:border-color .2s;margin-top:.45rem}
+textarea:focus{outline:none;border-color:var(--rust)}
+.task-box{background:var(--gold-pale);border:2px solid #FDE68A;border-radius:9px;padding:1.1rem 1.3rem;margin:1.3rem 0}
+.task-label{font-size:.71rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.55rem;display:flex;align-items:center;gap:.38rem}
+.task-num{background:var(--gold);color:white;border-radius:50%;width:1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;font-size:.66rem}
+.field-label{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-light);display:block;margin:.55rem 0 .18rem}
+/* BTN */
+.btn-row{display:flex;gap:.7rem;justify-content:space-between;flex-wrap:wrap;margin-top:1.4rem;padding-top:.9rem;border-top:1px solid var(--border)}
+.btn{padding:.55rem 1.3rem;border-radius:7px;border:2px solid transparent;font-family:-apple-system,sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--rust);color:#fff;border-color:var(--rust)}.btn-primary:hover{background:#7C1D1D}
+.btn-secondary{background:#fff;color:var(--ink-mid);border-color:var(--border)}.btn-secondary:hover{border-color:var(--ink-mid)}
+.btn-amber{background:var(--gold);color:white;border-color:var(--gold)}.btn-amber:hover{background:#78350F}
+/* COMPLETION */
+.completion-card{display:none;background:linear-gradient(135deg,#1C0A00,var(--rust));color:white;border-radius:14px;padding:2.8rem 2rem;text-align:center;margin-top:2rem}
+.completion-card.show{display:block}
+.badge-icon{font-size:3.8rem;display:block;margin-bottom:.9rem}
+.completion-card h2{font-family:Georgia,serif;font-size:1.75rem;margin-bottom:.7rem}
+.score-badge{display:inline-block;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);border-radius:999px;padding:.28rem 1.1rem;font-size:.95rem;font-weight:700;margin-bottom:.9rem}
+.completion-card p{font-size:.93rem;opacity:.87;line-height:1.7;max-width:540px;margin:0 auto .75rem}
+/* CERT */
+.cert-trigger-box{margin-top:1.4rem;padding:1.4rem;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.38);border-radius:10px;text-align:center}
+.cert-trigger-box p{font-size:.87rem;opacity:.84;margin-bottom:.9rem;line-height:1.6}
+.cert-name-row{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.cert-name-input{padding:.55rem .95rem;font-family:-apple-system,sans-serif;font-size:.93rem;border:2px solid rgba(255,255,255,.28);border-radius:7px;background:rgba(255,255,255,.14);color:white;width:240px}
+.cert-name-input::placeholder{color:rgba(255,255,255,.38)}
+.cert-name-input:focus{outline:none;border-color:#FCD34D}
+.btn-cert{background:#FCD34D;color:#1a1a1a;border:none;padding:.55rem 1.2rem;border-radius:7px;font-family:-apple-system,sans-serif;font-size:.86rem;font-weight:700;cursor:pointer}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:white;border-radius:8px;width:100%;max-width:780px;max-height:95vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.certificate{width:100%;background:white}
+.cert-frame{margin:14px;border:3px solid #9A3412;position:relative}
+.cert-frame::before{content:"";position:absolute;inset:5px;border:1px solid #92400E;pointer-events:none;z-index:1}
+.cert-stripe{height:5px;background:linear-gradient(90deg,#1C0A00 0%,#9A3412 40%,#92400E 70%,#166534 100%)}
+.cert-header{background:linear-gradient(135deg,#1C0A00 0%,#9A3412 100%);padding:1.2rem 2rem 1rem;text-align:center}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.cert-inst-name{font-family:Georgia,serif;color:white;font-size:.98rem;text-align:left;line-height:1.2}
+.cert-inst-cy{color:#FDE68A;font-size:.73rem;font-style:italic;display:block;font-family:-apple-system,sans-serif;font-weight:400}
+.cert-body{padding:1.5rem 2rem;text-align:center}
+.cert-presents{font-size:.71rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;margin-bottom:.35rem}
+.cert-awarded-to{font-size:.71rem;text-transform:uppercase;letter-spacing:.1em;color:#475569;margin-bottom:.18rem}
+.cert-name{font-family:Georgia,serif;font-size:1.85rem;font-style:italic;color:#9A3412;border-bottom:2px solid #E2E8F0;display:inline-block;padding:0 .9rem .1rem;min-width:250px;margin-bottom:.3rem;line-height:1.3}
+.cert-score-pill{display:inline-block;background:#FEF3C7;border:1px solid #92400E;border-radius:999px;padding:.22rem .9rem;font-size:.78rem;font-weight:700;color:#92400E;margin:.45rem 0 .75rem}
+.cert-divider{height:1px;background:linear-gradient(90deg,transparent,#92400E,transparent);margin:.85rem auto;width:50%}
+.cert-text{font-size:.84rem;color:#1E293B;line-height:1.65;max-width:430px;margin:0 auto .65rem}
+.cert-course{font-family:Georgia,serif;font-size:.93rem;color:#1E293B;background:#FFF7ED;border:1px solid #FDE68A;border-left:4px solid #9A3412;padding:.42rem .85rem;display:inline-block;margin-bottom:.3rem;text-align:left}
+.cert-course-cy{font-size:.73rem;color:#92400E;font-style:italic;display:block}
+.cert-competencies{font-size:.74rem;color:#475569;margin:.18rem auto .9rem;max-width:410px;line-height:1.55}
+.cert-footer-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:.9rem;padding-top:.9rem;border-top:1px solid #E2E8F0}
+.cert-sig-block{text-align:center}
+.cert-sig-line{height:1px;background:#1E293B;width:130px;margin:0 auto .22rem}
+.cert-sig-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:#475569}
+.cert-seal{width:60px;height:60px;border-radius:50%;background:#9A3412;border:3px solid #92400E;display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-size:.48rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;line-height:1.3;margin:0 auto}
+.cert-seal-icon{font-size:1.1rem;display:block;margin-bottom:1px}
+.cert-date-val{font-family:Georgia,serif;font-size:.88rem;color:#1E293B}
+.cert-date-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:#475569;margin-top:.18rem}
+.cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.85rem 1.4rem 1.1rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
+.btn-cert-print{background:#9A3412;color:white;border:none;padding:.5rem 1.1rem;border-radius:7px;font-family:-apple-system,sans-serif;font-size:.84rem;font-weight:700;cursor:pointer}
+.btn-cert-close{background:#475569;color:white;border:none;padding:.5rem 1.1rem;border-radius:7px;font-family:-apple-system,sans-serif;font-size:.84rem;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <div class="lang-badge">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Cymraeg &middot; English</div>
+  <h1>Analytical and Discursive Writing — Christine Counsell (1997)
+    <span>Ysgrifennu Dadansoddol a Thraethodol — Canllaw i Athrawon Dan Hyfforddiant</span>
+  </h1>
+  <p class="header-sub">Historical Association &middot; PGCE History ITE &middot; Summary, tasks and reflections for trainee teachers</p>
+  <div class="subject-pills">
+    <span class="pill">&#128218; Counsell 1997</span>
+    <span class="pill">&#128336; PGCE History &middot; Hanes</span>
+    <span class="pill">&#128203; Six Sections &middot; Chwe Adran</span>
+    <span class="pill">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Bilingual &middot; Dwyieithog</span>
+  </div>
+  <div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+  <p id="progress-label">Section 1 of 6 &middot; Adran 1 o 6</p>
+</header>
+<main>
+  <div class="section-nav">
+    <button class="snav-btn active" onclick="goTo(0)">A &middot; Introduction</button>
+    <button class="snav-btn" onclick="goTo(1)">B &middot; Why It Matters</button>
+    <button class="snav-btn" onclick="goTo(2)">C &middot; Why It&apos;s Difficult</button>
+    <button class="snav-btn" onclick="goTo(3)">D &middot; Approaches</button>
+    <button class="snav-btn" onclick="goTo(4)">E &middot; Timing &amp; Progression</button>
+    <button class="snav-btn" onclick="goTo(5)">F &middot; Principles &amp; Reflection</button>
+  </div>
+
+  <div class="section-card active" id="sec-0">
+    <div class="card-header rust">
+      <div class="icon">&#9997;</div>
+      <h2>Section A: Introduction &mdash; Aiming High
+        <em>Adran A: Cyflwyniad &mdash; Anelu'n Uchel</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="info-box rust" style="margin-bottom:1.2rem">
+        <h3>&#128218; About the pamphlet &middot; Am y pamffled</h3>
+        <p>Christine Counsell&rsquo;s 1997 pamphlet for the Historical Association argues that analytical and discursive writing is both <strong>essential to history education</strong> and <strong>genuinely teachable to pupils of almost all abilities</strong>. Written for practising teachers, it combines theoretical principles with practical classroom strategies. This guide summarises its key arguments and asks you to connect them to your developing practice. &middot; Mae pamffled Christine Counsell o 1997 yn dadlau bod ysgrifennu dadansoddol a thraethodol yn hanfodol i addysg hanes ac yn wirioneddol addysgu i ddisgyblion o bron pob gallu.</p>
+        <p style="margin-top:.5rem"><strong>PDF provided alongside this session &middot; Darparwyd PDF ochr yn ochr &mdash;</strong> read it alongside this guide. The pamphlet is the primary text; this session is the framework for engaging with it.</p>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">&ldquo;Pupils of almost all abilities can write critically and analytically, but we must teach them.&rdquo;</p>
+        <p class="quote-attr">&mdash; Christine Counsell, Analytical and Discursive Writing (Historical Association, 1997)</p>
+      </div>
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">&#127468;&#127463; English &mdash; The Opening Argument</div>
+          <p>Counsell opens with two pieces of pupil writing: a high-attaining 12-year-old girl (Zoe) and a lower-attaining boy (Jamie) in the same class, both answering <em>&lsquo;Why did the Normans win the Battle of Hastings?&rsquo;</em> Both share the same core characteristics: clear structure, a self-conscious distinction between general claims and supporting detail, and focused relevance throughout.</p>
+          <p style="margin-top:.5rem">The point is deliberate and provocative: these results were not accidents. They were achieved through a <strong>systematic and holistic approach to progression</strong> in historical communication, implemented over a long period of time.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Cymraeg &mdash; Y Ddadl Agoriadol</div>
+          <p>Mae Counsell yn agor gyda dau ddarn o waith ysgrifennu disgyblion: merch 12 oed o gyrhaeddiad uchel a bachgen o gyrhaeddiad is yn yr un dosbarth. Mae gan y ddau yr un nodweddion craidd: strwythur clir, gwahaniaeth ymwybodol rhwng honiadau cyffredinol a manylion cymhorthol, a pherthnasedd trwy gydol y cyfan.</p>
+          <p style="margin-top:.5rem">Mae'r pwynt yn fwriadol a heriol: nid damweiniau oedd y canlyniadau hyn. Fe'u cyflawnwyd drwy ddull <strong>systematig a chyfannol o ddilyniant</strong> mewn cyfathrebu hanesyddol, dros gyfnod hir o amser.</p>
+        </div>
+      </div>
+
+      <div class="info-box key">
+        <h3>&#127919; Central Claim &middot; Prif Honiad</h3>
+        <p>Analytical writing is <strong>not an outcome that pupils either have or lack</strong>. It is a skill that requires &mdash; and responds to &mdash; explicit, systematic, structured teaching. Without such teaching, higher attainers may not reach their potential, and lower attainers are almost certain not to. / Nid canlyniad yw ysgrifennu dadansoddol y mae disgyblion naill ai&rsquo;n ei feddu neu&rsquo;n ei ddiffygio. Mae&rsquo;n sgil sy&rsquo;n gofyn am addysgu penodol, systematig a strwythuredig.</p>
+      </div>
+
+      <div class="info-box gold">
+        <h3>&#128293; Counsell&rsquo;s Challenge to Common Practice &middot; Her Counsell i Arfer Cyffredin</h3>
+        <ul>
+          <li>The growth of the source <strong>&lsquo;gobbet&rsquo;</strong> in textbooks has encouraged formulaic short answers &mdash; <em>&lsquo;here is a proposition, now give me a reaction&rsquo;</em> &mdash; at the expense of joined-up thinking</li>
+          <li>Lower attainers asked simply to <em>&lsquo;use the sources&rsquo;</em> or <em>&lsquo;plan your answer&rsquo;</em> are <strong>being invited to fail</strong></li>
+          <li>Extended analytical writing is not impossibly difficult &mdash; it is <strong>insufficiently taught</strong></li>
+          <li>High-quality analytical writing is <strong>the preserve of all learners</strong>, not just the highest attainers</li>
+        </ul>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">1</div> Task A &middot; Tasg A &mdash; Starting from Evidence</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">Read Counsell&rsquo;s descriptions of Figures 1.1 (Zoe) and 1.2 (Jamie) in the pamphlet (pp. 5&ndash;6). / Darllenwch ddisgrifiadau Counsell o Ffigurau 1.1 a 1.2 yn y pamffled.</p>
+        <label class="field-label">List three specific features of Zoe&rsquo;s essay (Fig 1.1) Counsell identifies as analytically strong. For each, explain what it shows about the pupil&rsquo;s thinking. / Rhestrwch dair nodwedd benodol o draethawd Zoe:</label>
+        <textarea placeholder="1. Feature: … What it shows: …&#10;2. Feature: … What it shows: …&#10;3. Feature: … What it shows: …"></textarea>
+        <label class="field-label">Counsell says Jamie &lsquo;exercised considerable independence&rsquo; despite the scaffolding. What does this tell you about the relationship between structure and independence? / Beth mae hyn yn ei ddweud wrthych am y berthynas rhwng strwythur ac annibyniaeth?</label>
+        <textarea placeholder="Your response / Eich ymateb…"></textarea>
+        <label class="field-label">From your placement: find or recall an example of written work that illustrates Counsell&rsquo;s argument (strong or weak). What does it tell you about how the pupil was taught? / O&rsquo;ch lleoliad: dod o hyd i enghraifft o waith ysgrifennu sy&rsquo;n darlunio dadl Counsell.</label>
+        <textarea placeholder="Your example and analysis / Eich enghraifft a dadansoddiad…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <span></span>
+        <button class="btn btn-primary" onclick="nextSection(0)">Next: Why It Matters &rarr; / Nesaf &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card" id="sec-1">
+    <div class="card-header gold">
+      <div class="icon">&#128209;</div>
+      <h2>Section B: Why Analytical Writing Matters
+        <em>Adran B: Pam Mae Ysgrifennu Dadansoddol yn Bwysig</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">&#127468;&#127463; English</div>
+          <p>Counsell argues that extended writing is not simply a task pupils do at the end of a topic. It is a <strong>pedagogical tool</strong> &mdash; a means of developing and sustaining historical thinking, not merely recording it. Key Element 5 of the National Curriculum acts as a reminder that organisational demands must be <em>explicitly taught</em>, not assumed.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Cymraeg</div>
+          <p>Mae Counsell yn dadlau nad tasg syml y mae disgyblion yn ei gwneud ar ddiwedd pwnc yw ysgrifennu estynedig. Mae&rsquo;n <strong>offeryn addysgegol</strong> &mdash; modd o ddatblygu a chynnal meddwl hanesyddol, nid dim ond ei gofnodi. Mae Elfen Allweddol 5 yn atgoffa athrawon bod yn rhaid dysgu gofynion trefnadol yn benodol.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin:.5rem 0 .8rem;color:var(--rust)">Three Key Elements of Organisation &middot; Tair Elfen Allweddol Trefniadaeth</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.8rem;margin-bottom:1.2rem">
+        <div style="background:var(--rust-pale);border-radius:8px;padding:.9rem;border-top:3px solid var(--rust)">
+          <div style="font-weight:800;color:var(--rust);font-size:.82rem;margin-bottom:.4rem">KE 5a</div>
+          <p style="font-size:.85rem;color:var(--ink);line-height:1.55"><strong>Recall, select and organise</strong> historical information. Selecting the relevant and rejecting the irrelevant must become explicit learning objectives &mdash; not assumptions. / <em>Cofio, dewis a threfnu</em> gwybodaeth hanesyddol. Rhaid i ddewis fod yn amcan dysgu penodol.</p>
+        </div>
+        <div style="background:var(--gold-pale);border-radius:8px;padding:.9rem;border-top:3px solid var(--gold)">
+          <div style="font-weight:800;color:var(--gold);font-size:.82rem;margin-bottom:.4rem">KE 5b</div>
+          <p style="font-size:.85rem;color:var(--ink);line-height:1.55"><strong>Use substantive vocabulary</strong> as tools for classifying information. Terms like &lsquo;peasantry&rsquo;, &lsquo;economic&rsquo;, &lsquo;nobility&rsquo; enable precision. Pupils need to deploy them critically, not parrot definitions. / <em>Geirfa sylweddol</em> fel offer ar gyfer dosbarthu gwybodaeth yn fanwl gywir.</p>
+        </div>
+        <div style="background:var(--blue-pale);border-radius:8px;padding:.9rem;border-top:3px solid var(--blue)">
+          <div style="font-weight:800;color:var(--blue);font-size:.82rem;margin-bottom:.4rem">KE 5c</div>
+          <p style="font-size:.85rem;color:var(--ink);line-height:1.55"><strong>Communicate using different forms</strong>: narratives, descriptions, analyses, explanations. Each form requires pupils to arrange facts and ideas in a different way. Moving between forms is itself a demanding cognitive act. / <em>Cyfathrebu</em> gan ddefnyddio ffurfiau gwahanol: naratifau, dadansoddiadau, esboniadau.</p>
+        </div>
+      </div>
+
+      <div class="info-box blue">
+        <h3>&#128204; Writing and Thinking are Mutually Reinforcing &middot; Mae Ysgrifennu a Meddwl yn Atgyfnerthu Ei Gilydd</h3>
+        <p>Understanding of cause (KE2b) and skill in analytical composition (KE5c) are not separate. Teaching pupils to analyse causation <em>also</em> means teaching them to organise a written causal argument. Attention to structure and genre increases pupils&rsquo; <strong>meta-thinking</strong> &mdash; their ability to think about what they are doing and why. / Mae dealltwriaeth o achosiaeth a sgil mewn cyfansoddiad dadansoddol yn atgyfnerthu ei gilydd. Mae sylw i strwythur a genre yn cynyddu meta-feddwl.</p>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">&ldquo;The leap from information-gathering into extended prose still represents several moves that many activities fail to acknowledge.&rdquo;</p>
+        <p class="quote-attr">&mdash; Counsell (1997), p. 10</p>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">2</div> Task B &middot; Tasg B &mdash; Connecting the Key Elements</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">Choose a history topic you are planning to teach or have recently observed. / Dewiswch bwnc hanes rydych yn bwriadu ei addysgu.</p>
+        <label class="field-label">Topic / Pwnc:</label>
+        <textarea style="min-height:42px" placeholder="e.g. The Rebecca Riots / Terfysgoedd Beca · Year 9 / Blwyddyn 9"></textarea>
+        <label class="field-label">Write a brief learning objective for each KE5a, 5b, 5c that applies to this topic. For 5b, name at least two pieces of substantive vocabulary and why precision matters. / Ysgrifennwch amcan dysgu byr ar gyfer EA5a, 5b, 5c:</label>
+        <textarea placeholder="5a (select and organise): …&#10;5b (vocabulary — name 2 terms and why they matter): …&#10;5c (form of writing): …"></textarea>
+        <label class="field-label">Explain the distinction between &lsquo;topic-relevance&rsquo; and &lsquo;question-relevance&rsquo; in your own words. Give an example from your topic where a pupil might demonstrate one but fail the other. / Eglurwch y gwahaniaeth rhwng &lsquo;perthnasedd-pwnc&rsquo; a &lsquo;pherthnasedd-cwestiwn&rsquo;:</label>
+        <textarea placeholder="Topic-relevance means… Question-relevance means… Example from my topic: …"></textarea>
+        <label class="field-label">Look at a lesson plan from your placement. Does the writing task develop thinking or merely record it? How could it be redesigned? / Edrychwch ar gynllun gwers o&rsquo;ch lleoliad:</label>
+        <textarea placeholder="The task currently… It could be redesigned to… because…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(0)">&larr; Back / Yn &ocirc;l</button>
+        <button class="btn btn-primary" onclick="nextSection(1)">Next: Why It&apos;s Difficult &rarr; / Nesaf &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card" id="sec-2">
+    <div class="card-header blue">
+      <div class="icon">&#128270;</div>
+      <h2>Section C: Why Is Analytical Writing Difficult?
+        <em>Adran C: Pam Mae Ysgrifennu Dadansoddol yn Anodd?</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">&#127468;&#127463; English</div>
+          <p>Counsell identifies <strong>five specific challenges</strong> that make analytical writing harder than narrative or descriptive writing. These affect all pupils but become prohibitive for lower attainers &mdash; leading to copying, drift into irrelevance, or the &lsquo;self-fulfilling prophecy&rsquo; that some pupils cannot write analytically. Understanding these challenges is the first step toward designing teaching that overcomes them.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Cymraeg</div>
+          <p>Mae Counsell yn nodi <strong>pum her benodol</strong> sy&rsquo;n gwneud ysgrifennu dadansoddol yn anoddach nag ysgrifennu naratif. Maent yn effeithio ar bob disgybl ond maent yn dod yn rhai gwaharddiadol i ddisgyblion o gyrhaeddiad is. Mae deall yr heriau hyn yn gam cyntaf tuag at gynllunio addysgu sy&rsquo;n eu goresgyn.</p>
+        </div>
+      </div>
+
+      <div class="challenge-grid">
+        <div class="challenge-card ch1">
+          <div class="ch-num">i</div>
+          <h4>Memory and Concentration</h4>
+          <div class="ch-cy">Cof a Chanolbwyntio</div>
+          <p>To make more than one point requires retaining multiple issues in short-term memory. Even placing sources in front of pupils does not solve this &mdash; they must still hold and relate ideas. Lower attainers can lose sight of the question as new information crowds out old. Joining up thinking can outstrip available concentration.</p>
+        </div>
+        <div class="challenge-card ch2">
+          <div class="ch-num">ii</div>
+          <h4>Relevance and Selection</h4>
+          <div class="ch-cy">Perthnasedd a Dewis</div>
+          <p>Pupils must distinguish between <em>topic-relevance</em> (this fact is about trade) and <em>question-relevance</em> (this fact supports the specific point I am making). Many lower attainers cannot &lsquo;see&rsquo; that some facts will do and some will not. Selection must be explicitly taught &mdash; it does not happen automatically, even for high attainers.</p>
+        </div>
+        <div class="challenge-card ch3">
+          <div class="ch-num">iii</div>
+          <h4>Sorting</h4>
+          <div class="ch-cy">Didoli</div>
+          <p>History&rsquo;s subject matter must be shaped into meaningful structures. Sorting overlaps with relevance but creates additional demands: it requires attaching labels to groups using abstract concepts (political, economic, social; short-term, long-term). Pupils not taught to sort cannot analyse or evaluate with precision &mdash; they have no conscious problem-solving strategies.</p>
+        </div>
+        <div class="challenge-card ch4">
+          <div class="ch-num">iv</div>
+          <h4>General and Particular</h4>
+          <div class="ch-cy">Cyffredinol a Pharticular</div>
+          <p>Even simple analysis requires distinguishing between general claims (big points) and supporting examples (little points). Where answers are incoherent, it is often because pupils fail to see &mdash; let alone show &mdash; the difference in status between a general claim and a supporting example. The problem runs in both directions: only examples, or only generalisations.</p>
+        </div>
+        <div class="challenge-card ch5">
+          <div class="ch-num">v</div>
+          <h4>The Language of Discourse</h4>
+          <div class="ch-cy">Iaith y Traethawd</div>
+          <p>Even where pupils have sorted and organised their points, many are prevented from turning them into sustained discourse because they lack connective language: contrastive connectives (however, nevertheless), causal connectives (therefore, as a result), and temporal connectives (eventually, meanwhile). This is a teachable skill &mdash; not a reflection of intelligence.</p>
+        </div>
+        <div style="background:var(--cream-mid);border-radius:9px;padding:1rem;display:flex;align-items:center;justify-content:center;border:2px dashed var(--border)">
+          <div style="text-align:center">
+            <div style="font-size:2rem;margin-bottom:.4rem">&#9888;</div>
+            <p style="font-size:.82rem;color:var(--ink-mid);font-weight:600">Counsell warns: do not confuse the five challenges. A pupil who lists facts indiscriminately has a <em>sorting</em> problem, not just a relevance problem. Precise diagnosis leads to precise teaching. / Mae Counsell yn rhybuddio: peidiwch &acirc; drysu&rsquo;r pum her.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">3</div> Task C &middot; Tasg C &mdash; Diagnosing the Problem</div>
+        <p style="font-size:.88rem;margin-bottom:.8rem">For each challenge, rate how well it is typically addressed in school history teaching based on your placement experience. 1 = rarely addressed; 5 = consistently and explicitly taught. / Ar gyfer pob her, rhowch sgôr:</p>
+
+        <div class="rating-row">
+          <div class="rating-label">Memory and Concentration / Cof a Chanolbwyntio</div>
+          <div class="rating-stars" id="stars-0">
+            <button class="star-btn" onclick="rateStar(0,1)">1</button><button class="star-btn" onclick="rateStar(0,2)">2</button><button class="star-btn" onclick="rateStar(0,3)">3</button><button class="star-btn" onclick="rateStar(0,4)">4</button><button class="star-btn" onclick="rateStar(0,5)">5</button>
+          </div>
+        </div>
+        <div class="rating-row">
+          <div class="rating-label">Relevance and Selection / Perthnasedd a Dewis</div>
+          <div class="rating-stars" id="stars-1">
+            <button class="star-btn" onclick="rateStar(1,1)">1</button><button class="star-btn" onclick="rateStar(1,2)">2</button><button class="star-btn" onclick="rateStar(1,3)">3</button><button class="star-btn" onclick="rateStar(1,4)">4</button><button class="star-btn" onclick="rateStar(1,5)">5</button>
+          </div>
+        </div>
+        <div class="rating-row">
+          <div class="rating-label">Sorting / Didoli</div>
+          <div class="rating-stars" id="stars-2">
+            <button class="star-btn" onclick="rateStar(2,1)">1</button><button class="star-btn" onclick="rateStar(2,2)">2</button><button class="star-btn" onclick="rateStar(2,3)">3</button><button class="star-btn" onclick="rateStar(2,4)">4</button><button class="star-btn" onclick="rateStar(2,5)">5</button>
+          </div>
+        </div>
+        <div class="rating-row">
+          <div class="rating-label">General and Particular / Cyffredinol a Pharticular</div>
+          <div class="rating-stars" id="stars-3">
+            <button class="star-btn" onclick="rateStar(3,1)">1</button><button class="star-btn" onclick="rateStar(3,2)">2</button><button class="star-btn" onclick="rateStar(3,3)">3</button><button class="star-btn" onclick="rateStar(3,4)">4</button><button class="star-btn" onclick="rateStar(3,5)">5</button>
+          </div>
+        </div>
+        <div class="rating-row">
+          <div class="rating-label">Language of Discourse / Iaith y Traethawd</div>
+          <div class="rating-stars" id="stars-4">
+            <button class="star-btn" onclick="rateStar(4,1)">1</button><button class="star-btn" onclick="rateStar(4,2)">2</button><button class="star-btn" onclick="rateStar(4,3)">3</button><button class="star-btn" onclick="rateStar(4,4)">4</button><button class="star-btn" onclick="rateStar(4,5)">5</button>
+          </div>
+        </div>
+        <label class="field-label" style="margin-top:.8rem">Read Figure 3.2 in the pamphlet (Michael&rsquo;s Elizabethan vagabonds answer). Which of the five challenges does his writing illustrate most clearly? What teaching intervention does Counsell suggest? / Darllenwch Ffigur 3.2 &mdash; ateb Michael:</label>
+        <textarea placeholder="Challenge illustrated: … Because… Counsell&rsquo;s intervention: … This addresses the root problem because…"></textarea>
+        <label class="field-label">Why is avoiding extended writing with lower attainers self-defeating? What alternative does Counsell propose? / Pam mae osgoi ysgrifennu estynedig gyda disgyblion o gyrhaeddiad is yn hunanddinistriol?</label>
+        <textarea placeholder="It is self-defeating because… The alternative is…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(1)">&larr; Back / Yn &ocirc;l</button>
+        <button class="btn btn-primary" onclick="nextSection(2)">Next: Approaches &rarr; / Nesaf &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card" id="sec-3">
+    <div class="card-header sage">
+      <div class="icon">&#128736;</div>
+      <h2>Section D: Practical Approaches to Teaching Analytical Writing
+        <em>Adran D: Dulliau Ymarferol ar gyfer Addysgu Ysgrifennu Dadansoddol</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="info-box sage" style="margin-bottom:1.2rem">
+        <h3>&#128196; About Section 4 of the pamphlet &middot; Am Adran 4</h3>
+        <p>Section 4 is the most extensive and practically focused part of the pamphlet. Counsell presents ten strategies under three broad headings. None is intended to be used in fixed sequence; each addresses specific challenges and can be adapted for any age or ability. The acid test for any strategy: <strong>&lsquo;Will this open up pupils&rsquo; thinking, or will it close thinking down?&rsquo;</strong> / Y prawf asid: &ldquo;A fydd hyn yn agor meddwl disgyblion, neu&rsquo;n ei gau i lawr?&rdquo;</p>
+      </div>
+
+      <div class="strategy-group">
+        <div class="strategy-group-header sorting">
+          <div style="font-size:1.5rem">&#128218;</div>
+          <div class="strategy-group-title">Group A &mdash; Sorting Strategies (i&ndash;iv)
+            <em>Grwp A &mdash; Strategaethau Didoli &middot; Challenges ii, iii, iv</em>
+          </div>
+        </div>
+        <div class="strategy-body">
+          <p style="font-size:.88rem;color:var(--ink-mid);margin-bottom:.9rem">Sorting strategies give pupils a concrete, kinaesthetic experience of the decisions that analytical writing requires <em>before</em> they write a single sentence. / Mae strategaethau didoli yn rhoi profiad concrid i ddisgyblion o&rsquo;r penderfyniadau cyn iddynt ysgrifennu un frawddeg.</p>
+          <div class="strategy-item">
+            <h5>(i) Sorting with given criteria <span class="challenge-tag ct2">ii</span><span class="challenge-tag ct3">iii</span></h5>
+            <div class="cy">Didoli &acirc; meini prawf penodol</div>
+            <p>Pupils place points under given headings (e.g. causes/consequences; political/economic/social). Even apparently simple sorting becomes complex when points overlap between categories &mdash; which is the teaching point. The difficulty itself generates the discussion. / Mae disgyblion yn gosod pwyntiau o dan benawdau penodol. Mae&rsquo;r anhawster ei hun yn bwynt addysgu.</p>
+          </div>
+          <div class="strategy-item">
+            <h5>(ii) Sorting using more difficult abstract concepts <span class="challenge-tag ct3">iii</span><span class="challenge-tag ct2">ii</span></h5>
+            <div class="cy">Didoli gan ddefnyddio cysyniadau haniaethol mwy anodd</div>
+            <p>Pupils move from concrete to abstract sorting: from &lsquo;rich and poor&rsquo; to &lsquo;gentry&rsquo; and &lsquo;nobility&rsquo;; from vague groupings to &lsquo;political&rsquo;, &lsquo;economic&rsquo;, &lsquo;social&rsquo;. This develops the conceptual tools needed to sort &mdash; and therefore to write &mdash; with precision. It is not vocabulary instruction for its own sake. / Mae disgyblion yn symud o&rsquo;r concrid i&rsquo;r haniaethol: datblygu&rsquo;r offer cysyniadol sydd eu hangen i ddidoli ac ysgrifennu.</p>
+          </div>
+          <div class="strategy-item">
+            <h5>(iii) Choosing their own sorting criteria <span class="challenge-tag ct3">iii</span></h5>
+            <div class="cy">Dewis eu meini prawf didoli eu hunain</div>
+            <p>Pupils devise their own categories, then compare with given ones. This reveals which criteria work and which do not &mdash; and crucially, that different sets of criteria will cut across each other. For example, sorting causes of the Normans&rsquo; victory by &lsquo;luck&rsquo;, &lsquo;skill&rsquo; and &lsquo;timing&rsquo; produces different groupings from &lsquo;William&rsquo; vs &lsquo;Harold&rsquo;. / Mae disgyblion yn dyfeisio eu categorïau eu hunain, yna&rsquo;n cymharu. Mae gwahanol feini prawf yn croestorri ei gilydd.</p>
+          </div>
+          <div class="strategy-item">
+            <h5>(iv) Making items for sorting <span class="challenge-tag ct2">ii</span><span class="challenge-tag ct3">iii</span></h5>
+            <div class="cy">Gwneud eitemau i&rsquo;w didoli</div>
+            <p>Pupils create the sorting cards themselves &mdash; summarising a set of causes, for example &mdash; before sorting them. A ten-card limit forces succinct, discriminating phrasing. This also develops note-taking as a form of sorting, which Counsell argues should be taught explicitly from KS3. / Mae disgyblion yn creu&rsquo;r cardiau eu hunain cyn eu didoli. Mae terfyn deg cerdyn yn gorfodi phrasio cryno.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="strategy-group">
+        <div class="strategy-group-header arranging">
+          <div style="font-size:1.5rem">&#128200;</div>
+          <div class="strategy-group-title">Group B &mdash; Arranging Strategies (v&ndash;vii)
+            <em>Grwp B &mdash; Strategaethau Trefnu &middot; Challenges iii, iv</em>
+          </div>
+        </div>
+        <div class="strategy-body">
+          <p style="font-size:.88rem;color:var(--ink-mid);margin-bottom:.9rem">Arranging strategies move from sorting to creating relational structures &mdash; showing how ideas link, overlap or are subordinate. These are particularly effective for pupils who can select relevant material but cannot yet see how to organise it into a written argument. / Mae strategaethau trefnu yn symud o ddidoli i greu strwythurau cysylltiol.</p>
+          <div class="strategy-item arr">
+            <h5>(v) Diagrams <span class="challenge-tag ct3">iii</span><span class="challenge-tag ct4">iv</span></h5>
+            <div class="cy">Diagramau</div>
+            <p>Causation diagrams, Venn diagrams, ripple diagrams, and &lsquo;It depends&rsquo; continuum diagrams all help pupils create relational structures before writing. The Venn diagram allows pupils to manage overlapping categories &mdash; and the process of creating it teaches pupils to question whether their original sorting criteria were adequate. / Mae diagramau achosiaeth, Venn, crych a &lsquo;mae&rsquo;n dibynnu&rsquo; i gyd yn helpu disgyblion creu strwythurau cysylltiol cyn ysgrifennu.</p>
+          </div>
+          <div class="strategy-item arr">
+            <h5>(vi) Contrasting writing structures <span class="challenge-tag ct3">iii</span><span class="challenge-tag ct4">iv</span></h5>
+            <div class="cy">Strwythurau ysgrifennu cyferbyniol</div>
+            <p>Pupils are shown at least two different ways of organising the same material (e.g. moving &lsquo;vertically&rsquo; &mdash; covering all changes in one period &mdash; vs &lsquo;horizontally&rsquo; &mdash; explaining the reason for each change as you describe it). Seeing that there are multiple valid structures is itself a significant insight. The comparison becomes a teaching conversation about argument and organisation. / Dangosir o leiaf ddwy ffordd wahanol o drefnu&rsquo;r un deunydd i ddisgyblion.</p>
+          </div>
+          <div class="strategy-item arr">
+            <h5>(vii) &lsquo;Big points&rsquo; and &lsquo;little points&rsquo; <span class="challenge-tag ct4">iv</span></h5>
+            <div class="cy">Pwyntiau mawr a phwyntiau bach</div>
+            <p>Lower-attaining pupils are given the &lsquo;big points&rsquo; (general claims) first, then search for &lsquo;little points&rsquo; (supporting examples). More confident pupils find their own pattern. This directly addresses challenge (iv) by making the general/particular distinction a concrete, physical activity before it becomes a writing expectation. / Rhoddir y &lsquo;pwyntiau mawr&rsquo; (honiadau cyffredinol) i ddisgyblion o gyrhaeddiad is yn gyntaf, yna maent yn chwilio am &lsquo;bwyntiau bach&rsquo;.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="strategy-group">
+        <div class="strategy-group-header language">
+          <div style="font-size:1.5rem">&#128172;</div>
+          <div class="strategy-group-title">Group C &mdash; Language of Discourse (viii&ndash;x)
+            <em>Grwp C &mdash; Iaith y Traethawd &middot; Challenge v</em>
+          </div>
+        </div>
+        <div class="strategy-body">
+          <p style="font-size:.88rem;color:var(--ink-mid);margin-bottom:.9rem">These strategies address challenge (v) &mdash; the language of analytical prose. They recognise that pupils may have excellent ideas that they cannot yet turn into sustained argument because they lack linguistic tools. / Mae&rsquo;r strategaethau hyn yn mynd i&rsquo;r afael &acirc;&rsquo;r iaith ar gyfer rhyddiaith ddadansoddol.</p>
+          <div class="strategy-item lang">
+            <h5>(viii) &lsquo;Clever starters&rsquo; &mdash; sentence stems and connective menus <span class="challenge-tag ct5">v</span></h5>
+            <div class="cy">Dechreuadau clyfar &mdash; boncyffion brawddegau a rhestrau cysyllteiriau</div>
+            <p>A permanent display of connectives and sentence-opening stems from which pupils can choose, depending on the type of historical problem. These are <strong>not crutches</strong> &mdash; they free pupils to concentrate on higher-order thinking (the historical argument) by removing the lower-order burden (how to start). As Counsell says: &lsquo;Sometimes, we need to do the lower-order thinking for pupils so that they are freed to do the higher-order thinking for themselves.&rsquo; / Arddangosiad parhaol o gysyllteiriau a dechreuadau brawddeg. Nid bagiau cymorth yw&rsquo;r rhain.</p>
+          </div>
+          <div style="background:var(--teal-pale);border-radius:8px;padding:.9rem;margin-bottom:.7rem;border:1px solid var(--teal-light)">
+            <p style="font-size:.82rem;font-weight:700;color:var(--teal);margin-bottom:.5rem">Counsell&rsquo;s &lsquo;Clever Starters&rsquo; examples / Enghreifftiau o &lsquo;Dechreuadau Clyfar&rsquo; Counsell:</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;font-size:.82rem;color:var(--ink)">
+              <div>We cannot be sure about &hellip; because &hellip;</div><div>I don&rsquo;t know if &hellip; because &hellip;</div>
+              <div>This source tells me that &hellip;</div><div>This source suggests that &hellip;</div>
+              <div>On the one hand &hellip;</div><div>On the other hand &hellip;</div>
+              <div>A source which backs me up on this is &hellip;</div><div>However, &hellip; / Nevertheless, &hellip;</div>
+            </div>
+          </div>
+          <div class="strategy-item lang">
+            <h5>(ix) Writing frames <span class="challenge-tag ct4">iv</span><span class="challenge-tag ct5">v</span></h5>
+            <div class="cy">Fframweithiau ysgrifennu</div>
+            <p>Structured templates that model the genre and language features of a particular type of analytical writing. Counsell stresses (following Wray and Lewis) that frames must <strong>never become fixed</strong> &mdash; pupils must be weaned off them. Used judiciously, a writing frame isolates a key teaching point about structure and models it for the pupil who might not otherwise succeed. / Templedi strwythuredig sy&rsquo;n modelu nodweddion genre. Rhaid i fframweithiau byth fod yn sefydlog &mdash; mae&rsquo;n rhaid cael gwared ar y cymorth yn raddol.</p>
+          </div>
+          <div class="strategy-item lang">
+            <h5>(x) Modelling style <span class="challenge-tag ct5">v</span></h5>
+            <div class="cy">Modelu arddull</div>
+            <p>Pupils &mdash; especially able ones &mdash; need exposure to increasingly demanding and varied examples of historical writing: academic, journalistic, scholarly. Short extracts from historians&rsquo; articles can be highly motivating at KS3. &lsquo;Whole school&rsquo; language policies should consider explicitly how explanatory genres in history and science converge or differ. This cannot be left to chance. / Mae angen i ddisgyblion abl gael eu hamlygu i enghreifftiau mwy heriol o ysgrifennu hanesyddol.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">4</div> Task D &middot; Tasg D &mdash; Design a Sorting Activity</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">Design a card-sorting activity for a topic you know well. / Cynlluniwch weithgaredd didoli cardiau ar gyfer pwnc rydych yn ei adnabod yn dda.</p>
+        <label class="field-label">Historical question for the activity / Y cwestiwn hanesyddol:</label>
+        <textarea style="min-height:42px" placeholder="e.g. &lsquo;Why did the Rebecca Riots occur?&rsquo; / &lsquo;Pam y digwyddodd Terfysgoedd Beca?&rsquo;"></textarea>
+        <label class="field-label">Describe your cards &mdash; include at least one &lsquo;rogue&rsquo; card that is topic-relevant but not question-relevant. / Disgrifiwch eich cardiau &mdash; gan gynnwys o leiaf un cerdyn &lsquo;twyllodrus&rsquo;:</label>
+        <textarea placeholder="Cards (8-12): …&#10;Rogue card: … (it is about this topic but not relevant to this question because…)"></textarea>
+        <label class="field-label">Annotate which of the ten strategies and five challenges each element addresses. / Anodwch pa strategaethau a heriau y mae pob elfen yn mynd i&rsquo;r afael &acirc; nhw:</label>
+        <textarea placeholder="Strategy used: … Challenges addressed: …&#10;The rogue card addresses challenge … because…"></textarea>
+        <label class="field-label">Write the pathway from sorting to writing: what instructions + writing frame or sentence starters? / Ysgrifennwch y llwybr o ddidoli i ysgrifennu:</label>
+        <textarea placeholder="Instructions: …&#10;Writing frame / sentence starters provided: … because…"></textarea>
+        <label class="field-label">Apply Counsell&rsquo;s acid test to your design: will this open up or close down thinking? / Cymhwyswch brawf asid Counsell i&rsquo;ch cynllun:</label>
+        <textarea placeholder="Element at risk of closing thinking: … How I would prevent this: …"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(2)">&larr; Back / Yn &ocirc;l</button>
+        <button class="btn btn-primary" onclick="nextSection(3)">Next: Timing &amp; Progression &rarr; / Nesaf &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card" id="sec-4">
+    <div class="card-header violet">
+      <div class="icon">&#128197;</div>
+      <h2>Section E: Timing, Scale and Progression
+        <em>Adran E: Amseriad, Maint a Dilyniant</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">&#127468;&#127463; English</div>
+          <p>Section 5 addresses a practical question: how do you fit extended analytical writing into a crowded scheme of work? Counsell&rsquo;s answer is that this question rests on a misunderstanding of what analytical writing does. It is not a large undertaking bolted onto the end of a topic &mdash; it can be done at many different scales, and time spent building toward it is an <strong>investment</strong>, not a cost.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Cymraeg</div>
+          <p>Mae Adran 5 yn mynd i&rsquo;r afael &acirc; chwestiwn ymarferol: sut mae ffitio ysgrifennu dadansoddol estynedig i gynllun gwaith gorlawn? Ateb Counsell yw bod y cwestiwn hwn yn seiliedig ar gamddealltwriaeth. Nid ymgymeriad mawr wedi&rsquo;i atodi ar ddiwedd pwnc yw ysgrifennu dadansoddol &mdash; mae&rsquo;n <strong>fuddsoddiad</strong>, nid cost.</p>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.9rem;margin-bottom:1.2rem">
+        <div style="background:var(--rust-pale);border-radius:8px;padding:.9rem;border-top:3px solid var(--rust)">
+          <div style="font-weight:800;color:var(--rust);font-size:.8rem;margin-bottom:.4rem">BEFORE WRITING &middot; CYN YSGRIFENNU</div>
+          <p style="font-size:.83rem;color:var(--ink);line-height:1.55">Role play, film, imaginative activities, structured discussion &mdash; all effective forms of preparation. Not distractions from writing but <strong>essential prerequisites</strong>. Where pupils are familiar with material and emotionally engaged, they have a stake in the outcome and write with flair. / Chwarae r&ocirc;l, ffilm, gweithgareddau dychmygus &mdash; nid testynau gwyriad ond rhagofynion hanfodol.</p>
+        </div>
+        <div style="background:var(--violet-pale);border-radius:8px;padding:.9rem;border-top:3px solid var(--violet)">
+          <div style="font-weight:800;color:var(--violet);font-size:.8rem;margin-bottom:.4rem">DURING WRITING &middot; YN YSTOD YSGRIFENNU</div>
+          <p style="font-size:.83rem;color:var(--ink);line-height:1.55">Manage the tension between structure and independence. <strong>&lsquo;Minimum success assured&rsquo;</strong> + <strong>&lsquo;considerable learning risks&rsquo;</strong>. Crucially: sometimes give higher attainers <em>more</em> structure (not less) to model a more demanding form of discourse. Different levels of scaffold for different groups. / Weithiau rhowch <em>fwy</em> o strwythur i ddisgyblion o gyrhaeddiad uwch i fodelu ffurf fwy heriol.</p>
+        </div>
+        <div style="background:var(--sage-pale);border-radius:8px;padding:.9rem;border-top:3px solid var(--sage)">
+          <div style="font-weight:800;color:var(--sage);font-size:.8rem;margin-bottom:.4rem">AFTER WRITING &middot; AR &Ocirc;L YSGRIFENNU</div>
+          <p style="font-size:.83rem;color:var(--ink);line-height:1.55">Use writing as a teaching resource in its own right: colour-code different parts of an argument; cut paragraphs and reassemble; find and underline &lsquo;big points&rsquo;. The most significant audience for pupil writing should be <strong>the pupil themselves</strong>. / Defnyddio ysgrifennu fel adnodd addysgu ynddo&rsquo;i hun: cod-lliwio dadl; torri paragraffau; tanlinellu pwyntiau mawr.</p>
+        </div>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">&ldquo;If a department chooses to spend three weeks on the causes of one event, it is an investment that will save time later: pupils will transfer skills to subsequent work, and they will acquire secure knowledge from so much engagement with a set of issues.&rdquo;</p>
+        <p class="quote-attr">&mdash; Counsell (1997), p. 10 &mdash; the investment argument / y ddadl fuddsoddiad</p>
+      </div>
+
+      <div class="info-box violet">
+        <h3>&#128260; Principles for Progression Across a Key Stage &middot; Egwyddorion Dilyniant</h3>
+        <ul>
+          <li><strong>Repetition of core techniques</strong> &mdash; so pupils become fluent and can eventually choose their own / Ailadrodd technegau craidd &mdash; fel y daw disgyblion yn rhugl</li>
+          <li><strong>Phased introduction of new, more challenging forms</strong> of sorting and organisation / Cyflwyniad cyfnodol o ffurfiau newydd fwy heriol</li>
+          <li><strong>Explicit opportunities to analyse their own writing</strong> &mdash; and each other&rsquo;s &mdash; discussing structural and stylistic features / Cyfleoedd penodol i ddadansoddi eu hysgrifennu eu hunain</li>
+          <li><strong>Careful balance between structure and independence</strong> at every stage &mdash; not a simple withdrawal of support / Cydbwysedd gofalus rhwng strwythur ac annibyniaeth</li>
+          <li>Simply doing a lot of extended writing does not in itself produce progress. <strong>Systematic, reflective, explicit teaching does.</strong> / Nid yw gwneud llawer o ysgrifennu yn cynhyrchu cynnydd. Mae addysgu systematig, myfyriol a phriodol yn gwneud hynny.</li>
+        </ul>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">5</div> Task E &middot; Tasg E &mdash; Plan a Writing Sequence</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">Plan a short scheme of work (3&ndash;5 lessons) building systematically toward a piece of extended analytical writing. / Cynlluniwch gynllun gwaith byr (3&ndash;5 gwers) sy&rsquo;n adeiladu&rsquo;n systematig tuag at ysgrifennu dadansoddol estynedig.</p>
+        <label class="field-label">Your historical enquiry question / Y cwestiwn ymholiad hanesyddol:</label>
+        <textarea style="min-height:42px" placeholder="e.g. &lsquo;How significant was the impact of the First World War on Wales?&rsquo;"></textarea>
+        <label class="field-label">Why is this question genuinely analytical rather than descriptive? (4&ndash;6 sentences) / Pam mae&rsquo;r cwestiwn hwn yn wirioneddol ddadansoddol?</label>
+        <textarea placeholder="It is analytical because…"></textarea>
+        <label class="field-label">Lesson sequence (3&ndash;5 lessons): main activity, Counsell strategy drawn on, challenge addressed. / Dilyniant gwersi:</label>
+        <textarea style="min-height:120px" placeholder="Lesson 1: Activity… Strategy… Challenge…&#10;Lesson 2: Activity… Strategy… Challenge…&#10;Lesson 3: Activity… Strategy… Challenge…&#10;Writing lesson: Level of structure for lower / middle / higher attainers…"></textarea>
+        <label class="field-label">One post-writing activity: which of Counsell&rsquo;s suggestions will you use and why? / Un gweithgaredd &ocirc;l-ysgrifennu:</label>
+        <textarea placeholder="I will use… because… Pupils will learn about their writing that they cannot learn from my feedback alone: …"></textarea>
+        <label class="field-label">Reflect on Counsell&rsquo;s investment argument honestly. Is there tension with curriculum pressures in your placement school? / Myfyriwch ar ddadl fuddsoddiad Counsell yn onest:</label>
+        <textarea placeholder="There is tension because… Experienced teachers navigate this by…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(3)">&larr; Back / Yn &ocirc;l</button>
+        <button class="btn btn-primary" onclick="nextSection(4)">Next: Principles &amp; Reflection &rarr; / Nesaf &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-card" id="sec-5">
+    <div class="card-header slate">
+      <div class="icon">&#129518;</div>
+      <h2>Section F: Key Principles &amp; Final Reflection
+        <em>Adran F: Egwyddorion Allweddol ac Adlewyrchiad Terfynol</em>
+      </h2>
+    </div>
+    <div class="card-body">
+      <div class="info-box gold">
+        <h3>&#128161; Counsell&rsquo;s Pamphlet Resists a Checklist &middot; Mae Pamffled Counsell yn Gwrthsefyll Rhestr Wirio</h3>
+        <p>Its deepest argument is about a <strong>way of thinking about teaching</strong>, not a set of techniques to apply. These eight principles summarise the spirit of her argument and should inform every writing task you design. / Mae ei ddadl ddyfnaf am ffordd o feddwl am addysgu, nid set o dechnegau i&rsquo;w cymhwyso.</p>
+      </div>
+
+      <div class="principles-grid">
+        <div class="principle-card">
+          <span class="principle-icon">&#127919;</span>
+          <h4>The Acid Test &middot; Y Prawf Asid</h4>
+          <p>Before any strategy: &ldquo;Will this open up pupils&rsquo; thinking, or will it close thinking down?&rdquo; Mechanistic tasks may produce writing but not analytical thinking. Open-ended tasks without structure leave pupils unable to start. / Cyn unrhyw strategaeth: &ldquo;A fydd hyn yn agor meddwl disgyblion, neu&rsquo;n ei gau i lawr?&rdquo;</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-icon">&#128300;</span>
+          <h4>Diagnosis Before Prescription &middot; Diagnosis cyn Presgripsiwn</h4>
+          <p>Knowing a pupil &ldquo;can&rsquo;t write analytically&rdquo; is not useful. Knowing they have a sorting problem, or a language problem, or a general/particular problem, immediately suggests the teaching response. Precise diagnosis = precise teaching. / Mae gwybod bod gan ddisgybl broblem ddidoli, neu broblem iaith, yn awgrymu&rsquo;r ymateb addysgu ar unwaith.</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-icon">&#127959;</span>
+          <h4>Structure Enables &middot; Mae Strwythur yn Galluogi</h4>
+          <p>Writing frames and sentence starters are not crutches. Used well, they free pupils to concentrate on higher-order thinking by removing lower-order burdens. The goal is always to wean pupils off support &mdash; but prematurely removing it prevents progress. / Mae fframweithiau ysgrifennu yn rhyddhau disgyblion i ganolbwyntio ar feddwl lefel uwch.</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-icon">&#128260;</span>
+          <h4>Writing and Thinking are Inseparable &middot; Anwahanadwy</h4>
+          <p>Analytical writing tasks do not just assess historical understanding &mdash; they develop it. A department that treats writing only as an assessment outcome misses the teaching power that writing tasks contain. / Nid yw tasgau ysgrifennu dadansoddol yn asesu dealltwriaeth yn unig &mdash; maent yn ei datblygu.</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-icon">&#128200;</span>
+          <h4>Progression Requires Planning &middot; Cynllunio Bwriadol</h4>
+          <p>High-quality analytical writing does not happen by magic or from spending lots of time writing essays. It requires systematic repetition of core techniques; phased introduction of new forms; explicit teaching of selection, sorting, and the language of discourse. / Nid yw ysgrifennu dadansoddol o ansawdd uchel yn digwydd trwy hud.</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-icon">&#9878;</span>
+          <h4>Avoid Both Extremes &middot; Osgowch y Ddau Eithaf</h4>
+          <p>Experienced teachers avoid two failures: mechanistic/formulaic work on one hand, and activities so open-ended that pupils cannot find structure on the other. Both produce the same result: pupils who cannot write analytically. The professional challenge is holding the middle ground. / Mae&rsquo;r ddau eithaf yn cynhyrchu&rsquo;r un canlyniad.</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-icon">&#128176;</span>
+          <h4>Extended Writing is an Investment &middot; Buddsoddiad</h4>
+          <p>Time spent building toward a piece of extended writing generates secure knowledge through deep engagement; produces transferable skills; and builds the meta-cognitive capacity pupils need to become genuinely independent historical thinkers. / Mae amser a dreuliwyd yn adeiladu tuag at ysgrifennu estynedig yn cynhyrchu gwybodaeth sicr ac yn adeiladu gallu meta-wybyddol.</p>
+        </div>
+        <div class="principle-card">
+          <span class="principle-icon">&#128101;</span>
+          <h4>All Pupils Can &middot; Gall Pob Disgybl</h4>
+          <p>Counsell&rsquo;s central and most provocative claim. Lower attainers are not incapable of analytical writing &mdash; they are under-taught. The vicious circle must be broken by deliberate, systematic, explicit teaching of the specific skills involved. / Nid yw disgyblion o gyrhaeddiad is yn methu ysgrifennu dadansoddol. Nid ydynt wedi&rsquo;u dysgu&rsquo;n ddigonol.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin:1.4rem 0 .8rem;color:var(--ink)">Knowledge Check Quiz &middot; Cwis Gwiriad Gwybodaeth</h3>
+<div class="quiz-question" id="q1"><p class="q-text"><span class="q-num">1</span>What does Counsell mean when she calls analytical writing a &lsquo;pedagogical tool&rsquo;? / Beth mae Counsell yn ei olygu pan fydd yn galw ysgrifennu dadansoddol yn &lsquo;offeryn addysgegol&rsquo;?</p><div class="options"><button class="option-btn" onclick="checkQ('q1',this,false)">Writing is only valuable as a form of assessment that can be marked and graded by the teacher / Mae ysgrifennu yn werthfawr fel ffurf o asesiad yn unig</button><button class="option-btn" onclick="checkQ('q1',this,true)">Writing tasks not only assess historical understanding but actively develop it &mdash; requiring pupils to isolate, label and link issues in ways that increase higher-order thinking / Mae tasgau ysgrifennu yn datblygu dealltwriaeth hanesyddol, nid dim ond ei hasesu</button><button class="option-btn" onclick="checkQ('q1',this,false)">Analytical writing should replace all other forms of communication in the history classroom / Dylai ysgrifennu dadansoddol ddisodli pob ffurf arall o gyfathrebu</button><button class="option-btn" onclick="checkQ('q1',this,false)">The purpose of writing in history is primarily to develop literacy skills across the curriculum / Prif bwrpas ysgrifennu mewn hanes yw datblygu sgiliau llythrennedd</button></div><div class="feedback" id="q1-fb"></div></div><div class="quiz-question" id="q2"><p class="q-text"><span class="q-num">2</span>Which of the following BEST illustrates the distinction between &lsquo;topic-relevance&rsquo; and &lsquo;question-relevance&rsquo;? / Pa un o&rsquo;r canlynol sy&rsquo;n darlunio orau y gwahaniaeth rhwng &lsquo;perthnasedd-pwnc&rsquo; a &lsquo;pherthnasedd-cwestiwn&rsquo;?</p><div class="options"><button class="option-btn" onclick="checkQ('q2',this,false)">A pupil who copies information directly from a textbook without reading it / Disgybl sy&rsquo;n copïo gwybodaeth yn uniongyrchol o wersylyfr</button><button class="option-btn" onclick="checkQ('q2',this,true)">A pupil who includes accurate information about the causes of the Great Fire of London in an essay about why it spread so far, but who includes the fact that &lsquo;someone started a fire in Pudding Lane&rsquo; when the question asks about why it spread, not how it started / Disgybl sy&rsquo;n cynnwys ffeithiau cywir am achosion y T&acirc;n Mawr ond yn cynnwys ffaith nad yw&rsquo;n berthnasol i&rsquo;r cwestiwn penodol</button><button class="option-btn" onclick="checkQ('q2',this,false)">A pupil who writes very long answers but uses poor vocabulary / Disgybl sy&rsquo;n ysgrifennu atebion hir iawn ond yn defnyddio eirfa wael</button><button class="option-btn" onclick="checkQ('q2',this,false)">A pupil who misunderstands the historical period being studied / Disgybl sy&rsquo;n camddeall y cyfnod hanesyddol</button></div><div class="feedback" id="q2-fb"></div></div><div class="quiz-question" id="q3"><p class="q-text"><span class="q-num">3</span>Why does Counsell argue that lower-attaining pupils should NOT be denied access to extended analytical writing tasks? / Pam mae Counsell yn dadlau na ddylid gwrthod mynediad i ddisgyblion o gyrhaeddiad is i dasgau ysgrifennu dadansoddol estynedig?</p><div class="options"><button class="option-btn" onclick="checkQ('q3',this,false)">Because extended writing tasks are simpler than they appear and most pupils can complete them without difficulty / Oherwydd bod tasgau ysgrifennu estynedig yn symlach nag y maent yn ymddangos</button><button class="option-btn" onclick="checkQ('q3',this,true)">Because avoiding extended writing with lower attainers creates a vicious circle: they never develop the very skills they most need, and the assumption that they cannot write analytically becomes self-fulfilling / Oherwydd mae osgoi ysgrifennu estynedig gyda disgyblion o gyrhaeddiad is yn creu cylch dieflig</button><button class="option-btn" onclick="checkQ('q3',this,false)">Because Ofsted inspectors will downgrade departments that do not include extended writing in every lesson / Oherwydd bydd arolygwyr Estyn yn diraddio adrannau</button><button class="option-btn" onclick="checkQ('q3',this,false)">Because extended writing is the only way to assess historical understanding at GCSE level / Oherwydd mai ysgrifennu estynedig yw&rsquo;r unig ffordd o asesu</button></div><div class="feedback" id="q3-fb"></div></div><div class="quiz-question" id="q4"><p class="q-text"><span class="q-num">4</span>What is Counsell&rsquo;s &lsquo;acid test&rsquo; for evaluating any teaching strategy? / Beth yw &lsquo;prawf asid&rsquo; Counsell ar gyfer gwerthuso unrhyw strategaeth addysgu?</p><div class="options"><button class="option-btn" onclick="checkQ('q4',this,false)">Will this strategy produce a piece of writing that can be marked against a national standard? / A fydd y strategaeth hon yn cynhyrchu darn o ysgrifennu y gellir ei farcio yn erbyn safon genedlaethol?</button><button class="option-btn" onclick="checkQ('q4',this,true)">Will this strategy open up pupils&rsquo; thinking, or will it close thinking down? / A fydd y strategaeth hon yn agor meddwl disgyblion, neu&rsquo;n ei gau i lawr?</button><button class="option-btn" onclick="checkQ('q4',this,false)">Will this strategy allow the teacher to cover all the required content within the scheme of work? / A fydd y strategaeth hon yn caniatáu i&rsquo;r athro gwmpasu&rsquo;r holl gynnwys?</button><button class="option-btn" onclick="checkQ('q4',this,false)">Will this strategy help pupils to memorise the key facts and dates they will need for the examination? / A fydd y strategaeth hon yn helpu disgyblion i gofio&rsquo;r ffeithiau a&rsquo;r dyddiadau allweddol?</button></div><div class="feedback" id="q4-fb"></div></div><div class="quiz-question" id="q5"><p class="q-text"><span class="q-num">5</span>According to Counsell, why might a history teacher give a higher-attaining pupil MORE structure rather than less? / Yn &ocirc;l Counsell, pam gallai athro hanes roi MWY o strwythur i ddisgybl o gyrhaeddiad uwch yn hytrach na llai?</p><div class="options"><button class="option-btn" onclick="checkQ('q5',this,false)">Because higher-attaining pupils are more likely to resist structure and need it imposed upon them / Oherwydd bod disgyblion o gyrhaeddiad uwch yn fwy tebygol o wrthsefyll strwythur</button><button class="option-btn" onclick="checkQ('q5',this,false)">Because the goal is always to ensure all pupils produce identical pieces of writing / Oherwydd mai&rsquo;r nod yw sicrhau bod pob disgybl yn cynhyrchu darnau ysgrifennu unfath</button><button class="option-btn" onclick="checkQ('q5',this,true)">To model a more demanding or sophisticated form of discourse, or a different way of conceptualising issues &mdash; structure is not only a support for struggling pupils but a tool for stretching more able ones / I fodelu ffurf fwy heriol neu soffistigedig o drafodaeth &mdash; nid cymorth i ddisgyblion sy&rsquo;n ei chael hi&rsquo;n anodd yn unig yw strwythur</button><button class="option-btn" onclick="checkQ('q5',this,false)">Because GCSE examination mark schemes require all pupils to follow the same structural template / Oherwydd bod cynlluniau marcio TGAU yn ei gwneud yn ofynnol i bob disgybl ddilyn yr un templed</button></div><div class="feedback" id="q5-fb"></div></div>
+      <div class="task-box" style="margin-top:1.4rem">
+        <div class="task-label"><div class="task-num">6</div> Task F &middot; Tasg F &mdash; Final Reflection (350&ndash;450 words)</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">Write a sustained, analytical response to Counsell&rsquo;s central claim &mdash; itself using the principles she describes: clear opening position, specific evidence, acknowledgement of counter-argument, and a developed conclusion that goes beyond restating your opening. / Ysgrifennwch ymateb cynaliadwy, dadansoddol i brif honiad Counsell &mdash; gan ddefnyddio&rsquo;r egwyddorion y mae hi&rsquo;n eu disgrifio.</p>
+        <div style="background:var(--blue-pale);border-radius:7px;padding:.8rem 1rem;margin-bottom:.8rem;font-size:.84rem;color:var(--blue);border:1px solid var(--blue-light)">
+          <strong>Claim to respond to:</strong> &ldquo;Pupils of almost all abilities can write critically and analytically, but we must teach them.&rdquo; Your response should: (i) state your position clearly at the opening; (ii) use at least two pieces of specific evidence from the pamphlet; (iii) draw on at least one observation from your placement; (iv) acknowledge a counter-argument; (v) reach a conclusion that does more than restate your opening. / <em>Honiad i ymateb iddo: &ldquo;Gall disgyblion o bron pob gallu ysgrifennu&rsquo;n feirniadol a dadansoddol, ond mae&rsquo;n rhaid i ni eu dysgu nhw.&rdquo;</em>
+        </div>
+        <textarea style="min-height:220px" placeholder="Your 350-450 word response / Eich ymateb 350-450 gair…"></textarea>
+        <label class="field-label">Review your own writing against Counsell&rsquo;s five challenges. Which did you find hardest? / Adolygwch eich ysgrifennu yn erbyn pum her Counsell:</label>
+        <textarea placeholder="The hardest challenge for me was … because … This tells me about my own development as an analytical writer: …"></textarea>
+        <label class="field-label">Name one specific change you will make to your planning or teaching as a direct result of this pamphlet. Be specific: strategy, topic, year group, challenge. / Enwch un newid penodol i&rsquo;ch cynllunio neu addysgu o ganlyniad uniongyrchol i&rsquo;r pamffled hwn:</label>
+        <textarea placeholder="I will use [strategy] when teaching [topic] to [year group] because it addresses challenge [i/ii/iii/iv/v] which I observed in my placement when… / Byddaf yn defnyddio [strategaeth] wrth addysgu [pwnc] i [grwp blwyddyn] oherwydd mae&rsquo;n mynd i&rsquo;r afael &acirc; her…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(4)">&larr; Back / Yn &ocirc;l</button>
+        <button class="btn btn-amber" onclick="complete()">&#127891; Complete Session &middot; Cwblhau&rsquo;r Sesiwn</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="completion-card" id="completion">
+    <span class="badge-icon">&#9997;</span>
+    <h2>Session Complete! &middot; Sesiwn Wedi&rsquo;i Chwblhau!</h2>
+    <div class="score-badge">Quiz Score &middot; Sgôr Cwis: <span id="final-score">0</span> / 5</div>
+    <p><strong>Well done!</strong> You have worked through all six sections of the Counsell Analytical and Discursive Writing session &mdash; from the opening provocation through Key Elements, the five challenges, ten practical strategies, timing and progression, to the eight key principles and your own final reflection.</p>
+    <p><strong>Da iawn!</strong> Rydych chi wedi gweithio drwy&rsquo;r chwe adran &mdash; o&rsquo;r her agoriadol drwy&rsquo;r Elfennau Allweddol, y pum her, deg strategaeth ymarferol, amseriad a dilyniant, i&rsquo;r wyth egwyddor allweddol a&rsquo;ch adlewyrchiad terfynol eich hun.</p>
+    <p style="font-style:italic;opacity:.78">&ldquo;Pupils of almost all abilities can write critically and analytically, but we must teach them.&rdquo; &mdash; Christine Counsell (1997)</p>
+    <div style="margin-top:1rem"><button class="btn btn-secondary" onclick="location.reload()" style="background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.33);color:#fff;font-size:.83rem;">&#8634; Start Again &middot; Dechrau Eto</button></div>
+    <div class="cert-trigger-box">
+      <p>&#127885; <strong>Generate your personalised completion certificate &middot; Creu eich tystysgrif gwblhau bersonol</strong><br>Enter your full name to generate a printable certificate. / Rhowch eich enw llawn.</p>
+      <div class="cert-name-row">
+        <input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name &middot; Eich enw llawn&hellip;" maxlength="80">
+        <button class="btn-cert" onclick="generateCertificate()">&#127891; Generate Certificate &middot; Creu Tystysgrif</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- CERTIFICATE OVERLAY -->
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:1.9rem;">&#9997;</div>
+            <div class="cert-inst-name">PGCE History &middot; Hanes TGCH
+              <span class="cert-inst-cy">Curriculum for Wales / Cwricwlwm i Gymru</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that &middot; Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher &middot; yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.45rem 0 .25rem"><div class="cert-name" id="certDisplayName">Your Name</div></div>
+          <div class="cert-score-pill">Quiz Score &middot; Sgôr: <span id="certScoreDisplay">0</span> / 5</div>
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the PGCE History session on</div>
+          <div class="cert-course">Analytical and Discursive Writing &mdash; Christine Counsell (1997)
+            <span class="cert-course-cy">Ysgrifennu Dadansoddol a Thraethodol &mdash; Canllaw AGA Hanes</span>
+          </div>
+          <div class="cert-competencies">Demonstrating understanding of: Counsell&rsquo;s central argument that analytical writing is a teachable skill for almost all abilities; the role of KE5 as a pedagogical tool rather than a bolt-on; the five challenges of analytical writing (memory, relevance, sorting, general/particular, language of discourse); all ten practical strategies across sorting, arranging and language of discourse; the structure-independence tension and the investment argument; and the eight key principles including the acid test and diagnosis before prescription.</div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block"><div class="cert-sig-line"></div><div class="cert-sig-label">Programme Director &middot; Cyfarwyddwr y Rhaglen</div></div>
+            <div><div class="cert-seal"><span class="cert-seal-icon">&#128218;</span>PGCE<br>CYMRU</div></div>
+            <div class="cert-sig-block"><div class="cert-date-val" id="certDateDisplay"></div><div class="cert-date-label">Date Completed &middot; Dyddiad Cwblhau</div></div>
+          </div>
+          <div class="cert-stripe" style="margin:1.1rem -2rem -1.5rem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">&#128424; Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">&#10005; Close &middot; Cau</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var score=0;var answeredQs=new Set();var completedSections=new Set();
+
+// Star ratings
+function rateStar(challenge,val){
+  var stars=document.querySelectorAll("#stars-"+challenge+" .star-btn");
+  stars.forEach(function(btn,i){btn.classList.toggle("lit",i<val);});
+}
+
+// Quiz feedbacks &mdash; all double-quoted, no Welsh apostrophes in JS strings
+var feedbacks={
+  q1:"Correct! Counsell argues that analytical writing tasks develop understanding, not just record it. By requiring pupils to isolate, label and link issues, writing tasks push pupils into higher-order thinking. This is why writing and thinking are mutually reinforcing.",
+  q2:"Correct! This is exactly the example Counsell uses in Appendix 1. The Pudding Lane card is topic-relevant (about the Great Fire) but not question-relevant (it addresses why the fire started, not why it spread). This distinction is central to all her sorting strategies.",
+  q3:"Correct! Counsell identifies a vicious circle: extended writing is avoided because lower attainers appear unable to do it; because they never practise with explicit teaching, they never develop the skills; the assumption that they cannot write analytically becomes self-fulfilling. The solution is systematic, explicit teaching.",
+  q4:"Correct! The acid test cuts through both common failure modes: mechanistic tasks may appear to produce writing but do not develop analytical thinking; open-ended tasks without structure leave pupils unable to start. The test asks teachers to focus on whether the strategy genuinely promotes thinking.",
+  q5:"Correct! Counsell makes this counter-intuitive point deliberately. Teachers might give higher attainers more structure to model a different kind of discourse or a different way of conceptualising issues. Progression is not simply the withdrawal of support - it involves introducing new, more demanding forms of organisation."
+};
+
+function checkQ(qId,btn,isCorrect){
+  if(answeredQs.has(qId))return;answeredQs.add(qId);
+  document.getElementById(qId).querySelectorAll(".option-btn").forEach(function(b){b.disabled=true;});
+  var fb=document.getElementById(qId+"-fb");
+  if(isCorrect){btn.classList.add("correct");fb.className="feedback correct show";fb.innerHTML="&#10003; "+feedbacks[qId];score++;}
+  else{btn.classList.add("wrong");fb.className="feedback wrong show";fb.innerHTML="&#10007; Not quite &mdash; "+feedbacks[qId];}
+}
+
+function goTo(idx){
+  document.querySelectorAll(".section-card").forEach(function(el,i){el.classList.toggle("active",i===idx);});
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("active",i===idx);});
+  var pct=Math.round(((idx+1)/6)*100);
+  document.getElementById("progress-bar").style.width=pct+"%";
+  document.getElementById("progress-label").textContent="Section "+(idx+1)+" of 6 · Adran "+(idx+1)+" o 6";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function nextSection(idx){
+  completedSections.add(idx);
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("done",completedSections.has(i));});
+  goTo(idx+1);
+}
+
+function complete(){
+  completedSections.add(5);
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("done",completedSections.has(i));});
+  document.querySelectorAll(".section-card").forEach(function(el){el.classList.remove("active");});
+  document.getElementById("completion").classList.add("show");
+  document.getElementById("final-score").textContent=score;
+  document.getElementById("progress-bar").style.width="100%";
+  document.getElementById("progress-label").textContent="Complete! · Wedi Cwblhau!";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function generateCertificate(){
+  var name=document.getElementById("certNameInput").value.trim();
+  if(!name){document.getElementById("certNameInput").focus();document.getElementById("certNameInput").style.borderColor="#FCD34D";setTimeout(function(){document.getElementById("certNameInput").style.borderColor="";},1500);return;}
+  document.getElementById("certDisplayName").textContent=name;
+  document.getElementById("certScoreDisplay").textContent=score;
+  var now=new Date();
+  var months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  document.getElementById("certDateDisplay").textContent=now.getDate()+" "+months[now.getMonth()]+" "+now.getFullYear();
+  document.getElementById("certOverlay").classList.add("show");
+  document.body.style.overflow="hidden";
+}
+function closeCertificate(){document.getElementById("certOverlay").classList.remove("show");document.body.style.overflow="";}
+function printCertificate(){
+  var cert=document.getElementById("certificateEl");
+  var w=window.open("","_blank","width=900,height=700");
+  var html="<html><head><title>Certificate</title>";
+  document.querySelectorAll("style,link[rel=stylesheet]").forEach(function(s){html+=s.outerHTML;});
+  html+="</head><body style='margin:0;padding:20px;background:white;'>";
+  html+=cert.outerHTML;
+  html+="</body></html>";
+  w.document.write(html);
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener("click",function(e){if(e.target.id==="certOverlay")closeCertificate();});
+</script>
+</body>
+</html>
