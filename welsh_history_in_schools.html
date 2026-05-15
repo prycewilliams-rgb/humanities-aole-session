@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="cy-en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welsh History in Schools | Hanes Cymru mewn Ysgolion — PGCE Humanities</title>
+<style>
+:root{
+  --dragon:#8B0000;--dragon-mid:#B91C1C;--dragon-light:#FEE2E2;--dragon-pale:#FFF5F5;
+  --slate:#003366;--slate-light:#DBEAFE;--slate-pale:#EFF6FF;
+  --gold:#92400E;--gold-light:#FEF3C7;--gold-pale:#FFFBEB;
+  --green:#166534;--green-light:#DCFCE7;--green-pale:#F0FFF4;
+  --ink:#1C1917;--ink-mid:#44403C;--ink-light:#78716C;
+  --off:#FAFAF9;--cream:#F5F5F4;--border:#E7E5E4;
+  --shadow:0 4px 24px rgba(0,0,0,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--off);color:var(--ink);min-height:100vh}
+header{background:linear-gradient(135deg,#3B0000 0%,var(--dragon) 55%,#660000 100%);color:#fff;padding:3rem 2rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+header::before{content:"";position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.lang-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:.3rem 1rem;font-size:.8rem;font-weight:600;letter-spacing:.05em;margin-bottom:1.5rem}
+header h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(1.5rem,3.5vw,2.4rem);line-height:1.2;margin-bottom:.3rem}
+header h1 span{display:block;font-size:.55em;font-weight:400;opacity:.75;font-style:italic;margin-top:.3rem}
+.header-sub{font-size:.9rem;opacity:.8;margin-top:.7rem}
+.subject-pills{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin-top:1.1rem}
+.pill{display:inline-flex;align-items:center;gap:.4rem;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:.28rem .85rem;font-size:.76rem;font-weight:600}
+.progress-bar-wrap{max-width:600px;margin:1.4rem auto 0;background:rgba(255,255,255,.18);border-radius:999px;height:7px;overflow:hidden}
+#progress-bar{height:100%;background:#FCD34D;border-radius:999px;transition:width .5s ease;width:0%}
+#progress-label{font-size:.77rem;opacity:.75;margin-top:.4rem}
+main{max-width:960px;margin:0 auto;padding:2rem 1rem 4rem}
+.section-nav{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.snav-btn{padding:.38rem .8rem;border-radius:999px;border:2px solid var(--border);background:#fff;font-size:.74rem;font-weight:600;cursor:pointer;color:var(--ink-mid);transition:all .2s;white-space:nowrap}
+.snav-btn.done{border-color:var(--green);color:#14532D;background:var(--green-light)}
+.snav-btn.active{border-color:var(--dragon);color:var(--dragon);background:var(--dragon-pale)}
+.section-card{background:#fff;border-radius:14px;box-shadow:var(--shadow);margin-bottom:2rem;overflow:hidden;border:1px solid var(--border);display:none;animation:fadeIn .4s ease}
+.section-card.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.card-header{padding:1.4rem 2rem;display:flex;align-items:center;gap:1rem;border-bottom:2px solid}
+.card-header.dragon{background:var(--dragon-pale);border-color:#FECACA}
+.card-header.slate{background:var(--slate-pale);border-color:var(--slate-light)}
+.card-header.gold{background:var(--gold-pale);border-color:#FDE68A}
+.card-header.green{background:var(--green-pale);border-color:#86EFAC}
+.card-header.ink{background:#F1F5F9;border-color:#CBD5E1}
+.card-header .icon{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.card-header.dragon .icon{background:var(--dragon)}.card-header.slate .icon{background:var(--slate)}
+.card-header.gold .icon{background:var(--gold)}.card-header.green .icon{background:var(--green)}
+.card-header.ink .icon{background:var(--ink)}
+.card-header h2{font-family:Georgia,serif;font-size:1.18rem;color:var(--ink);line-height:1.3}
+.card-header h2 em{display:block;font-family:-apple-system,sans-serif;font-size:.73rem;font-style:normal;font-weight:600;color:var(--ink-light);margin-top:.12rem;letter-spacing:.03em}
+.card-body{padding:1.8rem}
+@media(max-width:600px){.card-body{padding:1.2rem}}
+/* ARTICLE CARDS */
+.article-card{background:#fff;border:2px solid var(--border);border-radius:11px;padding:1.3rem;margin-bottom:1rem;transition:border-color .2s,box-shadow .2s}
+.article-card:hover{border-color:var(--dragon);box-shadow:0 4px 16px rgba(139,0,0,.1)}
+.article-source{display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.25rem .7rem;border-radius:4px;margin-bottom:.7rem}
+.source-bbc{background:#BB1919;color:white}
+.source-wales{background:#003366;color:white}
+.article-card h3{font-family:Georgia,serif;font-size:1rem;color:var(--ink);margin-bottom:.4rem;line-height:1.35}
+.article-card .article-date{font-size:.76rem;color:var(--ink-light);margin-bottom:.5rem}
+.article-card p{font-size:.88rem;color:var(--ink-mid);line-height:1.65;margin-bottom:.5rem}
+.article-link{display:inline-flex;align-items:center;gap:.35rem;font-size:.8rem;font-weight:700;color:var(--dragon);text-decoration:none;border:1px solid var(--dragon);padding:.25rem .7rem;border-radius:5px;transition:all .15s}
+.article-link:hover{background:var(--dragon);color:white}
+.key-claim{background:var(--dragon-pale);border-left:3px solid var(--dragon);border-radius:0 7px 7px 0;padding:.7rem 1rem;margin:.6rem 0;font-size:.88rem;color:var(--ink);line-height:1.6;font-style:italic}
+/* BILINGUAL */
+.bilingual-block{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-bottom:1.4rem}
+@media(max-width:600px){.bilingual-block{grid-template-columns:1fr}}
+.lang-col{background:var(--dragon-pale);border-radius:9px;padding:1.1rem;border-left:4px solid var(--dragon)}
+.lang-col.welsh{border-left-color:var(--gold);background:var(--gold-pale)}
+.lang-label{font-size:.69rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-light);margin-bottom:.5rem}
+.lang-col p,.lang-col li{font-size:.91rem;line-height:1.7;color:var(--ink)}
+.lang-col ul{padding-left:1.2rem;margin-top:.4rem}
+.lang-col li{margin-bottom:.3rem}
+/* INFO BOXES */
+.info-box{border-radius:9px;padding:1.1rem 1.4rem;margin-bottom:1.4rem;border:1px solid}
+.info-box.dragon{background:var(--dragon-pale);border-color:#FECACA}
+.info-box.gold{background:var(--gold-pale);border-color:#FDE68A}
+.info-box.green{background:var(--green-pale);border-color:#86EFAC}
+.info-box.slate{background:var(--slate-pale);border-color:var(--slate-light)}
+.info-box.key{background:var(--ink);border-color:var(--ink-mid)}
+.info-box h3{font-size:.8rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.65rem}
+.info-box.dragon h3{color:var(--dragon)}.info-box.gold h3{color:var(--gold)}
+.info-box.green h3{color:var(--green)}.info-box.slate h3{color:var(--slate)}
+.info-box.key h3{color:#FCD34D}
+.info-box p,.info-box li{font-size:.9rem;line-height:1.7;color:var(--ink)}
+.info-box.key p,.info-box.key li{color:rgba(255,255,255,.88)}
+.info-box ul{padding-left:1.2rem;margin-top:.4rem}
+.info-box ul li{margin-bottom:.3rem}
+/* QUOTE */
+.quote-block{background:var(--ink);color:#fff;border-radius:10px;padding:1.4rem 1.8rem;margin:1.4rem 0;position:relative;overflow:hidden}
+.quote-block::before{content:'"';font-family:Georgia,serif;font-size:7rem;color:rgba(255,255,255,.05);position:absolute;top:-1rem;left:.3rem;line-height:1}
+.quote-text{font-family:Georgia,serif;font-size:1.05rem;font-style:italic;line-height:1.65;color:rgba(255,255,255,.92);position:relative;z-index:1}
+.quote-attr{font-size:.77rem;color:#FCD34D;margin-top:.6rem;font-weight:600}
+/* READING FRAME */
+.reading-frame{background:var(--cream);border:1px solid var(--border);border-radius:9px;padding:1.2rem;margin-bottom:1rem}
+.reading-frame h4{font-family:Georgia,serif;font-size:.96rem;color:var(--dragon);margin-bottom:.5rem}
+.focus-q{background:var(--gold-pale);border-left:3px solid var(--gold);border-radius:0 6px 6px 0;padding:.6rem .9rem;margin:.4rem 0;font-size:.87rem;color:var(--ink);line-height:1.55}
+.focus-q strong{color:var(--gold);font-size:.73rem;text-transform:uppercase;letter-spacing:.05em;display:block;margin-bottom:.15rem}
+/* DEBATE TABLE */
+.debate-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.86rem}
+.debate-table th{padding:.7rem 1rem;text-align:left;font-weight:700;font-size:.77rem;letter-spacing:.04em}
+.debate-table th.for{background:var(--green);color:white}
+.debate-table th.against{background:var(--dragon);color:white}
+.debate-table td{padding:.65rem 1rem;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.55}
+.debate-table tr:hover td{background:var(--cream)}
+/* PERSPECTIVES */
+.perspective-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1rem 0}
+@media(max-width:560px){.perspective-grid{grid-template-columns:1fr}}
+.perspective-card{border-radius:9px;padding:1rem;border:2px solid}
+.perspective-card.pupil{border-color:#86EFAC;background:var(--green-pale)}
+.perspective-card.teacher{border-color:var(--slate-light);background:var(--slate-pale)}
+.perspective-card.parent{border-color:#FDE68A;background:var(--gold-pale)}
+.perspective-card.govt{border-color:#FECACA;background:var(--dragon-pale)}
+.perspective-label{font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem}
+.perspective-card.pupil .perspective-label{color:var(--green)}
+.perspective-card.teacher .perspective-label{color:var(--slate)}
+.perspective-card.parent .perspective-label{color:var(--gold)}
+.perspective-card.govt .perspective-label{color:var(--dragon)}
+.perspective-card p{font-size:.85rem;color:var(--ink);line-height:1.55}
+/* QUIZ */
+.quiz-question{background:var(--cream);border-radius:9px;padding:1.1rem;margin-bottom:.9rem;border:1px solid var(--border)}
+.q-text{font-weight:700;font-size:.96rem;margin-bottom:.2rem;line-height:1.5}
+.q-welsh{font-size:.83rem;color:var(--ink-light);font-style:italic;margin-bottom:.85rem;line-height:1.5}
+.q-num{display:inline-flex;align-items:center;justify-content:center;width:1.45rem;height:1.45rem;background:var(--dragon);color:white;border-radius:50%;font-size:.7rem;font-weight:700;margin-right:.4rem}
+.options{display:flex;flex-direction:column;gap:.45rem}
+.option-btn{text-align:left;background:#fff;border:2px solid var(--border);border-radius:7px;padding:.6rem .95rem;font-family:-apple-system,sans-serif;font-size:.88rem;cursor:pointer;transition:all .15s;line-height:1.5;color:var(--ink)}
+.option-btn:hover:not(:disabled){border-color:var(--dragon);background:var(--dragon-pale)}
+.option-btn.correct{border-color:var(--green);background:var(--green-pale);color:#14532D}
+.option-btn.wrong{border-color:var(--dragon);background:var(--dragon-light);color:#7F1D1D}
+.feedback{display:none;padding:.75rem .95rem;border-radius:7px;font-size:.85rem;line-height:1.6;margin-top:.45rem}
+.feedback.correct.show{display:block;background:var(--green-pale);border-left:3px solid var(--green);color:#14532D}
+.feedback.wrong.show{display:block;background:var(--dragon-light);border-left:3px solid var(--dragon-mid);color:#7F1D1D}
+/* TEXTAREA */
+textarea{width:100%;padding:.65rem .85rem;font-family:-apple-system,sans-serif;font-size:.89rem;border:2px solid var(--border);border-radius:7px;resize:vertical;min-height:68px;color:var(--ink);line-height:1.6;transition:border-color .2s;margin-top:.45rem}
+textarea:focus{outline:none;border-color:var(--dragon)}
+.task-box{background:var(--gold-pale);border:2px solid #FDE68A;border-radius:9px;padding:1.1rem 1.3rem;margin:1.3rem 0}
+.task-label{font-size:.71rem;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:.55rem;display:flex;align-items:center;gap:.38rem}
+.task-num{background:var(--gold);color:white;border-radius:50%;width:1.25rem;height:1.25rem;display:flex;align-items:center;justify-content:center;font-size:.66rem}
+.field-label{font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-light);display:block;margin:.55rem 0 .18rem}
+/* BTN */
+.btn-row{display:flex;gap:.7rem;justify-content:space-between;flex-wrap:wrap;margin-top:1.4rem;padding-top:.9rem;border-top:1px solid var(--border)}
+.btn{padding:.55rem 1.3rem;border-radius:7px;border:2px solid transparent;font-family:-apple-system,sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--dragon);color:#fff}.btn-primary:hover{background:#6B0000}
+.btn-secondary{background:#fff;color:var(--ink-mid);border-color:var(--border)}.btn-secondary:hover{border-color:var(--ink-mid)}
+.btn-amber{background:var(--gold);color:white}.btn-amber:hover{background:#78350F}
+/* TIMELINE */
+.timeline{position:relative;padding-left:2rem;margin:1rem 0}
+.timeline::before{content:"";position:absolute;left:.55rem;top:0;bottom:0;width:2px;background:var(--border)}
+.timeline-item{position:relative;margin-bottom:1.1rem}
+.timeline-item::before{content:"";position:absolute;left:-1.57rem;top:.35rem;width:.7rem;height:.7rem;border-radius:50%;background:var(--dragon);border:2px solid #fff;box-shadow:0 0 0 2px var(--dragon)}
+.timeline-year{font-size:.72rem;font-weight:800;color:var(--dragon);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.2rem}
+.timeline-item h4{font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.2rem}
+.timeline-item p{font-size:.84rem;color:var(--ink-mid);line-height:1.55}
+/* COMPLETION */
+.completion-card{display:none;background:linear-gradient(135deg,#3B0000,var(--dragon));color:white;border-radius:14px;padding:2.8rem 2rem;text-align:center;margin-top:2rem}
+.completion-card.show{display:block}
+.badge-icon{font-size:3.8rem;display:block;margin-bottom:.9rem}
+.completion-card h2{font-family:Georgia,serif;font-size:1.75rem;margin-bottom:.7rem}
+.score-badge{display:inline-block;background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.4);border-radius:999px;padding:.28rem 1.1rem;font-size:.95rem;font-weight:700;margin-bottom:.9rem}
+.completion-card p{font-size:.93rem;opacity:.87;line-height:1.7;max-width:540px;margin:0 auto .75rem}
+/* CERT */
+.cert-trigger-box{margin-top:1.4rem;padding:1.4rem;background:rgba(255,255,255,.12);border:2px solid rgba(255,255,255,.38);border-radius:10px;text-align:center}
+.cert-trigger-box p{font-size:.87rem;opacity:.84;margin-bottom:.9rem;line-height:1.6}
+.cert-name-row{display:flex;gap:.65rem;justify-content:center;flex-wrap:wrap;align-items:center}
+.cert-name-input{padding:.55rem .95rem;font-family:-apple-system,sans-serif;font-size:.93rem;border:2px solid rgba(255,255,255,.28);border-radius:7px;background:rgba(255,255,255,.14);color:white;width:240px}
+.cert-name-input::placeholder{color:rgba(255,255,255,.38)}
+.cert-name-input:focus{outline:none;border-color:#FCD34D}
+.btn-cert{background:#FCD34D;color:#1a1a1a;border:none;padding:.55rem 1.2rem;border-radius:7px;font-family:-apple-system,sans-serif;font-size:.86rem;font-weight:700;cursor:pointer}
+.cert-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:9999;align-items:center;justify-content:center;padding:1rem}
+.cert-overlay.show{display:flex}
+.cert-modal{background:white;border-radius:8px;width:100%;max-width:780px;max-height:95vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.certificate{width:100%;background:white}
+.cert-frame{margin:14px;border:3px solid var(--dragon);position:relative}
+.cert-frame::before{content:"";position:absolute;inset:5px;border:1px solid var(--gold);pointer-events:none;z-index:1}
+.cert-stripe{height:5px;background:linear-gradient(90deg,#003366 0%,#8B0000 40%,#006400 70%,#FFD700 100%)}
+.cert-header{background:linear-gradient(135deg,#1C0A00 0%,var(--dragon) 100%);padding:1.2rem 2rem 1rem;text-align:center}
+.cert-logo-row{display:flex;align-items:center;justify-content:center;gap:.8rem}
+.cert-inst-name{font-family:Georgia,serif;color:white;font-size:.98rem;text-align:left;line-height:1.2}
+.cert-inst-cy{color:#FDE68A;font-size:.73rem;font-style:italic;display:block}
+.cert-body{padding:1.5rem 2rem;text-align:center}
+.cert-presents{font-size:.71rem;text-transform:uppercase;letter-spacing:.15em;color:#475569;margin-bottom:.35rem}
+.cert-awarded-to{font-size:.71rem;text-transform:uppercase;letter-spacing:.1em;color:#475569;margin-bottom:.18rem}
+.cert-name{font-family:Georgia,serif;font-size:1.85rem;font-style:italic;color:var(--dragon);border-bottom:2px solid #E2E8F0;display:inline-block;padding:0 .9rem .1rem;min-width:250px;margin-bottom:.3rem;line-height:1.3}
+.cert-score-pill{display:inline-block;background:#FEF3C7;border:1px solid var(--gold);border-radius:999px;padding:.22rem .9rem;font-size:.78rem;font-weight:700;color:var(--gold);margin:.45rem 0 .75rem}
+.cert-divider{height:1px;background:linear-gradient(90deg,transparent,var(--dragon),transparent);margin:.85rem auto;width:50%}
+.cert-text{font-size:.84rem;color:#1E293B;line-height:1.65;max-width:430px;margin:0 auto .65rem}
+.cert-course{font-family:Georgia,serif;font-size:.93rem;color:#1E293B;background:var(--dragon-pale);border:1px solid #FECACA;border-left:4px solid var(--dragon);padding:.42rem .85rem;display:inline-block;margin-bottom:.3rem;text-align:left}
+.cert-course-cy{font-size:.73rem;color:var(--gold);font-style:italic;display:block}
+.cert-competencies{font-size:.74rem;color:#475569;margin:.18rem auto .9rem;max-width:410px;line-height:1.55}
+.cert-footer-row{display:grid;grid-template-columns:1fr auto 1fr;gap:1rem;align-items:end;margin-top:.9rem;padding-top:.9rem;border-top:1px solid #E2E8F0}
+.cert-sig-block{text-align:center}
+.cert-sig-line{height:1px;background:#1E293B;width:130px;margin:0 auto .22rem}
+.cert-sig-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:#475569}
+.cert-seal{width:60px;height:60px;border-radius:50%;background:var(--dragon);border:3px solid var(--gold);display:flex;align-items:center;justify-content:center;flex-direction:column;color:white;font-size:.48rem;text-transform:uppercase;letter-spacing:.04em;text-align:center;line-height:1.3;margin:0 auto}
+.cert-seal-icon{font-size:1.1rem;display:block;margin-bottom:1px}
+.cert-date-val{font-family:Georgia,serif;font-size:.88rem;color:#1E293B}
+.cert-date-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:#475569;margin-top:.18rem}
+.cert-close-row{display:flex;justify-content:center;gap:1rem;padding:.85rem 1.4rem 1.1rem;background:#F8FAFC;flex-wrap:wrap;border-top:1px solid #E2E8F0}
+.btn-cert-print{background:var(--dragon);color:white;border:none;padding:.5rem 1.1rem;border-radius:7px;font-family:-apple-system,sans-serif;font-size:.84rem;font-weight:700;cursor:pointer}
+.btn-cert-close{background:#475569;color:white;border:none;padding:.5rem 1.1rem;border-radius:7px;font-family:-apple-system,sans-serif;font-size:.84rem;cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <div class="lang-badge">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Cymraeg &middot; English</div>
+  <h1>Welsh History in Schools: Is Enough Being Taught?
+    <span>Hanes Cymru mewn Ysgolion: A Yw Digon yn Cael ei Addysgu?</span>
+  </h1>
+  <p class="header-sub">A reading and discussion session for PGCE Humanities trainees &middot; Sesiwn ddarllen a thrafod ar gyfer hyfforddeion TGCH y Dyniaethau</p>
+  <div class="subject-pills">
+    <span class="pill">&#128240; Three Articles &middot; Tair Erthygl</span>
+    <span class="pill">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Welsh History &middot; Hanes Cymru</span>
+    <span class="pill">&#128203; CfW &middot; Cwricwlwm i Gymru</span>
+    <span class="pill">&#128296; PGCE Humanities &middot; Dyniaethau</span>
+  </div>
+  <div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+  <p id="progress-label">Section 1 of 5 &middot; Adran 1 o 5</p>
+</header>
+<main>
+  <div class="section-nav">
+    <button class="snav-btn active" onclick="goTo(0)">1 &middot; The Three Articles</button>
+    <button class="snav-btn" onclick="goTo(1)">2 &middot; Reading Frames</button>
+    <button class="snav-btn" onclick="goTo(2)">3 &middot; The Welsh History Debate</button>
+    <button class="snav-btn" onclick="goTo(3)">4 &middot; Your Practice</button>
+    <button class="snav-btn" onclick="goTo(4)">5 &middot; Quiz &amp; Reflection</button>
+  </div>
+
+  <!-- ═══ SECTION 1: THE THREE ARTICLES ═══ -->
+  <div class="section-card active" id="sec-0">
+    <div class="card-header dragon">
+      <div class="icon">&#128240;</div>
+      <h2>Section 1: The Three Articles &mdash; Before You Read
+        <em>Adran 1: Y Tair Erthygl &mdash; Cyn Darllen</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">&#127468;&#127463; English</div>
+          <p>These three articles, drawn from BBC Wales News and WalesOnline, raise a consistent and urgent question: <strong>are Welsh young people leaving school without adequate knowledge of their own country's history?</strong> Read all three before completing the tasks in the following sections. As you read, note the arguments made, the evidence cited, and the voices represented.</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Cymraeg</div>
+          <p>Mae'r tair erthygl hon, a dynnwyd o Newyddion BBC Cymru a WalesOnline, yn codi cwestiwn cyson ac brys: <strong>a yw pobl ifanc Cymru yn gadael ysgol heb wybodaeth ddigonol o hanes eu gwlad eu hunain?</strong> Darllenwch y tair cyn cwblhau'r tasgau yn yr adrannau canlynol.</p>
+        </div>
+      </div>
+
+      <div class="info-box gold">
+        <h3>&#128270; How to read these articles &middot; Sut i ddarllen yr erthyglau hyn</h3>
+        <p>As you read each article, ask: <strong>Who is making this claim? What evidence do they use? What is missing from this argument?</strong> These are journalistic pieces, not academic research &mdash; they carry opinion as well as fact, and represent particular perspectives on a contested question. Your job is to read them critically, not just to extract their conclusions. &middot; Wrth ddarllen pob erthygl, gofynnwch: <em>Pwy sy'n gwneud yr honiad hwn? Pa dystiolaeth y maent yn ei defnyddio? Beth sy'n absennol o'r ddadl hon?</em></p>
+      </div>
+
+      <!-- Article 1 -->
+      <div class="article-card">
+        <div class="article-source source-wales">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; WalesOnline</div>
+        <div class="article-date">2024</div>
+        <h3>Young People Leave School Knowing Little About Welsh History, Experts Warn</h3>
+        <p>This article reports warnings from historians, educators and politicians that Welsh young people are leaving school without adequate knowledge of their own country's history. It highlights concerns that despite the introduction of the Curriculum for Wales, Welsh history still risks being marginalised in practice. Commentators argue that knowing Welsh history is essential for identity, citizenship and engagement with contemporary Wales.</p>
+        <div class="key-claim">"Young people are leaving school knowing almost nothing about Welsh history &mdash; about the Rebecca Riots, the Chartist March, Tryweryn, the 1919 Cardiff race riots &mdash; and that is a democratic deficit as much as an educational one."</div>
+        <a href="https://www.walesonline.co.uk/news/education/young-people-leave-school-knowing-33698846" target="_blank" class="article-link">&#128279; Read full article</a>
+      </div>
+
+      <!-- Article 2 -->
+      <div class="article-card">
+        <div class="article-source source-bbc">BBC Wales News</div>
+        <div class="article-date">November 2022</div>
+        <h3>Welsh History: Is the New Curriculum Delivering?</h3>
+        <p>Published shortly after the Curriculum for Wales was introduced, this BBC Wales article examines whether the new framework is actually delivering on its promise to put Welsh history at the heart of learning. Teachers, historians and pupils are interviewed. The article finds a significant gap between the CfW's stated ambitions &mdash; which include a mandatory Welsh dimension &mdash; and what is actually happening in classrooms, with many schools still relying on resources and content developed before the new curriculum.</p>
+        <div class="key-claim">"The new curriculum says all the right things about Welsh history. The question is whether schools have the resources, the training and the confidence to actually teach it."</div>
+        <a href="https://www.bbc.co.uk/news/uk-wales-63838713" target="_blank" class="article-link">&#128279; Read full article</a>
+      </div>
+
+      <!-- Article 3 -->
+      <div class="article-card">
+        <div class="article-source source-bbc">BBC Wales News</div>
+        <div class="article-date">September 2015</div>
+        <h3>Welsh History: Should It Be Compulsory in Schools?</h3>
+        <p>This earlier article captures the debate that preceded the CfW, when Assembly Members, historians and campaigners were arguing that Welsh history should be made compulsory. It profiles the then-existing situation &mdash; in which Welsh history was technically available but rarely prioritised &mdash; and presents the arguments of those who believed the curriculum was failing Welsh young people by treating their own country's story as optional. It provides essential context for understanding why the CfW was designed the way it was.</p>
+        <div class="key-claim">"Children in Wales can study the Tudors, the Nazis, and the Victorians in depth &mdash; but leave school never having heard of Owain Glynd&#373;r or the Senghennydd disaster."</div>
+        <a href="https://www.bbc.co.uk/news/uk-wales-34175956" target="_blank" class="article-link">&#128279; Read full article</a>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">1</div> Before you read &middot; Cyn darllen &mdash; Initial response</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">Before reading the articles, answer these questions from your own knowledge and experience. You will return to them after reading. &middot; Cyn darllen yr erthyglau, atebwch y cwestiynau hyn o'ch gwybodaeth a'ch profiad eich hun.</p>
+        <label class="field-label">What Welsh history did YOU study at school? List what you can remember. &middot; Pa hanes Cymru a astudioch CHI yn yr ysgol?</label>
+        <textarea placeholder="Topics, periods, events, people I studied: …"></textarea>
+        <label class="field-label">What Welsh history do you think young people SHOULD know when they leave school? &middot; Pa hanes Cymru ddylai pobl ifanc ei wybod?</label>
+        <textarea placeholder="I think young people should know about…"></textarea>
+        <label class="field-label">Do you think there is a problem with how Welsh history is taught? What is your instinct before reading? &middot; A ydych chi'n meddwl bod problem?</label>
+        <textarea placeholder="My initial view: …"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <span></span>
+        <button class="btn btn-primary" onclick="nextSection(0)">Next: Reading Frames &rarr; / Nesaf &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 2: READING FRAMES ═══ -->
+  <div class="section-card" id="sec-1">
+    <div class="card-header slate">
+      <div class="icon">&#128214;</div>
+      <h2>Section 2: Reading Frames &mdash; Guided Analysis
+        <em>Adran 2: Fframiau Darllen &mdash; Dadansoddiad Arweiniol</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="info-box slate">
+        <h3>&#128203; How to use this section &middot; Sut i ddefnyddio'r adran hon</h3>
+        <p>Use these reading frames as you work through each article. The questions are designed to push you beyond summarising what the article says toward analysing <em>how</em> it makes its argument and <em>what it leaves out</em>. &middot; Defnyddiwch y fframiau darllen hyn wrth weithio drwy bob erthygl. Mae'r cwestiynau wedi'u cynllunio i'ch gwthio y tu hwnt i grynhoi'r hyn y mae'r erthygl yn ei ddweud.</p>
+      </div>
+
+      <!-- Frame 1 -->
+      <div class="reading-frame">
+        <h4>&#128240; Article 1 &mdash; WalesOnline (2024): Young People Leave School Knowing Little About Welsh History</h4>
+        <div class="focus-q"><strong>Q1 &middot; The claim</strong> What is the central claim of this article? Who makes it, and what authority do they have to make it? Is this a claim supported by data, by expert testimony, by anecdote &mdash; or a combination? &middot; Beth yw prif honiad yr erthygl hon? Pwy sy'n ei wneud, a pha awdurdod sydd ganddynt?</div>
+        <textarea placeholder="Central claim: … Made by: … Supported by: …"></textarea>
+        <div class="focus-q"><strong>Q2 &middot; The evidence</strong> What specific examples of Welsh history does the article say young people are not learning? Make a list. Which of these do YOU know about? &middot; Pa enghreifftiau penodol o hanes Cymru y dywed yr erthygl nad yw pobl ifanc yn eu dysgu?</div>
+        <textarea placeholder="Examples cited: …&#10;Which I know about: …&#10;Which I did not know about: …"></textarea>
+        <div class="focus-q"><strong>Q3 &middot; The gap between policy and practice</strong> The article is published in 2024 &mdash; after the CfW has been introduced. What does this tell you about the relationship between curriculum policy and classroom practice? &middot; Mae'r erthygl yn 2024 &mdash; ar ôl cyflwyno'r CfW. Beth mae hyn yn ei ddweud wrthych am y bwlch rhwng polisi cwricwlwm ac ymarfer dosbarth?</div>
+        <textarea placeholder="The gap between policy and practice is illustrated by… This suggests…"></textarea>
+        <div class="focus-q"><strong>Q4 &middot; Critical reading</strong> What perspectives or voices are MISSING from this article? Who is not being quoted? Does the article acknowledge any counter-arguments? &middot; Pa safbwyntiau neu leisiau sy'n ABSENNOL o'r erthygl hon?</div>
+        <textarea placeholder="Missing voices: … Counter-arguments not addressed: …"></textarea>
+      </div>
+
+      <!-- Frame 2 -->
+      <div class="reading-frame">
+        <h4>&#128240; Article 2 &mdash; BBC Wales (November 2022): Welsh History &mdash; Is the New Curriculum Delivering?</h4>
+        <div class="focus-q"><strong>Q1 &middot; Ambition vs reality</strong> The article distinguishes between what the CfW says and what is happening in classrooms. List two specific examples of this gap that the article identifies. &middot; Mae'r erthygl yn gwahaniaethu rhwng yr hyn y mae'r CfW yn ei ddweud a'r hyn sy'n digwydd mewn dosbarthiadau.</div>
+        <textarea placeholder="Gap 1: …&#10;Gap 2: …"></textarea>
+        <div class="focus-q"><strong>Q2 &middot; Resources and training</strong> The article raises questions about whether schools have adequate resources and training to teach Welsh history. Why might resource gaps matter particularly for Welsh history as opposed to other subjects? &middot; Pam gallai bylchau adnoddau fod yn bwysig yn arbennig ar gyfer hanes Cymru?</div>
+        <textarea placeholder="Resource gaps matter for Welsh history particularly because…"></textarea>
+        <div class="focus-q"><strong>Q3 &middot; The teacher's role</strong> Based on this article, what specific challenges face history teachers in Wales who want to teach more Welsh history? &middot; Pa heriau penodol sy'n wynebu athrawon hanes yng Nghymru?</div>
+        <textarea placeholder="Challenges for history teachers: …"></textarea>
+        <div class="focus-q"><strong>Q4 &middot; Comparing 2015 and 2022</strong> This article (2022) covers broadly the same problem as Article 3 (2015). What, if anything, appears to have changed between 2015 and 2022? What has stayed the same? &middot; Beth, os unrhyw beth, sy'n ymddangos wedi newid rhwng 2015 a 2022?</div>
+        <textarea placeholder="What has changed: …&#10;What has stayed the same: …"></textarea>
+      </div>
+
+      <!-- Frame 3 -->
+      <div class="reading-frame">
+        <h4>&#128240; Article 3 &mdash; BBC Wales (September 2015): Welsh History &mdash; Should It Be Compulsory?</h4>
+        <div class="focus-q"><strong>Q1 &middot; The pre-CfW context</strong> This article predates the Curriculum for Wales. What was the situation regarding Welsh history teaching in 2015? Was Welsh history available but not prioritised, or was it genuinely absent from the curriculum? &middot; Sefyllfa hanes Cymru yn 2015 cyn y CfW?</div>
+        <textarea placeholder="In 2015, Welsh history was… because…"></textarea>
+        <div class="focus-q"><strong>Q2 &middot; The compulsory argument</strong> The article debates whether Welsh history should be made compulsory. List the arguments FOR and AGAINST compulsory Welsh history as presented in the article. &middot; Rhestrwch y dadleuon O BLAID ac YN ERBYN hanes Cymru gorfodol.</div>
+        <textarea placeholder="FOR compulsory Welsh history: …&#10;AGAINST: …"></textarea>
+        <div class="focus-q"><strong>Q3 &middot; Knowledge gaps</strong> The article mentions specific topics that Welsh pupils were not studying &mdash; Owain Glynd&#373;r, Senghennydd, and others. Why do these omissions matter? Is it simply about knowledge, or is something else at stake? &middot; Pam mae'r bylchau gwybodaeth hyn yn bwysig?</div>
+        <textarea placeholder="These omissions matter because… It is not just about knowledge but about…"></textarea>
+        <div class="focus-q"><strong>Q4 &middot; Reading across all three articles</strong> Having read all three articles, what is the single most striking finding for you? What has surprised you most? What question do the three articles collectively leave you with? &middot; Ar ôl darllen y tair erthygl, beth yw'r canfyddiad mwyaf trawiadol i chi?</div>
+        <textarea placeholder="Most striking finding: …&#10;What surprised me most: …&#10;The question I am left with: …"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(0)">&larr; Back / Yn &ocirc;l</button>
+        <button class="btn btn-primary" onclick="nextSection(1)">Next: The Welsh History Debate &rarr; / Nesaf &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 3: THE WELSH HISTORY DEBATE ═══ -->
+  <div class="section-card" id="sec-2">
+    <div class="card-header gold">
+      <div class="icon">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631;</div>
+      <h2>Section 3: The Welsh History Debate &mdash; Context and Analysis
+        <em>Adran 3: Y Ddadl Hanes Cymru &mdash; Cyd-destun a Dadansoddiad</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin-bottom:.9rem;color:var(--gold)">A Brief Timeline &middot; Llinell Amser Fer</h3>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-year">Pre-2015</div>
+          <h4>Welsh history available but optional</h4>
+          <p>Welsh history could be taught but was not mandated. Many schools chose to focus on English or British topics because of available resources, teacher confidence and examination specifications. The result was that the majority of Welsh young people left school with little knowledge of their own country's history.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2015</div>
+          <h4>Political debate intensifies &mdash; calls for compulsory Welsh history</h4>
+          <p>Assembly Members, historians and campaigners argue publicly that Welsh history should be made compulsory. BBC Wales reports widespread concern that pupils can study the Nazis and the Tudors in depth but leave school never having heard of Owain Glynd&#373;r or the Senghennydd disaster. The debate leads directly into the Donaldson Review.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2015&ndash;2020</div>
+          <h4>Successful Futures review and CfW development</h4>
+          <p>Professor Graham Donaldson's review, Successful Futures (2015), recommends a wholesale reform of the Welsh curriculum. Welsh history and the Welsh dimension are built into the new Humanities AoLE as a mandatory requirement. Statement 3 specifically addresses identity, heritage and cynefin. The Welsh Government commits to a curriculum in which the story of Wales is central.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2022</div>
+          <h4>CfW introduced &mdash; but implementation uneven</h4>
+          <p>The Curriculum for Wales is formally introduced. BBC Wales reports a significant gap between the curriculum's stated ambitions and what is happening in classrooms: many schools lack resources, training and specialist expertise to deliver Welsh history with confidence. The transition from policy to practice proves slower and more difficult than anticipated.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-year">2024</div>
+          <h4>Concern persists &mdash; the gap between intent and reality</h4>
+          <p>WalesOnline reports continuing concern from historians, educators and politicians that Welsh young people are still leaving school without adequate knowledge of their own country. The debate now focuses not on whether Welsh history should be taught, but on whether the conditions exist for it to be taught well: trained teachers, quality resources, and departmental confidence in Welsh historical content.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin:1.4rem 0 .9rem;color:var(--gold)">The Argument &mdash; Both Sides &middot; Y Ddadl &mdash; Y Ddau Ochr</h3>
+      <table class="debate-table">
+        <thead>
+          <tr>
+            <th class="for">Arguments FOR more Welsh history &middot; O BLAID</th>
+            <th class="against">Arguments that complicate this &middot; Dadleuon cymhleth</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Welsh young people have a democratic right to know the history of the country in which they live &mdash; its struggles, achievements and contested past. Knowledge of Welsh history is a prerequisite for informed citizenship. / Mae gan bobl ifanc Cymru hawl ddemocrataidd i adnabod hanes eu gwlad.</td><td>History curriculum time is limited. Adding more Welsh content necessarily means reducing something else &mdash; and difficult choices must be made about what constitutes a coherent historical education. / Mae amser cwricwlwm hanes yn gyfyngedig. Mae ychwanegu cynnwys Cymreig yn golygu lleihau rhywbeth arall.</td></tr>
+          <tr><td>Without Welsh history, learners lack the context to understand contemporary Wales: devolution, the Welsh language, deindustrialisation, patterns of migration and settlement, and Wales's relationship with England and the wider world. / Heb hanes Cymru, mae'r dysgu ar gyfer deall Cymru gyfoes.</td><td>What counts as &lsquo;Welsh history&rsquo; is itself contested. Wales has a diverse, multilingual, multicultural history &mdash; and any selection of content involves choices about whose Wales is being taught. / Mae hanes Cymru ei hun yn cwestiynu. Mae unrhyw ddewis o gynnwys yn cynnwys dewisiadau am hanes pwy sy'n cael ei addysgu.</td></tr>
+          <tr><td>The Welsh language and Welsh identity cannot be fully understood without historical context. The decline of Welsh-speaking communities, the history of language suppression and revival, and the significance of places like Tryweryn are all historical stories. / Ni ellir deall yr iaith Gymraeg a hunaniaeth Gymreig heb gyd-destun hanesyddol.</td><td>Many history teachers in Wales are not specialist Welsh historians. Mandating Welsh history without investment in teacher training and resources risks poor quality delivery that undermines the subject rather than promoting it. / Nid yw llawer o athrawon hanes yn haneswyr Cymraeg arbenigol. Mae gofynion heb fuddsoddiad mewn hyfforddiant yn risg.</td></tr>
+          <tr><td>Welsh history includes some of the most vivid and important stories in British and global history &mdash; the industrial revolution in South Wales, the Rebecca Riots, the Chartist March, the 1919 race riots in Cardiff, the drowning of Tryweryn &mdash; and these deserve to be taught for their historical significance as well as their Welsh context. / Mae hanes Cymru yn cynnwys rhai o'r straeon mwyaf bywiog a phwysig mewn hanes Prydain a byd.</td><td>The Curriculum for Wales already mandates a Welsh dimension. The problem may not be curriculum design but implementation: school budgets, resource availability, and the confidence and training of teachers. Changing the curriculum again may not solve a problem that is fundamentally about capacity. / Efallai nad yw'r broblem yn ymwneud â dyluniad cwricwlwm ond â gweithredu.</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin:1.4rem 0 .9rem;color:var(--gold)">Multiple Perspectives &middot; Safbwyntiau Lluosog</h3>
+      <div class="perspective-grid">
+        <div class="perspective-card pupil">
+          <div class="perspective-label">&#127891; The Pupil &middot; Y Disgybl</div>
+          <p>"I didn't know anything about the Rebecca Riots or Tryweryn until I was 17 and looked it up myself. We spent two years on Nazi Germany. I'm not saying that's wrong, but it's a strange choice when you live in Wales." &middot; "Doeddwn i ddim yn gwybod dim am Derfysgoedd Beca na Thryweryn nes oeddwn i'n 17 oed."</p>
+        </div>
+        <div class="perspective-card teacher">
+          <div class="perspective-label">&#128218; The History Teacher &middot; Yr Athro Hanes</div>
+          <p>"I want to teach more Welsh history. But I was trained on English and European content. I don't have the resources, and the WJEC specification still leans toward familiar British content. I need time, training and materials &mdash; not just a mandate." &middot; "Rwyf am addysgu mwy o hanes Cymru, ond nid oes gennyf yr adnoddau na'r hyder."</p>
+        </div>
+        <div class="perspective-card parent">
+          <div class="perspective-label">&#128106; The Parent &middot; Y Rhiant</div>
+          <p>"My children should know about the Senghennydd disaster. Their great-grandfather worked in those pits. History isn't just about other people's countries &mdash; it should start with where you come from." &middot; "Dylai fy mhlant wybod am drychineb Senghennydd. Roedd eu hen-daid yn gweithio yn y pyllau hynny."</p>
+        </div>
+        <div class="perspective-card govt">
+          <div class="perspective-label">&#127981; The Curriculum Policy &middot; Polisi Cwricwlwm</div>
+          <p>"The Curriculum for Wales places Welsh history and cynefin at the heart of the Humanities AoLE. Statement 3 on identity and heritage is not optional. The framework is there &mdash; implementation is a matter for schools and local authorities." &middot; "Mae Cwricwlwm i Gymru yn gosod hanes Cymru wrth wraidd MDP y Dyniaethau."</p>
+        </div>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">2</div> Task 3.1 &middot; Tasg 3.1 &mdash; Synthesising the debate</div>
+        <label class="field-label">Drawing on all three articles and the material above: what do you think is the MOST important reason why Welsh history is not being taught adequately? Is it curriculum design, teacher training, resources, time, or something else? &middot; Beth yw'r rheswm PWYSICAF yn eich barn chi pam nad yw hanes Cymru yn cael ei addysgu'n ddigonol?</label>
+        <textarea placeholder="I think the most important reason is… because the articles suggest… and from my placement I have seen…"></textarea>
+        <label class="field-label">Which perspective above do you find most compelling &mdash; and why? Which do you find least convincing? &middot; Pa safbwynt uchod sy'n fwyaf argyhoeddiadol i chi &mdash; a pham?</label>
+        <textarea placeholder="Most compelling: … because…&#10;Least convincing: … because…"></textarea>
+        <label class="field-label">The three articles span 2015&ndash;2024. The same concern is raised across nearly a decade. What does this suggest about the nature of the problem &mdash; and the difficulty of solving it? &middot; Mae'r tair erthygl yn ymestyn 2015&ndash;2024. Beth mae hyn yn ei awgrymu am natur y broblem?</label>
+        <textarea placeholder="The persistence of this concern across a decade suggests… This makes me think…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(1)">&larr; Back / Yn &ocirc;l</button>
+        <button class="btn btn-primary" onclick="nextSection(2)">Next: Your Practice &rarr; / Nesaf &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 4: YOUR PRACTICE ═══ -->
+  <div class="section-card" id="sec-3">
+    <div class="card-header green">
+      <div class="icon">&#128296;</div>
+      <h2>Section 4: Connecting to Your Teaching Practice
+        <em>Adran 4: Cysylltu ag Ymarfer Addysgu</em>
+      </h2>
+    </div>
+    <div class="card-body">
+
+      <div class="bilingual-block">
+        <div class="lang-col">
+          <div class="lang-label">&#127468;&#127463; English</div>
+          <p>The articles identify a problem &mdash; but as a trainee teacher, you are also in a position to be part of the solution. This section asks you to connect what you have read to your developing practice: what Welsh history are you teaching, what could you teach, and what would you need to do so well?</p>
+        </div>
+        <div class="lang-col welsh">
+          <div class="lang-label">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; Cymraeg</div>
+          <p>Mae'r erthyglau yn nodi problem &mdash; ond fel hyfforddai athro, rydych chi hefyd mewn sefyllfa i fod yn rhan o'r ateb. Mae'r adran hon yn gofyn i chi gysylltu'r hyn rydych chi wedi'i ddarllen ag ymarfer datblygol: pa hanes Cymru ydych chi'n ei addysgu, beth allech chi ei addysgu, a beth fyddai ei angen arnoch i wneud hynny'n dda?</p>
+        </div>
+      </div>
+
+      <div class="info-box green">
+        <h3>&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631; The CfW Requirement &middot; Gofyniad y CfW</h3>
+        <p>The Curriculum for Wales Humanities AoLE explicitly requires that learners develop a sense of identity, heritage and cynefin (Statement 3). This is not optional &mdash; it is a named requirement. Learners must be given consistent exposure to the story of their locality and the story of Wales alongside the wider world. As a history teacher in Wales, teaching Welsh history is part of your professional obligation, not an optional extra. &middot; Mae MDP y Dyniaethau yn y Cwricwlwm i Gymru yn ei gwneud yn ofynnol i ddysgwyr ddatblygu ymdeimlad o hunaniaeth, treftadaeth a chynefin (Datganiad 3). Nid yw hwn yn ddewisol.</p>
+      </div>
+
+      <h3 style="font-family:Georgia,serif;font-size:1rem;margin:.5rem 0 .9rem;color:var(--green)">Welsh History Worth Teaching &middot; Hanes Cymru Werth ei Addysgu</h3>
+      <p style="font-size:.9rem;color:var(--ink-mid);margin-bottom:.9rem">The articles suggest young people are leaving school without knowing key events and periods in Welsh history. Here is a non-exhaustive selection &mdash; how many of these do you know enough about to teach? &middot; Mae'r erthyglau yn awgrymu bod pobl ifanc yn gadael ysgol heb wybod digwyddiadau a chyfnodau allweddol yn hanes Cymru.</p>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.3rem"><div style="background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:.7rem .9rem">
+          <div style="font-weight:700;font-size:.85rem;color:var(--ink);margin-bottom:.2rem">Owain Glyndŵr</div>
+          <div style="font-size:.77rem;color:var(--ink-light);line-height:1.4">Gwrthryfel cenedlaethol Cymreig, 1400–1415</div>
+        </div><div style="background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:.7rem .9rem">
+          <div style="font-weight:700;font-size:.85rem;color:var(--ink);margin-bottom:.2rem">Tryweryn / Capel Celyn</div>
+          <div style="font-size:.77rem;color:var(--ink-light);line-height:1.4">Boddi cymunedau Cymraeg, 1965</div>
+        </div><div style="background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:.7rem .9rem">
+          <div style="font-weight:700;font-size:.85rem;color:var(--ink);margin-bottom:.2rem">The Rebecca Riots</div>
+          <div style="font-size:.77rem;color:var(--ink-light);line-height:1.4">Terfysgoedd gwledig, 1839–4344</div>
+        </div><div style="background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:.7rem .9rem">
+          <div style="font-weight:700;font-size:.85rem;color:var(--ink);margin-bottom:.2rem">Senghennydd Disaster</div>
+          <div style="font-size:.77rem;color:var(--ink-light);line-height:1.4">Trychineb pwll glo, 1913 — y mwyaf yn y DU</div>
+        </div><div style="background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:.7rem .9rem">
+          <div style="font-weight:700;font-size:.85rem;color:var(--ink);margin-bottom:.2rem">The Chartist March</div>
+          <div style="font-size:.77rem;color:var(--ink-light);line-height:1.4">Merthyr a Casnewydd, 1831–1839</div>
+        </div><div style="background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:.7rem .9rem">
+          <div style="font-weight:700;font-size:.85rem;color:var(--ink);margin-bottom:.2rem">1919 Cardiff Race Riots</div>
+          <div style="font-size:.77rem;color:var(--ink-light);line-height:1.4">Terfysgoedd hiliol Caerdydd, 1919</div>
+        </div><div style="background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:.7rem .9rem">
+          <div style="font-weight:700;font-size:.85rem;color:var(--ink);margin-bottom:.2rem">The Welsh Not</div>
+          <div style="font-size:.77rem;color:var(--ink-light);line-height:1.4">Cosbi plant am siarad Cymraeg yn yr ysgol</div>
+        </div><div style="background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:.7rem .9rem">
+          <div style="font-weight:700;font-size:.85rem;color:var(--ink);margin-bottom:.2rem">The Act of Union 1536</div>
+          <div style="font-size:.77rem;color:var(--ink-light);line-height:1.4">Cymru a Lloegr: cymhathu cyfreithiol a gwleidyddol</div>
+        </div><div style="background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:.7rem .9rem">
+          <div style="font-weight:700;font-size:.85rem;color:var(--ink);margin-bottom:.2rem">Aneurin Bevan & the NHS</div>
+          <div style="font-size:.77rem;color:var(--ink-light);line-height:1.4">Sylfaenydd y Gwasanaeth Iechyd Gwladol</div>
+        </div><div style="background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:.7rem .9rem">
+          <div style="font-weight:700;font-size:.85rem;color:var(--ink);margin-bottom:.2rem">Devolution & the Senedd</div>
+          <div style="font-size:.77rem;color:var(--ink-light);line-height:1.4">Datganoli: refferenda 1979 a 1997</div>
+        </div><div style="background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:.7rem .9rem">
+          <div style="font-weight:700;font-size:.85rem;color:var(--ink);margin-bottom:.2rem">The Welsh Language Acts</div>
+          <div style="font-size:.77rem;color:var(--ink-light);line-height:1.4">Deddfau'r Gymraeg: 1967, 1993, 2011</div>
+        </div><div style="background:var(--cream);border:1px solid var(--border);border-radius:7px;padding:.7rem .9rem">
+          <div style="font-weight:700;font-size:.85rem;color:var(--ink);margin-bottom:.2rem">Tiger Bay / Butetown</div>
+          <div style="font-size:.77rem;color:var(--ink-light);line-height:1.4">Cymunedau amrywiol a BAME Caerdydd</div>
+        </div>
+      </div>
+
+      <div class="task-box">
+        <div class="task-label"><div class="task-num">3</div> Task 4.1 &middot; Tasg 4.1 &mdash; Audit and planning</div>
+
+        <label class="field-label">PLACEMENT AUDIT: What Welsh history is currently being taught in your placement school or department? What is absent? &middot; ARCHWILIAD LLEOLIAD: Pa hanes Cymru sy'n cael ei addysgu ar hyn o bryd yn eich ysgol leoliad?</label>
+        <textarea placeholder="Currently taught: …&#10;Absent: …&#10;How I know this: …"></textarea>
+
+        <label class="field-label">From the list above, identify TWO Welsh history topics you feel confident enough to teach and TWO you would need to develop your own knowledge for first. &middot; Nodwch ddau bwnc rydych yn ddigon hyderus i'w addysgu a dau y byddai angen i chi ddatblygu eich gwybodaeth eich hun amdanynt yn gyntaf:</label>
+        <textarea placeholder="Confident to teach: 1. … 2. …&#10;Need to develop knowledge first: 1. … 2. …&#10;How I would develop that knowledge: …"></textarea>
+
+        <label class="field-label">The articles suggest teachers face barriers: lack of resources, confidence, training, and time. Which of these is most evident in your placement school? What would help most? &middot; Pa un o'r rhwystrau hyn sydd fwyaf amlwg yn eich ysgol leoliad?</label>
+        <textarea placeholder="Most evident barrier: … Evidence from placement: … What would help most: …"></textarea>
+
+        <label class="field-label">Design a brief outline for ONE lesson or activity that introduces a piece of Welsh history to a class you are currently teaching. Name the year group, the Welsh history topic, the enquiry question, and the key learning you intend. &middot; Cynlluniwch amlinelliad byr ar gyfer UN wers sy'n cyflwyno darn o hanes Cymru:</label>
+        <textarea style="min-height:100px" placeholder="Year group: …&#10;Welsh history topic: …&#10;Enquiry question: …&#10;Key learning: …&#10;Why this topic matters for this class: …"></textarea>
+      </div>
+
+      <div class="quote-block">
+        <p class="quote-text">"History isn't just about other people in other places. It is about where you come from, who came before you, and what they did to shape the world you live in. For Welsh young people, that story begins in Wales."</p>
+        <p class="quote-attr">&mdash; Perspective on Welsh history education (composite from the three articles)</p>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(2)">&larr; Back / Yn &ocirc;l</button>
+        <button class="btn btn-primary" onclick="nextSection(3)">Next: Quiz &amp; Reflection &rarr; / Nesaf &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECTION 5: QUIZ & REFLECTION ═══ -->
+  <div class="section-card" id="sec-4">
+    <div class="card-header ink">
+      <div class="icon">&#129518;</div>
+      <h2>Section 5: Knowledge Check &amp; Reflection
+        <em>Adran 5: Gwiriad Gwybodaeth ac Adlewyrchiad</em>
+      </h2>
+    </div>
+    <div class="card-body"><div class="quiz-question" id="q1"><p class="q-text"><span class="q-num">1</span>According to the three articles, what is the central concern about Welsh history in schools?</p><p class="q-welsh">&middot; Yn ol y tair erthygl, beth yw'r pryder canolog am hanes Cymru mewn ysgolion?</p><div class="options"><button class="option-btn" onclick="checkQ('q1',this,false)">Welsh history is being taught too extensively at the expense of British and world history / Mae hanes Cymru yn cael ei addysgu'n rhy helaeth</button><button class="option-btn" onclick="checkQ('q1',this,true)">Welsh young people are consistently leaving school with inadequate knowledge of their own country's history, despite policy commitments to change this / Mae pobl ifanc Cymru yn gadael ysgol gyda gwybodaeth annigonol o hanes eu gwlad eu hunain</button><button class="option-btn" onclick="checkQ('q1',this,false)">Welsh history is not interesting enough to engage pupils effectively / Nid yw hanes Cymru yn ddigon diddorol i ymgysylltu disgyblion yn effeithiol</button><button class="option-btn" onclick="checkQ('q1',this,false)">Welsh history is already well-taught but pupils fail to retain it / Mae hanes Cymru eisoes yn cael ei addysgu'n dda ond nid yw disgyblion yn ei gadw</button></div><div class="feedback" id="q1-fb"></div></div><div class="quiz-question" id="q2"><p class="q-text"><span class="q-num">2</span>What does the Curriculum for Wales Humanities AoLE specifically require with regard to Welsh history and identity?</p><p class="q-welsh">&middot; Beth mae MDP y Dyniaethau yng Nghwricwlwm i Gymru yn ei gwneud yn ofynnol?</p><div class="options"><button class="option-btn" onclick="checkQ('q2',this,false)">Welsh history may be included if teachers choose to do so, but it remains optional / Gall hanes Cymru gael ei gynnwys os yw athrawon yn dewis gwneud hynny, ond mae'n parhau'n ddewisol</button><button class="option-btn" onclick="checkQ('q2',this,false)">One Welsh history topic must be covered per year group across Key Stage 3 / Rhaid cwmpasu un pwnc hanes Cymru fesul grwp blwyddyn</button><button class="option-btn" onclick="checkQ('q2',this,true)">Statement 3 on identity, heritage and cynefin is a named, mandatory requirement: learners must develop a sense of Welsh identity and be given consistent exposure to the story of Wales and their locality / Mae Datganiad 3 ar hunaniaeth, treftadaeth a chynefin yn ofyniad gorfodol</button><button class="option-btn" onclick="checkQ('q2',this,false)">Welsh history is a separate subject from History within the Humanities AoLE / Mae hanes Cymru yn bwnc ar wahan i Hanes o fewn MDP y Dyniaethau</button></div><div class="feedback" id="q2-fb"></div></div><div class="quiz-question" id="q3"><p class="q-text"><span class="q-num">3</span>The BBC Wales article from 2022 identifies a significant gap. What is it?</p><p class="q-welsh">&middot; Mae erthygl BBC Cymru 2022 yn nodi bwlch sylweddol. Beth ydyw?</p><div class="options"><button class="option-btn" onclick="checkQ('q3',this,false)">A gap between the ability of higher-attaining and lower-attaining pupils to engage with Welsh history / Bwlch rhwng gallu disgyblion o gyrhaeddiad uchel ac is</button><button class="option-btn" onclick="checkQ('q3',this,true)">A gap between the CfW's stated ambitions for Welsh history and what is actually happening in classrooms, due to resource, training and confidence deficits / Bwlch rhwng uchelgeisiau datganedig y CfW a'r hyn sy'n digwydd mewn dosbarthiadau</button><button class="option-btn" onclick="checkQ('q3',this,false)">A gap between Welsh-medium and English-medium schools in their coverage of Welsh history / Bwlch rhwng ysgolion cyfrwng Cymraeg a Saesneg</button><button class="option-btn" onclick="checkQ('q3',this,false)">A gap between GCSE and A Level provision for Welsh history / Bwlch rhwng TGAU a Safon Uwch ar gyfer hanes Cymru</button></div><div class="feedback" id="q3-fb"></div></div><div class="quiz-question" id="q4"><p class="q-text"><span class="q-num">4</span>Why do some commentators argue that the absence of Welsh history in schools is a 'democratic deficit' as well as an educational failure?</p><p class="q-welsh">&middot; Pam mae rhai sylwebyddion yn dadlau bod absenoldeb hanes Cymru mewn ysgolion yn ddiffyg democrataidd?</p><div class="options"><button class="option-btn" onclick="checkQ('q4',this,false)">Because Welsh history exams have lower pass rates than other history exams / Oherwydd bod arholiadau hanes Cymru yn cael cyfraddau llwyddo is</button><button class="option-btn" onclick="checkQ('q4',this,true)">Because citizens who do not know the history of their own country are poorly equipped to participate meaningfully in its political, civic and cultural life / Oherwydd nad yw dinasyddion nad ydynt yn adnabod hanes eu gwlad eu hunain yn barod i gymryd rhan yn ystyrlon</button><button class="option-btn" onclick="checkQ('q4',this,false)">Because Welsh history is required knowledge for employment in the Welsh public sector / Oherwydd bod hanes Cymru yn wybodaeth ofynnol ar gyfer cyflogaeth</button><button class="option-btn" onclick="checkQ('q4',this,false)">Because the Welsh Language Act requires Welsh history to be taught / Oherwydd bod Deddf yr Iaith Gymraeg yn ei gwneud yn ofynnol addysgu hanes Cymru</button></div><div class="feedback" id="q4-fb"></div></div><div class="quiz-question" id="q5"><p class="q-text"><span class="q-num">5</span>Which of the following BEST describes what the three articles suggest about the relationship between curriculum policy and classroom practice?</p><p class="q-welsh">&middot; Pa un o'r canlynol sy'n disgrifio orau'r berthynas rhwng polisi cwricwlwm ac ymarfer dosbarth?</p><div class="options"><button class="option-btn" onclick="checkQ('q5',this,false)">Curriculum policy changes automatically and quickly translate into better classroom practice / Mae newidiadau mewn polisi cwricwlwm yn arwain yn awtomatig ac yn gyflym at well ymarfer dosbarth</button><button class="option-btn" onclick="checkQ('q5',this,false)">Curriculum policy is irrelevant to what actually happens in classrooms, which is determined entirely by individual teacher preference / Mae polisi cwricwlwm yn amherthnasol i'r hyn sy'n digwydd mewn dosbarthiadau</button><button class="option-btn" onclick="checkQ('q5',this,true)">Curriculum policy can create the conditions and mandates for change, but turning policy into classroom practice requires investment in teacher training, resources and confidence that policy alone cannot provide / Gall polisi cwricwlwm greu'r amodau ar gyfer newid, ond mae troi polisi yn ymarfer dosbarth yn gofyn am fuddsoddi mewn hyfforddiant athrawon, adnoddau a hyder</button><button class="option-btn" onclick="checkQ('q5',this,false)">The CfW has already solved the problem of Welsh history teaching and no further action is needed / Mae'r CfW eisoes wedi datrys y broblem o addysgu hanes Cymru</button></div><div class="feedback" id="q5-fb"></div></div>
+      <div class="task-box" style="margin-top:1.4rem">
+        <div class="task-label"><div class="task-num">5</div> Final Reflection &middot; Adlewyrchiad Terfynol</div>
+        <p style="font-size:.88rem;margin-bottom:.6rem">Return to your answers from Task 1 (before reading) and compare them to where you are now. / Dychwelwch at eich atebion o Dasg 1 (cyn darllen) a'u cymharu &acirc;'r hyn rydych chi'n ei gredu nawr.</p>
+
+        <label class="field-label">Has your view changed since Task 1? What has the reading changed, confirmed or complicated? / A yw eich barn wedi newid ers Tasg 1?</label>
+        <textarea placeholder="Before reading I thought… After reading I now think… because…"></textarea>
+
+        <label class="field-label">Write 200-300 words responding to this claim: 'The failure to teach Welsh history adequately is not primarily a curriculum problem &mdash; it is a teacher training and resource problem.' Do you agree? Use evidence from the three articles. / Ysgrifennwch 200-300 gair yn ymateb i'r honiad hwn:</label>
+        <textarea style="min-height:150px" placeholder="My response: I [agree/disagree/partially agree] because… The 2015 article suggests… The 2022 article shows… The 2024 article argues… However… My conclusion is…"></textarea>
+
+        <label class="field-label">Name ONE specific commitment you will make to your own teaching practice as a result of engaging with these articles. Be specific about what, when and with which class. / Enwch UN ymrwymiad penodol i'ch ymarfer addysgu eich hun:</label>
+        <textarea placeholder="I commit to… when teaching [topic] to [year group] at [school] because…"></textarea>
+      </div>
+
+      <div class="btn-row">
+        <button class="btn btn-secondary" onclick="goTo(3)">&larr; Back / Yn &ocirc;l</button>
+        <button class="btn btn-amber" onclick="complete()">&#127891; Complete Session &middot; Cwblhau&rsquo;r Sesiwn</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPLETION -->
+  <div class="completion-card" id="completion">
+    <span class="badge-icon">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631;</span>
+    <h2>Session Complete! &middot; Sesiwn Wedi&rsquo;i Chwblhau!</h2>
+    <div class="score-badge">Quiz Score &middot; Sgôr: <span id="final-score">0</span> / 5</div>
+    <p><strong>Well done!</strong> You have worked through all five sections &mdash; engaging critically with three articles on Welsh history in schools, analysing the gap between curriculum policy and classroom practice, and connecting the debate to your own teaching.</p>
+    <p><strong>Da iawn!</strong> Rydych chi wedi gweithio drwy'r pum adran &mdash; ymgysylltu'n feirniadol &acirc; thair erthygl ar hanes Cymru mewn ysgolion, dadansoddi'r bwlch rhwng polisi cwricwlwm ac ymarfer dosbarth, a chysylltu'r ddadl &acirc;'ch addysgu eich hun.</p>
+    <p style="font-style:italic;opacity:.78">"Children in Wales can leave school never having heard of Owain Glynd&#373;r or the Senghennydd disaster. That is a democratic deficit as much as an educational one."</p>
+    <div style="margin-top:1rem"><button class="btn btn-secondary" onclick="location.reload()" style="background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.33);color:#fff;font-size:.83rem;">&#8634; Start Again &middot; Dechrau Eto</button></div>
+    <div class="cert-trigger-box">
+      <p>&#127885; <strong>Generate your personalised completion certificate &middot; Creu eich tystysgrif gwblhau bersonol</strong><br>
+      Enter your full name below. / Rhowch eich enw llawn isod.</p>
+      <div class="cert-name-row">
+        <input class="cert-name-input" id="certNameInput" type="text" placeholder="Enter your full name &middot; Eich enw llawn&hellip;" maxlength="80">
+        <button class="btn-cert" onclick="generateCertificate()">&#127891; Generate Certificate &middot; Creu Tystysgrif</button>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- CERTIFICATE -->
+<div class="cert-overlay" id="certOverlay">
+  <div class="cert-modal">
+    <div class="certificate" id="certificateEl">
+      <div class="cert-frame">
+        <div class="cert-stripe"></div>
+        <div class="cert-header">
+          <div class="cert-logo-row">
+            <div style="font-size:1.9rem;">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631;</div>
+            <div class="cert-inst-name">PGCE Humanities &middot; Y Dyniaethau TGCH
+              <span class="cert-inst-cy">Curriculum for Wales / Cwricwlwm i Gymru</span>
+            </div>
+          </div>
+        </div>
+        <div class="cert-body">
+          <div class="cert-presents">This is to certify that &middot; Tystir trwy hyn fod</div>
+          <div class="cert-awarded-to">the following trainee teacher &middot; yr athro/athrawes hyfforddiant canlynol</div>
+          <div style="margin:.45rem 0 .25rem"><div class="cert-name" id="certDisplayName">Your Name</div></div>
+          <div class="cert-score-pill">Quiz Score &middot; Sgôr: <span id="certScoreDisplay">0</span> / 5</div>
+          <div class="cert-divider"></div>
+          <div class="cert-text">has successfully completed the PGCE Humanities session on</div>
+          <div class="cert-course">Welsh History in Schools: Is Enough Being Taught?
+            <span class="cert-course-cy">Hanes Cymru mewn Ysgolion: A Yw Digon yn Cael ei Addysgu?</span>
+          </div>
+          <div class="cert-competencies">Demonstrating critical engagement with three news articles (BBC Wales 2015, BBC Wales 2022, WalesOnline 2024) on the teaching of Welsh history; understanding of the gap between curriculum policy and classroom practice; knowledge of the CfW Humanities AoLE Statement 3 (identity, heritage and cynefin) as a mandatory requirement; analysis of multiple perspectives on the Welsh history debate; and connection of the debate to their own developing teaching practice in Wales.</div>
+          <div class="cert-footer-row">
+            <div class="cert-sig-block"><div class="cert-sig-line"></div><div class="cert-sig-label">Programme Director &middot; Cyfarwyddwr y Rhaglen</div></div>
+            <div><div class="cert-seal"><span class="cert-seal-icon">&#127988;&#917607;&#917602;&#917623;&#917612;&#917619;&#917631;</span>PGCE<br>CYMRU</div></div>
+            <div class="cert-sig-block"><div class="cert-date-val" id="certDateDisplay"></div><div class="cert-date-label">Date Completed &middot; Dyddiad Cwblhau</div></div>
+          </div>
+          <div class="cert-stripe" style="margin:1.1rem -2rem -1.5rem"></div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-close-row">
+      <button class="btn-cert-print" onclick="printCertificate()">&#128424; Print / Save as PDF</button>
+      <button class="btn-cert-close" onclick="closeCertificate()">&#10005; Close &middot; Cau</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var score=0;var answeredQs=new Set();var completedSections=new Set();
+var feedbacks={
+  q1:"Correct! All three articles, across 2015 to 2024, raise the same concern: Welsh young people are leaving school without adequate knowledge of Welsh history. The persistence of this concern across nearly a decade is itself significant and suggests structural rather than temporary causes.",
+  q2:"Correct! Statement 3 of the Humanities AoLE makes identity, heritage and cynefin a named mandatory requirement. This is not optional. Learners must be given consistent exposure to the story of Wales. As a history teacher in Wales, this is part of your professional obligation.",
+  q3:"Correct! The 2022 article identifies the gap between policy ambition and classroom reality. The CfW says the right things about Welsh history, but schools often lack the resources, training and teacher confidence to deliver it. This gap between policy design and implementation is a persistent theme across all three articles.",
+  q4:"Correct! The democratic deficit argument holds that a population without knowledge of its own history is ill-equipped for citizenship. This connects history education to democratic life: without knowing how current realities came to be, citizens cannot participate fully in debates about Wales's future.",
+  q5:"Correct! Policy creates the framework; implementation requires much more. The three articles consistently show that despite the CfW mandate, teachers without training or resources and schools without confidence mean young people are still leaving school without adequate Welsh history. Policy alone is insufficient."
+};
+function checkQ(qId,btn,isCorrect){
+  if(answeredQs.has(qId))return;answeredQs.add(qId);
+  document.getElementById(qId).querySelectorAll(".option-btn").forEach(function(b){b.disabled=true;});
+  var fb=document.getElementById(qId+"-fb");
+  if(isCorrect){btn.classList.add("correct");fb.className="feedback correct show";fb.innerHTML="&#10003; "+feedbacks[qId];score++;}
+  else{btn.classList.add("wrong");fb.className="feedback wrong show";fb.innerHTML="&#10007; Not quite &mdash; "+feedbacks[qId];}
+}
+function goTo(idx){
+  document.querySelectorAll(".section-card").forEach(function(el,i){el.classList.toggle("active",i===idx);});
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("active",i===idx);});
+  var pct=Math.round(((idx+1)/5)*100);
+  document.getElementById("progress-bar").style.width=pct+"%";
+  document.getElementById("progress-label").textContent="Section "+(idx+1)+" of 5 · Adran "+(idx+1)+" o 5";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function nextSection(idx){
+  completedSections.add(idx);
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("done",completedSections.has(i));});
+  goTo(idx+1);
+}
+function complete(){
+  completedSections.add(4);
+  document.querySelectorAll(".snav-btn").forEach(function(btn,i){btn.classList.toggle("done",completedSections.has(i));});
+  document.querySelectorAll(".section-card").forEach(function(el){el.classList.remove("active");});
+  document.getElementById("completion").classList.add("show");
+  document.getElementById("final-score").textContent=score;
+  document.getElementById("progress-bar").style.width="100%";
+  document.getElementById("progress-label").textContent="Complete! · Wedi Cwblhau!";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+function generateCertificate(){
+  var name=document.getElementById("certNameInput").value.trim();
+  if(!name){document.getElementById("certNameInput").focus();document.getElementById("certNameInput").style.borderColor="#FCD34D";setTimeout(function(){document.getElementById("certNameInput").style.borderColor="";},1500);return;}
+  document.getElementById("certDisplayName").textContent=name;
+  document.getElementById("certScoreDisplay").textContent=score;
+  var now=new Date();
+  var months=["January","February","March","April","May","June","July","August","September","October","November","December"];
+  document.getElementById("certDateDisplay").textContent=now.getDate()+" "+months[now.getMonth()]+" "+now.getFullYear();
+  document.getElementById("certOverlay").classList.add("show");
+  document.body.style.overflow="hidden";
+}
+function closeCertificate(){document.getElementById("certOverlay").classList.remove("show");document.body.style.overflow="";}
+function printCertificate(){
+  var cert=document.getElementById("certificateEl");
+  var w=window.open("","_blank","width=900,height=700");
+  var h="<html><head><title>Certificate</title>";
+  document.querySelectorAll("style,link[rel=stylesheet]").forEach(function(s){h+=s.outerHTML;});
+  h+="</head><body style='margin:0;padding:20px;background:white;'>";
+  h+=cert.outerHTML;
+  h+="</body></html>";
+  w.document.write(h);
+  w.document.close();w.focus();
+  setTimeout(function(){w.print();},800);
+}
+document.addEventListener("click",function(e){if(e.target.id==="certOverlay")closeCertificate();});
+</script>
+</body>
+</html>
