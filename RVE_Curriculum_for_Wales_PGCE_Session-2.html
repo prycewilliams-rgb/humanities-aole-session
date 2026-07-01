@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RVE and Curriculum for Wales — PGCE Subject Knowledge Session</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-950:#0c2f30;
+    --teal-900:#0f3d3e;
+    --teal-800:#164c4c;
+    --teal-tint:#e4eeea;
+    --cream:#faf6ed;
+    --cream-2:#f2ecdd;
+    --gold:#c9a227;
+    --gold-dim:#a9872a;
+    --ink:#1e2321;
+    --ink-soft:#4a534f;
+    --rule:#d8d0bb;
+    --ok:#2f6f4f;
+    --bad:#a4442f;
+    --radius:14px;
+    --shadow: 0 10px 30px -12px rgba(15,61,62,0.25);
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(201,162,39,0.10), transparent 60%),
+      var(--cream);
+    color:var(--ink);
+    font-family:'Source Serif 4', Georgia, serif;
+    min-height:100vh;
+  }
+  .ui{font-family:'Public Sans', sans-serif;}
+  h1,h2,h3,.display{font-family:'Fraunces', Georgia, serif;}
+
+  a{color:var(--teal-800);}
+
+  button{font-family:'Public Sans', sans-serif; cursor:pointer;}
+  button:focus-visible, input:focus-visible, [tabindex]:focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:2px;
+  }
+
+  /* ---------- App shell ---------- */
+  #app{max-width:1180px; margin:0 auto; padding:28px 20px 80px;}
+
+  .brandbar{
+    display:flex; align-items:center; justify-content:space-between;
+    margin-bottom:22px; gap:12px; flex-wrap:wrap;
+  }
+  .brand{
+    display:flex; align-items:center; gap:12px;
+  }
+  .brand .aperture-mini{width:34px;height:34px;flex:none;}
+  .brand-text{line-height:1.15;}
+  .brand-text .eyebrow{
+    font-family:'Public Sans',sans-serif; text-transform:uppercase; letter-spacing:.14em;
+    font-size:11px; color:var(--gold-dim); font-weight:700;
+  }
+  .brand-text .title{font-size:16px; font-weight:600; color:var(--teal-900);}
+
+  .timepill{
+    font-family:'Public Sans',sans-serif; font-size:12.5px; color:var(--teal-900);
+    background:var(--teal-tint); border:1px solid #cfe0da; padding:6px 12px;
+    border-radius:999px; display:flex; align-items:center; gap:8px;
+  }
+
+  /* ---------- Cover screen ---------- */
+  .cover{
+    background:linear-gradient(180deg, var(--teal-900), var(--teal-950));
+    color:var(--cream);
+    border-radius:20px;
+    padding:56px 44px 44px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+  }
+  .cover::before{
+    content:"";
+    position:absolute; right:-120px; top:-120px; width:420px; height:420px;
+    border-radius:50%;
+    background: radial-gradient(circle at 35% 35%, rgba(201,162,39,0.35), rgba(201,162,39,0.02) 60%);
+  }
+  .cover-eyebrow{
+    font-family:'Public Sans',sans-serif; text-transform:uppercase; letter-spacing:.18em;
+    font-size:12px; color:#e9d8a0; font-weight:700; margin-bottom:14px;
+  }
+  .cover h1{
+    font-size:clamp(28px,4vw,44px); line-height:1.08; margin:0 0 14px; font-weight:600;
+    max-width:16ch;
+  }
+  .cover p.lede{
+    font-size:17px; line-height:1.6; max-width:56ch; color:#dfe9e4; margin:0 0 28px;
+  }
+  .cover-meta{
+    display:flex; gap:28px; flex-wrap:wrap; margin-bottom:34px;
+  }
+  .meta-item{font-family:'Public Sans',sans-serif;}
+  .meta-item .num{font-family:'Fraunces',serif; font-size:26px; color:var(--gold); font-weight:600; line-height:1;}
+  .meta-item .lbl{font-size:12px; letter-spacing:.05em; color:#c8d6cf; margin-top:4px;}
+
+  .lens-preview{
+    display:flex; gap:14px; flex-wrap:wrap; margin-bottom:36px;
+  }
+  .lens-chip{
+    font-family:'Public Sans',sans-serif; font-size:12.5px; color:var(--cream);
+    border:1px solid rgba(250,246,237,0.25); padding:7px 13px; border-radius:999px;
+    background:rgba(250,246,237,0.06);
+  }
+
+  .start-row{display:flex; gap:14px; align-items:flex-end; flex-wrap:wrap;}
+  .field label{
+    display:block; font-family:'Public Sans',sans-serif; font-size:12.5px;
+    color:#e9d8a0; margin-bottom:7px; letter-spacing:.03em;
+  }
+  .field input[type=text]{
+    font-family:'Public Sans',sans-serif; font-size:15px;
+    padding:12px 14px; border-radius:10px; border:1px solid rgba(250,246,237,0.3);
+    background:rgba(250,246,237,0.08); color:var(--cream); min-width:260px;
+  }
+  .field input[type=text]::placeholder{color:#a9bdb4;}
+  .field input[type=text]:focus{background:rgba(250,246,237,0.14);}
+
+  .btn{
+    font-weight:700; font-size:14.5px; padding:13px 22px; border-radius:10px; border:none;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary{background:var(--gold); color:#26210a;}
+  .btn-primary:hover{background:#d7ae2c;}
+  .btn-primary:disabled{background:#8a7c4f; color:#5a5330; cursor:not-allowed;}
+  .btn-ghost{
+    background:transparent; color:var(--teal-900); border:1px solid var(--teal-900);
+  }
+  .btn-ghost:hover{background:var(--teal-tint);}
+
+  .hint{font-family:'Public Sans',sans-serif; font-size:12px; color:#b9c9c1; margin-top:10px;}
+
+  /* ---------- Working layout ---------- */
+  .work{
+    display:grid;
+    grid-template-columns:230px 1fr;
+    gap:26px;
+    align-items:start;
+    margin-top:6px;
+  }
+  @media (max-width:760px){
+    .work{grid-template-columns:1fr;}
+    .railwrap{order:2;}
+  }
+
+  /* Aperture rail */
+  .railwrap{
+    background:var(--cream-2);
+    border:1px solid var(--rule);
+    border-radius:var(--radius);
+    padding:18px 14px;
+    position:sticky; top:18px;
+  }
+  @media (max-width:760px){ .railwrap{position:static;} }
+  .rail-title{
+    font-family:'Public Sans',sans-serif; font-size:11px; text-transform:uppercase;
+    letter-spacing:.14em; color:var(--gold-dim); font-weight:700; margin:2px 6px 14px;
+  }
+  .rail-item{
+    display:flex; align-items:center; gap:12px;
+    padding:9px 8px; border-radius:10px; margin-bottom:2px;
+    cursor:default;
+  }
+  .rail-item.clickable{cursor:pointer;}
+  .rail-item.clickable:hover{background:rgba(15,61,62,0.06);}
+  .rail-item.active{background:var(--teal-tint);}
+  .aperture{
+    --p:0;
+    width:34px; height:34px; border-radius:50%; flex:none; position:relative;
+    background:
+      conic-gradient(var(--teal-800) calc(var(--p)*1%), #d9e4de calc(var(--p)*1%));
+    display:flex; align-items:center; justify-content:center;
+  }
+  .aperture::after{
+    content:""; width:22px; height:22px; border-radius:50%; background:var(--cream-2);
+    display:flex;
+  }
+  .rail-item.active .aperture::after{background:#fff;}
+  .aperture .mark{
+    position:absolute; font-family:'Public Sans',sans-serif; font-size:11px; font-weight:700;
+    color:var(--teal-900);
+  }
+  .aperture.done{--p:100;}
+  .aperture.done .mark::before{content:"✓";}
+  .aperture.locked{--p:0;}
+  .aperture.locked::after{background:#eee7d3;}
+  .rail-label{font-family:'Public Sans',sans-serif; font-size:13px; color:var(--ink); line-height:1.25;}
+  .rail-label .sub{display:block; font-size:11px; color:var(--ink-soft); margin-top:1px;}
+
+  .rail-progress{
+    margin-top:14px; padding-top:14px; border-top:1px solid var(--rule);
+    font-family:'Public Sans',sans-serif; font-size:12px; color:var(--ink-soft);
+  }
+  .barbg{height:6px; background:#e7ddc0; border-radius:99px; margin-top:8px; overflow:hidden;}
+  .barfg{height:100%; background:linear-gradient(90deg,var(--teal-800),var(--gold)); border-radius:99px; transition:width .4s ease;}
+
+  /* Main panel */
+  .panel{
+    background:#fff; border:1px solid var(--rule); border-radius:var(--radius);
+    padding:36px 40px; box-shadow:var(--shadow);
+  }
+  @media (max-width:600px){.panel{padding:24px 20px;}}
+
+  .panel-eyebrow{
+    font-family:'Public Sans',sans-serif; text-transform:uppercase; letter-spacing:.14em;
+    font-size:11.5px; color:var(--gold-dim); font-weight:700; margin-bottom:10px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .panel h2{font-size:clamp(22px,3vw,30px); margin:0 0 6px; color:var(--teal-950); font-weight:600;}
+  .panel .dek{color:var(--ink-soft); font-size:15px; margin:0 0 26px; max-width:62ch;}
+
+  .read{font-size:16.5px; line-height:1.72; color:#25302c;}
+  .read p{margin:0 0 16px;}
+  .read ul{margin:0 0 16px; padding-left:22px;}
+  .read li{margin-bottom:8px;}
+  .read strong{color:var(--teal-950);}
+  .callout{
+    background:var(--teal-tint); border-left:3px solid var(--teal-800);
+    padding:14px 18px; border-radius:0 8px 8px 0; margin:20px 0; font-size:15px;
+  }
+  .lens-grid{
+    display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
+    gap:12px; margin:18px 0 6px;
+  }
+  .lens-card{
+    border:1px solid var(--rule); border-radius:10px; padding:13px 15px; background:var(--cream);
+  }
+  .lens-card .name{font-family:'Public Sans',sans-serif; font-weight:700; font-size:13.5px; color:var(--teal-900); margin-bottom:4px;}
+  .lens-card .desc{font-size:13.5px; color:var(--ink-soft); line-height:1.45;}
+
+  .example-strip{display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px; margin:18px 0;}
+  .example-tile{border:1px solid var(--rule); border-radius:10px; padding:12px; background:var(--cream);}
+  .example-tile .ename{font-family:'Public Sans',sans-serif; font-weight:700; font-size:13px; color:var(--teal-900);}
+  .example-tile .elens{font-family:'Public Sans',sans-serif; font-size:11.5px; color:var(--gold-dim); margin-top:3px;}
+
+  /* Questions */
+  .qsection{margin-top:32px; padding-top:26px; border-top:1px dashed var(--rule);}
+  .qsection-title{
+    font-family:'Public Sans',sans-serif; font-weight:700; font-size:13px;
+    text-transform:uppercase; letter-spacing:.1em; color:var(--teal-900); margin-bottom:16px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .q{
+    background:var(--cream); border:1px solid var(--rule); border-radius:12px;
+    padding:18px 20px; margin-bottom:16px;
+  }
+  .q .qtext{font-family:'Public Sans',sans-serif; font-weight:600; font-size:14.5px; color:var(--ink); margin-bottom:12px;}
+  .opts{display:flex; flex-direction:column; gap:8px;}
+  .opt{
+    display:flex; align-items:flex-start; gap:10px; font-family:'Public Sans',sans-serif;
+    font-size:14px; padding:9px 12px; border-radius:8px; border:1px solid var(--rule);
+    background:#fff; cursor:pointer;
+  }
+  .opt:hover{border-color:var(--teal-800);}
+  .opt input{margin-top:2px;}
+  .opt.correct{border-color:var(--ok); background:#eef6f0;}
+  .opt.incorrect{border-color:var(--bad); background:#fbecea;}
+  .qfeedback{
+    font-family:'Public Sans',sans-serif; font-size:13px; margin-top:10px; padding:9px 12px;
+    border-radius:8px; display:none;
+  }
+  .qfeedback.show{display:block;}
+  .qfeedback.ok{background:#eef6f0; color:var(--ok);}
+  .qfeedback.bad{background:#fbecea; color:var(--bad);}
+  .qtext-input{
+    width:100%; font-family:'Public Sans',sans-serif; font-size:14px; padding:11px 13px;
+    border-radius:8px; border:1px solid var(--rule); resize:vertical; min-height:64px;
+  }
+  .qtext-input:focus{border-color:var(--teal-800);}
+
+  .panel-nav{
+    display:flex; justify-content:space-between; align-items:center; margin-top:30px;
+    padding-top:22px; border-top:1px solid var(--rule); flex-wrap:wrap; gap:12px;
+  }
+  .navlock{font-family:'Public Sans',sans-serif; font-size:12.5px; color:var(--ink-soft);}
+
+  /* Certificate */
+  .cert-wrap{display:flex; justify-content:center; padding:20px 0;}
+  .certificate{
+    width:100%; max-width:760px; background:#fff; border:2px solid var(--teal-900);
+    border-radius:8px; padding:52px 48px; position:relative; text-align:center;
+    box-shadow:var(--shadow);
+  }
+  .certificate::before, .certificate::after{
+    content:""; position:absolute; width:64px; height:64px; border-radius:50%;
+    background:
+      conic-gradient(var(--gold) 100%, transparent 0);
+    opacity:.14;
+  }
+  .certificate::before{top:-20px; left:-20px;}
+  .certificate::after{bottom:-20px; right:-20px;}
+  .cert-eyebrow{
+    font-family:'Public Sans',sans-serif; letter-spacing:.2em; text-transform:uppercase;
+    font-size:11px; color:var(--gold-dim); font-weight:700; margin-bottom:18px;
+  }
+  .cert-title{font-family:'Fraunces',serif; font-size:26px; color:var(--teal-950); margin:0 0 6px;}
+  .cert-sub{font-family:'Public Sans',sans-serif; font-size:13px; color:var(--ink-soft); margin-bottom:30px;}
+  .cert-name{
+    font-family:'Fraunces',serif; font-size:34px; color:var(--teal-900); font-weight:600;
+    border-bottom:2px solid var(--gold); display:inline-block; padding:0 18px 8px; margin-bottom:22px;
+  }
+  .cert-body{font-family:'Source Serif 4',serif; font-size:15px; color:#333; line-height:1.7; max-width:52ch; margin:0 auto 26px;}
+  .cert-lenses{
+    display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin-bottom:28px;
+  }
+  .cert-lens{
+    font-family:'Public Sans',sans-serif; font-size:11.5px; color:var(--teal-900);
+    border:1px solid var(--teal-tint); background:var(--teal-tint); padding:5px 11px; border-radius:999px;
+  }
+  .cert-foot{display:flex; justify-content:space-between; align-items:flex-end; margin-top:34px; font-family:'Public Sans',sans-serif; font-size:12px; color:var(--ink-soft);}
+  .cert-foot .line{border-top:1px solid #999; padding-top:6px; min-width:170px;}
+
+  .cert-actions{display:flex; gap:12px; justify-content:center; margin-top:26px; flex-wrap:wrap;}
+
+  @media print{
+    body *{visibility:hidden;}
+    .certificate, .certificate *{visibility:visible;}
+    .certificate{position:absolute; left:0; top:0; box-shadow:none; border:2px solid #0f3d3e;}
+    .cert-actions{display:none;}
+  }
+
+  .screen{display:none;}
+  .screen.active{display:block;}
+
+  .langtoggle{
+    display:flex; border:1px solid var(--teal-900); border-radius:999px; overflow:hidden;
+    font-family:'Public Sans',sans-serif;
+  }
+  .langtoggle button{
+    background:transparent; border:none; padding:7px 14px; font-size:12.5px; font-weight:700;
+    color:var(--teal-900); cursor:pointer;
+  }
+  .langtoggle button.active{background:var(--teal-900); color:#fff;}
+  .langtoggle button:not(.active):hover{background:var(--teal-tint);}
+</style>
+<body>
+<div id="app">
+
+  <div class="brandbar ui">
+    <div class="brand">
+      <svg class="aperture-mini" viewBox="0 0 40 40" aria-hidden="true">
+        <circle cx="20" cy="20" r="18" fill="none" stroke="#0f3d3e" stroke-width="2"/>
+        <circle cx="20" cy="20" r="18" fill="none" stroke="#c9a227" stroke-width="2" stroke-dasharray="18 95"/>
+        <circle cx="20" cy="20" r="7" fill="#0f3d3e"/>
+      </svg>
+      <div class="brand-text">
+        <div class="eyebrow" id="brandEyebrow">Cardiff Partnership PGCE · Humanities</div>
+        <div class="title" id="brandTitle">RVE &amp; Curriculum for Wales</div>
+      </div>
+    </div>
+    <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+      <div class="timepill" id="topTimer">⏱ approx. 60 minutes · 6 sections</div>
+      <div class="langtoggle" role="group" aria-label="Language / Iaith">
+        <button id="btnLangEn" class="active" onclick="setLang('en')">EN</button>
+        <button id="btnLangCy" onclick="setLang('cy')">CY</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ COVER ============ -->
+  <section id="screen-cover" class="screen active">
+    <div class="cover">
+      <div class="cover-eyebrow" id="coverEyebrow">Subject knowledge session · Complete independently</div>
+      <h1 id="coverTitle">Religion, Values and Ethics: reading the guidance through an inclusion lens</h1>
+      <p class="lede" id="coverLede">This session works through the Curriculum for Wales guidance on Religion, Values and Ethics (RVE), focusing on how it is designed to reach every learner — including those with additional learning needs.</p>
+
+      <div class="cover-meta">
+        <div class="meta-item"><div class="num">60</div><div class="lbl" id="metaMin">MINUTES, SELF-PACED</div></div>
+        <div class="meta-item"><div class="num">6</div><div class="lbl" id="metaSec">READING SECTIONS</div></div>
+        <div class="meta-item"><div class="num">18</div><div class="lbl" id="metaQ">CHECK QUESTIONS</div></div>
+        <div class="meta-item"><div class="num">1</div><div class="lbl" id="metaCert">CERTIFICATE ON COMPLETION</div></div>
+      </div>
+
+      <div class="lens-preview" id="lensPreview" aria-hidden="true"></div>
+
+      <div class="start-row">
+        <div class="field">
+          <label for="nameInput" id="nameLabel">Your name (for your completion certificate)</label>
+          <input type="text" id="nameInput" placeholder="e.g. Alex Morgan" autocomplete="off">
+        </div>
+        <button class="btn btn-primary" id="startBtn" onclick="startSession()">Begin the session →</button>
+      </div>
+      <div class="hint" id="coverHint">You can leave and come back — but note that progress isn't saved between browser sessions, so try to complete this in one sitting.</div>
+    </div>
+  </section>
+
+  <!-- ============ WORKING SCREEN ============ -->
+  <section id="screen-work" class="screen">
+    <div class="work">
+      <nav class="railwrap ui" aria-label="Session sections">
+        <div class="rail-title" id="railTitle">Sections</div>
+        <div id="railList"></div>
+        <div class="rail-progress">
+          <span id="progressText">0 of 6 complete</span>
+          <div class="barbg"><div class="barfg" id="progressBar" style="width:0%"></div></div>
+        </div>
+      </nav>
+
+      <div class="panel" id="panel">
+        <!-- injected by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATE ============ -->
+  <section id="screen-cert" class="screen">
+    <div class="cert-wrap">
+      <div class="certificate">
+        <div class="cert-eyebrow" id="certEyebrow">Cardiff Partnership PGCE · Certificate of Completion</div>
+        <h2 class="cert-title" id="certTitle">Religion, Values and Ethics<br>&amp; Curriculum for Wales</h2>
+        <div class="cert-sub" id="certSubtitle">Subject knowledge session</div>
+        <div class="cert-name" id="certName">—</div>
+        <p class="cert-body" id="certBody">has completed all six sections of this session, working through the Curriculum for Wales guidance on Religion, Values and Ethics, its statutory basis, the four purposes, spiritual development, curriculum design, and inclusive practice for learners with additional learning needs.</p>
+        <div class="cert-lenses" id="certLenses"></div>
+        <div class="cert-foot">
+          <div class="line" id="certDateLabel">Date</div>
+          <div class="line" id="certOrgLabel">Cardiff Metropolitan University · ITE</div>
+        </div>
+      </div>
+    </div>
+    <div class="cert-actions ui">
+      <button class="btn btn-primary" id="printBtn" onclick="window.print()">🖨 Print / save certificate</button>
+      <button class="btn btn-ghost" id="restartBtn" onclick="restartSession()">Start again</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ============ UI STRINGS ============ */
+const UI = {
+  en:{
+    brandEyebrow:"Cardiff Partnership PGCE · Humanities",
+    brandTitle:"RVE &amp; Curriculum for Wales",
+    topTimer:"⏱ approx. 60 minutes · 6 sections",
+    coverEyebrow:"Subject knowledge session · Complete independently",
+    coverTitle:"Religion, Values and Ethics: reading the guidance through an inclusion lens",
+    coverLede:"This session works through the Curriculum for Wales guidance on Religion, Values and Ethics (RVE), focusing on how it is designed to reach every learner — including those with additional learning needs.",
+    metaMin:"MINUTES, SELF-PACED", metaSec:"READING SECTIONS", metaQ:"CHECK QUESTIONS", metaCert:"CERTIFICATE ON COMPLETION",
+    nameLabel:"Your name (for your completion certificate)",
+    namePlaceholder:"e.g. Alex Morgan",
+    startBtn:"Begin the session →",
+    coverHint:"You can leave and come back — but note that progress isn't saved between browser sessions, so try to complete this in one sitting.",
+    railTitle:"Sections",
+    progressOf:(n,total)=>`${n} of ${total} complete`,
+    sectionOf:(n,total)=>`Section ${n} of ${total}`,
+    checkUnderstanding:"✓ Check your understanding",
+    back:"← Back",
+    continueBtn:"Continue →",
+    finishBtn:"Finish & get certificate →",
+    lockMsg:"Answer every question to continue",
+    correct:"Correct. ",
+    incorrect:"Not quite — the correct answer is highlighted. ",
+    shortPlaceholder:"Write a couple of sentences…",
+    certEyebrow:"Cardiff Partnership PGCE · Certificate of Completion",
+    certTitle:"Religion, Values and Ethics<br>&amp; Curriculum for Wales",
+    certSubtitle:"Subject knowledge session",
+    certBody:"has completed all six sections of this session, working through the Curriculum for Wales guidance on Religion, Values and Ethics, its statutory basis, the four purposes, spiritual development, curriculum design, and inclusive practice for learners with additional learning needs.",
+    certDateLabel:"Date",
+    certOrgLabel:"Cardiff Metropolitan University · ITE",
+    printBtn:"🖨 Print / save certificate",
+    restartBtn:"Start again",
+    defaultName:"Student teacher",
+    dateLocale:"en-GB"
+  },
+  cy:{
+    brandEyebrow:"Partneriaeth Caerdydd TAR · Dyniaethau",
+    brandTitle:"CGM a Chwricwlwm i Gymru",
+    topTimer:"⏱ tua 60 munud · 6 adran",
+    coverEyebrow:"Sesiwn gwybodaeth bwnc · I'w chwblhau'n annibynnol",
+    coverTitle:"Crefydd, Gwerthoedd a Moeseg: darllen y canllawiau drwy lens cynhwysiant",
+    coverLede:"Mae'r sesiwn hon yn gweithio drwy ganllawiau Cwricwlwm i Gymru ar Grefydd, Gwerthoedd a Moeseg (CGM), gan ganolbwyntio ar sut mae wedi'i chynllunio i gyrraedd pob dysgwr — gan gynnwys y rhai ag Anghenion Dysgu Ychwanegol (ADY).",
+    metaMin:"MUNUD, AR EICH CYFLYMDER EICH HUN", metaSec:"ADRAN DDARLLEN", metaQ:"CWESTIWN GWIRIO", metaCert:"TYSTYSGRIF WRTH GWBLHAU",
+    nameLabel:"Eich enw (ar gyfer eich tystysgrif cwblhau)",
+    namePlaceholder:"e.e. Alex Morgan",
+    startBtn:"Dechrau'r sesiwn →",
+    coverHint:"Gallwch adael a dod yn ôl — ond sylwch nad yw'r cynnydd yn cael ei gadw rhwng sesiynau porwr, felly ceisiwch gwblhau hon ar un eisteddiad.",
+    railTitle:"Adrannau",
+    progressOf:(n,total)=>`${n} allan o ${total} wedi'u cwblhau`,
+    sectionOf:(n,total)=>`Adran ${n} o ${total}`,
+    checkUnderstanding:"✓ Gwiriwch eich dealltwriaeth",
+    back:"← Yn ôl",
+    continueBtn:"Parhau →",
+    finishBtn:"Gorffen a chael tystysgrif →",
+    lockMsg:"Atebwch bob cwestiwn i barhau",
+    correct:"Cywir. ",
+    incorrect:"Ddim yn hollol gywir — mae'r ateb cywir wedi'i amlygu. ",
+    shortPlaceholder:"Ysgrifennwch ychydig frawddegau…",
+    certEyebrow:"Partneriaeth Caerdydd TAR · Tystysgrif Cwblhau",
+    certTitle:"Crefydd, Gwerthoedd a Moeseg<br>a Chwricwlwm i Gymru",
+    certSubtitle:"Sesiwn gwybodaeth bwnc",
+    certBody:"wedi cwblhau chwe adran y sesiwn hon, gan weithio drwy ganllawiau Cwricwlwm i Gymru ar Grefydd, Gwerthoedd a Moeseg, ei sail statudol, y pedwar diben, datblygiad ysbrydol, cynllunio cwricwlwm, ac ymarfer cynhwysol i ddysgwyr ag Anghenion Dysgu Ychwanegol.",
+    certDateLabel:"Dyddiad",
+    certOrgLabel:"Prifysgol Metropolitan Caerdydd · AGA",
+    printBtn:"🖨 Argraffu / cadw'r dystysgrif",
+    restartBtn:"Dechrau eto",
+    defaultName:"Athro/Athrawes dan hyfforddiant",
+    dateLocale:"cy-GB"
+  }
+};
+
+/* ============ CONTENT DATA (bilingual) ============ */
+const sections = [
+  { id:"what",
+    en:{ label:"What is RVE?", sub:"Purpose & status",
+      title:"What is Religion, Values and Ethics?",
+      dek:"The statutory basis and purpose of RVE within the Curriculum for Wales.",
+      html:`
+        <p>In 2022, Religious Education was renamed <strong>Religion, Values and Ethics (RVE)</strong>. The change was made to more accurately reflect the broad, pluralistic scope of the subject — it was never only about religious traditions, but about how people, religious and non-religious alike, find meaning, hold values and make ethical decisions.</p>
+        <p>RVE is a <strong>statutory requirement</strong> of the Curriculum for Wales and is <strong>mandatory for all learners aged 3 to 16</strong>, including those with additional learning needs (ALN). It forms part of the <strong>Humanities Area</strong>, alongside geography, history, business studies and social studies — disciplines that share common themes and transferable skills while retaining their own distinct body of knowledge.</p>
+        <div class="callout">RVE in the curriculum is <strong>not about making learners religious or non-religious</strong>. Teaching and learning must promote openness, impartiality and respect through an <strong>objective, critical and pluralistic</strong> approach — a standard drawn from European Convention on Human Rights case law.</div>
+        <p>Learners explore RVE concepts through a set of <strong>sub lenses</strong> (you'll meet these in Section 5), which are designed to help all learners — including ALN learners — build an understanding of their own communities, locally, nationally and in the wider world.</p>
+      `,
+      questions:[
+        {type:"mcq", q:"In which year was Religious Education renamed 'Religion, Values and Ethics'?", opts:["2019","2021","2022","2025"], correct:2, exp:"RE was renamed RVE in 2022, to better reflect its pluralistic scope."},
+        {type:"mcq", q:"RVE is a mandatory, statutory part of the curriculum for learners aged:", opts:["5 to 11","3 to 16","7 to 16","3 to 18"], correct:1, exp:"RVE is mandatory for all learners aged 3 to 16, including those with ALN."},
+        {type:"mcq", q:"Which best describes the required approach to teaching RVE?", opts:["Confessional — encouraging learners to adopt a particular faith","Objective, critical and pluralistic","Focused solely on Christianity as the majority tradition in Wales","Optional, at the discretion of individual teachers"], correct:1, exp:"RVE must be objective, critical and pluralistic — not aimed at making learners religious or non-religious."}
+      ]
+    },
+    cy:{ label:"Beth yw CGM?", sub:"Pwrpas a statws",
+      title:"Beth yw Crefydd, Gwerthoedd a Moeseg?",
+      dek:"Sail statudol a phwrpas CGM o fewn Cwricwlwm i Gymru.",
+      html:`
+        <p>Yn 2022, cafodd Addysg Grefyddol ei hailenwi'n <strong>Grefydd, Gwerthoedd a Moeseg (CGM)</strong>. Gwnaed y newid i adlewyrchu'n fwy cywir gwmpas eang, lluosogaethol y pwnc — nid oedd byth yn ymwneud yn unig â thraddodiadau crefyddol, ond â sut mae pobl, yn grefyddol ac yn anghrefyddol fel ei gilydd, yn dod o hyd i ystyr, yn dal gwerthoedd ac yn gwneud penderfyniadau moesegol.</p>
+        <p>Mae CGM yn <strong>ofyniad statudol</strong> o Gwricwlwm i Gymru ac yn <strong>orfodol i bob dysgwr rhwng 3 ac 16 oed</strong>, gan gynnwys y rhai ag anghenion dysgu ychwanegol (ADY). Mae'n rhan o'r <strong>Maes Dyniaethau</strong>, ochr yn ochr â daearyddiaeth, hanes, astudiaethau busnes ac astudiaethau cymdeithasol — disgyblaethau sy'n rhannu themâu cyffredin a sgiliau trosglwyddadwy wrth gadw eu corff gwybodaeth eu hunain.</p>
+        <div class="callout">Nid yw CGM yn y cwricwlwm yn ymwneud â <strong>gwneud dysgwyr yn grefyddol nac yn anghrefyddol</strong>. Rhaid i'r addysgu a'r dysgu hyrwyddo agosatrwydd, didueddrwydd a pharch drwy ddull <strong>gwrthrychol, beirniadol a lluosogaethol</strong> — safon sy'n deillio o gyfraith achosion y Confensiwn Ewropeaidd ar Hawliau Dynol.</div>
+        <p>Mae dysgwyr yn archwilio cysyniadau CGM drwy gyfres o <strong>is-lensys</strong> (fe ddewch ar eu traws yn Adran 5), sydd wedi'u cynllunio i helpu pob dysgwr — gan gynnwys dysgwyr ADY — i feithrin dealltwriaeth o'u cymunedau eu hunain, yn lleol, yn genedlaethol ac yn y byd ehangach.</p>
+      `,
+      questions:[
+        {type:"mcq", q:"Ym mha flwyddyn y cafodd Addysg Grefyddol ei hailenwi'n 'Grefydd, Gwerthoedd a Moeseg'?", opts:["2019","2021","2022","2025"], correct:2, exp:"Cafodd AG ei hailenwi'n CGM yn 2022, i adlewyrchu ei chwmpas lluosogaethol yn well."},
+        {type:"mcq", q:"Mae CGM yn rhan orfodol, statudol o'r cwricwlwm i ddysgwyr rhwng:", opts:["5 ac 11 oed","3 ac 16 oed","7 ac 16 oed","3 ac 18 oed"], correct:1, exp:"Mae CGM yn orfodol i bob dysgwr rhwng 3 ac 16 oed, gan gynnwys y rhai ag ADY."},
+        {type:"mcq", q:"Beth sy'n disgrifio orau y dull gofynnol o addysgu CGM?", opts:["Cyffesol — annog dysgwyr i fabwysiadu ffydd benodol","Gwrthrychol, beirniadol a lluosogaethol","Yn canolbwyntio'n llwyr ar Gristnogaeth fel y brif draddodiad yng Nghymru","Yn ddewisol, yn ôl disgresiwn athrawon unigol"], correct:1, exp:"Rhaid i CGM fod yn wrthrychol, yn feirniadol ac yn lluosogaethol — nid yw'n anelu at wneud dysgwyr yn grefyddol nac yn anghrefyddol."}
+      ]
+    }
+  },
+  { id:"law",
+    en:{ label:"RVE and legislation", sub:"Agreed syllabus & rights",
+      title:"RVE and legislation",
+      dek:"How the locally agreed syllabus works, and what has changed around parental withdrawal.",
+      html:`
+        <p>RVE is locally determined in one key respect: each of the <strong>22 local authorities</strong> in Wales has a legal duty to convene an <strong>Agreed Syllabus Conference</strong>, which reviews and recommends an <strong>agreed syllabus</strong> for RVE. Once adopted, all maintained schools and settings — including schools of a religious character — must have regard to it. The agreed syllabus should be <strong>reviewed roughly every five years</strong>.</p>
+        <p>The agreed syllabus has to strike a balance. It must reflect that <strong>Christianity is the main religious tradition in Wales</strong>, while also taking account of the teaching and practices of the <strong>other principal religions represented in Wales</strong>, and reflecting the range of <strong>non-religious philosophical convictions</strong> held here too.</p>
+        <div class="callout">A significant change from the old Religious Education arrangements: there is <strong>no parental right to withdraw</strong> a child from RVE in the Curriculum for Wales. RVE must be designed with regard to both the agreed syllabus and the Welsh Ministers' statutory guidance.</div>
+        <p>For all maintained schools and settings, learners should have access to pluralistic RVE — and that access explicitly includes ALN learners.</p>
+      `,
+      questions:[
+        {type:"mcq", q:"How often should a locally agreed RVE syllabus typically be reviewed?", opts:["Every year","Roughly every five years","Every ten years","Only when a new head teacher is appointed"], correct:1, exp:"Each local authority's Agreed Syllabus Conference should review the syllabus roughly every five years."},
+        {type:"mcq", q:"True or false: parents have a legal right to withdraw their child from RVE under the Curriculum for Wales.", opts:["True","False"], correct:1, exp:"Unlike previous RE arrangements, there is no parental right of withdrawal from RVE."},
+        {type:"mcq", q:"The locally agreed syllabus must reflect:", opts:["Christianity only, as the majority tradition","Christianity as the main tradition, plus other principal religions and non-religious convictions in Wales","Only the religions practised by pupils currently on roll","No religious content, only ethics"], correct:1, exp:"The syllabus must reflect Christianity as the main tradition while also representing other principal religions and non-religious philosophical convictions."}
+      ]
+    },
+    cy:{ label:"CGM a deddfwriaeth", sub:"Maes llafur cytunedig a hawliau",
+      title:"CGM a deddfwriaeth",
+      dek:"Sut mae'r maes llafur cytunedig lleol yn gweithio, a beth sydd wedi newid ynghylch tynnu'n ôl gan rieni.",
+      html:`
+        <p>Mae CGM yn cael ei phenderfynu'n lleol mewn un ffordd allweddol: mae gan bob un o'r <strong>22 awdurdod lleol</strong> yng Nghymru ddyletswydd gyfreithiol i gynnull <strong>Cynhadledd Maes Llafur Cytûn</strong>, sy'n adolygu ac yn argymell <strong>maes llafur cytunedig</strong> ar gyfer CGM. Unwaith y bydd wedi'i fabwysiadu, rhaid i bob ysgol a lleoliad a gynhelir — gan gynnwys ysgolion â chymeriad crefyddol — roi sylw iddo. Dylid <strong>adolygu'r maes llafur cytunedig oddeutu bob pum mlynedd</strong>.</p>
+        <p>Rhaid i'r maes llafur cytunedig daro cydbwysedd. Rhaid iddo adlewyrchu bod <strong>Cristnogaeth yn brif draddodiad crefyddol Cymru</strong>, wrth ystyried hefyd ddysgeidiaeth ac arferion y <strong>prif grefyddau eraill sy'n cael eu cynrychioli yng Nghymru</strong>, ac adlewyrchu'r ystod o <strong>argyhoeddiadau athronyddol anghrefyddol</strong> a ddelir yma hefyd.</p>
+        <div class="callout">Newid sylweddol o'r hen drefniadau Addysg Grefyddol: <strong>nid oes hawl gan rieni i dynnu</strong> plentyn yn ôl o CGM yng Nghwricwlwm i Gymru. Rhaid cynllunio CGM gan roi sylw i'r maes llafur cytunedig a chanllawiau statudol Gweinidogion Cymru fel ei gilydd.</div>
+        <p>I bob ysgol a lleoliad a gynhelir, dylai dysgwyr gael mynediad at CGM lluosogaethol — ac mae'r mynediad hwnnw'n cynnwys dysgwyr ADY yn benodol.</p>
+      `,
+      questions:[
+        {type:"mcq", q:"Pa mor aml y dylid adolygu maes llafur CGM cytunedig lleol fel arfer?", opts:["Bob blwyddyn","Oddeutu bob pum mlynedd","Bob deg mlynedd","Dim ond pan benodir pennaeth newydd"], correct:1, exp:"Dylai Cynhadledd Maes Llafur Cytûn pob awdurdod lleol adolygu'r maes llafur oddeutu bob pum mlynedd."},
+        {type:"mcq", q:"Gwir neu gau: mae gan rieni hawl gyfreithiol i dynnu eu plentyn yn ôl o CGM o dan Gwricwlwm i Gymru.", opts:["Gwir","Gau"], correct:1, exp:"Yn wahanol i drefniadau AG blaenorol, nid oes hawl gan rieni i dynnu'n ôl o CGM."},
+        {type:"mcq", q:"Rhaid i'r maes llafur cytunedig lleol adlewyrchu:", opts:["Cristnogaeth yn unig, fel y brif draddodiad","Cristnogaeth fel y brif draddodiad, ynghyd â phrif grefyddau eraill ac argyhoeddiadau anghrefyddol Cymru","Dim ond y crefyddau y mae disgyblion presennol yn eu harddel","Dim cynnwys crefyddol, moeseg yn unig"], correct:1, exp:"Rhaid i'r maes llafur adlewyrchu Cristnogaeth fel y brif draddodiad wrth gynrychioli prif grefyddau eraill ac argyhoeddiadau athronyddol anghrefyddol hefyd."}
+      ]
+    }
+  },
+  { id:"purposes",
+    en:{ label:"The four purposes", sub:"Curriculum aims",
+      title:"How RVE supports the four purposes",
+      dek:"The aspirations at the heart of the Curriculum for Wales, and RVE's distinctive contribution to them.",
+      html:`
+        <p>At the heart of the Curriculum for Wales are <strong>four purposes</strong>, which set out what all learners should be by the age of 16. RVE makes a distinctive contribution to each:</p>
+        <ul>
+          <li><strong>Ambitious, capable learners</strong>, ready to learn throughout their lives — RVE invites sustained enquiry into some of the biggest questions people ask.</li>
+          <li><strong>Enterprising, creative contributors</strong>, ready to play a full part in life and work — learners develop and express informed viewpoints of their own.</li>
+          <li><strong>Ethical, informed citizens</strong> of Wales and the world — RVE builds understanding of religious and non-religious belief, culture and community, locally and globally.</li>
+          <li><strong>Healthy, confident individuals</strong>, ready to lead fulfilling lives as valued members of society — including opportunities for spiritual development (see Section 4).</li>
+        </ul>
+        <p>These purposes aren't ticked off separately topic by topic — they're realised holistically, through the way RVE is taught across a learner's whole journey from age 3 to 16.</p>
+      `,
+      questions:[
+        {type:"mcq", q:"How many purposes sit at the heart of the Curriculum for Wales?", opts:["Two","Three","Four","Six"], correct:2, exp:"There are four purposes, setting out the aspirations for every learner by age 16."},
+        {type:"mcq", q:"'Ready to play a full part in life and work' most closely describes which purpose?", opts:["Ambitious, capable learners","Enterprising, creative contributors","Ethical, informed citizens","Healthy, confident individuals"], correct:1, exp:"This phrase belongs to the 'enterprising, creative contributors' purpose."},
+        {type:"short", q:"In your own words, briefly explain how RVE contributes to learners becoming 'ethical, informed citizens of Wales and the world'."}
+      ]
+    },
+    cy:{ label:"Y pedwar diben", sub:"Nodau'r cwricwlwm",
+      title:"Sut mae CGM yn cefnogi'r pedwar diben",
+      dek:"Y dyheadau wrth galon Cwricwlwm i Gymru, a chyfraniad arbennig CGM atynt.",
+      html:`
+        <p>Wrth galon Cwricwlwm i Gymru mae <strong>pedwar diben</strong>, sy'n nodi'r hyn y dylai pob dysgwr fod erbyn 16 oed. Mae CGM yn gwneud cyfraniad arbennig i bob un:</p>
+        <ul>
+          <li><strong>Dysgwyr uchelgeisiol, galluog</strong>, sy'n barod i ddysgu drwy gydol eu hoes — mae CGM yn gwahodd ymholi parhaus i rai o'r cwestiynau mwyaf y mae pobl yn eu gofyn.</li>
+          <li><strong>Cyfranwyr menter, creadigol</strong>, sy'n barod i chwarae rhan lawn mewn bywyd a gwaith — mae dysgwyr yn datblygu ac yn mynegi safbwyntiau gwybodus eu hunain.</li>
+          <li><strong>Dinasyddion moesegol, gwybodus</strong> Cymru a'r byd — mae CGM yn adeiladu dealltwriaeth o gred, diwylliant a chymuned grefyddol ac anghrefyddol, yn lleol ac yn fyd-eang.</li>
+          <li><strong>Unigolion iach, hyderus</strong>, sy'n barod i arwain bywydau boddhaus fel aelodau gwerthfawr o gymdeithas — gan gynnwys cyfleoedd ar gyfer datblygiad ysbrydol (gweler Adran 4).</li>
+        </ul>
+        <p>Nid yw'r dibenion hyn yn cael eu ticio i ffwrdd bwnc wrth bwnc yn ar wahân — maen nhw'n cael eu gwireddu'n gyfannol, drwy'r ffordd y mae CGM yn cael ei haddysgu ar hyd taith gyfan dysgwr o 3 i 16 oed.</p>
+      `,
+      questions:[
+        {type:"mcq", q:"Sawl diben sydd wrth galon Cwricwlwm i Gymru?", opts:["Dau","Tri","Pedwar","Chwech"], correct:2, exp:"Mae pedwar diben, yn nodi dyheadau pob dysgwr erbyn 16 oed."},
+        {type:"mcq", q:"Mae 'yn barod i chwarae rhan lawn mewn bywyd a gwaith' yn disgrifio orau ba ddiben?", opts:["Dysgwyr uchelgeisiol, galluog","Cyfranwyr menter, creadigol","Dinasyddion moesegol, gwybodus","Unigolion iach, hyderus"], correct:1, exp:"Mae'r ymadrodd hwn yn perthyn i'r diben 'cyfranwyr menter, creadigol'."},
+        {type:"short", q:"Yn eich geiriau eich hun, esboniwch yn fyr sut mae CGM yn cyfrannu at ddysgwyr yn dod yn 'ddinasyddion moesegol, gwybodus Cymru a'r byd'."}
+      ]
+    }
+  },
+  { id:"spiritual",
+    en:{ label:"Spiritual development", sub:"Meaning & wellbeing",
+      title:"Spiritual development in RVE",
+      dek:"A strand of the four purposes that is often misunderstood as purely religious — it isn't.",
+      html:`
+        <p>One strand of the 'healthy, confident individuals' purpose is <strong>spiritual development</strong>. In the context of RVE, this is concerned with our natural ability to <strong>look for, express and understand what is important in life</strong>, and to question who we are and why we are here. Crucially: <strong>spiritual development may or may not involve religion</strong>.</p>
+        <p>Through experiencing and reflecting on our relationships, spiritual development may show up as:</p>
+        <ul>
+          <li><strong>Awareness of self in relation to others</strong> — developing a sense of one's own uniqueness and value, and showing empathy for others.</li>
+          <li><strong>Connections to the wider and natural world</strong> — a sense of belonging, and for some, connection to a higher power or ultimate reality.</li>
+          <li><strong>Creativity and going beyond the everyday</strong> — using imagination, and experiencing awe and wonder.</li>
+          <li><strong>Exploration of ultimate questions</strong> and contemplation of meaning and purpose — the 'big questions' about life.</li>
+        </ul>
+        <div class="callout">ALN settings often have a wealth of experience in giving learners multi-sensory experiences — quiet time, time in nature, opportunities to reflect, sing, dance and laugh — which are an ideal vehicle for spiritual development, with or without a religious dimension.</div>
+      `,
+      questions:[
+        {type:"mcq", q:"True or false: spiritual development in RVE always has a religious dimension.", opts:["True","False"], correct:1, exp:"Spiritual development may or may not involve religion — it is about meaning, purpose and connection more broadly."},
+        {type:"mcq", q:"Which of these is NOT listed as one of the areas where spiritual development may be apparent?", opts:["Awareness of self in relation to others","Connections to the wider and natural world","Memorising set religious texts word-for-word","Exploration of ultimate questions"], correct:2, exp:"Memorising texts isn't part of the four areas — the focus is on self-awareness, connection, creativity, and ultimate questions."},
+        {type:"short", q:"Give one practical way an ALN setting might support learners' spiritual development, and note whether it needs to involve religion."}
+      ]
+    },
+    cy:{ label:"Datblygiad ysbrydol", sub:"Ystyr a llesiant",
+      title:"Datblygiad ysbrydol mewn CGM",
+      dek:"Elfen o'r pedwar diben sy'n aml yn cael ei chamddeall fel un grefyddol yn unig — nid yw hynny'n wir.",
+      html:`
+        <p>Un elfen o'r diben 'unigolion iach, hyderus' yw <strong>datblygiad ysbrydol</strong>. Yng nghyd-destun CGM, mae hyn yn ymwneud â'n gallu naturiol i <strong>chwilio am, fynegi a deall yr hyn sy'n bwysig mewn bywyd</strong>, a chwestiynu pwy ydym ni a pham rydym ni yma. Yn hollbwysig: <strong>gall datblygiad ysbrydol gynnwys crefydd neu beidio</strong>.</p>
+        <p>Drwy brofi ac ystyried ein perthnasoedd, gall datblygiad ysbrydol ymddangos fel:</p>
+        <ul>
+          <li><strong>Ymwybyddiaeth o'r hunan mewn perthynas ag eraill</strong> — datblygu ymdeimlad o'i unigrywiaeth a'i werth ei hun, a dangos empathi tuag at eraill.</li>
+          <li><strong>Cysylltiadau â'r byd ehangach a naturiol</strong> — ymdeimlad o berthyn, ac i rai, cysylltiad â grym uwch neu wirionedd eithaf.</li>
+          <li><strong>Creadigrwydd a mynd y tu hwnt i'r bob dydd</strong> — defnyddio dychymyg, a phrofi rhyfeddod a syndod.</li>
+          <li><strong>Archwilio cwestiynau eithaf</strong> a myfyrio ar ystyr a phwrpas — y 'cwestiynau mawr' am fywyd.</li>
+        </ul>
+        <div class="callout">Yn aml mae gan leoliadau ADY gyfoeth o brofiad o roi profiadau amlsynhwyraidd i ddysgwyr — amser tawel, amser yn y byd natur, cyfleoedd i fyfyrio, canu, dawnsio a chwerthin — sy'n gyfrwng delfrydol ar gyfer datblygiad ysbrydol, gydag elfen grefyddol neu hebddi.</div>
+      `,
+      questions:[
+        {type:"mcq", q:"Gwir neu gau: mae gan ddatblygiad ysbrydol mewn CGM elfen grefyddol bob amser.", opts:["Gwir","Gau"], correct:1, exp:"Gall datblygiad ysbrydol gynnwys crefydd neu beidio — mae'n ymwneud ag ystyr, pwrpas a chysylltiad yn ehangach."},
+        {type:"mcq", q:"Pa un o'r rhain NAD yw'n cael ei restru fel un o'r meysydd lle gall datblygiad ysbrydol fod yn amlwg?", opts:["Ymwybyddiaeth o'r hunan mewn perthynas ag eraill","Cysylltiadau â'r byd ehangach a naturiol","Cofio testunau crefyddol gosodedig air am air","Archwilio cwestiynau eithaf"], correct:2, exp:"Nid yw cofio testunau'n rhan o'r pedwar maes — mae'r pwyslais ar hunanymwybyddiaeth, cysylltiad, creadigrwydd, a chwestiynau eithaf."},
+        {type:"short", q:"Rhowch un ffordd ymarferol y gallai lleoliad ADY gefnogi datblygiad ysbrydol dysgwyr, gan nodi a oes angen iddo gynnwys crefydd."}
+      ]
+    }
+  },
+  { id:"design",
+    en:{ label:"Curriculum design", sub:"The seven sub lenses",
+      title:"Designing your curriculum & the RVE sub lenses",
+      dek:"How schools build RVE into their curriculum, and the seven lenses used to explore RVE concepts.",
+      html:`
+        <p>Curriculum design must incorporate RVE and, where appropriate, the Curriculum for Wales <strong>cross-cutting themes</strong>: careers and work-related experiences, human rights, diversity, local/national/international contexts, and relationships and sexuality education. It must also embed the <strong>cross-curricular skills</strong> of literacy, numeracy and digital competence, and the skills integral to the four purposes.</p>
+        <p>A setting can choose how RVE sits within its Humanities provision — <strong>integrated, multidisciplinary, interdisciplinary, or disciplinary</strong> — but curriculum design must always have regard to the locally agreed syllabus, and should be evaluated regularly.</p>
+        <p>To help schools identify content, the guidance sets out seven <strong>RVE sub lenses</strong>. These aren't units or topics to teach in sequence — they're interconnected lenses through which RVE concepts can be explored at any stage:</p>
+        <div class="lens-grid">
+          <div class="lens-card"><div class="name">Search for meaning and purpose</div><div class="desc">How people respond to the deeper questions of life to understand the human condition.</div></div>
+          <div class="lens-card"><div class="name">The natural world and living things</div><div class="desc">How and why people show concern and responsibility for the world, and experience awe and wonder in nature.</div></div>
+          <div class="lens-card"><div class="name">Identity and belonging</div><div class="desc">What makes us who we are as people, communities and citizens living in a diverse world.</div></div>
+          <div class="lens-card"><div class="name">Authority and influence</div><div class="desc">How and why different types of authority influence people's lives.</div></div>
+          <div class="lens-card"><div class="name">Relationships and responsibility</div><div class="desc">How people live together, and why developing healthy relationships matters.</div></div>
+          <div class="lens-card"><div class="name">Values and ethics</div><div class="desc">How and why people make moral choices, and how this influences their actions.</div></div>
+          <div class="lens-card"><div class="name">The journey of life</div><div class="desc">What people experience as part of the journey of life, and how these experiences are acknowledged.</div></div>
+        </div>
+      `,
+      questions:[
+        {type:"mcq", q:"How many RVE sub lenses does the guidance set out?", opts:["Four","Five","Seven","Ten"], correct:2, exp:"There are seven interconnected sub lenses through which RVE concepts can be explored."},
+        {type:"mcq", q:"\"How people live together, and why developing healthy relationships matters\" describes which sub lens?", opts:["Authority and influence","Relationships and responsibility","Identity and belonging","The journey of life"], correct:1, exp:"This is the 'Relationships and responsibility' sub lens."},
+        {type:"short", q:"Name one Curriculum for Wales cross-cutting theme that must be considered when designing RVE provision."}
+      ]
+    },
+    cy:{ label:"Cynllunio cwricwlwm", sub:"Y saith is-lens",
+      title:"Cynllunio eich cwricwlwm ac is-lensys CGM",
+      dek:"Sut mae ysgolion yn adeiladu CGM i'w cwricwlwm, a'r saith lens a ddefnyddir i archwilio cysyniadau CGM.",
+      html:`
+        <p>Rhaid i gynllunio cwricwlwm ymgorffori CGM ac, lle bo'n briodol, <strong>themâu trawsbynciol</strong> Cwricwlwm i Gymru: gyrfaoedd a phrofiadau'n ymwneud â'r byd gwaith, hawliau dynol, amrywiaeth, cyd-destunau lleol/cenedlaethol/rhyngwladol, ac addysg cydberthynas a rhywioldeb. Rhaid iddo hefyd ymgorffori <strong>sgiliau trawsgwricwlaidd</strong> llythrennedd, rhifedd a chymhwysedd digidol, a'r sgiliau sy'n rhan annatod o'r pedwar diben.</p>
+        <p>Gall lleoliad ddewis sut mae CGM yn eistedd o fewn ei ddarpariaeth Dyniaethau — yn <strong>integredig, amlddisgyblaethol, rhyngddisgyblaethol, neu ddisgyblaethol</strong> — ond rhaid i gynllunio cwricwlwm bob amser roi sylw i'r maes llafur cytunedig lleol, a dylid ei werthuso'n rheolaidd.</p>
+        <p>I helpu ysgolion i nodi cynnwys, mae'r canllawiau'n gosod allan saith <strong>is-lens CGM</strong>. Nid unedau na phynciau i'w haddysgu mewn dilyniant ydynt — maent yn lensys rhynggysylltiedig y gellir archwilio cysyniadau CGM drwyddynt ar unrhyw gam:</p>
+        <div class="lens-grid">
+          <div class="lens-card"><div class="name">Chwilio am ystyr a phwrpas</div><div class="desc">Sut mae pobl yn ymateb i gwestiynau dyfnach bywyd er mwyn deall cyflwr dynol.</div></div>
+          <div class="lens-card"><div class="name">Y byd naturiol a phethau byw</div><div class="desc">Sut a pham mae pobl yn dangos pryder a chyfrifoldeb dros y byd, ac yn profi rhyfeddod a syndod ym myd natur.</div></div>
+          <div class="lens-card"><div class="name">Hunaniaeth a pherthyn</div><div class="desc">Beth sy'n ein gwneud ni pwy ydym ni fel pobl, cymunedau a dinasyddion mewn byd amrywiol.</div></div>
+          <div class="lens-card"><div class="name">Awdurdod a dylanwad</div><div class="desc">Sut a pham mae gwahanol fathau o awdurdod yn dylanwadu ar fywydau pobl.</div></div>
+          <div class="lens-card"><div class="name">Perthynas a chyfrifoldeb</div><div class="desc">Sut mae pobl yn byw gyda'i gilydd, a pham mae datblygu perthnasoedd iach yn bwysig.</div></div>
+          <div class="lens-card"><div class="name">Gwerthoedd a moeseg</div><div class="desc">Sut a pham mae pobl yn gwneud dewisiadau moesol, a sut mae hyn yn dylanwadu ar eu gweithredoedd.</div></div>
+          <div class="lens-card"><div class="name">Taith bywyd</div><div class="desc">Beth mae pobl yn ei brofi fel rhan o daith bywyd, a sut mae'r profiadau hyn yn cael eu cydnabod.</div></div>
+        </div>
+      `,
+      questions:[
+        {type:"mcq", q:"Faint o is-lensys CGM y mae'r canllawiau'n eu gosod allan?", opts:["Pedwar","Pump","Saith","Deg"], correct:2, exp:"Mae saith is-lens rhynggysylltiedig y gellir archwilio cysyniadau CGM drwyddynt."},
+        {type:"mcq", q:"Mae \"sut mae pobl yn byw gyda'i gilydd, a pham mae datblygu perthnasoedd iach yn bwysig\" yn disgrifio pa is-lens?", opts:["Awdurdod a dylanwad","Perthynas a chyfrifoldeb","Hunaniaeth a pherthyn","Taith bywyd"], correct:1, exp:"Dyma'r is-lens 'Perthynas a chyfrifoldeb'."},
+        {type:"short", q:"Enwch un thema drawsbynciol Cwricwlwm i Gymru y mae'n rhaid ei hystyried wrth gynllunio darpariaeth CGM."}
+      ]
+    }
+  },
+  { id:"inclusion",
+    en:{ label:"RVE in action", sub:"Inclusive practice",
+      title:"Ensuring inclusivity: RVE in action for ALN learners",
+      dek:"How the principles in this session translate into real classroom practice.",
+      html:`
+        <p>All learners with additional learning needs (ALN) — including those with profound and multiple learning difficulties — should be supported to overcome barriers to learning and achieve their full potential in RVE. Schools and settings should consider:</p>
+        <ul>
+          <li><strong>Active, multi-sensory approaches</strong> to introduce new learning, taking account of different learning styles and emotional needs.</li>
+          <li><strong>Inclusive opportunities</strong> for learners to experience awe and wonder in a variety of environments.</li>
+          <li>Using a <strong>variety of stimuli</strong>, such as religious and non-religious artefacts and relevant contexts.</li>
+          <li><strong>Full participation</strong> of all learners, including those who use a means of communication other than speech.</li>
+          <li>Activities that <strong>include all learners</strong> both inside and outside the classroom — for example, when visiting places of worship.</li>
+        </ul>
+        <p>Here's how several settings put this into practice — each activity is tagged with the sub lens it draws on:</p>
+        <div class="example-strip">
+          <div class="example-tile"><div class="ename">The Christingle</div><div class="elens">Lens: the journey of life</div></div>
+          <div class="example-tile"><div class="ename">Religious symbols in clay</div><div class="elens">Lens: identity and belonging</div></div>
+          <div class="example-tile"><div class="ename">Moon and stars (Ramadan)</div><div class="elens">Lens: search for meaning &amp; purpose</div></div>
+          <div class="example-tile"><div class="ename">Ramadan: good deeds</div><div class="elens">Lens: values and ethics</div></div>
+          <div class="example-tile"><div class="ename">Special places (church visit)</div><div class="elens">Lens: authority and influence</div></div>
+          <div class="example-tile"><div class="ename">Spiritual development atmospherics</div><div class="elens">Lens: the natural world and living things</div></div>
+          <div class="example-tile"><div class="ename">Being a good friend</div><div class="elens">Lens: relationships and responsibility</div></div>
+        </div>
+        <p>Each activity uses sensory, concrete experience — candlelight, textures, scent, discussion cards — to make abstract RVE concepts accessible, while staying anchored to a specific statement of what matters and sub lens.</p>
+      `,
+      questions:[
+        {type:"mcq", q:"The Christingle activity, described in the guidance, connects most closely to which sub lens?", opts:["Authority and influence","The journey of life","Values and ethics","The natural world and living things"], correct:1, exp:"The Christingle activity is tagged to the 'journey of life' sub lens in the guidance."},
+        {type:"mcq", q:"True or false: religious and non-religious artefacts should be avoided with ALN learners because of sensory sensitivities.", opts:["True","False"], correct:1, exp:"The guidance actively encourages using a variety of stimuli, including religious and non-religious artefacts, as part of multi-sensory learning."},
+        {type:"short", q:"Pick one example activity from this section. Briefly explain which sub lens it connects to, and why the approach is inclusive for ALN learners."}
+      ]
+    },
+    cy:{ label:"CGM ar waith", sub:"Ymarfer cynhwysol",
+      title:"Sicrhau cynhwysiant: CGM ar waith i ddysgwyr ADY",
+      dek:"Sut mae'r egwyddorion yn y sesiwn hon yn trosi'n ymarfer dosbarth go iawn.",
+      html:`
+        <p>Dylai pob dysgwr ag anghenion dysgu ychwanegol (ADY) — gan gynnwys y rhai ag anawsterau dysgu dwys a lluosog — gael eu cefnogi i oresgyn rhwystrau i ddysgu a chyflawni eu llawn botensial mewn CGM. Dylai ysgolion a lleoliadau ystyried:</p>
+        <ul>
+          <li><strong>Dulliau gweithredol, amlsynhwyraidd</strong> i gyflwyno dysgu newydd, gan ystyried gwahanol arddulliau dysgu ac anghenion emosiynol.</li>
+          <li><strong>Cyfleoedd cynhwysol</strong> i ddysgwyr brofi rhyfeddod a syndod mewn amrywiaeth o amgylcheddau.</li>
+          <li>Defnyddio <strong>amrywiaeth o ysgogiadau</strong>, megis arteffactau crefyddol ac anghrefyddol a chyd-destunau perthnasol.</li>
+          <li><strong>Cyfranogiad llawn</strong> pob dysgwr, gan gynnwys y rhai sy'n defnyddio dull cyfathrebu heblaw lleferydd.</li>
+          <li>Gweithgareddau sy'n <strong>cynnwys pob dysgwr</strong> y tu mewn a'r tu allan i'r dosbarth — er enghraifft, wrth ymweld â lleoedd addoli.</li>
+        </ul>
+        <p>Dyma sut mae sawl lleoliad wedi rhoi hyn ar waith — mae pob gweithgaredd wedi'i dagio â'r is-lens y mae'n tynnu arno:</p>
+        <div class="example-strip">
+          <div class="example-tile"><div class="ename">Y Christingle</div><div class="elens">Lens: taith bywyd</div></div>
+          <div class="example-tile"><div class="ename">Symbolau crefyddol mewn clai</div><div class="elens">Lens: hunaniaeth a pherthyn</div></div>
+          <div class="example-tile"><div class="ename">Lleuad a sêr (Ramadan)</div><div class="elens">Lens: chwilio am ystyr a phwrpas</div></div>
+          <div class="example-tile"><div class="ename">Ramadan: gweithredoedd da</div><div class="elens">Lens: gwerthoedd a moeseg</div></div>
+          <div class="example-tile"><div class="ename">Lleoedd arbennig (ymweliad ag eglwys)</div><div class="elens">Lens: awdurdod a dylanwad</div></div>
+          <div class="example-tile"><div class="ename">Awyrgylch datblygiad ysbrydol</div><div class="elens">Lens: y byd naturiol a phethau byw</div></div>
+          <div class="example-tile"><div class="ename">Bod yn ffrind da</div><div class="elens">Lens: perthynas a chyfrifoldeb</div></div>
+        </div>
+        <p>Mae pob gweithgaredd yn defnyddio profiad synhwyraidd, diriaethol — golau cannwyll, gweadau, arogl, cardiau trafod — i wneud cysyniadau haniaethol CGM yn hygyrch, wrth aros wedi'i angori i ddatganiad penodol o'r hyn sy'n bwysig ac is-lens.</p>
+      `,
+      questions:[
+        {type:"mcq", q:"Mae'r gweithgaredd Christingle, a ddisgrifir yn y canllawiau, yn cysylltu agosaf â pha is-lens?", opts:["Awdurdod a dylanwad","Taith bywyd","Gwerthoedd a moeseg","Y byd naturiol a phethau byw"], correct:1, exp:"Mae'r gweithgaredd Christingle wedi'i dagio i'r is-lens 'taith bywyd' yn y canllawiau."},
+        {type:"mcq", q:"Gwir neu gau: dylid osgoi arteffactau crefyddol ac anghrefyddol gyda dysgwyr ADY oherwydd sensitifrwydd synhwyraidd.", opts:["Gwir","Gau"], correct:1, exp:"Mae'r canllawiau'n annog defnyddio amrywiaeth o ysgogiadau'n weithredol, gan gynnwys arteffactau crefyddol ac anghrefyddol, fel rhan o ddysgu amlsynhwyraidd."},
+        {type:"short", q:"Dewiswch un gweithgaredd enghreifftiol o'r adran hon. Esboniwch yn fyr pa is-lens y mae'n cysylltu ag ef, a pham mae'r dull yn gynhwysol i ddysgwyr ADY."}
+      ]
+    }
+  }
+];
+
+/* ============ STATE ============ */
+let lang = 'en';
+let state = {
+  name:"",
+  current:0,
+  completed:new Array(sections.length).fill(false),
+  answers:{}
+};
+
+function s(){ return UI[lang]; }
+function sc(i){ return sections[i][lang]; }
+
+function setLang(l){
+  lang = l;
+  document.getElementById('btnLangEn').classList.toggle('active', l==='en');
+  document.getElementById('btnLangCy').classList.toggle('active', l==='cy');
+  applyStaticStrings();
+  const workActive = document.getElementById('screen-work').classList.contains('active');
+  const certActive = document.getElementById('screen-cert').classList.contains('active');
+  if(workActive){ renderSection(state.current); }
+  if(certActive){ renderCertificateText(); }
+}
+
+function applyStaticStrings(){
+  const t = s();
+  document.getElementById('brandEyebrow').innerHTML = t.brandEyebrow;
+  document.getElementById('brandTitle').innerHTML = t.brandTitle;
+  document.getElementById('topTimer').textContent = t.topTimer;
+  document.getElementById('coverEyebrow').textContent = t.coverEyebrow;
+  document.getElementById('coverTitle').textContent = t.coverTitle;
+  document.getElementById('coverLede').textContent = t.coverLede;
+  document.getElementById('metaMin').textContent = t.metaMin;
+  document.getElementById('metaSec').textContent = t.metaSec;
+  document.getElementById('metaQ').textContent = t.metaQ;
+  document.getElementById('metaCert').textContent = t.metaCert;
+  document.getElementById('nameLabel').textContent = t.nameLabel;
+  document.getElementById('nameInput').placeholder = t.namePlaceholder;
+  document.getElementById('startBtn').textContent = t.startBtn;
+  document.getElementById('coverHint').textContent = t.coverHint;
+  document.getElementById('railTitle').textContent = t.railTitle;
+
+  const lp = document.getElementById('lensPreview');
+  lp.innerHTML = sections.map(sec=>`<span class="lens-chip">${sec[lang].label}</span>`).join("");
+
+  document.getElementById('printBtn').textContent = t.printBtn;
+  document.getElementById('restartBtn').textContent = t.restartBtn;
+}
+
+function startSession(){
+  const val = document.getElementById('nameInput').value.trim();
+  state.name = val || s().defaultName;
+  document.getElementById('screen-cover').classList.remove('active');
+  document.getElementById('screen-work').classList.add('active');
+  buildRail();
+  renderSection(0);
+}
+
+function buildRail(){
+  const rail = document.getElementById('railList');
+  rail.innerHTML = "";
+  sections.forEach((sec,i)=>{
+    const item = document.createElement('div');
+    const unlocked = i===0 || state.completed[i-1] || state.completed[i];
+    item.className = 'rail-item' + (i===state.current?' active':'') + (unlocked?' clickable':'');
+    item.setAttribute('role','button');
+    item.setAttribute('tabindex', unlocked ? '0' : '-1');
+    item.onclick = ()=>{ if(unlocked){ renderSection(i); } };
+    item.onkeydown = (e)=>{ if(unlocked && (e.key==='Enter'||e.key===' ')){ renderSection(i);} };
+    const apCls = state.completed[i] ? 'aperture done' : (unlocked ? 'aperture' : 'aperture locked');
+    item.innerHTML = `
+      <div class="${apCls}"><span class="mark">${state.completed[i] ? '' : (i+1)}</span></div>
+      <div class="rail-label">${sec[lang].label}<span class="sub">${sec[lang].sub}</span></div>
+    `;
+    rail.appendChild(item);
+  });
+  const doneCount = state.completed.filter(Boolean).length;
+  document.getElementById('progressText').textContent = s().progressOf(doneCount, sections.length);
+  document.getElementById('progressBar').style.width = Math.round(doneCount/sections.length*100) + "%";
+}
+
+function renderSection(i){
+  state.current = i;
+  const secBase = sections[i];
+  const secLang = secBase[lang];
+  const t = s();
+  if(!state.answers[secBase.id]) state.answers[secBase.id] = secLang.questions.map(()=>null);
+  buildRail();
+
+  const panel = document.getElementById('panel');
+  let qHtml = "";
+  secLang.questions.forEach((q,qi)=>{
+    if(q.type==='mcq'){
+      let opts = q.opts.map((o,oi)=>`
+        <label class="opt" data-oi="${oi}">
+          <input type="radio" name="q${i}_${qi}" value="${oi}" onchange="answerMCQ(${i},${qi},${oi})">
+          <span>${o}</span>
+        </label>`).join("");
+      qHtml += `
+        <div class="q" id="q-${i}-${qi}">
+          <div class="qtext">${qi+1}. ${q.q}</div>
+          <div class="opts">${opts}</div>
+          <div class="qfeedback" id="fb-${i}-${qi}"></div>
+        </div>`;
+    } else {
+      qHtml += `
+        <div class="q" id="q-${i}-${qi}">
+          <div class="qtext">${qi+1}. ${q.q}</div>
+          <textarea class="qtext-input" id="ta-${i}-${qi}" placeholder="${t.shortPlaceholder}" oninput="answerShort(${i},${qi})"></textarea>
+        </div>`;
+    }
+  });
+
+  panel.innerHTML = `
+    <div class="panel-eyebrow ui">${t.sectionOf(i+1, sections.length)}</div>
+    <h2>${secLang.title}</h2>
+    <p class="dek">${secLang.dek}</p>
+    <div class="read">${secLang.html}</div>
+    <div class="qsection">
+      <div class="qsection-title ui">${t.checkUnderstanding}</div>
+      ${qHtml}
+    </div>
+    <div class="panel-nav ui">
+      <button class="btn btn-ghost" ${i===0?'disabled style="visibility:hidden"':''} onclick="renderSection(${i-1})">${t.back}</button>
+      <div class="navlock" id="navlock-${i}"></div>
+      <button class="btn btn-primary" id="continueBtn" onclick="completeAndAdvance(${i})">
+        ${i===sections.length-1 ? t.finishBtn : t.continueBtn}
+      </button>
+    </div>
+  `;
+
+  const saved = state.answers[secBase.id];
+  secLang.questions.forEach((q,qi)=>{
+    const a = saved[qi];
+    if(q.type==='mcq' && a!==null && a!==undefined){
+      revealMCQ(i,qi,a.selected);
+    } else if(q.type==='short' && a){
+      document.getElementById(`ta-${i}-${qi}`).value = a.text || "";
+    }
+  });
+
+  updateContinueState(i);
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function answerMCQ(i,qi,oi){
+  const secBase = sections[i];
+  const q = secBase[lang].questions[qi];
+  state.answers[secBase.id][qi] = {selected:oi, correct: oi===q.correct};
+  revealMCQ(i,qi,oi);
+  updateContinueState(i);
+}
+
+function revealMCQ(i,qi,selectedIdx){
+  const secBase = sections[i];
+  const q = secBase[lang].questions[qi];
+  const t = s();
+  const qEl = document.getElementById(`q-${i}-${qi}`);
+  const opts = qEl.querySelectorAll('.opt');
+  opts.forEach((o,oi)=>{
+    o.classList.remove('correct','incorrect');
+    const radio = o.querySelector('input');
+    if(oi===selectedIdx) radio.checked = true;
+    if(oi===q.correct) o.classList.add('correct');
+    else if(oi===selectedIdx) o.classList.add('incorrect');
+  });
+  const fb = document.getElementById(`fb-${i}-${qi}`);
+  const isCorrect = selectedIdx===q.correct;
+  fb.className = 'qfeedback show ' + (isCorrect?'ok':'bad');
+  fb.textContent = (isCorrect ? t.correct : t.incorrect) + q.exp;
+}
+
+function answerShort(i,qi){
+  const secBase = sections[i];
+  const val = document.getElementById(`ta-${i}-${qi}`).value.trim();
+  state.answers[secBase.id][qi] = {text:val};
+  updateContinueState(i);
+}
+
+function sectionIsAnswered(i){
+  const secBase = sections[i];
+  const secLang = secBase[lang];
+  const saved = state.answers[secBase.id] || [];
+  return secLang.questions.every((q,qi)=>{
+    const a = saved[qi];
+    if(!a) return false;
+    if(q.type==='mcq') return a.selected!==undefined && a.selected!==null;
+    return a.text && a.text.length>0;
+  });
+}
+
+function updateContinueState(i){
+  const ok = sectionIsAnswered(i);
+  const btn = document.getElementById('continueBtn');
+  const lock = document.getElementById(`navlock-${i}`);
+  btn.disabled = !ok;
+  lock.textContent = ok ? "" : s().lockMsg;
+}
+
+function completeAndAdvance(i){
+  if(!sectionIsAnswered(i)) return;
+  state.completed[i] = true;
+  if(i < sections.length-1){
+    renderSection(i+1);
+  } else {
+    showCertificate();
+  }
+}
+
+function renderCertificateText(){
+  const t = s();
+  document.getElementById('certEyebrow').textContent = t.certEyebrow;
+  document.getElementById('certTitle').innerHTML = t.certTitle;
+  document.getElementById('certSubtitle').textContent = t.certSubtitle;
+  document.getElementById('certBody').textContent = t.certBody;
+  document.getElementById('certLenses').innerHTML = sections.map(sec=>`<span class="cert-lens">${sec[lang].label}</span>`).join("");
+  document.getElementById('certDateLabel').textContent = t.certDateLabel + ": " + new Date().toLocaleDateString(t.dateLocale, {day:'numeric', month:'long', year:'numeric'});
+  document.getElementById('certOrgLabel').textContent = t.certOrgLabel;
+  document.getElementById('printBtn').textContent = t.printBtn;
+  document.getElementById('restartBtn').textContent = t.restartBtn;
+}
+
+function showCertificate(){
+  document.getElementById('screen-work').classList.remove('active');
+  document.getElementById('screen-cert').classList.add('active');
+  document.getElementById('certName').textContent = state.name;
+  renderCertificateText();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function restartSession(){
+  state = {name:"", current:0, completed:new Array(sections.length).fill(false), answers:{}};
+  document.getElementById('nameInput').value = "";
+  document.getElementById('screen-cert').classList.remove('active');
+  document.getElementById('screen-work').classList.remove('active');
+  document.getElementById('screen-cover').classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+/* init */
+applyStaticStrings();
+</script>
+</body>
+</html>
